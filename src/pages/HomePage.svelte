@@ -11,6 +11,7 @@
 	import SpeedView from "components/menu/SpeedView.svelte";
 	import ChartView from "components/menu/Chart.svelte"
 	import { gpsJsonToGeojson } from "utils/geojson-utils.js";
+	import { getDataWithAxios } from "utils/fetch-data.js";
 	
 	let pointOfInterest = null;
 	let layerList = [];
@@ -66,7 +67,7 @@
 			deviceId: ['CK20520033']
 		};
 
-		const gpsRawData = await getBigQueryData(api, payload.polygon, payload.timeFrom, payload.timeTo, payload.deviceId);
+		const gpsRawData = await getDataWithAxios();
 		if (gpsRawData === null) {
 			isError = true;
 			isLoading = false;
