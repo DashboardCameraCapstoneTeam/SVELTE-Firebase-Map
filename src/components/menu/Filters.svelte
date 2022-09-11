@@ -1,0 +1,45 @@
+<script>
+	import RangeSlider from "svelte-range-slider-pips";
+	export let gpsFilters;
+	export let gpsData;
+
+	const resetFilters = () => {
+		let tempArray = gpsFilters;
+		for (let i = 0; i < tempArray.length; i+=1) {
+			tempArray[i].selected[0] = tempArray[i].default[0];
+			tempArray[i].selected[1] = tempArray[i].default[1];
+		}
+		gpsFilters = tempArray;
+	};
+</script>
+
+<section class="card h-fit scale-in-center">
+	{#if gpsData === null}
+		<p class="font-bold my-1">Filters:</p>
+		<div class="alert alert-red my-1" role="alert">GPS Data has not been loaded.</div>
+	{:else}
+		{#each gpsFilters as filterItem}
+			<p class="font-bold my-1">{filterItem.name}:</p>
+
+			<div class="py-1">
+				<RangeSlider
+					bind:values={filterItem.selected}
+					pips
+					min={filterItem.default[0]}
+					max={filterItem.default[1]}
+					step={filterItem.step}
+					float
+					suffix={filterItem.suffix}
+					range
+					first="label"
+					last="label"
+				/>
+			</div>
+		{/each}
+
+		<button on:click={resetFilters} class={`card-btn card-btn-red  my-1 `}> Reset All Filters </button>
+	{/if}
+</section>
+
+<style>
+</style>

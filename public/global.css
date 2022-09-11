@@ -1,0 +1,493 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@300&display=swap');
+
+:root {
+  font-family: 'Quicksand', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #ffffff;
+  color: black;
+  margin: 0;
+  padding: 0;
+}
+
+
+main {
+  padding-left: 1rem;
+  /* 16px */
+  padding-right: 1rem;
+  /* 16px */
+
+  margin-top: 2.5rem;
+  /* 40px */
+  margin-bottom: 2.5rem;
+  /* 40px */
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Source Serif Pro', serif;
+}
+
+
+.bg-blue {
+  background-color: #4959b9;
+  color: white;
+}
+
+.bg-red {
+  background-color: #ff5a5f;
+}
+
+.bg-smoke {
+  background-color: #fafafa;
+}
+
+.bg-dark {
+  background-color: rgb(37, 37, 37);
+}
+
+
+
+hr {
+  border: none;
+  height: 1px;
+  /* Set the hr color */
+  background-color: #ffffff;
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+
+
+
+
+
+
+
+/* Since the new tip is absolutely-positioned, it doesn't force the rectangle up on its own */
+.mapboxgl-popup {
+  max-width: 400px;
+  font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+
+
+
+.date-picker{
+  display: block; 
+  margin: 0; 
+  background-clip: padding-box; 
+  background-color: #ffffff; 
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform; 
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); 
+  width: 100%; 
+  border-radius: 0.25rem; 
+  border-width: 1px; 
+  border-color: #D1D5DB; 
+  border-style: solid; 
+}
+
+
+
+.list-item{
+  display: inline-block;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  /* 16px */
+  padding-bottom: 1rem;
+  /* 16px */
+  text-align: left;
+  -webkit-transition: all 200ms;
+  transition: all 200ms;
+
+  border-radius: 0.5rem;
+  /* 8px */
+  background-color: #f8f8f8;
+  width: 100%;
+}
+
+
+
+
+.card {
+  padding: 1rem;
+  /* 16px */
+  border-radius: 0.5rem;
+  /* 8px */
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  font-size: 0.875rem;
+  /* 14px */
+  line-height: 1.25rem;
+  /* 20px */
+  background-color: white;
+  border-width: 1px;
+  height: 0%;
+}
+
+
+
+.card-xs {
+  height: 10rem;
+}
+
+.card-sm {
+  height: 15rem;
+}
+
+.card-md {
+  height: 20rem;
+}
+
+.card-lg {
+  height: 25rem;
+}
+
+.card-xl {
+  height: 30rem;
+}
+
+.card-2xl {
+  height: 35rem;
+}
+
+.card-3xl {
+  height: 40rem;
+}
+
+.card-4xl {
+  height: 45rem;
+}
+
+.blur {
+  -webkit-filter: blur(8px);
+  filter: blur(8px);
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.blur:hover {
+  -webkit-filter: none;
+  filter: none;
+}
+
+.blur-none {
+  -webkit-filter: none;
+  filter: none;
+}
+
+.card-btn {
+  display: inline-block;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  /* 16px */
+  padding-bottom: 1rem;
+  /* 16px */
+  text-align: left;
+  -webkit-transition: all 200ms;
+  transition: all 200ms;
+
+  border-radius: 0.5rem;
+  /* 8px */
+  background-color: #f8f8f8;
+  width: 100%;
+}
+
+.card-btn:hover {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  background-color: #b7bcc2;
+}
+
+.card-btn-sm {
+  display: inline-block;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.25rem;
+  /* 16px */
+  padding-bottom: 0.25rem;
+  /* 16px */
+  text-align: left;
+  -webkit-transition: all 200ms;
+  transition: all 200ms;
+
+}
+
+.card-btn-sm:hover {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.dot {
+  height: 1rem;
+  width: 1rem;
+  background-color: var(--color);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.card-btn-blue {
+  color: white;
+  background-color: #4959b9;
+}
+
+.card-btn-blue:hover {
+  background-color: rgb(38, 84, 159);
+}
+
+.card-btn-red {
+  color: white;
+  background-color: #F97068;
+}
+
+.card-btn-red:hover {
+  background-color: #e1635c;
+}
+
+.card-btn-green {
+  color: white;
+  background-color: #53a548;
+}
+
+.card-btn-green:hover {
+  background-color: #45903b;
+}
+
+
+
+
+.navbar-btn {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  text-align: left;
+  transition: all 400ms;
+  font-size: 0.875rem;
+  /* 14px */
+  line-height: 1.25rem;
+  /* 8px */
+  
+  background-color: #f8f8f8;
+  width: 100%;
+}
+
+.navbar-btn:hover {
+  background-color: #b7bcc2;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.navbar-btn-blue {
+  color: white;
+  background-color: #4959b9;
+}
+
+.navbar-btn-blue:hover {
+  background-color: rgb(38, 84, 159);
+}
+
+.map-style{
+  transition: all 200ms;
+  border-radius: 0.25rem; 
+  border-width: 0.25rem; 
+  border-style: solid; 
+}
+
+.map-style:hover{
+  border-color: rgb(38, 84, 159);
+}
+
+.map-style-selected{
+  border-color: rgb(38, 84, 159);
+}
+
+
+.scale-in-center {
+	-webkit-animation: scale-in-center 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: scale-in-center 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+/* ----------------------------------------------
+ * Generated by Animista on 2022-9-6 19:14:38
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+/**
+ * ----------------------------------------
+ * animation scale-in-center
+ * ----------------------------------------
+ */
+ @-webkit-keyframes scale-in-center {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes scale-in-center {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+.slide-in-left {
+  -webkit-animation: slide-in-left 1s ease-in-out both;
+  animation: slide-in-left 1s ease-in-out both;
+  animation-delay: calc(var(--order) * 100ms);
+}
+
+/* ----------------------------------------------
+ * Generated by Animista on 2022-2-22 8:46:8
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+/**
+ * ----------------------------------------
+ * animation slide-in-left
+ * ----------------------------------------
+ */
+@-webkit-keyframes slide-in-left {
+  0% {
+    -webkit-transform: translateX(-1000px);
+    transform: translateX(-1000px);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-left {
+  0% {
+    -webkit-transform: translateX(-1000px);
+    transform: translateX(-1000px);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.slide-in-right {
+  -webkit-animation: slide-in-right 1s ease-in-out both;
+  animation: slide-in-right 1s ease-in-out both;
+  animation-delay: calc(var(--order) * 100ms);
+}
+
+/* ----------------------------------------------
+ * Generated by Animista on 2022-2-22 8:48:14
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+@-webkit-keyframes slide-in-right {
+  0% {
+    -webkit-transform: translateX(1000px);
+    transform: translateX(1000px);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-right {
+  0% {
+    -webkit-transform: translateX(1000px);
+    transform: translateX(1000px);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.alert {
+  padding-top: 1rem;
+  /* 16px */
+  padding-bottom: 1rem;
+  /* 16px */
+  padding-left: 1rem;
+  padding-right: 1rem;
+  text-align: left;
+  border-radius: 0.5rem;
+  /* 8px */
+}
+
+.alert-red {
+  color: rgb(185, 28, 28);
+  background-color: rgb(254, 226, 226)
+}
+
+.alert-green {
+
+  color: rgb(123, 162, 144);
+  background-color: rgb(220, 252, 231);
+
+}
+
+.map-loading{
+  background-color: rgb(116, 116, 116);
+  color: white;
+  opacity: 0.9;
+  display: grid;
+  place-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.map-error{
+  background-color: #F97068;
+  color: white;
+  opacity: 0.9;
+  display: grid;
+  place-items: center;
+  height: 100%;
+  width: 100%;
+}
