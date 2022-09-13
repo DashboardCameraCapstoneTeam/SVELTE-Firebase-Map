@@ -1,17 +1,9 @@
-/* eslint-disable no-undef */
-/* eslint-disable import/no-extraneous-dependencies */
-import { writable } from 'svelte/store';
+/* eslint-disable max-len */
+/* eslint-disable import/no-unresolved */
+import { auth } from 'config/firebase';
+import { authState } from 'rxfire/auth';
+import { filter } from 'rxjs/operators';
 
-const authStore = writable < {
-  isLoggedIn,
-  user,
-  firebaseControlled,
-} > ({
-  isLoggedIn: false,
-  firebaseControlled: false,
-});
-
-export default {
-  subscribe: authStore.subscribe,
-  set: authStore.set,
-};
+const loggedIn$ = authState(auth).pipe(filter((user) => !!user)); // Observable only return when user is logged in.
+export { loggedIn$ };
+export default loggedIn$;

@@ -2,8 +2,7 @@
   import { auth, googleProvider } from 'config/firebase';
   const login = () =>{
     try{
-        let res = auth.signInWithPopup(googleProvider);
-    console.log(res)
+        auth.signInWithPopup(googleProvider);
     }
     catch (err){
         console.log(err);

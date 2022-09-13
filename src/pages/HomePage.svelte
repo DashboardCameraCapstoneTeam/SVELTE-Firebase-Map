@@ -52,7 +52,8 @@
 		{id : 1, title: "Street View", icon: "fa-road"},
 		{id : 2, title: "Filter View", icon: "fa-filter"},
 		{id : 3, title: "Speed View", icon: "fa-gauge"},
-		{id : 4, title: "Chart View", icon: "fa-chart-simple"}
+		{id : 4, title: "Chart View", icon: "fa-chart-simple"},
+		{id: 5, title: "Profile", icon: "fa-user"},
 	]
 	let selectedMenu = 0;
 

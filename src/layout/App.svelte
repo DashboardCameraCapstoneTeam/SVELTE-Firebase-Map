@@ -1,16 +1,9 @@
 <script>
   import 'tw-elements';
+  import { loggedIn$ } from 'auth';
   import HomePage from 'pages/HomePage.svelte';
   import LoginPage from 'pages/LoginPage.svelte';
-
-  import { auth, googleProvider } from 'config/firebase';
-  import { authState } from 'rxfire/auth';
-
-    let user;
-
-    const unsubscribe = authState(auth).subscribe(u => user = u);
-
-
+  const user = loggedIn$;
 </script> 
 
 <section>
