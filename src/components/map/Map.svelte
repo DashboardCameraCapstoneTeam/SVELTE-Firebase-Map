@@ -455,6 +455,7 @@
 		
 		});
 
+		resizeMap();
 		map.on("draw.create", updatePolygon);
 		map.on("draw.delete", clearPolygon);
 		map.on("draw.update", updatePolygon);

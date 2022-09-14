@@ -10,9 +10,11 @@
 	import StreetView from "components/menu/StreetView.svelte";
 	import SpeedView from "components/menu/SpeedView.svelte";
 	import ChartView from "components/menu/Chart.svelte"
+	import ProfileView from "components/Profile.svelte";
 	import { gpsJsonToGeojson } from "utils/geojson-utils.js";
 	import { getDataWithAxios } from "utils/fetch-data.js";
 	
+	export let user;
 	let pointOfInterest = null;
 	let layerList = [];
 	let selectedPolygon = null;
@@ -94,9 +96,9 @@
 
 <section class="grid grid-cols-1  md:grid-cols-12 grid-rows-6  gap-4 my-4 px-4 h-fit">
 	<div class="col-span-1 md:col-span-3 row-span-6 grid grid-cols-1 md:grid-cols-1 gap-4 h-fit">
-		<div class="col-span-1 md:col-span-1 row-span-1">
-			<Layers bind:layerList />
-		</div>
+			<div class="col-span-1 md:col-span-1 row-span-1">
+				<Layers bind:layerList />
+			</div>
 
 		
 			<div class={`col-span-1 md:col-span-1 row-span-1 ${ selectedMenu === 0 ? '': 'hidden'}`}>
@@ -117,7 +119,13 @@
 
 			<div class={`col-span-1 md:col-span-1 row-span-1 ${ selectedMenu === 4 ? '': 'hidden'}`}>
 				<ChartView bind:gpsData />
-		</div>
+			</div>
+
+		
+			<div class={`col-span-1 md:col-span-1 row-span-1 ${ selectedMenu === 5 ? '': 'hidden'}`}>
+				<ProfileView user={user}/>
+			</div>
+		
 			
 
 
