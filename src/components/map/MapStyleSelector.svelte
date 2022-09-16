@@ -1,7 +1,6 @@
 <script>
 	export let mapStyle;
-	export let isReadyForStyleSwitching;
-	let isLargeMenu = false;
+	let expandMenu = false;
 
 	const mapStyleList = [
 		{ name: "Streets", id: "streets-v11", img: "https://assets.website-files.com/5e83362767d71ffd59a0c8a9/5ea01b977fb48a501b898a93_ipad-map%20streets.png" },
@@ -14,24 +13,26 @@
 	const toggleStyle = (mapStyleItem) => {
 		try {
 			mapStyle = mapStyleItem;
-			isReadyForStyleSwitching = true;
+		
 		} catch (e) {}
 	};
 
 	const toggleMenu = () => {
-		isLargeMenu = !isLargeMenu;
+		expandMenu = !expandMenu;
 	};
 </script>
 
-<section class="card h-fit scale-in-center" >
-	<button class="card-btn my-1  text-center" on:click={toggleMenu}> <i class={`fa-solid ${isLargeMenu ? "fa-minimize" : "fa-expand"}`} /> </button>
+<section class="card h-fit scale-in-center">
+	<button class="card-btn my-1  text-center" on:click={toggleMenu}> <i class={`fa-solid ${expandMenu ? "fa-minimize" : "fa-expand"}`} /> </button>
 
 	<p class="font-bold my-1">Map Style:</p>
 
-	{#if isLargeMenu === true}
+	{#if expandMenu === true}
 		<div class="flex flex-col">
 			{#each mapStyleList as mapStyleItem}
-			<button class={`map-style my-1 ${mapStyle === mapStyleItem.id ? "map-style-selected" : ""}`} on:click={() => toggleStyle(mapStyleItem.id)}><img class="mapstyle-img" src={mapStyleItem.img} height="100" width="100" alt="" /></button>
+				<button class={`map-style my-1 ${mapStyle === mapStyleItem.id ? "map-style-selected" : ""}`} on:click={() => toggleStyle(mapStyleItem.id)}
+					><img class="mapstyle-img" src={mapStyleItem.img} height="100" width="100" alt="" /></button
+				>
 			{/each}
 		</div>
 	{:else}
@@ -42,7 +43,4 @@
 			</div>
 		{/each}
 	{/if}
-	
-	
-
 </section>

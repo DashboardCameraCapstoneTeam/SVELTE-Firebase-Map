@@ -10,95 +10,15 @@
 	import StreetView from "components/menu/StreetView.svelte";
 	import SpeedView from "components/menu/SpeedView.svelte";
 	import ChartView from "components/menu/Chart.svelte";
-	import { collection, query, orderBy, doc, getDocs } from "firebase/firestore";
-	import { db } from "config/firebase.js";
+	import { fetchPotholeDataFromFirebase } from "service/fetch-firestore";
 	import { gpsJsonToGeojson } from "utils/geojson-utils.js";
-
-	export let user;
-	let pointOfInterest = null;
-	let layerList = [];
-	let selectedPolygon = null;
-
-	let dateTimeDictionary = {
-		startDateTime: "2015-06-23T00:00",
-		endDateTime: "2022-12-23T00:00",
-	};
-
-	let mapStyle = "dark-v10";
-	let isReadyForStyleSwitching = false;
-	let cityDetails = {
-		id: 0,
-		photoURL: "https://www.meme-arsenal.com/memes/bd75c0339be8bbe24aeecd9c64764321.jpg",
-		displayName: "Waterdown",
-		center: [-79.906, 43.332],
-		zoom: 12,
-		pitch: 45,
-		bearing: -17.6,
-	};
-
-	let gpsData = null;
-	let gpsFilters = [{ id: "Count", name: "Pothole Count Filter", default: [0, 20], step: 1, suffix: "", selected: [0, 20] }];
-
-	const fetchInitialMapData = async () => {
-		try {
-			const docRef = doc(db, "users", user.uid);
-			const colRef = query(collection(docRef, "potholes"), orderBy("date_time_analyzed", "desc"));
-			let tempList = [];
-			const querySnapshot = await getDocs(colRef);
-			querySnapshot.forEach((doc) => {
-				let tempDate = doc.data()["date_time_analyzed"];
-				tempDate = convertDateTimeToString(tempDate);
-				const potholeData = doc.data();
-
-				tempList.push(potholeData);
-			});
-
-			return tempList;
-		} catch (e) {
-			console.log(e);
-		}
-	};
-
-	let isLoading = false;
-	let isError = false;
-
-	let menuComponents = [
-		{ id: 0, title: "Date Time", icon: "fa-calendar-days" },
-		{ id: 1, title: "Street View", icon: "fa-road" },
-		{ id: 2, title: "Filter View", icon: "fa-filter" },
-		{ id: 3, title: "Chart View", icon: "fa-chart-simple" },
-	];
-	let selectedMenu = 0;
-
-	const fetchData = async () => {
-		isLoading = true;
-		isError = false;
-
-		const gpsRawData = await fetchInitialMapData();
-		if (gpsRawData === null) {
-			isError = true;
-			isLoading = false;
-			return;
-		}
-
-		if (gpsRawData.length > 0) {
-			console.log( gpsJsonToGeojson(gpsRawData));
-			gpsData = gpsJsonToGeojson(gpsRawData);
-		} else {
-			gpsData = null;
-		}
-		isError = false;
-		isLoading = false;
-	};
-
-	import { convertDateTimeToString } from "utils/date-time-converter";
 	import { auth, googleProvider } from "config/firebase";
 	import { authState } from "rxfire/auth";
 	import { onDestroy } from "svelte";
-
+	
+	
+	let user;
 	let unsubscribe = authState(auth).subscribe((u) => (user = u));
-	onDestroy(unsubscribe);
-
 	const login = () => {
 		try {
 			auth.signInWithPopup(googleProvider);
@@ -110,6 +30,55 @@
 	const signOut = () => {
 		auth.signOut();
 	};
+
+	let pointOfInterest = null;
+	let layerList = [];
+
+	let dateTimeDictionary = {
+		startDateTime: "2015-06-23T00:00",
+		endDateTime: "2022-12-23T00:00",
+	};
+
+	let mapStyle = "satellite-streets-v11";
+	let cityDetails = {
+		id: 0,
+		center: [-79.906, 43.332],
+		zoom: 12,
+		pitch: 45,
+		bearing: -17.6,
+	};
+
+	
+
+	let menuComponents = [
+		{ id: 0, title: "Date Time", icon: "fa-calendar-days" },
+		{ id: 1, title: "Street View", icon: "fa-road" },
+		{ id: 2, title: "Filter View", icon: "fa-filter" },
+		{ id: 3, title: "Chart View", icon: "fa-chart-simple" },
+	];
+	let selectedMenu = menuComponents[0].id;
+
+	let gpsData = null;
+	let isLoading = false;
+	let isError = false;
+	const fetchData = async () => {
+		isLoading = true;
+		isError = false;
+		const gpsRawData = await fetchPotholeDataFromFirebase(user);
+		if (gpsRawData === null) {
+			isError = true;
+		}
+		else{
+			gpsData = gpsRawData.length > 0 ? gpsJsonToGeojson(gpsRawData) : gpsData = null;
+		}
+		isLoading = false;
+	};
+
+	let gpsFilters = [{ id: "Count", name: "Pothole Count Filter", default: [0, 20], step: 1, suffix: "", selected: [0, 20] }];
+
+	onDestroy(unsubscribe);
+
+	
 </script>
 
 {#if user}
@@ -138,7 +107,7 @@
 			</div>
 
 			<div class="col-span-1 md:col-span-1 row-span-1">
-				<SearchDetails bind:cityDetails bind:dateTimeDictionary bind:selectedPolygon {fetchData} />
+				<SearchDetails bind:dateTimeDictionary  {fetchData} />
 			</div>
 
 			<div class="col-span-1 md:col-span-1 row-span-1">
@@ -150,9 +119,9 @@
 		</div>
 
 		<div class="col-span-1 md:col-span-9  row-span-6 relative">
-			<Map {cityDetails} bind:gpsFilters bind:gpsData bind:layerList bind:mapStyle bind:isReadyForStyleSwitching bind:selectedPolygon bind:pointOfInterest bind:selectedMenu />
+			<Map {cityDetails} bind:gpsFilters bind:gpsData bind:layerList bind:mapStyle bind:pointOfInterest bind:selectedMenu />
 			<div class="absolute top-1 left-1 ">
-				<MapStyleSelector bind:mapStyle bind:isReadyForStyleSwitching />
+				<MapStyleSelector bind:mapStyle />
 			</div>
 
 			{#if isLoading === true}

@@ -1,5 +1,4 @@
 <script>
-	import { getCurrentDateTime } from "utils/fetch-time";
 	export let selectedMenu;
 	export let menuComponents;
 </script>

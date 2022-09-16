@@ -1,8 +1,7 @@
 <script>
 	import * as am5 from "@amcharts/amcharts5";
 	import * as am5xy from "@amcharts/amcharts5/xy";
-	import { onMount } from "svelte";
-	import { onDestroy } from "svelte";
+	import { onMount, onDestroy } from "svelte";
 	import { getYearData, getMonthData, getDayData } from "utils/chart-utils.js";
 	import RangeSlider from "svelte-range-slider-pips";
 

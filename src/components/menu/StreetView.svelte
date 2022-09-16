@@ -17,7 +17,7 @@
 			});
 		
 		} catch (err) {
-			console.log(err);
+			alert(err);
 		}
 	};
 
@@ -27,20 +27,16 @@
 				initializeStreetView();
 			}
 		} catch (err) {
-			console.log(err);
+			alert(err);
 		}
 	});
 
 	// When the location changes, set the new lat long to the map
 	const onLocationChange = () => {
 		try {
-			if (streetViewObject === null) {
-				initializeStreetView();
-			} else {
-				streetViewObject.setPosition(pointOfInterest);
-			}
+			streetViewObject === null ? initializeStreetView() : streetViewObject.setPosition(pointOfInterest);
 		} catch (err) {
-			console.log(err);
+			alert(err);
 		}
 	};
 	$: pointOfInterest && onLocationChange();

@@ -1,8 +1,7 @@
 <script>
-	import { projectList, aboutList, applicationToolsList } from 'constants';
+	import { projectList, aboutList, applicationToolsList } from "constants";
 </script>
 
-<hr />
 <footer class="bg-smoke  py-8 px-5">
 	<div class="grid grid-cols-1 md:grid-cols-3 py-2">
 		<div class="col-span-1 ">

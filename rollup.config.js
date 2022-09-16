@@ -39,6 +39,7 @@ function generateAliasMap() {
       { find: 'layout', replacement: path.resolve(__dirname, 'src', 'layout') },
       { find: 'components', replacement: path.resolve(__dirname, 'src', 'components') },
       { find: 'config', replacement: path.resolve(__dirname, 'src', 'config') },
+      { find: 'service', replacement: path.resolve(__dirname, 'src', 'service') },
       { find: 'auth', replacement: path.resolve(__dirname, 'src', 'auth') },
       { find: 'pages', replacement: path.resolve(__dirname, 'src', 'pages') },
       { find: 'constants', replacement: path.resolve(__dirname, 'src', 'constants') },

@@ -8,7 +8,6 @@
 
 	export let layerList;
 	export let mapStyle;
-	export let isReadyForStyleSwitching;
 	export let cityDetails;
 	export let pointOfInterest;
 	export let gpsData;
@@ -254,7 +253,7 @@
 
 	//Switch the map style only if the map exists and the map is ready for switching styles
 	const switchStyle = () => {
-		if (map === null || isReadyForStyleSwitching === false) return;
+		if (map === null ) return;
 		try {
 			map.setStyle("mapbox://styles/mapbox/" + mapStyle);
 		} catch (err) {
