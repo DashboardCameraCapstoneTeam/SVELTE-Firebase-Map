@@ -1393,21 +1393,10 @@ var app = (function () {
       return filteredList;
     };
 
-    var commonjsGlobal$1 = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
-
-    function createCommonjsModule(fn) {
-      var module = { exports: {} };
-    	return fn(module, module.exports), module.exports;
-    }
-
-    var mapboxGlDraw = createCommonjsModule(function (module, exports) {
-    !function(t,e){module.exports=e();}(commonjsGlobal$1,(function(){var t=function(t,e){var n={drag:[],click:[],mousemove:[],mousedown:[],mouseup:[],mouseout:[],keydown:[],keyup:[],touchstart:[],touchmove:[],touchend:[],tap:[]},o={on:function(t,e,o){if(void 0===n[t])throw new Error("Invalid event type: "+t);n[t].push({selector:e,fn:o});},render:function(t){e.store.featureChanged(t);}},r=function(t,r){for(var i=n[t],a=i.length;a--;){var s=i[a];if(s.selector(r)){s.fn.call(o,r)||e.store.render(),e.ui.updateMapClasses();break}}};return t.start.call(o),{render:t.render,stop:function(){t.stop&&t.stop();},trash:function(){t.trash&&(t.trash(),e.store.render());},combineFeatures:function(){t.combineFeatures&&t.combineFeatures();},uncombineFeatures:function(){t.uncombineFeatures&&t.uncombineFeatures();},drag:function(t){r("drag",t);},click:function(t){r("click",t);},mousemove:function(t){r("mousemove",t);},mousedown:function(t){r("mousedown",t);},mouseup:function(t){r("mouseup",t);},mouseout:function(t){r("mouseout",t);},keydown:function(t){r("keydown",t);},keyup:function(t){r("keyup",t);},touchstart:function(t){r("touchstart",t);},touchmove:function(t){r("touchmove",t);},touchend:function(t){r("touchend",t);},tap:function(t){r("tap",t);}}},e=6378137;function n(t){var e=0;if(t&&t.length>0){e+=Math.abs(o(t[0]));for(var n=1;n<t.length;n++)e-=Math.abs(o(t[n]));}return e}function o(t){var n,o,i,a,s,u,c=0,l=t.length;if(l>2){for(u=0;u<l;u++)u===l-2?(i=l-2,a=l-1,s=0):u===l-1?(i=l-1,a=0,s=1):(i=u,a=u+1,s=u+2),n=t[i],o=t[a],c+=(r(t[s][0])-r(n[0]))*Math.sin(r(o[1]));c=c*e*e/2;}return c}function r(t){return t*Math.PI/180}var i={geometry:function t(e){var o,r=0;switch(e.type){case"Polygon":return n(e.coordinates);case"MultiPolygon":for(o=0;o<e.coordinates.length;o++)r+=n(e.coordinates[o]);return r;case"Point":case"MultiPoint":case"LineString":case"MultiLineString":return 0;case"GeometryCollection":for(o=0;o<e.geometries.length;o++)r+=t(e.geometries[o]);return r}},ring:o},a="mapboxgl-ctrl",s="mapbox-gl-draw_ctrl-draw-btn",u="mapbox-gl-draw_line",c="mapbox-gl-draw_polygon",l="mapbox-gl-draw_point",d="mapbox-gl-draw_trash",p="mapbox-gl-draw_combine",f="mapbox-gl-draw_uncombine",h="mapboxgl-ctrl-group",g="active",y="mapbox-gl-draw_boxselect",v="mapbox-gl-draw-hot",m="mapbox-gl-draw-cold",b="add",_="move",S="drag",x="pointer",C="none",E={POLYGON:"polygon",LINE:"line_string",POINT:"point"},M="Feature",w="Polygon",I="LineString",L="Point",P="FeatureCollection",F="Multi",O="MultiPoint",k="MultiLineString",T="MultiPolygon",j={DRAW_LINE_STRING:"draw_line_string",DRAW_POLYGON:"draw_polygon",DRAW_POINT:"draw_point",SIMPLE_SELECT:"simple_select",DIRECT_SELECT:"direct_select",STATIC:"static"},A="draw.create",D="draw.delete",N="draw.update",U="draw.selectionchange",R="draw.modechange",B="draw.actionable",V="draw.render",J="draw.combine",G="draw.uncombine",z="move",$="change_coordinates",W="feature",q="midpoint",Y="vertex",Z="true",K="false",X=["scrollZoom","boxZoom","dragRotate","dragPan","keyboard","doubleClickZoom","touchZoomRotate"],H={Point:0,LineString:1,Polygon:2};function Q(t,e){var n=H[t.geometry.type]-H[e.geometry.type];return 0===n&&t.geometry.type===w?t.area-e.area:n}function tt(t){if(this._items={},this._nums={},this._length=t?t.length:0,t)for(var e=0,n=t.length;e<n;e++)this.add(t[e]),void 0!==t[e]&&("string"==typeof t[e]?this._items[t[e]]=e:this._nums[t[e]]=e);}tt.prototype.add=function(t){return this.has(t)||(this._length++,"string"==typeof t?this._items[t]=this._length:this._nums[t]=this._length),this},tt.prototype.delete=function(t){return !1===this.has(t)||(this._length--,delete this._items[t],delete this._nums[t]),this},tt.prototype.has=function(t){return ("string"==typeof t||"number"==typeof t)&&(void 0!==this._items[t]||void 0!==this._nums[t])},tt.prototype.values=function(){var t=this,e=[];return Object.keys(this._items).forEach((function(n){e.push({k:n,v:t._items[n]});})),Object.keys(this._nums).forEach((function(n){e.push({k:JSON.parse(n),v:t._nums[n]});})),e.sort((function(t,e){return t.v-e.v})).map((function(t){return t.k}))},tt.prototype.clear=function(){return this._length=0,this._items={},this._nums={},this};var et=[W,q,Y],nt={click:function(t,e,n){return ot(t,e,n,n.options.clickBuffer)},touch:function(t,e,n){return ot(t,e,n,n.options.touchBuffer)}};function ot(t,e,n,o){if(null===n.map)return [];var r=t?function(t,e){return void 0===e&&(e=0),[[t.point.x-e,t.point.y-e],[t.point.x+e,t.point.y+e]]}(t,o):e,a={};n.options.styles&&(a.layers=n.options.styles.map((function(t){return t.id})));var s=n.map.queryRenderedFeatures(r,a).filter((function(t){return -1!==et.indexOf(t.properties.meta)})),u=new tt,c=[];return s.forEach((function(t){var e=t.properties.id;u.has(e)||(u.add(e),c.push(t));})),function(t){return t.map((function(t){return t.geometry.type===w&&(t.area=i.geometry({type:M,property:{},geometry:t.geometry})),t})).sort(Q).map((function(t){return delete t.area,t}))}(c)}function rt(t,e){var n=nt.click(t,null,e),o={mouse:C};return n[0]&&(o.mouse=n[0].properties.active===Z?_:x,o.feature=n[0].properties.meta),-1!==e.events.currentModeName().indexOf("draw")&&(o.mouse=b),e.ui.queueMapClasses(o),e.ui.updateMapClasses(),n[0]}function it(t,e){var n=t.x-e.x,o=t.y-e.y;return Math.sqrt(n*n+o*o)}function at(t,e,n){void 0===n&&(n={});var o=null!=n.fineTolerance?n.fineTolerance:4,r=null!=n.grossTolerance?n.grossTolerance:12,i=null!=n.interval?n.interval:500;t.point=t.point||e.point,t.time=t.time||e.time;var a=it(t.point,e.point);return a<o||a<r&&e.time-t.time<i}function st(t,e,n){void 0===n&&(n={});var o=null!=n.tolerance?n.tolerance:25,r=null!=n.interval?n.interval:250;return t.point=t.point||e.point,t.time=t.time||e.time,it(t.point,e.point)<o&&e.time-t.time<r}function ut(t,e){return t(e={exports:{}},e.exports),e.exports}var ct=ut((function(t){var e=t.exports=function(t,n){if(n||(n=16),void 0===t&&(t=128),t<=0)return "0";for(var o=Math.log(Math.pow(2,t))/Math.log(n),r=2;o===1/0;r*=2)o=Math.log(Math.pow(2,t/r))/Math.log(n)*r;var i=o-Math.floor(o),a="";for(r=0;r<Math.floor(o);r++){a=Math.floor(Math.random()*n).toString(n)+a;}if(i){var s=Math.pow(n,i);a=Math.floor(Math.random()*s).toString(n)+a;}var u=parseInt(a,n);return u!==1/0&&u>=Math.pow(2,t)?e(t,n):a};e.rack=function(t,n,o){var r=function(r){var a=0;do{if(a++>10){if(!o)throw new Error("too many ID collisions, use more bits");t+=o;}var s=e(t,n);}while(Object.hasOwnProperty.call(i,s));return i[s]=r,s},i=r.hats={};return r.get=function(t){return r.hats[t]},r.set=function(t,e){return r.hats[t]=e,r},r.bits=t||128,r.base=n||16,r};})),lt=function(t,e){this.ctx=t,this.properties=e.properties||{},this.coordinates=e.geometry.coordinates,this.id=e.id||ct(),this.type=e.geometry.type;};lt.prototype.changed=function(){this.ctx.store.featureChanged(this.id);},lt.prototype.incomingCoords=function(t){this.setCoordinates(t);},lt.prototype.setCoordinates=function(t){this.coordinates=t,this.changed();},lt.prototype.getCoordinates=function(){return JSON.parse(JSON.stringify(this.coordinates))},lt.prototype.setProperty=function(t,e){this.properties[t]=e;},lt.prototype.toGeoJSON=function(){return JSON.parse(JSON.stringify({id:this.id,type:M,properties:this.properties,geometry:{coordinates:this.getCoordinates(),type:this.type}}))},lt.prototype.internal=function(t){var e={id:this.id,meta:W,"meta:type":this.type,active:K,mode:t};if(this.ctx.options.userProperties)for(var n in this.properties)e["user_"+n]=this.properties[n];return {type:M,properties:e,geometry:{coordinates:this.getCoordinates(),type:this.type}}};var dt=function(t,e){lt.call(this,t,e);};(dt.prototype=Object.create(lt.prototype)).isValid=function(){return "number"==typeof this.coordinates[0]&&"number"==typeof this.coordinates[1]},dt.prototype.updateCoordinate=function(t,e,n){this.coordinates=3===arguments.length?[e,n]:[t,e],this.changed();},dt.prototype.getCoordinate=function(){return this.getCoordinates()};var pt=function(t,e){lt.call(this,t,e);};(pt.prototype=Object.create(lt.prototype)).isValid=function(){return this.coordinates.length>1},pt.prototype.addCoordinate=function(t,e,n){this.changed();var o=parseInt(t,10);this.coordinates.splice(o,0,[e,n]);},pt.prototype.getCoordinate=function(t){var e=parseInt(t,10);return JSON.parse(JSON.stringify(this.coordinates[e]))},pt.prototype.removeCoordinate=function(t){this.changed(),this.coordinates.splice(parseInt(t,10),1);},pt.prototype.updateCoordinate=function(t,e,n){var o=parseInt(t,10);this.coordinates[o]=[e,n],this.changed();};var ft=function(t,e){lt.call(this,t,e),this.coordinates=this.coordinates.map((function(t){return t.slice(0,-1)}));};(ft.prototype=Object.create(lt.prototype)).isValid=function(){return 0!==this.coordinates.length&&this.coordinates.every((function(t){return t.length>2}))},ft.prototype.incomingCoords=function(t){this.coordinates=t.map((function(t){return t.slice(0,-1)})),this.changed();},ft.prototype.setCoordinates=function(t){this.coordinates=t,this.changed();},ft.prototype.addCoordinate=function(t,e,n){this.changed();var o=t.split(".").map((function(t){return parseInt(t,10)}));this.coordinates[o[0]].splice(o[1],0,[e,n]);},ft.prototype.removeCoordinate=function(t){this.changed();var e=t.split(".").map((function(t){return parseInt(t,10)})),n=this.coordinates[e[0]];n&&(n.splice(e[1],1),n.length<3&&this.coordinates.splice(e[0],1));},ft.prototype.getCoordinate=function(t){var e=t.split(".").map((function(t){return parseInt(t,10)})),n=this.coordinates[e[0]];return JSON.parse(JSON.stringify(n[e[1]]))},ft.prototype.getCoordinates=function(){return this.coordinates.map((function(t){return t.concat([t[0]])}))},ft.prototype.updateCoordinate=function(t,e,n){this.changed();var o=t.split("."),r=parseInt(o[0],10),i=parseInt(o[1],10);void 0===this.coordinates[r]&&(this.coordinates[r]=[]),this.coordinates[r][i]=[e,n];};var ht={MultiPoint:dt,MultiLineString:pt,MultiPolygon:ft},gt=function(t,e,n,o,r){var i=n.split("."),a=parseInt(i[0],10),s=i[1]?i.slice(1).join("."):null;return t[a][e](s,o,r)},yt=function(t,e){if(lt.call(this,t,e),delete this.coordinates,this.model=ht[e.geometry.type],void 0===this.model)throw new TypeError(e.geometry.type+" is not a valid type");this.features=this._coordinatesToFeatures(e.geometry.coordinates);};function vt(t){this.map=t.map,this.drawConfig=JSON.parse(JSON.stringify(t.options||{})),this._ctx=t;}(yt.prototype=Object.create(lt.prototype))._coordinatesToFeatures=function(t){var e=this,n=this.model.bind(this);return t.map((function(t){return new n(e.ctx,{id:ct(),type:M,properties:{},geometry:{coordinates:t,type:e.type.replace("Multi","")}})}))},yt.prototype.isValid=function(){return this.features.every((function(t){return t.isValid()}))},yt.prototype.setCoordinates=function(t){this.features=this._coordinatesToFeatures(t),this.changed();},yt.prototype.getCoordinate=function(t){return gt(this.features,"getCoordinate",t)},yt.prototype.getCoordinates=function(){return JSON.parse(JSON.stringify(this.features.map((function(t){return t.type===w?t.getCoordinates():t.coordinates}))))},yt.prototype.updateCoordinate=function(t,e,n){gt(this.features,"updateCoordinate",t,e,n),this.changed();},yt.prototype.addCoordinate=function(t,e,n){gt(this.features,"addCoordinate",t,e,n),this.changed();},yt.prototype.removeCoordinate=function(t){gt(this.features,"removeCoordinate",t),this.changed();},yt.prototype.getFeatures=function(){return this.features},vt.prototype.setSelected=function(t){return this._ctx.store.setSelected(t)},vt.prototype.setSelectedCoordinates=function(t){var e=this;this._ctx.store.setSelectedCoordinates(t),t.reduce((function(t,n){return void 0===t[n.feature_id]&&(t[n.feature_id]=!0,e._ctx.store.get(n.feature_id).changed()),t}),{});},vt.prototype.getSelected=function(){return this._ctx.store.getSelected()},vt.prototype.getSelectedIds=function(){return this._ctx.store.getSelectedIds()},vt.prototype.isSelected=function(t){return this._ctx.store.isSelected(t)},vt.prototype.getFeature=function(t){return this._ctx.store.get(t)},vt.prototype.select=function(t){return this._ctx.store.select(t)},vt.prototype.deselect=function(t){return this._ctx.store.deselect(t)},vt.prototype.deleteFeature=function(t,e){return void 0===e&&(e={}),this._ctx.store.delete(t,e)},vt.prototype.addFeature=function(t){return this._ctx.store.add(t)},vt.prototype.clearSelectedFeatures=function(){return this._ctx.store.clearSelected()},vt.prototype.clearSelectedCoordinates=function(){return this._ctx.store.clearSelectedCoordinates()},vt.prototype.setActionableState=function(t){void 0===t&&(t={});var e={trash:t.trash||!1,combineFeatures:t.combineFeatures||!1,uncombineFeatures:t.uncombineFeatures||!1};return this._ctx.events.actionable(e)},vt.prototype.changeMode=function(t,e,n){return void 0===e&&(e={}),void 0===n&&(n={}),this._ctx.events.changeMode(t,e,n)},vt.prototype.updateUIClasses=function(t){return this._ctx.ui.queueMapClasses(t)},vt.prototype.activateUIButton=function(t){return this._ctx.ui.setActiveButton(t)},vt.prototype.featuresAt=function(t,e,n){if(void 0===n&&(n="click"),"click"!==n&&"touch"!==n)throw new Error("invalid buffer type");return nt[n](t,e,this._ctx)},vt.prototype.newFeature=function(t){var e=t.geometry.type;return e===L?new dt(this._ctx,t):e===I?new pt(this._ctx,t):e===w?new ft(this._ctx,t):new yt(this._ctx,t)},vt.prototype.isInstanceOf=function(t,e){if(t===L)return e instanceof dt;if(t===I)return e instanceof pt;if(t===w)return e instanceof ft;if("MultiFeature"===t)return e instanceof yt;throw new Error("Unknown feature class: "+t)},vt.prototype.doRender=function(t){return this._ctx.store.featureChanged(t)},vt.prototype.onSetup=function(){},vt.prototype.onDrag=function(){},vt.prototype.onClick=function(){},vt.prototype.onMouseMove=function(){},vt.prototype.onMouseDown=function(){},vt.prototype.onMouseUp=function(){},vt.prototype.onMouseOut=function(){},vt.prototype.onKeyUp=function(){},vt.prototype.onKeyDown=function(){},vt.prototype.onTouchStart=function(){},vt.prototype.onTouchMove=function(){},vt.prototype.onTouchEnd=function(){},vt.prototype.onTap=function(){},vt.prototype.onStop=function(){},vt.prototype.onTrash=function(){},vt.prototype.onCombineFeature=function(){},vt.prototype.onUncombineFeature=function(){},vt.prototype.toDisplayFeatures=function(){throw new Error("You must overwrite toDisplayFeatures")};var mt={drag:"onDrag",click:"onClick",mousemove:"onMouseMove",mousedown:"onMouseDown",mouseup:"onMouseUp",mouseout:"onMouseOut",keyup:"onKeyUp",keydown:"onKeyDown",touchstart:"onTouchStart",touchmove:"onTouchMove",touchend:"onTouchEnd",tap:"onTap"},bt=Object.keys(mt);function _t(t){var e=Object.keys(t);return function(n,o){void 0===o&&(o={});var r={},i=e.reduce((function(e,n){return e[n]=t[n],e}),new vt(n));return {start:function(){var e=this;r=i.onSetup(o),bt.forEach((function(n){var o,a=mt[n],s=function(){return !1};t[a]&&(s=function(){return !0}),e.on(n,s,(o=a,function(t){return i[o](r,t)}));}));},stop:function(){i.onStop(r);},trash:function(){i.onTrash(r);},combineFeatures:function(){i.onCombineFeatures(r);},uncombineFeatures:function(){i.onUncombineFeatures(r);},render:function(t,e){i.toDisplayFeatures(r,t,e);}}}}function St(t){return [].concat(t).filter((function(t){return void 0!==t}))}function xt(){var t=this;if(!(t.ctx.map&&void 0!==t.ctx.map.getSource(v)))return u();var e=t.ctx.events.currentModeName();t.ctx.ui.queueMapClasses({mode:e});var n=[],o=[];t.isDirty?o=t.getAllIds():(n=t.getChangedIds().filter((function(e){return void 0!==t.get(e)})),o=t.sources.hot.filter((function(e){return e.properties.id&&-1===n.indexOf(e.properties.id)&&void 0!==t.get(e.properties.id)})).map((function(t){return t.properties.id}))),t.sources.hot=[];var r=t.sources.cold.length;t.sources.cold=t.isDirty?[]:t.sources.cold.filter((function(t){var e=t.properties.id||t.properties.parent;return -1===n.indexOf(e)}));var i=r!==t.sources.cold.length||o.length>0;function a(n,o){var r=t.get(n).internal(e);t.ctx.events.currentModeRender(r,(function(e){t.sources[o].push(e);}));}if(n.forEach((function(t){return a(t,"hot")})),o.forEach((function(t){return a(t,"cold")})),i&&t.ctx.map.getSource(m).setData({type:P,features:t.sources.cold}),t.ctx.map.getSource(v).setData({type:P,features:t.sources.hot}),t._emitSelectionChange&&(t.ctx.map.fire(U,{features:t.getSelected().map((function(t){return t.toGeoJSON()})),points:t.getSelectedCoordinates().map((function(t){return {type:M,properties:{},geometry:{type:L,coordinates:t.coordinates}}}))}),t._emitSelectionChange=!1),t._deletedFeaturesToEmit.length){var s=t._deletedFeaturesToEmit.map((function(t){return t.toGeoJSON()}));t._deletedFeaturesToEmit=[],t.ctx.map.fire(D,{features:s});}function u(){t.isDirty=!1,t.clearChangedIds();}u(),t.ctx.map.fire(V,{});}function Ct(t){var e,n=this;this._features={},this._featureIds=new tt,this._selectedFeatureIds=new tt,this._selectedCoordinates=[],this._changedFeatureIds=new tt,this._deletedFeaturesToEmit=[],this._emitSelectionChange=!1,this._mapInitialConfig={},this.ctx=t,this.sources={hot:[],cold:[]},this.render=function(){e||(e=requestAnimationFrame((function(){e=null,xt.call(n);})));},this.isDirty=!1;}function Et(t,e){var n=t._selectedCoordinates.filter((function(e){return t._selectedFeatureIds.has(e.feature_id)}));t._selectedCoordinates.length===n.length||e.silent||(t._emitSelectionChange=!0),t._selectedCoordinates=n;}Ct.prototype.createRenderBatch=function(){var t=this,e=this.render,n=0;return this.render=function(){n++;},function(){t.render=e,n>0&&t.render();}},Ct.prototype.setDirty=function(){return this.isDirty=!0,this},Ct.prototype.featureChanged=function(t){return this._changedFeatureIds.add(t),this},Ct.prototype.getChangedIds=function(){return this._changedFeatureIds.values()},Ct.prototype.clearChangedIds=function(){return this._changedFeatureIds.clear(),this},Ct.prototype.getAllIds=function(){return this._featureIds.values()},Ct.prototype.add=function(t){return this.featureChanged(t.id),this._features[t.id]=t,this._featureIds.add(t.id),this},Ct.prototype.delete=function(t,e){var n=this;return void 0===e&&(e={}),St(t).forEach((function(t){n._featureIds.has(t)&&(n._featureIds.delete(t),n._selectedFeatureIds.delete(t),e.silent||-1===n._deletedFeaturesToEmit.indexOf(n._features[t])&&n._deletedFeaturesToEmit.push(n._features[t]),delete n._features[t],n.isDirty=!0);})),Et(this,e),this},Ct.prototype.get=function(t){return this._features[t]},Ct.prototype.getAll=function(){var t=this;return Object.keys(this._features).map((function(e){return t._features[e]}))},Ct.prototype.select=function(t,e){var n=this;return void 0===e&&(e={}),St(t).forEach((function(t){n._selectedFeatureIds.has(t)||(n._selectedFeatureIds.add(t),n._changedFeatureIds.add(t),e.silent||(n._emitSelectionChange=!0));})),this},Ct.prototype.deselect=function(t,e){var n=this;return void 0===e&&(e={}),St(t).forEach((function(t){n._selectedFeatureIds.has(t)&&(n._selectedFeatureIds.delete(t),n._changedFeatureIds.add(t),e.silent||(n._emitSelectionChange=!0));})),Et(this,e),this},Ct.prototype.clearSelected=function(t){return void 0===t&&(t={}),this.deselect(this._selectedFeatureIds.values(),{silent:t.silent}),this},Ct.prototype.setSelected=function(t,e){var n=this;return void 0===e&&(e={}),t=St(t),this.deselect(this._selectedFeatureIds.values().filter((function(e){return -1===t.indexOf(e)})),{silent:e.silent}),this.select(t.filter((function(t){return !n._selectedFeatureIds.has(t)})),{silent:e.silent}),this},Ct.prototype.setSelectedCoordinates=function(t){return this._selectedCoordinates=t,this._emitSelectionChange=!0,this},Ct.prototype.clearSelectedCoordinates=function(){return this._selectedCoordinates=[],this._emitSelectionChange=!0,this},Ct.prototype.getSelectedIds=function(){return this._selectedFeatureIds.values()},Ct.prototype.getSelected=function(){var t=this;return this._selectedFeatureIds.values().map((function(e){return t.get(e)}))},Ct.prototype.getSelectedCoordinates=function(){var t=this;return this._selectedCoordinates.map((function(e){return {coordinates:t.get(e.feature_id).getCoordinate(e.coord_path)}}))},Ct.prototype.isSelected=function(t){return this._selectedFeatureIds.has(t)},Ct.prototype.setFeatureProperty=function(t,e,n){this.get(t).setProperty(e,n),this.featureChanged(t);},Ct.prototype.storeMapConfig=function(){var t=this;X.forEach((function(e){t.ctx.map[e]&&(t._mapInitialConfig[e]=t.ctx.map[e].isEnabled());}));},Ct.prototype.restoreMapConfig=function(){var t=this;Object.keys(this._mapInitialConfig).forEach((function(e){t._mapInitialConfig[e]?t.ctx.map[e].enable():t.ctx.map[e].disable();}));},Ct.prototype.getInitialConfigValue=function(t){return void 0===this._mapInitialConfig[t]||this._mapInitialConfig[t]};var Mt=function(){for(var t=arguments,e={},n=0;n<arguments.length;n++){var o=t[n];for(var r in o)wt.call(o,r)&&(e[r]=o[r]);}return e},wt=Object.prototype.hasOwnProperty;var It=["mode","feature","mouse"];function Lt(e){var n=null,o=null,r={onRemove:function(){return e.map.off("load",r.connect),clearInterval(o),r.removeLayers(),e.store.restoreMapConfig(),e.ui.removeButtons(),e.events.removeEventListeners(),e.ui.clearMapClasses(),e.map=null,e.container=null,e.store=null,n&&n.parentNode&&n.parentNode.removeChild(n),n=null,this},connect:function(){e.map.off("load",r.connect),clearInterval(o),r.addLayers(),e.store.storeMapConfig(),e.events.addEventListeners();},onAdd:function(i){var y=i.fire;return i.fire=function(t,e){var n=arguments;return 1===y.length&&1!==arguments.length&&(n=[Mt({},{type:t},e)]),y.apply(i,n)},e.map=i,e.events=function(e){var n=Object.keys(e.options.modes).reduce((function(t,n){return t[n]=_t(e.options.modes[n]),t}),{}),o={},r={},i={},a=null,s=null;i.drag=function(t,n){n({point:t.point,time:(new Date).getTime()})?(e.ui.queueMapClasses({mouse:S}),s.drag(t)):t.originalEvent.stopPropagation();},i.mousedrag=function(t){i.drag(t,(function(t){return !at(o,t)}));},i.touchdrag=function(t){i.drag(t,(function(t){return !st(r,t)}));},i.mousemove=function(t){if(1===(void 0!==t.originalEvent.buttons?t.originalEvent.buttons:t.originalEvent.which))return i.mousedrag(t);var n=rt(t,e);t.featureTarget=n,s.mousemove(t);},i.mousedown=function(t){o={time:(new Date).getTime(),point:t.point};var n=rt(t,e);t.featureTarget=n,s.mousedown(t);},i.mouseup=function(t){var n=rt(t,e);t.featureTarget=n,at(o,{point:t.point,time:(new Date).getTime()})?s.click(t):s.mouseup(t);},i.mouseout=function(t){s.mouseout(t);},i.touchstart=function(t){if(t.originalEvent.preventDefault(),e.options.touchEnabled){r={time:(new Date).getTime(),point:t.point};var n=nt.touch(t,null,e)[0];t.featureTarget=n,s.touchstart(t);}},i.touchmove=function(t){if(t.originalEvent.preventDefault(),e.options.touchEnabled)return s.touchmove(t),i.touchdrag(t)},i.touchend=function(t){if(t.originalEvent.preventDefault(),e.options.touchEnabled){var n=nt.touch(t,null,e)[0];t.featureTarget=n,st(r,{time:(new Date).getTime(),point:t.point})?s.tap(t):s.touchend(t);}};var u=function(t){return !(8===t||46===t||t>=48&&t<=57)};function c(o,r,i){void 0===i&&(i={}),s.stop();var u=n[o];if(void 0===u)throw new Error(o+" is not valid");a=o;var c=u(e,r);s=t(c,e),i.silent||e.map.fire(R,{mode:o}),e.store.setDirty(),e.store.render();}i.keydown=function(t){"mapboxgl-canvas"===(t.srcElement||t.target).classList[0]&&(8!==t.keyCode&&46!==t.keyCode||!e.options.controls.trash?u(t.keyCode)?s.keydown(t):49===t.keyCode&&e.options.controls.point?c(j.DRAW_POINT):50===t.keyCode&&e.options.controls.line_string?c(j.DRAW_LINE_STRING):51===t.keyCode&&e.options.controls.polygon&&c(j.DRAW_POLYGON):(t.preventDefault(),s.trash()));},i.keyup=function(t){u(t.keyCode)&&s.keyup(t);},i.zoomend=function(){e.store.changeZoom();},i.data=function(t){if("style"===t.dataType){var n=e.setup,o=e.map,r=e.options,i=e.store;r.styles.some((function(t){return o.getLayer(t.id)}))||(n.addLayers(),i.setDirty(),i.render());}};var l={trash:!1,combineFeatures:!1,uncombineFeatures:!1};return {start:function(){a=e.options.defaultMode,s=t(n[a](e),e);},changeMode:c,actionable:function(t){var n=!1;Object.keys(t).forEach((function(e){if(void 0===l[e])throw new Error("Invalid action type");l[e]!==t[e]&&(n=!0),l[e]=t[e];})),n&&e.map.fire(B,{actions:l});},currentModeName:function(){return a},currentModeRender:function(t,e){return s.render(t,e)},fire:function(t,e){i[t]&&i[t](e);},addEventListeners:function(){e.map.on("mousemove",i.mousemove),e.map.on("mousedown",i.mousedown),e.map.on("mouseup",i.mouseup),e.map.on("data",i.data),e.map.on("touchmove",i.touchmove),e.map.on("touchstart",i.touchstart),e.map.on("touchend",i.touchend),e.container.addEventListener("mouseout",i.mouseout),e.options.keybindings&&(e.container.addEventListener("keydown",i.keydown),e.container.addEventListener("keyup",i.keyup));},removeEventListeners:function(){e.map.off("mousemove",i.mousemove),e.map.off("mousedown",i.mousedown),e.map.off("mouseup",i.mouseup),e.map.off("data",i.data),e.map.off("touchmove",i.touchmove),e.map.off("touchstart",i.touchstart),e.map.off("touchend",i.touchend),e.container.removeEventListener("mouseout",i.mouseout),e.options.keybindings&&(e.container.removeEventListener("keydown",i.keydown),e.container.removeEventListener("keyup",i.keyup));},trash:function(t){s.trash(t);},combineFeatures:function(){s.combineFeatures();},uncombineFeatures:function(){s.uncombineFeatures();},getMode:function(){return a}}}(e),e.ui=function(t){var e={},n=null,o={mode:null,feature:null,mouse:null},r={mode:null,feature:null,mouse:null};function i(t){r=Mt(r,t);}function y(){var e,n;if(t.container){var i=[],a=[];It.forEach((function(t){r[t]!==o[t]&&(i.push(t+"-"+o[t]),null!==r[t]&&a.push(t+"-"+r[t]));})),i.length>0&&(e=t.container.classList).remove.apply(e,i),a.length>0&&(n=t.container.classList).add.apply(n,a),o=Mt(o,r);}}function v(t,e){void 0===e&&(e={});var o=document.createElement("button");return o.className=s+" "+e.className,o.setAttribute("title",e.title),e.container.appendChild(o),o.addEventListener("click",(function(o){if(o.preventDefault(),o.stopPropagation(),o.target===n)return m(),void e.onDeactivate();b(t),e.onActivate();}),!0),o}function m(){n&&(n.classList.remove(g),n=null);}function b(t){m();var o=e[t];o&&o&&"trash"!==t&&(o.classList.add(g),n=o);}return {setActiveButton:b,queueMapClasses:i,updateMapClasses:y,clearMapClasses:function(){i({mode:null,feature:null,mouse:null}),y();},addButtons:function(){var n=t.options.controls,o=document.createElement("div");return o.className=h+" "+a,n?(n[E.LINE]&&(e[E.LINE]=v(E.LINE,{container:o,className:u,title:"LineString tool "+(t.options.keybindings?"(l)":""),onActivate:function(){return t.events.changeMode(j.DRAW_LINE_STRING)},onDeactivate:function(){return t.events.trash()}})),n[E.POLYGON]&&(e[E.POLYGON]=v(E.POLYGON,{container:o,className:c,title:"Polygon tool "+(t.options.keybindings?"(p)":""),onActivate:function(){return t.events.changeMode(j.DRAW_POLYGON)},onDeactivate:function(){return t.events.trash()}})),n[E.POINT]&&(e[E.POINT]=v(E.POINT,{container:o,className:l,title:"Marker tool "+(t.options.keybindings?"(m)":""),onActivate:function(){return t.events.changeMode(j.DRAW_POINT)},onDeactivate:function(){return t.events.trash()}})),n.trash&&(e.trash=v("trash",{container:o,className:d,title:"Delete",onActivate:function(){t.events.trash();}})),n.combine_features&&(e.combine_features=v("combineFeatures",{container:o,className:p,title:"Combine",onActivate:function(){t.events.combineFeatures();}})),n.uncombine_features&&(e.uncombine_features=v("uncombineFeatures",{container:o,className:f,title:"Uncombine",onActivate:function(){t.events.uncombineFeatures();}})),o):o},removeButtons:function(){Object.keys(e).forEach((function(t){var n=e[t];n.parentNode&&n.parentNode.removeChild(n),delete e[t];}));}}}(e),e.container=i.getContainer(),e.store=new Ct(e),n=e.ui.addButtons(),e.options.boxSelect&&(i.boxZoom.disable(),i.dragPan.disable(),i.dragPan.enable()),i.loaded()?r.connect():(i.on("load",r.connect),o=setInterval((function(){i.loaded()&&r.connect();}),16)),e.events.start(),n},addLayers:function(){e.map.addSource(m,{data:{type:P,features:[]},type:"geojson"}),e.map.addSource(v,{data:{type:P,features:[]},type:"geojson"}),e.options.styles.forEach((function(t){e.map.addLayer(t);})),e.store.setDirty(!0),e.store.render();},removeLayers:function(){e.options.styles.forEach((function(t){e.map.getLayer(t.id)&&e.map.removeLayer(t.id);})),e.map.getSource(m)&&e.map.removeSource(m),e.map.getSource(v)&&e.map.removeSource(v);}};return e.setup=r,r}function Pt(t){return function(e){var n=e.featureTarget;return !!n&&(!!n.properties&&n.properties.meta===t)}}function Ft(t){return !!t.featureTarget&&(!!t.featureTarget.properties&&(t.featureTarget.properties.active===Z&&t.featureTarget.properties.meta===W))}function Ot(t){return !!t.featureTarget&&(!!t.featureTarget.properties&&(t.featureTarget.properties.active===K&&t.featureTarget.properties.meta===W))}function kt(t){return void 0===t.featureTarget}function Tt(t){var e=t.featureTarget;return !!e&&(!!e.properties&&e.properties.meta===Y)}function jt(t){return !!t.originalEvent&&!0===t.originalEvent.shiftKey}function At(t){return 27===t.keyCode}function Dt(t){return 13===t.keyCode}var Nt=Ut;function Ut(t,e){this.x=t,this.y=e;}function Rt(t,e){var n=e.getBoundingClientRect();return new Nt(t.clientX-n.left-(e.clientLeft||0),t.clientY-n.top-(e.clientTop||0))}function Bt(t,e,n,o){return {type:M,properties:{meta:Y,parent:t,coord_path:n,active:o?Z:K},geometry:{type:L,coordinates:e}}}function Vt(t,e,n){void 0===e&&(e={}),void 0===n&&(n=null);var o,r=t.geometry,i=r.type,a=r.coordinates,s=t.properties&&t.properties.id,u=[];function c(t,n){var o="",r=null;t.forEach((function(t,i){var a=null!=n?n+"."+i:String(i),c=Bt(s,t,a,l(a));if(e.midpoints&&r){var d=function(t,e,n){var o=e.geometry.coordinates,r=n.geometry.coordinates;if(o[1]>85||o[1]<-85||r[1]>85||r[1]<-85)return null;var i={lng:(o[0]+r[0])/2,lat:(o[1]+r[1])/2};return {type:M,properties:{meta:q,parent:t,lng:i.lng,lat:i.lat,coord_path:n.properties.coord_path},geometry:{type:L,coordinates:[i.lng,i.lat]}}}(s,r,c);d&&u.push(d);}r=c;var p=JSON.stringify(t);o!==p&&u.push(c),0===i&&(o=p);}));}function l(t){return !!e.selectedPaths&&-1!==e.selectedPaths.indexOf(t)}return i===L?u.push(Bt(s,a,n,l(n))):i===w?a.forEach((function(t,e){c(t,null!==n?n+"."+e:String(e));})):i===I?c(a,n):0===i.indexOf(F)&&(o=i.replace(F,""),a.forEach((function(n,r){var i={type:M,properties:t.properties,geometry:{type:o,coordinates:n}};u=u.concat(Vt(i,e,r));}))),u}Ut.prototype={clone:function(){return new Ut(this.x,this.y)},add:function(t){return this.clone()._add(t)},sub:function(t){return this.clone()._sub(t)},multByPoint:function(t){return this.clone()._multByPoint(t)},divByPoint:function(t){return this.clone()._divByPoint(t)},mult:function(t){return this.clone()._mult(t)},div:function(t){return this.clone()._div(t)},rotate:function(t){return this.clone()._rotate(t)},rotateAround:function(t,e){return this.clone()._rotateAround(t,e)},matMult:function(t){return this.clone()._matMult(t)},unit:function(){return this.clone()._unit()},perp:function(){return this.clone()._perp()},round:function(){return this.clone()._round()},mag:function(){return Math.sqrt(this.x*this.x+this.y*this.y)},equals:function(t){return this.x===t.x&&this.y===t.y},dist:function(t){return Math.sqrt(this.distSqr(t))},distSqr:function(t){var e=t.x-this.x,n=t.y-this.y;return e*e+n*n},angle:function(){return Math.atan2(this.y,this.x)},angleTo:function(t){return Math.atan2(this.y-t.y,this.x-t.x)},angleWith:function(t){return this.angleWithSep(t.x,t.y)},angleWithSep:function(t,e){return Math.atan2(this.x*e-this.y*t,this.x*t+this.y*e)},_matMult:function(t){var e=t[0]*this.x+t[1]*this.y,n=t[2]*this.x+t[3]*this.y;return this.x=e,this.y=n,this},_add:function(t){return this.x+=t.x,this.y+=t.y,this},_sub:function(t){return this.x-=t.x,this.y-=t.y,this},_mult:function(t){return this.x*=t,this.y*=t,this},_div:function(t){return this.x/=t,this.y/=t,this},_multByPoint:function(t){return this.x*=t.x,this.y*=t.y,this},_divByPoint:function(t){return this.x/=t.x,this.y/=t.y,this},_unit:function(){return this._div(this.mag()),this},_perp:function(){var t=this.y;return this.y=this.x,this.x=-t,this},_rotate:function(t){var e=Math.cos(t),n=Math.sin(t),o=e*this.x-n*this.y,r=n*this.x+e*this.y;return this.x=o,this.y=r,this},_rotateAround:function(t,e){var n=Math.cos(t),o=Math.sin(t),r=e.x+n*(this.x-e.x)-o*(this.y-e.y),i=e.y+o*(this.x-e.x)+n*(this.y-e.y);return this.x=r,this.y=i,this},_round:function(){return this.x=Math.round(this.x),this.y=Math.round(this.y),this}},Ut.convert=function(t){return t instanceof Ut?t:Array.isArray(t)?new Ut(t[0],t[1]):t};var Jt=function(t){setTimeout((function(){t.map&&t.map.doubleClickZoom&&t._ctx&&t._ctx.store&&t._ctx.store.getInitialConfigValue&&t._ctx.store.getInitialConfigValue("doubleClickZoom")&&t.map.doubleClickZoom.enable();}),0);},Gt=function(t){setTimeout((function(){t.map&&t.map.doubleClickZoom&&t.map.doubleClickZoom.disable();}),0);},zt=function(t){if(!t||!t.type)return null;var e=$t[t.type];if(!e)return null;if("geometry"===e)return {type:"FeatureCollection",features:[{type:"Feature",properties:{},geometry:t}]};if("feature"===e)return {type:"FeatureCollection",features:[t]};if("featurecollection"===e)return t},$t={Point:"geometry",MultiPoint:"geometry",LineString:"geometry",MultiLineString:"geometry",Polygon:"geometry",MultiPolygon:"geometry",GeometryCollection:"geometry",Feature:"feature",FeatureCollection:"featurecollection"};function Wt(t){switch(t&&t.type||null){case"FeatureCollection":return t.features=t.features.reduce((function(t,e){return t.concat(Wt(e))}),[]),t;case"Feature":return t.geometry?Wt(t.geometry).map((function(e){var n={type:"Feature",properties:JSON.parse(JSON.stringify(t.properties)),geometry:e};return void 0!==t.id&&(n.id=t.id),n})):[t];case"MultiPoint":return t.coordinates.map((function(t){return {type:"Point",coordinates:t}}));case"MultiPolygon":return t.coordinates.map((function(t){return {type:"Polygon",coordinates:t}}));case"MultiLineString":return t.coordinates.map((function(t){return {type:"LineString",coordinates:t}}));case"GeometryCollection":return t.geometries.map(Wt).reduce((function(t,e){return t.concat(e)}),[]);case"Point":case"Polygon":case"LineString":return [t]}}var qt=function(t){if(!t)return [];var e=Wt(zt(t)),n=[];return e.features.forEach((function(t){t.geometry&&(n=n.concat(function t(e){return Array.isArray(e)&&e.length&&"number"==typeof e[0]?[e]:e.reduce((function(e,n){return Array.isArray(n)&&Array.isArray(n[0])?e.concat(t(n)):(e.push(n),e)}),[])}(t.geometry.coordinates)));})),n},Yt=ut((function(t){var e=t.exports=function(t){return new n(t)};function n(t){this.value=t;}function o(t,e,n){var o=[],a=[],l=!0;return function t(d){var p=n?r(d):d,f={},h=!0,g={node:p,node_:d,path:[].concat(o),parent:a[a.length-1],parents:a,key:o.slice(-1)[0],isRoot:0===o.length,level:o.length,circular:null,update:function(t,e){g.isRoot||(g.parent.node[g.key]=t),g.node=t,e&&(h=!1);},delete:function(t){delete g.parent.node[g.key],t&&(h=!1);},remove:function(t){s(g.parent.node)?g.parent.node.splice(g.key,1):delete g.parent.node[g.key],t&&(h=!1);},keys:null,before:function(t){f.before=t;},after:function(t){f.after=t;},pre:function(t){f.pre=t;},post:function(t){f.post=t;},stop:function(){l=!1;},block:function(){h=!1;}};if(!l)return g;function y(){if("object"==typeof g.node&&null!==g.node){g.keys&&g.node_===g.node||(g.keys=i(g.node)),g.isLeaf=0==g.keys.length;for(var t=0;t<a.length;t++)if(a[t].node_===d){g.circular=a[t];break}}else g.isLeaf=!0,g.keys=null;g.notLeaf=!g.isLeaf,g.notRoot=!g.isRoot;}y();var v=e.call(g,g.node);return void 0!==v&&g.update&&g.update(v),f.before&&f.before.call(g,g.node),h?("object"!=typeof g.node||null===g.node||g.circular||(a.push(g),y(),u(g.keys,(function(e,r){o.push(e),f.pre&&f.pre.call(g,g.node[e],e);var i=t(g.node[e]);n&&c.call(g.node,e)&&(g.node[e]=i.node),i.isLast=r==g.keys.length-1,i.isFirst=0==r,f.post&&f.post.call(g,i),o.pop();})),a.pop()),f.after&&f.after.call(g,g.node),g):g}(t).node}function r(t){if("object"==typeof t&&null!==t){var e;if(s(t))e=[];else if("[object Date]"===a(t))e=new Date(t.getTime?t.getTime():t);else if(function(t){return "[object RegExp]"===a(t)}(t))e=new RegExp(t);else if(function(t){return "[object Error]"===a(t)}(t))e={message:t.message};else if(function(t){return "[object Boolean]"===a(t)}(t))e=new Boolean(t);else if(function(t){return "[object Number]"===a(t)}(t))e=new Number(t);else if(function(t){return "[object String]"===a(t)}(t))e=new String(t);else if(Object.create&&Object.getPrototypeOf)e=Object.create(Object.getPrototypeOf(t));else if(t.constructor===Object)e={};else {var n=t.constructor&&t.constructor.prototype||t.__proto__||{},o=function(){};o.prototype=n,e=new o;}return u(i(t),(function(n){e[n]=t[n];})),e}return t}n.prototype.get=function(t){for(var e=this.value,n=0;n<t.length;n++){var o=t[n];if(!e||!c.call(e,o)){e=void 0;break}e=e[o];}return e},n.prototype.has=function(t){for(var e=this.value,n=0;n<t.length;n++){var o=t[n];if(!e||!c.call(e,o))return !1;e=e[o];}return !0},n.prototype.set=function(t,e){for(var n=this.value,o=0;o<t.length-1;o++){var r=t[o];c.call(n,r)||(n[r]={}),n=n[r];}return n[t[o]]=e,e},n.prototype.map=function(t){return o(this.value,t,!0)},n.prototype.forEach=function(t){return this.value=o(this.value,t,!1),this.value},n.prototype.reduce=function(t,e){var n=1===arguments.length,o=n?this.value:e;return this.forEach((function(e){this.isRoot&&n||(o=t.call(this,o,e));})),o},n.prototype.paths=function(){var t=[];return this.forEach((function(e){t.push(this.path);})),t},n.prototype.nodes=function(){var t=[];return this.forEach((function(e){t.push(this.node);})),t},n.prototype.clone=function(){var t=[],e=[];return function n(o){for(var a=0;a<t.length;a++)if(t[a]===o)return e[a];if("object"==typeof o&&null!==o){var s=r(o);return t.push(o),e.push(s),u(i(o),(function(t){s[t]=n(o[t]);})),t.pop(),e.pop(),s}return o}(this.value)};var i=Object.keys||function(t){var e=[];for(var n in t)e.push(n);return e};function a(t){return Object.prototype.toString.call(t)}var s=Array.isArray||function(t){return "[object Array]"===Object.prototype.toString.call(t)},u=function(t,e){if(t.forEach)return t.forEach(e);for(var n=0;n<t.length;n++)e(t[n],n,t);};u(i(n.prototype),(function(t){e[t]=function(e){var o=[].slice.call(arguments,1),r=new n(e);return r[t].apply(r,o)};}));var c=Object.hasOwnProperty||function(t,e){return e in t};})),Zt=Kt;function Kt(t){if(!(this instanceof Kt))return new Kt(t);this._bbox=t||[1/0,1/0,-1/0,-1/0],this._valid=!!t;}Kt.prototype.include=function(t){return this._valid=!0,this._bbox[0]=Math.min(this._bbox[0],t[0]),this._bbox[1]=Math.min(this._bbox[1],t[1]),this._bbox[2]=Math.max(this._bbox[2],t[0]),this._bbox[3]=Math.max(this._bbox[3],t[1]),this},Kt.prototype.equals=function(t){var e;return e=t instanceof Kt?t.bbox():t,this._bbox[0]==e[0]&&this._bbox[1]==e[1]&&this._bbox[2]==e[2]&&this._bbox[3]==e[3]},Kt.prototype.center=function(t){return this._valid?[(this._bbox[0]+this._bbox[2])/2,(this._bbox[1]+this._bbox[3])/2]:null},Kt.prototype.union=function(t){var e;return this._valid=!0,e=t instanceof Kt?t.bbox():t,this._bbox[0]=Math.min(this._bbox[0],e[0]),this._bbox[1]=Math.min(this._bbox[1],e[1]),this._bbox[2]=Math.max(this._bbox[2],e[2]),this._bbox[3]=Math.max(this._bbox[3],e[3]),this},Kt.prototype.bbox=function(){return this._valid?this._bbox:null},Kt.prototype.contains=function(t){if(!t)return this._fastContains();if(!this._valid)return null;var e=t[0],n=t[1];return this._bbox[0]<=e&&this._bbox[1]<=n&&this._bbox[2]>=e&&this._bbox[3]>=n},Kt.prototype.intersect=function(t){return this._valid?(e=t instanceof Kt?t.bbox():t,!(this._bbox[0]>e[2]||this._bbox[2]<e[0]||this._bbox[3]<e[1]||this._bbox[1]>e[3])):null;var e;},Kt.prototype._fastContains=function(){if(!this._valid)return new Function("return null;");var t="return "+this._bbox[0]+"<= ll[0] &&"+this._bbox[1]+"<= ll[1] &&"+this._bbox[2]+">= ll[0] &&"+this._bbox[3]+">= ll[1]";return new Function("ll",t)},Kt.prototype.polygon=function(){return this._valid?{type:"Polygon",coordinates:[[[this._bbox[0],this._bbox[1]],[this._bbox[2],this._bbox[1]],[this._bbox[2],this._bbox[3]],[this._bbox[0],this._bbox[3]],[this._bbox[0],this._bbox[1]]]]}:null};var Xt={features:["FeatureCollection"],coordinates:["Point","MultiPoint","LineString","MultiLineString","Polygon","MultiPolygon"],geometry:["Feature"],geometries:["GeometryCollection"]},Ht=Object.keys(Xt),Qt=function(t){return te(t).bbox()};function te(t){for(var e=Zt(),n=qt(t),o=0;o<n.length;o++)e.include(n[o]);return e}Qt.polygon=function(t){return te(t).polygon()},Qt.bboxify=function(t){return Yt(t).map((function(t){t&&(Ht.some((function(e){return !!t[e]&&-1!==Xt[e].indexOf(t.type)}))&&(t.bbox=te(t).bbox(),this.update(t)));}))};function ee(t,e){var n=-90,o=90,r=-90,i=90,a=270,s=-270;t.forEach((function(t){var e=Qt(t),u=e[1],c=e[3],l=e[0],d=e[2];u>n&&(n=u),c<o&&(o=c),c>r&&(r=c),u<i&&(i=u),l<a&&(a=l),d>s&&(s=d);}));var u=e;return n+u.lat>85&&(u.lat=85-n),r+u.lat>90&&(u.lat=90-r),o+u.lat<-85&&(u.lat=-85-o),i+u.lat<-90&&(u.lat=-90-i),a+u.lng<=-270&&(u.lng+=360*Math.ceil(Math.abs(u.lng)/360)),s+u.lng>=270&&(u.lng-=360*Math.ceil(Math.abs(u.lng)/360)),u}function ne(t,e){var n=ee(t.map((function(t){return t.toGeoJSON()})),e);t.forEach((function(t){var e,o=t.getCoordinates(),r=function(t){var e={lng:t[0]+n.lng,lat:t[1]+n.lat};return [e.lng,e.lat]},i=function(t){return t.map((function(t){return r(t)}))};t.type===L?e=r(o):t.type===I||t.type===O?e=o.map(r):t.type===w||t.type===k?e=o.map(i):t.type===T&&(e=o.map((function(t){return t.map((function(t){return i(t)}))}))),t.incomingCoords(e);}));}var oe={onSetup:function(t){var e=this,n={dragMoveLocation:null,boxSelectStartLocation:null,boxSelectElement:void 0,boxSelecting:!1,canBoxSelect:!1,dragMoving:!1,canDragMove:!1,initiallySelectedFeatureIds:t.featureIds||[]};return this.setSelected(n.initiallySelectedFeatureIds.filter((function(t){return void 0!==e.getFeature(t)}))),this.fireActionable(),this.setActionableState({combineFeatures:!0,uncombineFeatures:!0,trash:!0}),n},fireUpdate:function(){this.map.fire(N,{action:z,features:this.getSelected().map((function(t){return t.toGeoJSON()}))});},fireActionable:function(){var t=this,e=this.getSelected(),n=e.filter((function(e){return t.isInstanceOf("MultiFeature",e)})),o=!1;if(e.length>1){o=!0;var r=e[0].type.replace("Multi","");e.forEach((function(t){t.type.replace("Multi","")!==r&&(o=!1);}));}var i=n.length>0,a=e.length>0;this.setActionableState({combineFeatures:o,uncombineFeatures:i,trash:a});},getUniqueIds:function(t){return t.length?t.map((function(t){return t.properties.id})).filter((function(t){return void 0!==t})).reduce((function(t,e){return t.add(e),t}),new tt).values():[]},stopExtendedInteractions:function(t){t.boxSelectElement&&(t.boxSelectElement.parentNode&&t.boxSelectElement.parentNode.removeChild(t.boxSelectElement),t.boxSelectElement=null),this.map.dragPan.enable(),t.boxSelecting=!1,t.canBoxSelect=!1,t.dragMoving=!1,t.canDragMove=!1;},onStop:function(){Jt(this);},onMouseMove:function(t){return this.stopExtendedInteractions(t),!0},onMouseOut:function(t){return !t.dragMoving||this.fireUpdate()}};oe.onTap=oe.onClick=function(t,e){return kt(e)?this.clickAnywhere(t,e):Pt(Y)(e)?this.clickOnVertex(t,e):function(t){return !!t.featureTarget&&(!!t.featureTarget.properties&&t.featureTarget.properties.meta===W)}(e)?this.clickOnFeature(t,e):void 0},oe.clickAnywhere=function(t){var e=this,n=this.getSelectedIds();n.length&&(this.clearSelectedFeatures(),n.forEach((function(t){return e.doRender(t)}))),Jt(this),this.stopExtendedInteractions(t);},oe.clickOnVertex=function(t,e){this.changeMode(j.DIRECT_SELECT,{featureId:e.featureTarget.properties.parent,coordPath:e.featureTarget.properties.coord_path,startPos:e.lngLat}),this.updateUIClasses({mouse:_});},oe.startOnActiveFeature=function(t,e){this.stopExtendedInteractions(t),this.map.dragPan.disable(),this.doRender(e.featureTarget.properties.id),t.canDragMove=!0,t.dragMoveLocation=e.lngLat;},oe.clickOnFeature=function(t,e){var n=this;Gt(this),this.stopExtendedInteractions(t);var o=jt(e),r=this.getSelectedIds(),i=e.featureTarget.properties.id,a=this.isSelected(i);if(!o&&a&&this.getFeature(i).type!==L)return this.changeMode(j.DIRECT_SELECT,{featureId:i});a&&o?(this.deselect(i),this.updateUIClasses({mouse:x}),1===r.length&&Jt(this)):!a&&o?(this.select(i),this.updateUIClasses({mouse:_})):a||o||(r.forEach((function(t){return n.doRender(t)})),this.setSelected(i),this.updateUIClasses({mouse:_})),this.doRender(i);},oe.onMouseDown=function(t,e){return Ft(e)?this.startOnActiveFeature(t,e):this.drawConfig.boxSelect&&function(t){return !!t.originalEvent&&(!!t.originalEvent.shiftKey&&0===t.originalEvent.button)}(e)?this.startBoxSelect(t,e):void 0},oe.startBoxSelect=function(t,e){this.stopExtendedInteractions(t),this.map.dragPan.disable(),t.boxSelectStartLocation=Rt(e.originalEvent,this.map.getContainer()),t.canBoxSelect=!0;},oe.onTouchStart=function(t,e){if(Ft(e))return this.startOnActiveFeature(t,e)},oe.onDrag=function(t,e){return t.canDragMove?this.dragMove(t,e):this.drawConfig.boxSelect&&t.canBoxSelect?this.whileBoxSelect(t,e):void 0},oe.whileBoxSelect=function(t,e){t.boxSelecting=!0,this.updateUIClasses({mouse:b}),t.boxSelectElement||(t.boxSelectElement=document.createElement("div"),t.boxSelectElement.classList.add(y),this.map.getContainer().appendChild(t.boxSelectElement));var n=Rt(e.originalEvent,this.map.getContainer()),o=Math.min(t.boxSelectStartLocation.x,n.x),r=Math.max(t.boxSelectStartLocation.x,n.x),i=Math.min(t.boxSelectStartLocation.y,n.y),a=Math.max(t.boxSelectStartLocation.y,n.y),s="translate("+o+"px, "+i+"px)";t.boxSelectElement.style.transform=s,t.boxSelectElement.style.WebkitTransform=s,t.boxSelectElement.style.width=r-o+"px",t.boxSelectElement.style.height=a-i+"px";},oe.dragMove=function(t,e){t.dragMoving=!0,e.originalEvent.stopPropagation();var n={lng:e.lngLat.lng-t.dragMoveLocation.lng,lat:e.lngLat.lat-t.dragMoveLocation.lat};ne(this.getSelected(),n),t.dragMoveLocation=e.lngLat;},oe.onMouseUp=function(t,e){var n=this;if(t.dragMoving)this.fireUpdate();else if(t.boxSelecting){var o=[t.boxSelectStartLocation,Rt(e.originalEvent,this.map.getContainer())],r=this.featuresAt(null,o,"click"),i=this.getUniqueIds(r).filter((function(t){return !n.isSelected(t)}));i.length&&(this.select(i),i.forEach((function(t){return n.doRender(t)})),this.updateUIClasses({mouse:_}));}this.stopExtendedInteractions(t);},oe.toDisplayFeatures=function(t,e,n){e.properties.active=this.isSelected(e.properties.id)?Z:K,n(e),this.fireActionable(),e.properties.active===Z&&e.geometry.type!==L&&Vt(e).forEach(n);},oe.onTrash=function(){this.deleteFeature(this.getSelectedIds()),this.fireActionable();},oe.onCombineFeatures=function(){var t=this.getSelected();if(!(0===t.length||t.length<2)){for(var e=[],n=[],o=t[0].type.replace("Multi",""),r=0;r<t.length;r++){var i=t[r];if(i.type.replace("Multi","")!==o)return;i.type.includes("Multi")?i.getCoordinates().forEach((function(t){e.push(t);})):e.push(i.getCoordinates()),n.push(i.toGeoJSON());}if(n.length>1){var a=this.newFeature({type:M,properties:n[0].properties,geometry:{type:"Multi"+o,coordinates:e}});this.addFeature(a),this.deleteFeature(this.getSelectedIds(),{silent:!0}),this.setSelected([a.id]),this.map.fire(J,{createdFeatures:[a.toGeoJSON()],deletedFeatures:n});}this.fireActionable();}},oe.onUncombineFeatures=function(){var t=this,e=this.getSelected();if(0!==e.length){for(var n=[],o=[],r=function(r){var i=e[r];t.isInstanceOf("MultiFeature",i)&&(i.getFeatures().forEach((function(e){t.addFeature(e),e.properties=i.properties,n.push(e.toGeoJSON()),t.select([e.id]);})),t.deleteFeature(i.id,{silent:!0}),o.push(i.toGeoJSON()));},i=0;i<e.length;i++)r(i);n.length>1&&this.map.fire(G,{createdFeatures:n,deletedFeatures:o}),this.fireActionable();}};var re=Pt(Y),ie=Pt(q),ae={fireUpdate:function(){this.map.fire(N,{action:$,features:this.getSelected().map((function(t){return t.toGeoJSON()}))});},fireActionable:function(t){this.setActionableState({combineFeatures:!1,uncombineFeatures:!1,trash:t.selectedCoordPaths.length>0});},startDragging:function(t,e){this.map.dragPan.disable(),t.canDragMove=!0,t.dragMoveLocation=e.lngLat;},stopDragging:function(t){this.map.dragPan.enable(),t.dragMoving=!1,t.canDragMove=!1,t.dragMoveLocation=null;},onVertex:function(t,e){this.startDragging(t,e);var n=e.featureTarget.properties,o=t.selectedCoordPaths.indexOf(n.coord_path);jt(e)||-1!==o?jt(e)&&-1===o&&t.selectedCoordPaths.push(n.coord_path):t.selectedCoordPaths=[n.coord_path];var r=this.pathsToCoordinates(t.featureId,t.selectedCoordPaths);this.setSelectedCoordinates(r);},onMidpoint:function(t,e){this.startDragging(t,e);var n=e.featureTarget.properties;t.feature.addCoordinate(n.coord_path,n.lng,n.lat),this.fireUpdate(),t.selectedCoordPaths=[n.coord_path];},pathsToCoordinates:function(t,e){return e.map((function(e){return {feature_id:t,coord_path:e}}))},onFeature:function(t,e){0===t.selectedCoordPaths.length?this.startDragging(t,e):this.stopDragging(t);},dragFeature:function(t,e,n){ne(this.getSelected(),n),t.dragMoveLocation=e.lngLat;},dragVertex:function(t,e,n){for(var o=t.selectedCoordPaths.map((function(e){return t.feature.getCoordinate(e)})),r=ee(o.map((function(t){return {type:M,properties:{},geometry:{type:L,coordinates:t}}})),n),i=0;i<o.length;i++){var a=o[i];t.feature.updateCoordinate(t.selectedCoordPaths[i],a[0]+r.lng,a[1]+r.lat);}},clickNoTarget:function(){this.changeMode(j.SIMPLE_SELECT);},clickInactive:function(){this.changeMode(j.SIMPLE_SELECT);},clickActiveFeature:function(t){t.selectedCoordPaths=[],this.clearSelectedCoordinates(),t.feature.changed();},onSetup:function(t){var e=t.featureId,n=this.getFeature(e);if(!n)throw new Error("You must provide a featureId to enter direct_select mode");if(n.type===L)throw new TypeError("direct_select mode doesn't handle point features");var o={featureId:e,feature:n,dragMoveLocation:t.startPos||null,dragMoving:!1,canDragMove:!1,selectedCoordPaths:t.coordPath?[t.coordPath]:[]};return this.setSelectedCoordinates(this.pathsToCoordinates(e,o.selectedCoordPaths)),this.setSelected(e),Gt(this),this.setActionableState({trash:!0}),o},onStop:function(){Jt(this),this.clearSelectedCoordinates();},toDisplayFeatures:function(t,e,n){t.featureId===e.properties.id?(e.properties.active=Z,n(e),Vt(e,{map:this.map,midpoints:!0,selectedPaths:t.selectedCoordPaths}).forEach(n)):(e.properties.active=K,n(e)),this.fireActionable(t);},onTrash:function(t){t.selectedCoordPaths.sort((function(t,e){return e.localeCompare(t,"en",{numeric:!0})})).forEach((function(e){return t.feature.removeCoordinate(e)})),this.fireUpdate(),t.selectedCoordPaths=[],this.clearSelectedCoordinates(),this.fireActionable(t),!1===t.feature.isValid()&&(this.deleteFeature([t.featureId]),this.changeMode(j.SIMPLE_SELECT,{}));},onMouseMove:function(t,e){var n=Ft(e),o=re(e),r=0===t.selectedCoordPaths.length;return n&&r||o&&!r?this.updateUIClasses({mouse:_}):this.updateUIClasses({mouse:C}),this.stopDragging(t),!0},onMouseOut:function(t){return t.dragMoving&&this.fireUpdate(),!0}};ae.onTouchStart=ae.onMouseDown=function(t,e){return re(e)?this.onVertex(t,e):Ft(e)?this.onFeature(t,e):ie(e)?this.onMidpoint(t,e):void 0},ae.onDrag=function(t,e){if(!0===t.canDragMove){t.dragMoving=!0,e.originalEvent.stopPropagation();var n={lng:e.lngLat.lng-t.dragMoveLocation.lng,lat:e.lngLat.lat-t.dragMoveLocation.lat};t.selectedCoordPaths.length>0?this.dragVertex(t,e,n):this.dragFeature(t,e,n),t.dragMoveLocation=e.lngLat;}},ae.onClick=function(t,e){return kt(e)?this.clickNoTarget(t,e):Ft(e)?this.clickActiveFeature(t,e):Ot(e)?this.clickInactive(t,e):void this.stopDragging(t)},ae.onTap=function(t,e){return kt(e)?this.clickNoTarget(t,e):Ft(e)?this.clickActiveFeature(t,e):Ot(e)?this.clickInactive(t,e):void 0},ae.onTouchEnd=ae.onMouseUp=function(t){t.dragMoving&&this.fireUpdate(),this.stopDragging(t);};var se={};function ue(t,e){return !!t.lngLat&&(t.lngLat.lng===e[0]&&t.lngLat.lat===e[1])}se.onSetup=function(){var t=this.newFeature({type:M,properties:{},geometry:{type:L,coordinates:[]}});return this.addFeature(t),this.clearSelectedFeatures(),this.updateUIClasses({mouse:b}),this.activateUIButton(E.POINT),this.setActionableState({trash:!0}),{point:t}},se.stopDrawingAndRemove=function(t){this.deleteFeature([t.point.id],{silent:!0}),this.changeMode(j.SIMPLE_SELECT);},se.onTap=se.onClick=function(t,e){this.updateUIClasses({mouse:_}),t.point.updateCoordinate("",e.lngLat.lng,e.lngLat.lat),this.map.fire(A,{features:[t.point.toGeoJSON()]}),this.changeMode(j.SIMPLE_SELECT,{featureIds:[t.point.id]});},se.onStop=function(t){this.activateUIButton(),t.point.getCoordinate().length||this.deleteFeature([t.point.id],{silent:!0});},se.toDisplayFeatures=function(t,e,n){var o=e.properties.id===t.point.id;if(e.properties.active=o?Z:K,!o)return n(e)},se.onTrash=se.stopDrawingAndRemove,se.onKeyUp=function(t,e){if(At(e)||Dt(e))return this.stopDrawingAndRemove(t,e)};var ce={onSetup:function(){var t=this.newFeature({type:M,properties:{},geometry:{type:w,coordinates:[[]]}});return this.addFeature(t),this.clearSelectedFeatures(),Gt(this),this.updateUIClasses({mouse:b}),this.activateUIButton(E.POLYGON),this.setActionableState({trash:!0}),{polygon:t,currentVertexPosition:0}},clickAnywhere:function(t,e){if(t.currentVertexPosition>0&&ue(e,t.polygon.coordinates[0][t.currentVertexPosition-1]))return this.changeMode(j.SIMPLE_SELECT,{featureIds:[t.polygon.id]});this.updateUIClasses({mouse:b}),t.polygon.updateCoordinate("0."+t.currentVertexPosition,e.lngLat.lng,e.lngLat.lat),t.currentVertexPosition++,t.polygon.updateCoordinate("0."+t.currentVertexPosition,e.lngLat.lng,e.lngLat.lat);},clickOnVertex:function(t){return this.changeMode(j.SIMPLE_SELECT,{featureIds:[t.polygon.id]})},onMouseMove:function(t,e){t.polygon.updateCoordinate("0."+t.currentVertexPosition,e.lngLat.lng,e.lngLat.lat),Tt(e)&&this.updateUIClasses({mouse:x});}};ce.onTap=ce.onClick=function(t,e){return Tt(e)?this.clickOnVertex(t,e):this.clickAnywhere(t,e)},ce.onKeyUp=function(t,e){At(e)?(this.deleteFeature([t.polygon.id],{silent:!0}),this.changeMode(j.SIMPLE_SELECT)):Dt(e)&&this.changeMode(j.SIMPLE_SELECT,{featureIds:[t.polygon.id]});},ce.onStop=function(t){this.updateUIClasses({mouse:C}),Jt(this),this.activateUIButton(),void 0!==this.getFeature(t.polygon.id)&&(t.polygon.removeCoordinate("0."+t.currentVertexPosition),t.polygon.isValid()?this.map.fire(A,{features:[t.polygon.toGeoJSON()]}):(this.deleteFeature([t.polygon.id],{silent:!0}),this.changeMode(j.SIMPLE_SELECT,{},{silent:!0})));},ce.toDisplayFeatures=function(t,e,n){var o=e.properties.id===t.polygon.id;if(e.properties.active=o?Z:K,!o)return n(e);if(0!==e.geometry.coordinates.length){var r=e.geometry.coordinates[0].length;if(!(r<3)){if(e.properties.meta=W,n(Bt(t.polygon.id,e.geometry.coordinates[0][0],"0.0",!1)),r>3){var i=e.geometry.coordinates[0].length-3;n(Bt(t.polygon.id,e.geometry.coordinates[0][i],"0."+i,!1));}if(r<=4){var a=[[e.geometry.coordinates[0][0][0],e.geometry.coordinates[0][0][1]],[e.geometry.coordinates[0][1][0],e.geometry.coordinates[0][1][1]]];if(n({type:M,properties:e.properties,geometry:{coordinates:a,type:I}}),3===r)return}return n(e)}}},ce.onTrash=function(t){this.deleteFeature([t.polygon.id],{silent:!0}),this.changeMode(j.SIMPLE_SELECT);};var le={onSetup:function(t){var e,n,o=(t=t||{}).featureId,r="forward";if(o){if(!(e=this.getFeature(o)))throw new Error("Could not find a feature with the provided featureId");var i=t.from;if(i&&"Feature"===i.type&&i.geometry&&"Point"===i.geometry.type&&(i=i.geometry),i&&"Point"===i.type&&i.coordinates&&2===i.coordinates.length&&(i=i.coordinates),!i||!Array.isArray(i))throw new Error("Please use the `from` property to indicate which point to continue the line from");var a=e.coordinates.length-1;if(e.coordinates[a][0]===i[0]&&e.coordinates[a][1]===i[1])n=a+1,e.addCoordinate.apply(e,[n].concat(e.coordinates[a]));else {if(e.coordinates[0][0]!==i[0]||e.coordinates[0][1]!==i[1])throw new Error("`from` should match the point at either the start or the end of the provided LineString");r="backwards",n=0,e.addCoordinate.apply(e,[n].concat(e.coordinates[0]));}}else e=this.newFeature({type:M,properties:{},geometry:{type:I,coordinates:[]}}),n=0,this.addFeature(e);return this.clearSelectedFeatures(),Gt(this),this.updateUIClasses({mouse:b}),this.activateUIButton(E.LINE),this.setActionableState({trash:!0}),{line:e,currentVertexPosition:n,direction:r}},clickAnywhere:function(t,e){if(t.currentVertexPosition>0&&ue(e,t.line.coordinates[t.currentVertexPosition-1])||"backwards"===t.direction&&ue(e,t.line.coordinates[t.currentVertexPosition+1]))return this.changeMode(j.SIMPLE_SELECT,{featureIds:[t.line.id]});this.updateUIClasses({mouse:b}),t.line.updateCoordinate(t.currentVertexPosition,e.lngLat.lng,e.lngLat.lat),"forward"===t.direction?(t.currentVertexPosition++,t.line.updateCoordinate(t.currentVertexPosition,e.lngLat.lng,e.lngLat.lat)):t.line.addCoordinate(0,e.lngLat.lng,e.lngLat.lat);},clickOnVertex:function(t){return this.changeMode(j.SIMPLE_SELECT,{featureIds:[t.line.id]})},onMouseMove:function(t,e){t.line.updateCoordinate(t.currentVertexPosition,e.lngLat.lng,e.lngLat.lat),Tt(e)&&this.updateUIClasses({mouse:x});}};le.onTap=le.onClick=function(t,e){if(Tt(e))return this.clickOnVertex(t,e);this.clickAnywhere(t,e);},le.onKeyUp=function(t,e){Dt(e)?this.changeMode(j.SIMPLE_SELECT,{featureIds:[t.line.id]}):At(e)&&(this.deleteFeature([t.line.id],{silent:!0}),this.changeMode(j.SIMPLE_SELECT));},le.onStop=function(t){Jt(this),this.activateUIButton(),void 0!==this.getFeature(t.line.id)&&(t.line.removeCoordinate(""+t.currentVertexPosition),t.line.isValid()?this.map.fire(A,{features:[t.line.toGeoJSON()]}):(this.deleteFeature([t.line.id],{silent:!0}),this.changeMode(j.SIMPLE_SELECT,{},{silent:!0})));},le.onTrash=function(t){this.deleteFeature([t.line.id],{silent:!0}),this.changeMode(j.SIMPLE_SELECT);},le.toDisplayFeatures=function(t,e,n){var o=e.properties.id===t.line.id;if(e.properties.active=o?Z:K,!o)return n(e);e.geometry.coordinates.length<2||(e.properties.meta=W,n(Bt(t.line.id,e.geometry.coordinates["forward"===t.direction?e.geometry.coordinates.length-2:1],""+("forward"===t.direction?e.geometry.coordinates.length-2:1),!1)),n(e));};var de={simple_select:oe,direct_select:ae,draw_point:se,draw_polygon:ce,draw_line_string:le},pe={defaultMode:j.SIMPLE_SELECT,keybindings:!0,touchEnabled:!0,clickBuffer:2,touchBuffer:25,boxSelect:!0,displayControlsDefault:!0,styles:[{id:"gl-draw-polygon-fill-inactive",type:"fill",filter:["all",["==","active","false"],["==","$type","Polygon"],["!=","mode","static"]],paint:{"fill-color":"#3bb2d0","fill-outline-color":"#3bb2d0","fill-opacity":.1}},{id:"gl-draw-polygon-fill-active",type:"fill",filter:["all",["==","active","true"],["==","$type","Polygon"]],paint:{"fill-color":"#fbb03b","fill-outline-color":"#fbb03b","fill-opacity":.1}},{id:"gl-draw-polygon-midpoint",type:"circle",filter:["all",["==","$type","Point"],["==","meta","midpoint"]],paint:{"circle-radius":3,"circle-color":"#fbb03b"}},{id:"gl-draw-polygon-stroke-inactive",type:"line",filter:["all",["==","active","false"],["==","$type","Polygon"],["!=","mode","static"]],layout:{"line-cap":"round","line-join":"round"},paint:{"line-color":"#3bb2d0","line-width":2}},{id:"gl-draw-polygon-stroke-active",type:"line",filter:["all",["==","active","true"],["==","$type","Polygon"]],layout:{"line-cap":"round","line-join":"round"},paint:{"line-color":"#fbb03b","line-dasharray":[.2,2],"line-width":2}},{id:"gl-draw-line-inactive",type:"line",filter:["all",["==","active","false"],["==","$type","LineString"],["!=","mode","static"]],layout:{"line-cap":"round","line-join":"round"},paint:{"line-color":"#3bb2d0","line-width":2}},{id:"gl-draw-line-active",type:"line",filter:["all",["==","$type","LineString"],["==","active","true"]],layout:{"line-cap":"round","line-join":"round"},paint:{"line-color":"#fbb03b","line-dasharray":[.2,2],"line-width":2}},{id:"gl-draw-polygon-and-line-vertex-stroke-inactive",type:"circle",filter:["all",["==","meta","vertex"],["==","$type","Point"],["!=","mode","static"]],paint:{"circle-radius":5,"circle-color":"#fff"}},{id:"gl-draw-polygon-and-line-vertex-inactive",type:"circle",filter:["all",["==","meta","vertex"],["==","$type","Point"],["!=","mode","static"]],paint:{"circle-radius":3,"circle-color":"#fbb03b"}},{id:"gl-draw-point-point-stroke-inactive",type:"circle",filter:["all",["==","active","false"],["==","$type","Point"],["==","meta","feature"],["!=","mode","static"]],paint:{"circle-radius":5,"circle-opacity":1,"circle-color":"#fff"}},{id:"gl-draw-point-inactive",type:"circle",filter:["all",["==","active","false"],["==","$type","Point"],["==","meta","feature"],["!=","mode","static"]],paint:{"circle-radius":3,"circle-color":"#3bb2d0"}},{id:"gl-draw-point-stroke-active",type:"circle",filter:["all",["==","$type","Point"],["==","active","true"],["!=","meta","midpoint"]],paint:{"circle-radius":7,"circle-color":"#fff"}},{id:"gl-draw-point-active",type:"circle",filter:["all",["==","$type","Point"],["!=","meta","midpoint"],["==","active","true"]],paint:{"circle-radius":5,"circle-color":"#fbb03b"}},{id:"gl-draw-polygon-fill-static",type:"fill",filter:["all",["==","mode","static"],["==","$type","Polygon"]],paint:{"fill-color":"#404040","fill-outline-color":"#404040","fill-opacity":.1}},{id:"gl-draw-polygon-stroke-static",type:"line",filter:["all",["==","mode","static"],["==","$type","Polygon"]],layout:{"line-cap":"round","line-join":"round"},paint:{"line-color":"#404040","line-width":2}},{id:"gl-draw-line-static",type:"line",filter:["all",["==","mode","static"],["==","$type","LineString"]],layout:{"line-cap":"round","line-join":"round"},paint:{"line-color":"#404040","line-width":2}},{id:"gl-draw-point-static",type:"circle",filter:["all",["==","mode","static"],["==","$type","Point"]],paint:{"circle-radius":5,"circle-color":"#404040"}}],modes:de,controls:{},userProperties:!1},fe={point:!0,line_string:!0,polygon:!0,trash:!0,combine_features:!0,uncombine_features:!0},he={point:!1,line_string:!1,polygon:!1,trash:!1,combine_features:!1,uncombine_features:!1};function ge(t,e){return t.map((function(t){return t.source?t:Mt(t,{id:t.id+"."+e,source:"hot"===e?v:m})}))}var ye=ut((function(t,e){var n="[object Arguments]",o="[object Map]",r="[object Object]",i="[object Set]",a=/^\[object .+?Constructor\]$/,s=/^(?:0|[1-9]\d*)$/,u={};u["[object Float32Array]"]=u["[object Float64Array]"]=u["[object Int8Array]"]=u["[object Int16Array]"]=u["[object Int32Array]"]=u["[object Uint8Array]"]=u["[object Uint8ClampedArray]"]=u["[object Uint16Array]"]=u["[object Uint32Array]"]=!0,u[n]=u["[object Array]"]=u["[object ArrayBuffer]"]=u["[object Boolean]"]=u["[object DataView]"]=u["[object Date]"]=u["[object Error]"]=u["[object Function]"]=u[o]=u["[object Number]"]=u[r]=u["[object RegExp]"]=u[i]=u["[object String]"]=u["[object WeakMap]"]=!1;var c="object"==typeof commonjsGlobal$1&&commonjsGlobal$1&&commonjsGlobal$1.Object===Object&&commonjsGlobal$1,l="object"==typeof self&&self&&self.Object===Object&&self,d=c||l||Function("return this")(),p=e&&!e.nodeType&&e,f=p&&t&&!t.nodeType&&t,h=f&&f.exports===p,g=h&&c.process,y=function(){try{return g&&g.binding&&g.binding("util")}catch(t){}}(),v=y&&y.isTypedArray;function m(t,e){for(var n=-1,o=null==t?0:t.length;++n<o;)if(e(t[n],n,t))return !0;return !1}function b(t){var e=-1,n=Array(t.size);return t.forEach((function(t,o){n[++e]=[o,t];})),n}function _(t){var e=-1,n=Array(t.size);return t.forEach((function(t){n[++e]=t;})),n}var S,x,C,E=Array.prototype,M=Function.prototype,w=Object.prototype,I=d["__core-js_shared__"],L=M.toString,P=w.hasOwnProperty,F=(S=/[^.]+$/.exec(I&&I.keys&&I.keys.IE_PROTO||""))?"Symbol(src)_1."+S:"",O=w.toString,k=RegExp("^"+L.call(P).replace(/[\\^$.*+?()[\]{}|]/g,"\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g,"$1.*?")+"$"),T=h?d.Buffer:void 0,j=d.Symbol,A=d.Uint8Array,D=w.propertyIsEnumerable,N=E.splice,U=j?j.toStringTag:void 0,R=Object.getOwnPropertySymbols,B=T?T.isBuffer:void 0,V=(x=Object.keys,C=Object,function(t){return x(C(t))}),J=yt(d,"DataView"),G=yt(d,"Map"),z=yt(d,"Promise"),$=yt(d,"Set"),W=yt(d,"WeakMap"),q=yt(Object,"create"),Y=_t(J),Z=_t(G),K=_t(z),X=_t($),H=_t(W),Q=j?j.prototype:void 0,tt=Q?Q.valueOf:void 0;function et(t){var e=-1,n=null==t?0:t.length;for(this.clear();++e<n;){var o=t[e];this.set(o[0],o[1]);}}function nt(t){var e=-1,n=null==t?0:t.length;for(this.clear();++e<n;){var o=t[e];this.set(o[0],o[1]);}}function ot(t){var e=-1,n=null==t?0:t.length;for(this.clear();++e<n;){var o=t[e];this.set(o[0],o[1]);}}function rt(t){var e=-1,n=null==t?0:t.length;for(this.__data__=new ot;++e<n;)this.add(t[e]);}function it(t){var e=this.__data__=new nt(t);this.size=e.size;}function at(t,e){var n=Ct(t),o=!n&&xt(t),r=!n&&!o&&Et(t),i=!n&&!o&&!r&&Pt(t),a=n||o||r||i,s=a?function(t,e){for(var n=-1,o=Array(t);++n<t;)o[n]=e(n);return o}(t.length,String):[],u=s.length;for(var c in t)!e&&!P.call(t,c)||a&&("length"==c||r&&("offset"==c||"parent"==c)||i&&("buffer"==c||"byteLength"==c||"byteOffset"==c)||bt(c,u))||s.push(c);return s}function st(t,e){for(var n=t.length;n--;)if(St(t[n][0],e))return n;return -1}function ut(t){return null==t?void 0===t?"[object Undefined]":"[object Null]":U&&U in Object(t)?function(t){var e=P.call(t,U),n=t[U];try{t[U]=void 0;var o=!0;}catch(t){}var r=O.call(t);o&&(e?t[U]=n:delete t[U]);return r}(t):function(t){return O.call(t)}(t)}function ct(t){return Lt(t)&&ut(t)==n}function lt(t,e,a,s,u){return t===e||(null==t||null==e||!Lt(t)&&!Lt(e)?t!=t&&e!=e:function(t,e,a,s,u,c){var l=Ct(t),d=Ct(e),p=l?"[object Array]":mt(t),f=d?"[object Array]":mt(e),h=(p=p==n?r:p)==r,g=(f=f==n?r:f)==r,y=p==f;if(y&&Et(t)){if(!Et(e))return !1;l=!0,h=!1;}if(y&&!h)return c||(c=new it),l||Pt(t)?ft(t,e,a,s,u,c):function(t,e,n,r,a,s,u){switch(n){case"[object DataView]":if(t.byteLength!=e.byteLength||t.byteOffset!=e.byteOffset)return !1;t=t.buffer,e=e.buffer;case"[object ArrayBuffer]":return !(t.byteLength!=e.byteLength||!s(new A(t),new A(e)));case"[object Boolean]":case"[object Date]":case"[object Number]":return St(+t,+e);case"[object Error]":return t.name==e.name&&t.message==e.message;case"[object RegExp]":case"[object String]":return t==e+"";case o:var c=b;case i:var l=1&r;if(c||(c=_),t.size!=e.size&&!l)return !1;var d=u.get(t);if(d)return d==e;r|=2,u.set(t,e);var p=ft(c(t),c(e),r,a,s,u);return u.delete(t),p;case"[object Symbol]":if(tt)return tt.call(t)==tt.call(e)}return !1}(t,e,p,a,s,u,c);if(!(1&a)){var v=h&&P.call(t,"__wrapped__"),m=g&&P.call(e,"__wrapped__");if(v||m){var S=v?t.value():t,x=m?e.value():e;return c||(c=new it),u(S,x,a,s,c)}}if(!y)return !1;return c||(c=new it),function(t,e,n,o,r,i){var a=1&n,s=ht(t),u=s.length,c=ht(e).length;if(u!=c&&!a)return !1;var l=u;for(;l--;){var d=s[l];if(!(a?d in e:P.call(e,d)))return !1}var p=i.get(t);if(p&&i.get(e))return p==e;var f=!0;i.set(t,e),i.set(e,t);var h=a;for(;++l<u;){d=s[l];var g=t[d],y=e[d];if(o)var v=a?o(y,g,d,e,t,i):o(g,y,d,t,e,i);if(!(void 0===v?g===y||r(g,y,n,o,i):v)){f=!1;break}h||(h="constructor"==d);}if(f&&!h){var m=t.constructor,b=e.constructor;m==b||!("constructor"in t)||!("constructor"in e)||"function"==typeof m&&m instanceof m&&"function"==typeof b&&b instanceof b||(f=!1);}return i.delete(t),i.delete(e),f}(t,e,a,s,u,c)}(t,e,a,s,lt,u))}function dt(t){return !(!It(t)||function(t){return !!F&&F in t}(t))&&(Mt(t)?k:a).test(_t(t))}function pt(t){if(n=(e=t)&&e.constructor,o="function"==typeof n&&n.prototype||w,e!==o)return V(t);var e,n,o,r=[];for(var i in Object(t))P.call(t,i)&&"constructor"!=i&&r.push(i);return r}function ft(t,e,n,o,r,i){var a=1&n,s=t.length,u=e.length;if(s!=u&&!(a&&u>s))return !1;var c=i.get(t);if(c&&i.get(e))return c==e;var l=-1,d=!0,p=2&n?new rt:void 0;for(i.set(t,e),i.set(e,t);++l<s;){var f=t[l],h=e[l];if(o)var g=a?o(h,f,l,e,t,i):o(f,h,l,t,e,i);if(void 0!==g){if(g)continue;d=!1;break}if(p){if(!m(e,(function(t,e){if(a=e,!p.has(a)&&(f===t||r(f,t,n,o,i)))return p.push(e);var a;}))){d=!1;break}}else if(f!==h&&!r(f,h,n,o,i)){d=!1;break}}return i.delete(t),i.delete(e),d}function ht(t){return function(t,e,n){var o=e(t);return Ct(t)?o:function(t,e){for(var n=-1,o=e.length,r=t.length;++n<o;)t[r+n]=e[n];return t}(o,n(t))}(t,Ft,vt)}function gt(t,e){var n,o,r=t.__data__;return ("string"==(o=typeof(n=e))||"number"==o||"symbol"==o||"boolean"==o?"__proto__"!==n:null===n)?r["string"==typeof e?"string":"hash"]:r.map}function yt(t,e){var n=function(t,e){return null==t?void 0:t[e]}(t,e);return dt(n)?n:void 0}et.prototype.clear=function(){this.__data__=q?q(null):{},this.size=0;},et.prototype.delete=function(t){var e=this.has(t)&&delete this.__data__[t];return this.size-=e?1:0,e},et.prototype.get=function(t){var e=this.__data__;if(q){var n=e[t];return "__lodash_hash_undefined__"===n?void 0:n}return P.call(e,t)?e[t]:void 0},et.prototype.has=function(t){var e=this.__data__;return q?void 0!==e[t]:P.call(e,t)},et.prototype.set=function(t,e){var n=this.__data__;return this.size+=this.has(t)?0:1,n[t]=q&&void 0===e?"__lodash_hash_undefined__":e,this},nt.prototype.clear=function(){this.__data__=[],this.size=0;},nt.prototype.delete=function(t){var e=this.__data__,n=st(e,t);return !(n<0)&&(n==e.length-1?e.pop():N.call(e,n,1),--this.size,!0)},nt.prototype.get=function(t){var e=this.__data__,n=st(e,t);return n<0?void 0:e[n][1]},nt.prototype.has=function(t){return st(this.__data__,t)>-1},nt.prototype.set=function(t,e){var n=this.__data__,o=st(n,t);return o<0?(++this.size,n.push([t,e])):n[o][1]=e,this},ot.prototype.clear=function(){this.size=0,this.__data__={hash:new et,map:new(G||nt),string:new et};},ot.prototype.delete=function(t){var e=gt(this,t).delete(t);return this.size-=e?1:0,e},ot.prototype.get=function(t){return gt(this,t).get(t)},ot.prototype.has=function(t){return gt(this,t).has(t)},ot.prototype.set=function(t,e){var n=gt(this,t),o=n.size;return n.set(t,e),this.size+=n.size==o?0:1,this},rt.prototype.add=rt.prototype.push=function(t){return this.__data__.set(t,"__lodash_hash_undefined__"),this},rt.prototype.has=function(t){return this.__data__.has(t)},it.prototype.clear=function(){this.__data__=new nt,this.size=0;},it.prototype.delete=function(t){var e=this.__data__,n=e.delete(t);return this.size=e.size,n},it.prototype.get=function(t){return this.__data__.get(t)},it.prototype.has=function(t){return this.__data__.has(t)},it.prototype.set=function(t,e){var n=this.__data__;if(n instanceof nt){var o=n.__data__;if(!G||o.length<199)return o.push([t,e]),this.size=++n.size,this;n=this.__data__=new ot(o);}return n.set(t,e),this.size=n.size,this};var vt=R?function(t){return null==t?[]:(t=Object(t),function(t,e){for(var n=-1,o=null==t?0:t.length,r=0,i=[];++n<o;){var a=t[n];e(a,n,t)&&(i[r++]=a);}return i}(R(t),(function(e){return D.call(t,e)})))}:function(){return []},mt=ut;function bt(t,e){return !!(e=null==e?9007199254740991:e)&&("number"==typeof t||s.test(t))&&t>-1&&t%1==0&&t<e}function _t(t){if(null!=t){try{return L.call(t)}catch(t){}try{return t+""}catch(t){}}return ""}function St(t,e){return t===e||t!=t&&e!=e}(J&&"[object DataView]"!=mt(new J(new ArrayBuffer(1)))||G&&mt(new G)!=o||z&&"[object Promise]"!=mt(z.resolve())||$&&mt(new $)!=i||W&&"[object WeakMap]"!=mt(new W))&&(mt=function(t){var e=ut(t),n=e==r?t.constructor:void 0,a=n?_t(n):"";if(a)switch(a){case Y:return "[object DataView]";case Z:return o;case K:return "[object Promise]";case X:return i;case H:return "[object WeakMap]"}return e});var xt=ct(function(){return arguments}())?ct:function(t){return Lt(t)&&P.call(t,"callee")&&!D.call(t,"callee")},Ct=Array.isArray;var Et=B||function(){return !1};function Mt(t){if(!It(t))return !1;var e=ut(t);return "[object Function]"==e||"[object GeneratorFunction]"==e||"[object AsyncFunction]"==e||"[object Proxy]"==e}function wt(t){return "number"==typeof t&&t>-1&&t%1==0&&t<=9007199254740991}function It(t){var e=typeof t;return null!=t&&("object"==e||"function"==e)}function Lt(t){return null!=t&&"object"==typeof t}var Pt=v?function(t){return function(e){return t(e)}}(v):function(t){return Lt(t)&&wt(t.length)&&!!u[ut(t)]};function Ft(t){return null!=(e=t)&&wt(e.length)&&!Mt(e)?at(t):pt(t);var e;}t.exports=function(t,e){return lt(t,e)};}));var ve={Polygon:ft,LineString:pt,Point:dt,MultiPolygon:yt,MultiLineString:yt,MultiPoint:yt};function me(t,e){return e.modes=j,e.getFeatureIdsAt=function(e){return nt.click({point:e},null,t).map((function(t){return t.properties.id}))},e.getSelectedIds=function(){return t.store.getSelectedIds()},e.getSelected=function(){return {type:P,features:t.store.getSelectedIds().map((function(e){return t.store.get(e)})).map((function(t){return t.toGeoJSON()}))}},e.getSelectedPoints=function(){return {type:P,features:t.store.getSelectedCoordinates().map((function(t){return {type:M,properties:{},geometry:{type:L,coordinates:t.coordinates}}}))}},e.set=function(n){if(void 0===n.type||n.type!==P||!Array.isArray(n.features))throw new Error("Invalid FeatureCollection");var o=t.store.createRenderBatch(),r=t.store.getAllIds().slice(),i=e.add(n),a=new tt(i);return (r=r.filter((function(t){return !a.has(t)}))).length&&e.delete(r),o(),i},e.add=function(e){var n=JSON.parse(JSON.stringify(zt(e))).features.map((function(e){if(e.id=e.id||ct(),null===e.geometry)throw new Error("Invalid geometry: null");if(void 0===t.store.get(e.id)||t.store.get(e.id).type!==e.geometry.type){var n=ve[e.geometry.type];if(void 0===n)throw new Error("Invalid geometry type: "+e.geometry.type+".");var o=new n(t,e);t.store.add(o);}else {var r=t.store.get(e.id);r.properties=e.properties,ye(r.getCoordinates(),e.geometry.coordinates)||r.incomingCoords(e.geometry.coordinates);}return e.id}));return t.store.render(),n},e.get=function(e){var n=t.store.get(e);if(n)return n.toGeoJSON()},e.getAll=function(){return {type:P,features:t.store.getAll().map((function(t){return t.toGeoJSON()}))}},e.delete=function(n){return t.store.delete(n,{silent:!0}),e.getMode()!==j.DIRECT_SELECT||t.store.getSelectedIds().length?t.store.render():t.events.changeMode(j.SIMPLE_SELECT,void 0,{silent:!0}),e},e.deleteAll=function(){return t.store.delete(t.store.getAllIds(),{silent:!0}),e.getMode()===j.DIRECT_SELECT?t.events.changeMode(j.SIMPLE_SELECT,void 0,{silent:!0}):t.store.render(),e},e.changeMode=function(n,o){return void 0===o&&(o={}),n===j.SIMPLE_SELECT&&e.getMode()===j.SIMPLE_SELECT?(r=o.featureIds||[],i=t.store.getSelectedIds(),r.length===i.length&&JSON.stringify(r.map((function(t){return t})).sort())===JSON.stringify(i.map((function(t){return t})).sort())||(t.store.setSelected(o.featureIds,{silent:!0}),t.store.render()),e):(n===j.DIRECT_SELECT&&e.getMode()===j.DIRECT_SELECT&&o.featureId===t.store.getSelectedIds()[0]||t.events.changeMode(n,o,{silent:!0}),e);var r,i;},e.getMode=function(){return t.events.getMode()},e.trash=function(){return t.events.trash({silent:!0}),e},e.combineFeatures=function(){return t.events.combineFeatures({silent:!0}),e},e.uncombineFeatures=function(){return t.events.uncombineFeatures({silent:!0}),e},e.setFeatureProperty=function(n,o,r){return t.store.setFeatureProperty(n,o,r),e},e}var be=function(t,e){var n={options:t=function(t){void 0===t&&(t={});var e=Mt(t);return t.controls||(e.controls={}),!1===t.displayControlsDefault?e.controls=Mt(he,t.controls):e.controls=Mt(fe,t.controls),(e=Mt(pe,e)).styles=ge(e.styles,"cold").concat(ge(e.styles,"hot")),e}(t)};e=me(n,e),n.api=e;var o=Lt(n);return e.onAdd=o.onAdd,e.onRemove=o.onRemove,e.types=E,e.options=t,e};function _e(t){be(t,this);}return _e.modes=de,_e}));
-
-    });
-
     /* src\components\map\Map.svelte generated by Svelte v3.49.0 */
 
     const { Object: Object_1$1, console: console_1$4 } = globals;
+
     const file$b = "src\\components\\map\\Map.svelte";
 
     function create_fragment$c(ctx) {
@@ -1420,9 +1409,9 @@ var app = (function () {
     			div0 = element("div");
     			attr_dev(div0, "class", "h-full rounded-lg");
     			attr_dev(div0, "id", "map");
-    			add_location(div0, file$b, 385, 44, 10928);
+    			add_location(div0, file$b, 382, 44, 10890);
     			attr_dev(div1, "class", "h-96 md:h-full scale-in-center");
-    			add_location(div1, file$b, 385, 0, 10884);
+    			add_location(div1, file$b, 382, 0, 10846);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1460,6 +1449,7 @@ var app = (function () {
     	let { gpsData } = $$props;
     	let { gpsFilters } = $$props;
     	let { selectedMenu } = $$props;
+    	let { isReadyForStyleSwitching } = $$props;
     	let map = null;
     	let isInitialDataLoaded = false;
     	const smallPopup = new mapboxgl.Popup();
@@ -1524,7 +1514,7 @@ var app = (function () {
     			addTerrainLayer();
 
     			addBuildingLayer(BuildingsElement);
-    			$$invalidate(8, isInitialDataLoaded = true);
+    			$$invalidate(9, isInitialDataLoaded = true);
     		} catch(e) {
     			console.error(e);
     		}
@@ -1716,7 +1706,7 @@ var app = (function () {
 
     	//Switch the map style only if the map exists and the map is ready for switching styles
     	const switchStyle = () => {
-    		if (map === null) return;
+    		if (map === null || isReadyForStyleSwitching === false) return;
 
     		try {
     			map.setStyle("mapbox://styles/mapbox/" + mapStyle);
@@ -1786,7 +1776,7 @@ var app = (function () {
     	onMount(async () => {
     		mapboxgl.accessToken = "pk.eyJ1IjoiY2FuYWxlYWwiLCJhIjoiY2t6NmgzdGd0MTBhcTJ3bXprNjM1a3NsbiJ9.umUsk2Ky68kLBFUa6PeAxA";
 
-    		$$invalidate(7, map = new mapboxgl.Map({
+    		$$invalidate(8, map = new mapboxgl.Map({
     				center: cityDetails.center,
     				zoom: cityDetails.zoom,
     				pitch: cityDetails.pitch,
@@ -1834,7 +1824,7 @@ var app = (function () {
     				map.removeSource(layerList[i]["sourceName"]);
     			}
 
-    			$$invalidate(7, map = null);
+    			$$invalidate(8, map = null);
     		} catch(e) {
     			
     		}
@@ -1847,7 +1837,8 @@ var app = (function () {
     		'pointOfInterest',
     		'gpsData',
     		'gpsFilters',
-    		'selectedMenu'
+    		'selectedMenu',
+    		'isReadyForStyleSwitching'
     	];
 
     	Object_1$1.keys($$props).forEach(key => {
@@ -1862,6 +1853,7 @@ var app = (function () {
     		if ('gpsData' in $$props) $$invalidate(4, gpsData = $$props.gpsData);
     		if ('gpsFilters' in $$props) $$invalidate(5, gpsFilters = $$props.gpsFilters);
     		if ('selectedMenu' in $$props) $$invalidate(6, selectedMenu = $$props.selectedMenu);
+    		if ('isReadyForStyleSwitching' in $$props) $$invalidate(7, isReadyForStyleSwitching = $$props.isReadyForStyleSwitching);
     	};
 
     	$$self.$capture_state = () => ({
@@ -1870,7 +1862,6 @@ var app = (function () {
     		getObjectsWhereKeyEqualsValue,
     		removeObjectWhereValueEqualsString,
     		checkIfElementExists,
-    		MapboxDraw: mapboxGlDraw,
     		layerList,
     		mapStyle,
     		cityDetails,
@@ -1878,6 +1869,7 @@ var app = (function () {
     		gpsData,
     		gpsFilters,
     		selectedMenu,
+    		isReadyForStyleSwitching,
     		map,
     		isInitialDataLoaded,
     		smallPopup,
@@ -1907,8 +1899,9 @@ var app = (function () {
     		if ('gpsData' in $$props) $$invalidate(4, gpsData = $$props.gpsData);
     		if ('gpsFilters' in $$props) $$invalidate(5, gpsFilters = $$props.gpsFilters);
     		if ('selectedMenu' in $$props) $$invalidate(6, selectedMenu = $$props.selectedMenu);
-    		if ('map' in $$props) $$invalidate(7, map = $$props.map);
-    		if ('isInitialDataLoaded' in $$props) $$invalidate(8, isInitialDataLoaded = $$props.isInitialDataLoaded);
+    		if ('isReadyForStyleSwitching' in $$props) $$invalidate(7, isReadyForStyleSwitching = $$props.isReadyForStyleSwitching);
+    		if ('map' in $$props) $$invalidate(8, map = $$props.map);
+    		if ('isInitialDataLoaded' in $$props) $$invalidate(9, isInitialDataLoaded = $$props.isInitialDataLoaded);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -1916,15 +1909,15 @@ var app = (function () {
     	}
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty & /*map, selectedMenu*/ 192) {
+    		if ($$self.$$.dirty & /*map, selectedMenu*/ 320) {
     			map && selectedMenu !== null && resizeMap();
     		}
 
-    		if ($$self.$$.dirty & /*map, mapStyle, isInitialDataLoaded*/ 388) {
+    		if ($$self.$$.dirty & /*map, mapStyle, isInitialDataLoaded*/ 772) {
     			map && mapStyle && isInitialDataLoaded && switchStyle();
     		}
 
-    		if ($$self.$$.dirty & /*map, gpsData, isInitialDataLoaded*/ 400) {
+    		if ($$self.$$.dirty & /*map, gpsData, isInitialDataLoaded*/ 784) {
     			map && gpsData && isInitialDataLoaded && addNewDynamicGPS();
     		}
     	};
@@ -1937,6 +1930,7 @@ var app = (function () {
     		gpsData,
     		gpsFilters,
     		selectedMenu,
+    		isReadyForStyleSwitching,
     		map,
     		isInitialDataLoaded
     	];
@@ -1953,7 +1947,8 @@ var app = (function () {
     			pointOfInterest: 1,
     			gpsData: 4,
     			gpsFilters: 5,
-    			selectedMenu: 6
+    			selectedMenu: 6,
+    			isReadyForStyleSwitching: 7
     		});
 
     		dispatch_dev("SvelteRegisterComponent", {
@@ -1992,6 +1987,10 @@ var app = (function () {
 
     		if (/*selectedMenu*/ ctx[6] === undefined && !('selectedMenu' in props)) {
     			console_1$4.warn("<Map> was created without expected prop 'selectedMenu'");
+    		}
+
+    		if (/*isReadyForStyleSwitching*/ ctx[7] === undefined && !('isReadyForStyleSwitching' in props)) {
+    			console_1$4.warn("<Map> was created without expected prop 'isReadyForStyleSwitching'");
     		}
     	}
 
@@ -2048,6 +2047,14 @@ var app = (function () {
     	}
 
     	set selectedMenu(value) {
+    		throw new Error("<Map>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get isReadyForStyleSwitching() {
+    		throw new Error("<Map>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set isReadyForStyleSwitching(value) {
     		throw new Error("<Map>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
@@ -2999,13 +3006,13 @@ var app = (function () {
 
     function get_each_context_1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[7] = list[i];
+    	child_ctx[8] = list[i];
     	return child_ctx;
     }
 
     function get_each_context$5(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[7] = list[i];
+    	child_ctx[8] = list[i];
     	return child_ctx;
     }
 
@@ -3097,7 +3104,7 @@ var app = (function () {
     			}
 
     			attr_dev(div, "class", "flex flex-col");
-    			add_location(div, file$7, 30, 2, 1341);
+    			add_location(div, file$7, 30, 2, 1411);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -3155,14 +3162,14 @@ var app = (function () {
     	let input_checked_value;
     	let t0;
     	let label;
-    	let t1_value = /*mapStyleItem*/ ctx[7].name + "";
+    	let t1_value = /*mapStyleItem*/ ctx[8].name + "";
     	let t1;
     	let t2;
     	let mounted;
     	let dispose;
 
     	function click_handler_1() {
-    		return /*click_handler_1*/ ctx[6](/*mapStyleItem*/ ctx[7]);
+    		return /*click_handler_1*/ ctx[7](/*mapStyleItem*/ ctx[8]);
     	}
 
     	const block = {
@@ -3173,16 +3180,16 @@ var app = (function () {
     			label = element("label");
     			t1 = text(t1_value);
     			t2 = space();
-    			attr_dev(input, "id", /*mapStyleItem*/ ctx[7].name);
+    			attr_dev(input, "id", /*mapStyleItem*/ ctx[8].name);
     			attr_dev(input, "type", "radio");
-    			input.value = /*mapStyleItem*/ ctx[7].id;
-    			input.checked = input_checked_value = /*mapStyle*/ ctx[0] === /*mapStyleItem*/ ctx[7].id;
-    			add_location(input, file$7, 40, 4, 1769);
+    			input.value = /*mapStyleItem*/ ctx[8].id;
+    			input.checked = input_checked_value = /*mapStyle*/ ctx[0] === /*mapStyleItem*/ ctx[8].id;
+    			add_location(input, file$7, 40, 4, 1839);
     			attr_dev(label, "class", "ml-2");
-    			attr_dev(label, "for", /*mapStyleItem*/ ctx[7].name);
-    			add_location(label, file$7, 41, 4, 1929);
-    			attr_dev(div, "key", /*mapStyleItem*/ ctx[7].id);
-    			add_location(div, file$7, 39, 3, 1736);
+    			attr_dev(label, "for", /*mapStyleItem*/ ctx[8].name);
+    			add_location(label, file$7, 41, 4, 1999);
+    			attr_dev(div, "key", /*mapStyleItem*/ ctx[8].id);
+    			add_location(div, file$7, 39, 3, 1806);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -3200,7 +3207,7 @@ var app = (function () {
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
 
-    			if (dirty & /*mapStyle*/ 1 && input_checked_value !== (input_checked_value = /*mapStyle*/ ctx[0] === /*mapStyleItem*/ ctx[7].id)) {
+    			if (dirty & /*mapStyle*/ 1 && input_checked_value !== (input_checked_value = /*mapStyle*/ ctx[0] === /*mapStyleItem*/ ctx[8].id)) {
     				prop_dev(input, "checked", input_checked_value);
     			}
     		},
@@ -3232,7 +3239,7 @@ var app = (function () {
     	let dispose;
 
     	function click_handler() {
-    		return /*click_handler*/ ctx[5](/*mapStyleItem*/ ctx[7]);
+    		return /*click_handler*/ ctx[6](/*mapStyleItem*/ ctx[8]);
     	}
 
     	const block = {
@@ -3240,17 +3247,17 @@ var app = (function () {
     			button = element("button");
     			img = element("img");
     			attr_dev(img, "class", "mapstyle-img");
-    			if (!src_url_equal(img.src, img_src_value = /*mapStyleItem*/ ctx[7].img)) attr_dev(img, "src", img_src_value);
+    			if (!src_url_equal(img.src, img_src_value = /*mapStyleItem*/ ctx[8].img)) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "height", "100");
     			attr_dev(img, "width", "100");
     			attr_dev(img, "alt", "");
-    			add_location(img, file$7, 33, 6, 1561);
+    			add_location(img, file$7, 33, 6, 1631);
 
-    			attr_dev(button, "class", button_class_value = `map-style my-1 ${/*mapStyle*/ ctx[0] === /*mapStyleItem*/ ctx[7].id
+    			attr_dev(button, "class", button_class_value = `map-style my-1 ${/*mapStyle*/ ctx[0] === /*mapStyleItem*/ ctx[8].id
 			? "map-style-selected"
 			: ""}`);
 
-    			add_location(button, file$7, 32, 4, 1415);
+    			add_location(button, file$7, 32, 4, 1485);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, button, anchor);
@@ -3264,7 +3271,7 @@ var app = (function () {
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
 
-    			if (dirty & /*mapStyle*/ 1 && button_class_value !== (button_class_value = `map-style my-1 ${/*mapStyle*/ ctx[0] === /*mapStyleItem*/ ctx[7].id
+    			if (dirty & /*mapStyle*/ 1 && button_class_value !== (button_class_value = `map-style my-1 ${/*mapStyle*/ ctx[0] === /*mapStyleItem*/ ctx[8].id
 			? "map-style-selected"
 			: ""}`)) {
     				attr_dev(button, "class", button_class_value);
@@ -3318,13 +3325,13 @@ var app = (function () {
     			t2 = space();
     			if_block.c();
     			attr_dev(i, "class", i_class_value = `fa-solid ${/*expandMenu*/ ctx[1] ? "fa-minimize" : "fa-expand"}`);
-    			add_location(i, file$7, 25, 67, 1184);
+    			add_location(i, file$7, 25, 67, 1254);
     			attr_dev(button, "class", "card-btn my-1 text-center");
-    			add_location(button, file$7, 25, 1, 1118);
+    			add_location(button, file$7, 25, 1, 1188);
     			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file$7, 27, 1, 1267);
+    			add_location(p, file$7, 27, 1, 1337);
     			attr_dev(section, "class", "card h-fit scale-in-center");
-    			add_location(section, file$7, 24, 0, 1071);
+    			add_location(section, file$7, 24, 0, 1141);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -3386,6 +3393,7 @@ var app = (function () {
     	validate_slots('MapStyleSelector', slots, []);
     	let { mapStyle } = $$props;
     	let expandMenu = false;
+    	let { isReadyForStyleSwitching } = $$props;
 
     	const mapStyleList = [
     		{
@@ -3418,6 +3426,7 @@ var app = (function () {
     	const toggleStyle = mapStyleItem => {
     		try {
     			$$invalidate(0, mapStyle = mapStyleItem);
+    			$$invalidate(5, isReadyForStyleSwitching = true);
     		} catch(e) {
     			
     		}
@@ -3427,7 +3436,7 @@ var app = (function () {
     		$$invalidate(1, expandMenu = !expandMenu);
     	};
 
-    	const writable_props = ['mapStyle'];
+    	const writable_props = ['mapStyle', 'isReadyForStyleSwitching'];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<MapStyleSelector> was created with unknown prop '${key}'`);
@@ -3438,11 +3447,13 @@ var app = (function () {
 
     	$$self.$$set = $$props => {
     		if ('mapStyle' in $$props) $$invalidate(0, mapStyle = $$props.mapStyle);
+    		if ('isReadyForStyleSwitching' in $$props) $$invalidate(5, isReadyForStyleSwitching = $$props.isReadyForStyleSwitching);
     	};
 
     	$$self.$capture_state = () => ({
     		mapStyle,
     		expandMenu,
+    		isReadyForStyleSwitching,
     		mapStyleList,
     		toggleStyle,
     		toggleMenu
@@ -3451,6 +3462,7 @@ var app = (function () {
     	$$self.$inject_state = $$props => {
     		if ('mapStyle' in $$props) $$invalidate(0, mapStyle = $$props.mapStyle);
     		if ('expandMenu' in $$props) $$invalidate(1, expandMenu = $$props.expandMenu);
+    		if ('isReadyForStyleSwitching' in $$props) $$invalidate(5, isReadyForStyleSwitching = $$props.isReadyForStyleSwitching);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -3463,6 +3475,7 @@ var app = (function () {
     		mapStyleList,
     		toggleStyle,
     		toggleMenu,
+    		isReadyForStyleSwitching,
     		click_handler,
     		click_handler_1
     	];
@@ -3471,7 +3484,7 @@ var app = (function () {
     class MapStyleSelector extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$8, create_fragment$8, safe_not_equal, { mapStyle: 0 });
+    		init(this, options, instance$8, create_fragment$8, safe_not_equal, { mapStyle: 0, isReadyForStyleSwitching: 5 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -3486,6 +3499,10 @@ var app = (function () {
     		if (/*mapStyle*/ ctx[0] === undefined && !('mapStyle' in props)) {
     			console.warn("<MapStyleSelector> was created without expected prop 'mapStyle'");
     		}
+
+    		if (/*isReadyForStyleSwitching*/ ctx[5] === undefined && !('isReadyForStyleSwitching' in props)) {
+    			console.warn("<MapStyleSelector> was created without expected prop 'isReadyForStyleSwitching'");
+    		}
     	}
 
     	get mapStyle() {
@@ -3493,6 +3510,14 @@ var app = (function () {
     	}
 
     	set mapStyle(value) {
+    		throw new Error("<MapStyleSelector>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get isReadyForStyleSwitching() {
+    		throw new Error("<MapStyleSelector>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set isReadyForStyleSwitching(value) {
     		throw new Error("<MapStyleSelector>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
@@ -87179,13 +87204,13 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "Signin with Google";
     			attr_dev(button, "class", "card-btn card-btn-blue rounded-lg block w-full");
-    			add_location(button, file, 145, 4, 4591);
+    			add_location(button, file, 145, 4, 4689);
     			attr_dev(section0, "class", "h-full rounded-lg shadow-xl p-4 text-sm");
-    			add_location(section0, file, 144, 3, 4528);
+    			add_location(section0, file, 144, 3, 4626);
     			attr_dev(div, "class", "col-span-1 md:col-span-3 row-span-1");
-    			add_location(div, file, 143, 2, 4474);
+    			add_location(div, file, 143, 2, 4572);
     			attr_dev(section1, "class", "grid grid-cols-1 md:grid-cols-12 grid-rows-6 gap-4 py-4 px-4 h-fit");
-    			add_location(section1, file, 142, 1, 4384);
+    			add_location(section1, file, 142, 1, 4482);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section1, anchor);
@@ -87194,7 +87219,7 @@ var app = (function () {
     			append_dev(section0, button);
 
     			if (!mounted) {
-    				dispose = listen_dev(button, "click", /*login*/ ctx[11], false, false, false);
+    				dispose = listen_dev(button, "click", /*login*/ ctx[12], false, false, false);
     				mounted = true;
     			}
     		},
@@ -87266,6 +87291,7 @@ var app = (function () {
     	let map;
     	let updating_gpsFilters_1;
     	let updating_gpsData_2;
+    	let updating_isReadyForStyleSwitching;
     	let updating_layerList_1;
     	let updating_mapStyle;
     	let updating_pointOfInterest_1;
@@ -87274,6 +87300,7 @@ var app = (function () {
     	let div8;
     	let mapstyleselector;
     	let updating_mapStyle_1;
+    	let updating_isReadyForStyleSwitching_1;
     	let t12;
     	let t13;
     	let t14;
@@ -87283,21 +87310,21 @@ var app = (function () {
     	let dispose;
 
     	function navbar_selectedMenu_binding(value) {
-    		/*navbar_selectedMenu_binding*/ ctx[15](value);
+    		/*navbar_selectedMenu_binding*/ ctx[16](value);
     	}
 
     	function navbar_menuComponents_binding(value) {
-    		/*navbar_menuComponents_binding*/ ctx[16](value);
+    		/*navbar_menuComponents_binding*/ ctx[17](value);
     	}
 
     	let navbar_props = {};
 
-    	if (/*selectedMenu*/ ctx[6] !== void 0) {
-    		navbar_props.selectedMenu = /*selectedMenu*/ ctx[6];
+    	if (/*selectedMenu*/ ctx[7] !== void 0) {
+    		navbar_props.selectedMenu = /*selectedMenu*/ ctx[7];
     	}
 
-    	if (/*menuComponents*/ ctx[5] !== void 0) {
-    		navbar_props.menuComponents = /*menuComponents*/ ctx[5];
+    	if (/*menuComponents*/ ctx[6] !== void 0) {
+    		navbar_props.menuComponents = /*menuComponents*/ ctx[6];
     	}
 
     	navbar = new Navbar({ props: navbar_props, $$inline: true });
@@ -87305,60 +87332,60 @@ var app = (function () {
     	binding_callbacks.push(() => bind$1(navbar, 'menuComponents', navbar_menuComponents_binding));
 
     	function layers_layerList_binding(value) {
-    		/*layers_layerList_binding*/ ctx[17](value);
+    		/*layers_layerList_binding*/ ctx[18](value);
     	}
 
     	let layers_props = {};
 
-    	if (/*layerList*/ ctx[2] !== void 0) {
-    		layers_props.layerList = /*layerList*/ ctx[2];
+    	if (/*layerList*/ ctx[3] !== void 0) {
+    		layers_props.layerList = /*layerList*/ ctx[3];
     	}
 
     	layers = new Layers({ props: layers_props, $$inline: true });
     	binding_callbacks.push(() => bind$1(layers, 'layerList', layers_layerList_binding));
 
     	function datetime_dateTimeDictionary_binding(value) {
-    		/*datetime_dateTimeDictionary_binding*/ ctx[18](value);
+    		/*datetime_dateTimeDictionary_binding*/ ctx[19](value);
     	}
 
     	let datetime_props = {};
 
-    	if (/*dateTimeDictionary*/ ctx[3] !== void 0) {
-    		datetime_props.dateTimeDictionary = /*dateTimeDictionary*/ ctx[3];
+    	if (/*dateTimeDictionary*/ ctx[4] !== void 0) {
+    		datetime_props.dateTimeDictionary = /*dateTimeDictionary*/ ctx[4];
     	}
 
     	datetime = new DateTime({ props: datetime_props, $$inline: true });
     	binding_callbacks.push(() => bind$1(datetime, 'dateTimeDictionary', datetime_dateTimeDictionary_binding));
 
     	function streetview_pointOfInterest_binding(value) {
-    		/*streetview_pointOfInterest_binding*/ ctx[19](value);
+    		/*streetview_pointOfInterest_binding*/ ctx[20](value);
     	}
 
     	let streetview_props = {};
 
-    	if (/*pointOfInterest*/ ctx[1] !== void 0) {
-    		streetview_props.pointOfInterest = /*pointOfInterest*/ ctx[1];
+    	if (/*pointOfInterest*/ ctx[2] !== void 0) {
+    		streetview_props.pointOfInterest = /*pointOfInterest*/ ctx[2];
     	}
 
     	streetview = new StreetView({ props: streetview_props, $$inline: true });
     	binding_callbacks.push(() => bind$1(streetview, 'pointOfInterest', streetview_pointOfInterest_binding));
 
     	function filters_gpsFilters_binding(value) {
-    		/*filters_gpsFilters_binding*/ ctx[20](value);
+    		/*filters_gpsFilters_binding*/ ctx[21](value);
     	}
 
     	function filters_gpsData_binding(value) {
-    		/*filters_gpsData_binding*/ ctx[21](value);
+    		/*filters_gpsData_binding*/ ctx[22](value);
     	}
 
     	let filters_props = {};
 
-    	if (/*gpsFilters*/ ctx[10] !== void 0) {
-    		filters_props.gpsFilters = /*gpsFilters*/ ctx[10];
+    	if (/*gpsFilters*/ ctx[11] !== void 0) {
+    		filters_props.gpsFilters = /*gpsFilters*/ ctx[11];
     	}
 
-    	if (/*gpsData*/ ctx[7] !== void 0) {
-    		filters_props.gpsData = /*gpsData*/ ctx[7];
+    	if (/*gpsData*/ ctx[8] !== void 0) {
+    		filters_props.gpsData = /*gpsData*/ ctx[8];
     	}
 
     	filters = new Filters({ props: filters_props, $$inline: true });
@@ -87366,26 +87393,26 @@ var app = (function () {
     	binding_callbacks.push(() => bind$1(filters, 'gpsData', filters_gpsData_binding));
 
     	function chartview_gpsData_binding(value) {
-    		/*chartview_gpsData_binding*/ ctx[22](value);
+    		/*chartview_gpsData_binding*/ ctx[23](value);
     	}
 
     	let chartview_props = {};
 
-    	if (/*gpsData*/ ctx[7] !== void 0) {
-    		chartview_props.gpsData = /*gpsData*/ ctx[7];
+    	if (/*gpsData*/ ctx[8] !== void 0) {
+    		chartview_props.gpsData = /*gpsData*/ ctx[8];
     	}
 
     	chartview = new Chart({ props: chartview_props, $$inline: true });
     	binding_callbacks.push(() => bind$1(chartview, 'gpsData', chartview_gpsData_binding));
 
     	function searchdetails_dateTimeDictionary_binding(value) {
-    		/*searchdetails_dateTimeDictionary_binding*/ ctx[23](value);
+    		/*searchdetails_dateTimeDictionary_binding*/ ctx[24](value);
     	}
 
-    	let searchdetails_props = { fetchData: /*fetchData*/ ctx[14] };
+    	let searchdetails_props = { fetchData: /*fetchData*/ ctx[15] };
 
-    	if (/*dateTimeDictionary*/ ctx[3] !== void 0) {
-    		searchdetails_props.dateTimeDictionary = /*dateTimeDictionary*/ ctx[3];
+    	if (/*dateTimeDictionary*/ ctx[4] !== void 0) {
+    		searchdetails_props.dateTimeDictionary = /*dateTimeDictionary*/ ctx[4];
     	}
 
     	searchdetails = new SearchDetails({
@@ -87396,71 +87423,88 @@ var app = (function () {
     	binding_callbacks.push(() => bind$1(searchdetails, 'dateTimeDictionary', searchdetails_dateTimeDictionary_binding));
 
     	function map_gpsFilters_binding(value) {
-    		/*map_gpsFilters_binding*/ ctx[24](value);
+    		/*map_gpsFilters_binding*/ ctx[25](value);
     	}
 
     	function map_gpsData_binding(value) {
-    		/*map_gpsData_binding*/ ctx[25](value);
+    		/*map_gpsData_binding*/ ctx[26](value);
+    	}
+
+    	function map_isReadyForStyleSwitching_binding(value) {
+    		/*map_isReadyForStyleSwitching_binding*/ ctx[27](value);
     	}
 
     	function map_layerList_binding(value) {
-    		/*map_layerList_binding*/ ctx[26](value);
+    		/*map_layerList_binding*/ ctx[28](value);
     	}
 
     	function map_mapStyle_binding(value) {
-    		/*map_mapStyle_binding*/ ctx[27](value);
+    		/*map_mapStyle_binding*/ ctx[29](value);
     	}
 
     	function map_pointOfInterest_binding(value) {
-    		/*map_pointOfInterest_binding*/ ctx[28](value);
+    		/*map_pointOfInterest_binding*/ ctx[30](value);
     	}
 
     	function map_selectedMenu_binding(value) {
-    		/*map_selectedMenu_binding*/ ctx[29](value);
+    		/*map_selectedMenu_binding*/ ctx[31](value);
     	}
 
-    	let map_props = { cityDetails: /*cityDetails*/ ctx[13] };
+    	let map_props = { cityDetails: /*cityDetails*/ ctx[14] };
 
-    	if (/*gpsFilters*/ ctx[10] !== void 0) {
-    		map_props.gpsFilters = /*gpsFilters*/ ctx[10];
+    	if (/*gpsFilters*/ ctx[11] !== void 0) {
+    		map_props.gpsFilters = /*gpsFilters*/ ctx[11];
     	}
 
-    	if (/*gpsData*/ ctx[7] !== void 0) {
-    		map_props.gpsData = /*gpsData*/ ctx[7];
+    	if (/*gpsData*/ ctx[8] !== void 0) {
+    		map_props.gpsData = /*gpsData*/ ctx[8];
     	}
 
-    	if (/*layerList*/ ctx[2] !== void 0) {
-    		map_props.layerList = /*layerList*/ ctx[2];
+    	if (/*isReadyForStyleSwitching*/ ctx[1] !== void 0) {
+    		map_props.isReadyForStyleSwitching = /*isReadyForStyleSwitching*/ ctx[1];
     	}
 
-    	if (/*mapStyle*/ ctx[4] !== void 0) {
-    		map_props.mapStyle = /*mapStyle*/ ctx[4];
+    	if (/*layerList*/ ctx[3] !== void 0) {
+    		map_props.layerList = /*layerList*/ ctx[3];
     	}
 
-    	if (/*pointOfInterest*/ ctx[1] !== void 0) {
-    		map_props.pointOfInterest = /*pointOfInterest*/ ctx[1];
+    	if (/*mapStyle*/ ctx[5] !== void 0) {
+    		map_props.mapStyle = /*mapStyle*/ ctx[5];
     	}
 
-    	if (/*selectedMenu*/ ctx[6] !== void 0) {
-    		map_props.selectedMenu = /*selectedMenu*/ ctx[6];
+    	if (/*pointOfInterest*/ ctx[2] !== void 0) {
+    		map_props.pointOfInterest = /*pointOfInterest*/ ctx[2];
+    	}
+
+    	if (/*selectedMenu*/ ctx[7] !== void 0) {
+    		map_props.selectedMenu = /*selectedMenu*/ ctx[7];
     	}
 
     	map = new Map$1({ props: map_props, $$inline: true });
     	binding_callbacks.push(() => bind$1(map, 'gpsFilters', map_gpsFilters_binding));
     	binding_callbacks.push(() => bind$1(map, 'gpsData', map_gpsData_binding));
+    	binding_callbacks.push(() => bind$1(map, 'isReadyForStyleSwitching', map_isReadyForStyleSwitching_binding));
     	binding_callbacks.push(() => bind$1(map, 'layerList', map_layerList_binding));
     	binding_callbacks.push(() => bind$1(map, 'mapStyle', map_mapStyle_binding));
     	binding_callbacks.push(() => bind$1(map, 'pointOfInterest', map_pointOfInterest_binding));
     	binding_callbacks.push(() => bind$1(map, 'selectedMenu', map_selectedMenu_binding));
 
     	function mapstyleselector_mapStyle_binding(value) {
-    		/*mapstyleselector_mapStyle_binding*/ ctx[30](value);
+    		/*mapstyleselector_mapStyle_binding*/ ctx[32](value);
+    	}
+
+    	function mapstyleselector_isReadyForStyleSwitching_binding(value) {
+    		/*mapstyleselector_isReadyForStyleSwitching_binding*/ ctx[33](value);
     	}
 
     	let mapstyleselector_props = {};
 
-    	if (/*mapStyle*/ ctx[4] !== void 0) {
-    		mapstyleselector_props.mapStyle = /*mapStyle*/ ctx[4];
+    	if (/*mapStyle*/ ctx[5] !== void 0) {
+    		mapstyleselector_props.mapStyle = /*mapStyle*/ ctx[5];
+    	}
+
+    	if (/*isReadyForStyleSwitching*/ ctx[1] !== void 0) {
+    		mapstyleselector_props.isReadyForStyleSwitching = /*isReadyForStyleSwitching*/ ctx[1];
     	}
 
     	mapstyleselector = new MapStyleSelector({
@@ -87469,8 +87513,9 @@ var app = (function () {
     		});
 
     	binding_callbacks.push(() => bind$1(mapstyleselector, 'mapStyle', mapstyleselector_mapStyle_binding));
-    	let if_block0 = /*isLoading*/ ctx[8] === true && create_if_block_2(ctx);
-    	let if_block1 = /*isError*/ ctx[9] === true && create_if_block_1(ctx);
+    	binding_callbacks.push(() => bind$1(mapstyleselector, 'isReadyForStyleSwitching', mapstyleselector_isReadyForStyleSwitching_binding));
+    	let if_block0 = /*isLoading*/ ctx[9] === true && create_if_block_2(ctx);
+    	let if_block1 = /*isError*/ ctx[10] === true && create_if_block_1(ctx);
     	footer = new Footer({ $$inline: true });
 
     	const block = {
@@ -87517,33 +87562,33 @@ var app = (function () {
     			t14 = space();
     			create_component(footer.$$.fragment);
     			attr_dev(div0, "class", "col-span-1 md:col-span-1 row-span-1");
-    			add_location(div0, file, 88, 3, 2621);
-    			attr_dev(div1, "class", div1_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[6] === 0 ? "" : "hidden"}`);
-    			add_location(div1, file, 92, 3, 2719);
-    			attr_dev(div2, "class", div2_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[6] === 1 ? "" : "hidden"}`);
-    			add_location(div2, file, 96, 3, 2868);
-    			attr_dev(div3, "class", div3_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[6] === 2 ? "" : "hidden"}`);
-    			add_location(div3, file, 100, 3, 3016);
-    			attr_dev(div4, "class", div4_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[6] === 3 ? "" : "hidden"}`);
-    			add_location(div4, file, 104, 3, 3169);
+    			add_location(div0, file, 88, 3, 2659);
+    			attr_dev(div1, "class", div1_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[7] === 0 ? "" : "hidden"}`);
+    			add_location(div1, file, 92, 3, 2757);
+    			attr_dev(div2, "class", div2_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[7] === 1 ? "" : "hidden"}`);
+    			add_location(div2, file, 96, 3, 2906);
+    			attr_dev(div3, "class", div3_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[7] === 2 ? "" : "hidden"}`);
+    			add_location(div3, file, 100, 3, 3054);
+    			attr_dev(div4, "class", div4_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[7] === 3 ? "" : "hidden"}`);
+    			add_location(div4, file, 104, 3, 3207);
     			attr_dev(div5, "class", "col-span-1 md:col-span-1 row-span-1");
-    			add_location(div5, file, 108, 3, 3308);
+    			add_location(div5, file, 108, 3, 3346);
     			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file, 114, 5, 3541);
+    			add_location(p, file, 114, 5, 3579);
     			attr_dev(button, "class", "card-btn card-btn-red my-2");
-    			add_location(button, file, 115, 5, 3596);
+    			add_location(button, file, 115, 5, 3634);
     			attr_dev(section0, "class", "card h-fit scale-in-center");
-    			add_location(section0, file, 113, 4, 3490);
+    			add_location(section0, file, 113, 4, 3528);
     			attr_dev(div6, "class", "col-span-1 md:col-span-1 row-span-1");
-    			add_location(div6, file, 112, 3, 3435);
+    			add_location(div6, file, 112, 3, 3473);
     			attr_dev(div7, "class", "col-span-1 md:col-span-3 row-span-6 grid grid-cols-1 md:grid-cols-1 gap-4 h-fit");
-    			add_location(div7, file, 87, 2, 2523);
+    			add_location(div7, file, 87, 2, 2561);
     			attr_dev(div8, "class", "absolute top-1 left-1 ");
-    			add_location(div8, file, 122, 3, 3907);
+    			add_location(div8, file, 122, 3, 3975);
     			attr_dev(div9, "class", "col-span-1 md:col-span-9 row-span-6 relative");
-    			add_location(div9, file, 120, 2, 3720);
+    			add_location(div9, file, 120, 2, 3758);
     			attr_dev(section1, "class", "grid grid-cols-1 md:grid-cols-12 grid-rows-6 gap-4 my-4 px-4 h-fit");
-    			add_location(section1, file, 86, 1, 2433);
+    			add_location(section1, file, 86, 1, 2471);
     		},
     		m: function mount(target, anchor) {
     			mount_component(navbar, target, anchor);
@@ -87588,156 +87633,168 @@ var app = (function () {
     			current = true;
 
     			if (!mounted) {
-    				dispose = listen_dev(button, "click", /*signOut*/ ctx[12], false, false, false);
+    				dispose = listen_dev(button, "click", /*signOut*/ ctx[13], false, false, false);
     				mounted = true;
     			}
     		},
     		p: function update(ctx, dirty) {
     			const navbar_changes = {};
 
-    			if (!updating_selectedMenu && dirty[0] & /*selectedMenu*/ 64) {
+    			if (!updating_selectedMenu && dirty[0] & /*selectedMenu*/ 128) {
     				updating_selectedMenu = true;
-    				navbar_changes.selectedMenu = /*selectedMenu*/ ctx[6];
+    				navbar_changes.selectedMenu = /*selectedMenu*/ ctx[7];
     				add_flush_callback(() => updating_selectedMenu = false);
     			}
 
-    			if (!updating_menuComponents && dirty[0] & /*menuComponents*/ 32) {
+    			if (!updating_menuComponents && dirty[0] & /*menuComponents*/ 64) {
     				updating_menuComponents = true;
-    				navbar_changes.menuComponents = /*menuComponents*/ ctx[5];
+    				navbar_changes.menuComponents = /*menuComponents*/ ctx[6];
     				add_flush_callback(() => updating_menuComponents = false);
     			}
 
     			navbar.$set(navbar_changes);
     			const layers_changes = {};
 
-    			if (!updating_layerList && dirty[0] & /*layerList*/ 4) {
+    			if (!updating_layerList && dirty[0] & /*layerList*/ 8) {
     				updating_layerList = true;
-    				layers_changes.layerList = /*layerList*/ ctx[2];
+    				layers_changes.layerList = /*layerList*/ ctx[3];
     				add_flush_callback(() => updating_layerList = false);
     			}
 
     			layers.$set(layers_changes);
     			const datetime_changes = {};
 
-    			if (!updating_dateTimeDictionary && dirty[0] & /*dateTimeDictionary*/ 8) {
+    			if (!updating_dateTimeDictionary && dirty[0] & /*dateTimeDictionary*/ 16) {
     				updating_dateTimeDictionary = true;
-    				datetime_changes.dateTimeDictionary = /*dateTimeDictionary*/ ctx[3];
+    				datetime_changes.dateTimeDictionary = /*dateTimeDictionary*/ ctx[4];
     				add_flush_callback(() => updating_dateTimeDictionary = false);
     			}
 
     			datetime.$set(datetime_changes);
 
-    			if (!current || dirty[0] & /*selectedMenu*/ 64 && div1_class_value !== (div1_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[6] === 0 ? "" : "hidden"}`)) {
+    			if (!current || dirty[0] & /*selectedMenu*/ 128 && div1_class_value !== (div1_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[7] === 0 ? "" : "hidden"}`)) {
     				attr_dev(div1, "class", div1_class_value);
     			}
 
     			const streetview_changes = {};
 
-    			if (!updating_pointOfInterest && dirty[0] & /*pointOfInterest*/ 2) {
+    			if (!updating_pointOfInterest && dirty[0] & /*pointOfInterest*/ 4) {
     				updating_pointOfInterest = true;
-    				streetview_changes.pointOfInterest = /*pointOfInterest*/ ctx[1];
+    				streetview_changes.pointOfInterest = /*pointOfInterest*/ ctx[2];
     				add_flush_callback(() => updating_pointOfInterest = false);
     			}
 
     			streetview.$set(streetview_changes);
 
-    			if (!current || dirty[0] & /*selectedMenu*/ 64 && div2_class_value !== (div2_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[6] === 1 ? "" : "hidden"}`)) {
+    			if (!current || dirty[0] & /*selectedMenu*/ 128 && div2_class_value !== (div2_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[7] === 1 ? "" : "hidden"}`)) {
     				attr_dev(div2, "class", div2_class_value);
     			}
 
     			const filters_changes = {};
 
-    			if (!updating_gpsFilters && dirty[0] & /*gpsFilters*/ 1024) {
+    			if (!updating_gpsFilters && dirty[0] & /*gpsFilters*/ 2048) {
     				updating_gpsFilters = true;
-    				filters_changes.gpsFilters = /*gpsFilters*/ ctx[10];
+    				filters_changes.gpsFilters = /*gpsFilters*/ ctx[11];
     				add_flush_callback(() => updating_gpsFilters = false);
     			}
 
-    			if (!updating_gpsData && dirty[0] & /*gpsData*/ 128) {
+    			if (!updating_gpsData && dirty[0] & /*gpsData*/ 256) {
     				updating_gpsData = true;
-    				filters_changes.gpsData = /*gpsData*/ ctx[7];
+    				filters_changes.gpsData = /*gpsData*/ ctx[8];
     				add_flush_callback(() => updating_gpsData = false);
     			}
 
     			filters.$set(filters_changes);
 
-    			if (!current || dirty[0] & /*selectedMenu*/ 64 && div3_class_value !== (div3_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[6] === 2 ? "" : "hidden"}`)) {
+    			if (!current || dirty[0] & /*selectedMenu*/ 128 && div3_class_value !== (div3_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[7] === 2 ? "" : "hidden"}`)) {
     				attr_dev(div3, "class", div3_class_value);
     			}
 
     			const chartview_changes = {};
 
-    			if (!updating_gpsData_1 && dirty[0] & /*gpsData*/ 128) {
+    			if (!updating_gpsData_1 && dirty[0] & /*gpsData*/ 256) {
     				updating_gpsData_1 = true;
-    				chartview_changes.gpsData = /*gpsData*/ ctx[7];
+    				chartview_changes.gpsData = /*gpsData*/ ctx[8];
     				add_flush_callback(() => updating_gpsData_1 = false);
     			}
 
     			chartview.$set(chartview_changes);
 
-    			if (!current || dirty[0] & /*selectedMenu*/ 64 && div4_class_value !== (div4_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[6] === 3 ? "" : "hidden"}`)) {
+    			if (!current || dirty[0] & /*selectedMenu*/ 128 && div4_class_value !== (div4_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[7] === 3 ? "" : "hidden"}`)) {
     				attr_dev(div4, "class", div4_class_value);
     			}
 
     			const searchdetails_changes = {};
 
-    			if (!updating_dateTimeDictionary_1 && dirty[0] & /*dateTimeDictionary*/ 8) {
+    			if (!updating_dateTimeDictionary_1 && dirty[0] & /*dateTimeDictionary*/ 16) {
     				updating_dateTimeDictionary_1 = true;
-    				searchdetails_changes.dateTimeDictionary = /*dateTimeDictionary*/ ctx[3];
+    				searchdetails_changes.dateTimeDictionary = /*dateTimeDictionary*/ ctx[4];
     				add_flush_callback(() => updating_dateTimeDictionary_1 = false);
     			}
 
     			searchdetails.$set(searchdetails_changes);
     			const map_changes = {};
 
-    			if (!updating_gpsFilters_1 && dirty[0] & /*gpsFilters*/ 1024) {
+    			if (!updating_gpsFilters_1 && dirty[0] & /*gpsFilters*/ 2048) {
     				updating_gpsFilters_1 = true;
-    				map_changes.gpsFilters = /*gpsFilters*/ ctx[10];
+    				map_changes.gpsFilters = /*gpsFilters*/ ctx[11];
     				add_flush_callback(() => updating_gpsFilters_1 = false);
     			}
 
-    			if (!updating_gpsData_2 && dirty[0] & /*gpsData*/ 128) {
+    			if (!updating_gpsData_2 && dirty[0] & /*gpsData*/ 256) {
     				updating_gpsData_2 = true;
-    				map_changes.gpsData = /*gpsData*/ ctx[7];
+    				map_changes.gpsData = /*gpsData*/ ctx[8];
     				add_flush_callback(() => updating_gpsData_2 = false);
     			}
 
-    			if (!updating_layerList_1 && dirty[0] & /*layerList*/ 4) {
+    			if (!updating_isReadyForStyleSwitching && dirty[0] & /*isReadyForStyleSwitching*/ 2) {
+    				updating_isReadyForStyleSwitching = true;
+    				map_changes.isReadyForStyleSwitching = /*isReadyForStyleSwitching*/ ctx[1];
+    				add_flush_callback(() => updating_isReadyForStyleSwitching = false);
+    			}
+
+    			if (!updating_layerList_1 && dirty[0] & /*layerList*/ 8) {
     				updating_layerList_1 = true;
-    				map_changes.layerList = /*layerList*/ ctx[2];
+    				map_changes.layerList = /*layerList*/ ctx[3];
     				add_flush_callback(() => updating_layerList_1 = false);
     			}
 
-    			if (!updating_mapStyle && dirty[0] & /*mapStyle*/ 16) {
+    			if (!updating_mapStyle && dirty[0] & /*mapStyle*/ 32) {
     				updating_mapStyle = true;
-    				map_changes.mapStyle = /*mapStyle*/ ctx[4];
+    				map_changes.mapStyle = /*mapStyle*/ ctx[5];
     				add_flush_callback(() => updating_mapStyle = false);
     			}
 
-    			if (!updating_pointOfInterest_1 && dirty[0] & /*pointOfInterest*/ 2) {
+    			if (!updating_pointOfInterest_1 && dirty[0] & /*pointOfInterest*/ 4) {
     				updating_pointOfInterest_1 = true;
-    				map_changes.pointOfInterest = /*pointOfInterest*/ ctx[1];
+    				map_changes.pointOfInterest = /*pointOfInterest*/ ctx[2];
     				add_flush_callback(() => updating_pointOfInterest_1 = false);
     			}
 
-    			if (!updating_selectedMenu_1 && dirty[0] & /*selectedMenu*/ 64) {
+    			if (!updating_selectedMenu_1 && dirty[0] & /*selectedMenu*/ 128) {
     				updating_selectedMenu_1 = true;
-    				map_changes.selectedMenu = /*selectedMenu*/ ctx[6];
+    				map_changes.selectedMenu = /*selectedMenu*/ ctx[7];
     				add_flush_callback(() => updating_selectedMenu_1 = false);
     			}
 
     			map.$set(map_changes);
     			const mapstyleselector_changes = {};
 
-    			if (!updating_mapStyle_1 && dirty[0] & /*mapStyle*/ 16) {
+    			if (!updating_mapStyle_1 && dirty[0] & /*mapStyle*/ 32) {
     				updating_mapStyle_1 = true;
-    				mapstyleselector_changes.mapStyle = /*mapStyle*/ ctx[4];
+    				mapstyleselector_changes.mapStyle = /*mapStyle*/ ctx[5];
     				add_flush_callback(() => updating_mapStyle_1 = false);
+    			}
+
+    			if (!updating_isReadyForStyleSwitching_1 && dirty[0] & /*isReadyForStyleSwitching*/ 2) {
+    				updating_isReadyForStyleSwitching_1 = true;
+    				mapstyleselector_changes.isReadyForStyleSwitching = /*isReadyForStyleSwitching*/ ctx[1];
+    				add_flush_callback(() => updating_isReadyForStyleSwitching_1 = false);
     			}
 
     			mapstyleselector.$set(mapstyleselector_changes);
 
-    			if (/*isLoading*/ ctx[8] === true) {
+    			if (/*isLoading*/ ctx[9] === true) {
     				if (if_block0) ; else {
     					if_block0 = create_if_block_2(ctx);
     					if_block0.c();
@@ -87748,7 +87805,7 @@ var app = (function () {
     				if_block0 = null;
     			}
 
-    			if (/*isError*/ ctx[9] === true) {
+    			if (/*isError*/ ctx[10] === true) {
     				if (if_block1) ; else {
     					if_block1 = create_if_block_1(ctx);
     					if_block1.c();
@@ -87829,9 +87886,9 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Loading Data...";
     			attr_dev(p, "class", "align-middle");
-    			add_location(p, file, 128, 5, 4095);
+    			add_location(p, file, 128, 5, 4193);
     			attr_dev(div, "class", "absolute top-0 z-100 map-loading rounded-lg");
-    			add_location(div, file, 127, 4, 4031);
+    			add_location(div, file, 127, 4, 4129);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -87864,9 +87921,9 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Error, unable to Fetch Data";
     			attr_dev(p, "class", "align-middle");
-    			add_location(p, file, 134, 5, 4257);
+    			add_location(p, file, 134, 5, 4355);
     			attr_dev(div, "class", "absolute top-0 z-100 map-error rounded-lg");
-    			add_location(div, file, 133, 4, 4195);
+    			add_location(div, file, 133, 4, 4293);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -87988,6 +88045,7 @@ var app = (function () {
     		auth.signOut();
     	};
 
+    	let isReadyForStyleSwitching = false;
     	let pointOfInterest = null;
     	let layerList = [];
 
@@ -88035,19 +88093,19 @@ var app = (function () {
     	let isError = false;
 
     	const fetchData = async () => {
-    		$$invalidate(8, isLoading = true);
-    		$$invalidate(9, isError = false);
+    		$$invalidate(9, isLoading = true);
+    		$$invalidate(10, isError = false);
     		const gpsRawData = await fetchPotholeDataFromFirebase(user);
 
     		if (gpsRawData === null) {
-    			$$invalidate(9, isError = true);
+    			$$invalidate(10, isError = true);
     		} else {
-    			$$invalidate(7, gpsData = gpsRawData.length > 0
+    			$$invalidate(8, gpsData = gpsRawData.length > 0
     			? gpsJsonToGeojson(gpsRawData)
-    			: $$invalidate(7, gpsData = null));
+    			: $$invalidate(8, gpsData = null));
     		}
 
-    		$$invalidate(8, isLoading = false);
+    		$$invalidate(9, isLoading = false);
     	};
 
     	let gpsFilters = [
@@ -88070,82 +88128,92 @@ var app = (function () {
 
     	function navbar_selectedMenu_binding(value) {
     		selectedMenu = value;
-    		$$invalidate(6, selectedMenu);
+    		$$invalidate(7, selectedMenu);
     	}
 
     	function navbar_menuComponents_binding(value) {
     		menuComponents = value;
-    		$$invalidate(5, menuComponents);
+    		$$invalidate(6, menuComponents);
     	}
 
     	function layers_layerList_binding(value) {
     		layerList = value;
-    		$$invalidate(2, layerList);
+    		$$invalidate(3, layerList);
     	}
 
     	function datetime_dateTimeDictionary_binding(value) {
     		dateTimeDictionary = value;
-    		$$invalidate(3, dateTimeDictionary);
+    		$$invalidate(4, dateTimeDictionary);
     	}
 
     	function streetview_pointOfInterest_binding(value) {
     		pointOfInterest = value;
-    		$$invalidate(1, pointOfInterest);
+    		$$invalidate(2, pointOfInterest);
     	}
 
     	function filters_gpsFilters_binding(value) {
     		gpsFilters = value;
-    		$$invalidate(10, gpsFilters);
+    		$$invalidate(11, gpsFilters);
     	}
 
     	function filters_gpsData_binding(value) {
     		gpsData = value;
-    		$$invalidate(7, gpsData);
+    		$$invalidate(8, gpsData);
     	}
 
     	function chartview_gpsData_binding(value) {
     		gpsData = value;
-    		$$invalidate(7, gpsData);
+    		$$invalidate(8, gpsData);
     	}
 
     	function searchdetails_dateTimeDictionary_binding(value) {
     		dateTimeDictionary = value;
-    		$$invalidate(3, dateTimeDictionary);
+    		$$invalidate(4, dateTimeDictionary);
     	}
 
     	function map_gpsFilters_binding(value) {
     		gpsFilters = value;
-    		$$invalidate(10, gpsFilters);
+    		$$invalidate(11, gpsFilters);
     	}
 
     	function map_gpsData_binding(value) {
     		gpsData = value;
-    		$$invalidate(7, gpsData);
+    		$$invalidate(8, gpsData);
+    	}
+
+    	function map_isReadyForStyleSwitching_binding(value) {
+    		isReadyForStyleSwitching = value;
+    		$$invalidate(1, isReadyForStyleSwitching);
     	}
 
     	function map_layerList_binding(value) {
     		layerList = value;
-    		$$invalidate(2, layerList);
+    		$$invalidate(3, layerList);
     	}
 
     	function map_mapStyle_binding(value) {
     		mapStyle = value;
-    		$$invalidate(4, mapStyle);
+    		$$invalidate(5, mapStyle);
     	}
 
     	function map_pointOfInterest_binding(value) {
     		pointOfInterest = value;
-    		$$invalidate(1, pointOfInterest);
+    		$$invalidate(2, pointOfInterest);
     	}
 
     	function map_selectedMenu_binding(value) {
     		selectedMenu = value;
-    		$$invalidate(6, selectedMenu);
+    		$$invalidate(7, selectedMenu);
     	}
 
     	function mapstyleselector_mapStyle_binding(value) {
     		mapStyle = value;
-    		$$invalidate(4, mapStyle);
+    		$$invalidate(5, mapStyle);
+    	}
+
+    	function mapstyleselector_isReadyForStyleSwitching_binding(value) {
+    		isReadyForStyleSwitching = value;
+    		$$invalidate(1, isReadyForStyleSwitching);
     	}
 
     	$$self.$capture_state = () => ({
@@ -88170,6 +88238,7 @@ var app = (function () {
     		unsubscribe,
     		login,
     		signOut,
+    		isReadyForStyleSwitching,
     		pointOfInterest,
     		layerList,
     		dateTimeDictionary,
@@ -88187,17 +88256,18 @@ var app = (function () {
     	$$self.$inject_state = $$props => {
     		if ('user' in $$props) $$invalidate(0, user = $$props.user);
     		if ('unsubscribe' in $$props) unsubscribe = $$props.unsubscribe;
-    		if ('pointOfInterest' in $$props) $$invalidate(1, pointOfInterest = $$props.pointOfInterest);
-    		if ('layerList' in $$props) $$invalidate(2, layerList = $$props.layerList);
-    		if ('dateTimeDictionary' in $$props) $$invalidate(3, dateTimeDictionary = $$props.dateTimeDictionary);
-    		if ('mapStyle' in $$props) $$invalidate(4, mapStyle = $$props.mapStyle);
-    		if ('cityDetails' in $$props) $$invalidate(13, cityDetails = $$props.cityDetails);
-    		if ('menuComponents' in $$props) $$invalidate(5, menuComponents = $$props.menuComponents);
-    		if ('selectedMenu' in $$props) $$invalidate(6, selectedMenu = $$props.selectedMenu);
-    		if ('gpsData' in $$props) $$invalidate(7, gpsData = $$props.gpsData);
-    		if ('isLoading' in $$props) $$invalidate(8, isLoading = $$props.isLoading);
-    		if ('isError' in $$props) $$invalidate(9, isError = $$props.isError);
-    		if ('gpsFilters' in $$props) $$invalidate(10, gpsFilters = $$props.gpsFilters);
+    		if ('isReadyForStyleSwitching' in $$props) $$invalidate(1, isReadyForStyleSwitching = $$props.isReadyForStyleSwitching);
+    		if ('pointOfInterest' in $$props) $$invalidate(2, pointOfInterest = $$props.pointOfInterest);
+    		if ('layerList' in $$props) $$invalidate(3, layerList = $$props.layerList);
+    		if ('dateTimeDictionary' in $$props) $$invalidate(4, dateTimeDictionary = $$props.dateTimeDictionary);
+    		if ('mapStyle' in $$props) $$invalidate(5, mapStyle = $$props.mapStyle);
+    		if ('cityDetails' in $$props) $$invalidate(14, cityDetails = $$props.cityDetails);
+    		if ('menuComponents' in $$props) $$invalidate(6, menuComponents = $$props.menuComponents);
+    		if ('selectedMenu' in $$props) $$invalidate(7, selectedMenu = $$props.selectedMenu);
+    		if ('gpsData' in $$props) $$invalidate(8, gpsData = $$props.gpsData);
+    		if ('isLoading' in $$props) $$invalidate(9, isLoading = $$props.isLoading);
+    		if ('isError' in $$props) $$invalidate(10, isError = $$props.isError);
+    		if ('gpsFilters' in $$props) $$invalidate(11, gpsFilters = $$props.gpsFilters);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -88206,6 +88276,7 @@ var app = (function () {
 
     	return [
     		user,
+    		isReadyForStyleSwitching,
     		pointOfInterest,
     		layerList,
     		dateTimeDictionary,
@@ -88231,11 +88302,13 @@ var app = (function () {
     		searchdetails_dateTimeDictionary_binding,
     		map_gpsFilters_binding,
     		map_gpsData_binding,
+    		map_isReadyForStyleSwitching_binding,
     		map_layerList_binding,
     		map_mapStyle_binding,
     		map_pointOfInterest_binding,
     		map_selectedMenu_binding,
-    		mapstyleselector_mapStyle_binding
+    		mapstyleselector_mapStyle_binding,
+    		mapstyleselector_isReadyForStyleSwitching_binding
     	];
     }
 

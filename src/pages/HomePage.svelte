@@ -30,7 +30,7 @@
 	const signOut = () => {
 		auth.signOut();
 	};
-
+	let isReadyForStyleSwitching = false;
 	let pointOfInterest = null;
 	let layerList = [];
 
@@ -119,9 +119,9 @@
 		</div>
 
 		<div class="col-span-1 md:col-span-9  row-span-6 relative">
-			<Map {cityDetails} bind:gpsFilters bind:gpsData bind:layerList bind:mapStyle bind:pointOfInterest bind:selectedMenu />
+			<Map {cityDetails} bind:gpsFilters bind:gpsData bind:isReadyForStyleSwitching bind:layerList bind:mapStyle bind:pointOfInterest bind:selectedMenu />
 			<div class="absolute top-1 left-1 ">
-				<MapStyleSelector bind:mapStyle />
+				<MapStyleSelector bind:mapStyle bind:isReadyForStyleSwitching />
 			</div>
 
 			{#if isLoading === true}

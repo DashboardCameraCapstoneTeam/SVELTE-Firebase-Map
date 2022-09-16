@@ -3,9 +3,6 @@
 	import { onDestroy } from "svelte";
 	import { getObjectsWhereKeyEqualsValue, removeObjectWhereValueEqualsString, checkIfElementExists } from "utils/filter-data.js";
 
-	import MapboxDraw from "@mapbox/mapbox-gl-draw";
-	import "@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css";
-
 	export let layerList;
 	export let mapStyle;
 	export let cityDetails;
@@ -13,7 +10,7 @@
 	export let gpsData;
 	export let gpsFilters;
 	export let selectedMenu;
-
+	export let isReadyForStyleSwitching;
 	let map = null;
 	let isInitialDataLoaded = false;
 	const smallPopup = new mapboxgl.Popup();
@@ -253,7 +250,7 @@
 
 	//Switch the map style only if the map exists and the map is ready for switching styles
 	const switchStyle = () => {
-		if (map === null ) return;
+		if (map === null || isReadyForStyleSwitching === false) return;
 		try {
 			map.setStyle("mapbox://styles/mapbox/" + mapStyle);
 		} catch (err) {

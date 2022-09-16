@@ -1,7 +1,7 @@
 <script>
 	export let mapStyle;
 	let expandMenu = false;
-
+	export let isReadyForStyleSwitching;
 	const mapStyleList = [
 		{ name: "Streets", id: "streets-v11", img: "https://assets.website-files.com/5e83362767d71ffd59a0c8a9/5ea01b977fb48a501b898a93_ipad-map%20streets.png" },
 		{ name: "Dark", id: "dark-v10", img: "https://assets.website-files.com/5e83362767d71ffd59a0c8a9/5ea01810f9a5b1c55841ee6f_ipad-map%20dark.png" },
@@ -13,7 +13,7 @@
 	const toggleStyle = (mapStyleItem) => {
 		try {
 			mapStyle = mapStyleItem;
-		
+			isReadyForStyleSwitching = true;
 		} catch (e) {}
 	};
 
