@@ -5,7 +5,7 @@ const calculateAverage = (data) => {
   const averageList = [];
   for (const [key, pointList] of Object.entries(data)) {
     if (pointList.length >= 1) {
-      const average = parseInt(pointList.reduce((total, next) => total + next.properties.gpsSpeed, 0) / pointList.length, 10);
+      const average = parseInt(pointList.reduce((total, next) => total + next.properties.Count, 0) / pointList.length, 10);
       averageList.push({ time: key, value: average });
     } else {
       averageList.push({ time: key, value: 0 });
@@ -38,7 +38,7 @@ const parseDateFromDateString = (dateString, filterDate) => {
 const organizeData = (data, filterDate) => {
   const groups = {};
   data.forEach((point) => {
-    const parsedDate = parseDateFromDateString(point.properties.time, filterDate);
+    const parsedDate = parseDateFromDateString(point.properties.Time, filterDate);
     if (parsedDate in groups) {
       groups[parseInt(parsedDate, 10)].push(point);
     } else {
@@ -51,7 +51,7 @@ const organizeData = (data, filterDate) => {
 // Only get the data that has been selected
 const filterData = (data, selectedDate, filterDate) => {
   const results = data.filter((point) => {
-    const parsedDate = parseDateFromDateString(point.properties.time, filterDate);
+    const parsedDate = parseDateFromDateString(point.properties.Time, filterDate);
     return parseInt(parsedDate, 10) === selectedDate;
   });
   return results;

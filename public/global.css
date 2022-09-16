@@ -41,7 +41,7 @@ h6 {
 
 
 .bg-blue {
-  background-color: #4959b9;
+  background-color: #266d84;
   color: white;
 }
 
@@ -245,11 +245,11 @@ hr {
 
 .card-btn-blue {
   color: white;
-  background-color: #4959b9;
+  background-color: #266d84;
 }
 
 .card-btn-blue:hover {
-  background-color: rgb(38, 84, 159);
+  background-color: #1e586b;
 }
 
 .card-btn-red {
@@ -297,11 +297,11 @@ hr {
 
 .navbar-btn-blue {
   color: white;
-  background-color: #4959b9;
+  background-color: #266d84;
 }
 
 .navbar-btn-blue:hover {
-  background-color: rgb(38, 84, 159);
+  background-color: #1e586b;
 }
 
 .map-style{
@@ -312,11 +312,11 @@ hr {
 }
 
 .map-style:hover{
-  border-color: rgb(38, 84, 159);
+  border-color: #1e586b;
 }
 
 .map-style-selected{
-  border-color: rgb(38, 84, 159);
+  border-color: #1e586b;
 }
 
 

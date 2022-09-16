@@ -1,15 +1,12 @@
 <script>
 	import { onMount } from "svelte";
 	import { onDestroy } from "svelte";
-	import { getDataWithAxios } from "utils/fetch-data.js";
-	import { Data } from "constants/index.js";
 	import { getObjectsWhereKeyEqualsValue, removeObjectWhereValueEqualsString, checkIfElementExists } from "utils/filter-data.js";
 
 	import MapboxDraw from "@mapbox/mapbox-gl-draw";
 	import "@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css";
 
 	export let layerList;
-	export let selectedPolygon;
 	export let mapStyle;
 	export let isReadyForStyleSwitching;
 	export let cityDetails;
@@ -21,14 +18,7 @@
 	let map = null;
 	let isInitialDataLoaded = false;
 	const smallPopup = new mapboxgl.Popup();
-	const draw = new MapboxDraw({
-		displayControlsDefault: false,
-		controls: {
-			polygon: true,
-			trash: true,
-		},
-		defaultMode: "draw_polygon",
-	});
+
 
 	const createElement = (layerName, sourceName, type, isShown, faIcon, data) => {
 		let tempList = layerList;
@@ -52,14 +42,7 @@
 
 	const fetchInitialMapData = async () => {
 		try {
-			// // Neighbourhoods Data
-			let neighbourhoodsLayerName = "Neighbourhoods";
-			let neighbourhoodsSourceName = "NeighbourhoodsSource";
-			let neighbourhoodsData = await getDataWithAxios(Data.NEIGHBOURHOODS_URL);
-
-			createElement("3D-Buildings", "composite", "Polygon", true, "fa-building", null);
-			createElement(neighbourhoodsLayerName, neighbourhoodsSourceName, "Polygon", false, "fa-border-all", neighbourhoodsData);
-			createElement(neighbourhoodsLayerName + " Outline", neighbourhoodsSourceName, "Polygon", false, "fa-border-all", neighbourhoodsData);
+			createElement("3D-Buildings", "composite", "Polygon", true, "fa-building", null);	
 		} catch (e) {
 			console.error(e);
 		}
@@ -80,16 +63,10 @@
 		try {
 			//Get the elements
 			const BuildingsElement = getObjectsWhereKeyEqualsValue(layerList, "layerName", "3D-Buildings")[0];
-			const neighbourhoodElement = getObjectsWhereKeyEqualsValue(layerList, "layerName", "Neighbourhoods")[0];
-			const neighbourhoodOutlineElement = getObjectsWhereKeyEqualsValue(layerList, "layerName", "Neighbourhoods Outline")[0];
-
-			//Add the data source
-			addMapSource(neighbourhoodElement);
 
 			//Add the layer
 			addTerrainLayer();
 			addBuildingLayer(BuildingsElement);
-			addNeighbourhoodsLayer(neighbourhoodElement, neighbourhoodOutlineElement);
 			isInitialDataLoaded = true;
 		} catch (e) {
 			console.error(e);
@@ -131,51 +108,6 @@
 				"fill-extrusion-base": ["interpolate", ["linear"], ["zoom"], 15, 0, 15.05, ["get", "min_height"]],
 				"fill-extrusion-opacity": opacity,
 			},
-		});
-	};
-
-	const addNeighbourhoodsLayer = (fillList, outlineList) => {
-		map.addLayer({
-			id: fillList.layerName,
-			type: "fill",
-			source: fillList.sourceName,
-			layout: {},
-			paint: {
-				"fill-color": ["get", "fill"],
-				"fill-opacity": ["case", ["boolean", ["feature-state", "hover"], false], 0.5, 0.2],
-			},
-		});
-		map.setLayoutProperty(fillList.layerName, "visibility", "none");
-
-		map.addLayer({
-			id: outlineList.layerName,
-			type: "line",
-			source: outlineList.sourceName,
-			layout: {},
-			paint: {
-				"line-color": "#ffffff",
-				"line-width": 1,
-			},
-		});
-		map.setLayoutProperty(outlineList.layerName, "visibility", "none");
-
-		let hoveredStateId = null;
-		map.on("mousemove", fillList.layerName, (e) => {
-			if (e.features.length > 0) {
-				if (hoveredStateId !== null) {
-					map.setFeatureState({ source: fillList.sourceName, id: hoveredStateId }, { hover: false });
-				}
-
-				hoveredStateId = e.features[0].id;
-				map.setFeatureState({ source: fillList.sourceName, id: hoveredStateId }, { hover: true });
-			}
-		});
-
-		map.on("mouseleave", fillList.layerName, () => {
-			if (hoveredStateId !== null) {
-				map.setFeatureState({ source: fillList.sourceName, id: hoveredStateId }, { hover: false });
-			}
-			hoveredStateId = null;
 		});
 	};
 
@@ -295,34 +227,14 @@
 		});
 	};
 
-	//Update the polygon using the features property
-	const updatePolygon = ({}) => {
-		try {
-			const data = draw.getAll();
-			if (data.features.length > 0) {
-				selectedPolygon = data.features[0];
-			}
-		} catch (err) {
-			console.log(err);
-		}
-	};
 
-	//Remove the selected polygon
-	const clearPolygon = () => {
-		try {
-			draw.deleteAll();
-			selectedPolygon = null;
-		} catch (err) {
-			console.log(err);
-		}
-	};
 
 	const addExistingDynamicGPS = () => {
 		if (map === null || gpsData === null) return;
 		try {
-			let gpsElement = getObjectsWhereKeyEqualsValue(layerList, "layerName", "GPS")[0];
+			let gpsElement = getObjectsWhereKeyEqualsValue(layerList, "layerName", "Potholes")[0];
 			addMapSource(gpsElement);
-			addPointLayer(gpsElement, "gpsSpeed", ["get", "gpsColor"]);
+			addPointLayer(gpsElement, "Count", ["get", "Color"]);
 		} catch (err) {
 			console.log(err);
 		}
@@ -331,10 +243,10 @@
 	const addNewDynamicGPS = () => {
 		if (map === null || gpsData === null) return;
 		try {
-			let gpsElement = createElement("GPS", "gpsSource", "Point", true, "fa-road", gpsData);
+			let gpsElement = createElement("Potholes", "gpsSource", "Point", true, "fa-road", gpsData);
 			addMapSource(gpsElement);
-			addPointLayer(gpsElement, "gpsSpeed", ["get", "gpsColor"]);
-			clearPolygon();
+			addPointLayer(gpsElement, "Count", ["get", "Color"]);
+
 		} catch (err) {
 			console.log(err);
 		}
@@ -373,7 +285,7 @@
 	const addMapGPSFilters = () => {
 		if (map === null || gpsData === null) return;
 		let filterArray = createFilterArray();
-		map.setFilter("GPS", filterArray);
+		map.setFilter("Potholes", filterArray);
 	};
 
 	const addMapFilter = () => {
@@ -429,7 +341,6 @@
 		// Get the initial Data
 		await fetchInitialMapData();
 
-		map.addControl(draw, "bottom-left");
 
 		map.addControl(
 			new MapboxGeocoder({
@@ -444,8 +355,6 @@
 		map.on("style.load", function () {
 			addDataSources();
 			if (gpsData !== null) addExistingDynamicGPS();
-
-			resizeMap();
 		});
 
 		// Mapboxs normal way to show and hide layers. This calls the filter every second
@@ -455,10 +364,12 @@
 		
 		});
 
-		resizeMap();
-		map.on("draw.create", updatePolygon);
-		map.on("draw.delete", clearPolygon);
-		map.on("draw.update", updatePolygon);
+
+		const interval = setInterval(function() {
+			resizeMap();
+		}, 2000);
+
+		
 	});
 
 	onDestroy(() => {

@@ -145,7 +145,7 @@
 </script>
 
 <section class="card h-fit scale-in-center">
-	<p class="font-bold my-1">Chart Average Vehicle Speed (Km/h):</p>
+	<p class="font-bold my-1">Average number of Potholes Detected in Frame:</p>
 
 	<div bind:this={chartDiv} class={`${gpsData == null ? "h-0" : "h-96"} w-full rounded-lg`} />
 	{#if gpsData === null}
