@@ -12,23 +12,10 @@
 	import ChartView from "components/menu/Chart.svelte";
 	import { fetchPotholeDataFromFirebase } from "service/fetch-firestore";
 	import { gpsJsonToGeojson } from "utils/geojson-utils.js";
-	import { auth, googleProvider } from "config/firebase";
-	import { authState } from "rxfire/auth";
-	import { onDestroy } from "svelte";
 
-	let user;
-	let unsubscribe = authState(auth).subscribe((u) => (user = u));
-	const login = () => {
-		try {
-			auth.signInWithPopup(googleProvider);
-		} catch (err) {
-			console.log(err);
-		}
-	};
+	export let user;
+	export let signOut;
 
-	const signOut = () => {
-		auth.signOut();
-	};
 	let isReadyForStyleSwitching = false;
 	let pointOfInterest = null;
 	let layerList = [];
@@ -71,81 +58,68 @@
 	};
 
 	let gpsFilters = [{ id: "Count", name: "Pothole Count Filter", default: [0, 20], step: 1, suffix: "", selected: [0, 20] }];
-
-	onDestroy(unsubscribe);
 </script>
 
-{#if user}
-	<Navbar bind:selectedMenu bind:menuComponents />
 
-	<section class="grid grid-cols-1  md:grid-cols-12 grid-rows-6  gap-4 my-4 px-4 h-fit">
-		<div class="col-span-1 md:col-span-3 row-span-6 grid grid-cols-1 md:grid-cols-1 gap-4 h-fit">
-			<div class="col-span-1 md:col-span-1 row-span-1">
-				<Layers bind:layerList />
-			</div>
+<Navbar bind:selectedMenu bind:menuComponents />
 
-			<div class={`col-span-1 md:col-span-1 row-span-1 ${selectedMenu === 0 ? "" : "hidden"}`}>
-				<DateTime bind:dateTimeDictionary />
-			</div>
-
-			<div class={`col-span-1 md:col-span-1 row-span-1 ${selectedMenu === 1 ? "" : "hidden"}`}>
-				<StreetView bind:pointOfInterest />
-			</div>
-
-			<div class={`col-span-1 md:col-span-1 row-span-1 ${selectedMenu === 2 ? "" : "hidden"}`}>
-				<Filters bind:gpsFilters bind:gpsData />
-			</div>
-
-			<div class={`col-span-1 md:col-span-1 row-span-1 ${selectedMenu === 3 ? "" : "hidden"}`}>
-				<ChartView bind:gpsData />
-			</div>
-
-			<div class="col-span-1 md:col-span-1 row-span-1">
-				<SearchDetails bind:dateTimeDictionary {fetchData} />
-			</div>
-
-			<div class="col-span-1 md:col-span-1 row-span-1">
-				<section class="card h-fit scale-in-center">
-					<p class="font-bold my-1">Profile Selection:</p>
-					<button class="card-btn card-btn-red my-2" on:click={signOut}> Sign Out </button>
-				</section>
-			</div>
+<section class="grid grid-cols-1  md:grid-cols-12 grid-rows-6  gap-4 my-4 px-4 h-fit">
+	<div class="col-span-1 md:col-span-3 row-span-6 grid grid-cols-1 md:grid-cols-1 gap-4 h-fit">
+		<div class="col-span-1 md:col-span-1 row-span-1">
+			<Layers bind:layerList />
 		</div>
 
-		<div class="col-span-1 md:col-span-9  row-span-6 relative">
-			<Map {cityDetails} bind:gpsFilters bind:gpsData bind:isReadyForStyleSwitching bind:layerList bind:mapStyle bind:pointOfInterest bind:selectedMenu />
-			<div class="absolute top-1 left-1 ">
-				<MapStyleSelector bind:mapStyle bind:isReadyForStyleSwitching />
-			</div>
-
-			{#if isLoading === true}
-				<div class="absolute top-0 z-100 map-loading rounded-lg">
-					<p class="align-middle">Loading Data...</p>
-				</div>
-			{/if}
-
-			{#if isError === true}
-				<div class="absolute top-0 z-100 map-error rounded-lg">
-					<p class="align-middle">Error, unable to Fetch Data</p>
-				</div>
-			{/if}
+		<div class={`col-span-1 md:col-span-1 row-span-1 ${selectedMenu === 0 ? "" : "hidden"}`}>
+			<DateTime bind:dateTimeDictionary />
 		</div>
-	</section>
 
-	<Footer />
-{:else}
-	<section class="py-4 px-4 flex h-full items-center justify-center">
-		<section class="h-fit card rounded-lg shadow-xl p-4 text-sm w-96 text-center">
-			<p class="text-bold text-2xl">Sign In</p>
-			<p class="text-center my-2">Use your Google Account</p>
-			<button class="card-btn card-btn-blue my-4" on:click={login}> Signin with Google </button>
+		<div class={`col-span-1 md:col-span-1 row-span-1 ${selectedMenu === 1 ? "" : "hidden"}`}>
+			<StreetView bind:pointOfInterest />
+		</div>
 
-			<div class="items-center justify-center mt-4">
-				<button class="text-center hover:underline">Don't have an Account Yet?</button>
+		<div class={`col-span-1 md:col-span-1 row-span-1 ${selectedMenu === 2 ? "" : "hidden"}`}>
+			<Filters bind:gpsFilters bind:gpsData />
+		</div>
+
+		<div class={`col-span-1 md:col-span-1 row-span-1 ${selectedMenu === 3 ? "" : "hidden"}`}>
+			<ChartView bind:gpsData />
+		</div>
+
+		<div class="col-span-1 md:col-span-1 row-span-1">
+			<SearchDetails bind:dateTimeDictionary {fetchData} />
+		</div>
+
+		<div class="col-span-1 md:col-span-1 row-span-1">
+			<section class="card h-fit scale-in-center">
+				<p class="font-bold my-1">Profile Selection:</p>
+				<button class="card-btn card-btn-red my-2" on:click={signOut}> Sign Out </button>
+			</section>
+		</div>
+	</div>
+
+	<div class="col-span-1 md:col-span-9  row-span-6 relative">
+		<Map {cityDetails} bind:gpsFilters bind:gpsData bind:isReadyForStyleSwitching bind:layerList bind:mapStyle bind:pointOfInterest bind:selectedMenu />
+		<div class="absolute top-1 left-1 ">
+			<MapStyleSelector bind:mapStyle bind:isReadyForStyleSwitching />
+		</div>
+
+		{#if isLoading === true}
+			<div class="absolute top-0 z-100 map-loading rounded-lg">
+				<p class="align-middle">Loading Data...</p>
 			</div>
-		</section>
-	</section>
-{/if}
+		{/if}
+
+		{#if isError === true}
+			<div class="absolute top-0 z-100 map-error rounded-lg">
+				<p class="align-middle">Error, unable to Fetch Data</p>
+			</div>
+		{/if}
+	</div>
+</section>
+
+<Footer />
+
+
 
 <style>
 </style>

@@ -370,9 +370,12 @@
 
 	onDestroy(() => {
 		try {
+			map.eachLayer(function (layer) {
+				map.removeLayer(layer);
+			});
+
 			// Remove all the layers and data sources as they are cached and take up a lot of memory
 			for (let i = 0; i < layerList.length; i++) {
-				map.removeLayer(layerList[i]["layerName"]);
 				map.removeSource(layerList[i]["sourceName"]);
 			}
 			map = null;
