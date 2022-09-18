@@ -48,11 +48,12 @@
 	const fetchData = async () => {
 		isLoading = true;
 		isError = false;
-		const gpsRawData = await fetchPotholeDataFromFirebase(user);
+		const gpsRawData = await fetchPotholeDataFromFirebase(user, dateTimeDictionary);
 		if (gpsRawData === null) {
 			isError = true;
 		} else {
-			gpsData = gpsRawData.length > 0 ? gpsJsonToGeojson(gpsRawData) : (gpsData = null);
+			console.log(gpsRawData);
+			gpsData = gpsRawData.length > 0 ? gpsJsonToGeojson(gpsRawData) : alert('No Data Found');
 		}
 		isLoading = false;
 	};

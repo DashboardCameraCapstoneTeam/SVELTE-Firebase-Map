@@ -1,13 +1,15 @@
 import {
-  collection, query, orderBy, doc, getDocs,
+  collection, query, orderBy, doc, getDocs, where,
 } from 'firebase/firestore';
-import { db } from '../config/firebase';
+import { db, firebase } from '../config/firebase';
 
-export const fetchPotholeDataFromFirebase = async (user) => {
+export const fetchPotholeDataFromFirebase = async (user, dateTimeDictionary) => {
   try {
     const tempList = [];
     const docRef = doc(db, 'users', user.uid);
-    const colRef = query(collection(docRef, 'potholes'), orderBy('date_time_analyzed', 'desc'));
+    const start = firebase.firestore.Timestamp.fromDate(new Date(dateTimeDictionary.startDateTime));
+    const end = firebase.firestore.Timestamp.fromDate(new Date(dateTimeDictionary.endDateTime));
+    const colRef = query(collection(docRef, 'potholes'), where('date_time_analyzed', '>', start), where('date_time_analyzed', '<', end), orderBy('date_time_analyzed', 'desc'));
     const querySnapshot = await getDocs(colRef);
     querySnapshot.forEach((document) => {
       const potholeData = document.data();
