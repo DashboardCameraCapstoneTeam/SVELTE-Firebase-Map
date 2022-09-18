@@ -88224,9 +88224,17 @@ var app = (function () {
     	let p1;
     	let t3;
     	let button0;
+    	let i;
+    	let t4;
     	let t5;
-    	let div;
+    	let div1;
     	let button1;
+    	let t7;
+    	let div0;
+    	let hr;
+    	let t8;
+    	let p2;
+    	let div0_class_value;
     	let mounted;
     	let dispose;
 
@@ -88241,25 +88249,39 @@ var app = (function () {
     			p1.textContent = "Use your Google Account";
     			t3 = space();
     			button0 = element("button");
-    			button0.textContent = "Signin with Google";
+    			i = element("i");
+    			t4 = text(" Signin with Google");
     			t5 = space();
-    			div = element("div");
+    			div1 = element("div");
     			button1 = element("button");
-    			button1.textContent = "Don't have an Account Yet?";
+    			button1.textContent = "Why do I need a Google Account?";
+    			t7 = space();
+    			div0 = element("div");
+    			hr = element("hr");
+    			t8 = space();
+    			p2 = element("p");
+    			p2.textContent = "The GPS vidoes collected through the dashcam are saved in each users Google Drive Account. Users who accept the machine learning terms and conditions are also allowed to process their videos and use the online dashcam managment tool.";
     			attr_dev(p0, "class", "text-bold text-2xl");
-    			add_location(p0, file, 6, 2, 195);
+    			add_location(p0, file, 11, 2, 297);
     			attr_dev(p1, "class", "text-center my-2");
-    			add_location(p1, file, 7, 2, 240);
+    			add_location(p1, file, 12, 2, 342);
+    			attr_dev(i, "class", "fa-brands fa-google");
+    			add_location(i, file, 13, 63, 462);
     			attr_dev(button0, "class", "card-btn card-btn-blue my-4");
-    			add_location(button0, file, 8, 2, 299);
+    			add_location(button0, file, 13, 2, 401);
     			attr_dev(button1, "class", "text-center hover:underline");
-    			add_location(button1, file, 11, 3, 446);
-    			attr_dev(div, "class", "items-center justify-center mt-4");
-    			add_location(div, file, 10, 2, 395);
+    			add_location(button1, file, 16, 3, 583);
+    			attr_dev(hr, "class", "my-2");
+    			add_location(hr, file, 19, 12, 774);
+    			add_location(p2, file, 20, 12, 805);
+    			attr_dev(div0, "class", div0_class_value = `${/*showTerms*/ ctx[1] ? '' : 'hidden'}`);
+    			add_location(div0, file, 18, 11, 716);
+    			attr_dev(div1, "class", "items-center justify-center mt-4");
+    			add_location(div1, file, 15, 2, 532);
     			attr_dev(section0, "class", "h-fit card rounded-lg shadow-xl p-4 text-sm w-96 text-center");
-    			add_location(section0, file, 5, 1, 113);
+    			add_location(section0, file, 10, 1, 215);
     			attr_dev(section1, "class", "py-4 px-4 flex h-full items-center justify-center");
-    			add_location(section1, file, 4, 0, 43);
+    			add_location(section1, file, 9, 0, 145);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -88272,34 +88294,48 @@ var app = (function () {
     			append_dev(section0, p1);
     			append_dev(section0, t3);
     			append_dev(section0, button0);
+    			append_dev(button0, i);
+    			append_dev(button0, t4);
     			append_dev(section0, t5);
-    			append_dev(section0, div);
-    			append_dev(div, button1);
+    			append_dev(section0, div1);
+    			append_dev(div1, button1);
+    			append_dev(div1, t7);
+    			append_dev(div1, div0);
+    			append_dev(div0, hr);
+    			append_dev(div0, t8);
+    			append_dev(div0, p2);
 
     			if (!mounted) {
-    				dispose = listen_dev(
-    					button0,
-    					"click",
-    					function () {
-    						if (is_function(/*login*/ ctx[0])) /*login*/ ctx[0].apply(this, arguments);
-    					},
-    					false,
-    					false,
-    					false
-    				);
+    				dispose = [
+    					listen_dev(
+    						button0,
+    						"click",
+    						function () {
+    							if (is_function(/*login*/ ctx[0])) /*login*/ ctx[0].apply(this, arguments);
+    						},
+    						false,
+    						false,
+    						false
+    					),
+    					listen_dev(button1, "click", /*toggleTerms*/ ctx[2], false, false, false)
+    				];
 
     				mounted = true;
     			}
     		},
     		p: function update(new_ctx, [dirty]) {
     			ctx = new_ctx;
+
+    			if (dirty & /*showTerms*/ 2 && div0_class_value !== (div0_class_value = `${/*showTerms*/ ctx[1] ? '' : 'hidden'}`)) {
+    				attr_dev(div0, "class", div0_class_value);
+    			}
     		},
     		i: noop$2,
     		o: noop$2,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(section1);
     			mounted = false;
-    			dispose();
+    			run_all(dispose);
     		}
     	};
 
@@ -88318,6 +88354,12 @@ var app = (function () {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('LoginPage', slots, []);
     	let { login } = $$props;
+    	let showTerms = false;
+
+    	const toggleTerms = () => {
+    		$$invalidate(1, showTerms = !showTerms);
+    	};
+
     	const writable_props = ['login'];
 
     	Object.keys($$props).forEach(key => {
@@ -88328,17 +88370,18 @@ var app = (function () {
     		if ('login' in $$props) $$invalidate(0, login = $$props.login);
     	};
 
-    	$$self.$capture_state = () => ({ login });
+    	$$self.$capture_state = () => ({ login, showTerms, toggleTerms });
 
     	$$self.$inject_state = $$props => {
     		if ('login' in $$props) $$invalidate(0, login = $$props.login);
+    		if ('showTerms' in $$props) $$invalidate(1, showTerms = $$props.showTerms);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [login];
+    	return [login, showTerms, toggleTerms];
     }
 
     class LoginPage extends SvelteComponentDev {
