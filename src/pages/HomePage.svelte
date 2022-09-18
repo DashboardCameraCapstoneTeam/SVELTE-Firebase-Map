@@ -15,8 +15,7 @@
 	import { auth, googleProvider } from "config/firebase";
 	import { authState } from "rxfire/auth";
 	import { onDestroy } from "svelte";
-	
-	
+
 	let user;
 	let unsubscribe = authState(auth).subscribe((u) => (user = u));
 	const login = () => {
@@ -48,8 +47,6 @@
 		bearing: -17.6,
 	};
 
-	
-
 	let menuComponents = [
 		{ id: 0, title: "Date Time", icon: "fa-calendar-days" },
 		{ id: 1, title: "Street View", icon: "fa-road" },
@@ -67,9 +64,8 @@
 		const gpsRawData = await fetchPotholeDataFromFirebase(user);
 		if (gpsRawData === null) {
 			isError = true;
-		}
-		else{
-			gpsData = gpsRawData.length > 0 ? gpsJsonToGeojson(gpsRawData) : gpsData = null;
+		} else {
+			gpsData = gpsRawData.length > 0 ? gpsJsonToGeojson(gpsRawData) : (gpsData = null);
 		}
 		isLoading = false;
 	};
@@ -77,8 +73,6 @@
 	let gpsFilters = [{ id: "Count", name: "Pothole Count Filter", default: [0, 20], step: 1, suffix: "", selected: [0, 20] }];
 
 	onDestroy(unsubscribe);
-
-	
 </script>
 
 {#if user}
@@ -107,7 +101,7 @@
 			</div>
 
 			<div class="col-span-1 md:col-span-1 row-span-1">
-				<SearchDetails bind:dateTimeDictionary  {fetchData} />
+				<SearchDetails bind:dateTimeDictionary {fetchData} />
 			</div>
 
 			<div class="col-span-1 md:col-span-1 row-span-1">
@@ -140,12 +134,16 @@
 
 	<Footer />
 {:else}
-	<section class="grid grid-cols-1  md:grid-cols-12 grid-rows-6  gap-4 py-4 px-4 h-fit">
-		<div class="col-span-1 md:col-span-3 row-span-1">
-			<section class="h-full rounded-lg shadow-xl p-4 text-sm">
-				<button class="card-btn card-btn-blue rounded-lg block w-full" on:click={login}> Signin with Google </button>
-			</section>
-		</div>
+	<section class="py-4 px-4 flex h-full items-center justify-center">
+		<section class="h-fit card rounded-lg shadow-xl p-4 text-sm w-96 text-center">
+			<p class="text-bold text-2xl">Sign In</p>
+			<p class="text-center my-2">Use your Google Account</p>
+			<button class="card-btn card-btn-blue my-4" on:click={login}> Signin with Google </button>
+
+			<div class="items-center justify-center mt-4">
+				<button class="text-center hover:underline">Don't have an Account Yet?</button>
+			</div>
+		</section>
 	</section>
 {/if}
 

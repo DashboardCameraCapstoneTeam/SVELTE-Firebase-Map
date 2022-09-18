@@ -14,7 +14,11 @@ body {
   color: black;
   margin: 0;
   padding: 0;
+  height: 100vh;
 }
+
+
+
 
 
 main {
@@ -40,6 +44,8 @@ h6 {
 }
 
 
+
+
 .bg-blue {
   background-color: #266d84;
   color: white;
@@ -59,12 +65,6 @@ h6 {
 
 
 
-hr {
-  border: none;
-  height: 1px;
-  /* Set the hr color */
-  background-color: #ffffff;
-}
 
 .ellipsis {
   overflow: hidden;

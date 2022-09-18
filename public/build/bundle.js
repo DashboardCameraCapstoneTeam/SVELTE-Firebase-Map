@@ -87187,39 +87187,66 @@ var app = (function () {
     const { console: console_1 } = globals;
     const file = "src\\pages\\HomePage.svelte";
 
-    // (142:0) {:else}
+    // (136:0) {:else}
     function create_else_block(ctx) {
     	let section1;
-    	let div;
     	let section0;
-    	let button;
+    	let p0;
+    	let t1;
+    	let p1;
+    	let t3;
+    	let button0;
+    	let t5;
+    	let div;
+    	let button1;
     	let mounted;
     	let dispose;
 
     	const block = {
     		c: function create() {
     			section1 = element("section");
-    			div = element("div");
     			section0 = element("section");
-    			button = element("button");
-    			button.textContent = "Signin with Google";
-    			attr_dev(button, "class", "card-btn card-btn-blue rounded-lg block w-full");
-    			add_location(button, file, 145, 4, 4689);
-    			attr_dev(section0, "class", "h-full rounded-lg shadow-xl p-4 text-sm");
-    			add_location(section0, file, 144, 3, 4626);
-    			attr_dev(div, "class", "col-span-1 md:col-span-3 row-span-1");
-    			add_location(div, file, 143, 2, 4572);
-    			attr_dev(section1, "class", "grid grid-cols-1 md:grid-cols-12 grid-rows-6 gap-4 py-4 px-4 h-fit");
-    			add_location(section1, file, 142, 1, 4482);
+    			p0 = element("p");
+    			p0.textContent = "Sign In";
+    			t1 = space();
+    			p1 = element("p");
+    			p1.textContent = "Use your Google Account";
+    			t3 = space();
+    			button0 = element("button");
+    			button0.textContent = "Signin with Google";
+    			t5 = space();
+    			div = element("div");
+    			button1 = element("button");
+    			button1.textContent = "Don't have an Account Yet?";
+    			attr_dev(p0, "class", "text-bold text-2xl");
+    			add_location(p0, file, 138, 3, 4621);
+    			attr_dev(p1, "class", "text-center my-2");
+    			add_location(p1, file, 139, 3, 4667);
+    			attr_dev(button0, "class", "card-btn card-btn-blue my-4");
+    			add_location(button0, file, 140, 3, 4727);
+    			attr_dev(button1, "class", "text-center hover:underline");
+    			add_location(button1, file, 143, 4, 4876);
+    			attr_dev(div, "class", "items-center justify-center mt-4");
+    			add_location(div, file, 142, 3, 4824);
+    			attr_dev(section0, "class", "h-fit card rounded-lg shadow-xl p-4 text-sm w-96 text-center");
+    			add_location(section0, file, 137, 2, 4538);
+    			attr_dev(section1, "class", "py-4 px-4 flex h-full items-center justify-center");
+    			add_location(section1, file, 136, 1, 4467);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section1, anchor);
-    			append_dev(section1, div);
-    			append_dev(div, section0);
-    			append_dev(section0, button);
+    			append_dev(section1, section0);
+    			append_dev(section0, p0);
+    			append_dev(section0, t1);
+    			append_dev(section0, p1);
+    			append_dev(section0, t3);
+    			append_dev(section0, button0);
+    			append_dev(section0, t5);
+    			append_dev(section0, div);
+    			append_dev(div, button1);
 
     			if (!mounted) {
-    				dispose = listen_dev(button, "click", /*login*/ ctx[12], false, false, false);
+    				dispose = listen_dev(button0, "click", /*login*/ ctx[12], false, false, false);
     				mounted = true;
     			}
     		},
@@ -87237,14 +87264,14 @@ var app = (function () {
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(142:0) {:else}",
+    		source: "(136:0) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (84:0) {#if user}
+    // (78:0) {#if user}
     function create_if_block(ctx) {
     	let navbar;
     	let updating_selectedMenu;
@@ -87562,33 +87589,33 @@ var app = (function () {
     			t14 = space();
     			create_component(footer.$$.fragment);
     			attr_dev(div0, "class", "col-span-1 md:col-span-1 row-span-1");
-    			add_location(div0, file, 88, 3, 2659);
+    			add_location(div0, file, 82, 3, 2645);
     			attr_dev(div1, "class", div1_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[7] === 0 ? "" : "hidden"}`);
-    			add_location(div1, file, 92, 3, 2757);
+    			add_location(div1, file, 86, 3, 2743);
     			attr_dev(div2, "class", div2_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[7] === 1 ? "" : "hidden"}`);
-    			add_location(div2, file, 96, 3, 2906);
+    			add_location(div2, file, 90, 3, 2892);
     			attr_dev(div3, "class", div3_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[7] === 2 ? "" : "hidden"}`);
-    			add_location(div3, file, 100, 3, 3054);
+    			add_location(div3, file, 94, 3, 3040);
     			attr_dev(div4, "class", div4_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[7] === 3 ? "" : "hidden"}`);
-    			add_location(div4, file, 104, 3, 3207);
+    			add_location(div4, file, 98, 3, 3193);
     			attr_dev(div5, "class", "col-span-1 md:col-span-1 row-span-1");
-    			add_location(div5, file, 108, 3, 3346);
+    			add_location(div5, file, 102, 3, 3332);
     			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file, 114, 5, 3579);
+    			add_location(p, file, 108, 5, 3564);
     			attr_dev(button, "class", "card-btn card-btn-red my-2");
-    			add_location(button, file, 115, 5, 3634);
+    			add_location(button, file, 109, 5, 3619);
     			attr_dev(section0, "class", "card h-fit scale-in-center");
-    			add_location(section0, file, 113, 4, 3528);
+    			add_location(section0, file, 107, 4, 3513);
     			attr_dev(div6, "class", "col-span-1 md:col-span-1 row-span-1");
-    			add_location(div6, file, 112, 3, 3473);
+    			add_location(div6, file, 106, 3, 3458);
     			attr_dev(div7, "class", "col-span-1 md:col-span-3 row-span-6 grid grid-cols-1 md:grid-cols-1 gap-4 h-fit");
-    			add_location(div7, file, 87, 2, 2561);
+    			add_location(div7, file, 81, 2, 2547);
     			attr_dev(div8, "class", "absolute top-1 left-1 ");
-    			add_location(div8, file, 122, 3, 3975);
+    			add_location(div8, file, 116, 3, 3960);
     			attr_dev(div9, "class", "col-span-1 md:col-span-9 row-span-6 relative");
-    			add_location(div9, file, 120, 2, 3758);
+    			add_location(div9, file, 114, 2, 3743);
     			attr_dev(section1, "class", "grid grid-cols-1 md:grid-cols-12 grid-rows-6 gap-4 my-4 px-4 h-fit");
-    			add_location(section1, file, 86, 1, 2471);
+    			add_location(section1, file, 80, 1, 2457);
     		},
     		m: function mount(target, anchor) {
     			mount_component(navbar, target, anchor);
@@ -87868,14 +87895,14 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(84:0) {#if user}",
+    		source: "(78:0) {#if user}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (127:3) {#if isLoading === true}
+    // (121:3) {#if isLoading === true}
     function create_if_block_2(ctx) {
     	let div;
     	let p;
@@ -87886,9 +87913,9 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Loading Data...";
     			attr_dev(p, "class", "align-middle");
-    			add_location(p, file, 128, 5, 4193);
+    			add_location(p, file, 122, 5, 4178);
     			attr_dev(div, "class", "absolute top-0 z-100 map-loading rounded-lg");
-    			add_location(div, file, 127, 4, 4129);
+    			add_location(div, file, 121, 4, 4114);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -87903,14 +87930,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(127:3) {#if isLoading === true}",
+    		source: "(121:3) {#if isLoading === true}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (133:3) {#if isError === true}
+    // (127:3) {#if isError === true}
     function create_if_block_1(ctx) {
     	let div;
     	let p;
@@ -87921,9 +87948,9 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Error, unable to Fetch Data";
     			attr_dev(p, "class", "align-middle");
-    			add_location(p, file, 134, 5, 4355);
+    			add_location(p, file, 128, 5, 4340);
     			attr_dev(div, "class", "absolute top-0 z-100 map-error rounded-lg");
-    			add_location(div, file, 133, 4, 4293);
+    			add_location(div, file, 127, 4, 4278);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -87938,7 +87965,7 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(133:3) {#if isError === true}",
+    		source: "(127:3) {#if isError === true}",
     		ctx
     	});
 
