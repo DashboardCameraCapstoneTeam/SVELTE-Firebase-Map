@@ -86630,6 +86630,10 @@ var app = (function () {
     const db = firebase.firestore();
     const auth = firebase.auth();
     const googleProvider = new firebase.auth.GoogleAuthProvider();
+    googleProvider.setCustomParameters({
+      prompt: 'select_account',
+    });
+    googleProvider.addScope('https://www.googleapis.com/auth/drive');
 
     const fetchPotholeDataFromFirebase = async (user, dateTimeDictionary) => {
       try {
@@ -86678,7 +86682,7 @@ var app = (function () {
     const { console: console_1$1 } = globals;
     const file$1 = "src\\pages\\HomePage.svelte";
 
-    // (107:2) {#if isLoading === true}
+    // (112:2) {#if isLoading === true}
     function create_if_block_1(ctx) {
     	let div;
     	let p;
@@ -86689,9 +86693,9 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Loading Data...";
     			attr_dev(p, "class", "align-middle");
-    			add_location(p, file$1, 108, 4, 3807);
+    			add_location(p, file$1, 113, 4, 3817);
     			attr_dev(div, "class", "absolute top-0 z-100 map-loading rounded-lg");
-    			add_location(div, file$1, 107, 3, 3744);
+    			add_location(div, file$1, 112, 3, 3754);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -86706,14 +86710,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(107:2) {#if isLoading === true}",
+    		source: "(112:2) {#if isLoading === true}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (113:2) {#if isError === true}
+    // (118:2) {#if isError === true}
     function create_if_block$1(ctx) {
     	let div;
     	let p;
@@ -86724,9 +86728,9 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Error, unable to Fetch Data";
     			attr_dev(p, "class", "align-middle");
-    			add_location(p, file$1, 114, 4, 3964);
+    			add_location(p, file$1, 119, 4, 3974);
     			attr_dev(div, "class", "absolute top-0 z-100 map-error rounded-lg");
-    			add_location(div, file$1, 113, 3, 3903);
+    			add_location(div, file$1, 118, 3, 3913);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -86741,7 +86745,7 @@ var app = (function () {
     		block,
     		id: create_if_block$1.name,
     		type: "if",
-    		source: "(113:2) {#if isError === true}",
+    		source: "(118:2) {#if isError === true}",
     		ctx
     	});
 
@@ -87065,33 +87069,33 @@ var app = (function () {
     			t14 = space();
     			create_component(footer.$$.fragment);
     			attr_dev(div0, "class", "col-span-1 md:col-span-1 row-span-1");
-    			add_location(div0, file$1, 68, 2, 2306);
+    			add_location(div0, file$1, 73, 2, 2316);
     			attr_dev(div1, "class", div1_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[7] === 0 ? "" : "hidden"}`);
-    			add_location(div1, file$1, 72, 2, 2401);
+    			add_location(div1, file$1, 77, 2, 2411);
     			attr_dev(div2, "class", div2_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[7] === 1 ? "" : "hidden"}`);
-    			add_location(div2, file$1, 76, 2, 2547);
+    			add_location(div2, file$1, 81, 2, 2557);
     			attr_dev(div3, "class", div3_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[7] === 2 ? "" : "hidden"}`);
-    			add_location(div3, file$1, 80, 2, 2692);
+    			add_location(div3, file$1, 85, 2, 2702);
     			attr_dev(div4, "class", div4_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[7] === 3 ? "" : "hidden"}`);
-    			add_location(div4, file$1, 84, 2, 2842);
+    			add_location(div4, file$1, 89, 2, 2852);
     			attr_dev(div5, "class", "col-span-1 md:col-span-1 row-span-1");
-    			add_location(div5, file$1, 88, 2, 2978);
+    			add_location(div5, file$1, 93, 2, 2988);
     			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file$1, 94, 4, 3205);
+    			add_location(p, file$1, 99, 4, 3215);
     			attr_dev(button, "class", "card-btn card-btn-red my-2");
-    			add_location(button, file$1, 95, 4, 3259);
+    			add_location(button, file$1, 100, 4, 3269);
     			attr_dev(section0, "class", "card h-fit scale-in-center");
-    			add_location(section0, file$1, 93, 3, 3155);
+    			add_location(section0, file$1, 98, 3, 3165);
     			attr_dev(div6, "class", "col-span-1 md:col-span-1 row-span-1");
-    			add_location(div6, file$1, 92, 2, 3101);
+    			add_location(div6, file$1, 97, 2, 3111);
     			attr_dev(div7, "class", "col-span-1 md:col-span-3 row-span-6 grid grid-cols-1 md:grid-cols-1 gap-4 h-fit");
-    			add_location(div7, file$1, 67, 1, 2209);
+    			add_location(div7, file$1, 72, 1, 2219);
     			attr_dev(div8, "class", "absolute top-1 left-1 ");
-    			add_location(div8, file$1, 102, 2, 3594);
+    			add_location(div8, file$1, 107, 2, 3604);
     			attr_dev(div9, "class", "col-span-1 md:col-span-9 row-span-6 relative");
-    			add_location(div9, file$1, 100, 1, 3379);
+    			add_location(div9, file$1, 105, 1, 3389);
     			attr_dev(section1, "class", "grid grid-cols-1 md:grid-cols-12 grid-rows-6 gap-4 my-4 px-4 h-fit");
-    			add_location(section1, file$1, 66, 0, 2120);
+    			add_location(section1, file$1, 71, 0, 2130);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -88266,28 +88270,28 @@ var app = (function () {
     			hr = element("hr");
     			t8 = space();
     			p2 = element("p");
-    			p2.textContent = "The GPS vidoes collected through the dashcam are saved in each users Google Drive Account. Users who accept the machine learning terms and conditions are also allowed to process their videos and use the online dashcam managment tool.";
+    			p2.textContent = "The GPS vidoes collected through the dashcam are saved in each users Google Drive Account. Users who accept the machine learning terms and conditions are also allowed to process their videos\r\n\t\t\t\t\tand use the online dashcam managment tool.";
     			attr_dev(p0, "class", "text-bold text-2xl");
-    			add_location(p0, file, 11, 2, 297);
+    			add_location(p0, file, 11, 2, 284);
     			attr_dev(p1, "class", "text-center my-2");
-    			add_location(p1, file, 12, 2, 342);
+    			add_location(p1, file, 12, 2, 329);
     			attr_dev(i, "class", "fa-brands fa-google");
-    			add_location(i, file, 13, 63, 462);
+    			add_location(i, file, 13, 63, 449);
     			attr_dev(button0, "class", "card-btn card-btn-blue my-4");
-    			add_location(button0, file, 13, 2, 401);
+    			add_location(button0, file, 13, 2, 388);
     			attr_dev(button1, "class", "text-center hover:underline");
-    			add_location(button1, file, 16, 3, 583);
+    			add_location(button1, file, 16, 3, 568);
     			attr_dev(hr, "class", "my-2");
-    			add_location(hr, file, 19, 12, 774);
-    			add_location(p2, file, 20, 12, 805);
-    			attr_dev(div0, "class", div0_class_value = `${/*showTerms*/ ctx[1] ? '' : 'hidden'}`);
-    			add_location(div0, file, 18, 11, 716);
+    			add_location(hr, file, 19, 4, 732);
+    			add_location(p2, file, 20, 4, 757);
+    			attr_dev(div0, "class", div0_class_value = `${/*showTerms*/ ctx[1] ? "" : "hidden"}`);
+    			add_location(div0, file, 18, 3, 682);
     			attr_dev(div1, "class", "items-center justify-center mt-4");
-    			add_location(div1, file, 15, 2, 532);
+    			add_location(div1, file, 15, 2, 517);
     			attr_dev(section0, "class", "h-fit card rounded-lg shadow-xl p-4 text-sm w-96 text-center");
-    			add_location(section0, file, 10, 1, 215);
+    			add_location(section0, file, 10, 1, 202);
     			attr_dev(section1, "class", "py-4 px-4 flex h-full items-center justify-center");
-    			add_location(section1, file, 9, 0, 145);
+    			add_location(section1, file, 9, 0, 132);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -88332,7 +88336,7 @@ var app = (function () {
     		p: function update(new_ctx, [dirty]) {
     			ctx = new_ctx;
 
-    			if (dirty & /*showTerms*/ 2 && div0_class_value !== (div0_class_value = `${/*showTerms*/ ctx[1] ? '' : 'hidden'}`)) {
+    			if (dirty & /*showTerms*/ 2 && div0_class_value !== (div0_class_value = `${/*showTerms*/ ctx[1] ? "" : "hidden"}`)) {
     				attr_dev(div0, "class", div0_class_value);
     			}
     		},
@@ -88423,13 +88427,13 @@ var app = (function () {
 
     const { console: console_1 } = globals;
 
-    // (29:0) {:else}
+    // (41:0) {:else}
     function create_else_block(ctx) {
     	let loginpage;
     	let current;
 
     	loginpage = new LoginPage({
-    			props: { login: /*login*/ ctx[1] },
+    			props: { login: /*login*/ ctx[2] },
     			$$inline: true
     		});
 
@@ -88460,14 +88464,14 @@ var app = (function () {
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(29:0) {:else}",
+    		source: "(41:0) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (27:0) {#if user}
+    // (39:0) {#if user}
     function create_if_block(ctx) {
     	let homepage;
     	let current;
@@ -88475,7 +88479,8 @@ var app = (function () {
     	homepage = new HomePage({
     			props: {
     				user: /*user*/ ctx[0],
-    				signOut: /*signOut*/ ctx[2]
+    				accessToken: /*accessToken*/ ctx[1],
+    				signOut: /*signOut*/ ctx[3]
     			},
     			$$inline: true
     		});
@@ -88491,6 +88496,7 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			const homepage_changes = {};
     			if (dirty & /*user*/ 1) homepage_changes.user = /*user*/ ctx[0];
+    			if (dirty & /*accessToken*/ 2) homepage_changes.accessToken = /*accessToken*/ ctx[1];
     			homepage.$set(homepage_changes);
     		},
     		i: function intro(local) {
@@ -88511,7 +88517,7 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(27:0) {#if user}",
+    		source: "(39:0) {#if user}",
     		ctx
     	});
 
@@ -88604,11 +88610,23 @@ var app = (function () {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('App', slots, []);
     	let user;
+    	let accessToken;
     	let unsubscribe = authState(auth).subscribe(u => $$invalidate(0, user = u));
 
     	const login = () => {
     		try {
-    			auth.signInWithPopup(googleProvider);
+    			auth.signInWithPopup(googleProvider).then(result => {
+    				// This gives you a Google Access Token. You can use it to access the Google API.
+    				console.log(result);
+
+    				const credential = result.credential;
+    				$$invalidate(1, accessToken = credential.accessToken);
+    			}).catch(error => {
+    				// Handle Errors here.
+    				const errorCode = error.code; // ...
+
+    				const errorMessage = error.message;
+    			});
     		} catch(err) {
     			console.log(err);
     		}
@@ -88633,6 +88651,7 @@ var app = (function () {
     		onDestroy,
     		LoginPage,
     		user,
+    		accessToken,
     		unsubscribe,
     		login,
     		signOut
@@ -88640,6 +88659,7 @@ var app = (function () {
 
     	$$self.$inject_state = $$props => {
     		if ('user' in $$props) $$invalidate(0, user = $$props.user);
+    		if ('accessToken' in $$props) $$invalidate(1, accessToken = $$props.accessToken);
     		if ('unsubscribe' in $$props) unsubscribe = $$props.unsubscribe;
     	};
 
@@ -88647,7 +88667,7 @@ var app = (function () {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [user, login, signOut];
+    	return [user, accessToken, login, signOut];
     }
 
     class App extends SvelteComponentDev {

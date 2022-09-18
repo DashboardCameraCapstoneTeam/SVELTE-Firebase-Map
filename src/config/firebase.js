@@ -16,6 +16,10 @@ firebase.initializeApp(config);
 const db = firebase.firestore();
 const auth = firebase.auth();
 const googleProvider = new firebase.auth.GoogleAuthProvider();
+googleProvider.setCustomParameters({
+  prompt: 'select_account',
+});
+googleProvider.addScope('https://www.googleapis.com/auth/drive');
 export {
   firebase, auth, db, googleProvider,
 };

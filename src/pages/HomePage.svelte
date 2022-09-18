@@ -59,6 +59,11 @@
 	};
 
 	let gpsFilters = [{ id: "Count", name: "Pothole Count Filter", default: [0, 20], step: 1, suffix: "", selected: [0, 20] }];
+
+
+
+
+
 </script>
 
 
