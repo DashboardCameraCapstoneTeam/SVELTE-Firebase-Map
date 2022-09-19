@@ -13,7 +13,7 @@ export const getFilesByFolder = async (token) => {
   const foldersUrl = `https://www.googleapis.com/drive/v3/files?q=mimeType='${'application/vnd.google-apps.folder'}'`;
   const folders = await getFiles(foldersUrl, token);
 
-  const documentsUrl = `https://www.googleapis.com/drive/v3/files?q='${folders[0].id}'+in+parents&fields=files(*)`;
+  const documentsUrl = `https://www.googleapis.com/drive/v3/files?q='${folders[0].id}'+in+parents&trashed=false&fields=files(*)`;
   const documents = await getFiles(documentsUrl, token);
   return documents;
 };

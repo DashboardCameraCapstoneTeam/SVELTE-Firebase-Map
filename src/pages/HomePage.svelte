@@ -14,7 +14,8 @@
 	import { gpsJsonToGeojson } from "utils/geojson-utils.js";
 	import { getFiles, getFilesByFolder } from "service/fetch-drive";
 	import { googleSignIn } from "service/google-sign-in";
-	import Table from "../components/table/Table.svelte";
+	import Card from "../components/files/Card.svelte";
+	import Header from "../components/files/Header.svelte";
 	export let user = null;
 	export let accessToken = null;
 	export let signOut;
@@ -100,8 +101,6 @@
 
 		<div class="col-span-1 md:col-span-1 row-span-1">
 			<SearchDetails bind:dateTimeDictionary {fetchData} />
-
-			<button class="card-btn card-btn-blue my-4" on:click={getDriveFiles}><i class="fa-brands fa-google" /> Fetch Data</button>
 		</div>
 
 		<div class="col-span-1 md:col-span-1 row-span-1">
@@ -132,8 +131,23 @@
 	</div>
 </section>
 
-<section class="my-4 px-4 h-fit">
-	<Table bind:files />
+<Header {getDriveFiles}/>
+<section class="grid grid-cols-1  md:grid-cols-12  gap-4 my-4 px-4 h-fit">
+	{#if files === null}
+		<div class="col-span-1 md:col-span-3 row-span-1">
+			<section class="card h-fit scale-in-center">
+				<p class="font-bold my-1">Recordings:</p>
+				
+				<div class="alert alert-red my-1" role="alert">Recordings have not been loaded.</div>
+			</section>
+		</div>
+	{:else}
+		{#each files as file}
+			<div class="col-span-1 md:col-span-3 row-span-1">
+				<Card bind:file />
+			</div>
+		{/each}
+	{/if}
 </section>
 
 <Footer />
