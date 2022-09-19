@@ -12,10 +12,12 @@
 	import ChartView from "components/menu/Chart.svelte";
 	import { fetchPotholeDataFromFirebase } from "service/fetch-firestore";
 	import { gpsJsonToGeojson } from "utils/geojson-utils.js";
-
-	export let user;
+	import { getFiles, getFilesByFolder } from "service/fetch-drive";
+	import { googleSignIn } from "service/google-sign-in";
+	import Table from "../components/table/Table.svelte";
+	export let user = null;
+	export let accessToken = null;
 	export let signOut;
-
 	let isReadyForStyleSwitching = false;
 	let pointOfInterest = null;
 	let layerList = [];
@@ -53,19 +55,24 @@
 			isError = true;
 		} else {
 			console.log(gpsRawData);
-			gpsData = gpsRawData.length > 0 ? gpsJsonToGeojson(gpsRawData) : alert('No Data Found');
+			gpsData = gpsRawData.length > 0 ? gpsJsonToGeojson(gpsRawData) : alert("No Data Found");
 		}
 		isLoading = false;
 	};
 
 	let gpsFilters = [{ id: "Count", name: "Pothole Count Filter", default: [0, 20], step: 1, suffix: "", selected: [0, 20] }];
 
-
-
-
-
+	let files = null;
+	const getDriveFiles = async () => {
+		if (accessToken === null) {
+			accessToken = await googleSignIn();
+		}
+		return getFilesByFolder(accessToken).then((results) => {
+			files = results;
+			console.log("App.js | files", results);
+		});
+	};
 </script>
-
 
 <Navbar bind:selectedMenu bind:menuComponents />
 
@@ -93,6 +100,8 @@
 
 		<div class="col-span-1 md:col-span-1 row-span-1">
 			<SearchDetails bind:dateTimeDictionary {fetchData} />
+
+			<button class="card-btn card-btn-blue my-4" on:click={getDriveFiles}><i class="fa-brands fa-google" /> Fetch Data</button>
 		</div>
 
 		<div class="col-span-1 md:col-span-1 row-span-1">
@@ -123,9 +132,11 @@
 	</div>
 </section>
 
+<section class="my-4 px-4 h-fit">
+	<Table bind:files />
+</section>
+
 <Footer />
-
-
 
 <style>
 </style>
