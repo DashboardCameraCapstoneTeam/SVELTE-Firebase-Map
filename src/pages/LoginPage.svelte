@@ -7,7 +7,7 @@
 	};
 </script>
 
-<section class="py-4 px-4 flex h-full items-center justify-center">
+<section class="py-4 px-4 flex h-screen items-center justify-center">
 	<section class="h-fit card rounded-lg shadow-xl p-4 text-sm w-96 text-center">
 		<p class="text-bold text-2xl">Sign In</p>
 		<p class="text-center my-2">Use your Google Account</p>

@@ -1,6 +1,7 @@
 <script>
     export let getDriveFiles;
 </script>
+
 <section class="sticky top-0 z-50">
 	
 	<section class="bg-dark grid grid-cols-1 md:grid-cols-12 grid-rows-1 gap-4 px-5 h-fit ">
@@ -10,7 +11,7 @@
         <div class="col-span-1 md:col-span-9 row-span-1 flex bg-smoke">
 			
 				<button class={`navbar-btn navbar-btn-blue`} on:click={getDriveFiles} 
-					><i class="fa-brands fa-google" /> Fetch Google Drive Data
+					><i class="fa-brands fa-google-drive" /> Fetch Google Drive Data
 				</button>
 			
 		</div>

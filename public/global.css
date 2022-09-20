@@ -256,6 +256,17 @@ h6 {
   background-color: #F97068;
 }
 
+.card-btn-red-outline {
+  color: black;
+  border: 2px solid #F97068;
+  transition: all 200ms;
+}
+
+.card-btn-red-outline:hover {
+  color: white;
+  background-color: #F97068;
+}
+
 .card-btn-red:hover {
   background-color: #e1635c;
 }

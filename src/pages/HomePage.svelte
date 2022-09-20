@@ -12,10 +12,10 @@
 	import ChartView from "components/menu/Chart.svelte";
 	import { fetchPotholeDataFromFirebase } from "service/fetch-firestore";
 	import { gpsJsonToGeojson } from "utils/geojson-utils.js";
-	import { getFiles, getFilesByFolder } from "service/fetch-drive";
+	import {  getFilesByFolder } from "service/fetch-drive";
 	import { googleSignIn } from "service/google-sign-in";
-	import Card from "../components/files/Card.svelte";
-	import Header from "../components/files/Header.svelte";
+  import Recordings from "../components/files/Recordings.svelte";
+
 	export let user = null;
 	export let accessToken = null;
 	export let signOut;
@@ -55,7 +55,6 @@
 		if (gpsRawData === null) {
 			isError = true;
 		} else {
-			console.log(gpsRawData);
 			gpsData = gpsRawData.length > 0 ? gpsJsonToGeojson(gpsRawData) : alert("No Data Found");
 		}
 		isLoading = false;
@@ -131,24 +130,7 @@
 	</div>
 </section>
 
-<Header {getDriveFiles}/>
-<section class="grid grid-cols-1  md:grid-cols-12  gap-4 my-4 px-4 h-fit">
-	{#if files === null}
-		<div class="col-span-1 md:col-span-3 row-span-1">
-			<section class="card h-fit scale-in-center">
-				<p class="font-bold my-1">Recordings:</p>
-				
-				<div class="alert alert-red my-1" role="alert">Recordings have not been loaded.</div>
-			</section>
-		</div>
-	{:else}
-		{#each files as file}
-			<div class="col-span-1 md:col-span-3 row-span-1">
-				<Card bind:file />
-			</div>
-		{/each}
-	{/if}
-</section>
+<Recordings {getDriveFiles} bind:files />
 
 <Footer />
 
