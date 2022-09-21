@@ -89227,19 +89227,19 @@ var app = (function () {
     			t2 = text(" Fetch Google Drive Data");
     			attr_dev(a, "href", "#/");
     			attr_dev(a, "class", "text-white text-xl ");
-    			add_location(a, file$3, 8, 3, 260);
+    			add_location(a, file$3, 7, 3, 254);
     			attr_dev(div0, "class", "col-span-1 md:col-span-3 row-span-1 flex items-center ");
-    			add_location(div0, file$3, 7, 2, 187);
+    			add_location(div0, file$3, 6, 2, 181);
     			attr_dev(i, "class", "fa-brands fa-google-drive");
-    			add_location(i, file$3, 13, 6, 487);
+    			add_location(i, file$3, 10, 73, 461);
     			attr_dev(button, "class", `navbar-btn navbar-btn-blue`);
-    			add_location(button, file$3, 12, 4, 409);
+    			add_location(button, file$3, 10, 3, 391);
     			attr_dev(div1, "class", "col-span-1 md:col-span-9 row-span-1 flex bg-smoke");
-    			add_location(div1, file$3, 10, 8, 335);
+    			add_location(div1, file$3, 9, 2, 323);
     			attr_dev(section0, "class", "bg-dark grid grid-cols-1 md:grid-cols-12 grid-rows-1 gap-4 px-5 h-fit ");
-    			add_location(section0, file$3, 6, 1, 95);
+    			add_location(section0, file$3, 5, 1, 89);
     			attr_dev(section1, "class", "sticky top-0 z-50");
-    			add_location(section1, file$3, 4, 0, 54);
+    			add_location(section1, file$3, 4, 0, 51);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -89476,7 +89476,7 @@ var app = (function () {
     			div = element("div");
     			create_component(alertcard.$$.fragment);
     			attr_dev(div, "class", "col-span-1 md:col-span-3 row-span-1");
-    			add_location(div, file$2, 12, 2, 371);
+    			add_location(div, file$2, 12, 2, 370);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89614,7 +89614,7 @@ var app = (function () {
     			section = element("section");
     			if_block.c();
     			attr_dev(section, "class", "grid grid-cols-1 md:grid-cols-12 gap-4 my-4 px-4 h-fit");
-    			add_location(section, file$2, 10, 0, 270);
+    			add_location(section, file$2, 10, 0, 269);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
