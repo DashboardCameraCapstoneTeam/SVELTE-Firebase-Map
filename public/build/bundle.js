@@ -2816,45 +2816,16 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (55:1) {:else}
+    // (45:0) {:else}
     function create_else_block$6(ctx) {
-    	let div;
-
-    	const block = {
-    		c: function create() {
-    			div = element("div");
-    			div.textContent = "Loading Data.";
-    			attr_dev(div, "class", "alert alert-green my-1");
-    			attr_dev(div, "role", "alert");
-    			add_location(div, file$b, 55, 2, 1658);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, div, anchor);
-    		},
-    		p: noop$2,
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_else_block$6.name,
-    		type: "else",
-    		source: "(55:1) {:else}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (44:1) {#if layerList.length >= 1}
-    function create_if_block$b(ctx) {
-    	let button;
-    	let t0_value = (/*showAllLayers*/ ctx[1] ? "Show All" : "Disable All") + "";
-    	let t0;
-    	let button_class_value;
+    	let section;
+    	let p;
     	let t1;
+    	let button;
+    	let t2_value = (/*showAllLayers*/ ctx[1] ? "Show All" : "Disable All") + "";
+    	let t2;
+    	let button_class_value;
+    	let t3;
     	let div;
     	let mounted;
     	let dispose;
@@ -2868,28 +2839,40 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
-    			button = element("button");
-    			t0 = text(t0_value);
+    			section = element("section");
+    			p = element("p");
+    			p.textContent = "Layers:";
     			t1 = space();
+    			button = element("button");
+    			t2 = text(t2_value);
+    			t3 = space();
     			div = element("div");
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
+    			attr_dev(p, "class", "font-bold my-1");
+    			add_location(p, file$b, 46, 2, 1302);
+
     			attr_dev(button, "class", button_class_value = `card-btn   ${/*showAllLayers*/ ctx[1]
 			? "card-btn-green"
 			: "card-btn-red"}  my-1 `);
 
-    			add_location(button, file$b, 44, 2, 1180);
+    			add_location(button, file$b, 48, 2, 1345);
     			attr_dev(div, "class", "overflow-auto ");
-    			add_location(div, file$b, 46, 2, 1354);
+    			add_location(div, file$b, 50, 2, 1519);
+    			attr_dev(section, "class", "card h-fit scale-in-center");
+    			add_location(section, file$b, 45, 1, 1254);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, button, anchor);
-    			append_dev(button, t0);
-    			insert_dev(target, t1, anchor);
-    			insert_dev(target, div, anchor);
+    			insert_dev(target, section, anchor);
+    			append_dev(section, p);
+    			append_dev(section, t1);
+    			append_dev(section, button);
+    			append_dev(button, t2);
+    			append_dev(section, t3);
+    			append_dev(section, div);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].m(div, null);
@@ -2901,7 +2884,7 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*showAllLayers*/ 2 && t0_value !== (t0_value = (/*showAllLayers*/ ctx[1] ? "Show All" : "Disable All") + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*showAllLayers*/ 2 && t2_value !== (t2_value = (/*showAllLayers*/ ctx[1] ? "Show All" : "Disable All") + "")) set_data_dev(t2, t2_value);
 
     			if (dirty & /*showAllLayers*/ 2 && button_class_value !== (button_class_value = `card-btn   ${/*showAllLayers*/ ctx[1]
 			? "card-btn-green"
@@ -2933,10 +2916,10 @@ var app = (function () {
     				each_blocks.length = each_value.length;
     			}
     		},
+    		i: noop$2,
+    		o: noop$2,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(button);
-    			if (detaching) detach_dev(t1);
-    			if (detaching) detach_dev(div);
+    			if (detaching) detach_dev(section);
     			destroy_each(each_blocks, detaching);
     			mounted = false;
     			dispose();
@@ -2945,16 +2928,64 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$b.name,
-    		type: "if",
-    		source: "(44:1) {#if layerList.length >= 1}",
+    		id: create_else_block$6.name,
+    		type: "else",
+    		source: "(45:0) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (48:3) {#each layerList as layer}
+    // (43:0) {#if layerList.length <= 0}
+    function create_if_block$b(ctx) {
+    	let alertcard;
+    	let current;
+
+    	alertcard = new AlertCard({
+    			props: {
+    				title: "Layers",
+    				message: "Loading Layers on the map.",
+    				styleColor: "red"
+    			},
+    			$$inline: true
+    		});
+
+    	const block = {
+    		c: function create() {
+    			create_component(alertcard.$$.fragment);
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component(alertcard, target, anchor);
+    			current = true;
+    		},
+    		p: noop$2,
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(alertcard.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(alertcard.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component(alertcard, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block$b.name,
+    		type: "if",
+    		source: "(43:0) {#if layerList.length <= 0}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (52:3) {#each layerList as layer}
     function create_each_block$7(ctx) {
     	let button;
     	let i;
@@ -2980,10 +3011,10 @@ var app = (function () {
     			t1 = text(t1_value);
     			t2 = space();
     			attr_dev(i, "class", i_class_value = "fa-solid " + /*layer*/ ctx[6].icon + "");
-    			add_location(i, file$b, 49, 5, 1552);
+    			add_location(i, file$b, 53, 5, 1717);
     			attr_dev(button, "key", button_key_value = /*layer*/ ctx[6].name);
     			attr_dev(button, "class", button_class_value = `card-btn ${/*layer*/ ctx[6].isShown ? "card-btn-blue" : ""} my-1 `);
-    			add_location(button, file$b, 48, 4, 1419);
+    			add_location(button, file$b, 52, 4, 1584);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, button, anchor);
@@ -3025,7 +3056,7 @@ var app = (function () {
     		block,
     		id: create_each_block$7.name,
     		type: "each",
-    		source: "(48:3) {#each layerList as layer}",
+    		source: "(52:3) {#each layerList as layer}",
     		ctx
     	});
 
@@ -3033,57 +3064,73 @@ var app = (function () {
     }
 
     function create_fragment$d(ctx) {
-    	let section;
-    	let p;
-    	let t1;
+    	let current_block_type_index;
+    	let if_block;
+    	let if_block_anchor;
+    	let current;
+    	const if_block_creators = [create_if_block$b, create_else_block$6];
+    	const if_blocks = [];
 
     	function select_block_type(ctx, dirty) {
-    		if (/*layerList*/ ctx[0].length >= 1) return create_if_block$b;
-    		return create_else_block$6;
+    		if (/*layerList*/ ctx[0].length <= 0) return 0;
+    		return 1;
     	}
 
-    	let current_block_type = select_block_type(ctx);
-    	let if_block = current_block_type(ctx);
+    	current_block_type_index = select_block_type(ctx);
+    	if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
 
     	const block = {
     		c: function create() {
-    			section = element("section");
-    			p = element("p");
-    			p.textContent = "Layers:";
-    			t1 = space();
     			if_block.c();
-    			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file$b, 41, 1, 1107);
-    			attr_dev(section, "class", "card h-fit scale-in-center");
-    			add_location(section, file$b, 40, 0, 1060);
+    			if_block_anchor = empty();
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, section, anchor);
-    			append_dev(section, p);
-    			append_dev(section, t1);
-    			if_block.m(section, null);
+    			if_blocks[current_block_type_index].m(target, anchor);
+    			insert_dev(target, if_block_anchor, anchor);
+    			current = true;
     		},
     		p: function update(ctx, [dirty]) {
-    			if (current_block_type === (current_block_type = select_block_type(ctx)) && if_block) {
-    				if_block.p(ctx, dirty);
-    			} else {
-    				if_block.d(1);
-    				if_block = current_block_type(ctx);
+    			let previous_block_index = current_block_type_index;
+    			current_block_type_index = select_block_type(ctx);
 
-    				if (if_block) {
+    			if (current_block_type_index === previous_block_index) {
+    				if_blocks[current_block_type_index].p(ctx, dirty);
+    			} else {
+    				group_outros();
+
+    				transition_out(if_blocks[previous_block_index], 1, 1, () => {
+    					if_blocks[previous_block_index] = null;
+    				});
+
+    				check_outros();
+    				if_block = if_blocks[current_block_type_index];
+
+    				if (!if_block) {
+    					if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
     					if_block.c();
-    					if_block.m(section, null);
+    				} else {
+    					if_block.p(ctx, dirty);
     				}
+
+    				transition_in(if_block, 1);
+    				if_block.m(if_block_anchor.parentNode, if_block_anchor);
     			}
     		},
-    		i: noop$2,
-    		o: noop$2,
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(if_block);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(if_block);
+    			current = false;
+    		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(section);
-    			if_block.d();
+    			if_blocks[current_block_type_index].d(detaching);
+    			if (detaching) detach_dev(if_block_anchor);
     		}
     	};
 
@@ -3156,6 +3203,7 @@ var app = (function () {
     	};
 
     	$$self.$capture_state = () => ({
+    		AlertCard,
     		layerList,
     		showAllLayers,
     		toggleLayers,
@@ -7027,9 +7075,12 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (20:1) {:else}
+    // (19:0) {:else}
     function create_else_block$4(ctx) {
-    	let t0;
+    	let section;
+    	let p;
+    	let t1;
+    	let t2;
     	let button;
     	let current;
     	let mounted;
@@ -7048,23 +7099,36 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
+    			section = element("section");
+    			p = element("p");
+    			p.textContent = "Filters:";
+    			t1 = space();
+
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
-    			t0 = space();
+    			t2 = space();
     			button = element("button");
     			button.textContent = "Reset All Filters";
+    			attr_dev(p, "class", "font-bold my-1");
+    			add_location(p, file$7, 20, 2, 621);
     			attr_dev(button, "class", `card-btn card-btn-red  my-1 `);
-    			add_location(button, file$7, 39, 2, 1005);
+    			add_location(button, file$7, 40, 2, 1071);
+    			attr_dev(section, "class", "card h-fit scale-in-center");
+    			add_location(section, file$7, 19, 1, 573);
     		},
     		m: function mount(target, anchor) {
+    			insert_dev(target, section, anchor);
+    			append_dev(section, p);
+    			append_dev(section, t1);
+
     			for (let i = 0; i < each_blocks.length; i += 1) {
-    				each_blocks[i].m(target, anchor);
+    				each_blocks[i].m(section, null);
     			}
 
-    			insert_dev(target, t0, anchor);
-    			insert_dev(target, button, anchor);
+    			append_dev(section, t2);
+    			append_dev(section, button);
     			current = true;
 
     			if (!mounted) {
@@ -7088,7 +7152,7 @@ var app = (function () {
     						each_blocks[i] = create_each_block$3(child_ctx);
     						each_blocks[i].c();
     						transition_in(each_blocks[i], 1);
-    						each_blocks[i].m(t0.parentNode, t0);
+    						each_blocks[i].m(section, t2);
     					}
     				}
 
@@ -7120,9 +7184,8 @@ var app = (function () {
     			current = false;
     		},
     		d: function destroy(detaching) {
+    			if (detaching) detach_dev(section);
     			destroy_each(each_blocks, detaching);
-    			if (detaching) detach_dev(t0);
-    			if (detaching) detach_dev(button);
     			mounted = false;
     			dispose();
     		}
@@ -7132,44 +7195,47 @@ var app = (function () {
     		block,
     		id: create_else_block$4.name,
     		type: "else",
-    		source: "(20:1) {:else}",
+    		source: "(19:0) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (17:1) {#if gpsData === null}
+    // (17:0) {#if gpsData === null}
     function create_if_block$7(ctx) {
-    	let p;
-    	let t1;
-    	let div;
+    	let alertcard;
+    	let current;
+
+    	alertcard = new AlertCard({
+    			props: {
+    				title: "Filters",
+    				message: "GPS Data has not been loaded.",
+    				styleColor: "red"
+    			},
+    			$$inline: true
+    		});
 
     	const block = {
     		c: function create() {
-    			p = element("p");
-    			p.textContent = "Filters:";
-    			t1 = space();
-    			div = element("div");
-    			div.textContent = "GPS Data has not been loaded.";
-    			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file$7, 17, 2, 459);
-    			attr_dev(div, "class", "alert alert-red my-1");
-    			attr_dev(div, "role", "alert");
-    			add_location(div, file$7, 18, 2, 501);
+    			create_component(alertcard.$$.fragment);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, p, anchor);
-    			insert_dev(target, t1, anchor);
-    			insert_dev(target, div, anchor);
+    			mount_component(alertcard, target, anchor);
+    			current = true;
     		},
     		p: noop$2,
-    		i: noop$2,
-    		o: noop$2,
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(alertcard.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(alertcard.$$.fragment, local);
+    			current = false;
+    		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(p);
-    			if (detaching) detach_dev(t1);
-    			if (detaching) detach_dev(div);
+    			destroy_component(alertcard, detaching);
     		}
     	};
 
@@ -7177,14 +7243,14 @@ var app = (function () {
     		block,
     		id: create_if_block$7.name,
     		type: "if",
-    		source: "(17:1) {#if gpsData === null}",
+    		source: "(17:0) {#if gpsData === null}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (21:2) {#each gpsFilters as filterItem}
+    // (22:2) {#each gpsFilters as filterItem}
     function create_each_block$3(ctx) {
     	let p;
     	let t0_value = /*filterItem*/ ctx[4].name + "";
@@ -7228,9 +7294,9 @@ var app = (function () {
     			div = element("div");
     			create_component(rangeslider.$$.fragment);
     			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file$7, 21, 3, 634);
+    			add_location(p, file$7, 22, 3, 700);
     			attr_dev(div, "class", "py-1");
-    			add_location(div, file$7, 23, 3, 689);
+    			add_location(div, file$7, 24, 3, 755);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -7279,7 +7345,7 @@ var app = (function () {
     		block,
     		id: create_each_block$3.name,
     		type: "each",
-    		source: "(21:2) {#each gpsFilters as filterItem}",
+    		source: "(22:2) {#each gpsFilters as filterItem}",
     		ctx
     	});
 
@@ -7287,9 +7353,9 @@ var app = (function () {
     }
 
     function create_fragment$9(ctx) {
-    	let section;
     	let current_block_type_index;
     	let if_block;
+    	let if_block_anchor;
     	let current;
     	const if_block_creators = [create_if_block$7, create_else_block$4];
     	const if_blocks = [];
@@ -7304,17 +7370,15 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
-    			section = element("section");
     			if_block.c();
-    			attr_dev(section, "class", "card h-fit scale-in-center");
-    			add_location(section, file$7, 15, 0, 386);
+    			if_block_anchor = empty();
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, section, anchor);
-    			if_blocks[current_block_type_index].m(section, null);
+    			if_blocks[current_block_type_index].m(target, anchor);
+    			insert_dev(target, if_block_anchor, anchor);
     			current = true;
     		},
     		p: function update(ctx, [dirty]) {
@@ -7341,7 +7405,7 @@ var app = (function () {
     				}
 
     				transition_in(if_block, 1);
-    				if_block.m(section, null);
+    				if_block.m(if_block_anchor.parentNode, if_block_anchor);
     			}
     		},
     		i: function intro(local) {
@@ -7354,8 +7418,8 @@ var app = (function () {
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(section);
-    			if_blocks[current_block_type_index].d();
+    			if_blocks[current_block_type_index].d(detaching);
+    			if (detaching) detach_dev(if_block_anchor);
     		}
     	};
 
@@ -7407,6 +7471,7 @@ var app = (function () {
 
     	$$self.$capture_state = () => ({
     		RangeSlider,
+    		AlertCard,
     		gpsFilters,
     		gpsData,
     		resetFilters
@@ -7706,8 +7771,11 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (9:1) {:else}
+    // (8:0) {:else}
     function create_else_block$3(ctx) {
+    	let section;
+    	let p;
+    	let t1;
     	let div;
     	let each_value = speedColors;
     	validate_each_argument(each_value);
@@ -7719,17 +7787,28 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
+    			section = element("section");
+    			p = element("p");
+    			p.textContent = "Vehicle Speed Legend (Km/h):";
+    			t1 = space();
     			div = element("div");
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
+    			attr_dev(p, "class", "font-bold my-1");
+    			add_location(p, file$5, 9, 2, 348);
     			attr_dev(div, "class", "overflow-auto h-64");
-    			add_location(div, file$5, 9, 2, 332);
+    			add_location(div, file$5, 10, 2, 410);
+    			attr_dev(section, "class", "card h-fit scale-in-center");
+    			add_location(section, file$5, 8, 1, 300);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div, anchor);
+    			insert_dev(target, section, anchor);
+    			append_dev(section, p);
+    			append_dev(section, t1);
+    			append_dev(section, div);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].m(div, null);
@@ -7760,8 +7839,10 @@ var app = (function () {
     				each_blocks.length = each_value.length;
     			}
     		},
+    		i: noop$2,
+    		o: noop$2,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div);
+    			if (detaching) detach_dev(section);
     			destroy_each(each_blocks, detaching);
     		}
     	};
@@ -7770,31 +7851,47 @@ var app = (function () {
     		block,
     		id: create_else_block$3.name,
     		type: "else",
-    		source: "(9:1) {:else}",
+    		source: "(8:0) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (7:1) {#if speedColors === null}
+    // (6:0) {#if speedColors === null}
     function create_if_block$5(ctx) {
-    	let div;
+    	let alertcard;
+    	let current;
+
+    	alertcard = new AlertCard({
+    			props: {
+    				title: "Vehicle Speed Legend",
+    				message: "Unable to load the legend, please try again.",
+    				styleColor: "red"
+    			},
+    			$$inline: true
+    		});
 
     	const block = {
     		c: function create() {
-    			div = element("div");
-    			div.textContent = "Unable to load the legend, please try again.";
-    			attr_dev(div, "class", "alert alert-red my-1");
-    			attr_dev(div, "role", "alert");
-    			add_location(div, file$5, 7, 2, 221);
+    			create_component(alertcard.$$.fragment);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div, anchor);
+    			mount_component(alertcard, target, anchor);
+    			current = true;
     		},
     		p: noop$2,
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(alertcard.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(alertcard.$$.fragment, local);
+    			current = false;
+    		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div);
+    			destroy_component(alertcard, detaching);
     		}
     	};
 
@@ -7802,14 +7899,14 @@ var app = (function () {
     		block,
     		id: create_if_block$5.name,
     		type: "if",
-    		source: "(7:1) {#if speedColors === null}",
+    		source: "(6:0) {#if speedColors === null}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (11:3) {#each speedColors as speedColor, i}
+    // (12:3) {#each speedColors as speedColor, i}
     function create_each_block$2(ctx) {
     	let p;
     	let i_1;
@@ -7830,9 +7927,9 @@ var app = (function () {
     			t3 = text(t3_value);
     			attr_dev(i_1, "class", "dot");
     			attr_dev(i_1, "style", `--color:${/*speedColor*/ ctx[0]}`);
-    			add_location(i_1, file$5, 11, 30, 437);
+    			add_location(i_1, file$5, 12, 30, 515);
     			attr_dev(p, "class", "list-item my-1");
-    			add_location(p, file$5, 11, 4, 411);
+    			add_location(p, file$5, 12, 4, 489);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -7852,7 +7949,7 @@ var app = (function () {
     		block,
     		id: create_each_block$2.name,
     		type: "each",
-    		source: "(11:3) {#each speedColors as speedColor, i}",
+    		source: "(12:3) {#each speedColors as speedColor, i}",
     		ctx
     	});
 
@@ -7860,47 +7957,49 @@ var app = (function () {
     }
 
     function create_fragment$7(ctx) {
-    	let section;
-    	let p;
-    	let t1;
+    	let current_block_type_index;
+    	let if_block;
+    	let if_block_anchor;
+    	let current;
+    	const if_block_creators = [create_if_block$5, create_else_block$3];
+    	const if_blocks = [];
 
     	function select_block_type(ctx, dirty) {
-    		if (speedColors === null) return create_if_block$5;
-    		return create_else_block$3;
+    		if (speedColors === null) return 0;
+    		return 1;
     	}
 
-    	let current_block_type = select_block_type();
-    	let if_block = current_block_type(ctx);
+    	current_block_type_index = select_block_type();
+    	if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
 
     	const block = {
     		c: function create() {
-    			section = element("section");
-    			p = element("p");
-    			p.textContent = "Vehicle Speed Legend (Km/h):";
-    			t1 = space();
     			if_block.c();
-    			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file$5, 5, 1, 130);
-    			attr_dev(section, "class", "card h-fit scale-in-center");
-    			add_location(section, file$5, 4, 0, 83);
+    			if_block_anchor = empty();
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, section, anchor);
-    			append_dev(section, p);
-    			append_dev(section, t1);
-    			if_block.m(section, null);
+    			if_blocks[current_block_type_index].m(target, anchor);
+    			insert_dev(target, if_block_anchor, anchor);
+    			current = true;
     		},
     		p: function update(ctx, [dirty]) {
     			if_block.p(ctx, dirty);
     		},
-    		i: noop$2,
-    		o: noop$2,
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(if_block);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(if_block);
+    			current = false;
+    		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(section);
-    			if_block.d();
+    			if_blocks[current_block_type_index].d(detaching);
+    			if (detaching) detach_dev(if_block_anchor);
     		}
     	};
 
@@ -7924,7 +8023,7 @@ var app = (function () {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<SpeedView> was created with unknown prop '${key}'`);
     	});
 
-    	$$self.$capture_state = () => ({ speedColorSplit, speedColors });
+    	$$self.$capture_state = () => ({ speedColorSplit, speedColors, AlertCard });
     	return [];
     }
 
