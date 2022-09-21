@@ -4,10 +4,7 @@ export const googleSignIn = async () => {
   let accessToken = null;
   await auth.signInWithPopup(googleProvider).then((result) => {
     accessToken = result.credential.accessToken;
-  }).catch((error) => {
-    const errorMessage = error.message;
-    return errorMessage;
-  });
+  }).catch((error) => error.message);
 
   return accessToken;
 };

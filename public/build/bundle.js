@@ -88887,6 +88887,7 @@ var app = (function () {
 
     var axios = axios_1;
 
+    const baseUrl = 'https://www.googleapis.com/drive/v3/files?q=';
     const getFiles = async (customUrl, token) => {
       const promise = await axios.get(customUrl, {
         headers: {
@@ -88897,10 +88898,10 @@ var app = (function () {
     };
 
     const getFilesByFolder = async (token) => {
-      const foldersUrl = `https://www.googleapis.com/drive/v3/files?q=mimeType='${'application/vnd.google-apps.folder'}'`;
+      const foldersUrl = `${baseUrl}mimeType='${'application/vnd.google-apps.folder'}'`;
       const folders = await getFiles(foldersUrl, token);
 
-      const documentsUrl = `https://www.googleapis.com/drive/v3/files?q='${folders[0].id}'+in+parents&trashed=false&fields=files(*)`;
+      const documentsUrl = `${baseUrl}'${folders[0].id}'+in+parents&trashed=false&fields=files(*)`;
       const documents = await getFiles(documentsUrl, token);
       return documents;
     };
@@ -88909,10 +88910,7 @@ var app = (function () {
       let accessToken = null;
       await auth.signInWithPopup(googleProvider).then((result) => {
         accessToken = result.credential.accessToken;
-      }).catch((error) => {
-        const errorMessage = error.message;
-        return errorMessage;
-      });
+      }).catch((error) => error.message);
 
       return accessToken;
     };
@@ -88922,7 +88920,7 @@ var app = (function () {
 
     const file_1 = "src\\components\\files\\Card.svelte";
 
-    // (10:8) {#if file.webViewLink}
+    // (8:1) {#if file.webViewLink}
     function create_if_block$3(ctx) {
     	let a;
     	let img;
@@ -88938,11 +88936,11 @@ var app = (function () {
     			attr_dev(img, "class", "h-64 w-auto object-cover ");
     			attr_dev(img, "width", "500");
     			attr_dev(img, "height", "600");
-    			add_location(img, file_1, 10, 81, 252);
+    			add_location(img, file_1, 8, 74, 228);
     			attr_dev(a, "href", a_href_value = /*file*/ ctx[0].webViewLink);
     			attr_dev(a, "target", "_blank");
     			attr_dev(a, "class", "text-white text-xl ");
-    			add_location(a, file_1, 10, 8, 179);
+    			add_location(a, file_1, 8, 2, 156);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, a, anchor);
@@ -88966,7 +88964,7 @@ var app = (function () {
     		block,
     		id: create_if_block$3.name,
     		type: "if",
-    		source: "(10:8) {#if file.webViewLink}",
+    		source: "(8:1) {#if file.webViewLink}",
     		ctx
     	});
 
@@ -89047,25 +89045,25 @@ var app = (function () {
     			p10 = element("p");
     			t21 = text(t21_value);
     			attr_dev(p0, "class", "font-bold my-1");
-    			add_location(p0, file_1, 7, 4, 99);
+    			add_location(p0, file_1, 5, 1, 89);
     			attr_dev(p1, "class", "font-bold my-1");
-    			add_location(p1, file_1, 14, 7, 401);
+    			add_location(p1, file_1, 11, 1, 350);
     			attr_dev(p2, "class", "truncate");
-    			add_location(p2, file_1, 15, 8, 451);
+    			add_location(p2, file_1, 12, 1, 393);
     			attr_dev(p3, "class", "font-bold my-1");
-    			add_location(p3, file_1, 17, 8, 510);
-    			add_location(p4, file_1, 18, 8, 563);
+    			add_location(p3, file_1, 14, 1, 445);
+    			add_location(p4, file_1, 15, 1, 491);
     			attr_dev(p5, "class", "font-bold my-1");
-    			add_location(p5, file_1, 19, 8, 598);
-    			add_location(p6, file_1, 20, 8, 652);
+    			add_location(p5, file_1, 16, 1, 519);
+    			add_location(p6, file_1, 17, 1, 566);
     			attr_dev(p7, "class", "font-bold my-1");
-    			add_location(p7, file_1, 21, 8, 688);
-    			add_location(p8, file_1, 22, 8, 738);
+    			add_location(p7, file_1, 18, 1, 595);
+    			add_location(p8, file_1, 19, 1, 638);
     			attr_dev(p9, "class", "font-bold my-1");
-    			add_location(p9, file_1, 23, 8, 766);
-    			add_location(p10, file_1, 24, 8, 812);
+    			add_location(p9, file_1, 20, 1, 659);
+    			add_location(p10, file_1, 21, 1, 698);
     			attr_dev(section, "class", "card h-fit scale-in-center");
-    			add_location(section, file_1, 5, 0, 47);
+    			add_location(section, file_1, 4, 0, 42);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -89784,9 +89782,9 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Loading Data...";
     			attr_dev(p, "class", "align-middle");
-    			add_location(p, file$1, 120, 4, 4270);
+    			add_location(p, file$1, 120, 4, 4271);
     			attr_dev(div, "class", "absolute top-0 z-100 map-loading rounded-lg");
-    			add_location(div, file$1, 119, 3, 4207);
+    			add_location(div, file$1, 119, 3, 4208);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89819,9 +89817,9 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Error, unable to Fetch Data";
     			attr_dev(p, "class", "align-middle");
-    			add_location(p, file$1, 126, 4, 4427);
+    			add_location(p, file$1, 126, 4, 4428);
     			attr_dev(div, "class", "absolute top-0 z-100 map-error rounded-lg");
-    			add_location(div, file$1, 125, 3, 4366);
+    			add_location(div, file$1, 125, 3, 4367);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -90178,33 +90176,33 @@ var app = (function () {
     			t15 = space();
     			create_component(footer.$$.fragment);
     			attr_dev(div0, "class", "col-span-1 md:col-span-1 row-span-1");
-    			add_location(div0, file$1, 80, 2, 2769);
+    			add_location(div0, file$1, 80, 2, 2770);
     			attr_dev(div1, "class", div1_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[7] === 0 ? "" : "hidden"}`);
-    			add_location(div1, file$1, 84, 2, 2864);
+    			add_location(div1, file$1, 84, 2, 2865);
     			attr_dev(div2, "class", div2_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[7] === 1 ? "" : "hidden"}`);
-    			add_location(div2, file$1, 88, 2, 3010);
+    			add_location(div2, file$1, 88, 2, 3011);
     			attr_dev(div3, "class", div3_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[7] === 2 ? "" : "hidden"}`);
-    			add_location(div3, file$1, 92, 2, 3155);
+    			add_location(div3, file$1, 92, 2, 3156);
     			attr_dev(div4, "class", div4_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[7] === 3 ? "" : "hidden"}`);
-    			add_location(div4, file$1, 96, 2, 3305);
+    			add_location(div4, file$1, 96, 2, 3306);
     			attr_dev(div5, "class", "col-span-1 md:col-span-1 row-span-1");
-    			add_location(div5, file$1, 100, 2, 3441);
+    			add_location(div5, file$1, 100, 2, 3442);
     			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file$1, 106, 4, 3668);
+    			add_location(p, file$1, 106, 4, 3669);
     			attr_dev(button, "class", "card-btn card-btn-red my-2");
-    			add_location(button, file$1, 107, 4, 3722);
+    			add_location(button, file$1, 107, 4, 3723);
     			attr_dev(section0, "class", "card h-fit scale-in-center");
-    			add_location(section0, file$1, 105, 3, 3618);
+    			add_location(section0, file$1, 105, 3, 3619);
     			attr_dev(div6, "class", "col-span-1 md:col-span-1 row-span-1");
-    			add_location(div6, file$1, 104, 2, 3564);
+    			add_location(div6, file$1, 104, 2, 3565);
     			attr_dev(div7, "class", "col-span-1 md:col-span-3 row-span-6 grid grid-cols-1 md:grid-cols-1 gap-4 h-fit");
-    			add_location(div7, file$1, 79, 1, 2672);
+    			add_location(div7, file$1, 79, 1, 2673);
     			attr_dev(div8, "class", "absolute top-1 left-1 ");
-    			add_location(div8, file$1, 114, 2, 4057);
+    			add_location(div8, file$1, 114, 2, 4058);
     			attr_dev(div9, "class", "col-span-1 md:col-span-9 row-span-6 relative");
-    			add_location(div9, file$1, 112, 1, 3842);
+    			add_location(div9, file$1, 112, 1, 3843);
     			attr_dev(section1, "class", "grid grid-cols-1 md:grid-cols-12 grid-rows-6 gap-4 my-4 px-4 h-fit");
-    			add_location(section1, file$1, 78, 0, 2583);
+    			add_location(section1, file$1, 78, 0, 2584);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");

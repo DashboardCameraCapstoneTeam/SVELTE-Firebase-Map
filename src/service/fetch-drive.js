@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+const baseUrl = 'https://www.googleapis.com/drive/v3/files?q=';
 export const getFiles = async (customUrl, token) => {
   const promise = await axios.get(customUrl, {
     headers: {
@@ -10,10 +11,10 @@ export const getFiles = async (customUrl, token) => {
 };
 
 export const getFilesByFolder = async (token) => {
-  const foldersUrl = `https://www.googleapis.com/drive/v3/files?q=mimeType='${'application/vnd.google-apps.folder'}'`;
+  const foldersUrl = `${baseUrl}mimeType='${'application/vnd.google-apps.folder'}'`;
   const folders = await getFiles(foldersUrl, token);
 
-  const documentsUrl = `https://www.googleapis.com/drive/v3/files?q='${folders[0].id}'+in+parents&trashed=false&fields=files(*)`;
+  const documentsUrl = `${baseUrl}'${folders[0].id}'+in+parents&trashed=false&fields=files(*)`;
   const documents = await getFiles(documentsUrl, token);
   return documents;
 };

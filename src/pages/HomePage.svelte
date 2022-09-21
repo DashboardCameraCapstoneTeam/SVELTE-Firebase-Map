@@ -14,7 +14,7 @@
 	import { gpsJsonToGeojson } from "utils/geojson-utils.js";
 	import {  getFilesByFolder } from "service/fetch-drive";
 	import { googleSignIn } from "service/google-sign-in";
-  import Recordings from "../components/files/Recordings.svelte";
+  	import Recordings from "../components/files/Recordings.svelte";
 
 	export let user = null;
 	export let accessToken = null;
