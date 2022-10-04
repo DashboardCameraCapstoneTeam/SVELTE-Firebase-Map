@@ -63,6 +63,9 @@
 	let gpsFilters = [{ id: "Count", name: "Pothole Count Filter", default: [0, 20], step: 1, suffix: "", selected: [0, 20] }];
 
 	let files = null;
+	if (sessionStorage.getItem("accessToken")) {
+		accessToken = sessionStorage.getItem("accessToken");
+	}
 	const getDriveFiles = async () => {
 		if (accessToken === null) {
 			accessToken = await googleSignIn();
@@ -70,6 +73,10 @@
 		return getFilesByFolder(accessToken).then((results) => {
 			files = results;
 			console.log("App.js | files", results);
+
+			if (sessionStorage.getItem("accessToken") === null) {
+				sessionStorage.setItem("accessToken", accessToken);
+			}
 		});
 	};
 </script>

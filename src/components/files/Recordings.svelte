@@ -15,9 +15,11 @@
 		</div>
 	{:else}
 		{#each files as file}
-			<div class="col-span-1 md:col-span-3 row-span-1">
-				<Card bind:file />
-			</div>
+			{#if file.fileExtension === "MP4"}
+				<div class="col-span-1 md:col-span-3 row-span-1">
+					<Card bind:file />
+				</div>
+			{/if}
 		{/each}
 	{/if}
 </section>
