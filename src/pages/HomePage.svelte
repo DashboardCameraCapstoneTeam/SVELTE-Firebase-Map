@@ -1,5 +1,5 @@
 <script>
-	import Navbar from "components/Navbar.svelte";
+	import MapHeader from "components/map/MapHeader.svelte";
 	import Footer from "components/Footer.svelte";
 	import Map from "components/map/Map.svelte";
 	import SearchDetails from "components/SearchDetails.svelte";
@@ -13,7 +13,11 @@
 	import { gpsJsonToGeojson } from "utils/geojson-utils.js";
 	import { getFilesByFolder } from "service/fetch-drive";
 	import { googleSignIn } from "service/google-sign-in";
-	import Recordings from "../components/files/Recordings.svelte";
+
+	import Card from "components/files/Card.svelte";
+	import RecordingsHeader from "components/files/RecordingsHeader.svelte";
+	import AlertCard from "components/widget/AlertCard.svelte";
+  import Profile from "../components/menu/Profile.svelte";
 
 	export let user = null;
 	export let accessToken = null;
@@ -41,6 +45,7 @@
 		{ id: 1, title: "Street View", icon: "fa-road" },
 		{ id: 2, title: "Filter View", icon: "fa-filter" },
 		{ id: 3, title: "Chart View", icon: "fa-chart-simple" },
+		{ id: 4, title: "Profile", icon: "fa-user" }
 	];
 	let selectedMenu = menuComponents[0].id;
 
@@ -82,7 +87,7 @@
 	fetchData();
 </script>
 
-<Navbar bind:selectedMenu bind:menuComponents />
+<MapHeader bind:selectedMenu bind:menuComponents />
 
 <section class="grid grid-cols-1  md:grid-cols-12 grid-rows-6  gap-4 my-4 px-4 h-fit">
 	<div class="col-span-1 md:col-span-3 row-span-6 grid grid-cols-1 md:grid-cols-1 gap-4 h-fit">
@@ -106,16 +111,15 @@
 			<ChartView bind:gpsData />
 		</div>
 
+		<div class={`col-span-1 md:col-span-1 row-span-1 ${selectedMenu === 4 ? "" : "hidden"}`}>
+			<Profile bind:user {signOut} />
+		</div>
+
 		<div class="col-span-1 md:col-span-1 row-span-1">
 			<SearchDetails bind:dateTimeDictionary {fetchData} />
 		</div>
 
-		<div class="col-span-1 md:col-span-1 row-span-1">
-			<section class="card h-fit scale-in-center">
-				<p class="font-bold my-1">Profile Selection:</p>
-				<button class="card-btn card-btn-red" on:click={signOut}> Sign Out </button>
-			</section>
-		</div>
+		
 	</div>
 
 	<div class="col-span-1 md:col-span-9  row-span-6 relative">
@@ -138,6 +142,25 @@
 	</div>
 </section>
 
-<Recordings {getDriveFiles} bind:files />
+<RecordingsHeader {getDriveFiles} />
+<section class="grid grid-cols-1  md:grid-cols-12  gap-4 my-4 px-4 h-fit">
+	{#if files === null}
+		<div class="col-span-1 md:col-span-3">
+			<AlertCard title="Recordings" message="Records have not been fetched." styleColor="red" />
+		</div>
+	{:else if files.length <= 0}
+		<div class="col-span-1 md:col-span-3">
+			<AlertCard title="Recordings" message="No Recordings found." styleColor="red" />
+		</div>
+	{:else}
+		{#each files as file}
+			{#if file.fileExtension === "MP4"}
+				<div class="col-span-1 md:col-span-3">
+					<Card bind:file />
+				</div>
+			{/if}
+		{/each}
+	{/if}
+</section>
 
 <Footer />
