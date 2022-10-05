@@ -90,7 +90,7 @@
 
 <MapHeader bind:selectedMenu bind:menuComponents />
 
-<section class="grid grid-cols-1  md:grid-cols-12 grid-rows-6  gap-4 my-4 px-4 h-fit">
+<section class="grid grid-cols-1  md:grid-cols-12 grid-rows-6  gap-4 my-4 px-4 h-fit ">
 	<div class="col-span-1 md:col-span-3 row-span-6 grid grid-cols-1 md:grid-cols-1 gap-4 h-fit">
 		<div class="col-span-1 md:col-span-1 row-span-1">
 			<Layers bind:layerList />
@@ -144,7 +144,7 @@
 </section>
 
 <RecordingsHeader {getDriveFiles} />
-<section class="grid grid-cols-1  md:grid-cols-12  gap-4 my-4 px-4 h-fit">
+<section class="grid grid-cols-1  md:grid-cols-12  gap-4 my-4 px-4 h-fit divide-x-1 divide-teal-600 ">
 	{#if files === null}
 		<div class="col-span-1 md:col-span-3">
 			<AlertCard title="Recordings" message="Records have not been fetched." styleColor="red" />

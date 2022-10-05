@@ -4,7 +4,7 @@
 	export let fetchData;
 </script>
 
-{#if dateTimeDictionary.startDateTime === null || dateTimeDictionary.endDateTime === null}
+{#if dateTimeDictionary.startDateTime === '' || dateTimeDictionary.endDateTime === ''}
 	<AlertCard title="Fetch Firebase Data" message="Select a Date, Time before Searching." styleColor="red" />
 {:else}
 	<section class="card h-fit scale-in-center">

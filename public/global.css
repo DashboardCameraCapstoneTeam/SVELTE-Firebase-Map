@@ -3,14 +3,28 @@
 
 :root {
   font-family: 'Quicksand', sans-serif;
+
+  --white: white;
+  --smoke: #fafafa;
+  --dark: rgb(37, 37, 37);
+  --gray: rgb(116, 116, 116);
+
   --primary-color:#2948a1;
   --primary-color-hover: #203a88;
 
   --success-color: #53a548;
   --success-color-hover: #45903b;
+  --success-color-light: rgb(220, 252, 231);
 
   --error-color: #ff5a5f;
   --error-color-hover: #b42929;
+  --error-color-light: rgb(254, 226, 226);
+
+  --card-bg-color: white;
+  --card-text-color: black;
+
+  --btn-default: #f8f8f8;
+  --btn-default-hover: #b7bcc2;
 }
 
 html {
@@ -20,6 +34,7 @@ html {
 body {
   margin: 0;
   padding: 0;
+  background-color: var(--white);
 }
 
 
@@ -48,11 +63,11 @@ h6 {
 }
 
 .bg-smoke {
-  background-color: #fafafa;
+  background-color: var(--smoke);
 }
 
 .bg-dark {
-  background-color: rgb(37, 37, 37);
+  background-color: var(--dark);
 }
 
 
@@ -67,13 +82,13 @@ h6 {
   display: block; 
   margin: 0; 
   background-clip: padding-box; 
-  background-color: #ffffff; 
+  background-color: var(--btn-default); 
   transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform; 
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); 
   width: 100%; 
   border-radius: 0.25rem; 
   border-width: 1px; 
-  border-color: #D1D5DB; 
+  border-color: var(--btn-default-hover); 
   border-style: solid; 
 }
 
@@ -84,9 +99,10 @@ h6 {
   box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   font-size: 0.875rem;
   line-height: 1.25rem;
-  background-color: white;
-  border-width: 1px;
-  height: 0%;
+  background-color: var(--card-bg-color);
+  color: var(--card-text-color);
+  border-width: 2px;
+  border-style: solid; 
 }
 
 
@@ -104,14 +120,14 @@ h6 {
 
   border-radius: 0.5rem;
   /* 8px */
-  background-color: #f8f8f8;
+  background-color: var(--btn-default);
   width: 100%;
 }
 
 .card-btn:hover {
   padding-left: 2rem;
   padding-right: 2rem;
-  background-color: #b7bcc2;
+  background-color: var(--btn-default-hover);
 }
 
 
@@ -165,16 +181,16 @@ h6 {
   text-align: left;
   transition: all 400ms;
   font-size: 0.875rem;
-  /* 14px */
-  line-height: 1.25rem;
+
   /* 8px */
   
-  background-color: #f8f8f8;
+  background-color: var(--btn-default);
   width: 100%;
+
 }
 
 .navbar-btn:hover {
-  background-color: #b7bcc2;
+  background-color: var(--btn-default-hover);
   padding-left: 2rem;
   padding-right: 2rem;
 }
@@ -196,7 +212,7 @@ h6 {
 }
 
 .map-style:hover{
-  border-color: #203a88;
+  border-color: var(--primary-color);
 }
 
 .map-style-selected{
@@ -262,18 +278,18 @@ h6 {
 
 .alert-red {
   color: var(--error-color);
-  background-color: rgb(254, 226, 226)
+  background-color: var(--error-color-light);
 }
 
 .alert-green {
 
   color: var(--success-color);
-  background-color: rgb(220, 252, 231);
+  background-color: var(--success-color-light);
 
 }
 
 .map-loading{
-  background-color: rgb(116, 116, 116);
+  background-color: var(--gray);
   color: white;
   opacity: 0.9;
   display: grid;
