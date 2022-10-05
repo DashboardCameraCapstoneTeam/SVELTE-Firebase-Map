@@ -5,14 +5,14 @@
 	import { googleSignIn } from "service/google-sign-in";
 	import { authState } from "rxfire/auth";
 	import { onDestroy } from "svelte";
+	import { accessToken } from 'store/access-token-store.js';
 	import LoginPage from "../pages/LoginPage.svelte";
 
 	let user;
-	let accessToken;
 	let unsubscribe = authState(auth).subscribe((u) => (user = u));
 	const login = async () => {
-		accessToken = await googleSignIn();
-		sessionStorage.setItem("accessToken", accessToken);
+		const accessTokenRaw = await googleSignIn();
+		accessToken.set(accessTokenRaw);
 	};
 
 	const signOut = () => {
@@ -23,7 +23,7 @@
 </script>
 
 {#if user}
-	<HomePage {user} {accessToken} {signOut} />
+	<HomePage {user} {signOut} />
 {:else}
 	<LoginPage {login} />
 {/if}

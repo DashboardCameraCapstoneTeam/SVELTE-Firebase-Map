@@ -38,6 +38,6 @@
 			</div>
 		{/each}
 
-		<button on:click={resetFilters} class={`card-btn card-btn-red  my-1 `}> Reset All Filters </button>
+		<button on:click={resetFilters} class={`card-btn card-btn-red my-1 `}> Reset All Filters </button>
 	</section>
 {/if}

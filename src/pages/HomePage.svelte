@@ -13,14 +13,17 @@
 	import { gpsJsonToGeojson } from "utils/geojson-utils.js";
 	import { getFilesByFolder } from "service/fetch-drive";
 	import { googleSignIn } from "service/google-sign-in";
-
+	import { accessToken } from 'store/access-token-store.js';
 	import Card from "components/files/Card.svelte";
 	import RecordingsHeader from "components/files/RecordingsHeader.svelte";
 	import AlertCard from "components/widget/AlertCard.svelte";
   import Profile from "../components/menu/Profile.svelte";
 
 	export let user = null;
-	export let accessToken = null;
+	let accessTokenValue;
+	accessToken.subscribe(value => {
+		accessTokenValue = value;
+	});
 	export let signOut;
 	let isReadyForStyleSwitching = false;
 	let pointOfInterest = null;
@@ -68,19 +71,17 @@
 
 	let files = null;
 	const getDriveFiles = async () => {
-		if (accessToken === null) {
-			accessToken = await googleSignIn();
+		if (accessTokenValue === null) {
+			accessTokenValue = await googleSignIn();
 		}
-		const results = await getFilesByFolder(accessToken);
+		const results = await getFilesByFolder(accessTokenValue);
 
 		if (results === null) {
-			isError = true;
+			files = [];
 		} else {
 			files = results;
 			console.log("App.js | files", results);
-			if (sessionStorage.getItem("accessToken") === null) {
-				sessionStorage.setItem("accessToken", accessToken);
-			}
+			accessToken.set(accessTokenValue)
 		}
 	};
 
