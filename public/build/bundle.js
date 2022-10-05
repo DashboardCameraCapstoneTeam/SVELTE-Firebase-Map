@@ -88683,13 +88683,18 @@ var app = (function () {
     };
 
     const getFilesByFolder = async (token) => {
-      const foldersUrl = `${baseUrl}mimeType='${'application/vnd.google-apps.folder'}'`;
-      const folders = await getFiles(foldersUrl, token);
+      try {
+        let allDocuments = [];
+        const foldersUrl = `${baseUrl}mimeType='${'application/vnd.google-apps.folder'}'`;
+        const folders = await getFiles(foldersUrl, token);
 
-      const cameraFolder = getObjectsWhereKeyEqualsValue(folders, 'name', 'Dashcam')[0];
-      const documentsUrl = `${baseUrl}'${cameraFolder.id}'+in+parents&trashed=false&fields=files(*)`;
-      const allDocuments = await getFiles(documentsUrl, token);
-      return allDocuments;
+        const cameraFolder = getObjectsWhereKeyEqualsValue(folders, 'name', 'Dashcam')[0];
+        const documentsUrl = `${baseUrl}'${cameraFolder.id}'+in+parents&trashed=false&fields=files(*)`;
+        allDocuments = await getFiles(documentsUrl, token);
+        return allDocuments;
+      } catch (e) {
+        return null;
+      }
     };
 
     const googleSignIn = async () => {
@@ -89663,7 +89668,7 @@ var app = (function () {
     const { console: console_1 } = globals;
     const file$1 = "src\\pages\\HomePage.svelte";
 
-    // (125:2) {#if isLoading === true}
+    // (127:2) {#if isLoading === true}
     function create_if_block_1(ctx) {
     	let div;
     	let p;
@@ -89674,9 +89679,9 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Loading Data...";
     			attr_dev(p, "class", "align-middle");
-    			add_location(p, file$1, 126, 4, 4354);
+    			add_location(p, file$1, 128, 4, 4401);
     			attr_dev(div, "class", "absolute top-0 z-100 map-loading rounded-lg");
-    			add_location(div, file$1, 125, 3, 4291);
+    			add_location(div, file$1, 127, 3, 4338);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89691,14 +89696,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(125:2) {#if isLoading === true}",
+    		source: "(127:2) {#if isLoading === true}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (131:2) {#if isError === true}
+    // (133:2) {#if isError === true}
     function create_if_block$1(ctx) {
     	let div;
     	let p;
@@ -89709,9 +89714,9 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Error, unable to Fetch Data";
     			attr_dev(p, "class", "align-middle");
-    			add_location(p, file$1, 132, 4, 4511);
+    			add_location(p, file$1, 134, 4, 4558);
     			attr_dev(div, "class", "absolute top-0 z-100 map-error rounded-lg");
-    			add_location(div, file$1, 131, 3, 4450);
+    			add_location(div, file$1, 133, 3, 4497);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89726,7 +89731,7 @@ var app = (function () {
     		block,
     		id: create_if_block$1.name,
     		type: "if",
-    		source: "(131:2) {#if isError === true}",
+    		source: "(133:2) {#if isError === true}",
     		ctx
     	});
 
@@ -90068,33 +90073,33 @@ var app = (function () {
     			t15 = space();
     			create_component(footer.$$.fragment);
     			attr_dev(div0, "class", "col-span-1 md:col-span-1 row-span-1");
-    			add_location(div0, file$1, 86, 2, 2853);
+    			add_location(div0, file$1, 88, 2, 2900);
     			attr_dev(div1, "class", div1_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[7] === 0 ? "" : "hidden"}`);
-    			add_location(div1, file$1, 90, 2, 2948);
+    			add_location(div1, file$1, 92, 2, 2995);
     			attr_dev(div2, "class", div2_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[7] === 1 ? "" : "hidden"}`);
-    			add_location(div2, file$1, 94, 2, 3094);
+    			add_location(div2, file$1, 96, 2, 3141);
     			attr_dev(div3, "class", div3_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[7] === 2 ? "" : "hidden"}`);
-    			add_location(div3, file$1, 98, 2, 3239);
+    			add_location(div3, file$1, 100, 2, 3286);
     			attr_dev(div4, "class", div4_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[7] === 3 ? "" : "hidden"}`);
-    			add_location(div4, file$1, 102, 2, 3389);
+    			add_location(div4, file$1, 104, 2, 3436);
     			attr_dev(div5, "class", "col-span-1 md:col-span-1 row-span-1");
-    			add_location(div5, file$1, 106, 2, 3525);
+    			add_location(div5, file$1, 108, 2, 3572);
     			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file$1, 112, 4, 3752);
+    			add_location(p, file$1, 114, 4, 3799);
     			attr_dev(button, "class", "card-btn card-btn-red my-2");
-    			add_location(button, file$1, 113, 4, 3806);
+    			add_location(button, file$1, 115, 4, 3853);
     			attr_dev(section0, "class", "card h-fit scale-in-center");
-    			add_location(section0, file$1, 111, 3, 3702);
+    			add_location(section0, file$1, 113, 3, 3749);
     			attr_dev(div6, "class", "col-span-1 md:col-span-1 row-span-1");
-    			add_location(div6, file$1, 110, 2, 3648);
+    			add_location(div6, file$1, 112, 2, 3695);
     			attr_dev(div7, "class", "col-span-1 md:col-span-3 row-span-6 grid grid-cols-1 md:grid-cols-1 gap-4 h-fit");
-    			add_location(div7, file$1, 85, 1, 2756);
+    			add_location(div7, file$1, 87, 1, 2803);
     			attr_dev(div8, "class", "absolute top-1 left-1 ");
-    			add_location(div8, file$1, 120, 2, 4141);
+    			add_location(div8, file$1, 122, 2, 4188);
     			attr_dev(div9, "class", "col-span-1 md:col-span-9 row-span-6 relative");
-    			add_location(div9, file$1, 118, 1, 3926);
+    			add_location(div9, file$1, 120, 1, 3973);
     			attr_dev(section1, "class", "grid grid-cols-1 md:grid-cols-12 grid-rows-6 gap-4 my-4 px-4 h-fit");
-    			add_location(section1, file$1, 84, 0, 2667);
+    			add_location(section1, file$1, 86, 0, 2714);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -90498,14 +90503,18 @@ var app = (function () {
     			$$invalidate(16, accessToken = await googleSignIn());
     		}
 
-    		return getFilesByFolder(accessToken).then(results => {
+    		const results = await getFilesByFolder(accessToken);
+
+    		if (results === null) {
+    			$$invalidate(10, isError = true);
+    		} else {
     			$$invalidate(12, files = results);
     			console.log("App.js | files", results);
 
     			if (sessionStorage.getItem("accessToken") === null) {
     				sessionStorage.setItem("accessToken", accessToken);
     			}
-    		});
+    		}
     	};
 
     	fetchData();

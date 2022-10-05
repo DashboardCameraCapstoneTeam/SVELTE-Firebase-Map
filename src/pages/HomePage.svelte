@@ -11,9 +11,9 @@
 	import ChartView from "components/menu/Chart.svelte";
 	import { fetchPotholeDataFromFirebase } from "service/fetch-firestore";
 	import { gpsJsonToGeojson } from "utils/geojson-utils.js";
-	import {  getFilesByFolder } from "service/fetch-drive";
+	import { getFilesByFolder } from "service/fetch-drive";
 	import { googleSignIn } from "service/google-sign-in";
-  	import Recordings from "../components/files/Recordings.svelte";
+	import Recordings from "../components/files/Recordings.svelte";
 
 	export let user = null;
 	export let accessToken = null;
@@ -63,18 +63,20 @@
 
 	let files = null;
 	const getDriveFiles = async () => {
-	
 		if (accessToken === null) {
 			accessToken = await googleSignIn();
 		}
-		return getFilesByFolder(accessToken).then((results) => {
+		const results = await getFilesByFolder(accessToken);
+
+		if (results === null) {
+			isError = true;
+		} else {
 			files = results;
 			console.log("App.js | files", results);
-
 			if (sessionStorage.getItem("accessToken") === null) {
 				sessionStorage.setItem("accessToken", accessToken);
 			}
-		});
+		}
 	};
 
 	fetchData();

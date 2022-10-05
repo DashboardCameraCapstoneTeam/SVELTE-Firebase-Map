@@ -13,13 +13,18 @@ export const getFiles = async (customUrl, token) => {
 };
 
 export const getFilesByFolder = async (token) => {
-  const foldersUrl = `${baseUrl}mimeType='${'application/vnd.google-apps.folder'}'`;
-  const folders = await getFiles(foldersUrl, token);
+  try {
+    let allDocuments = [];
+    const foldersUrl = `${baseUrl}mimeType='${'application/vnd.google-apps.folder'}'`;
+    const folders = await getFiles(foldersUrl, token);
 
-  const cameraFolder = getObjectsWhereKeyEqualsValue(folders, 'name', 'Dashcam')[0];
-  const documentsUrl = `${baseUrl}'${cameraFolder.id}'+in+parents&trashed=false&fields=files(*)`;
-  const allDocuments = await getFiles(documentsUrl, token);
-  return allDocuments;
+    const cameraFolder = getObjectsWhereKeyEqualsValue(folders, 'name', 'Dashcam')[0];
+    const documentsUrl = `${baseUrl}'${cameraFolder.id}'+in+parents&trashed=false&fields=files(*)`;
+    allDocuments = await getFiles(documentsUrl, token);
+    return allDocuments;
+  } catch (e) {
+    return null;
+  }
 };
 
 export default getFiles;
