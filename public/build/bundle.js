@@ -2450,7 +2450,7 @@ var app = (function () {
     const { Object: Object_1 } = globals;
     const file$b = "src\\components\\menu\\DateTime.svelte";
 
-    // (50:1) {:else}
+    // (45:1) {:else}
     function create_else_block$6(ctx) {
     	let div;
     	let t0_value = /*dateTimeDictionary*/ ctx[0].startDateTime + "";
@@ -2474,12 +2474,12 @@ var app = (function () {
     			button = element("button");
     			i = element("i");
     			attr_dev(i, "class", "fa-solid fa-xmark ");
-    			add_location(i, file$b, 51, 134, 1545);
+    			add_location(i, file$b, 46, 134, 1487);
     			attr_dev(button, "class", "float-right fa-lg");
-    			add_location(button, file$b, 51, 75, 1486);
+    			add_location(button, file$b, 46, 75, 1428);
     			attr_dev(div, "class", "alert alert-green my-1");
     			attr_dev(div, "role", "alert");
-    			add_location(div, file$b, 50, 2, 1360);
+    			add_location(div, file$b, 45, 2, 1302);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -2510,14 +2510,14 @@ var app = (function () {
     		block,
     		id: create_else_block$6.name,
     		type: "else",
-    		source: "(50:1) {:else}",
+    		source: "(45:1) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (48:1) {#if checkIfAllNull() }
+    // (43:1) {#if dateTimeDictionary.startDateTime === '' || dateTimeDictionary.endDateTime === '' }
     function create_if_block$b(ctx) {
     	let div;
 
@@ -2527,7 +2527,7 @@ var app = (function () {
     			div.textContent = "Select a Date and Time before Searching.";
     			attr_dev(div, "class", "alert alert-red my-1");
     			attr_dev(div, "role", "alert");
-    			add_location(div, file$b, 48, 2, 1253);
+    			add_location(div, file$b, 43, 2, 1195);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -2542,7 +2542,7 @@ var app = (function () {
     		block,
     		id: create_if_block$b.name,
     		type: "if",
-    		source: "(48:1) {#if checkIfAllNull() }",
+    		source: "(43:1) {#if dateTimeDictionary.startDateTime === '' || dateTimeDictionary.endDateTime === '' }",
     		ctx
     	});
 
@@ -2567,7 +2567,7 @@ var app = (function () {
     	let dispose;
 
     	function select_block_type(ctx, dirty) {
-    		if (/*checkIfAllNull*/ ctx[2]()) return create_if_block$b;
+    		if (/*dateTimeDictionary*/ ctx[0].startDateTime === '' || /*dateTimeDictionary*/ ctx[0].endDateTime === '') return create_if_block$b;
     		return create_else_block$6;
     	}
 
@@ -2594,33 +2594,33 @@ var app = (function () {
     			t7 = space();
     			if_block.c();
     			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file$b, 15, 1, 356);
+    			add_location(p, file$b, 10, 1, 234);
     			attr_dev(input0, "type", "datetime-local");
     			attr_dev(input0, "class", "form-control date-picker");
     			attr_dev(input0, "placeholder", "Select a date");
     			attr_dev(input0, "data-mdb-toggle", "datepicker");
     			attr_dev(input0, "min", "2010-01-01");
     			attr_dev(input0, "max", "2022-12-31");
-    			add_location(input0, file$b, 19, 3, 501);
+    			add_location(input0, file$b, 14, 3, 379);
     			attr_dev(label0, "for", "floatingInput");
-    			add_location(label0, file$b, 28, 3, 746);
+    			add_location(label0, file$b, 23, 3, 624);
     			attr_dev(div0, "class", "datepicker form-floating my-1 w-full");
     			attr_dev(div0, "data-mdb-toggle-button", "false");
-    			add_location(div0, file$b, 18, 2, 414);
+    			add_location(div0, file$b, 13, 2, 292);
     			attr_dev(input1, "type", "datetime-local");
     			attr_dev(input1, "class", "form-control date-picker");
     			attr_dev(input1, "placeholder", "Select End Date Time");
     			attr_dev(input1, "data-mdb-toggle", "datepicker");
     			attr_dev(input1, "min", "2010-01-01");
     			attr_dev(input1, "max", "2022-12-31");
-    			add_location(input1, file$b, 33, 3, 905);
+    			add_location(input1, file$b, 28, 3, 783);
     			attr_dev(label1, "for", "floatingInput");
-    			add_location(label1, file$b, 42, 3, 1155);
+    			add_location(label1, file$b, 37, 3, 1033);
     			attr_dev(div1, "class", "datepicker form-floating my-1 w-full");
     			attr_dev(div1, "data-mdb-toggle-button", "false");
-    			add_location(div1, file$b, 32, 2, 819);
+    			add_location(div1, file$b, 27, 2, 697);
     			attr_dev(section, "class", "card h-fit scale-in-center");
-    			add_location(section, file$b, 14, 0, 309);
+    			add_location(section, file$b, 9, 0, 187);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2645,8 +2645,8 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(input0, "input", /*input0_input_handler*/ ctx[3]),
-    					listen_dev(input1, "input", /*input1_input_handler*/ ctx[4])
+    					listen_dev(input0, "input", /*input0_input_handler*/ ctx[2]),
+    					listen_dev(input1, "input", /*input1_input_handler*/ ctx[3])
     				];
 
     				mounted = true;
@@ -2661,7 +2661,17 @@ var app = (function () {
     				set_input_value(input1, /*dateTimeDictionary*/ ctx[0].endDateTime);
     			}
 
-    			if_block.p(ctx, dirty);
+    			if (current_block_type === (current_block_type = select_block_type(ctx)) && if_block) {
+    				if_block.p(ctx, dirty);
+    			} else {
+    				if_block.d(1);
+    				if_block = current_block_type(ctx);
+
+    				if (if_block) {
+    					if_block.c();
+    					if_block.m(section, null);
+    				}
+    			}
     		},
     		i: noop$2,
     		o: noop$2,
@@ -2690,11 +2700,7 @@ var app = (function () {
     	let { dateTimeDictionary } = $$props;
 
     	const clearDateTime = () => {
-    		Object.keys(dateTimeDictionary).forEach(dateTime => $$invalidate(0, dateTimeDictionary[dateTime] = null, dateTimeDictionary));
-    	};
-
-    	const checkIfAllNull = () => {
-    		return Object.values(dateTimeDictionary).every(x => x === null || x === '');
+    		Object.keys(dateTimeDictionary).forEach(dateTime => $$invalidate(0, dateTimeDictionary[dateTime] = '', dateTimeDictionary));
     	};
 
     	const writable_props = ['dateTimeDictionary'];
@@ -2717,11 +2723,7 @@ var app = (function () {
     		if ('dateTimeDictionary' in $$props) $$invalidate(0, dateTimeDictionary = $$props.dateTimeDictionary);
     	};
 
-    	$$self.$capture_state = () => ({
-    		dateTimeDictionary,
-    		clearDateTime,
-    		checkIfAllNull
-    	});
+    	$$self.$capture_state = () => ({ dateTimeDictionary, clearDateTime });
 
     	$$self.$inject_state = $$props => {
     		if ('dateTimeDictionary' in $$props) $$invalidate(0, dateTimeDictionary = $$props.dateTimeDictionary);
@@ -2731,13 +2733,7 @@ var app = (function () {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [
-    		dateTimeDictionary,
-    		clearDateTime,
-    		checkIfAllNull,
-    		input0_input_handler,
-    		input1_input_handler
-    	];
+    	return [dateTimeDictionary, clearDateTime, input0_input_handler, input1_input_handler];
     }
 
     class DateTime extends SvelteComponentDev {
@@ -89679,9 +89675,9 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Loading Data...";
     			attr_dev(p, "class", "align-middle");
-    			add_location(p, file$1, 128, 4, 4401);
+    			add_location(p, file$1, 128, 4, 4396);
     			attr_dev(div, "class", "absolute top-0 z-100 map-loading rounded-lg");
-    			add_location(div, file$1, 127, 3, 4338);
+    			add_location(div, file$1, 127, 3, 4333);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89714,9 +89710,9 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Error, unable to Fetch Data";
     			attr_dev(p, "class", "align-middle");
-    			add_location(p, file$1, 134, 4, 4558);
+    			add_location(p, file$1, 134, 4, 4553);
     			attr_dev(div, "class", "absolute top-0 z-100 map-error rounded-lg");
-    			add_location(div, file$1, 133, 3, 4497);
+    			add_location(div, file$1, 133, 3, 4492);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -90086,7 +90082,7 @@ var app = (function () {
     			add_location(div5, file$1, 108, 2, 3572);
     			attr_dev(p, "class", "font-bold my-1");
     			add_location(p, file$1, 114, 4, 3799);
-    			attr_dev(button, "class", "card-btn card-btn-red my-2");
+    			attr_dev(button, "class", "card-btn card-btn-red");
     			add_location(button, file$1, 115, 4, 3853);
     			attr_dev(section0, "class", "card h-fit scale-in-center");
     			add_location(section0, file$1, 113, 3, 3749);
@@ -90095,9 +90091,9 @@ var app = (function () {
     			attr_dev(div7, "class", "col-span-1 md:col-span-3 row-span-6 grid grid-cols-1 md:grid-cols-1 gap-4 h-fit");
     			add_location(div7, file$1, 87, 1, 2803);
     			attr_dev(div8, "class", "absolute top-1 left-1 ");
-    			add_location(div8, file$1, 122, 2, 4188);
+    			add_location(div8, file$1, 122, 2, 4183);
     			attr_dev(div9, "class", "col-span-1 md:col-span-9 row-span-6 relative");
-    			add_location(div9, file$1, 120, 1, 3973);
+    			add_location(div9, file$1, 120, 1, 3968);
     			attr_dev(section1, "class", "grid grid-cols-1 md:grid-cols-12 grid-rows-6 gap-4 my-4 px-4 h-fit");
     			add_location(section1, file$1, 86, 0, 2714);
     		},

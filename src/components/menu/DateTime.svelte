@@ -2,13 +2,8 @@
 	export let dateTimeDictionary;
 
 	const clearDateTime = () => {
-		Object.keys(dateTimeDictionary).forEach(dateTime => dateTimeDictionary[dateTime] = null)
+		Object.keys(dateTimeDictionary).forEach(dateTime => dateTimeDictionary[dateTime] = '')
 	};
-
-	const checkIfAllNull = () =>{
-		return Object.values(dateTimeDictionary).every(x => x === null || x === '');
-	}
-
 
 </script>
 
@@ -45,7 +40,7 @@
 	</div>
 
 	
-	{#if checkIfAllNull() }
+	{#if dateTimeDictionary.startDateTime === '' || dateTimeDictionary.endDateTime === '' }
 		<div class="alert alert-red my-1" role="alert">Select a Date and Time before Searching.</div>
 	{:else}
 		<div class="alert alert-green my-1" role="alert">

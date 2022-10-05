@@ -113,7 +113,7 @@
 		<div class="col-span-1 md:col-span-1 row-span-1">
 			<section class="card h-fit scale-in-center">
 				<p class="font-bold my-1">Profile Selection:</p>
-				<button class="card-btn card-btn-red my-2" on:click={signOut}> Sign Out </button>
+				<button class="card-btn card-btn-red" on:click={signOut}> Sign Out </button>
 			</section>
 		</div>
 	</div>
