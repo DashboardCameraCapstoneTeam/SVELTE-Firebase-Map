@@ -27,7 +27,7 @@
 		endDateTime: "2022-12-23T00:00",
 	};
 
-	let mapStyle = "satellite-streets-v11";
+	let mapStyle = "dark-v10";
 	let cityDetails = {
 		id: 0,
 		center: [-79.906, 43.332],

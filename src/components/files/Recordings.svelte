@@ -15,7 +15,7 @@
 		</div>
 	{:else if files.length <= 0}
 		<div class="col-span-1 md:col-span-3 row-span-1">
-			<AlertCard title="Recordings" message="No Recordings found" styleColor="red" />
+			<AlertCard title="Recordings" message="No Recordings found." styleColor="red" />
 		</div>
 	{:else}
 		{#each files as file}

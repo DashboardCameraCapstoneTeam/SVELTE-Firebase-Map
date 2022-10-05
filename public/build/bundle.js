@@ -2776,7 +2776,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (45:0) {:else}
+    // (47:0) {:else}
     function create_else_block$4(ctx) {
     	let section;
     	let p;
@@ -2813,17 +2813,17 @@ var app = (function () {
     			}
 
     			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file$a, 46, 2, 1325);
+    			add_location(p, file$a, 48, 2, 1412);
 
     			attr_dev(button, "class", button_class_value = `card-btn   ${/*showAllLayers*/ ctx[1]
 			? "card-btn-green"
 			: "card-btn-red"}  my-1 `);
 
-    			add_location(button, file$a, 48, 2, 1368);
+    			add_location(button, file$a, 50, 2, 1455);
     			attr_dev(div, "class", "overflow-auto ");
-    			add_location(div, file$a, 50, 2, 1542);
+    			add_location(div, file$a, 52, 2, 1629);
     			attr_dev(section, "class", "card h-fit scale-in-center");
-    			add_location(section, file$a, 45, 1, 1277);
+    			add_location(section, file$a, 47, 1, 1364);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -2890,14 +2890,62 @@ var app = (function () {
     		block,
     		id: create_else_block$4.name,
     		type: "else",
-    		source: "(45:0) {:else}",
+    		source: "(47:0) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (43:0) {#if  layerList === null || layerList.length <= 0}
+    // (45:32) 
+    function create_if_block_1$5(ctx) {
+    	let alertcard;
+    	let current;
+
+    	alertcard = new AlertCard({
+    			props: {
+    				title: "Recordings",
+    				message: "No Layers added.",
+    				styleColor: "red"
+    			},
+    			$$inline: true
+    		});
+
+    	const block = {
+    		c: function create() {
+    			create_component(alertcard.$$.fragment);
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component(alertcard, target, anchor);
+    			current = true;
+    		},
+    		p: noop$2,
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(alertcard.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(alertcard.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component(alertcard, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_1$5.name,
+    		type: "if",
+    		source: "(45:32) ",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (43:0) {#if layerList === null}
     function create_if_block$a(ctx) {
     	let alertcard;
     	let current;
@@ -2938,14 +2986,14 @@ var app = (function () {
     		block,
     		id: create_if_block$a.name,
     		type: "if",
-    		source: "(43:0) {#if  layerList === null || layerList.length <= 0}",
+    		source: "(43:0) {#if layerList === null}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (52:3) {#each layerList as layer}
+    // (54:3) {#each layerList as layer}
     function create_each_block$6(ctx) {
     	let button;
     	let i;
@@ -2971,10 +3019,10 @@ var app = (function () {
     			t1 = text(t1_value);
     			t2 = space();
     			attr_dev(i, "class", i_class_value = "fa-solid " + /*layer*/ ctx[6].icon + "");
-    			add_location(i, file$a, 53, 5, 1740);
+    			add_location(i, file$a, 55, 5, 1827);
     			attr_dev(button, "key", button_key_value = /*layer*/ ctx[6].name);
     			attr_dev(button, "class", button_class_value = `card-btn ${/*layer*/ ctx[6].isShown ? "card-btn-blue" : ""} my-1 `);
-    			add_location(button, file$a, 52, 4, 1607);
+    			add_location(button, file$a, 54, 4, 1694);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, button, anchor);
@@ -3016,7 +3064,7 @@ var app = (function () {
     		block,
     		id: create_each_block$6.name,
     		type: "each",
-    		source: "(52:3) {#each layerList as layer}",
+    		source: "(54:3) {#each layerList as layer}",
     		ctx
     	});
 
@@ -3028,12 +3076,13 @@ var app = (function () {
     	let if_block;
     	let if_block_anchor;
     	let current;
-    	const if_block_creators = [create_if_block$a, create_else_block$4];
+    	const if_block_creators = [create_if_block$a, create_if_block_1$5, create_else_block$4];
     	const if_blocks = [];
 
     	function select_block_type(ctx, dirty) {
-    		if (/*layerList*/ ctx[0] === null || /*layerList*/ ctx[0].length <= 0) return 0;
-    		return 1;
+    		if (/*layerList*/ ctx[0] === null) return 0;
+    		if (/*layerList*/ ctx[0].length <= 0) return 1;
+    		return 2;
     	}
 
     	current_block_type_index = select_block_type(ctx);
@@ -3244,12 +3293,12 @@ var app = (function () {
     			attr_dev(input, "type", "radio");
     			input.value = /*mapStyleItem*/ ctx[5].id;
     			input.checked = input_checked_value = /*mapStyle*/ ctx[0] === /*mapStyleItem*/ ctx[5].id;
-    			add_location(input, file$9, 24, 3, 1214);
+    			add_location(input, file$9, 24, 3, 659);
     			attr_dev(label, "class", "ml-2");
     			attr_dev(label, "for", /*mapStyleItem*/ ctx[5].name);
-    			add_location(label, file$9, 25, 3, 1373);
+    			add_location(label, file$9, 25, 3, 818);
     			attr_dev(div, "key", /*mapStyleItem*/ ctx[5].id);
-    			add_location(div, file$9, 23, 2, 1182);
+    			add_location(div, file$9, 23, 2, 627);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -3313,9 +3362,9 @@ var app = (function () {
     			}
 
     			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file$9, 20, 1, 1097);
+    			add_location(p, file$9, 20, 1, 542);
     			attr_dev(section, "class", "card h-fit scale-in-center");
-    			add_location(section, file$9, 19, 0, 1050);
+    			add_location(section, file$9, 19, 0, 495);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -3380,30 +3429,16 @@ var app = (function () {
     	let { isReadyForStyleSwitching } = $$props;
 
     	const mapStyleList = [
-    		{
-    			name: "Streets",
-    			id: "streets-v11",
-    			img: "https://assets.website-files.com/5e83362767d71ffd59a0c8a9/5ea01b977fb48a501b898a93_ipad-map%20streets.png"
-    		},
-    		{
-    			name: "Dark",
-    			id: "dark-v10",
-    			img: "https://assets.website-files.com/5e83362767d71ffd59a0c8a9/5ea01810f9a5b1c55841ee6f_ipad-map%20dark.png"
-    		},
-    		{
-    			name: "Outdoors",
-    			id: "outdoors-v11",
-    			img: "https://assets.website-files.com/5e83362767d71ffd59a0c8a9/5ea01bd0779fa266f900ba3c_ipad-map%20outdoors.png"
-    		},
+    		{ name: "Streets", id: "streets-v11" },
+    		{ name: "Dark", id: "dark-v10" },
+    		{ name: "Outdoors", id: "outdoors-v11" },
     		{
     			name: "Satellite",
-    			id: "satellite-streets-v11",
-    			img: "https://assets.website-files.com/5e83362767d71ffd59a0c8a9/6025417270820571127804d8_ipad-map.png"
+    			id: "satellite-streets-v11"
     		},
     		{
     			name: "Dark - Traffic",
-    			id: "navigation-night-v1",
-    			img: "https://assets.website-files.com/5e83362767d71ffd59a0c8a9/5ea01810f9a5b1c55841ee6f_ipad-map%20dark.png"
+    			id: "navigation-night-v1"
     		}
     	];
 
@@ -89052,7 +89087,7 @@ var app = (function () {
     	alertcard = new AlertCard({
     			props: {
     				title: "Recordings",
-    				message: "No Recordings found",
+    				message: "No Recordings found.",
     				styleColor: "red"
     			},
     			$$inline: true
@@ -89178,7 +89213,7 @@ var app = (function () {
     			create_component(card.$$.fragment);
     			t = space();
     			attr_dev(div, "class", "col-span-1 md:col-span-3 row-span-1");
-    			add_location(div, file$2, 22, 4, 812);
+    			add_location(div, file$2, 22, 4, 813);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89492,9 +89527,9 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Loading Data...";
     			attr_dev(p, "class", "align-middle");
-    			add_location(p, file$1, 128, 4, 4396);
+    			add_location(p, file$1, 128, 4, 4383);
     			attr_dev(div, "class", "absolute top-0 z-100 map-loading rounded-lg");
-    			add_location(div, file$1, 127, 3, 4333);
+    			add_location(div, file$1, 127, 3, 4320);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89527,9 +89562,9 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Error, unable to Fetch Data";
     			attr_dev(p, "class", "align-middle");
-    			add_location(p, file$1, 134, 4, 4553);
+    			add_location(p, file$1, 134, 4, 4540);
     			attr_dev(div, "class", "absolute top-0 z-100 map-error rounded-lg");
-    			add_location(div, file$1, 133, 3, 4492);
+    			add_location(div, file$1, 133, 3, 4479);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89886,33 +89921,33 @@ var app = (function () {
     			t15 = space();
     			create_component(footer.$$.fragment);
     			attr_dev(div0, "class", "col-span-1 md:col-span-1 row-span-1");
-    			add_location(div0, file$1, 88, 2, 2900);
+    			add_location(div0, file$1, 88, 2, 2887);
     			attr_dev(div1, "class", div1_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[7] === 0 ? "" : "hidden"}`);
-    			add_location(div1, file$1, 92, 2, 2995);
+    			add_location(div1, file$1, 92, 2, 2982);
     			attr_dev(div2, "class", div2_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[7] === 1 ? "" : "hidden"}`);
-    			add_location(div2, file$1, 96, 2, 3141);
+    			add_location(div2, file$1, 96, 2, 3128);
     			attr_dev(div3, "class", div3_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[7] === 2 ? "" : "hidden"}`);
-    			add_location(div3, file$1, 100, 2, 3286);
+    			add_location(div3, file$1, 100, 2, 3273);
     			attr_dev(div4, "class", div4_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[7] === 3 ? "" : "hidden"}`);
-    			add_location(div4, file$1, 104, 2, 3436);
+    			add_location(div4, file$1, 104, 2, 3423);
     			attr_dev(div5, "class", "col-span-1 md:col-span-1 row-span-1");
-    			add_location(div5, file$1, 108, 2, 3572);
+    			add_location(div5, file$1, 108, 2, 3559);
     			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file$1, 114, 4, 3799);
+    			add_location(p, file$1, 114, 4, 3786);
     			attr_dev(button, "class", "card-btn card-btn-red");
-    			add_location(button, file$1, 115, 4, 3853);
+    			add_location(button, file$1, 115, 4, 3840);
     			attr_dev(section0, "class", "card h-fit scale-in-center");
-    			add_location(section0, file$1, 113, 3, 3749);
+    			add_location(section0, file$1, 113, 3, 3736);
     			attr_dev(div6, "class", "col-span-1 md:col-span-1 row-span-1");
-    			add_location(div6, file$1, 112, 2, 3695);
+    			add_location(div6, file$1, 112, 2, 3682);
     			attr_dev(div7, "class", "col-span-1 md:col-span-3 row-span-6 grid grid-cols-1 md:grid-cols-1 gap-4 h-fit");
-    			add_location(div7, file$1, 87, 1, 2803);
+    			add_location(div7, file$1, 87, 1, 2790);
     			attr_dev(div8, "class", "absolute top-1 left-1 ");
-    			add_location(div8, file$1, 122, 2, 4183);
+    			add_location(div8, file$1, 122, 2, 4170);
     			attr_dev(div9, "class", "col-span-1 md:col-span-9 row-span-6 relative");
-    			add_location(div9, file$1, 120, 1, 3968);
+    			add_location(div9, file$1, 120, 1, 3955);
     			attr_dev(section1, "class", "grid grid-cols-1 md:grid-cols-12 grid-rows-6 gap-4 my-4 px-4 h-fit");
-    			add_location(section1, file$1, 86, 0, 2714);
+    			add_location(section1, file$1, 86, 0, 2701);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -90244,7 +90279,7 @@ var app = (function () {
     		endDateTime: "2022-12-23T00:00"
     	};
 
-    	let mapStyle = "satellite-streets-v11";
+    	let mapStyle = "dark-v10";
 
     	let cityDetails = {
     		id: 0,
