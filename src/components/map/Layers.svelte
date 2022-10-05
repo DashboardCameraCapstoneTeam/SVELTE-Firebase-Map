@@ -40,7 +40,7 @@
 	};
 </script>
 
-{#if layerList.length <= 0}
+{#if  layerList === null || layerList.length <= 0}
 	<AlertCard title="Layers" message="Loading Layers on the map." styleColor="red" />
 {:else}
 	<section class="card h-fit scale-in-center">

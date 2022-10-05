@@ -5,7 +5,7 @@
 <section class="card h-fit scale-in-center">
 	<p class="font-bold my-1">Video:</p>
 
-	{#if file.webViewLink}
+	{#if file.webViewLink && file.thumbnailLink}
 		<a href={file.webViewLink} target="_blank" class="text-white text-xl  "><img src={file.thumbnailLink} alt="Dashcam" class="h-64 w-auto object-cover " width="500" height="600" /></a>
 	{/if}
 

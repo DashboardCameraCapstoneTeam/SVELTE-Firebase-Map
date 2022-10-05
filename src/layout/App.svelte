@@ -5,7 +5,7 @@
 	import { googleSignIn } from "service/google-sign-in";
 	import { authState } from "rxfire/auth";
 	import { onDestroy } from "svelte";
-  	import LoginPage from "../pages/LoginPage.svelte";
+	import LoginPage from "../pages/LoginPage.svelte";
 
 	let user;
 	let accessToken;
@@ -22,13 +22,11 @@
 	onDestroy(unsubscribe);
 </script>
 
-{#if user }
-<HomePage {user} {accessToken} {signOut}/>
+{#if user}
+	<HomePage {user} {accessToken} {signOut} />
 {:else}
-<LoginPage {login}/>
+	<LoginPage {login} />
 {/if}
-
-
 
 <style global lang="postcss">
 	@tailwind base;

@@ -16,13 +16,13 @@
 		<div class="items-center justify-center mt-4">
 			<button on:click={toggleTerms} class="text-center hover:underline">Why do I need a Google Account?</button>
 
-			<div class={`${showTerms ? "" : "hidden"}`}>
+			{#if showTerms}
 				<hr class="my-2" />
 				<p>
 					The GPS vidoes collected through the dashcam are saved in each users Google Drive Account. Users who accept the machine learning terms and conditions are also allowed to process their videos
 					and use the online dashcam managment tool.
 				</p>
-			</div>
+			{/if}
 		</div>
 	</section>
 </section>

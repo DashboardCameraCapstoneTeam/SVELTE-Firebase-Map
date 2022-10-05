@@ -49,5 +49,3 @@
 	{/if}
 </section>
 
-<style>
-</style>
