@@ -8,7 +8,6 @@
 	import MapStyleSelector from "components/map/MapStyleSelector.svelte";
 	import Filters from "components/menu/Filters.svelte";
 	import StreetView from "components/menu/StreetView.svelte";
-	import SpeedView from "components/menu/SpeedView.svelte";
 	import ChartView from "components/menu/Chart.svelte";
 	import { fetchPotholeDataFromFirebase } from "service/fetch-firestore";
 	import { gpsJsonToGeojson } from "utils/geojson-utils.js";
@@ -63,10 +62,8 @@
 	let gpsFilters = [{ id: "Count", name: "Pothole Count Filter", default: [0, 20], step: 1, suffix: "", selected: [0, 20] }];
 
 	let files = null;
-	if (sessionStorage.getItem("accessToken")) {
-		accessToken = sessionStorage.getItem("accessToken");
-	}
 	const getDriveFiles = async () => {
+	
 		if (accessToken === null) {
 			accessToken = await googleSignIn();
 		}
@@ -79,6 +76,8 @@
 			}
 		});
 	};
+
+	fetchData();
 </script>
 
 <Navbar bind:selectedMenu bind:menuComponents />
@@ -140,6 +139,3 @@
 <Recordings {getDriveFiles} bind:files />
 
 <Footer />
-
-<style>
-</style>

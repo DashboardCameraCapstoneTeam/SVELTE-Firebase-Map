@@ -11,7 +11,8 @@
 	let accessToken;
 	let unsubscribe = authState(auth).subscribe((u) => (user = u));
 	const login = async () => {
-		accessToken = googleSignIn();
+		accessToken = await googleSignIn();
+		sessionStorage.setItem("accessToken", accessToken);
 	};
 
 	const signOut = () => {

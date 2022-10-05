@@ -18,15 +18,7 @@ export const getFilesByFolder = async (token) => {
 
   const cameraFolder = getObjectsWhereKeyEqualsValue(folders, 'name', 'Dashcam')[0];
   const documentsUrl = `${baseUrl}'${cameraFolder.id}'+in+parents&trashed=false&fields=files(*)`;
-  const innerFolders = await getFiles(documentsUrl, token);
-
-  const allDocuments = [];
-  for (let i = 0; i < innerFolders.length; i += 1) {
-    const innerUrl = `${baseUrl}'${innerFolders[i].id}'+in+parents&trashed=false&fields=files(*)`;
-    const innerDocuments = await getFiles(innerUrl, token);
-    allDocuments.push(...innerDocuments);
-  }
-
+  const allDocuments = await getFiles(documentsUrl, token);
   return allDocuments;
 };
 
