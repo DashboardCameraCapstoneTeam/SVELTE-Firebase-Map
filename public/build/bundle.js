@@ -89223,13 +89223,13 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[39] = list[i];
-    	child_ctx[40] = list;
-    	child_ctx[41] = i;
+    	child_ctx[40] = list[i];
+    	child_ctx[41] = list;
+    	child_ctx[42] = i;
     	return child_ctx;
     }
 
-    // (145:2) {#if isLoading === true}
+    // (156:2) {#if isLoading === true}
     function create_if_block_4(ctx) {
     	let div;
     	let p;
@@ -89240,9 +89240,9 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Loading Data...";
     			attr_dev(p, "class", "align-middle");
-    			add_location(p, file$1, 146, 4, 4971);
+    			add_location(p, file$1, 157, 4, 5292);
     			attr_dev(div, "class", "absolute top-0 z-100 map-loading rounded-lg");
-    			add_location(div, file$1, 145, 3, 4908);
+    			add_location(div, file$1, 156, 3, 5229);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89257,14 +89257,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(145:2) {#if isLoading === true}",
+    		source: "(156:2) {#if isLoading === true}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (151:2) {#if isError === true}
+    // (162:2) {#if isError === true}
     function create_if_block_3(ctx) {
     	let div;
     	let p;
@@ -89275,9 +89275,9 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Error, unable to Fetch Data";
     			attr_dev(p, "class", "align-middle");
-    			add_location(p, file$1, 152, 4, 5128);
+    			add_location(p, file$1, 163, 4, 5449);
     			attr_dev(div, "class", "absolute top-0 z-100 map-error rounded-lg");
-    			add_location(div, file$1, 151, 3, 5067);
+    			add_location(div, file$1, 162, 3, 5388);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89292,14 +89292,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(151:2) {#if isError === true}",
+    		source: "(162:2) {#if isError === true}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (169:1) {:else}
+    // (180:1) {:else}
     function create_else_block$1(ctx) {
     	let each_1_anchor;
     	let current;
@@ -89388,14 +89388,14 @@ var app = (function () {
     		block,
     		id: create_else_block$1.name,
     		type: "else",
-    		source: "(169:1) {:else}",
+    		source: "(180:1) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (165:29) 
+    // (176:29) 
     function create_if_block_1(ctx) {
     	let div;
     	let alertcard;
@@ -89415,7 +89415,7 @@ var app = (function () {
     			div = element("div");
     			create_component(alertcard.$$.fragment);
     			attr_dev(div, "class", "col-span-1 md:col-span-3");
-    			add_location(div, file$1, 165, 2, 5573);
+    			add_location(div, file$1, 176, 2, 5894);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89442,14 +89442,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(165:29) ",
+    		source: "(176:29) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (161:1) {#if files === null}
+    // (172:1) {#if files === null}
     function create_if_block$2(ctx) {
     	let div;
     	let alertcard;
@@ -89469,7 +89469,7 @@ var app = (function () {
     			div = element("div");
     			create_component(alertcard.$$.fragment);
     			attr_dev(div, "class", "col-span-1 md:col-span-3");
-    			add_location(div, file$1, 161, 2, 5395);
+    			add_location(div, file$1, 172, 2, 5716);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89496,14 +89496,14 @@ var app = (function () {
     		block,
     		id: create_if_block$2.name,
     		type: "if",
-    		source: "(161:1) {#if files === null}",
+    		source: "(172:1) {#if files === null}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (171:3) {#if file.fileExtension === "MP4" || file.fileExtension === "jpg"}
+    // (182:3) {#if file.fileExtension === "MP4" || file.fileExtension === "jpg"}
     function create_if_block_2(ctx) {
     	let div;
     	let card;
@@ -89512,15 +89512,15 @@ var app = (function () {
     	let current;
 
     	function card_file_binding(value) {
-    		/*card_file_binding*/ ctx[37](value, /*file*/ ctx[39], /*each_value*/ ctx[40], /*file_index*/ ctx[41]);
+    		/*card_file_binding*/ ctx[37](value, /*file*/ ctx[40], /*each_value*/ ctx[41], /*file_index*/ ctx[42]);
     	}
 
     	let card_props = {
     		deleteDriveFile: /*deleteDriveFile*/ ctx[17]
     	};
 
-    	if (/*file*/ ctx[39] !== void 0) {
-    		card_props.file = /*file*/ ctx[39];
+    	if (/*file*/ ctx[40] !== void 0) {
+    		card_props.file = /*file*/ ctx[40];
     	}
 
     	card = new Card({ props: card_props, $$inline: true });
@@ -89532,7 +89532,7 @@ var app = (function () {
     			create_component(card.$$.fragment);
     			t = space();
     			attr_dev(div, "class", "col-span-1 md:col-span-3");
-    			add_location(div, file$1, 171, 4, 5818);
+    			add_location(div, file$1, 182, 4, 6139);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89546,7 +89546,7 @@ var app = (function () {
 
     			if (!updating_file && dirty[0] & /*files*/ 8192) {
     				updating_file = true;
-    				card_changes.file = /*file*/ ctx[39];
+    				card_changes.file = /*file*/ ctx[40];
     				add_flush_callback(() => updating_file = false);
     			}
 
@@ -89571,18 +89571,18 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(171:3) {#if file.fileExtension === \\\"MP4\\\" || file.fileExtension === \\\"jpg\\\"}",
+    		source: "(182:3) {#if file.fileExtension === \\\"MP4\\\" || file.fileExtension === \\\"jpg\\\"}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (170:2) {#each files as file}
+    // (181:2) {#each files as file}
     function create_each_block(ctx) {
     	let if_block_anchor;
     	let current;
-    	let if_block = (/*file*/ ctx[39].fileExtension === "MP4" || /*file*/ ctx[39].fileExtension === "jpg") && create_if_block_2(ctx);
+    	let if_block = (/*file*/ ctx[40].fileExtension === "MP4" || /*file*/ ctx[40].fileExtension === "jpg") && create_if_block_2(ctx);
 
     	const block = {
     		c: function create() {
@@ -89595,7 +89595,7 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (/*file*/ ctx[39].fileExtension === "MP4" || /*file*/ ctx[39].fileExtension === "jpg") {
+    			if (/*file*/ ctx[40].fileExtension === "MP4" || /*file*/ ctx[40].fileExtension === "jpg") {
     				if (if_block) {
     					if_block.p(ctx, dirty);
 
@@ -89637,7 +89637,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(170:2) {#each files as file}",
+    		source: "(181:2) {#each files as file}",
     		ctx
     	});
 
@@ -89994,29 +89994,29 @@ var app = (function () {
     			t13 = space();
     			create_component(footer.$$.fragment);
     			attr_dev(div0, "class", "col-span-1 md:col-span-1 row-span-1");
-    			add_location(div0, file$1, 107, 2, 3593);
+    			add_location(div0, file$1, 118, 2, 3914);
     			attr_dev(div1, "class", div1_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 0 ? "" : "hidden"}`);
-    			add_location(div1, file$1, 111, 2, 3688);
+    			add_location(div1, file$1, 122, 2, 4009);
     			attr_dev(div2, "class", div2_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 1 ? "" : "hidden"}`);
-    			add_location(div2, file$1, 115, 2, 3834);
+    			add_location(div2, file$1, 126, 2, 4155);
     			attr_dev(div3, "class", div3_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 2 ? "" : "hidden"}`);
-    			add_location(div3, file$1, 119, 2, 3979);
+    			add_location(div3, file$1, 130, 2, 4300);
     			attr_dev(div4, "class", div4_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 3 ? "" : "hidden"}`);
-    			add_location(div4, file$1, 123, 2, 4129);
+    			add_location(div4, file$1, 134, 2, 4450);
     			attr_dev(div5, "class", div5_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 4 ? "" : "hidden"}`);
-    			add_location(div5, file$1, 127, 2, 4265);
+    			add_location(div5, file$1, 138, 2, 4586);
     			attr_dev(div6, "class", "col-span-1 md:col-span-1 row-span-1");
-    			add_location(div6, file$1, 131, 2, 4406);
+    			add_location(div6, file$1, 142, 2, 4727);
     			attr_dev(div7, "class", "col-span-1 md:col-span-3 row-span-6 grid grid-cols-1 md:grid-cols-1 gap-4 h-fit");
-    			add_location(div7, file$1, 106, 1, 3496);
+    			add_location(div7, file$1, 117, 1, 3817);
     			attr_dev(div8, "class", "absolute top-1 left-1 ");
-    			add_location(div8, file$1, 140, 2, 4758);
+    			add_location(div8, file$1, 151, 2, 5079);
     			attr_dev(div9, "class", "col-span-1 md:col-span-9 row-span-6 relative");
-    			add_location(div9, file$1, 138, 1, 4543);
+    			add_location(div9, file$1, 149, 1, 4864);
     			attr_dev(section0, "class", "grid grid-cols-1 md:grid-cols-12 grid-rows-6 gap-4 my-4 px-4 h-fit ");
-    			add_location(section0, file$1, 105, 0, 3406);
+    			add_location(section0, file$1, 116, 0, 3727);
     			attr_dev(section1, "class", "grid grid-cols-1 md:grid-cols-12 gap-4 my-4 px-4 h-fit divide-x-1 divide-teal-600 ");
-    			add_location(section1, file$1, 159, 0, 5266);
+    			add_location(section1, file$1, 170, 0, 5587);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -90442,6 +90442,15 @@ var app = (function () {
 
     	let files = null;
 
+    	if (localStorage.getItem('Files')) {
+    		console.log(JSON.parse(localStorage.getItem('Files')));
+    		files = JSON.parse(localStorage.getItem('Files'));
+    	}
+
+    	const saveFilesToLocalStorage = () => {
+    		localStorage.setItem('Files', JSON.stringify(files));
+    	};
+
     	const getDriveFiles = async () => {
     		if (accessTokenValue === null) {
     			accessTokenValue = await googleSignIn();
@@ -90455,6 +90464,7 @@ var app = (function () {
     			$$invalidate(13, files = results);
     			console.log("App.js | files", results);
     			accessToken.set(accessTokenValue);
+    			saveFilesToLocalStorage();
     		}
     	};
 
@@ -90470,6 +90480,7 @@ var app = (function () {
     			tempList = tempList.filter(item => item.id !== fileId);
     			$$invalidate(13, files = tempList);
     			accessToken.set(accessTokenValue);
+    			saveFilesToLocalStorage();
     		}
     	};
 
@@ -90623,6 +90634,7 @@ var app = (function () {
     		fetchData,
     		gpsFilters,
     		files,
+    		saveFilesToLocalStorage,
     		getDriveFiles,
     		deleteDriveFile
     	});

@@ -70,7 +70,14 @@
 	let gpsFilters = [{ id: "Count", name: "Pothole Count Filter", default: [0, 20], step: 1, suffix: "", selected: [0, 20] }];
 
 	let files = null;
-	
+	if(localStorage.getItem('Files')){
+		console.log(JSON.parse(localStorage.getItem('Files')))
+		files = JSON.parse(localStorage.getItem('Files'));
+	}
+
+	const saveFilesToLocalStorage = () =>{
+		localStorage.setItem('Files', JSON.stringify(files));
+	}
 
 	const getDriveFiles = async () => {
 		if (accessTokenValue === null) {
@@ -84,6 +91,7 @@
 			files = results;
 			console.log("App.js | files", results);
 			accessToken.set(accessTokenValue)
+			saveFilesToLocalStorage();
 		}
 	};
 
@@ -97,6 +105,7 @@
 			tempList = tempList.filter(item => item.id !== fileId);
 			files = tempList;
 			accessToken.set(accessTokenValue)
+			saveFilesToLocalStorage();
 		}
 	}
 
