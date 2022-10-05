@@ -11,7 +11,7 @@
 	import ChartView from "components/menu/Chart.svelte";
 	import { fetchPotholeDataFromFirebase } from "service/fetch-firestore";
 	import { gpsJsonToGeojson } from "utils/geojson-utils.js";
-	import { getFilesByFolder } from "service/fetch-drive";
+	import { getDashcamVideos, deleteDashcamVideo } from "service/google-drive";
 	import { googleSignIn } from "service/google-sign-in";
 	import { accessToken } from 'store/access-token-store.js';
 	import Card from "components/files/Card.svelte";
@@ -70,11 +70,13 @@
 	let gpsFilters = [{ id: "Count", name: "Pothole Count Filter", default: [0, 20], step: 1, suffix: "", selected: [0, 20] }];
 
 	let files = null;
+	
+
 	const getDriveFiles = async () => {
 		if (accessTokenValue === null) {
 			accessTokenValue = await googleSignIn();
 		}
-		const results = await getFilesByFolder(accessTokenValue);
+		const results = await getDashcamVideos(accessTokenValue);
 
 		if (results === null) {
 			files = [];
@@ -84,6 +86,19 @@
 			accessToken.set(accessTokenValue)
 		}
 	};
+
+	const deleteDriveFile = async (fileId) => {
+		if (accessTokenValue === null) {
+			accessTokenValue = await googleSignIn();
+		}
+		const results = await deleteDashcamVideo(accessTokenValue, fileId);
+		if(results.status === 204){
+			let tempList = files;
+			tempList = tempList.filter(item => item.id !== fileId);
+			files = tempList;
+			accessToken.set(accessTokenValue)
+		}
+	}
 
 	fetchData();
 </script>
@@ -155,9 +170,9 @@
 		</div>
 	{:else}
 		{#each files as file}
-			{#if file.fileExtension === "MP4"}
+			{#if file.fileExtension === "MP4" || file.fileExtension === "jpg"}
 				<div class="col-span-1 md:col-span-3">
-					<Card bind:file />
+					<Card bind:file {deleteDriveFile}/>
 				</div>
 			{/if}
 		{/each}
