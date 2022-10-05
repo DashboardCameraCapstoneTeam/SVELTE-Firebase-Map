@@ -1,5 +1,6 @@
 <script>
 	export let file;
+	export let deleteDriveFile;
 </script>
 
 <section class="card h-fit scale-in-center">
@@ -25,7 +26,7 @@
 			Watch
 		</a>
 
-		<button class={`card-btn card-btn-red my-1 ml-1`}>
+		<button class={`card-btn card-btn-red my-1 ml-1`} on:click={()=>deleteDriveFile(file.id)}>
 			<i class="fa-solid fa-trash" />
 			Delete
 		</button>
