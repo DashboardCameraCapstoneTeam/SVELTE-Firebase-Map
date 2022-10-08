@@ -1,6 +1,10 @@
 <script>
+
+	
 	export let file;
 	export let deleteDriveFile;
+	export let startMachineLearning;
+
 </script>
 
 <section class="card h-fit scale-in-center">
@@ -32,7 +36,7 @@
 		</button>
 	</div>
 
-	<button class={`card-btn card-btn-green my-1`}>
+	<button class={`card-btn card-btn-green my-1`} on:click={()=>startMachineLearning(file.link)}>
 		<i class="fa-solid fa-robot" />
 		Machine Learning
 	</button>

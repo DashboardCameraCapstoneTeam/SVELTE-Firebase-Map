@@ -17,7 +17,7 @@
 	import Card from "components/files/Card.svelte";
 	import RecordingsHeader from "components/files/RecordingsHeader.svelte";
 	import AlertCard from "components/widget/AlertCard.svelte";
-  import Profile from "../components/menu/Profile.svelte";
+  	import Profile from "../components/menu/Profile.svelte";
 
 	export let user = null;
 	let accessTokenValue;
@@ -109,6 +109,11 @@
 		}
 	}
 
+	import {processWithMachineLearning} from 'service/machine-learning';
+	const startMachineLearning = () =>{
+		console.log(processWithMachineLearning());
+	}
+
 	fetchData();
 </script>
 
@@ -181,7 +186,7 @@
 		{#each files as file}
 			{#if file.fileExtension === "MP4" || file.fileExtension === "jpg"}
 				<div class="col-span-1 md:col-span-3">
-					<Card bind:file {deleteDriveFile}/>
+					<Card bind:file {deleteDriveFile} {startMachineLearning}/>
 				</div>
 			{/if}
 		{/each}

@@ -88528,7 +88528,7 @@ var app = (function () {
 
     const file_1 = "src\\components\\files\\Card.svelte";
 
-    // (9:1) {#if file.webViewLink && file.thumbnailLink}
+    // (13:1) {#if file.webViewLink && file.thumbnailLink}
     function create_if_block$3(ctx) {
     	let a;
     	let img;
@@ -88545,11 +88545,11 @@ var app = (function () {
     			attr_dev(img, "class", "h-64 w-auto object-cover ");
     			attr_dev(img, "width", "500");
     			attr_dev(img, "height", "600");
-    			add_location(img, file_1, 9, 74, 280);
+    			add_location(img, file_1, 13, 74, 322);
     			attr_dev(a, "href", a_href_value = /*file*/ ctx[0].webViewLink);
     			attr_dev(a, "target", "_blank");
     			attr_dev(a, "class", "text-white text-xl ");
-    			add_location(a, file_1, 9, 2, 208);
+    			add_location(a, file_1, 13, 2, 250);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, a, anchor);
@@ -88573,7 +88573,7 @@ var app = (function () {
     		block,
     		id: create_if_block$3.name,
     		type: "if",
-    		source: "(9:1) {#if file.webViewLink && file.thumbnailLink}",
+    		source: "(13:1) {#if file.webViewLink && file.thumbnailLink}",
     		ctx
     	});
 
@@ -88671,39 +88671,39 @@ var app = (function () {
     			i2 = element("i");
     			t23 = text("\r\n\t\tMachine Learning");
     			attr_dev(p0, "class", "font-bold my-1");
-    			add_location(p0, file_1, 6, 1, 119);
+    			add_location(p0, file_1, 10, 1, 161);
     			attr_dev(p1, "class", "font-bold my-1");
-    			add_location(p1, file_1, 12, 1, 521);
+    			add_location(p1, file_1, 16, 1, 563);
     			attr_dev(p2, "class", "truncate");
-    			add_location(p2, file_1, 13, 1, 564);
+    			add_location(p2, file_1, 17, 1, 606);
     			attr_dev(p3, "class", "font-bold my-1");
-    			add_location(p3, file_1, 15, 1, 616);
-    			add_location(p4, file_1, 16, 1, 662);
+    			add_location(p3, file_1, 19, 1, 658);
+    			add_location(p4, file_1, 20, 1, 704);
     			attr_dev(p5, "class", "font-bold my-1");
-    			add_location(p5, file_1, 17, 1, 690);
-    			add_location(p6, file_1, 18, 1, 733);
+    			add_location(p5, file_1, 21, 1, 732);
+    			add_location(p6, file_1, 22, 1, 775);
     			attr_dev(p7, "class", "font-bold my-1");
-    			add_location(p7, file_1, 19, 1, 754);
-    			add_location(p8, file_1, 20, 1, 793);
+    			add_location(p7, file_1, 23, 1, 796);
+    			add_location(p8, file_1, 24, 1, 835);
     			attr_dev(i0, "class", "fa-solid fa-eye");
-    			add_location(i0, file_1, 24, 3, 948);
+    			add_location(i0, file_1, 28, 3, 990);
     			attr_dev(a, "a", "");
     			attr_dev(a, "href", a_href_value = /*file*/ ctx[0].webViewLink);
     			attr_dev(a, "target", "_blank");
     			attr_dev(a, "class", `card-btn card-btn-blue my-1 mr-1`);
-    			add_location(a, file_1, 23, 2, 855);
+    			add_location(a, file_1, 27, 2, 897);
     			attr_dev(i1, "class", "fa-solid fa-trash");
-    			add_location(i1, file_1, 29, 3, 1096);
+    			add_location(i1, file_1, 33, 3, 1138);
     			attr_dev(button0, "class", `card-btn card-btn-red my-1 ml-1`);
-    			add_location(button0, file_1, 28, 2, 1001);
+    			add_location(button0, file_1, 32, 2, 1043);
     			attr_dev(div, "class", "flex");
-    			add_location(div, file_1, 22, 1, 833);
+    			add_location(div, file_1, 26, 1, 875);
     			attr_dev(i2, "class", "fa-solid fa-robot");
-    			add_location(i2, file_1, 35, 2, 1216);
+    			add_location(i2, file_1, 39, 2, 1305);
     			attr_dev(button1, "class", `card-btn card-btn-green my-1`);
-    			add_location(button1, file_1, 34, 1, 1165);
+    			add_location(button1, file_1, 38, 1, 1207);
     			attr_dev(section, "class", "card h-fit scale-in-center");
-    			add_location(section, file_1, 5, 0, 72);
+    			add_location(section, file_1, 9, 0, 114);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -88748,7 +88748,11 @@ var app = (function () {
     			append_dev(button1, t23);
 
     			if (!mounted) {
-    				dispose = listen_dev(button0, "click", /*click_handler*/ ctx[2], false, false, false);
+    				dispose = [
+    					listen_dev(button0, "click", /*click_handler*/ ctx[3], false, false, false),
+    					listen_dev(button1, "click", /*click_handler_1*/ ctx[4], false, false, false)
+    				];
+
     				mounted = true;
     			}
     		},
@@ -88781,7 +88785,7 @@ var app = (function () {
     			if (detaching) detach_dev(section);
     			if (if_block) if_block.d();
     			mounted = false;
-    			dispose();
+    			run_all(dispose);
     		}
     	};
 
@@ -88801,37 +88805,50 @@ var app = (function () {
     	validate_slots('Card', slots, []);
     	let { file } = $$props;
     	let { deleteDriveFile } = $$props;
-    	const writable_props = ['file', 'deleteDriveFile'];
+    	let { startMachineLearning } = $$props;
+    	const writable_props = ['file', 'deleteDriveFile', 'startMachineLearning'];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<Card> was created with unknown prop '${key}'`);
     	});
 
     	const click_handler = () => deleteDriveFile(file.id);
+    	const click_handler_1 = () => startMachineLearning(file.link);
 
     	$$self.$$set = $$props => {
     		if ('file' in $$props) $$invalidate(0, file = $$props.file);
     		if ('deleteDriveFile' in $$props) $$invalidate(1, deleteDriveFile = $$props.deleteDriveFile);
+    		if ('startMachineLearning' in $$props) $$invalidate(2, startMachineLearning = $$props.startMachineLearning);
     	};
 
-    	$$self.$capture_state = () => ({ file, deleteDriveFile });
+    	$$self.$capture_state = () => ({
+    		file,
+    		deleteDriveFile,
+    		startMachineLearning
+    	});
 
     	$$self.$inject_state = $$props => {
     		if ('file' in $$props) $$invalidate(0, file = $$props.file);
     		if ('deleteDriveFile' in $$props) $$invalidate(1, deleteDriveFile = $$props.deleteDriveFile);
+    		if ('startMachineLearning' in $$props) $$invalidate(2, startMachineLearning = $$props.startMachineLearning);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [file, deleteDriveFile, click_handler];
+    	return [file, deleteDriveFile, startMachineLearning, click_handler, click_handler_1];
     }
 
     class Card extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$5, create_fragment$5, safe_not_equal, { file: 0, deleteDriveFile: 1 });
+
+    		init(this, options, instance$5, create_fragment$5, safe_not_equal, {
+    			file: 0,
+    			deleteDriveFile: 1,
+    			startMachineLearning: 2
+    		});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -88850,6 +88867,10 @@ var app = (function () {
     		if (/*deleteDriveFile*/ ctx[1] === undefined && !('deleteDriveFile' in props)) {
     			console.warn("<Card> was created without expected prop 'deleteDriveFile'");
     		}
+
+    		if (/*startMachineLearning*/ ctx[2] === undefined && !('startMachineLearning' in props)) {
+    			console.warn("<Card> was created without expected prop 'startMachineLearning'");
+    		}
     	}
 
     	get file() {
@@ -88865,6 +88886,14 @@ var app = (function () {
     	}
 
     	set deleteDriveFile(value) {
+    		throw new Error("<Card>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get startMachineLearning() {
+    		throw new Error("<Card>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set startMachineLearning(value) {
     		throw new Error("<Card>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
@@ -89216,6 +89245,21 @@ var app = (function () {
     	}
     }
 
+    const baseUrl = 'http://127.0.0.1:8000/process';
+    const processWithMachineLearning = async () => {
+      const promise = await axios({
+        method: 'post',
+        url: baseUrl,
+        data: {
+          key: 1,
+          user_id: '0tk8sTPDuwR2WM7lFyUn4OxjGLr1',
+          video_link: 'https://drive.google.com/file/d/1C2p3HuuBuzhuG8hkeMnEcKxhTOL5qbqg/view?usp=sharing',
+          coord_link: 'https://drive.google.com/file/d/1qs5Wcj4haLuEoqDUMdEF4VidrdyaOyY7/view?usp=sharing',
+        },
+      });
+      return promise.data;
+    };
+
     /* src\pages\HomePage.svelte generated by Svelte v3.49.0 */
 
     const { console: console_1 } = globals;
@@ -89223,13 +89267,13 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[40] = list[i];
-    	child_ctx[41] = list;
-    	child_ctx[42] = i;
+    	child_ctx[41] = list[i];
+    	child_ctx[42] = list;
+    	child_ctx[43] = i;
     	return child_ctx;
     }
 
-    // (156:2) {#if isLoading === true}
+    // (161:2) {#if isLoading === true}
     function create_if_block_4(ctx) {
     	let div;
     	let p;
@@ -89240,9 +89284,9 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Loading Data...";
     			attr_dev(p, "class", "align-middle");
-    			add_location(p, file$1, 157, 4, 5292);
+    			add_location(p, file$1, 162, 4, 5454);
     			attr_dev(div, "class", "absolute top-0 z-100 map-loading rounded-lg");
-    			add_location(div, file$1, 156, 3, 5229);
+    			add_location(div, file$1, 161, 3, 5391);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89257,14 +89301,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(156:2) {#if isLoading === true}",
+    		source: "(161:2) {#if isLoading === true}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (162:2) {#if isError === true}
+    // (167:2) {#if isError === true}
     function create_if_block_3(ctx) {
     	let div;
     	let p;
@@ -89275,9 +89319,9 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Error, unable to Fetch Data";
     			attr_dev(p, "class", "align-middle");
-    			add_location(p, file$1, 163, 4, 5449);
+    			add_location(p, file$1, 168, 4, 5611);
     			attr_dev(div, "class", "absolute top-0 z-100 map-error rounded-lg");
-    			add_location(div, file$1, 162, 3, 5388);
+    			add_location(div, file$1, 167, 3, 5550);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89292,14 +89336,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(162:2) {#if isError === true}",
+    		source: "(167:2) {#if isError === true}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (180:1) {:else}
+    // (185:1) {:else}
     function create_else_block$1(ctx) {
     	let each_1_anchor;
     	let current;
@@ -89332,7 +89376,7 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty[0] & /*deleteDriveFile, files*/ 139264) {
+    			if (dirty[0] & /*deleteDriveFile, startMachineLearning, files*/ 401408) {
     				each_value = /*files*/ ctx[13];
     				validate_each_argument(each_value);
     				let i;
@@ -89388,14 +89432,14 @@ var app = (function () {
     		block,
     		id: create_else_block$1.name,
     		type: "else",
-    		source: "(180:1) {:else}",
+    		source: "(185:1) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (176:29) 
+    // (181:29) 
     function create_if_block_1(ctx) {
     	let div;
     	let alertcard;
@@ -89415,7 +89459,7 @@ var app = (function () {
     			div = element("div");
     			create_component(alertcard.$$.fragment);
     			attr_dev(div, "class", "col-span-1 md:col-span-3");
-    			add_location(div, file$1, 176, 2, 5894);
+    			add_location(div, file$1, 181, 2, 6056);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89442,14 +89486,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(176:29) ",
+    		source: "(181:29) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (172:1) {#if files === null}
+    // (177:1) {#if files === null}
     function create_if_block$2(ctx) {
     	let div;
     	let alertcard;
@@ -89469,7 +89513,7 @@ var app = (function () {
     			div = element("div");
     			create_component(alertcard.$$.fragment);
     			attr_dev(div, "class", "col-span-1 md:col-span-3");
-    			add_location(div, file$1, 172, 2, 5716);
+    			add_location(div, file$1, 177, 2, 5878);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89496,14 +89540,14 @@ var app = (function () {
     		block,
     		id: create_if_block$2.name,
     		type: "if",
-    		source: "(172:1) {#if files === null}",
+    		source: "(177:1) {#if files === null}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (182:3) {#if file.fileExtension === "MP4" || file.fileExtension === "jpg"}
+    // (187:3) {#if file.fileExtension === "MP4" || file.fileExtension === "jpg"}
     function create_if_block_2(ctx) {
     	let div;
     	let card;
@@ -89512,15 +89556,16 @@ var app = (function () {
     	let current;
 
     	function card_file_binding(value) {
-    		/*card_file_binding*/ ctx[37](value, /*file*/ ctx[40], /*each_value*/ ctx[41], /*file_index*/ ctx[42]);
+    		/*card_file_binding*/ ctx[38](value, /*file*/ ctx[41], /*each_value*/ ctx[42], /*file_index*/ ctx[43]);
     	}
 
     	let card_props = {
-    		deleteDriveFile: /*deleteDriveFile*/ ctx[17]
+    		deleteDriveFile: /*deleteDriveFile*/ ctx[17],
+    		startMachineLearning: /*startMachineLearning*/ ctx[18]
     	};
 
-    	if (/*file*/ ctx[40] !== void 0) {
-    		card_props.file = /*file*/ ctx[40];
+    	if (/*file*/ ctx[41] !== void 0) {
+    		card_props.file = /*file*/ ctx[41];
     	}
 
     	card = new Card({ props: card_props, $$inline: true });
@@ -89532,7 +89577,7 @@ var app = (function () {
     			create_component(card.$$.fragment);
     			t = space();
     			attr_dev(div, "class", "col-span-1 md:col-span-3");
-    			add_location(div, file$1, 182, 4, 6139);
+    			add_location(div, file$1, 187, 4, 6301);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89546,7 +89591,7 @@ var app = (function () {
 
     			if (!updating_file && dirty[0] & /*files*/ 8192) {
     				updating_file = true;
-    				card_changes.file = /*file*/ ctx[40];
+    				card_changes.file = /*file*/ ctx[41];
     				add_flush_callback(() => updating_file = false);
     			}
 
@@ -89571,18 +89616,18 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(182:3) {#if file.fileExtension === \\\"MP4\\\" || file.fileExtension === \\\"jpg\\\"}",
+    		source: "(187:3) {#if file.fileExtension === \\\"MP4\\\" || file.fileExtension === \\\"jpg\\\"}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (181:2) {#each files as file}
+    // (186:2) {#each files as file}
     function create_each_block(ctx) {
     	let if_block_anchor;
     	let current;
-    	let if_block = (/*file*/ ctx[40].fileExtension === "MP4" || /*file*/ ctx[40].fileExtension === "jpg") && create_if_block_2(ctx);
+    	let if_block = (/*file*/ ctx[41].fileExtension === "MP4" || /*file*/ ctx[41].fileExtension === "jpg") && create_if_block_2(ctx);
 
     	const block = {
     		c: function create() {
@@ -89595,7 +89640,7 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (/*file*/ ctx[40].fileExtension === "MP4" || /*file*/ ctx[40].fileExtension === "jpg") {
+    			if (/*file*/ ctx[41].fileExtension === "MP4" || /*file*/ ctx[41].fileExtension === "jpg") {
     				if (if_block) {
     					if_block.p(ctx, dirty);
 
@@ -89637,7 +89682,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(181:2) {#each files as file}",
+    		source: "(186:2) {#each files as file}",
     		ctx
     	});
 
@@ -89712,11 +89757,11 @@ var app = (function () {
     	let current;
 
     	function mapheader_selectedMenu_binding(value) {
-    		/*mapheader_selectedMenu_binding*/ ctx[18](value);
+    		/*mapheader_selectedMenu_binding*/ ctx[19](value);
     	}
 
     	function mapheader_menuComponents_binding(value) {
-    		/*mapheader_menuComponents_binding*/ ctx[19](value);
+    		/*mapheader_menuComponents_binding*/ ctx[20](value);
     	}
 
     	let mapheader_props = {};
@@ -89734,7 +89779,7 @@ var app = (function () {
     	binding_callbacks.push(() => bind$2(mapheader, 'menuComponents', mapheader_menuComponents_binding));
 
     	function layers_layerList_binding(value) {
-    		/*layers_layerList_binding*/ ctx[20](value);
+    		/*layers_layerList_binding*/ ctx[21](value);
     	}
 
     	let layers_props = {};
@@ -89747,7 +89792,7 @@ var app = (function () {
     	binding_callbacks.push(() => bind$2(layers, 'layerList', layers_layerList_binding));
 
     	function datetime_dateTimeDictionary_binding(value) {
-    		/*datetime_dateTimeDictionary_binding*/ ctx[21](value);
+    		/*datetime_dateTimeDictionary_binding*/ ctx[22](value);
     	}
 
     	let datetime_props = {};
@@ -89760,7 +89805,7 @@ var app = (function () {
     	binding_callbacks.push(() => bind$2(datetime, 'dateTimeDictionary', datetime_dateTimeDictionary_binding));
 
     	function streetview_pointOfInterest_binding(value) {
-    		/*streetview_pointOfInterest_binding*/ ctx[22](value);
+    		/*streetview_pointOfInterest_binding*/ ctx[23](value);
     	}
 
     	let streetview_props = {};
@@ -89773,11 +89818,11 @@ var app = (function () {
     	binding_callbacks.push(() => bind$2(streetview, 'pointOfInterest', streetview_pointOfInterest_binding));
 
     	function filters_gpsFilters_binding(value) {
-    		/*filters_gpsFilters_binding*/ ctx[23](value);
+    		/*filters_gpsFilters_binding*/ ctx[24](value);
     	}
 
     	function filters_gpsData_binding(value) {
-    		/*filters_gpsData_binding*/ ctx[24](value);
+    		/*filters_gpsData_binding*/ ctx[25](value);
     	}
 
     	let filters_props = {};
@@ -89795,7 +89840,7 @@ var app = (function () {
     	binding_callbacks.push(() => bind$2(filters, 'gpsData', filters_gpsData_binding));
 
     	function chartview_gpsData_binding(value) {
-    		/*chartview_gpsData_binding*/ ctx[25](value);
+    		/*chartview_gpsData_binding*/ ctx[26](value);
     	}
 
     	let chartview_props = {};
@@ -89808,7 +89853,7 @@ var app = (function () {
     	binding_callbacks.push(() => bind$2(chartview, 'gpsData', chartview_gpsData_binding));
 
     	function profile_user_binding(value) {
-    		/*profile_user_binding*/ ctx[26](value);
+    		/*profile_user_binding*/ ctx[27](value);
     	}
 
     	let profile_props = { signOut: /*signOut*/ ctx[1] };
@@ -89821,7 +89866,7 @@ var app = (function () {
     	binding_callbacks.push(() => bind$2(profile, 'user', profile_user_binding));
 
     	function searchdetails_dateTimeDictionary_binding(value) {
-    		/*searchdetails_dateTimeDictionary_binding*/ ctx[27](value);
+    		/*searchdetails_dateTimeDictionary_binding*/ ctx[28](value);
     	}
 
     	let searchdetails_props = { fetchData: /*fetchData*/ ctx[15] };
@@ -89838,31 +89883,31 @@ var app = (function () {
     	binding_callbacks.push(() => bind$2(searchdetails, 'dateTimeDictionary', searchdetails_dateTimeDictionary_binding));
 
     	function map_gpsFilters_binding(value) {
-    		/*map_gpsFilters_binding*/ ctx[28](value);
+    		/*map_gpsFilters_binding*/ ctx[29](value);
     	}
 
     	function map_gpsData_binding(value) {
-    		/*map_gpsData_binding*/ ctx[29](value);
+    		/*map_gpsData_binding*/ ctx[30](value);
     	}
 
     	function map_isReadyForStyleSwitching_binding(value) {
-    		/*map_isReadyForStyleSwitching_binding*/ ctx[30](value);
+    		/*map_isReadyForStyleSwitching_binding*/ ctx[31](value);
     	}
 
     	function map_layerList_binding(value) {
-    		/*map_layerList_binding*/ ctx[31](value);
+    		/*map_layerList_binding*/ ctx[32](value);
     	}
 
     	function map_mapStyle_binding(value) {
-    		/*map_mapStyle_binding*/ ctx[32](value);
+    		/*map_mapStyle_binding*/ ctx[33](value);
     	}
 
     	function map_pointOfInterest_binding(value) {
-    		/*map_pointOfInterest_binding*/ ctx[33](value);
+    		/*map_pointOfInterest_binding*/ ctx[34](value);
     	}
 
     	function map_selectedMenu_binding(value) {
-    		/*map_selectedMenu_binding*/ ctx[34](value);
+    		/*map_selectedMenu_binding*/ ctx[35](value);
     	}
 
     	let map_props = { cityDetails: /*cityDetails*/ ctx[14] };
@@ -89905,11 +89950,11 @@ var app = (function () {
     	binding_callbacks.push(() => bind$2(map, 'selectedMenu', map_selectedMenu_binding));
 
     	function mapstyleselector_mapStyle_binding(value) {
-    		/*mapstyleselector_mapStyle_binding*/ ctx[35](value);
+    		/*mapstyleselector_mapStyle_binding*/ ctx[36](value);
     	}
 
     	function mapstyleselector_isReadyForStyleSwitching_binding(value) {
-    		/*mapstyleselector_isReadyForStyleSwitching_binding*/ ctx[36](value);
+    		/*mapstyleselector_isReadyForStyleSwitching_binding*/ ctx[37](value);
     	}
 
     	let mapstyleselector_props = {};
@@ -89994,29 +90039,29 @@ var app = (function () {
     			t13 = space();
     			create_component(footer.$$.fragment);
     			attr_dev(div0, "class", "col-span-1 md:col-span-1 row-span-1");
-    			add_location(div0, file$1, 118, 2, 3914);
+    			add_location(div0, file$1, 123, 2, 4076);
     			attr_dev(div1, "class", div1_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 0 ? "" : "hidden"}`);
-    			add_location(div1, file$1, 122, 2, 4009);
+    			add_location(div1, file$1, 127, 2, 4171);
     			attr_dev(div2, "class", div2_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 1 ? "" : "hidden"}`);
-    			add_location(div2, file$1, 126, 2, 4155);
+    			add_location(div2, file$1, 131, 2, 4317);
     			attr_dev(div3, "class", div3_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 2 ? "" : "hidden"}`);
-    			add_location(div3, file$1, 130, 2, 4300);
+    			add_location(div3, file$1, 135, 2, 4462);
     			attr_dev(div4, "class", div4_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 3 ? "" : "hidden"}`);
-    			add_location(div4, file$1, 134, 2, 4450);
+    			add_location(div4, file$1, 139, 2, 4612);
     			attr_dev(div5, "class", div5_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 4 ? "" : "hidden"}`);
-    			add_location(div5, file$1, 138, 2, 4586);
+    			add_location(div5, file$1, 143, 2, 4748);
     			attr_dev(div6, "class", "col-span-1 md:col-span-1 row-span-1");
-    			add_location(div6, file$1, 142, 2, 4727);
+    			add_location(div6, file$1, 147, 2, 4889);
     			attr_dev(div7, "class", "col-span-1 md:col-span-3 row-span-6 grid grid-cols-1 md:grid-cols-1 gap-4 h-fit");
-    			add_location(div7, file$1, 117, 1, 3817);
+    			add_location(div7, file$1, 122, 1, 3979);
     			attr_dev(div8, "class", "absolute top-1 left-1 ");
-    			add_location(div8, file$1, 151, 2, 5079);
+    			add_location(div8, file$1, 156, 2, 5241);
     			attr_dev(div9, "class", "col-span-1 md:col-span-9 row-span-6 relative");
-    			add_location(div9, file$1, 149, 1, 4864);
+    			add_location(div9, file$1, 154, 1, 5026);
     			attr_dev(section0, "class", "grid grid-cols-1 md:grid-cols-12 grid-rows-6 gap-4 my-4 px-4 h-fit ");
-    			add_location(section0, file$1, 116, 0, 3727);
+    			add_location(section0, file$1, 121, 0, 3889);
     			attr_dev(section1, "class", "grid grid-cols-1 md:grid-cols-12 gap-4 my-4 px-4 h-fit divide-x-1 divide-teal-600 ");
-    			add_location(section1, file$1, 170, 0, 5587);
+    			add_location(section1, file$1, 175, 0, 5749);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -90484,6 +90529,10 @@ var app = (function () {
     		}
     	};
 
+    	const startMachineLearning = () => {
+    		console.log(processWithMachineLearning());
+    	};
+
     	fetchData();
     	const writable_props = ['user', 'signOut'];
 
@@ -90636,7 +90685,9 @@ var app = (function () {
     		files,
     		saveFilesToLocalStorage,
     		getDriveFiles,
-    		deleteDriveFile
+    		deleteDriveFile,
+    		processWithMachineLearning,
+    		startMachineLearning
     	});
 
     	$$self.$inject_state = $$props => {
@@ -90681,6 +90732,7 @@ var app = (function () {
     		fetchData,
     		getDriveFiles,
     		deleteDriveFile,
+    		startMachineLearning,
     		mapheader_selectedMenu_binding,
     		mapheader_menuComponents_binding,
     		layers_layerList_binding,
