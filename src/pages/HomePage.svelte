@@ -110,8 +110,15 @@
 	}
 
 	import {processWithMachineLearning} from 'service/machine-learning';
-	const startMachineLearning = () =>{
-		console.log(processWithMachineLearning());
+	const startMachineLearning = (file) =>{
+		const payload = {
+			key: 1,
+			user_id: user.uid,
+			video_link: `https://drive.google.com/file/d/${file.id}/view?usp=sharing`,
+			coord_link: 'https://drive.google.com/file/d/1qs5Wcj4haLuEoqDUMdEF4VidrdyaOyY7/view?usp=sharing',
+		}
+		console.log(payload);
+	    console.log(processWithMachineLearning(payload));
 	}
 
 	fetchData();
@@ -184,7 +191,7 @@
 		</div>
 	{:else}
 		{#each files as file}
-			{#if file.fileExtension === "MP4" || file.fileExtension === "jpg"}
+			{#if file.fileExtension === "MP4" || file.fileExtension === "mp4"}
 				<div class="col-span-1 md:col-span-3">
 					<Card bind:file {deleteDriveFile} {startMachineLearning}/>
 				</div>

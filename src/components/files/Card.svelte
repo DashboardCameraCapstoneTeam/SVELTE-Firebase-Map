@@ -36,7 +36,7 @@
 		</button>
 	</div>
 
-	<button class={`card-btn card-btn-green my-1`} on:click={()=>startMachineLearning(file.link)}>
+	<button class={`card-btn card-btn-green my-1`} on:click={()=>startMachineLearning(file)}>
 		<i class="fa-solid fa-robot" />
 		Machine Learning
 	</button>

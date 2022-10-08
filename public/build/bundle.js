@@ -88699,7 +88699,7 @@ var app = (function () {
     			attr_dev(div, "class", "flex");
     			add_location(div, file_1, 26, 1, 875);
     			attr_dev(i2, "class", "fa-solid fa-robot");
-    			add_location(i2, file_1, 39, 2, 1305);
+    			add_location(i2, file_1, 39, 2, 1300);
     			attr_dev(button1, "class", `card-btn card-btn-green my-1`);
     			add_location(button1, file_1, 38, 1, 1207);
     			attr_dev(section, "class", "card h-fit scale-in-center");
@@ -88813,7 +88813,7 @@ var app = (function () {
     	});
 
     	const click_handler = () => deleteDriveFile(file.id);
-    	const click_handler_1 = () => startMachineLearning(file.link);
+    	const click_handler_1 = () => startMachineLearning(file);
 
     	$$self.$$set = $$props => {
     		if ('file' in $$props) $$invalidate(0, file = $$props.file);
@@ -89246,16 +89246,11 @@ var app = (function () {
     }
 
     const baseUrl = 'http://127.0.0.1:8000/process';
-    const processWithMachineLearning = async () => {
+    const processWithMachineLearning = async (payload) => {
       const promise = await axios({
         method: 'post',
         url: baseUrl,
-        data: {
-          key: 1,
-          user_id: '0tk8sTPDuwR2WM7lFyUn4OxjGLr1',
-          video_link: 'https://drive.google.com/file/d/1C2p3HuuBuzhuG8hkeMnEcKxhTOL5qbqg/view?usp=sharing',
-          coord_link: 'https://drive.google.com/file/d/1qs5Wcj4haLuEoqDUMdEF4VidrdyaOyY7/view?usp=sharing',
-        },
+        data: payload,
       });
       return promise.data;
     };
@@ -89273,7 +89268,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (161:2) {#if isLoading === true}
+    // (168:2) {#if isLoading === true}
     function create_if_block_4(ctx) {
     	let div;
     	let p;
@@ -89284,9 +89279,9 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Loading Data...";
     			attr_dev(p, "class", "align-middle");
-    			add_location(p, file$1, 162, 4, 5454);
+    			add_location(p, file$1, 169, 4, 5735);
     			attr_dev(div, "class", "absolute top-0 z-100 map-loading rounded-lg");
-    			add_location(div, file$1, 161, 3, 5391);
+    			add_location(div, file$1, 168, 3, 5672);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89301,14 +89296,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(161:2) {#if isLoading === true}",
+    		source: "(168:2) {#if isLoading === true}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (167:2) {#if isError === true}
+    // (174:2) {#if isError === true}
     function create_if_block_3(ctx) {
     	let div;
     	let p;
@@ -89319,9 +89314,9 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Error, unable to Fetch Data";
     			attr_dev(p, "class", "align-middle");
-    			add_location(p, file$1, 168, 4, 5611);
+    			add_location(p, file$1, 175, 4, 5892);
     			attr_dev(div, "class", "absolute top-0 z-100 map-error rounded-lg");
-    			add_location(div, file$1, 167, 3, 5550);
+    			add_location(div, file$1, 174, 3, 5831);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89336,14 +89331,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(167:2) {#if isError === true}",
+    		source: "(174:2) {#if isError === true}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (185:1) {:else}
+    // (192:1) {:else}
     function create_else_block$1(ctx) {
     	let each_1_anchor;
     	let current;
@@ -89432,14 +89427,14 @@ var app = (function () {
     		block,
     		id: create_else_block$1.name,
     		type: "else",
-    		source: "(185:1) {:else}",
+    		source: "(192:1) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (181:29) 
+    // (188:29) 
     function create_if_block_1(ctx) {
     	let div;
     	let alertcard;
@@ -89459,7 +89454,7 @@ var app = (function () {
     			div = element("div");
     			create_component(alertcard.$$.fragment);
     			attr_dev(div, "class", "col-span-1 md:col-span-3");
-    			add_location(div, file$1, 181, 2, 6056);
+    			add_location(div, file$1, 188, 2, 6337);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89486,14 +89481,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(181:29) ",
+    		source: "(188:29) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (177:1) {#if files === null}
+    // (184:1) {#if files === null}
     function create_if_block$2(ctx) {
     	let div;
     	let alertcard;
@@ -89513,7 +89508,7 @@ var app = (function () {
     			div = element("div");
     			create_component(alertcard.$$.fragment);
     			attr_dev(div, "class", "col-span-1 md:col-span-3");
-    			add_location(div, file$1, 177, 2, 5878);
+    			add_location(div, file$1, 184, 2, 6159);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89540,14 +89535,14 @@ var app = (function () {
     		block,
     		id: create_if_block$2.name,
     		type: "if",
-    		source: "(177:1) {#if files === null}",
+    		source: "(184:1) {#if files === null}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (187:3) {#if file.fileExtension === "MP4" || file.fileExtension === "jpg"}
+    // (194:3) {#if file.fileExtension === "MP4" || file.fileExtension === "mp4"}
     function create_if_block_2(ctx) {
     	let div;
     	let card;
@@ -89577,7 +89572,7 @@ var app = (function () {
     			create_component(card.$$.fragment);
     			t = space();
     			attr_dev(div, "class", "col-span-1 md:col-span-3");
-    			add_location(div, file$1, 187, 4, 6301);
+    			add_location(div, file$1, 194, 4, 6582);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89616,18 +89611,18 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(187:3) {#if file.fileExtension === \\\"MP4\\\" || file.fileExtension === \\\"jpg\\\"}",
+    		source: "(194:3) {#if file.fileExtension === \\\"MP4\\\" || file.fileExtension === \\\"mp4\\\"}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (186:2) {#each files as file}
+    // (193:2) {#each files as file}
     function create_each_block(ctx) {
     	let if_block_anchor;
     	let current;
-    	let if_block = (/*file*/ ctx[41].fileExtension === "MP4" || /*file*/ ctx[41].fileExtension === "jpg") && create_if_block_2(ctx);
+    	let if_block = (/*file*/ ctx[41].fileExtension === "MP4" || /*file*/ ctx[41].fileExtension === "mp4") && create_if_block_2(ctx);
 
     	const block = {
     		c: function create() {
@@ -89640,7 +89635,7 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (/*file*/ ctx[41].fileExtension === "MP4" || /*file*/ ctx[41].fileExtension === "jpg") {
+    			if (/*file*/ ctx[41].fileExtension === "MP4" || /*file*/ ctx[41].fileExtension === "mp4") {
     				if (if_block) {
     					if_block.p(ctx, dirty);
 
@@ -89682,7 +89677,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(186:2) {#each files as file}",
+    		source: "(193:2) {#each files as file}",
     		ctx
     	});
 
@@ -90039,29 +90034,29 @@ var app = (function () {
     			t13 = space();
     			create_component(footer.$$.fragment);
     			attr_dev(div0, "class", "col-span-1 md:col-span-1 row-span-1");
-    			add_location(div0, file$1, 123, 2, 4076);
+    			add_location(div0, file$1, 130, 2, 4357);
     			attr_dev(div1, "class", div1_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 0 ? "" : "hidden"}`);
-    			add_location(div1, file$1, 127, 2, 4171);
+    			add_location(div1, file$1, 134, 2, 4452);
     			attr_dev(div2, "class", div2_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 1 ? "" : "hidden"}`);
-    			add_location(div2, file$1, 131, 2, 4317);
+    			add_location(div2, file$1, 138, 2, 4598);
     			attr_dev(div3, "class", div3_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 2 ? "" : "hidden"}`);
-    			add_location(div3, file$1, 135, 2, 4462);
+    			add_location(div3, file$1, 142, 2, 4743);
     			attr_dev(div4, "class", div4_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 3 ? "" : "hidden"}`);
-    			add_location(div4, file$1, 139, 2, 4612);
+    			add_location(div4, file$1, 146, 2, 4893);
     			attr_dev(div5, "class", div5_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 4 ? "" : "hidden"}`);
-    			add_location(div5, file$1, 143, 2, 4748);
+    			add_location(div5, file$1, 150, 2, 5029);
     			attr_dev(div6, "class", "col-span-1 md:col-span-1 row-span-1");
-    			add_location(div6, file$1, 147, 2, 4889);
+    			add_location(div6, file$1, 154, 2, 5170);
     			attr_dev(div7, "class", "col-span-1 md:col-span-3 row-span-6 grid grid-cols-1 md:grid-cols-1 gap-4 h-fit");
-    			add_location(div7, file$1, 122, 1, 3979);
+    			add_location(div7, file$1, 129, 1, 4260);
     			attr_dev(div8, "class", "absolute top-1 left-1 ");
-    			add_location(div8, file$1, 156, 2, 5241);
+    			add_location(div8, file$1, 163, 2, 5522);
     			attr_dev(div9, "class", "col-span-1 md:col-span-9 row-span-6 relative");
-    			add_location(div9, file$1, 154, 1, 5026);
+    			add_location(div9, file$1, 161, 1, 5307);
     			attr_dev(section0, "class", "grid grid-cols-1 md:grid-cols-12 grid-rows-6 gap-4 my-4 px-4 h-fit ");
-    			add_location(section0, file$1, 121, 0, 3889);
+    			add_location(section0, file$1, 128, 0, 4170);
     			attr_dev(section1, "class", "grid grid-cols-1 md:grid-cols-12 gap-4 my-4 px-4 h-fit divide-x-1 divide-teal-600 ");
-    			add_location(section1, file$1, 175, 0, 5749);
+    			add_location(section1, file$1, 182, 0, 6030);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -90529,8 +90524,16 @@ var app = (function () {
     		}
     	};
 
-    	const startMachineLearning = () => {
-    		console.log(processWithMachineLearning());
+    	const startMachineLearning = file => {
+    		const payload = {
+    			key: 1,
+    			user_id: user.uid,
+    			video_link: `https://drive.google.com/file/d/${file.id}/view?usp=sharing`,
+    			coord_link: 'https://drive.google.com/file/d/1qs5Wcj4haLuEoqDUMdEF4VidrdyaOyY7/view?usp=sharing'
+    		};
+
+    		console.log(payload);
+    		console.log(processWithMachineLearning(payload));
     	};
 
     	fetchData();
