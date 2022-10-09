@@ -8,9 +8,16 @@ export const fetchDataFromFirebase = async (user, dateTimeDictionary) => {
   try {
     const tempList = [];
     const docRef = doc(db, 'users', user.uid);
-    const startDateTime = firebase.firestore.Timestamp.fromDate(new Date(dateTimeDictionary.startDateTime));
-    const endDateTime = firebase.firestore.Timestamp.fromDate(new Date(dateTimeDictionary.endDateTime));
-    const colRef = query(collection(docRef, 'potholes'), where('dateTime', '>', startDateTime), where('dateTime', '<', endDateTime), orderBy('dateTime', 'desc'));
+
+    let colRef = null;
+    if (dateTimeDictionary.startDateTime === '' || dateTimeDictionary.endDateTime === '') {
+      colRef = query(collection(docRef, 'geojson'));
+    } else {
+      const startDateTime = firebase.firestore.Timestamp.fromDate(new Date(dateTimeDictionary.startDateTime));
+      const endDateTime = firebase.firestore.Timestamp.fromDate(new Date(dateTimeDictionary.endDateTime));
+      colRef = query(collection(docRef, 'geojson'), where('dateTime', '>', startDateTime), where('dateTime', '<', endDateTime), orderBy('dateTime', 'desc'));
+    }
+
     const querySnapshot = await getDocs(colRef);
     querySnapshot.forEach((document) => {
       const documentData = document.data();

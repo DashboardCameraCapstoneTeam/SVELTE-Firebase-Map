@@ -67,7 +67,7 @@
 				alert("No Data Found");
 			}
 			else{
-				gpsData =  response.data;
+				gpsData =  gpsJsonToGeojson(response.data);
 			}
 		} else {
 			isError = true
@@ -75,7 +75,8 @@
 		isLoading = false;
 	};
 
-	let gpsFilters = [{ id: "Count", name: "Pothole Count Filter", default: [0, 20], step: 1, suffix: "", selected: [0, 20] }];
+	let gpsFilters = []
+	// let gpsFilters = [{ id: "Count", name: "Pothole Count Filter", default: [0, 20], step: 1, suffix: "", selected: [0, 20] }];
 
 	let files = [];
 	if(localStorage.getItem('Files')){

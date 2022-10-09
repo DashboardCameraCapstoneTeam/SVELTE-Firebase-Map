@@ -41,7 +41,7 @@
 
 	
 	{#if dateTimeDictionary.startDateTime === '' || dateTimeDictionary.endDateTime === '' }
-		<div class="alert alert-red my-1" role="alert">Select a Date and Time before Searching.</div>
+		<div class="alert alert-red my-1" role="alert">No date time selected.</div>
 	{:else}
 		<div class="alert alert-green my-1" role="alert">
 			{dateTimeDictionary.startDateTime} to {dateTimeDictionary.endDateTime}  <button class="float-right fa-lg" on:click={clearDateTime}><i class="fa-solid fa-xmark " /></button>
