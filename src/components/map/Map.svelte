@@ -238,9 +238,10 @@
 		if (map === null || gpsData.length <= 0) return;
 		try {
 			gpsData.forEach(function (gpsElement) {
-				const dataName = gpsElement.features[0].properties.Item;
+				console.log(gpsElement)
+				const dataName = gpsElement.dataName;
 				const dataSourceName = `${dataName}Source`;
-				const dataType = gpsElement.features[0].geometry.type;
+				const dataType = gpsElement.dataType;
 
 				let gpsListElement = createElement(dataName, dataSourceName, dataType, true, "fa-road", gpsElement);
 				addMapSource(gpsListElement);
@@ -289,7 +290,7 @@
 			let filterArray = createFilterArray();
 
 			gpsData.forEach(function (gpsElement) {
-				const dataName = gpsElement.features[0].properties.Item;
+				const dataName = gpsElement.dataName;
 				map.setFilter(dataName, filterArray);
 			});
 		} catch (err) {

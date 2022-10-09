@@ -9,7 +9,7 @@
 	import Filters from "components/menu/Filters.svelte";
 	import StreetView from "components/menu/StreetView.svelte";
 	import ChartView from "components/menu/Chart.svelte";
-	import { fetchPotholeDataFromFirebase } from "service/google-firestore";
+	import { fetchDataFromFirebase } from "service/google-firestore";
 	import { gpsJsonToGeojson } from "utils/geojson-utils.js";
 	import { getDashcamVideos, deleteGoogleDriveFile } from "service/google-drive";
 	import { googleSignIn } from "service/google-sign-in";
@@ -59,14 +59,14 @@
 	const fetchData = async () => {
 		isLoading = true;
 		isError = false;
-		const response = await fetchPotholeDataFromFirebase(user, dateTimeDictionary);
+		const response = await fetchDataFromFirebase(user, dateTimeDictionary);
 		if (response.status === 200 ) {
 
 			if(response.data.length <= 0){
 				alert("No Data Found");
 			}
 			else{
-				gpsData =  [gpsJsonToGeojson(response.data)];
+				gpsData =  gpsJsonToGeojson(response.data);
 			}
 		} else {
 			isError = true
