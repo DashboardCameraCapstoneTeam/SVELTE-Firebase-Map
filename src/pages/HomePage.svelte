@@ -71,7 +71,6 @@
 		} else {
 			isError = true
 		}
-		console.log(response);
 		isLoading = false;
 	};
 

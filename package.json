@@ -54,6 +54,7 @@
     "rxjs": "^7.5.5",
     "sirv-cli": "^2.0.0",
     "tailwindcss": "^3.0.24",
-    "tw-elements": "^1.0.0-alpha12"
+    "tw-elements": "^1.0.0-alpha12",
+    "uuid": "^9.0.0"
   }
 }

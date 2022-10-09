@@ -2,6 +2,7 @@
 	import { onMount } from "svelte";
 	import { onDestroy } from "svelte";
 	import { getObjectsWhereKeyEqualsValue, removeObjectWhereValueEqualsString, checkIfElementExists } from "utils/filter-data.js";
+	import { v4 as uuidv4 } from 'uuid';
 
 	export let layerList;
 	export let mapStyle;
@@ -29,7 +30,7 @@
 		}
 
 		//Create the new element and change the layer list
-		const element = { id: tempList.length, icon: faIcon, type: type, isShown: isShown, name: layerName, layerName: layerName, sourceName: sourceName, data: data };
+		const element = { id: uuidv4(), icon: faIcon, type: type, isShown: isShown, name: layerName, layerName: layerName, sourceName: sourceName, data: data };
 		tempList.push(element);
 		layerList = tempList;
 		return element;
@@ -223,17 +224,27 @@
 	};
 
 	const addExistingDynamicGPS = () => {
-		if (map === null || gpsData === null || gpsData.length <= 0) return;
-		let gpsElement = getObjectsWhereKeyEqualsValue(layerList, "layerName", "Potholes")[0];
-		addMapSource(gpsElement);
-		addPointLayer(gpsElement, "Count", ["get", "Color"]);
+		if (map === null || gpsData.length <= 0) return;
+		try {
+			console.log(gpsData)
+			let gpsElement = getObjectsWhereKeyEqualsValue(layerList, "layerName", "Potholes")[0];
+			addMapSource(gpsElement);
+			addPointLayer(gpsElement, "Count");
+		} catch (err) {
+			console.log(err);
+		}
 	};
 
 	const addNewDynamicGPS = () => {
-		if (map === null || gpsData === null || gpsData.length <= 0) return;
-		let gpsElement = createElement("Potholes", "gpsSource", "Point", true, "fa-road", gpsData);
-		addMapSource(gpsElement);
-		addPointLayer(gpsElement, "Count", ["get", "Color"]);
+		if (map === null || gpsData.length <= 0) return;
+		try {
+			console.log(gpsData)
+			let gpsElement = createElement("Potholes", "gpsSource", "Point", true, "fa-road", gpsData);
+			addMapSource(gpsElement);
+			addPointLayer(gpsElement, "Count");
+		} catch (err) {
+			console.log(err);
+		}
 	};
 
 	//Switch the map style only if the map exists and the map is ready for switching styles
@@ -247,7 +258,7 @@
 	};
 
 	const createFilterArray = () => {
-		if (map === null || gpsData === null || gpsData.length <= 0) return;
+		if (map === null ||  gpsData.length <= 0) return;
 		let filterArray = ["all"];
 
 		for (let i = 0; i < gpsFilters.length; i++) {
@@ -267,9 +278,13 @@
 	//GPS Filter shows and hides points on the map if the values change.
 	//To add another filter use >, <, = and the value
 	const addMapGPSFilters = () => {
-		if (map === null || gpsData === null || gpsData.length <= 0) return;
-		let filterArray = createFilterArray();
-		map.setFilter("Potholes", filterArray);
+		if (map === null || gpsData.length <= 0) return;
+		try {
+			let filterArray = createFilterArray();
+			map.setFilter("Potholes", filterArray);
+		} catch (err) {
+			console.log(err);
+		}
 	};
 
 	const addMapFilter = () => {
@@ -300,7 +315,7 @@
 
 	$: map && selectedMenu !== null && resizeMap();
 	$: map && mapStyle && isInitialDataLoaded && switchStyle();
-	$: map && gpsData && gpsData.length > 0 && isInitialDataLoaded && addNewDynamicGPS();
+	$: map && gpsData && isInitialDataLoaded && addNewDynamicGPS();
 
 	onMount(async () => {
 		mapboxgl.accessToken = "pk.eyJ1IjoiY2FuYWxlYWwiLCJhIjoiY2t6NmgzdGd0MTBhcTJ3bXprNjM1a3NsbiJ9.umUsk2Ky68kLBFUa6PeAxA";
@@ -329,13 +344,13 @@
 
 		map.on("style.load", function () {
 			addDataSources();
-			if (gpsData != null && gpsData > 0) addExistingDynamicGPS();
+			if (gpsData) addExistingDynamicGPS();
 		});
 
 		// Mapboxs normal way to show and hide layers. This calls the filter every second
 		map.on("idle", () => {
 			addMapFilter();
-			if (gpsData != null && gpsData > 0) addMapGPSFilters();
+			if (gpsData) addMapGPSFilters();
 		});
 
 		const interval = setInterval(function () {
