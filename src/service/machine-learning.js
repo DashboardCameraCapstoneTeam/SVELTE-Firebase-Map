@@ -1,10 +1,10 @@
 import axios from 'axios';
+import { MACHINE_LEARNING_PROCESS_URL } from '../constants';
 
-const baseUrl = 'http://127.0.0.1:8000/process';
 export const processWithMachineLearning = async (payload) => {
   const promise = await axios({
     method: 'post',
-    url: baseUrl,
+    url: MACHINE_LEARNING_PROCESS_URL,
     data: payload,
   });
   return promise.data;

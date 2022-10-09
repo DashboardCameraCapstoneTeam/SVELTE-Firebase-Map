@@ -1,9 +1,8 @@
 /* eslint-disable no-await-in-loop */
 import axios from 'axios';
 import { getObjectsWhereKeyEqualsValue } from '../utils/filter-data';
+import { GOOGLE_QUERY_URL, GOOGLE_FILE_URL } from '../constants';
 
-const queryUrl = 'https://www.googleapis.com/drive/v3/files?q=';
-const fileBaseUrl = 'https://www.googleapis.com/drive/v3/files/';
 export const getFiles = async (customUrl, token) => {
   const promise = await axios.get(customUrl, {
     headers: {
@@ -24,13 +23,13 @@ export const deleteFile = async (customUrl, token) => {
 
 export const getDashcamVideos = async (token) => {
   try {
-    let allDocuments = [];
-    const foldersUrl = `${queryUrl}mimeType='${'application/vnd.google-apps.folder'}'`;
+    const foldersUrl = `${GOOGLE_QUERY_URL}mimeType='${'application/vnd.google-apps.folder'}'`;
     const folders = await getFiles(foldersUrl, token);
 
     const cameraFolder = getObjectsWhereKeyEqualsValue(folders, 'name', 'Dashcam')[0];
-    const documentsUrl = `${queryUrl}'${cameraFolder.id}'+in+parents&trashed=false&fields=files(*)`;
-    allDocuments = await getFiles(documentsUrl, token);
+    const documentsUrl = `${GOOGLE_QUERY_URL}'${cameraFolder.id}'+in+parents&trashed=false&fields=files(*)`;
+
+    const allDocuments = await getFiles(documentsUrl, token);
     return allDocuments;
   } catch (e) {
     return null;
@@ -39,7 +38,7 @@ export const getDashcamVideos = async (token) => {
 
 export const deleteDashcamVideo = async (token, fileId) => {
   try {
-    const fileUrl = `${fileBaseUrl}${fileId}`;
+    const fileUrl = `${GOOGLE_FILE_URL}${fileId}`;
     const result = await deleteFile(fileUrl, token);
     return result;
   } catch (e) {
