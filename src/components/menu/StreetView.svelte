@@ -5,6 +5,7 @@
 
 	let streetViewObject = null;
 	let streetViewContainer = null;
+	let error = null;
 
 	const initializeStreetView = () => {
 		try {
@@ -15,9 +16,8 @@
 					pitch: 10,
 				},
 			});
-		
 		} catch (err) {
-			alert(err);
+			error = err;
 		}
 	};
 
@@ -27,7 +27,7 @@
 				initializeStreetView();
 			}
 		} catch (err) {
-			alert(err);
+			error = err;
 		}
 	});
 
@@ -36,7 +36,7 @@
 		try {
 			streetViewObject === null ? initializeStreetView() : streetViewObject.setPosition(pointOfInterest);
 		} catch (err) {
-			alert(err);
+			error = err;
 		}
 	};
 	$: pointOfInterest && onLocationChange();
@@ -53,6 +53,10 @@
 	<p class="font-bold my-1">Street View:</p>
 	{#if pointOfInterest == null}
 		<div class="alert alert-red my-1" role="alert">Select a point on the map.</div>
+	{/if}
+
+	{#if error !== null}
+		<div class="alert alert-red my-1" role="alert">{error}</div>
 	{/if}
 	<div bind:this={streetViewContainer} class={`${pointOfInterest == null ? "h-0" : "h-96"} w-full rounded-lg`} />
 </section>

@@ -1,5 +1,7 @@
+/* eslint-disable quotes */
 // Google Drive
 export const GOOGLE_BASE_URL = 'https://www.googleapis.com/drive/v3';
+export const GOOGLE_FOLDER_URL = `https://www.googleapis.com/drive/v3/files?q=mimeType='application/vnd.google-apps.folder'`;
 export const GOOGLE_QUERY_URL = 'https://www.googleapis.com/drive/v3/files?q=';
 export const GOOGLE_FILE_URL = 'https://www.googleapis.com/drive/v3/files/';
 

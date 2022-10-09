@@ -11,7 +11,7 @@
 	import ChartView from "components/menu/Chart.svelte";
 	import { fetchPotholeDataFromFirebase } from "service/fetch-firestore";
 	import { gpsJsonToGeojson } from "utils/geojson-utils.js";
-	import { getDashcamVideos, deleteDashcamVideo } from "service/google-drive";
+	import { getDashcamVideos,getGoogleDriveFolders, getGoogleDriveFiles,  deleteGoogleDriveFile } from "service/google-drive";
 	import { googleSignIn } from "service/google-sign-in";
 	import { accessToken } from 'store/access-token-store.js';
 	import Card from "components/files/Card.svelte";
@@ -87,6 +87,7 @@
 			accessTokenValue = await googleSignIn();
 		}
 		const results = await getDashcamVideos(accessTokenValue);
+		
 
 		if (results === null) {
 			files = [];
@@ -102,8 +103,8 @@
 		if (accessTokenValue === null) {
 			accessTokenValue = await googleSignIn();
 		}
-		const results = await deleteDashcamVideo(accessTokenValue, file.id);
-		if(results.status === 204){
+		const response = await deleteGoogleDriveFile(accessTokenValue, file.id);
+		if(response.status === 204){
 			let tempList = files;
 			tempList = tempList.filter(item => item.id !== file.id);
 			files = tempList;
@@ -124,7 +125,7 @@
 	    console.log(processWithMachineLearning(payload));
 	}
 
-	fetchData();
+
 </script>
 
 <MapHeader bind:selectedMenu bind:menuComponents />
@@ -194,11 +195,11 @@
 		</div>
 	{:else}
 		{#each files as file}
-			{#if file.fileExtension === "MP4" || file.fileExtension === "mp4"}
+			<!-- {#if file.fileExtension === "MP4" || file.fileExtension === "mp4"} -->
 				<div class="col-span-1 md:col-span-3">
 					<Card bind:file {deleteDriveFile} {startMachineLearning}/>
 				</div>
-			{/if}
+			<!-- {/if} -->
 		{/each}
 	{/if}
 </section>
