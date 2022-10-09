@@ -2917,7 +2917,7 @@ var app = (function () {
 			: "card-btn-red"}  my-1 `);
 
     			add_location(button, file$a, 50, 2, 1455);
-    			attr_dev(div, "class", "overflow-auto ");
+    			attr_dev(div, "class", "overflow-auto");
     			add_location(div, file$a, 52, 2, 1629);
     			attr_dev(section, "class", "card h-fit scale-in-center");
     			add_location(section, file$a, 47, 1, 1364);
@@ -3116,10 +3116,10 @@ var app = (function () {
     			t1 = text(t1_value);
     			t2 = space();
     			attr_dev(i, "class", i_class_value = "fa-solid " + /*layer*/ ctx[6].icon + "");
-    			add_location(i, file$a, 55, 5, 1827);
+    			add_location(i, file$a, 55, 5, 1826);
     			attr_dev(button, "key", button_key_value = /*layer*/ ctx[6].name);
     			attr_dev(button, "class", button_class_value = `card-btn ${/*layer*/ ctx[6].isShown ? "card-btn-blue" : ""} my-1 `);
-    			add_location(button, file$a, 54, 4, 1694);
+    			add_location(button, file$a, 54, 4, 1693);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, button, anchor);
