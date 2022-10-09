@@ -31,13 +31,13 @@
 		chartData = [];
 		switch (selectedChartButton) {
 			case "y":
-				chartData = getYearData(gpsData);
+				chartData = getYearData(gpsData[0]);
 				break;
 			case "m":
-				chartData = getMonthData(gpsData, selectedYear[0]);
+				chartData = getMonthData(gpsData[0], selectedYear[0]);
 				break;
 			case "d":
-				chartData = getDayData(gpsData, selectedYear[0], selectedMonth[0]);
+				chartData = getDayData(gpsData[0], selectedYear[0], selectedMonth[0]);
 				break;
 		}
 
@@ -102,7 +102,7 @@
 			series.columns.template.adapters.add("stroke", function (stroke, target) {
 				return chart.get("colors").getIndex(series.columns.indexOf(target));
 			});
-			chartData = getYearData(gpsData);
+			chartData = getYearData(gpsData[0]);
 			xAxis.data.setAll(chartData);
 			series.data.setAll(chartData);
 
@@ -124,6 +124,7 @@
 
 	// When the location changes, set the new lat long to the map
 	const onGPSDataChange = () => {
+		if ( gpsData.length <= 0) return;
 		try {
 			if (chartViewObject === null) {
 				initializeChartView();
@@ -134,7 +135,7 @@
 			console.log(err);
 		}
 	};
-	$:  gpsData && gpsData.length > 0 && onGPSDataChange();
+	$:  gpsData  && onGPSDataChange();
 
 	onDestroy(() => {
 		try {

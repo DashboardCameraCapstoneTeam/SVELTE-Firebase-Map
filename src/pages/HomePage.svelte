@@ -66,7 +66,7 @@
 				alert("No Data Found");
 			}
 			else{
-				gpsData =  gpsJsonToGeojson(response.data);
+				gpsData =  [gpsJsonToGeojson(response.data)];
 			}
 		} else {
 			isError = true
@@ -129,6 +129,7 @@
 	    console.log(processWithMachineLearning(payload));
 	}
 
+	fetchData();
 
 </script>
 

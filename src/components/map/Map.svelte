@@ -2,7 +2,7 @@
 	import { onMount } from "svelte";
 	import { onDestroy } from "svelte";
 	import { getObjectsWhereKeyEqualsValue, removeObjectWhereValueEqualsString, checkIfElementExists } from "utils/filter-data.js";
-	import { v4 as uuidv4 } from 'uuid';
+	import { v4 as uuidv4 } from "uuid";
 
 	export let layerList;
 	export let mapStyle;
@@ -226,8 +226,7 @@
 	const addExistingDynamicGPS = () => {
 		if (map === null || gpsData.length <= 0) return;
 		try {
-			console.log(gpsData)
-			let gpsElement = getObjectsWhereKeyEqualsValue(layerList, "layerName", "Potholes")[0];
+			let gpsElement = getObjectsWhereKeyEqualsValue(layerList, "layerName", "Pothole")[0];
 			addMapSource(gpsElement);
 			addPointLayer(gpsElement, "Count");
 		} catch (err) {
@@ -238,10 +237,17 @@
 	const addNewDynamicGPS = () => {
 		if (map === null || gpsData.length <= 0) return;
 		try {
-			console.log(gpsData)
-			let gpsElement = createElement("Potholes", "gpsSource", "Point", true, "fa-road", gpsData);
-			addMapSource(gpsElement);
-			addPointLayer(gpsElement, "Count");
+			gpsData.forEach(function (gpsElement) {
+				const dataName = gpsElement.features[0].properties.Item;
+				const dataSourceName = `${dataName}Source`;
+				const dataType = gpsElement.features[0].geometry.type;
+
+				let gpsListElement = createElement(dataName, dataSourceName, dataType, true, "fa-road", gpsElement);
+				addMapSource(gpsListElement);
+				if (dataType === "Point") {
+					addPointLayer(gpsListElement, "Count");
+				}
+			});
 		} catch (err) {
 			console.log(err);
 		}
@@ -258,7 +264,7 @@
 	};
 
 	const createFilterArray = () => {
-		if (map === null ||  gpsData.length <= 0) return;
+		if (map === null || gpsData.length <= 0) return;
 		let filterArray = ["all"];
 
 		for (let i = 0; i < gpsFilters.length; i++) {
@@ -281,7 +287,11 @@
 		if (map === null || gpsData.length <= 0) return;
 		try {
 			let filterArray = createFilterArray();
-			map.setFilter("Potholes", filterArray);
+
+			gpsData.forEach(function (gpsElement) {
+				const dataName = gpsElement.features[0].properties.Item;
+				map.setFilter(dataName, filterArray);
+			});
 		} catch (err) {
 			console.log(err);
 		}
