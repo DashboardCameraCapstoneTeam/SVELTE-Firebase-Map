@@ -1443,9 +1443,9 @@ var app = (function () {
     			div0 = element("div");
     			attr_dev(div0, "class", "h-full rounded-lg");
     			attr_dev(div0, "id", "map");
-    			add_location(div0, file$e, 386, 44, 11253);
+    			add_location(div0, file$e, 395, 44, 11586);
     			attr_dev(div1, "class", "h-96 md:h-full scale-in-center");
-    			add_location(div1, file$e, 386, 0, 11209);
+    			add_location(div1, file$e, 395, 0, 11542);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1522,7 +1522,7 @@ var app = (function () {
 
     	const fetchInitialMapData = async () => {
     		try {
-    			createElement("3D-Buildings", "composite", "Polygon", true, "fa-building", null);
+    			createElement(layerName = "3D-Buildings", sourceName = "composite", type = "Polygon", isShown = true, faIcon = "fa-building", data = null);
     		} catch(e) {
     			console.error(e);
     		}
@@ -1718,9 +1718,18 @@ var app = (function () {
     		if (map === null || gpsData.length <= 0) return;
 
     		try {
-    			let gpsElement = getObjectsWhereKeyEqualsValue(layerList, "layerName", "Pothole")[0];
-    			addMapSource(gpsElement);
-    			addPointLayer(gpsElement, "Count");
+    			layerList.forEach(function (gpsElement) {
+    				const dataName = gpsElement.layerName;
+    				const dataType = gpsElement.type;
+
+    				if (dataName !== "3D-Buildings") {
+    					addMapSource(gpsElement);
+
+    					if (dataType === "Point") {
+    						addPointLayer(gpsElement, "Count");
+    					}
+    				}
+    			});
     		} catch(err) {
     			console.log(err);
     		}
@@ -1735,7 +1744,7 @@ var app = (function () {
     				const dataName = gpsElement.dataName;
     				const dataSourceName = `${dataName}Source`;
     				const dataType = gpsElement.dataType;
-    				let gpsListElement = createElement(dataName, dataSourceName, dataType, true, "fa-road", gpsElement);
+    				let gpsListElement = createElement(layerName = dataName, sourceName = dataSourceName, type = dataType, isShown = true, faIcon = "fa-road", data = gpsElement);
     				addMapSource(gpsListElement);
 
     				if (dataType === "Point") {
@@ -1783,9 +1792,12 @@ var app = (function () {
     		try {
     			let filterArray = createFilterArray();
 
-    			gpsData.forEach(function (gpsElement) {
-    				const dataName = gpsElement.dataName;
-    				map.setFilter(dataName, filterArray);
+    			layerList.forEach(function (gpsElement) {
+    				const dataName = gpsElement.layerName;
+
+    				if (dataName !== "3D-Buildings") {
+    					map.setFilter(dataName, filterArray);
+    				}
     			});
     		} catch(err) {
     			console.log(err);
@@ -86559,7 +86571,7 @@ var app = (function () {
         const docRef = Da(db, 'users', user.uid);
         const startDateTime = firebase.firestore.Timestamp.fromDate(new Date(dateTimeDictionary.startDateTime));
         const endDateTime = firebase.firestore.Timestamp.fromDate(new Date(dateTimeDictionary.endDateTime));
-        const colRef = Uh(Va(docRef, 'potholes'), Kh('date_time_analyzed', '>', startDateTime), Kh('date_time_analyzed', '<', endDateTime), Qh('date_time_analyzed', 'desc'));
+        const colRef = Uh(Va(docRef, 'potholes'), Kh('dateTime', '>', startDateTime), Kh('dateTime', '<', endDateTime), Qh('dateTime', 'desc'));
         const querySnapshot = await wl(colRef);
         querySnapshot.forEach((document) => {
           const documentData = document.data();
@@ -86579,21 +86591,23 @@ var app = (function () {
     const gpsJsonToGeojson = (rawData) => {
       const geoJsonArray = [];
       rawData.forEach((rawGeoJsonFile) => {
-        const dataName = rawGeoJsonFile.features[0].properties.object_name + rawGeoJsonFile.features[0].properties.date_time_analyzed;
-        const dataType = rawGeoJsonFile.features[0].geometry.type;
+        const dataName = rawGeoJsonFile.dataName;
+        const dateTime = rawGeoJsonFile.dateTime;
+        const dataType = rawGeoJsonFile.dataType;
         const geoJson = {
           type: 'FeatureCollection',
           dataName,
+          dateTime,
           dataType,
           features: [],
         };
         for (const point of rawGeoJsonFile.features) {
           const coordinate = [point.geometry.coordinates[0], point.geometry.coordinates[1]];
           const properties = {
-            Id: point.properties.id,
-            Item: point.properties.object_name,
-            Count: point.properties.count,
-            Time: point.properties.date_time_analyzed,
+            Id: point.properties.Id,
+            Item: point.properties.Item,
+            Count: point.properties.Count,
+            Time: point.properties.Time,
             Color: point.properties['marker-color'],
           };
           const feature = {
@@ -88172,11 +88186,11 @@ var app = (function () {
       return config;
     };
 
-    var data = {
+    var data$1 = {
       "version": "0.27.2"
     };
 
-    var VERSION = data.version;
+    var VERSION = data$1.version;
 
 
     var validators$1 = {};
@@ -88598,7 +88612,7 @@ var app = (function () {
     axios$1.CanceledError = CanceledError_1;
     axios$1.CancelToken = CancelToken_1;
     axios$1.isCancel = isCancel;
-    axios$1.VERSION = data.version;
+    axios$1.VERSION = data$1.version;
     axios$1.toFormData = toFormData_1;
 
     // Expose AxiosError class
@@ -89455,7 +89469,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (177:2) {#if isLoading === true}
+    // (178:2) {#if isLoading === true}
     function create_if_block_3(ctx) {
     	let div;
     	let p;
@@ -89466,9 +89480,9 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Loading Data...";
     			attr_dev(p, "class", "align-middle");
-    			add_location(p, file$1, 178, 4, 5797);
+    			add_location(p, file$1, 179, 4, 5805);
     			attr_dev(div, "class", "absolute top-0 z-100 map-loading rounded-lg");
-    			add_location(div, file$1, 177, 3, 5734);
+    			add_location(div, file$1, 178, 3, 5742);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89483,14 +89497,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(177:2) {#if isLoading === true}",
+    		source: "(178:2) {#if isLoading === true}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (183:2) {#if isError === true}
+    // (184:2) {#if isError === true}
     function create_if_block_2(ctx) {
     	let div;
     	let p;
@@ -89501,9 +89515,9 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Error, unable to Fetch Data";
     			attr_dev(p, "class", "align-middle");
-    			add_location(p, file$1, 184, 4, 5954);
+    			add_location(p, file$1, 185, 4, 5962);
     			attr_dev(div, "class", "absolute top-0 z-100 map-error rounded-lg");
-    			add_location(div, file$1, 183, 3, 5893);
+    			add_location(div, file$1, 184, 3, 5901);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89518,14 +89532,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(183:2) {#if isError === true}",
+    		source: "(184:2) {#if isError === true}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (201:1) {:else}
+    // (202:1) {:else}
     function create_else_block$1(ctx) {
     	let each_1_anchor;
     	let current;
@@ -89614,14 +89628,14 @@ var app = (function () {
     		block,
     		id: create_else_block$1.name,
     		type: "else",
-    		source: "(201:1) {:else}",
+    		source: "(202:1) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (197:29) 
+    // (198:29) 
     function create_if_block_1(ctx) {
     	let div;
     	let alertcard;
@@ -89641,7 +89655,7 @@ var app = (function () {
     			div = element("div");
     			create_component(alertcard.$$.fragment);
     			attr_dev(div, "class", "col-span-1 md:col-span-3");
-    			add_location(div, file$1, 197, 2, 6399);
+    			add_location(div, file$1, 198, 2, 6407);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89668,14 +89682,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(197:29) ",
+    		source: "(198:29) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (193:1) {#if files === null}
+    // (194:1) {#if files === null}
     function create_if_block$2(ctx) {
     	let div;
     	let alertcard;
@@ -89695,7 +89709,7 @@ var app = (function () {
     			div = element("div");
     			create_component(alertcard.$$.fragment);
     			attr_dev(div, "class", "col-span-1 md:col-span-3");
-    			add_location(div, file$1, 193, 2, 6221);
+    			add_location(div, file$1, 194, 2, 6229);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89722,14 +89736,14 @@ var app = (function () {
     		block,
     		id: create_if_block$2.name,
     		type: "if",
-    		source: "(193:1) {#if files === null}",
+    		source: "(194:1) {#if files === null}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (202:2) {#each files as file}
+    // (203:2) {#each files as file}
     function create_each_block(ctx) {
     	let div;
     	let card;
@@ -89759,7 +89773,7 @@ var app = (function () {
     			create_component(card.$$.fragment);
     			t = space();
     			attr_dev(div, "class", "col-span-1 md:col-span-3");
-    			add_location(div, file$1, 203, 4, 6653);
+    			add_location(div, file$1, 204, 4, 6661);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89799,7 +89813,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(202:2) {#each files as file}",
+    		source: "(203:2) {#each files as file}",
     		ctx
     	});
 
@@ -90156,29 +90170,29 @@ var app = (function () {
     			t13 = space();
     			create_component(footer.$$.fragment);
     			attr_dev(div0, "class", "col-span-1 md:col-span-1 row-span-1");
-    			add_location(div0, file$1, 139, 2, 4419);
+    			add_location(div0, file$1, 140, 2, 4427);
     			attr_dev(div1, "class", div1_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 0 ? "" : "hidden"}`);
-    			add_location(div1, file$1, 143, 2, 4514);
+    			add_location(div1, file$1, 144, 2, 4522);
     			attr_dev(div2, "class", div2_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 1 ? "" : "hidden"}`);
-    			add_location(div2, file$1, 147, 2, 4660);
+    			add_location(div2, file$1, 148, 2, 4668);
     			attr_dev(div3, "class", div3_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 2 ? "" : "hidden"}`);
-    			add_location(div3, file$1, 151, 2, 4805);
+    			add_location(div3, file$1, 152, 2, 4813);
     			attr_dev(div4, "class", div4_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 3 ? "" : "hidden"}`);
-    			add_location(div4, file$1, 155, 2, 4955);
+    			add_location(div4, file$1, 156, 2, 4963);
     			attr_dev(div5, "class", div5_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 4 ? "" : "hidden"}`);
-    			add_location(div5, file$1, 159, 2, 5091);
+    			add_location(div5, file$1, 160, 2, 5099);
     			attr_dev(div6, "class", "col-span-1 md:col-span-1 row-span-1");
-    			add_location(div6, file$1, 163, 2, 5232);
+    			add_location(div6, file$1, 164, 2, 5240);
     			attr_dev(div7, "class", "col-span-1 md:col-span-3 row-span-6 grid grid-cols-1 md:grid-cols-1 gap-4 h-fit");
-    			add_location(div7, file$1, 138, 1, 4322);
+    			add_location(div7, file$1, 139, 1, 4330);
     			attr_dev(div8, "class", "absolute top-1 left-1 ");
-    			add_location(div8, file$1, 172, 2, 5584);
+    			add_location(div8, file$1, 173, 2, 5592);
     			attr_dev(div9, "class", "col-span-1 md:col-span-9 row-span-6 relative");
-    			add_location(div9, file$1, 170, 1, 5369);
+    			add_location(div9, file$1, 171, 1, 5377);
     			attr_dev(section0, "class", "grid grid-cols-1 md:grid-cols-12 grid-rows-6 gap-4 my-4 px-4 h-fit ");
-    			add_location(section0, file$1, 137, 0, 4232);
+    			add_location(section0, file$1, 138, 0, 4240);
     			attr_dev(section1, "class", "grid grid-cols-1 md:grid-cols-12 gap-4 my-4 px-4 h-fit divide-x-1 divide-teal-600 ");
-    			add_location(section1, file$1, 191, 0, 6092);
+    			add_location(section1, file$1, 192, 0, 6100);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -90579,12 +90593,13 @@ var app = (function () {
     		$$invalidate(10, isLoading = true);
     		$$invalidate(11, isError = false);
     		const response = await fetchDataFromFirebase(user, dateTimeDictionary);
+    		console.log(response);
 
     		if (response.status === 200) {
     			if (response.data.length <= 0) {
     				alert("No Data Found");
     			} else {
-    				$$invalidate(9, gpsData = gpsJsonToGeojson(response.data));
+    				$$invalidate(9, gpsData = response.data);
     			}
     		} else {
     			$$invalidate(11, isError = true);

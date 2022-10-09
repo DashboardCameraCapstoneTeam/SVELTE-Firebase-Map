@@ -38,7 +38,7 @@
 
 	const fetchInitialMapData = async () => {
 		try {
-			createElement("3D-Buildings", "composite", "Polygon", true, "fa-building", null);
+			createElement((layerName = "3D-Buildings"), (sourceName = "composite"), (type = "Polygon"), (isShown = true), (faIcon = "fa-building"), (data = null));
 		} catch (e) {
 			console.error(e);
 		}
@@ -226,9 +226,17 @@
 	const addExistingDynamicGPS = () => {
 		if (map === null || gpsData.length <= 0) return;
 		try {
-			let gpsElement = getObjectsWhereKeyEqualsValue(layerList, "layerName", "Pothole")[0];
-			addMapSource(gpsElement);
-			addPointLayer(gpsElement, "Count");
+			layerList.forEach(function (gpsElement) {
+				const dataName = gpsElement.layerName;
+				const dataType = gpsElement.type;
+
+				if (dataName !== "3D-Buildings") {
+					addMapSource(gpsElement);
+					if (dataType === "Point") {
+						addPointLayer(gpsElement, "Count");
+					}
+				}
+			});
 		} catch (err) {
 			console.log(err);
 		}
@@ -238,12 +246,12 @@
 		if (map === null || gpsData.length <= 0) return;
 		try {
 			gpsData.forEach(function (gpsElement) {
-				console.log(gpsElement)
+				console.log(gpsElement);
 				const dataName = gpsElement.dataName;
 				const dataSourceName = `${dataName}Source`;
 				const dataType = gpsElement.dataType;
 
-				let gpsListElement = createElement(dataName, dataSourceName, dataType, true, "fa-road", gpsElement);
+				let gpsListElement = createElement((layerName = dataName), (sourceName = dataSourceName), (type = dataType), (isShown = true), (faIcon = "fa-road"), (data = gpsElement));
 				addMapSource(gpsListElement);
 				if (dataType === "Point") {
 					addPointLayer(gpsListElement, "Count");
@@ -288,10 +296,11 @@
 		if (map === null || gpsData.length <= 0) return;
 		try {
 			let filterArray = createFilterArray();
-
-			gpsData.forEach(function (gpsElement) {
-				const dataName = gpsElement.dataName;
-				map.setFilter(dataName, filterArray);
+			layerList.forEach(function (gpsElement) {
+				const dataName = gpsElement.layerName;
+				if (dataName !== "3D-Buildings") {
+					map.setFilter(dataName, filterArray);
+				}
 			});
 		} catch (err) {
 			console.log(err);

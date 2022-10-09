@@ -10,7 +10,7 @@ export const fetchDataFromFirebase = async (user, dateTimeDictionary) => {
     const docRef = doc(db, 'users', user.uid);
     const startDateTime = firebase.firestore.Timestamp.fromDate(new Date(dateTimeDictionary.startDateTime));
     const endDateTime = firebase.firestore.Timestamp.fromDate(new Date(dateTimeDictionary.endDateTime));
-    const colRef = query(collection(docRef, 'potholes'), where('date_time_analyzed', '>', startDateTime), where('date_time_analyzed', '<', endDateTime), orderBy('date_time_analyzed', 'desc'));
+    const colRef = query(collection(docRef, 'potholes'), where('dateTime', '>', startDateTime), where('dateTime', '<', endDateTime), orderBy('dateTime', 'desc'));
     const querySnapshot = await getDocs(colRef);
     querySnapshot.forEach((document) => {
       const documentData = document.data();

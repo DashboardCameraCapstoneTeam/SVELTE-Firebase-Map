@@ -60,13 +60,14 @@
 		isLoading = true;
 		isError = false;
 		const response = await fetchDataFromFirebase(user, dateTimeDictionary);
+		console.log(response);
 		if (response.status === 200 ) {
 
 			if(response.data.length <= 0){
 				alert("No Data Found");
 			}
 			else{
-				gpsData =  gpsJsonToGeojson(response.data);
+				gpsData =  response.data;
 			}
 		} else {
 			isError = true

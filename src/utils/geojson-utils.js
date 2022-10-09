@@ -5,21 +5,23 @@
 export const gpsJsonToGeojson = (rawData) => {
   const geoJsonArray = [];
   rawData.forEach((rawGeoJsonFile) => {
-    const dataName = rawGeoJsonFile.features[0].properties.object_name + rawGeoJsonFile.features[0].properties.date_time_analyzed;
-    const dataType = rawGeoJsonFile.features[0].geometry.type;
+    const dataName = rawGeoJsonFile.dataName;
+    const dateTime = rawGeoJsonFile.dateTime;
+    const dataType = rawGeoJsonFile.dataType;
     const geoJson = {
       type: 'FeatureCollection',
       dataName,
+      dateTime,
       dataType,
       features: [],
     };
     for (const point of rawGeoJsonFile.features) {
       const coordinate = [point.geometry.coordinates[0], point.geometry.coordinates[1]];
       const properties = {
-        Id: point.properties.id,
-        Item: point.properties.object_name,
-        Count: point.properties.count,
-        Time: point.properties.date_time_analyzed,
+        Id: point.properties.Id,
+        Item: point.properties.Item,
+        Count: point.properties.Count,
+        Time: point.properties.Time,
         Color: point.properties['marker-color'],
       };
       const feature = {
