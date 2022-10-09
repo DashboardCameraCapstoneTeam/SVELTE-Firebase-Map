@@ -14,7 +14,7 @@
 	};
 </script>
 
-{#if gpsData === null}
+{#if  gpsData.length <= 0}
 	<AlertCard title="Filters" message="GPS Data has not been loaded." styleColor="red" />
 {:else}
 	<section class="card h-fit scale-in-center">

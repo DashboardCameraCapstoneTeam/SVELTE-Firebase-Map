@@ -1379,9 +1379,9 @@ var app = (function () {
     			div0 = element("div");
     			attr_dev(div0, "class", "h-full rounded-lg");
     			attr_dev(div0, "id", "map");
-    			add_location(div0, file$e, 385, 44, 10917);
+    			add_location(div0, file$e, 360, 44, 10858);
     			attr_dev(div1, "class", "h-96 md:h-full scale-in-center");
-    			add_location(div1, file$e, 385, 0, 10873);
+    			add_location(div1, file$e, 360, 0, 10814);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1651,27 +1651,17 @@ var app = (function () {
     	};
 
     	const addExistingDynamicGPS = () => {
-    		if (map === null || gpsData === null) return;
-
-    		try {
-    			let gpsElement = getObjectsWhereKeyEqualsValue(layerList, "layerName", "Potholes")[0];
-    			addMapSource(gpsElement);
-    			addPointLayer(gpsElement, "Count", ["get", "Color"]);
-    		} catch(err) {
-    			console.log(err);
-    		}
+    		if (map === null || gpsData === null || gpsData.length <= 0) return;
+    		let gpsElement = getObjectsWhereKeyEqualsValue(layerList, "layerName", "Potholes")[0];
+    		addMapSource(gpsElement);
+    		addPointLayer(gpsElement, "Count", ["get", "Color"]);
     	};
 
     	const addNewDynamicGPS = () => {
-    		if (map === null || gpsData === null) return;
-
-    		try {
-    			let gpsElement = createElement("Potholes", "gpsSource", "Point", true, "fa-road", gpsData);
-    			addMapSource(gpsElement);
-    			addPointLayer(gpsElement, "Count", ["get", "Color"]);
-    		} catch(err) {
-    			console.log(err);
-    		}
+    		if (map === null || gpsData === null || gpsData.length <= 0) return;
+    		let gpsElement = createElement("Potholes", "gpsSource", "Point", true, "fa-road", gpsData);
+    		addMapSource(gpsElement);
+    		addPointLayer(gpsElement, "Count", ["get", "Color"]);
     	};
 
     	//Switch the map style only if the map exists and the map is ready for switching styles
@@ -1686,7 +1676,7 @@ var app = (function () {
     	};
 
     	const createFilterArray = () => {
-    		if (map === null || gpsData === false) return;
+    		if (map === null || gpsData === null || gpsData.length <= 0) return;
     		let filterArray = ["all"];
 
     		for (let i = 0; i < gpsFilters.length; i++) {
@@ -1705,7 +1695,7 @@ var app = (function () {
     	//GPS Filter shows and hides points on the map if the values change.
     	//To add another filter use >, <, = and the value
     	const addMapGPSFilters = () => {
-    		if (map === null || gpsData === null) return;
+    		if (map === null || gpsData === null || gpsData.length <= 0) return;
     		let filterArray = createFilterArray();
     		map.setFilter("Potholes", filterArray);
     	};
@@ -1736,11 +1726,7 @@ var app = (function () {
     	};
 
     	const resizeMap = () => {
-    		try {
-    			map.resize();
-    		} catch(err) {
-    			console.log(err);
-    		}
+    		map.resize();
     	};
 
     	onMount(async () => {
@@ -1769,13 +1755,13 @@ var app = (function () {
 
     		map.on("style.load", function () {
     			addDataSources();
-    			if (gpsData !== null) addExistingDynamicGPS();
+    			if (gpsData != null && gpsData > 0) addExistingDynamicGPS();
     		});
 
     		// Mapboxs normal way to show and hide layers. This calls the filter every second
     		map.on("idle", () => {
     			addMapFilter();
-    			if (gpsData != null) addMapGPSFilters();
+    			if (gpsData != null && gpsData > 0) addMapGPSFilters();
     		});
 
     		setInterval(
@@ -1891,7 +1877,7 @@ var app = (function () {
     		}
 
     		if ($$self.$$.dirty & /*map, gpsData, isInitialDataLoaded*/ 784) {
-    			map && gpsData && isInitialDataLoaded && addNewDynamicGPS();
+    			map && gpsData && gpsData.length > 0 && isInitialDataLoaded && addNewDynamicGPS();
     		}
     	};
 
@@ -6875,11 +6861,11 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "Reset All Filters";
     			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file$6, 20, 2, 621);
+    			add_location(p, file$6, 20, 2, 625);
     			attr_dev(button, "class", `card-btn card-btn-red my-1 `);
-    			add_location(button, file$6, 40, 2, 1071);
+    			add_location(button, file$6, 40, 2, 1075);
     			attr_dev(section, "class", "card h-fit scale-in-center");
-    			add_location(section, file$6, 19, 1, 573);
+    			add_location(section, file$6, 19, 1, 577);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -6965,7 +6951,7 @@ var app = (function () {
     	return block;
     }
 
-    // (17:0) {#if gpsData === null}
+    // (17:0) {#if  gpsData.length <= 0}
     function create_if_block$6(ctx) {
     	let alertcard;
     	let current;
@@ -7006,7 +6992,7 @@ var app = (function () {
     		block,
     		id: create_if_block$6.name,
     		type: "if",
-    		source: "(17:0) {#if gpsData === null}",
+    		source: "(17:0) {#if  gpsData.length <= 0}",
     		ctx
     	});
 
@@ -7057,9 +7043,9 @@ var app = (function () {
     			div = element("div");
     			create_component(rangeslider.$$.fragment);
     			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file$6, 22, 3, 700);
+    			add_location(p, file$6, 22, 3, 704);
     			attr_dev(div, "class", "py-1");
-    			add_location(div, file$6, 24, 3, 755);
+    			add_location(div, file$6, 24, 3, 759);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -7124,7 +7110,7 @@ var app = (function () {
     	const if_blocks = [];
 
     	function select_block_type(ctx, dirty) {
-    		if (/*gpsData*/ ctx[1] === null) return 0;
+    		if (/*gpsData*/ ctx[1].length <= 0) return 0;
     		return 1;
     	}
 
@@ -51211,7 +51197,7 @@ var app = (function () {
     			if (if_block1) if_block1.c();
     			if_block1_anchor = empty();
     			attr_dev(div, "class", "flex");
-    			add_location(div, file$4, 152, 2, 3916);
+    			add_location(div, file$4, 152, 2, 3948);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -51331,7 +51317,7 @@ var app = (function () {
     	return block;
     }
 
-    // (150:1) {#if gpsData === null}
+    // (150:1) {#if gpsData.length <= 0}
     function create_if_block$4(ctx) {
     	let div;
 
@@ -51341,7 +51327,7 @@ var app = (function () {
     			div.textContent = "GPS Data has not been loaded.";
     			attr_dev(div, "class", "alert alert-red my-1");
     			attr_dev(div, "role", "alert");
-    			add_location(div, file$4, 150, 2, 3820);
+    			add_location(div, file$4, 150, 2, 3852);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -51358,7 +51344,7 @@ var app = (function () {
     		block,
     		id: create_if_block$4.name,
     		type: "if",
-    		source: "(150:1) {#if gpsData === null}",
+    		source: "(150:1) {#if gpsData.length <= 0}",
     		ctx
     	});
 
@@ -51389,7 +51375,7 @@ var app = (function () {
 			? "card-btn-blue"
 			: ""}`);
 
-    			add_location(button, file$4, 154, 4, 3980);
+    			add_location(button, file$4, 154, 4, 4012);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, button, anchor);
@@ -51467,9 +51453,9 @@ var app = (function () {
     			div = element("div");
     			create_component(rangeslider.$$.fragment);
     			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file$4, 166, 2, 4319);
+    			add_location(p, file$4, 166, 2, 4351);
     			attr_dev(div, "class", "py-1");
-    			add_location(div, file$4, 167, 3, 4359);
+    			add_location(div, file$4, 167, 3, 4391);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -51556,9 +51542,9 @@ var app = (function () {
     			div = element("div");
     			create_component(rangeslider.$$.fragment);
     			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file$4, 172, 2, 4582);
+    			add_location(p, file$4, 172, 2, 4614);
     			attr_dev(div, "class", "py-1");
-    			add_location(div, file$4, 173, 3, 4623);
+    			add_location(div, file$4, 173, 3, 4655);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -51620,7 +51606,7 @@ var app = (function () {
     	const if_blocks = [];
 
     	function select_block_type(ctx, dirty) {
-    		if (/*gpsData*/ ctx[0] === null) return 0;
+    		if (/*gpsData*/ ctx[0].length <= 0) return 0;
     		return 1;
     	}
 
@@ -51637,11 +51623,11 @@ var app = (function () {
     			t2 = space();
     			if_block.c();
     			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file$4, 146, 1, 3619);
-    			attr_dev(div, "class", div_class_value = `${/*gpsData*/ ctx[0] == null ? "h-0" : "h-96"} w-full rounded-lg`);
-    			add_location(div, file$4, 148, 1, 3699);
+    			add_location(p, file$4, 146, 1, 3645);
+    			attr_dev(div, "class", div_class_value = `${/*gpsData*/ ctx[0].length <= 0 ? "h-0" : "h-96"} w-full rounded-lg`);
+    			add_location(div, file$4, 148, 1, 3725);
     			attr_dev(section, "class", "card h-fit scale-in-center");
-    			add_location(section, file$4, 145, 0, 3572);
+    			add_location(section, file$4, 145, 0, 3598);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -51657,7 +51643,7 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, [dirty]) {
-    			if (!current || dirty & /*gpsData*/ 1 && div_class_value !== (div_class_value = `${/*gpsData*/ ctx[0] == null ? "h-0" : "h-96"} w-full rounded-lg`)) {
+    			if (!current || dirty & /*gpsData*/ 1 && div_class_value !== (div_class_value = `${/*gpsData*/ ctx[0].length <= 0 ? "h-0" : "h-96"} w-full rounded-lg`)) {
     				attr_dev(div, "class", div_class_value);
     			}
 
@@ -51825,7 +51811,7 @@ var app = (function () {
 
     	onMount(() => {
     		try {
-    			if (gpsData !== null) {
+    			if (gpsData.length > 0) {
     				initializeChartView();
     			}
     		} catch(err) {
@@ -51931,7 +51917,7 @@ var app = (function () {
 
     	$$self.$$.update = () => {
     		if ($$self.$$.dirty & /*gpsData*/ 1) {
-    			gpsData && onGPSDataChange();
+    			gpsData && gpsData.length > 0 && onGPSDataChange();
     		}
     	};
 
@@ -89372,9 +89358,9 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Loading Data...";
     			attr_dev(p, "class", "align-middle");
-    			add_location(p, file$1, 178, 4, 5824);
+    			add_location(p, file$1, 178, 4, 5822);
     			attr_dev(div, "class", "absolute top-0 z-100 map-loading rounded-lg");
-    			add_location(div, file$1, 177, 3, 5761);
+    			add_location(div, file$1, 177, 3, 5759);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89407,9 +89393,9 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Error, unable to Fetch Data";
     			attr_dev(p, "class", "align-middle");
-    			add_location(p, file$1, 184, 4, 5981);
+    			add_location(p, file$1, 184, 4, 5979);
     			attr_dev(div, "class", "absolute top-0 z-100 map-error rounded-lg");
-    			add_location(div, file$1, 183, 3, 5920);
+    			add_location(div, file$1, 183, 3, 5918);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89547,7 +89533,7 @@ var app = (function () {
     			div = element("div");
     			create_component(alertcard.$$.fragment);
     			attr_dev(div, "class", "col-span-1 md:col-span-3");
-    			add_location(div, file$1, 197, 2, 6426);
+    			add_location(div, file$1, 197, 2, 6424);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89601,7 +89587,7 @@ var app = (function () {
     			div = element("div");
     			create_component(alertcard.$$.fragment);
     			attr_dev(div, "class", "col-span-1 md:col-span-3");
-    			add_location(div, file$1, 193, 2, 6248);
+    			add_location(div, file$1, 193, 2, 6246);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89665,7 +89651,7 @@ var app = (function () {
     			create_component(card.$$.fragment);
     			t = space();
     			attr_dev(div, "class", "col-span-1 md:col-span-3");
-    			add_location(div, file$1, 203, 4, 6680);
+    			add_location(div, file$1, 203, 4, 6678);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -90062,29 +90048,29 @@ var app = (function () {
     			t13 = space();
     			create_component(footer.$$.fragment);
     			attr_dev(div0, "class", "col-span-1 md:col-span-1 row-span-1");
-    			add_location(div0, file$1, 139, 2, 4446);
+    			add_location(div0, file$1, 139, 2, 4444);
     			attr_dev(div1, "class", div1_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 0 ? "" : "hidden"}`);
-    			add_location(div1, file$1, 143, 2, 4541);
+    			add_location(div1, file$1, 143, 2, 4539);
     			attr_dev(div2, "class", div2_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 1 ? "" : "hidden"}`);
-    			add_location(div2, file$1, 147, 2, 4687);
+    			add_location(div2, file$1, 147, 2, 4685);
     			attr_dev(div3, "class", div3_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 2 ? "" : "hidden"}`);
-    			add_location(div3, file$1, 151, 2, 4832);
+    			add_location(div3, file$1, 151, 2, 4830);
     			attr_dev(div4, "class", div4_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 3 ? "" : "hidden"}`);
-    			add_location(div4, file$1, 155, 2, 4982);
+    			add_location(div4, file$1, 155, 2, 4980);
     			attr_dev(div5, "class", div5_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 4 ? "" : "hidden"}`);
-    			add_location(div5, file$1, 159, 2, 5118);
+    			add_location(div5, file$1, 159, 2, 5116);
     			attr_dev(div6, "class", "col-span-1 md:col-span-1 row-span-1");
-    			add_location(div6, file$1, 163, 2, 5259);
+    			add_location(div6, file$1, 163, 2, 5257);
     			attr_dev(div7, "class", "col-span-1 md:col-span-3 row-span-6 grid grid-cols-1 md:grid-cols-1 gap-4 h-fit");
-    			add_location(div7, file$1, 138, 1, 4349);
+    			add_location(div7, file$1, 138, 1, 4347);
     			attr_dev(div8, "class", "absolute top-1 left-1 ");
-    			add_location(div8, file$1, 172, 2, 5611);
+    			add_location(div8, file$1, 172, 2, 5609);
     			attr_dev(div9, "class", "col-span-1 md:col-span-9 row-span-6 relative");
-    			add_location(div9, file$1, 170, 1, 5396);
+    			add_location(div9, file$1, 170, 1, 5394);
     			attr_dev(section0, "class", "grid grid-cols-1 md:grid-cols-12 grid-rows-6 gap-4 my-4 px-4 h-fit ");
-    			add_location(section0, file$1, 137, 0, 4259);
+    			add_location(section0, file$1, 137, 0, 4257);
     			attr_dev(section1, "class", "grid grid-cols-1 md:grid-cols-12 gap-4 my-4 px-4 h-fit divide-x-1 divide-teal-600 ");
-    			add_location(section1, file$1, 191, 0, 6119);
+    			add_location(section1, file$1, 191, 0, 6117);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -90477,7 +90463,7 @@ var app = (function () {
     	];
 
     	let selectedMenu = menuComponents[0].id;
-    	let gpsData = null;
+    	let gpsData = [];
     	let isLoading = false;
     	let isError = false;
 

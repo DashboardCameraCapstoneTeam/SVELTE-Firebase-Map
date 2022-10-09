@@ -114,7 +114,7 @@
 
 	onMount(() => {
 		try {
-			if (gpsData !== null) {
+			if ( gpsData.length > 0) {
 				initializeChartView();
 			}
 		} catch (err) {
@@ -134,7 +134,7 @@
 			console.log(err);
 		}
 	};
-	$: gpsData && onGPSDataChange();
+	$:  gpsData && gpsData.length > 0 && onGPSDataChange();
 
 	onDestroy(() => {
 		try {
@@ -146,8 +146,8 @@
 <section class="card h-fit scale-in-center">
 	<p class="font-bold my-1">Average number of Potholes Detected in Frame:</p>
 
-	<div bind:this={chartDiv} class={`${gpsData == null ? "h-0" : "h-96"} w-full rounded-lg`} />
-	{#if gpsData === null}
+	<div bind:this={chartDiv} class={`${gpsData.length <= 0? "h-0" : "h-96"} w-full rounded-lg`} />
+	{#if gpsData.length <= 0}
 		<div class="alert alert-red my-1" role="alert">GPS Data has not been loaded.</div>
 	{:else}
 		<div class="flex">

@@ -53,7 +53,7 @@
 	];
 	let selectedMenu = menuComponents[0].id;
 
-	let gpsData = null;
+	let gpsData = [];
 	let isLoading = false;
 	let isError = false;
 	const fetchData = async () => {

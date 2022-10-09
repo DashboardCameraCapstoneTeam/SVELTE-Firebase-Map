@@ -15,7 +15,6 @@
 	let isInitialDataLoaded = false;
 	const smallPopup = new mapboxgl.Popup();
 
-
 	const createElement = (layerName, sourceName, type, isShown, faIcon, data) => {
 		let tempList = layerList;
 
@@ -38,7 +37,7 @@
 
 	const fetchInitialMapData = async () => {
 		try {
-			createElement("3D-Buildings", "composite", "Polygon", true, "fa-building", null);	
+			createElement("3D-Buildings", "composite", "Polygon", true, "fa-building", null);
 		} catch (e) {
 			console.error(e);
 		}
@@ -223,29 +222,18 @@
 		});
 	};
 
-
-
 	const addExistingDynamicGPS = () => {
-		if (map === null || gpsData === null) return;
-		try {
-			let gpsElement = getObjectsWhereKeyEqualsValue(layerList, "layerName", "Potholes")[0];
-			addMapSource(gpsElement);
-			addPointLayer(gpsElement, "Count", ["get", "Color"]);
-		} catch (err) {
-			console.log(err);
-		}
+		if (map === null || gpsData === null || gpsData.length <= 0) return;
+		let gpsElement = getObjectsWhereKeyEqualsValue(layerList, "layerName", "Potholes")[0];
+		addMapSource(gpsElement);
+		addPointLayer(gpsElement, "Count", ["get", "Color"]);
 	};
 
 	const addNewDynamicGPS = () => {
-		if (map === null || gpsData === null) return;
-		try {
-			let gpsElement = createElement("Potholes", "gpsSource", "Point", true, "fa-road", gpsData);
-			addMapSource(gpsElement);
-			addPointLayer(gpsElement, "Count", ["get", "Color"]);
-
-		} catch (err) {
-			console.log(err);
-		}
+		if (map === null || gpsData === null || gpsData.length <= 0) return;
+		let gpsElement = createElement("Potholes", "gpsSource", "Point", true, "fa-road", gpsData);
+		addMapSource(gpsElement);
+		addPointLayer(gpsElement, "Count", ["get", "Color"]);
 	};
 
 	//Switch the map style only if the map exists and the map is ready for switching styles
@@ -259,7 +247,7 @@
 	};
 
 	const createFilterArray = () => {
-		if (map === null || gpsData === false) return;
+		if (map === null || gpsData === null || gpsData.length <= 0) return;
 		let filterArray = ["all"];
 
 		for (let i = 0; i < gpsFilters.length; i++) {
@@ -279,7 +267,7 @@
 	//GPS Filter shows and hides points on the map if the values change.
 	//To add another filter use >, <, = and the value
 	const addMapGPSFilters = () => {
-		if (map === null || gpsData === null) return;
+		if (map === null || gpsData === null || gpsData.length <= 0) return;
 		let filterArray = createFilterArray();
 		map.setFilter("Potholes", filterArray);
 	};
@@ -306,21 +294,13 @@
 		} catch (e) {}
 	};
 
-
-	const resizeMap = () =>{
-		
-		try{
-			map.resize();
-		}
-		catch(err){
-			console.log(err);
-		}
-		
-	}
+	const resizeMap = () => {
+		map.resize();
+	};
 
 	$: map && selectedMenu !== null && resizeMap();
 	$: map && mapStyle && isInitialDataLoaded && switchStyle();
-	$: map && gpsData && isInitialDataLoaded && addNewDynamicGPS();
+	$: map && gpsData && gpsData.length > 0 && isInitialDataLoaded && addNewDynamicGPS();
 
 	onMount(async () => {
 		mapboxgl.accessToken = "pk.eyJ1IjoiY2FuYWxlYWwiLCJhIjoiY2t6NmgzdGd0MTBhcTJ3bXprNjM1a3NsbiJ9.umUsk2Ky68kLBFUa6PeAxA";
@@ -337,7 +317,6 @@
 		// Get the initial Data
 		await fetchInitialMapData();
 
-
 		map.addControl(
 			new MapboxGeocoder({
 				accessToken: mapboxgl.accessToken,
@@ -350,22 +329,18 @@
 
 		map.on("style.load", function () {
 			addDataSources();
-			if (gpsData !== null) addExistingDynamicGPS();
+			if (gpsData != null && gpsData > 0) addExistingDynamicGPS();
 		});
 
 		// Mapboxs normal way to show and hide layers. This calls the filter every second
 		map.on("idle", () => {
 			addMapFilter();
-			if(gpsData != null ) addMapGPSFilters()
-		
+			if (gpsData != null && gpsData > 0) addMapGPSFilters();
 		});
 
-
-		const interval = setInterval(function() {
+		const interval = setInterval(function () {
 			resizeMap();
 		}, 2000);
-
-		
 	});
 
 	onDestroy(() => {
