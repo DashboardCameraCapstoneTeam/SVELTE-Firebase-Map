@@ -1,7 +1,7 @@
 <script>
 	import "tw-elements";
 	import HomePage from "pages/HomePage.svelte";
-	import { auth, googleProvider } from "config/firebase";
+	import { auth } from "config/firebase";
 	import { googleSignIn } from "service/google-sign-in";
 	import { authState } from "rxfire/auth";
 	import { onDestroy } from "svelte";

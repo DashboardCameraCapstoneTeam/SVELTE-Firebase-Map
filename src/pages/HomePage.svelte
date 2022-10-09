@@ -19,12 +19,13 @@
 	import AlertCard from "components/widget/AlertCard.svelte";
   	import Profile from "../components/menu/Profile.svelte";
 
-	export let user = null;
+	export let user;
+	export let signOut;
 	let accessTokenValue;
 	accessToken.subscribe(value => {
 		accessTokenValue = value;
 	});
-	export let signOut;
+
 	let isReadyForStyleSwitching = false;
 	let pointOfInterest = null;
 	let layerList = [];
@@ -76,7 +77,9 @@
 	}
 
 	const saveFilesToLocalStorage = () =>{
-		localStorage.setItem('Files', JSON.stringify(files));
+		if(files.length >= 1){
+			localStorage.setItem('Files', JSON.stringify(files));
+		}
 	}
 
 	const getDriveFiles = async () => {
@@ -95,14 +98,14 @@
 		}
 	};
 
-	const deleteDriveFile = async (fileId) => {
+	const deleteDriveFile = async (file) => {
 		if (accessTokenValue === null) {
 			accessTokenValue = await googleSignIn();
 		}
-		const results = await deleteDashcamVideo(accessTokenValue, fileId);
+		const results = await deleteDashcamVideo(accessTokenValue, file.id);
 		if(results.status === 204){
 			let tempList = files;
-			tempList = tempList.filter(item => item.id !== fileId);
+			tempList = tempList.filter(item => item.id !== file.id);
 			files = tempList;
 			accessToken.set(accessTokenValue)
 			saveFilesToLocalStorage();
