@@ -89372,13 +89372,13 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[42] = list[i];
-    	child_ctx[43] = list;
-    	child_ctx[44] = i;
+    	child_ctx[40] = list[i];
+    	child_ctx[41] = list;
+    	child_ctx[42] = i;
     	return child_ctx;
     }
 
-    // (179:2) {#if isLoading === true}
+    // (194:2) {#if isLoading === true}
     function create_if_block_3(ctx) {
     	let div;
     	let p;
@@ -89389,9 +89389,9 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Loading Data...";
     			attr_dev(p, "class", "align-middle");
-    			add_location(p, file$1, 180, 4, 5848);
+    			add_location(p, file$1, 195, 4, 6221);
     			attr_dev(div, "class", "absolute top-0 z-100 map-loading rounded-lg");
-    			add_location(div, file$1, 179, 3, 5785);
+    			add_location(div, file$1, 194, 3, 6158);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89406,14 +89406,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(179:2) {#if isLoading === true}",
+    		source: "(194:2) {#if isLoading === true}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (185:2) {#if isError === true}
+    // (200:2) {#if isError === true}
     function create_if_block_2(ctx) {
     	let div;
     	let p;
@@ -89424,9 +89424,9 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Error, unable to Fetch Data";
     			attr_dev(p, "class", "align-middle");
-    			add_location(p, file$1, 186, 4, 6005);
+    			add_location(p, file$1, 201, 4, 6378);
     			attr_dev(div, "class", "absolute top-0 z-100 map-error rounded-lg");
-    			add_location(div, file$1, 185, 3, 5944);
+    			add_location(div, file$1, 200, 3, 6317);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89441,14 +89441,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(185:2) {#if isError === true}",
+    		source: "(200:2) {#if isError === true}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (203:1) {:else}
+    // (218:1) {:else}
     function create_else_block$1(ctx) {
     	let each_1_anchor;
     	let current;
@@ -89537,14 +89537,14 @@ var app = (function () {
     		block,
     		id: create_else_block$1.name,
     		type: "else",
-    		source: "(203:1) {:else}",
+    		source: "(218:1) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (199:29) 
+    // (214:29) 
     function create_if_block_1(ctx) {
     	let div;
     	let alertcard;
@@ -89564,7 +89564,7 @@ var app = (function () {
     			div = element("div");
     			create_component(alertcard.$$.fragment);
     			attr_dev(div, "class", "col-span-1 md:col-span-3");
-    			add_location(div, file$1, 199, 2, 6450);
+    			add_location(div, file$1, 214, 2, 6823);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89591,14 +89591,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(199:29) ",
+    		source: "(214:29) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (195:1) {#if files === null}
+    // (210:1) {#if files === null}
     function create_if_block$2(ctx) {
     	let div;
     	let alertcard;
@@ -89618,7 +89618,7 @@ var app = (function () {
     			div = element("div");
     			create_component(alertcard.$$.fragment);
     			attr_dev(div, "class", "col-span-1 md:col-span-3");
-    			add_location(div, file$1, 195, 2, 6272);
+    			add_location(div, file$1, 210, 2, 6645);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89645,14 +89645,14 @@ var app = (function () {
     		block,
     		id: create_if_block$2.name,
     		type: "if",
-    		source: "(195:1) {#if files === null}",
+    		source: "(210:1) {#if files === null}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (204:2) {#each files as file}
+    // (219:2) {#each files as file}
     function create_each_block(ctx) {
     	let div;
     	let card;
@@ -89661,7 +89661,7 @@ var app = (function () {
     	let current;
 
     	function card_file_binding(value) {
-    		/*card_file_binding*/ ctx[38](value, /*file*/ ctx[42], /*each_value*/ ctx[43], /*file_index*/ ctx[44]);
+    		/*card_file_binding*/ ctx[35](value, /*file*/ ctx[40], /*each_value*/ ctx[41], /*file_index*/ ctx[42]);
     	}
 
     	let card_props = {
@@ -89669,8 +89669,8 @@ var app = (function () {
     		startMachineLearning: /*startMachineLearning*/ ctx[18]
     	};
 
-    	if (/*file*/ ctx[42] !== void 0) {
-    		card_props.file = /*file*/ ctx[42];
+    	if (/*file*/ ctx[40] !== void 0) {
+    		card_props.file = /*file*/ ctx[40];
     	}
 
     	card = new Card({ props: card_props, $$inline: true });
@@ -89682,7 +89682,7 @@ var app = (function () {
     			create_component(card.$$.fragment);
     			t = space();
     			attr_dev(div, "class", "col-span-1 md:col-span-3");
-    			add_location(div, file$1, 205, 4, 6704);
+    			add_location(div, file$1, 220, 4, 7077);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89696,7 +89696,7 @@ var app = (function () {
 
     			if (!updating_file && dirty[0] & /*files*/ 8192) {
     				updating_file = true;
-    				card_changes.file = /*file*/ ctx[42];
+    				card_changes.file = /*file*/ ctx[40];
     				add_flush_callback(() => updating_file = false);
     			}
 
@@ -89722,7 +89722,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(204:2) {#each files as file}",
+    		source: "(219:2) {#each files as file}",
     		ctx
     	});
 
@@ -89735,7 +89735,7 @@ var app = (function () {
     	let updating_menuComponents;
     	let t0;
     	let section0;
-    	let div7;
+    	let div5;
     	let div0;
     	let layers;
     	let updating_layerList;
@@ -89751,48 +89751,37 @@ var app = (function () {
     	let div2_class_value;
     	let t3;
     	let div3;
-    	let filters;
-    	let updating_gpsFilters;
-    	let updating_gpsData;
+    	let profile;
+    	let updating_user;
     	let div3_class_value;
     	let t4;
     	let div4;
-    	let chartview;
-    	let updating_gpsData_1;
-    	let div4_class_value;
-    	let t5;
-    	let div5;
-    	let profile;
-    	let updating_user;
-    	let div5_class_value;
-    	let t6;
-    	let div6;
     	let searchdetails;
     	let updating_dateTimeDictionary_1;
-    	let t7;
-    	let div9;
+    	let t5;
+    	let div7;
     	let map;
-    	let updating_gpsFilters_1;
-    	let updating_gpsData_2;
+    	let updating_gpsFilters;
+    	let updating_gpsData;
     	let updating_isReadyForStyleSwitching;
     	let updating_layerList_1;
     	let updating_mapStyle;
     	let updating_pointOfInterest_1;
     	let updating_selectedMenu_1;
-    	let t8;
-    	let div8;
+    	let t6;
+    	let div6;
     	let mapstyleselector;
     	let updating_mapStyle_1;
     	let updating_isReadyForStyleSwitching_1;
+    	let t7;
+    	let t8;
     	let t9;
-    	let t10;
-    	let t11;
     	let recordingsheader;
-    	let t12;
+    	let t10;
     	let section1;
     	let current_block_type_index;
     	let if_block2;
-    	let t13;
+    	let t11;
     	let footer;
     	let current;
 
@@ -89857,43 +89846,8 @@ var app = (function () {
     	streetview = new StreetView({ props: streetview_props, $$inline: true });
     	binding_callbacks.push(() => bind$2(streetview, 'pointOfInterest', streetview_pointOfInterest_binding));
 
-    	function filters_gpsFilters_binding(value) {
-    		/*filters_gpsFilters_binding*/ ctx[24](value);
-    	}
-
-    	function filters_gpsData_binding(value) {
-    		/*filters_gpsData_binding*/ ctx[25](value);
-    	}
-
-    	let filters_props = {};
-
-    	if (/*gpsFilters*/ ctx[12] !== void 0) {
-    		filters_props.gpsFilters = /*gpsFilters*/ ctx[12];
-    	}
-
-    	if (/*gpsData*/ ctx[9] !== void 0) {
-    		filters_props.gpsData = /*gpsData*/ ctx[9];
-    	}
-
-    	filters = new Filters({ props: filters_props, $$inline: true });
-    	binding_callbacks.push(() => bind$2(filters, 'gpsFilters', filters_gpsFilters_binding));
-    	binding_callbacks.push(() => bind$2(filters, 'gpsData', filters_gpsData_binding));
-
-    	function chartview_gpsData_binding(value) {
-    		/*chartview_gpsData_binding*/ ctx[26](value);
-    	}
-
-    	let chartview_props = {};
-
-    	if (/*gpsData*/ ctx[9] !== void 0) {
-    		chartview_props.gpsData = /*gpsData*/ ctx[9];
-    	}
-
-    	chartview = new Chart({ props: chartview_props, $$inline: true });
-    	binding_callbacks.push(() => bind$2(chartview, 'gpsData', chartview_gpsData_binding));
-
     	function profile_user_binding(value) {
-    		/*profile_user_binding*/ ctx[27](value);
+    		/*profile_user_binding*/ ctx[24](value);
     	}
 
     	let profile_props = { signOut: /*signOut*/ ctx[1] };
@@ -89906,7 +89860,7 @@ var app = (function () {
     	binding_callbacks.push(() => bind$2(profile, 'user', profile_user_binding));
 
     	function searchdetails_dateTimeDictionary_binding(value) {
-    		/*searchdetails_dateTimeDictionary_binding*/ ctx[28](value);
+    		/*searchdetails_dateTimeDictionary_binding*/ ctx[25](value);
     	}
 
     	let searchdetails_props = { fetchData: /*fetchData*/ ctx[15] };
@@ -89923,31 +89877,31 @@ var app = (function () {
     	binding_callbacks.push(() => bind$2(searchdetails, 'dateTimeDictionary', searchdetails_dateTimeDictionary_binding));
 
     	function map_gpsFilters_binding(value) {
-    		/*map_gpsFilters_binding*/ ctx[29](value);
+    		/*map_gpsFilters_binding*/ ctx[26](value);
     	}
 
     	function map_gpsData_binding(value) {
-    		/*map_gpsData_binding*/ ctx[30](value);
+    		/*map_gpsData_binding*/ ctx[27](value);
     	}
 
     	function map_isReadyForStyleSwitching_binding(value) {
-    		/*map_isReadyForStyleSwitching_binding*/ ctx[31](value);
+    		/*map_isReadyForStyleSwitching_binding*/ ctx[28](value);
     	}
 
     	function map_layerList_binding(value) {
-    		/*map_layerList_binding*/ ctx[32](value);
+    		/*map_layerList_binding*/ ctx[29](value);
     	}
 
     	function map_mapStyle_binding(value) {
-    		/*map_mapStyle_binding*/ ctx[33](value);
+    		/*map_mapStyle_binding*/ ctx[30](value);
     	}
 
     	function map_pointOfInterest_binding(value) {
-    		/*map_pointOfInterest_binding*/ ctx[34](value);
+    		/*map_pointOfInterest_binding*/ ctx[31](value);
     	}
 
     	function map_selectedMenu_binding(value) {
-    		/*map_selectedMenu_binding*/ ctx[35](value);
+    		/*map_selectedMenu_binding*/ ctx[32](value);
     	}
 
     	let map_props = { cityDetails: /*cityDetails*/ ctx[14] };
@@ -89990,11 +89944,11 @@ var app = (function () {
     	binding_callbacks.push(() => bind$2(map, 'selectedMenu', map_selectedMenu_binding));
 
     	function mapstyleselector_mapStyle_binding(value) {
-    		/*mapstyleselector_mapStyle_binding*/ ctx[36](value);
+    		/*mapstyleselector_mapStyle_binding*/ ctx[33](value);
     	}
 
     	function mapstyleselector_isReadyForStyleSwitching_binding(value) {
-    		/*mapstyleselector_isReadyForStyleSwitching_binding*/ ctx[37](value);
+    		/*mapstyleselector_isReadyForStyleSwitching_binding*/ ctx[34](value);
     	}
 
     	let mapstyleselector_props = {};
@@ -90040,7 +89994,7 @@ var app = (function () {
     			create_component(mapheader.$$.fragment);
     			t0 = space();
     			section0 = element("section");
-    			div7 = element("div");
+    			div5 = element("div");
     			div0 = element("div");
     			create_component(layers.$$.fragment);
     			t1 = space();
@@ -90051,57 +90005,47 @@ var app = (function () {
     			create_component(streetview.$$.fragment);
     			t3 = space();
     			div3 = element("div");
-    			create_component(filters.$$.fragment);
+    			create_component(profile.$$.fragment);
     			t4 = space();
     			div4 = element("div");
-    			create_component(chartview.$$.fragment);
+    			create_component(searchdetails.$$.fragment);
     			t5 = space();
-    			div5 = element("div");
-    			create_component(profile.$$.fragment);
+    			div7 = element("div");
+    			create_component(map.$$.fragment);
     			t6 = space();
     			div6 = element("div");
-    			create_component(searchdetails.$$.fragment);
-    			t7 = space();
-    			div9 = element("div");
-    			create_component(map.$$.fragment);
-    			t8 = space();
-    			div8 = element("div");
     			create_component(mapstyleselector.$$.fragment);
-    			t9 = space();
+    			t7 = space();
     			if (if_block0) if_block0.c();
-    			t10 = space();
+    			t8 = space();
     			if (if_block1) if_block1.c();
-    			t11 = space();
+    			t9 = space();
     			create_component(recordingsheader.$$.fragment);
-    			t12 = space();
+    			t10 = space();
     			section1 = element("section");
     			if_block2.c();
-    			t13 = space();
+    			t11 = space();
     			create_component(footer.$$.fragment);
     			attr_dev(div0, "class", "col-span-1 md:col-span-1 row-span-1");
-    			add_location(div0, file$1, 141, 2, 4470);
+    			add_location(div0, file$1, 156, 2, 4834);
     			attr_dev(div1, "class", div1_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 0 ? "" : "hidden"}`);
-    			add_location(div1, file$1, 145, 2, 4565);
+    			add_location(div1, file$1, 160, 2, 4929);
     			attr_dev(div2, "class", div2_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 1 ? "" : "hidden"}`);
-    			add_location(div2, file$1, 149, 2, 4711);
-    			attr_dev(div3, "class", div3_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 2 ? "" : "hidden"}`);
-    			add_location(div3, file$1, 153, 2, 4856);
-    			attr_dev(div4, "class", div4_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 3 ? "" : "hidden"}`);
-    			add_location(div4, file$1, 157, 2, 5006);
-    			attr_dev(div5, "class", div5_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 4 ? "" : "hidden"}`);
-    			add_location(div5, file$1, 161, 2, 5142);
-    			attr_dev(div6, "class", "col-span-1 md:col-span-1 row-span-1");
-    			add_location(div6, file$1, 165, 2, 5283);
-    			attr_dev(div7, "class", "col-span-1 md:col-span-3 row-span-6 grid grid-cols-1 md:grid-cols-1 gap-4 h-fit");
-    			add_location(div7, file$1, 140, 1, 4373);
-    			attr_dev(div8, "class", "absolute top-1 left-1 ");
-    			add_location(div8, file$1, 174, 2, 5635);
-    			attr_dev(div9, "class", "col-span-1 md:col-span-9 row-span-6 relative");
-    			add_location(div9, file$1, 172, 1, 5420);
+    			add_location(div2, file$1, 164, 2, 5075);
+    			attr_dev(div3, "class", div3_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 4 ? "" : "hidden"}`);
+    			add_location(div3, file$1, 176, 2, 5515);
+    			attr_dev(div4, "class", "col-span-1 md:col-span-1 row-span-1");
+    			add_location(div4, file$1, 180, 2, 5656);
+    			attr_dev(div5, "class", "col-span-1 md:col-span-3 row-span-6 grid grid-cols-1 md:grid-cols-1 gap-4 h-fit");
+    			add_location(div5, file$1, 155, 1, 4737);
+    			attr_dev(div6, "class", "absolute top-1 left-1 ");
+    			add_location(div6, file$1, 189, 2, 6008);
+    			attr_dev(div7, "class", "col-span-1 md:col-span-9 row-span-6 relative");
+    			add_location(div7, file$1, 187, 1, 5793);
     			attr_dev(section0, "class", "grid grid-cols-1 md:grid-cols-12 grid-rows-6 gap-4 my-4 px-4 h-fit ");
-    			add_location(section0, file$1, 139, 0, 4283);
+    			add_location(section0, file$1, 154, 0, 4647);
     			attr_dev(section1, "class", "grid grid-cols-1 md:grid-cols-12 gap-4 my-4 px-4 h-fit divide-x-1 divide-teal-600 ");
-    			add_location(section1, file$1, 193, 0, 6143);
+    			add_location(section1, file$1, 208, 0, 6516);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -90110,43 +90054,37 @@ var app = (function () {
     			mount_component(mapheader, target, anchor);
     			insert_dev(target, t0, anchor);
     			insert_dev(target, section0, anchor);
-    			append_dev(section0, div7);
-    			append_dev(div7, div0);
+    			append_dev(section0, div5);
+    			append_dev(div5, div0);
     			mount_component(layers, div0, null);
-    			append_dev(div7, t1);
-    			append_dev(div7, div1);
+    			append_dev(div5, t1);
+    			append_dev(div5, div1);
     			mount_component(datetime, div1, null);
-    			append_dev(div7, t2);
-    			append_dev(div7, div2);
+    			append_dev(div5, t2);
+    			append_dev(div5, div2);
     			mount_component(streetview, div2, null);
-    			append_dev(div7, t3);
-    			append_dev(div7, div3);
-    			mount_component(filters, div3, null);
-    			append_dev(div7, t4);
-    			append_dev(div7, div4);
-    			mount_component(chartview, div4, null);
-    			append_dev(div7, t5);
-    			append_dev(div7, div5);
-    			mount_component(profile, div5, null);
+    			append_dev(div5, t3);
+    			append_dev(div5, div3);
+    			mount_component(profile, div3, null);
+    			append_dev(div5, t4);
+    			append_dev(div5, div4);
+    			mount_component(searchdetails, div4, null);
+    			append_dev(section0, t5);
+    			append_dev(section0, div7);
+    			mount_component(map, div7, null);
     			append_dev(div7, t6);
     			append_dev(div7, div6);
-    			mount_component(searchdetails, div6, null);
-    			append_dev(section0, t7);
-    			append_dev(section0, div9);
-    			mount_component(map, div9, null);
-    			append_dev(div9, t8);
-    			append_dev(div9, div8);
-    			mount_component(mapstyleselector, div8, null);
-    			append_dev(div9, t9);
-    			if (if_block0) if_block0.m(div9, null);
-    			append_dev(div9, t10);
-    			if (if_block1) if_block1.m(div9, null);
-    			insert_dev(target, t11, anchor);
+    			mount_component(mapstyleselector, div6, null);
+    			append_dev(div7, t7);
+    			if (if_block0) if_block0.m(div7, null);
+    			append_dev(div7, t8);
+    			if (if_block1) if_block1.m(div7, null);
+    			insert_dev(target, t9, anchor);
     			mount_component(recordingsheader, target, anchor);
-    			insert_dev(target, t12, anchor);
+    			insert_dev(target, t10, anchor);
     			insert_dev(target, section1, anchor);
     			if_blocks[current_block_type_index].m(section1, null);
-    			insert_dev(target, t13, anchor);
+    			insert_dev(target, t11, anchor);
     			mount_component(footer, target, anchor);
     			current = true;
     		},
@@ -90203,40 +90141,6 @@ var app = (function () {
     				attr_dev(div2, "class", div2_class_value);
     			}
 
-    			const filters_changes = {};
-
-    			if (!updating_gpsFilters && dirty[0] & /*gpsFilters*/ 4096) {
-    				updating_gpsFilters = true;
-    				filters_changes.gpsFilters = /*gpsFilters*/ ctx[12];
-    				add_flush_callback(() => updating_gpsFilters = false);
-    			}
-
-    			if (!updating_gpsData && dirty[0] & /*gpsData*/ 512) {
-    				updating_gpsData = true;
-    				filters_changes.gpsData = /*gpsData*/ ctx[9];
-    				add_flush_callback(() => updating_gpsData = false);
-    			}
-
-    			filters.$set(filters_changes);
-
-    			if (!current || dirty[0] & /*selectedMenu*/ 256 && div3_class_value !== (div3_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 2 ? "" : "hidden"}`)) {
-    				attr_dev(div3, "class", div3_class_value);
-    			}
-
-    			const chartview_changes = {};
-
-    			if (!updating_gpsData_1 && dirty[0] & /*gpsData*/ 512) {
-    				updating_gpsData_1 = true;
-    				chartview_changes.gpsData = /*gpsData*/ ctx[9];
-    				add_flush_callback(() => updating_gpsData_1 = false);
-    			}
-
-    			chartview.$set(chartview_changes);
-
-    			if (!current || dirty[0] & /*selectedMenu*/ 256 && div4_class_value !== (div4_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 3 ? "" : "hidden"}`)) {
-    				attr_dev(div4, "class", div4_class_value);
-    			}
-
     			const profile_changes = {};
     			if (dirty[0] & /*signOut*/ 2) profile_changes.signOut = /*signOut*/ ctx[1];
 
@@ -90248,8 +90152,8 @@ var app = (function () {
 
     			profile.$set(profile_changes);
 
-    			if (!current || dirty[0] & /*selectedMenu*/ 256 && div5_class_value !== (div5_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 4 ? "" : "hidden"}`)) {
-    				attr_dev(div5, "class", div5_class_value);
+    			if (!current || dirty[0] & /*selectedMenu*/ 256 && div3_class_value !== (div3_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 4 ? "" : "hidden"}`)) {
+    				attr_dev(div3, "class", div3_class_value);
     			}
 
     			const searchdetails_changes = {};
@@ -90263,16 +90167,16 @@ var app = (function () {
     			searchdetails.$set(searchdetails_changes);
     			const map_changes = {};
 
-    			if (!updating_gpsFilters_1 && dirty[0] & /*gpsFilters*/ 4096) {
-    				updating_gpsFilters_1 = true;
+    			if (!updating_gpsFilters && dirty[0] & /*gpsFilters*/ 4096) {
+    				updating_gpsFilters = true;
     				map_changes.gpsFilters = /*gpsFilters*/ ctx[12];
-    				add_flush_callback(() => updating_gpsFilters_1 = false);
+    				add_flush_callback(() => updating_gpsFilters = false);
     			}
 
-    			if (!updating_gpsData_2 && dirty[0] & /*gpsData*/ 512) {
-    				updating_gpsData_2 = true;
+    			if (!updating_gpsData && dirty[0] & /*gpsData*/ 512) {
+    				updating_gpsData = true;
     				map_changes.gpsData = /*gpsData*/ ctx[9];
-    				add_flush_callback(() => updating_gpsData_2 = false);
+    				add_flush_callback(() => updating_gpsData = false);
     			}
 
     			if (!updating_isReadyForStyleSwitching && dirty[0] & /*isReadyForStyleSwitching*/ 4) {
@@ -90326,7 +90230,7 @@ var app = (function () {
     				if (if_block0) ; else {
     					if_block0 = create_if_block_3(ctx);
     					if_block0.c();
-    					if_block0.m(div9, t10);
+    					if_block0.m(div7, t8);
     				}
     			} else if (if_block0) {
     				if_block0.d(1);
@@ -90337,7 +90241,7 @@ var app = (function () {
     				if (if_block1) ; else {
     					if_block1 = create_if_block_2(ctx);
     					if_block1.c();
-    					if_block1.m(div9, null);
+    					if_block1.m(div7, null);
     				}
     			} else if (if_block1) {
     				if_block1.d(1);
@@ -90376,8 +90280,6 @@ var app = (function () {
     			transition_in(layers.$$.fragment, local);
     			transition_in(datetime.$$.fragment, local);
     			transition_in(streetview.$$.fragment, local);
-    			transition_in(filters.$$.fragment, local);
-    			transition_in(chartview.$$.fragment, local);
     			transition_in(profile.$$.fragment, local);
     			transition_in(searchdetails.$$.fragment, local);
     			transition_in(map.$$.fragment, local);
@@ -90392,8 +90294,6 @@ var app = (function () {
     			transition_out(layers.$$.fragment, local);
     			transition_out(datetime.$$.fragment, local);
     			transition_out(streetview.$$.fragment, local);
-    			transition_out(filters.$$.fragment, local);
-    			transition_out(chartview.$$.fragment, local);
     			transition_out(profile.$$.fragment, local);
     			transition_out(searchdetails.$$.fragment, local);
     			transition_out(map.$$.fragment, local);
@@ -90410,20 +90310,18 @@ var app = (function () {
     			destroy_component(layers);
     			destroy_component(datetime);
     			destroy_component(streetview);
-    			destroy_component(filters);
-    			destroy_component(chartview);
     			destroy_component(profile);
     			destroy_component(searchdetails);
     			destroy_component(map);
     			destroy_component(mapstyleselector);
     			if (if_block0) if_block0.d();
     			if (if_block1) if_block1.d();
-    			if (detaching) detach_dev(t11);
+    			if (detaching) detach_dev(t9);
     			destroy_component(recordingsheader, detaching);
-    			if (detaching) detach_dev(t12);
+    			if (detaching) detach_dev(t10);
     			if (detaching) detach_dev(section1);
     			if_blocks[current_block_type_index].d();
-    			if (detaching) detach_dev(t13);
+    			if (detaching) detach_dev(t11);
     			destroy_component(footer, detaching);
     		}
     	};
@@ -90480,16 +90378,8 @@ var app = (function () {
     			title: "Street View",
     			icon: "fa-road"
     		},
-    		{
-    			id: 2,
-    			title: "Filter View",
-    			icon: "fa-filter"
-    		},
-    		{
-    			id: 3,
-    			title: "Chart View",
-    			icon: "fa-chart-simple"
-    		},
+    		//{ id: 2, title: "Filter View", icon: "fa-filter" },
+    		//{ id: 3, title: "Chart View", icon: "fa-chart-simple" },
     		{ id: 4, title: "Profile", icon: "fa-user" }
     	];
 
@@ -90497,6 +90387,16 @@ var app = (function () {
     	let gpsData = [];
     	let isLoading = false;
     	let isError = false;
+
+    	if (localStorage.getItem('GPSData')) {
+    		gpsData = JSON.parse(localStorage.getItem('GPSData'));
+    	}
+
+    	const saveGPSDataToLocalStorage = () => {
+    		if (gpsData.length > 0 && localStorage.getItem('GPSData') !== JSON.stringify(gpsData)) {
+    			localStorage.setItem('GPSData', JSON.stringify(gpsData));
+    		}
+    	};
 
     	const fetchData = async () => {
     		$$invalidate(10, isLoading = true);
@@ -90509,6 +90409,7 @@ var app = (function () {
     				alert("No Data Found");
     			} else {
     				$$invalidate(9, gpsData = gpsJsonToGeojson(response.data));
+    				saveGPSDataToLocalStorage();
     			}
     		} else {
     			$$invalidate(11, isError = true);
@@ -90524,6 +90425,8 @@ var app = (function () {
 
     	if (localStorage.getItem('Files')) {
     		files = JSON.parse(localStorage.getItem('Files'));
+    	} else {
+    		fetchData();
     	}
 
     	const saveFilesToLocalStorage = () => {
@@ -90574,7 +90477,6 @@ var app = (function () {
     		console.log(processWithMachineLearning(payload));
     	};
 
-    	fetchData();
     	const writable_props = ['user', 'signOut'];
 
     	Object.keys($$props).forEach(key => {
@@ -90604,21 +90506,6 @@ var app = (function () {
     	function streetview_pointOfInterest_binding(value) {
     		pointOfInterest = value;
     		$$invalidate(3, pointOfInterest);
-    	}
-
-    	function filters_gpsFilters_binding(value) {
-    		gpsFilters = value;
-    		$$invalidate(12, gpsFilters);
-    	}
-
-    	function filters_gpsData_binding(value) {
-    		gpsData = value;
-    		$$invalidate(9, gpsData);
-    	}
-
-    	function chartview_gpsData_binding(value) {
-    		gpsData = value;
-    		$$invalidate(9, gpsData);
     	}
 
     	function profile_user_binding(value) {
@@ -90721,6 +90608,7 @@ var app = (function () {
     		gpsData,
     		isLoading,
     		isError,
+    		saveGPSDataToLocalStorage,
     		fetchData,
     		gpsFilters,
     		files,
@@ -90780,9 +90668,6 @@ var app = (function () {
     		layers_layerList_binding,
     		datetime_dateTimeDictionary_binding,
     		streetview_pointOfInterest_binding,
-    		filters_gpsFilters_binding,
-    		filters_gpsData_binding,
-    		chartview_gpsData_binding,
     		profile_user_binding,
     		searchdetails_dateTimeDictionary_binding,
     		map_gpsFilters_binding,

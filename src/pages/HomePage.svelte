@@ -47,8 +47,8 @@
 	let menuComponents = [
 		{ id: 0, title: "Date Time", icon: "fa-calendar-days" },
 		{ id: 1, title: "Street View", icon: "fa-road" },
-		{ id: 2, title: "Filter View", icon: "fa-filter" },
-		{ id: 3, title: "Chart View", icon: "fa-chart-simple" },
+		//{ id: 2, title: "Filter View", icon: "fa-filter" },
+		//{ id: 3, title: "Chart View", icon: "fa-chart-simple" },
 		{ id: 4, title: "Profile", icon: "fa-user" }
 	];
 	let selectedMenu = menuComponents[0].id;
@@ -56,6 +56,17 @@
 	let gpsData = [];
 	let isLoading = false;
 	let isError = false;
+
+	if(localStorage.getItem('GPSData')){
+		gpsData = JSON.parse(localStorage.getItem('GPSData'));
+	}
+
+	const saveGPSDataToLocalStorage = () =>{
+		if(gpsData.length > 0 && localStorage.getItem('GPSData') !== JSON.stringify(gpsData)){
+			localStorage.setItem('GPSData', JSON.stringify(gpsData));
+		}
+	}
+
 	const fetchData = async () => {
 		isLoading = true;
 		isError = false;
@@ -68,6 +79,7 @@
 			}
 			else{
 				gpsData =  gpsJsonToGeojson(response.data);
+				saveGPSDataToLocalStorage();
 			}
 		} else {
 			isError = true
@@ -81,6 +93,9 @@
 	let files = [];
 	if(localStorage.getItem('Files')){
 		files = JSON.parse(localStorage.getItem('Files'));
+	}
+	else{
+		fetchData();
 	}
 
 	const saveFilesToLocalStorage = () =>{
@@ -131,7 +146,7 @@
 	    console.log(processWithMachineLearning(payload));
 	}
 
-	fetchData();
+
 
 </script>
 
@@ -151,13 +166,13 @@
 			<StreetView bind:pointOfInterest />
 		</div>
 
-		<div class={`col-span-1 md:col-span-1 row-span-1 ${selectedMenu === 2 ? "" : "hidden"}`}>
+		<!-- <div class={`col-span-1 md:col-span-1 row-span-1 ${selectedMenu === 2 ? "" : "hidden"}`}>
 			<Filters bind:gpsFilters bind:gpsData />
 		</div>
 
 		<div class={`col-span-1 md:col-span-1 row-span-1 ${selectedMenu === 3 ? "" : "hidden"}`}>
 			<ChartView bind:gpsData />
-		</div>
+		</div> -->
 
 		<div class={`col-span-1 md:col-span-1 row-span-1 ${selectedMenu === 4 ? "" : "hidden"}`}>
 			<Profile bind:user {signOut} />
