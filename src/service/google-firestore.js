@@ -17,7 +17,7 @@ export const fetchPotholeDataFromFirebase = async (user, dateTimeDictionary) => 
       tempList.push(potholeData);
     });
 
-    return tempList;
+    return { status: 200, data: tempList };
   } catch (error) {
     return error;
   }

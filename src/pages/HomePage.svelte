@@ -9,9 +9,9 @@
 	import Filters from "components/menu/Filters.svelte";
 	import StreetView from "components/menu/StreetView.svelte";
 	import ChartView from "components/menu/Chart.svelte";
-	import { fetchPotholeDataFromFirebase } from "service/fetch-firestore";
+	import { fetchPotholeDataFromFirebase } from "service/google-firestore";
 	import { gpsJsonToGeojson } from "utils/geojson-utils.js";
-	import { getDashcamVideos,getGoogleDriveFolders, getGoogleDriveFiles,  deleteGoogleDriveFile } from "service/google-drive";
+	import { getDashcamVideos, deleteGoogleDriveFile } from "service/google-drive";
 	import { googleSignIn } from "service/google-sign-in";
 	import { accessToken } from 'store/access-token-store.js';
 	import Card from "components/files/Card.svelte";
@@ -59,12 +59,19 @@
 	const fetchData = async () => {
 		isLoading = true;
 		isError = false;
-		const gpsRawData = await fetchPotholeDataFromFirebase(user, dateTimeDictionary);
-		if (gpsRawData === null) {
-			isError = true;
+		const response = await fetchPotholeDataFromFirebase(user, dateTimeDictionary);
+		if (response.status === 200 ) {
+
+			if(response.data.length <= 0){
+				alert("No Data Found");
+			}
+			else{
+				gpsData =  gpsJsonToGeojson(response.data);
+			}
 		} else {
-			gpsData = gpsRawData.length > 0 ? gpsJsonToGeojson(gpsRawData) : alert("No Data Found");
+			isError = true
 		}
+		console.log(response);
 		isLoading = false;
 	};
 
@@ -76,7 +83,7 @@
 	}
 
 	const saveFilesToLocalStorage = () =>{
-		if(files.length >= 1 && localStorage.getItem('Files') !== JSON.stringify(files)){
+		if(files.length > 0 && localStorage.getItem('Files') !== JSON.stringify(files)){
 			localStorage.setItem('Files', JSON.stringify(files));
 		}
 	}

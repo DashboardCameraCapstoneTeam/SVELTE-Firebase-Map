@@ -86485,7 +86485,7 @@ var app = (function () {
           tempList.push(potholeData);
         });
 
-        return tempList;
+        return { status: 200, data: tempList };
       } catch (error) {
         return error;
       }
@@ -89361,7 +89361,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (170:2) {#if isLoading === true}
+    // (177:2) {#if isLoading === true}
     function create_if_block_3(ctx) {
     	let div;
     	let p;
@@ -89372,9 +89372,9 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Loading Data...";
     			attr_dev(p, "class", "align-middle");
-    			add_location(p, file$1, 171, 4, 5796);
+    			add_location(p, file$1, 178, 4, 5824);
     			attr_dev(div, "class", "absolute top-0 z-100 map-loading rounded-lg");
-    			add_location(div, file$1, 170, 3, 5733);
+    			add_location(div, file$1, 177, 3, 5761);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89389,14 +89389,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(170:2) {#if isLoading === true}",
+    		source: "(177:2) {#if isLoading === true}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (176:2) {#if isError === true}
+    // (183:2) {#if isError === true}
     function create_if_block_2(ctx) {
     	let div;
     	let p;
@@ -89407,9 +89407,9 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Error, unable to Fetch Data";
     			attr_dev(p, "class", "align-middle");
-    			add_location(p, file$1, 177, 4, 5953);
+    			add_location(p, file$1, 184, 4, 5981);
     			attr_dev(div, "class", "absolute top-0 z-100 map-error rounded-lg");
-    			add_location(div, file$1, 176, 3, 5892);
+    			add_location(div, file$1, 183, 3, 5920);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89424,14 +89424,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(176:2) {#if isError === true}",
+    		source: "(183:2) {#if isError === true}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (194:1) {:else}
+    // (201:1) {:else}
     function create_else_block$1(ctx) {
     	let each_1_anchor;
     	let current;
@@ -89520,14 +89520,14 @@ var app = (function () {
     		block,
     		id: create_else_block$1.name,
     		type: "else",
-    		source: "(194:1) {:else}",
+    		source: "(201:1) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (190:29) 
+    // (197:29) 
     function create_if_block_1(ctx) {
     	let div;
     	let alertcard;
@@ -89547,7 +89547,7 @@ var app = (function () {
     			div = element("div");
     			create_component(alertcard.$$.fragment);
     			attr_dev(div, "class", "col-span-1 md:col-span-3");
-    			add_location(div, file$1, 190, 2, 6398);
+    			add_location(div, file$1, 197, 2, 6426);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89574,14 +89574,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(190:29) ",
+    		source: "(197:29) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (186:1) {#if files === null}
+    // (193:1) {#if files === null}
     function create_if_block$2(ctx) {
     	let div;
     	let alertcard;
@@ -89601,7 +89601,7 @@ var app = (function () {
     			div = element("div");
     			create_component(alertcard.$$.fragment);
     			attr_dev(div, "class", "col-span-1 md:col-span-3");
-    			add_location(div, file$1, 186, 2, 6220);
+    			add_location(div, file$1, 193, 2, 6248);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89628,14 +89628,14 @@ var app = (function () {
     		block,
     		id: create_if_block$2.name,
     		type: "if",
-    		source: "(186:1) {#if files === null}",
+    		source: "(193:1) {#if files === null}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (195:2) {#each files as file}
+    // (202:2) {#each files as file}
     function create_each_block(ctx) {
     	let div;
     	let card;
@@ -89665,7 +89665,7 @@ var app = (function () {
     			create_component(card.$$.fragment);
     			t = space();
     			attr_dev(div, "class", "col-span-1 md:col-span-3");
-    			add_location(div, file$1, 196, 4, 6652);
+    			add_location(div, file$1, 203, 4, 6680);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89705,7 +89705,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(195:2) {#each files as file}",
+    		source: "(202:2) {#each files as file}",
     		ctx
     	});
 
@@ -90062,29 +90062,29 @@ var app = (function () {
     			t13 = space();
     			create_component(footer.$$.fragment);
     			attr_dev(div0, "class", "col-span-1 md:col-span-1 row-span-1");
-    			add_location(div0, file$1, 132, 2, 4418);
+    			add_location(div0, file$1, 139, 2, 4446);
     			attr_dev(div1, "class", div1_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 0 ? "" : "hidden"}`);
-    			add_location(div1, file$1, 136, 2, 4513);
+    			add_location(div1, file$1, 143, 2, 4541);
     			attr_dev(div2, "class", div2_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 1 ? "" : "hidden"}`);
-    			add_location(div2, file$1, 140, 2, 4659);
+    			add_location(div2, file$1, 147, 2, 4687);
     			attr_dev(div3, "class", div3_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 2 ? "" : "hidden"}`);
-    			add_location(div3, file$1, 144, 2, 4804);
+    			add_location(div3, file$1, 151, 2, 4832);
     			attr_dev(div4, "class", div4_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 3 ? "" : "hidden"}`);
-    			add_location(div4, file$1, 148, 2, 4954);
+    			add_location(div4, file$1, 155, 2, 4982);
     			attr_dev(div5, "class", div5_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 4 ? "" : "hidden"}`);
-    			add_location(div5, file$1, 152, 2, 5090);
+    			add_location(div5, file$1, 159, 2, 5118);
     			attr_dev(div6, "class", "col-span-1 md:col-span-1 row-span-1");
-    			add_location(div6, file$1, 156, 2, 5231);
+    			add_location(div6, file$1, 163, 2, 5259);
     			attr_dev(div7, "class", "col-span-1 md:col-span-3 row-span-6 grid grid-cols-1 md:grid-cols-1 gap-4 h-fit");
-    			add_location(div7, file$1, 131, 1, 4321);
+    			add_location(div7, file$1, 138, 1, 4349);
     			attr_dev(div8, "class", "absolute top-1 left-1 ");
-    			add_location(div8, file$1, 165, 2, 5583);
+    			add_location(div8, file$1, 172, 2, 5611);
     			attr_dev(div9, "class", "col-span-1 md:col-span-9 row-span-6 relative");
-    			add_location(div9, file$1, 163, 1, 5368);
+    			add_location(div9, file$1, 170, 1, 5396);
     			attr_dev(section0, "class", "grid grid-cols-1 md:grid-cols-12 grid-rows-6 gap-4 my-4 px-4 h-fit ");
-    			add_location(section0, file$1, 130, 0, 4231);
+    			add_location(section0, file$1, 137, 0, 4259);
     			attr_dev(section1, "class", "grid grid-cols-1 md:grid-cols-12 gap-4 my-4 px-4 h-fit divide-x-1 divide-teal-600 ");
-    			add_location(section1, file$1, 184, 0, 6091);
+    			add_location(section1, file$1, 191, 0, 6119);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -90484,16 +90484,19 @@ var app = (function () {
     	const fetchData = async () => {
     		$$invalidate(10, isLoading = true);
     		$$invalidate(11, isError = false);
-    		const gpsRawData = await fetchPotholeDataFromFirebase(user, dateTimeDictionary);
+    		const response = await fetchPotholeDataFromFirebase(user, dateTimeDictionary);
 
-    		if (gpsRawData === null) {
-    			$$invalidate(11, isError = true);
+    		if (response.status === 200) {
+    			if (response.data.length <= 0) {
+    				alert("No Data Found");
+    			} else {
+    				$$invalidate(9, gpsData = gpsJsonToGeojson(response.data));
+    			}
     		} else {
-    			$$invalidate(9, gpsData = gpsRawData.length > 0
-    			? gpsJsonToGeojson(gpsRawData)
-    			: alert("No Data Found"));
+    			$$invalidate(11, isError = true);
     		}
 
+    		console.log(response);
     		$$invalidate(10, isLoading = false);
     	};
 
@@ -90515,7 +90518,7 @@ var app = (function () {
     	}
 
     	const saveFilesToLocalStorage = () => {
-    		if (files.length >= 1 && localStorage.getItem('Files') !== JSON.stringify(files)) {
+    		if (files.length > 0 && localStorage.getItem('Files') !== JSON.stringify(files)) {
     			localStorage.setItem('Files', JSON.stringify(files));
     		}
     	};
@@ -90687,8 +90690,6 @@ var app = (function () {
     		fetchPotholeDataFromFirebase,
     		gpsJsonToGeojson,
     		getDashcamVideos,
-    		getGoogleDriveFolders,
-    		getGoogleDriveFiles,
     		deleteGoogleDriveFile,
     		googleSignIn,
     		accessToken,
