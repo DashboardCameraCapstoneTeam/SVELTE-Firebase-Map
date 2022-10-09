@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import {
   collection, query, orderBy, doc, getDocs, where,
 } from 'firebase/firestore';
@@ -7,9 +8,9 @@ export const fetchPotholeDataFromFirebase = async (user, dateTimeDictionary) => 
   try {
     const tempList = [];
     const docRef = doc(db, 'users', user.uid);
-    const start = firebase.firestore.Timestamp.fromDate(new Date(dateTimeDictionary.startDateTime));
-    const end = firebase.firestore.Timestamp.fromDate(new Date(dateTimeDictionary.endDateTime));
-    const colRef = query(collection(docRef, 'potholes'), where('date_time_analyzed', '>', start), where('date_time_analyzed', '<', end), orderBy('date_time_analyzed', 'desc'));
+    const startDateTime = firebase.firestore.Timestamp.fromDate(new Date(dateTimeDictionary.startDateTime));
+    const endDateTime = firebase.firestore.Timestamp.fromDate(new Date(dateTimeDictionary.endDateTime));
+    const colRef = query(collection(docRef, 'potholes'), where('date_time_analyzed', '>', startDateTime), where('date_time_analyzed', '<', endDateTime), orderBy('date_time_analyzed', 'desc'));
     const querySnapshot = await getDocs(colRef);
     querySnapshot.forEach((document) => {
       const potholeData = document.data();
@@ -17,8 +18,8 @@ export const fetchPotholeDataFromFirebase = async (user, dateTimeDictionary) => 
     });
 
     return tempList;
-  } catch (e) {
-    return null;
+  } catch (error) {
+    return error;
   }
 };
 

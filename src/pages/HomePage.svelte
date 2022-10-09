@@ -70,45 +70,43 @@
 
 	let gpsFilters = [{ id: "Count", name: "Pothole Count Filter", default: [0, 20], step: 1, suffix: "", selected: [0, 20] }];
 
-	let files = null;
+	let files = [];
 	if(localStorage.getItem('Files')){
-		console.log(JSON.parse(localStorage.getItem('Files')))
 		files = JSON.parse(localStorage.getItem('Files'));
 	}
 
 	const saveFilesToLocalStorage = () =>{
-		if(files.length >= 1){
+		if(files.length >= 1 && localStorage.getItem('Files') !== JSON.stringify(files)){
 			localStorage.setItem('Files', JSON.stringify(files));
 		}
 	}
 
-	const getDriveFiles = async () => {
+	const verifyAccessToken = async () =>{
 		if (accessTokenValue === null) {
 			accessTokenValue = await googleSignIn();
+			accessToken.set(accessTokenValue);
 		}
-		const results = await getDashcamVideos(accessTokenValue);
-		
+	}
 
-		if (results === null) {
-			files = [];
-		} else {
-			files = results;
-			console.log("App.js | files", results);
-			accessToken.set(accessTokenValue)
+	const getDriveFiles = async () => {
+		await verifyAccessToken();
+		const response = await getDashcamVideos(accessTokenValue);
+		if (response.status === 200) {
+			files = response.data.files;
+			console.log("App.js | files", response.data.files);
+			
 			saveFilesToLocalStorage();
 		}
 	};
 
 	const deleteDriveFile = async (file) => {
-		if (accessTokenValue === null) {
-			accessTokenValue = await googleSignIn();
-		}
+		await verifyAccessToken();
 		const response = await deleteGoogleDriveFile(accessTokenValue, file.id);
 		if(response.status === 204){
 			let tempList = files;
 			tempList = tempList.filter(item => item.id !== file.id);
 			files = tempList;
-			accessToken.set(accessTokenValue)
+			
 			saveFilesToLocalStorage();
 		}
 	}

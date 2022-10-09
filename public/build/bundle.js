@@ -86470,13 +86470,15 @@ var app = (function () {
     });
     googleProvider.addScope('https://www.googleapis.com/auth/drive');
 
+    /* eslint-disable max-len */
+
     const fetchPotholeDataFromFirebase = async (user, dateTimeDictionary) => {
       try {
         const tempList = [];
         const docRef = Da(db, 'users', user.uid);
-        const start = firebase.firestore.Timestamp.fromDate(new Date(dateTimeDictionary.startDateTime));
-        const end = firebase.firestore.Timestamp.fromDate(new Date(dateTimeDictionary.endDateTime));
-        const colRef = Uh(Va(docRef, 'potholes'), Kh('date_time_analyzed', '>', start), Kh('date_time_analyzed', '<', end), Qh('date_time_analyzed', 'desc'));
+        const startDateTime = firebase.firestore.Timestamp.fromDate(new Date(dateTimeDictionary.startDateTime));
+        const endDateTime = firebase.firestore.Timestamp.fromDate(new Date(dateTimeDictionary.endDateTime));
+        const colRef = Uh(Va(docRef, 'potholes'), Kh('date_time_analyzed', '>', startDateTime), Kh('date_time_analyzed', '<', endDateTime), Qh('date_time_analyzed', 'desc'));
         const querySnapshot = await wl(colRef);
         querySnapshot.forEach((document) => {
           const potholeData = document.data();
@@ -86484,8 +86486,8 @@ var app = (function () {
         });
 
         return tempList;
-      } catch (e) {
-        return null;
+      } catch (error) {
+        return error;
       }
     };
 
@@ -88592,12 +88594,7 @@ var app = (function () {
         const response = await getGoogleDriveFolders(accessToken);
         if (response.status === 200) {
           const cameraFolder = getObjectsWhereKeyEqualsValue(response.data.files, 'name', 'Dashcam')[0];
-
           const documentsResponse = await getGoogleDriveFiles(accessToken, cameraFolder.id);
-          if (documentsResponse.status === 200) {
-            const allDocuments = documentsResponse.data.files;
-            return allDocuments;
-          }
           return documentsResponse;
         }
 
@@ -89358,13 +89355,13 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[41] = list[i];
-    	child_ctx[42] = list;
-    	child_ctx[43] = i;
+    	child_ctx[42] = list[i];
+    	child_ctx[43] = list;
+    	child_ctx[44] = i;
     	return child_ctx;
     }
 
-    // (172:2) {#if isLoading === true}
+    // (170:2) {#if isLoading === true}
     function create_if_block_3(ctx) {
     	let div;
     	let p;
@@ -89375,9 +89372,9 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Loading Data...";
     			attr_dev(p, "class", "align-middle");
-    			add_location(p, file$1, 173, 4, 5805);
+    			add_location(p, file$1, 171, 4, 5796);
     			attr_dev(div, "class", "absolute top-0 z-100 map-loading rounded-lg");
-    			add_location(div, file$1, 172, 3, 5742);
+    			add_location(div, file$1, 170, 3, 5733);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89392,14 +89389,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(172:2) {#if isLoading === true}",
+    		source: "(170:2) {#if isLoading === true}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (178:2) {#if isError === true}
+    // (176:2) {#if isError === true}
     function create_if_block_2(ctx) {
     	let div;
     	let p;
@@ -89410,9 +89407,9 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Error, unable to Fetch Data";
     			attr_dev(p, "class", "align-middle");
-    			add_location(p, file$1, 179, 4, 5962);
+    			add_location(p, file$1, 177, 4, 5953);
     			attr_dev(div, "class", "absolute top-0 z-100 map-error rounded-lg");
-    			add_location(div, file$1, 178, 3, 5901);
+    			add_location(div, file$1, 176, 3, 5892);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89427,14 +89424,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(178:2) {#if isError === true}",
+    		source: "(176:2) {#if isError === true}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (196:1) {:else}
+    // (194:1) {:else}
     function create_else_block$1(ctx) {
     	let each_1_anchor;
     	let current;
@@ -89523,14 +89520,14 @@ var app = (function () {
     		block,
     		id: create_else_block$1.name,
     		type: "else",
-    		source: "(196:1) {:else}",
+    		source: "(194:1) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (192:29) 
+    // (190:29) 
     function create_if_block_1(ctx) {
     	let div;
     	let alertcard;
@@ -89550,7 +89547,7 @@ var app = (function () {
     			div = element("div");
     			create_component(alertcard.$$.fragment);
     			attr_dev(div, "class", "col-span-1 md:col-span-3");
-    			add_location(div, file$1, 192, 2, 6407);
+    			add_location(div, file$1, 190, 2, 6398);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89577,14 +89574,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(192:29) ",
+    		source: "(190:29) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (188:1) {#if files === null}
+    // (186:1) {#if files === null}
     function create_if_block$2(ctx) {
     	let div;
     	let alertcard;
@@ -89604,7 +89601,7 @@ var app = (function () {
     			div = element("div");
     			create_component(alertcard.$$.fragment);
     			attr_dev(div, "class", "col-span-1 md:col-span-3");
-    			add_location(div, file$1, 188, 2, 6229);
+    			add_location(div, file$1, 186, 2, 6220);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89631,14 +89628,14 @@ var app = (function () {
     		block,
     		id: create_if_block$2.name,
     		type: "if",
-    		source: "(188:1) {#if files === null}",
+    		source: "(186:1) {#if files === null}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (197:2) {#each files as file}
+    // (195:2) {#each files as file}
     function create_each_block(ctx) {
     	let div;
     	let card;
@@ -89647,7 +89644,7 @@ var app = (function () {
     	let current;
 
     	function card_file_binding(value) {
-    		/*card_file_binding*/ ctx[38](value, /*file*/ ctx[41], /*each_value*/ ctx[42], /*file_index*/ ctx[43]);
+    		/*card_file_binding*/ ctx[38](value, /*file*/ ctx[42], /*each_value*/ ctx[43], /*file_index*/ ctx[44]);
     	}
 
     	let card_props = {
@@ -89655,8 +89652,8 @@ var app = (function () {
     		startMachineLearning: /*startMachineLearning*/ ctx[18]
     	};
 
-    	if (/*file*/ ctx[41] !== void 0) {
-    		card_props.file = /*file*/ ctx[41];
+    	if (/*file*/ ctx[42] !== void 0) {
+    		card_props.file = /*file*/ ctx[42];
     	}
 
     	card = new Card({ props: card_props, $$inline: true });
@@ -89668,7 +89665,7 @@ var app = (function () {
     			create_component(card.$$.fragment);
     			t = space();
     			attr_dev(div, "class", "col-span-1 md:col-span-3");
-    			add_location(div, file$1, 198, 4, 6661);
+    			add_location(div, file$1, 196, 4, 6652);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89682,7 +89679,7 @@ var app = (function () {
 
     			if (!updating_file && dirty[0] & /*files*/ 8192) {
     				updating_file = true;
-    				card_changes.file = /*file*/ ctx[41];
+    				card_changes.file = /*file*/ ctx[42];
     				add_flush_callback(() => updating_file = false);
     			}
 
@@ -89708,7 +89705,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(197:2) {#each files as file}",
+    		source: "(195:2) {#each files as file}",
     		ctx
     	});
 
@@ -90065,29 +90062,29 @@ var app = (function () {
     			t13 = space();
     			create_component(footer.$$.fragment);
     			attr_dev(div0, "class", "col-span-1 md:col-span-1 row-span-1");
-    			add_location(div0, file$1, 134, 2, 4427);
+    			add_location(div0, file$1, 132, 2, 4418);
     			attr_dev(div1, "class", div1_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 0 ? "" : "hidden"}`);
-    			add_location(div1, file$1, 138, 2, 4522);
+    			add_location(div1, file$1, 136, 2, 4513);
     			attr_dev(div2, "class", div2_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 1 ? "" : "hidden"}`);
-    			add_location(div2, file$1, 142, 2, 4668);
+    			add_location(div2, file$1, 140, 2, 4659);
     			attr_dev(div3, "class", div3_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 2 ? "" : "hidden"}`);
-    			add_location(div3, file$1, 146, 2, 4813);
+    			add_location(div3, file$1, 144, 2, 4804);
     			attr_dev(div4, "class", div4_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 3 ? "" : "hidden"}`);
-    			add_location(div4, file$1, 150, 2, 4963);
+    			add_location(div4, file$1, 148, 2, 4954);
     			attr_dev(div5, "class", div5_class_value = `col-span-1 md:col-span-1 row-span-1 ${/*selectedMenu*/ ctx[8] === 4 ? "" : "hidden"}`);
-    			add_location(div5, file$1, 154, 2, 5099);
+    			add_location(div5, file$1, 152, 2, 5090);
     			attr_dev(div6, "class", "col-span-1 md:col-span-1 row-span-1");
-    			add_location(div6, file$1, 158, 2, 5240);
+    			add_location(div6, file$1, 156, 2, 5231);
     			attr_dev(div7, "class", "col-span-1 md:col-span-3 row-span-6 grid grid-cols-1 md:grid-cols-1 gap-4 h-fit");
-    			add_location(div7, file$1, 133, 1, 4330);
+    			add_location(div7, file$1, 131, 1, 4321);
     			attr_dev(div8, "class", "absolute top-1 left-1 ");
-    			add_location(div8, file$1, 167, 2, 5592);
+    			add_location(div8, file$1, 165, 2, 5583);
     			attr_dev(div9, "class", "col-span-1 md:col-span-9 row-span-6 relative");
-    			add_location(div9, file$1, 165, 1, 5377);
+    			add_location(div9, file$1, 163, 1, 5368);
     			attr_dev(section0, "class", "grid grid-cols-1 md:grid-cols-12 grid-rows-6 gap-4 my-4 px-4 h-fit ");
-    			add_location(section0, file$1, 132, 0, 4240);
+    			add_location(section0, file$1, 130, 0, 4231);
     			attr_dev(section1, "class", "grid grid-cols-1 md:grid-cols-12 gap-4 my-4 px-4 h-fit divide-x-1 divide-teal-600 ");
-    			add_location(section1, file$1, 186, 0, 6100);
+    			add_location(section1, file$1, 184, 0, 6091);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -90511,48 +90508,44 @@ var app = (function () {
     		}
     	];
 
-    	let files = null;
+    	let files = [];
 
     	if (localStorage.getItem('Files')) {
-    		console.log(JSON.parse(localStorage.getItem('Files')));
     		files = JSON.parse(localStorage.getItem('Files'));
     	}
 
     	const saveFilesToLocalStorage = () => {
-    		if (files.length >= 1) {
+    		if (files.length >= 1 && localStorage.getItem('Files') !== JSON.stringify(files)) {
     			localStorage.setItem('Files', JSON.stringify(files));
     		}
     	};
 
-    	const getDriveFiles = async () => {
+    	const verifyAccessToken = async () => {
     		if (accessTokenValue === null) {
     			accessTokenValue = await googleSignIn();
-    		}
-
-    		const results = await getDashcamVideos(accessTokenValue);
-
-    		if (results === null) {
-    			$$invalidate(13, files = []);
-    		} else {
-    			$$invalidate(13, files = results);
-    			console.log("App.js | files", results);
     			accessToken.set(accessTokenValue);
+    		}
+    	};
+
+    	const getDriveFiles = async () => {
+    		await verifyAccessToken();
+    		const response = await getDashcamVideos(accessTokenValue);
+
+    		if (response.status === 200) {
+    			$$invalidate(13, files = response.data.files);
+    			console.log("App.js | files", response.data.files);
     			saveFilesToLocalStorage();
     		}
     	};
 
     	const deleteDriveFile = async file => {
-    		if (accessTokenValue === null) {
-    			accessTokenValue = await googleSignIn();
-    		}
-
+    		await verifyAccessToken();
     		const response = await deleteGoogleDriveFile(accessTokenValue, file.id);
 
     		if (response.status === 204) {
     			let tempList = files;
     			tempList = tempList.filter(item => item.id !== file.id);
     			$$invalidate(13, files = tempList);
-    			accessToken.set(accessTokenValue);
     			saveFilesToLocalStorage();
     		}
     	};
@@ -90721,6 +90714,7 @@ var app = (function () {
     		gpsFilters,
     		files,
     		saveFilesToLocalStorage,
+    		verifyAccessToken,
     		getDriveFiles,
     		deleteDriveFile,
     		processWithMachineLearning,

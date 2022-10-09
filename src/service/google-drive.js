@@ -65,12 +65,7 @@ export const getDashcamVideos = async (accessToken) => {
     const response = await getGoogleDriveFolders(accessToken);
     if (response.status === 200) {
       const cameraFolder = getObjectsWhereKeyEqualsValue(response.data.files, 'name', 'Dashcam')[0];
-
       const documentsResponse = await getGoogleDriveFiles(accessToken, cameraFolder.id);
-      if (documentsResponse.status === 200) {
-        const allDocuments = documentsResponse.data.files;
-        return allDocuments;
-      }
       return documentsResponse;
     }
 
