@@ -8,7 +8,7 @@ export const gpsJsonToGeojson = (rawData) => {
   const geoJsonArray = [];
   rawData.forEach((rawGeoJsonFile) => {
     const dataName = rawGeoJsonFile.dataName ? rawGeoJsonFile.dataName : uuidv4();
-    const dateTime = rawGeoJsonFile.dateTime ? rawGeoJsonFile.dataName : uuidv4();
+    const dateTime = rawGeoJsonFile.dateTime ? rawGeoJsonFile.dateTime : uuidv4();
     const dataType = rawGeoJsonFile.dataType ? rawGeoJsonFile.dataType : rawGeoJsonFile.features[0].geometry.type;
     const geoJson = {
       type: 'FeatureCollection',

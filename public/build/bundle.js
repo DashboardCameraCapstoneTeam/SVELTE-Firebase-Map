@@ -86496,7 +86496,7 @@ var app = (function () {
       const geoJsonArray = [];
       rawData.forEach((rawGeoJsonFile) => {
         const dataName = rawGeoJsonFile.dataName ? rawGeoJsonFile.dataName : v4();
-        const dateTime = rawGeoJsonFile.dateTime ? rawGeoJsonFile.dataName : v4();
+        const dateTime = rawGeoJsonFile.dateTime ? rawGeoJsonFile.dateTime : v4();
         const dataType = rawGeoJsonFile.dataType ? rawGeoJsonFile.dataType : rawGeoJsonFile.features[0].geometry.type;
         const geoJson = {
           type: 'FeatureCollection',
