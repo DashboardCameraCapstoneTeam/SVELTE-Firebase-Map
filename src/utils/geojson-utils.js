@@ -10,11 +10,14 @@ export const gpsJsonToGeojson = (rawData) => {
     const dataName = rawGeoJsonFile.dataName ? rawGeoJsonFile.dataName : uuidv4();
     const dateTime = rawGeoJsonFile.dateTime ? rawGeoJsonFile.dateTime : uuidv4();
     const dataType = rawGeoJsonFile.dataType ? rawGeoJsonFile.dataType : rawGeoJsonFile.features[0].geometry.type;
+    const hasFilter = !!rawGeoJsonFile.dataName; // If the name exists, that means we need to make a filter
+
     const geoJson = {
       type: 'FeatureCollection',
       dataName,
       dateTime,
       dataType,
+      hasFilter,
       features: [],
     };
     for (const point of rawGeoJsonFile.features) {

@@ -16,7 +16,7 @@
 	let isInitialDataLoaded = false;
 	const smallPopup = new mapboxgl.Popup();
 
-	const createElement = (layerName, sourceName, type, isShown, faIcon, data) => {
+	const createElement = (layerName, sourceName, type, isShown, faIcon, hasFilter, data) => {
 		let tempList = layerList;
 
 		//Remove the old layer and source data
@@ -30,7 +30,7 @@
 		}
 
 		//Create the new element and change the layer list
-		const element = { id: uuidv4(), icon: faIcon, type: type, isShown: isShown, name: layerName, layerName: layerName, sourceName: sourceName, data: data };
+		const element = { id: uuidv4(), icon: faIcon, type: type, isShown: isShown, name: layerName, layerName: layerName, hasFilter:hasFilter, sourceName: sourceName, data: data };
 		tempList.push(element);
 		layerList = tempList;
 		return element;
@@ -38,7 +38,7 @@
 
 	const fetchInitialMapData = async () => {
 		try {
-			createElement((layerName = "3D-Buildings"), (sourceName = "composite"), (type = "Polygon"), (isShown = true), (faIcon = "fa-building"), (data = null));
+			createElement((layerName = "3D-Buildings"), (sourceName = "composite"), (type = "Polygon"), (isShown = true), (faIcon = "fa-building"), (hasFilter=false), (data = null));
 		} catch (e) {
 			console.error(e);
 		}
@@ -250,8 +250,9 @@
 				const dataName = gpsElement.dataName;
 				const dataSourceName = `${dataName}Source`;
 				const dataType = gpsElement.dataType;
+				const dataHasFilter = gpsElement.hasFilter;
 
-				let gpsListElement = createElement((layerName = dataName), (sourceName = dataSourceName), (type = dataType), (isShown = true), (faIcon = "fa-road"), (data = gpsElement));
+				let gpsListElement = createElement((layerName = dataName), (sourceName = dataSourceName), (type = dataType), (isShown = true), (faIcon = "fa-road"), (hasFilter = dataHasFilter), (data = gpsElement));
 				addMapSource(gpsListElement);
 				if (dataType === "Point") {
 					addPointLayer(gpsListElement, "Count");
@@ -298,7 +299,9 @@
 			let filterArray = createFilterArray();
 			layerList.forEach(function (gpsElement) {
 				const dataName = gpsElement.layerName;
-				if (dataName !== "3D-Buildings") {
+				const dataHasFilter = gpsElement.hasFilter;
+			
+				if (dataName !== "3D-Buildings" && dataHasFilter) {
 					map.setFilter(dataName, filterArray);
 				}
 			});

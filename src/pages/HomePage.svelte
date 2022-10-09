@@ -47,7 +47,7 @@
 	let menuComponents = [
 		{ id: 0, title: "Date Time", icon: "fa-calendar-days" },
 		{ id: 1, title: "Street View", icon: "fa-road" },
-		//{ id: 2, title: "Filter View", icon: "fa-filter" },
+		{ id: 2, title: "Filter View", icon: "fa-filter" },
 		//{ id: 3, title: "Chart View", icon: "fa-chart-simple" },
 		{ id: 4, title: "Profile", icon: "fa-user" }
 	];
@@ -87,8 +87,7 @@
 		isLoading = false;
 	};
 
-	let gpsFilters = []
-	// let gpsFilters = [{ id: "Count", name: "Pothole Count Filter", default: [0, 20], step: 1, suffix: "", selected: [0, 20] }];
+	let gpsFilters = [{ id: "Count", name: "Item Count Filter", default: [0, 20], step: 1, suffix: "", selected: [0, 20] }];
 
 	let files = [];
 	if(localStorage.getItem('Files')){
@@ -166,11 +165,11 @@
 			<StreetView bind:pointOfInterest />
 		</div>
 
-		<!-- <div class={`col-span-1 md:col-span-1 row-span-1 ${selectedMenu === 2 ? "" : "hidden"}`}>
+		<div class={`col-span-1 md:col-span-1 row-span-1 ${selectedMenu === 2 ? "" : "hidden"}`}>
 			<Filters bind:gpsFilters bind:gpsData />
 		</div>
 
-		<div class={`col-span-1 md:col-span-1 row-span-1 ${selectedMenu === 3 ? "" : "hidden"}`}>
+		<!-- <div class={`col-span-1 md:col-span-1 row-span-1 ${selectedMenu === 3 ? "" : "hidden"}`}>
 			<ChartView bind:gpsData />
 		</div> -->
 
