@@ -1,16 +1,12 @@
 <script>
 	export let dateTimeDictionary;
-
 	const clearDateTime = () => {
-		Object.keys(dateTimeDictionary).forEach(dateTime => dateTimeDictionary[dateTime] = '')
+		Object.keys(dateTimeDictionary).forEach((dateTime) => (dateTimeDictionary[dateTime] = ""));
 	};
-
 </script>
-
 <section class="card h-fit scale-in-center">
-	<p class="font-bold my-1">Date Time Selection:</p>
-
-
+	<div class="p-4">
+		<p class="font-bold my-1">Date Time Selection:</p>
 		<div class="datepicker form-floating my-1  w-full" data-mdb-toggle-button="false">
 			<input
 				type="datetime-local"
@@ -22,9 +18,7 @@
 				bind:value={dateTimeDictionary.startDateTime}
 			/>
 			<label for="floatingInput">Select Start date</label>
-		</div>		
-	
-
+		</div>
 		<div class="datepicker form-floating my-1 w-full" data-mdb-toggle-button="false">
 			<input
 				type="datetime-local"
@@ -36,16 +30,13 @@
 				bind:value={dateTimeDictionary.endDateTime}
 			/>
 			<label for="floatingInput">Select End date</label>
-		
-	</div>
-
-	
-	{#if dateTimeDictionary.startDateTime === '' || dateTimeDictionary.endDateTime === '' }
-		<div class="alert alert-red my-1" role="alert">No date time selected.</div>
-	{:else}
-		<div class="alert alert-green my-1" role="alert">
-			{dateTimeDictionary.startDateTime} to {dateTimeDictionary.endDateTime}  <button class="float-right fa-lg" on:click={clearDateTime}><i class="fa-solid fa-xmark " /></button>
 		</div>
-	{/if}
+		{#if dateTimeDictionary.startDateTime === "" || dateTimeDictionary.endDateTime === ""}
+			<div class="alert alert-red my-1" role="alert">No date time selected.</div>
+		{:else}
+			<div class="alert alert-green my-1" role="alert">
+				{dateTimeDictionary.startDateTime} to {dateTimeDictionary.endDateTime} <button class="float-right fa-lg" on:click={clearDateTime}><i class="fa-solid fa-xmark " /></button>
+			</div>
+		{/if}
+	</div>
 </section>
-

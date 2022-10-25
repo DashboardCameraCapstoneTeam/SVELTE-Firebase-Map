@@ -233,7 +233,7 @@
 				if (dataName !== "3D-Buildings") {
 					addMapSource(gpsElement);
 					if (dataType === "Point") {
-						addPointLayer(gpsElement, "Count");
+						addPointLayer(gpsElement, "Count", ["get", "Color"]);
 					}
 				}
 			});
@@ -255,7 +255,7 @@
 				let gpsListElement = createElement((layerName = dataName), (sourceName = dataSourceName), (type = dataType), (isShown = true), (faIcon = "fa-road"), (hasFilter = dataHasFilter), (data = gpsElement));
 				addMapSource(gpsListElement);
 				if (dataType === "Point") {
-					addPointLayer(gpsListElement, "Count");
+					addPointLayer(gpsListElement, "Count" , ["get", "Color"]);
 				}
 			});
 		} catch (err) {
@@ -339,6 +339,22 @@
 	$: map && selectedMenu !== null && resizeMap();
 	$: map && mapStyle && isInitialDataLoaded && switchStyle();
 	$: map && gpsData && isInitialDataLoaded && addNewDynamicGPS();
+
+
+	const updateMapCenter = () =>{
+		console.log(cityDetails);
+		if (map === null) return;
+		try {
+			
+			map.flyTo({
+				center: cityDetails.center
+			});
+		}catch(err){
+			console.log(err);
+		}
+	}
+
+	$: map && cityDetails && isInitialDataLoaded && updateMapCenter();
 
 	onMount(async () => {
 		mapboxgl.accessToken = "pk.eyJ1IjoiY2FuYWxlYWwiLCJhIjoiY2t6NmgzdGd0MTBhcTJ3bXprNjM1a3NsbiJ9.umUsk2Ky68kLBFUa6PeAxA";

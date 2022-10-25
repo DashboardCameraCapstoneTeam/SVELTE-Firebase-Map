@@ -27,11 +27,9 @@ export const checkIfElementExists = (listOfObjects, key, value) => {
     const objectKey = object[key];
     return objectKey === value;
   });
-
   if (filteredList.length >= 1) {
     return true;
   }
-
   return false;
 };
 
@@ -41,4 +39,10 @@ export const removeObjectWhereValueEqualsString = (listOfObjects, key, value) =>
     return objectKey !== value;
   });
   return filteredList;
+};
+
+export const getGoogleDriveCoordFile = (videoFile, files) => {
+  const coordFileName = `${videoFile.name.split('.')[0]}.geojson`;
+  const coordFile = getObjectsWhereKeyEqualsValue(files, 'name', coordFileName)[0];
+  return coordFile;
 };

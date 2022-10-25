@@ -39,7 +39,6 @@ export const getGoogleDriveFiles = async (accessToken, folderId) => {
     return error.message;
   }
 };
-
 // Using the access token and file url, delete the file
 export const deleteGoogleDriveFile = async (accessToken, fileId) => {
   try {
@@ -68,7 +67,6 @@ export const getDashcamVideos = async (accessToken) => {
       const documentsResponse = await getGoogleDriveFiles(accessToken, cameraFolder.id);
       return documentsResponse;
     }
-
     return response;
   } catch (error) {
     return error;

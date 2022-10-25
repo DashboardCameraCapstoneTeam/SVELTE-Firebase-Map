@@ -18,12 +18,15 @@
 </script>
 
 <section class="card h-fit scale-in-center">
-	<p class="font-bold my-1">Map Style:</p>
+	<div class="p-4">
+		<p class="font-bold my-1">Map Style:</p>
 
-	{#each mapStyleList as mapStyleItem}
-		<div key={mapStyleItem.id}>
-			<input id={mapStyleItem.name} type="radio" value={mapStyleItem.id} checked={mapStyle === mapStyleItem.id} on:click={() => toggleStyle(mapStyleItem.id)} />
-			<label class="ml-2" for={mapStyleItem.name}>{mapStyleItem.name}</label>
-		</div>
-	{/each}
+		{#each mapStyleList as mapStyleItem}
+			<div key={mapStyleItem.id}>
+				<input id={mapStyleItem.name} type="radio" value={mapStyleItem.id} checked={mapStyle === mapStyleItem.id} on:click={() => toggleStyle(mapStyleItem.id)} />
+				<label class="ml-2" for={mapStyleItem.name}>{mapStyleItem.name}</label>
+			</div>
+		{/each}
+	</div>
+
 </section>

@@ -3,7 +3,6 @@
 	import AlertCard from "components/widget/AlertCard.svelte";
 	export let gpsFilters;
 	export let gpsData;
-
 	const resetFilters = () => {
 		let tempArray = gpsFilters;
 		for (let i = 0; i < tempArray.length; i += 1) {
@@ -13,15 +12,14 @@
 		gpsFilters = tempArray;
 	};
 </script>
-
 {#if  gpsData.length <= 0}
 	<AlertCard title="Filters" message="GPS Data has not been loaded." styleColor="red" />
 {:else}
 	<section class="card h-fit scale-in-center">
+		<div class="p-4">
 		<p class="font-bold my-1">Filters:</p>
 		{#each gpsFilters as filterItem}
 			<p class="font-bold my-1">{filterItem.name}:</p>
-
 			<div class="py-1">
 				<RangeSlider
 					bind:values={filterItem.selected}
@@ -37,7 +35,7 @@
 				/>
 			</div>
 		{/each}
-
 		<button on:click={resetFilters} class={`card-btn card-btn-red my-1 `}> Reset All Filters </button>
+		</div>
 	</section>
 {/if}

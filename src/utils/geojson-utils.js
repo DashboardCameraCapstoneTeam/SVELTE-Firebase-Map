@@ -32,7 +32,6 @@ export const gpsJsonToGeojson = (rawData) => {
           Color: point.properties['marker-color'] ? point.properties['marker-color'] : 'Green',
         };
       }
-
       properties = point.properties;
       const feature = {
         type: 'Feature',

@@ -12,6 +12,5 @@ export const convertDateTimeToString = (timeStamp) => {
   } else {
     dateTimeString = timeStamp;
   }
-
   return dateTimeString;
 };

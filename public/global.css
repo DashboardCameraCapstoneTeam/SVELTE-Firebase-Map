@@ -23,8 +23,8 @@
   --card-bg-color: white;
   --card-text-color: black;
 
-  --btn-default: #f8f8f8;
-  --btn-default-hover: #b7bcc2;
+  --btn-default: #ffffff;
+  --btn-default-hover: #dbdbdb;
 }
 
 html {
@@ -70,6 +70,10 @@ h6 {
   background-color: var(--dark);
 }
 
+.borderRounded {
+  border-radius: 15px;
+}
+
 
 /* Since the new tip is absolutely-positioned, it doesn't force the rectangle up on its own */
 .mapboxgl-popup {
@@ -94,7 +98,6 @@ h6 {
 
 
 .card {
-  padding: 1rem;
   border-radius: 0.5rem;
   box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   font-size: 0.875rem;
@@ -174,6 +177,7 @@ h6 {
 
 
 .navbar-btn {
+  flex: auto ;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 1rem;
@@ -185,7 +189,6 @@ h6 {
   /* 8px */
   
   background-color: var(--btn-default);
-  width: 100%;
 
 }
 
@@ -306,4 +309,12 @@ h6 {
   place-items: center;
   height: 100%;
   width: 100%;
+}
+
+.dot {
+  height: 1rem;
+  width: 1rem;
+  background-color: var(--color);
+  border-radius: 50%;
+  display: inline-block;
 }
