@@ -5,7 +5,6 @@
 	import DateTime from "components/menu/DateTime.svelte";
 	import Layers from "components/map/Layers.svelte";
 	import MapStyleSelector from "components/map/MapStyleSelector.svelte";
-	import Filters from "components/menu/Filters.svelte";
 	import StreetView from "components/menu/StreetView.svelte";
 	import { fetchDataFromFirebase } from "service/google-firestore";
 	import { gpsJsonToGeojson } from "utils/geojson-utils.js";
@@ -19,7 +18,7 @@
 	import ButtonFlex from "../components/ButtonFlex.svelte";
 	import Recordings from "../layout/Recordings.svelte";
 	import Video from "../components/menu/Video.svelte";
-  import SpeedView from "../components/menu/SpeedView.svelte";
+	import SpeedView from "../components/menu/SpeedView.svelte";
 
 	export let user;
 	export let signOut;
@@ -49,10 +48,9 @@
 	let menuComponents = [
 		{ id: 0, title: "Date Time", icon: "fa-calendar-days" },
 		{ id: 1, title: "Street View", icon: "fa-road" },
-		{ id: 2, title: "Filter View", icon: "fa-filter" },
-		{ id: 3, title: "Profile", icon: "fa-user" },
-		{ id: 4, title: "Video Player", icon: "fa-video" },
-		{ id: 5, title: "Speed Legend", icon: "fa-gauge" },
+		{ id: 2, title: "Profile", icon: "fa-user" },
+		{ id: 3, title: "Video Player", icon: "fa-video" },
+		{ id: 4, title: "Speed Legend", icon: "fa-gauge" },
 	];
 	let selectedMenu = menuComponents[0].id;
 
@@ -67,6 +65,13 @@
 		if (response.status === 200) {
 			if (response.data.length >= 1) {
 				gpsData = gpsJsonToGeojson(response.data);
+				cityDetails = {
+					id: 0,
+					center: gpsData[0].features[0].geometry.coordinates,
+					zoom: 15,
+					pitch: 0,
+					bearing: -17.6,
+				};
 				alert("Successfully loaded Firebase Data");
 			} else {
 				alert("No GPS data found");
@@ -77,8 +82,6 @@
 		}
 		isLoading = false;
 	};
-
-	let gpsFilters = [{ id: "Count", name: "Item Count Filter", default: [0, 20], step: 1, suffix: "", selected: [0, 20] }];
 
 	const verifyAccessToken = async () => {
 		if (accessTokenValue === null) {
@@ -99,7 +102,7 @@
 	const fetchGPSDataForFile = async () => {
 		isLoading = true;
 		isError = false;
-	
+
 		const coordFile = getGoogleDriveCoordFile(selectedVideoFile, files);
 		if (coordFile) {
 			const response = await fetchGPSDataFromGoogleDrive(user, coordFile);
@@ -107,12 +110,12 @@
 				if (response.data) {
 					gpsData = gpsJsonToGeojson([response.data]);
 					cityDetails = {
-					id: 0,
-					center:  gpsData[0].features[0].geometry.coordinates,
-					zoom: 15,
-					pitch: 0,
-					bearing: -17.6,
-				};
+						id: 0,
+						center: gpsData[0].features[0].geometry.coordinates,
+						zoom: 15,
+						pitch: 0,
+						bearing: -17.6,
+					};
 					alert("Added Trip to the Map");
 				} else {
 					alert("No GPS data found");
@@ -144,7 +147,6 @@ car's driving metrics on the screen as your video plays."
 
 <section class="grid grid-cols-1  md:grid-cols-12 grid-rows-6  gap-4 my-4 px-4 h-fit ">
 	<div class="col-span-1 md:col-span-6 row-span-6 grid grid-cols-1 md:grid-cols-1 gap-4 h-fit">
-
 		<div class="col-span-1 md:col-span-1 row-span-1">
 			<Layers bind:layerList />
 		</div>
@@ -158,30 +160,24 @@ car's driving metrics on the screen as your video plays."
 		</div>
 
 		<div class={`col-span-1 md:col-span-1 row-span-1 ${selectedMenu === 2 ? "" : "hidden"}`}>
-			<Filters bind:gpsFilters bind:gpsData />
-		</div>
-
-		<div class={`col-span-1 md:col-span-1 row-span-1 ${selectedMenu === 3 ? "" : "hidden"}`}>
 			<Profile bind:user {signOut} />
 		</div>
 
-		<div class={`col-span-1 md:col-span-1 row-span-1 ${selectedMenu === 4 ? "" : "hidden"}`}>
+		<div class={`col-span-1 md:col-span-1 row-span-1 ${selectedMenu === 3 ? "" : "hidden"}`}>
 			<Video bind:selectedVideoFile />
 		</div>
 
-		<div class={`col-span-1 md:col-span-1 row-span-1 ${selectedMenu === 5 ? "" : "hidden"}`}>
-			<SpeedView  />
+		<div class={`col-span-1 md:col-span-1 row-span-1 ${selectedMenu === 4 ? "" : "hidden"}`}>
+			<SpeedView />
 		</div>
 
 		<div class="col-span-1 md:col-span-1 row-span-1">
 			<SearchDetails bind:dateTimeDictionary {fetchFirebaseData} />
 		</div>
-
-		
 	</div>
 
 	<div class="col-span-1 md:col-span-6  row-span-6 relative">
-		<Map bind:cityDetails bind:gpsFilters bind:gpsData bind:isReadyForStyleSwitching bind:layerList bind:mapStyle bind:pointOfInterest bind:selectedMenu />
+		<Map bind:cityDetails bind:gpsData bind:isReadyForStyleSwitching bind:layerList bind:mapStyle bind:pointOfInterest bind:selectedMenu />
 		<div class="absolute top-1 left-1 ">
 			<MapStyleSelector bind:mapStyle bind:isReadyForStyleSwitching />
 		</div>

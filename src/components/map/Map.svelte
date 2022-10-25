@@ -9,7 +9,6 @@
 	export let cityDetails;
 	export let pointOfInterest;
 	export let gpsData;
-	export let gpsFilters;
 	export let selectedMenu;
 	export let isReadyForStyleSwitching;
 	let map = null;
@@ -30,7 +29,7 @@
 		}
 
 		//Create the new element and change the layer list
-		const element = { id: uuidv4(), icon: faIcon, type: type, isShown: isShown, name: layerName, layerName: layerName, hasFilter:hasFilter, sourceName: sourceName, data: data };
+		const element = { id: uuidv4(), icon: faIcon, type: type, isShown: isShown, name: layerName, layerName: layerName, hasFilter: hasFilter, sourceName: sourceName, data: data };
 		tempList.push(element);
 		layerList = tempList;
 		return element;
@@ -38,7 +37,7 @@
 
 	const fetchInitialMapData = async () => {
 		try {
-			createElement((layerName = "3D-Buildings"), (sourceName = "composite"), (type = "Polygon"), (isShown = true), (faIcon = "fa-building"), (hasFilter=false), (data = null));
+			createElement((layerName = "3D-Buildings"), (sourceName = "composite"), (type = "Polygon"), (isShown = true), (faIcon = "fa-building"), (hasFilter = false), (data = null));
 		} catch (e) {
 			console.error(e);
 		}
@@ -252,10 +251,18 @@
 				const dataType = gpsElement.dataType;
 				const dataHasFilter = gpsElement.hasFilter;
 
-				let gpsListElement = createElement((layerName = dataName), (sourceName = dataSourceName), (type = dataType), (isShown = true), (faIcon = "fa-road"), (hasFilter = dataHasFilter), (data = gpsElement));
+				let gpsListElement = createElement(
+					(layerName = dataName),
+					(sourceName = dataSourceName),
+					(type = dataType),
+					(isShown = true),
+					(faIcon = "fa-road"),
+					(hasFilter = dataHasFilter),
+					(data = gpsElement)
+				);
 				addMapSource(gpsListElement);
 				if (dataType === "Point") {
-					addPointLayer(gpsListElement, "Count" , ["get", "Color"]);
+					addPointLayer(gpsListElement, "Count", ["get", "Color"]);
 				}
 			});
 		} catch (err) {
@@ -268,43 +275,6 @@
 		if (map === null || isReadyForStyleSwitching === false) return;
 		try {
 			map.setStyle("mapbox://styles/mapbox/" + mapStyle);
-		} catch (err) {
-			console.log(err);
-		}
-	};
-
-	const createFilterArray = () => {
-		if (map === null || gpsData.length <= 0) return;
-		let filterArray = ["all"];
-
-		for (let i = 0; i < gpsFilters.length; i++) {
-			let id = gpsFilters[i].id;
-			let min = gpsFilters[i].selected[0];
-			let max = gpsFilters[i].selected[1];
-
-			let minArray = [">=", ["get", id], min];
-			let maxArray = ["<=", ["get", id], max];
-			filterArray.push(minArray);
-			filterArray.push(maxArray);
-		}
-
-		return filterArray;
-	};
-
-	//GPS Filter shows and hides points on the map if the values change.
-	//To add another filter use >, <, = and the value
-	const addMapGPSFilters = () => {
-		if (map === null || gpsData.length <= 0) return;
-		try {
-			let filterArray = createFilterArray();
-			layerList.forEach(function (gpsElement) {
-				const dataName = gpsElement.layerName;
-				const dataHasFilter = gpsElement.hasFilter;
-			
-				if (dataName !== "3D-Buildings" && dataHasFilter) {
-					map.setFilter(dataName, filterArray);
-				}
-			});
 		} catch (err) {
 			console.log(err);
 		}
@@ -336,24 +306,22 @@
 		map.resize();
 	};
 
-	$: map && selectedMenu !== null && resizeMap();
-	$: map && mapStyle && isInitialDataLoaded && switchStyle();
-	$: map && gpsData && isInitialDataLoaded && addNewDynamicGPS();
-
-
-	const updateMapCenter = () =>{
+	const updateMapCenter = () => {
 		console.log(cityDetails);
 		if (map === null) return;
 		try {
-			
 			map.flyTo({
-				center: cityDetails.center
+				center: cityDetails.center,
+				zoom: cityDetails.zoom,
 			});
-		}catch(err){
+		} catch (err) {
 			console.log(err);
 		}
-	}
+	};
 
+	$: map && selectedMenu !== null && resizeMap();
+	$: map && mapStyle && isInitialDataLoaded && switchStyle();
+	$: map && gpsData && isInitialDataLoaded && addNewDynamicGPS();
 	$: map && cityDetails && isInitialDataLoaded && updateMapCenter();
 
 	onMount(async () => {
@@ -389,7 +357,6 @@
 		// Mapboxs normal way to show and hide layers. This calls the filter every second
 		map.on("idle", () => {
 			addMapFilter();
-			if (gpsData) addMapGPSFilters();
 		});
 
 		const interval = setInterval(function () {
