@@ -19,7 +19,10 @@
 		auth.signOut();
 	};
 
-	onDestroy(unsubscribe);
+	onDestroy(() =>{
+		auth.signOut();
+		unsubscribe;
+	});
 </script>
 
 {#if user}
