@@ -1,5 +1,5 @@
 <script>
-	import calculateFileSizeString from "utils/File-size.js";
+	import calculateFileSizeString from "utils/file-size.js";
 	export let videoFile;
 	export let deleteDriveFile;
 	export let startMachineLearning;
