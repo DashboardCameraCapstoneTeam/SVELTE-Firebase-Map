@@ -1,5 +1,5 @@
 <script>
-	export let selectedVideoFile = null;
+	export let selectedVideoFile;
 </script>
 
 <section class="card {selectedVideoFile == null ? 'h-fit' : 'h-96'} scale-in-center">

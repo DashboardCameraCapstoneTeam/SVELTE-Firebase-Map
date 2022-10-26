@@ -1,10 +1,10 @@
 <script>
-	export let getDriveFiles;
+	export let functionComponents;
 </script>
-
-
 <section class="shadow-xl">
 	<div class="flex flex-row ">
-		<button class={`navbar-btn navbar-btn-blue`} on:click={getDriveFiles}><i class="fa-brands fa-google-drive" /> Fetch Google Drive Data </button>
+		{#each functionComponents as menuItem}
+			<button class={` navbar-btn ${menuItem.id == 0 ? "navbar-btn-blue" : ""} `} on:click={() => menuItem.function()}><i class="{menuItem.icon} " /> {menuItem.title} </button>
+		{/each}
 	</div>
 </section>

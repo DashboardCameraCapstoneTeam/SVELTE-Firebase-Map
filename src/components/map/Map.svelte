@@ -307,7 +307,6 @@
 	};
 
 	const updateMapCenter = () => {
-		console.log(cityDetails);
 		if (map === null) return;
 		try {
 			map.flyTo({

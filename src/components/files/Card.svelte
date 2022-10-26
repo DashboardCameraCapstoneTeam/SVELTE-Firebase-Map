@@ -1,17 +1,14 @@
 <script>
 	import calculateFileSizeString from "utils/File-size.js";
-
 	export let videoFile;
 	export let deleteDriveFile;
 	export let startMachineLearning;
-	export let selectVideoFile;
+	export let fetchGPSDataForFile;
 </script>
-
-<section class="card h-fit scale-in-center">
+<section class="card h-fit">
 	<div class={`bg-dark rounded-lg py-5 text-center text-white sticky top-0 `}>
 		<p>{videoFile.name}</p>
 	</div>
-
 	<div class="p-4">
 		{#if videoFile.webViewLink && videoFile.thumbnailLink}
 			<a href={videoFile.webViewLink} target="_blank" class="text-white text-xl  borderRounded"
@@ -25,11 +22,9 @@
 				/></a
 			>
 		{/if}
-
 		<div class="my-4">
 			<p class="font-bold my-1">videoFile Name:</p>
 			<p class="truncate">{videoFile.name}</p>
-
 			<p class="font-bold my-1">Created Time:</p>
 			<p>{videoFile.createdTime}</p>
 			<p class="font-bold my-1">Owner:</p>
@@ -37,19 +32,16 @@
 			<p class="font-bold my-1">videoFile Size:</p>
 			<p>{calculateFileSizeString(videoFile.size)}</p>
 		</div>
-
 		<div class="flex">
 			<a a href={videoFile.webViewLink} target="_blank" class={`card-btn card-btn-blue my-1 mr-1`}>
 				<i class="fa-solid fa-eye" />
 				Watch
 			</a>
-
-			<button class={`card-btn card-btn-blue my-1`} on:click={() => selectVideoFile(videoFile)}>
+			<button class={`card-btn card-btn-blue my-1`} on:click={() => fetchGPSDataForFile(videoFile)}>
 				<i class="fa-solid fa-share" />
 				Add to Map
 			</button>
 		</div>
-
 		<hr class="solid my-4" />
 		<div class="flex">
 			<button class={`card-btn card-btn-red-outline my-1`} on:click={() => deleteDriveFile(videoFile)}>
@@ -57,7 +49,6 @@
 				Delete
 			</button>
 		</div>
-
 		<hr class="solid my-4" />
 		<div class="flex">
 			<button class={`card-btn card-btn-blue my-1`} on:click={() => startMachineLearning(videoFile)}>

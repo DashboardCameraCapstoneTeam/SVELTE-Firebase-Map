@@ -1,7 +1,7 @@
 <script>
-	import Footer from "components/Footer.svelte";
+	import Footer from "components/widget/Footer.svelte";
 	import Map from "components/map/Map.svelte";
-	import SearchDetails from "components/SearchDetails.svelte";
+	import SearchDetails from "components/menu/SearchDetails.svelte";
 	import DateTime from "components/menu/DateTime.svelte";
 	import Layers from "components/map/Layers.svelte";
 	import MapStyleSelector from "components/map/MapStyleSelector.svelte";
@@ -13,10 +13,10 @@
 	import Profile from "../components/menu/Profile.svelte";
 	import { getGoogleDriveCoordFile } from "utils/filter-data.js";
 	import { processWithMachineLearning, fetchGPSDataFromGoogleDrive } from "service/custom-api";
-	import PageHeader from "../components/PageHeader.svelte";
-	import AttentionBar from "../components/AttentionBar.svelte";
-	import ButtonFlex from "../components/ButtonFlex.svelte";
-	import Recordings from "../layout/Recordings.svelte";
+	import PageHeader from "../components/widget/PageHeader.svelte";
+	import AttentionBar from "../components/widget/AttentionBar.svelte";
+	import ButtonFlex from "../components/menu/ButtonFlex.svelte";
+	import Recordings from "./Recordings.svelte";
 	import Video from "../components/menu/Video.svelte";
 	import SpeedView from "../components/menu/SpeedView.svelte";
 
@@ -46,11 +46,10 @@
 	};
 
 	let menuComponents = [
-		{ id: 0, title: "Date Time", icon: "fa-calendar-days" },
+		{ id: 0, title: "Firebase", icon: "fa-database" },
 		{ id: 1, title: "Street View", icon: "fa-road" },
 		{ id: 2, title: "Profile", icon: "fa-user" },
 		{ id: 3, title: "Video Player", icon: "fa-video" },
-		{ id: 4, title: "Speed Legend", icon: "fa-gauge" },
 	];
 	let selectedMenu = menuComponents[0].id;
 
@@ -99,11 +98,11 @@
 		document.body.scrollIntoView();
 	}
 
-	const fetchGPSDataForFile = async () => {
+	const fetchGPSDataForFile = async (videoFile) => {
 		isLoading = true;
 		isError = false;
-
-		const coordFile = getGoogleDriveCoordFile(selectedVideoFile, files);
+		selectedVideoFile = videoFile;
+		const coordFile = getGoogleDriveCoordFile(videoFile, files);
 		if (coordFile) {
 			const response = await fetchGPSDataFromGoogleDrive(user, coordFile);
 			if (response.status === 200) {
@@ -128,13 +127,12 @@
 			alert("Coordinates File does not exist, but you can still view the video");
 		}
 
-		selectedMenu = 4;
+		selectedMenu = 3;
 		isLoading = false;
 		goTop();
 	};
 
 	let selectedVideoFile = null;
-	$: selectedVideoFile && fetchGPSDataForFile();
 </script>
 
 <PageHeader title={"Dashboard Camera Viewer"} color="bg-dark" zHeight="z-10" />
@@ -146,34 +144,37 @@ car's driving metrics on the screen as your video plays."
 <ButtonFlex bind:selectedMenu bind:menuComponents />
 
 <section class="grid grid-cols-1  md:grid-cols-12 grid-rows-6  gap-4 my-4 px-4 h-fit ">
-	<div class="col-span-1 md:col-span-6 row-span-6 grid grid-cols-1 md:grid-cols-1 gap-4 h-fit">
-		<div class="col-span-1 md:col-span-1 row-span-1">
+	<div class="col-span-1 md:col-span-6 row-span-6 grid grid-cols-1 md:grid-cols-3 gap-4 h-fit">
+		<div class="col-span-1 md:col-span-3 row-span-1">
 			<Layers bind:layerList />
 		</div>
 
-		<div class={`col-span-1 md:col-span-1 row-span-1 ${selectedMenu === 0 ? "" : "hidden"}`}>
-			<DateTime bind:dateTimeDictionary />
-		</div>
-
-		<div class={`col-span-1 md:col-span-1 row-span-1 ${selectedMenu === 1 ? "" : "hidden"}`}>
+		<div class={`col-span-1 md:col-span-3 row-span-1 ${selectedMenu === 1 ? "" : "hidden"}`}>
 			<StreetView bind:pointOfInterest />
 		</div>
 
-		<div class={`col-span-1 md:col-span-1 row-span-1 ${selectedMenu === 2 ? "" : "hidden"}`}>
+		<div class={`col-span-1 md:col-span-3 row-span-1 ${selectedMenu === 2 ? "" : "hidden"}`}>
 			<Profile bind:user {signOut} />
 		</div>
 
-		<div class={`col-span-1 md:col-span-1 row-span-1 ${selectedMenu === 3 ? "" : "hidden"}`}>
-			<Video bind:selectedVideoFile />
-		</div>
+		{#if selectedMenu === 3}
+			<div class={`col-span-1 md:col-span-3 row-span-1 `}>
+				<Video bind:selectedVideoFile />
+			</div>
 
-		<div class={`col-span-1 md:col-span-1 row-span-1 ${selectedMenu === 4 ? "" : "hidden"}`}>
-			<SpeedView />
-		</div>
+			<div class={`col-span-1 md:col-span-1 row-span-1 `}>
+				<SpeedView />
+			</div>
+		{/if}
 
-		<div class="col-span-1 md:col-span-1 row-span-1">
-			<SearchDetails bind:dateTimeDictionary {fetchFirebaseData} />
-		</div>
+		{#if selectedMenu === 0}
+			<div class="col-span-1 md:col-span-3 row-span-1">
+				<DateTime bind:dateTimeDictionary />
+			</div>
+			<div class="col-span-1 md:col-span-1 row-span-1">
+				<SearchDetails bind:dateTimeDictionary {fetchFirebaseData} />
+			</div>
+		{/if}
 	</div>
 
 	<div class="col-span-1 md:col-span-6  row-span-6 relative">
@@ -196,6 +197,6 @@ car's driving metrics on the screen as your video plays."
 	</div>
 </section>
 
-<Recordings bind:user bind:accessTokenValue {verifyAccessToken} bind:files bind:selectedVideoFile />
+<Recordings bind:user bind:accessTokenValue {verifyAccessToken} bind:files bind:selectedVideoFile {fetchGPSDataForFile} />
 
 <Footer />
