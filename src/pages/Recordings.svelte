@@ -17,8 +17,8 @@
 	export let fetchGPSDataForFile;
 
 	const saveFilesToLocalStorage = () => {
-		if (files.length > 0 && localStorage.getItem("Files") !== JSON.stringify(files)) {
-			localStorage.setItem("Files", JSON.stringify(files));
+		if (files.length > 0 && sessionStorage.getItem("Files") !== JSON.stringify(files)) {
+			sessionStorage.setItem("Files", JSON.stringify(files));
 		}
 	};
 

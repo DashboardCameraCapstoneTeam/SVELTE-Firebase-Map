@@ -91,8 +91,8 @@
 	};
 
 	let files = [];
-	if (localStorage.getItem("Files")) {
-		files = JSON.parse(localStorage.getItem("Files"));
+	if (sessionStorage.getItem("Files")) {
+		files = JSON.parse(sessionStorage.getItem("Files"));
 	}
 
 	let selectedVideoFile = null;

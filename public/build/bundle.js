@@ -2278,49 +2278,54 @@ var app = (function () {
 
     function create_fragment$g(ctx) {
     	let section;
+    	let div1;
     	let p;
     	let t0;
     	let t1;
     	let t2;
-    	let div;
+    	let div0;
     	let t3;
-    	let div_class_value;
+    	let div0_class_value;
 
     	const block = {
     		c: function create() {
     			section = element("section");
+    			div1 = element("div");
     			p = element("p");
     			t0 = text(/*title*/ ctx[0]);
     			t1 = text(":");
     			t2 = space();
-    			div = element("div");
+    			div0 = element("div");
     			t3 = text(/*message*/ ctx[1]);
     			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file$f, 7, 4, 186);
-    			attr_dev(div, "class", div_class_value = "alert alert-" + /*styleColor*/ ctx[2] + " my-1");
-    			attr_dev(div, "role", "alert");
-    			add_location(div, file$f, 8, 4, 230);
+    			add_location(p, file$f, 8, 2, 195);
+    			attr_dev(div0, "class", div0_class_value = "alert alert-" + /*styleColor*/ ctx[2] + " my-1");
+    			attr_dev(div0, "role", "alert");
+    			add_location(div0, file$f, 9, 2, 237);
+    			attr_dev(div1, "class", "p-4");
+    			add_location(div1, file$f, 7, 1, 174);
     			attr_dev(section, "class", "card h-fit scale-in-center");
-    			add_location(section, file$f, 6, 0, 136);
+    			add_location(section, file$f, 6, 0, 127);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
-    			append_dev(section, p);
+    			append_dev(section, div1);
+    			append_dev(div1, p);
     			append_dev(p, t0);
     			append_dev(p, t1);
-    			append_dev(section, t2);
-    			append_dev(section, div);
-    			append_dev(div, t3);
+    			append_dev(div1, t2);
+    			append_dev(div1, div0);
+    			append_dev(div0, t3);
     		},
     		p: function update(ctx, [dirty]) {
     			if (dirty & /*title*/ 1) set_data_dev(t0, /*title*/ ctx[0]);
     			if (dirty & /*message*/ 2) set_data_dev(t3, /*message*/ ctx[1]);
 
-    			if (dirty & /*styleColor*/ 4 && div_class_value !== (div_class_value = "alert alert-" + /*styleColor*/ ctx[2] + " my-1")) {
-    				attr_dev(div, "class", div_class_value);
+    			if (dirty & /*styleColor*/ 4 && div0_class_value !== (div0_class_value = "alert alert-" + /*styleColor*/ ctx[2] + " my-1")) {
+    				attr_dev(div0, "class", div0_class_value);
     			}
     		},
     		i: noop$2,
@@ -2344,9 +2349,9 @@ var app = (function () {
     function instance$g($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('AlertCard', slots, []);
-    	let { title = 'No Title' } = $$props;
-    	let { message = 'No Message' } = $$props;
-    	let { styleColor = 'blue' } = $$props;
+    	let { title = "No Title" } = $$props;
+    	let { message = "No Message" } = $$props;
+    	let { styleColor = "blue" } = $$props;
     	const writable_props = ['title', 'message', 'styleColor'];
 
     	Object.keys($$props).forEach(key => {
@@ -41142,7 +41147,7 @@ var app = (function () {
     	let t0_value = /*videoFile*/ ctx[0].name + "";
     	let t0;
     	let t1;
-    	let div5;
+    	let div4;
     	let t2;
     	let div1;
     	let p1;
@@ -41179,19 +41184,12 @@ var app = (function () {
     	let i1;
     	let t21;
     	let t22;
-    	let hr0;
+    	let hr;
     	let t23;
     	let div3;
     	let button1;
     	let i2;
     	let t24;
-    	let t25;
-    	let hr1;
-    	let t26;
-    	let div4;
-    	let button2;
-    	let i3;
-    	let t27;
     	let mounted;
     	let dispose;
     	let if_block = /*videoFile*/ ctx[0].webViewLink && /*videoFile*/ ctx[0].thumbnailLink && create_if_block$7(ctx);
@@ -41203,7 +41201,7 @@ var app = (function () {
     			p0 = element("p");
     			t0 = text(t0_value);
     			t1 = space();
-    			div5 = element("div");
+    			div4 = element("div");
     			if (if_block) if_block.c();
     			t2 = space();
     			div1 = element("div");
@@ -41240,19 +41238,12 @@ var app = (function () {
     			i1 = element("i");
     			t21 = text("\r\n\t\t\t\tAdd to Map");
     			t22 = space();
-    			hr0 = element("hr");
+    			hr = element("hr");
     			t23 = space();
     			div3 = element("div");
     			button1 = element("button");
     			i2 = element("i");
     			t24 = text("\r\n\t\t\t\tDelete");
-    			t25 = space();
-    			hr1 = element("hr");
-    			t26 = space();
-    			div4 = element("div");
-    			button2 = element("button");
-    			i3 = element("i");
-    			t27 = text("\r\n\t\t\t\tMachine Learning");
     			add_location(p0, file$7, 9, 2, 315);
     			attr_dev(div0, "class", `bg-dark rounded-lg py-5 text-center text-white sticky top-0 `);
     			add_location(div0, file$7, 8, 1, 235);
@@ -41284,24 +41275,16 @@ var app = (function () {
     			add_location(button0, file$7, 39, 3, 1403);
     			attr_dev(div2, "class", "flex");
     			add_location(div2, file$7, 34, 2, 1227);
-    			attr_dev(hr0, "class", "solid my-4");
-    			add_location(hr0, file$7, 44, 2, 1578);
+    			attr_dev(hr, "class", "solid my-4");
+    			add_location(hr, file$7, 44, 2, 1578);
     			attr_dev(i2, "class", "fa-solid fa-trash");
     			add_location(i2, file$7, 47, 4, 1733);
     			attr_dev(button1, "class", `card-btn card-btn-red-outline my-1`);
     			add_location(button1, file$7, 46, 3, 1630);
     			attr_dev(div3, "class", "flex");
     			add_location(div3, file$7, 45, 2, 1607);
-    			attr_dev(hr1, "class", "solid my-4");
-    			add_location(hr1, file$7, 51, 2, 1804);
-    			attr_dev(i3, "class", "fa-solid fa-robot");
-    			add_location(i3, file$7, 54, 4, 1957);
-    			attr_dev(button2, "class", `card-btn card-btn-blue my-1`);
-    			add_location(button2, file$7, 53, 3, 1856);
-    			attr_dev(div4, "class", "flex");
-    			add_location(div4, file$7, 52, 2, 1833);
-    			attr_dev(div5, "class", "p-4");
-    			add_location(div5, file$7, 11, 1, 350);
+    			attr_dev(div4, "class", "p-4");
+    			add_location(div4, file$7, 11, 1, 350);
     			attr_dev(section, "class", "card h-fit");
     			add_location(section, file$7, 7, 0, 204);
     		},
@@ -41314,10 +41297,10 @@ var app = (function () {
     			append_dev(div0, p0);
     			append_dev(p0, t0);
     			append_dev(section, t1);
-    			append_dev(section, div5);
-    			if (if_block) if_block.m(div5, null);
-    			append_dev(div5, t2);
-    			append_dev(div5, div1);
+    			append_dev(section, div4);
+    			if (if_block) if_block.m(div4, null);
+    			append_dev(div4, t2);
+    			append_dev(div4, div1);
     			append_dev(div1, p1);
     			append_dev(div1, t4);
     			append_dev(div1, p2);
@@ -41337,8 +41320,8 @@ var app = (function () {
     			append_dev(div1, t16);
     			append_dev(div1, p8);
     			append_dev(p8, t17);
-    			append_dev(div5, t18);
-    			append_dev(div5, div2);
+    			append_dev(div4, t18);
+    			append_dev(div4, div2);
     			append_dev(div2, a);
     			append_dev(a, i0);
     			append_dev(a, t19);
@@ -41346,26 +41329,18 @@ var app = (function () {
     			append_dev(div2, button0);
     			append_dev(button0, i1);
     			append_dev(button0, t21);
-    			append_dev(div5, t22);
-    			append_dev(div5, hr0);
-    			append_dev(div5, t23);
-    			append_dev(div5, div3);
+    			append_dev(div4, t22);
+    			append_dev(div4, hr);
+    			append_dev(div4, t23);
+    			append_dev(div4, div3);
     			append_dev(div3, button1);
     			append_dev(button1, i2);
     			append_dev(button1, t24);
-    			append_dev(div5, t25);
-    			append_dev(div5, hr1);
-    			append_dev(div5, t26);
-    			append_dev(div5, div4);
-    			append_dev(div4, button2);
-    			append_dev(button2, i3);
-    			append_dev(button2, t27);
 
     			if (!mounted) {
     				dispose = [
     					listen_dev(button0, "click", /*click_handler*/ ctx[4], false, false, false),
-    					listen_dev(button1, "click", /*click_handler_1*/ ctx[5], false, false, false),
-    					listen_dev(button2, "click", /*click_handler_2*/ ctx[6], false, false, false)
+    					listen_dev(button1, "click", /*click_handler_1*/ ctx[5], false, false, false)
     				];
 
     				mounted = true;
@@ -41380,7 +41355,7 @@ var app = (function () {
     				} else {
     					if_block = create_if_block$7(ctx);
     					if_block.c();
-    					if_block.m(div5, t2);
+    					if_block.m(div4, t2);
     				}
     			} else if (if_block) {
     				if_block.d(1);
@@ -41432,13 +41407,12 @@ var app = (function () {
 
     	const click_handler = () => fetchGPSDataForFile(videoFile);
     	const click_handler_1 = () => deleteDriveFile(videoFile);
-    	const click_handler_2 = () => startMachineLearning(videoFile);
 
     	$$self.$$set = $$props => {
     		if ('videoFile' in $$props) $$invalidate(0, videoFile = $$props.videoFile);
     		if ('deleteDriveFile' in $$props) $$invalidate(1, deleteDriveFile = $$props.deleteDriveFile);
-    		if ('startMachineLearning' in $$props) $$invalidate(2, startMachineLearning = $$props.startMachineLearning);
-    		if ('fetchGPSDataForFile' in $$props) $$invalidate(3, fetchGPSDataForFile = $$props.fetchGPSDataForFile);
+    		if ('startMachineLearning' in $$props) $$invalidate(3, startMachineLearning = $$props.startMachineLearning);
+    		if ('fetchGPSDataForFile' in $$props) $$invalidate(2, fetchGPSDataForFile = $$props.fetchGPSDataForFile);
     	};
 
     	$$self.$capture_state = () => ({
@@ -41452,8 +41426,8 @@ var app = (function () {
     	$$self.$inject_state = $$props => {
     		if ('videoFile' in $$props) $$invalidate(0, videoFile = $$props.videoFile);
     		if ('deleteDriveFile' in $$props) $$invalidate(1, deleteDriveFile = $$props.deleteDriveFile);
-    		if ('startMachineLearning' in $$props) $$invalidate(2, startMachineLearning = $$props.startMachineLearning);
-    		if ('fetchGPSDataForFile' in $$props) $$invalidate(3, fetchGPSDataForFile = $$props.fetchGPSDataForFile);
+    		if ('startMachineLearning' in $$props) $$invalidate(3, startMachineLearning = $$props.startMachineLearning);
+    		if ('fetchGPSDataForFile' in $$props) $$invalidate(2, fetchGPSDataForFile = $$props.fetchGPSDataForFile);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -41463,11 +41437,10 @@ var app = (function () {
     	return [
     		videoFile,
     		deleteDriveFile,
-    		startMachineLearning,
     		fetchGPSDataForFile,
+    		startMachineLearning,
     		click_handler,
-    		click_handler_1,
-    		click_handler_2
+    		click_handler_1
     	];
     }
 
@@ -41478,8 +41451,8 @@ var app = (function () {
     		init(this, options, instance$8, create_fragment$8, safe_not_equal, {
     			videoFile: 0,
     			deleteDriveFile: 1,
-    			startMachineLearning: 2,
-    			fetchGPSDataForFile: 3
+    			startMachineLearning: 3,
+    			fetchGPSDataForFile: 2
     		});
 
     		dispatch_dev("SvelteRegisterComponent", {
@@ -41500,11 +41473,11 @@ var app = (function () {
     			console.warn("<Card> was created without expected prop 'deleteDriveFile'");
     		}
 
-    		if (/*startMachineLearning*/ ctx[2] === undefined && !('startMachineLearning' in props)) {
+    		if (/*startMachineLearning*/ ctx[3] === undefined && !('startMachineLearning' in props)) {
     			console.warn("<Card> was created without expected prop 'startMachineLearning'");
     		}
 
-    		if (/*fetchGPSDataForFile*/ ctx[3] === undefined && !('fetchGPSDataForFile' in props)) {
+    		if (/*fetchGPSDataForFile*/ ctx[2] === undefined && !('fetchGPSDataForFile' in props)) {
     			console.warn("<Card> was created without expected prop 'fetchGPSDataForFile'");
     		}
     	}
@@ -41920,7 +41893,7 @@ var app = (function () {
     			div = element("div");
     			create_component(alertcard.$$.fragment);
     			attr_dev(div, "class", "col-span-1 md:col-span-3");
-    			add_location(div, file$5, 135, 2, 5188);
+    			add_location(div, file$5, 135, 2, 5192);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -41974,7 +41947,7 @@ var app = (function () {
     			div = element("div");
     			create_component(alertcard.$$.fragment);
     			attr_dev(div, "class", "col-span-1 md:col-span-3");
-    			add_location(div, file$5, 131, 2, 5010);
+    			add_location(div, file$5, 131, 2, 5014);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -42039,7 +42012,7 @@ var app = (function () {
     			create_component(card.$$.fragment);
     			t = space();
     			attr_dev(div, "class", "col-span-1 md:col-span-3");
-    			add_location(div, file$5, 141, 4, 5448);
+    			add_location(div, file$5, 141, 4, 5452);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -42220,7 +42193,7 @@ var app = (function () {
     			section = element("section");
     			if_block.c();
     			attr_dev(section, "class", "grid grid-cols-1 md:grid-cols-12 gap-4 my-4 px-4 h-fit divide-x-1 ");
-    			add_location(section, file$5, 129, 0, 4897);
+    			add_location(section, file$5, 129, 0, 4901);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -42321,8 +42294,8 @@ var app = (function () {
     	let { fetchGPSDataForFile } = $$props;
 
     	const saveFilesToLocalStorage = () => {
-    		if (files.length > 0 && localStorage.getItem("Files") !== JSON.stringify(files)) {
-    			localStorage.setItem("Files", JSON.stringify(files));
+    		if (files.length > 0 && sessionStorage.getItem("Files") !== JSON.stringify(files)) {
+    			sessionStorage.setItem("Files", JSON.stringify(files));
     		}
     	};
 
@@ -86914,9 +86887,9 @@ var app = (function () {
     			div1 = element("div");
     			create_component(searchdetails.$$.fragment);
     			attr_dev(div0, "class", "col-span-1 md:col-span-3 row-span-1");
-    			add_location(div0, file$1, 157, 3, 4805);
+    			add_location(div0, file$1, 157, 3, 4809);
     			attr_dev(div1, "class", "col-span-1 md:col-span-3 row-span-1");
-    			add_location(div1, file$1, 160, 3, 4912);
+    			add_location(div1, file$1, 160, 3, 4916);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div0, anchor);
@@ -87002,7 +86975,7 @@ var app = (function () {
     			div = element("div");
     			create_component(profile.$$.fragment);
     			attr_dev(div, "class", `col-span-1 md:col-span-3 row-span-1 `);
-    			add_location(div, file$1, 170, 3, 5228);
+    			add_location(div, file$1, 170, 3, 5232);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -87112,11 +87085,11 @@ var app = (function () {
     			div2 = element("div");
     			create_component(speedview.$$.fragment);
     			attr_dev(div0, "class", `col-span-1 md:col-span-3 row-span-1 `);
-    			add_location(div0, file$1, 176, 3, 5372);
+    			add_location(div0, file$1, 176, 3, 5376);
     			attr_dev(div1, "class", "col-span-1 md:col-span-2 row-span-1");
-    			add_location(div1, file$1, 180, 3, 5480);
+    			add_location(div1, file$1, 180, 3, 5484);
     			attr_dev(div2, "class", `col-span-1 md:col-span-1 row-span-1 `);
-    			add_location(div2, file$1, 184, 3, 5588);
+    			add_location(div2, file$1, 184, 3, 5592);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div0, anchor);
@@ -87205,9 +87178,9 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Loading Data...";
     			attr_dev(p, "class", "align-middle");
-    			add_location(p, file$1, 198, 4, 6128);
+    			add_location(p, file$1, 198, 4, 6132);
     			attr_dev(div, "class", "absolute top-0 z-100 map-loading rounded-lg");
-    			add_location(div, file$1, 197, 3, 6065);
+    			add_location(div, file$1, 197, 3, 6069);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -87240,9 +87213,9 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Error, unable to Fetch Data";
     			attr_dev(p, "class", "align-middle");
-    			add_location(p, file$1, 204, 4, 6285);
+    			add_location(p, file$1, 204, 4, 6289);
     			attr_dev(div, "class", "absolute top-0 z-100 map-error rounded-lg");
-    			add_location(div, file$1, 203, 3, 6224);
+    			add_location(div, file$1, 203, 3, 6228);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -87555,17 +87528,17 @@ var app = (function () {
     			t12 = space();
     			create_component(footer.$$.fragment);
     			attr_dev(div0, "class", "col-span-1 md:col-span-3 row-span-1");
-    			add_location(div0, file$1, 152, 2, 4681);
+    			add_location(div0, file$1, 152, 2, 4685);
     			attr_dev(div1, "class", div1_class_value = `col-span-1 md:col-span-3 row-span-1 ${/*selectedMenu*/ ctx[10] === 1 ? "" : "hidden"}`);
-    			add_location(div1, file$1, 165, 2, 5054);
+    			add_location(div1, file$1, 165, 2, 5058);
     			attr_dev(div2, "class", "col-span-1 md:col-span-6 row-span-6 grid grid-cols-1 md:grid-cols-3 gap-4 h-fit");
-    			add_location(div2, file$1, 151, 1, 4584);
+    			add_location(div2, file$1, 151, 1, 4588);
     			attr_dev(div3, "class", "absolute top-1 left-1 ");
-    			add_location(div3, file$1, 192, 2, 5915);
+    			add_location(div3, file$1, 192, 2, 5919);
     			attr_dev(div4, "class", "col-span-1 md:col-span-6 row-span-6 relative");
-    			add_location(div4, file$1, 190, 1, 5713);
+    			add_location(div4, file$1, 190, 1, 5717);
     			attr_dev(section, "class", "grid grid-cols-1 md:grid-cols-12 grid-rows-6 gap-4 my-4 px-4 h-fit ");
-    			add_location(section, file$1, 150, 0, 4494);
+    			add_location(section, file$1, 150, 0, 4498);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -87988,8 +87961,8 @@ var app = (function () {
 
     	let files = [];
 
-    	if (localStorage.getItem("Files")) {
-    		files = JSON.parse(localStorage.getItem("Files"));
+    	if (sessionStorage.getItem("Files")) {
+    		files = JSON.parse(sessionStorage.getItem("Files"));
     	}
 
     	let selectedVideoFile = null;
