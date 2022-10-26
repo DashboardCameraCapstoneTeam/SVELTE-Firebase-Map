@@ -19,6 +19,7 @@
 	import Recordings from "./Recordings.svelte";
 	import Video from "../components/menu/Video.svelte";
 	import SpeedView from "../components/menu/SpeedView.svelte";
+	import SpeedChart from "../components/menu/SpeedChart.svelte";
 
 	export let user;
 	export let signOut;
@@ -94,6 +95,9 @@
 		files = JSON.parse(localStorage.getItem("Files"));
 	}
 
+	let selectedVideoFile = null;
+	let selectedGPSData = null;
+
 	function goTop() {
 		document.body.scrollIntoView();
 	}
@@ -115,6 +119,7 @@
 						pitch: 0,
 						bearing: -17.6,
 					};
+					selectedGPSData = gpsData[0];
 					alert("Added Trip to the Map");
 				} else {
 					alert("No GPS data found");
@@ -125,14 +130,14 @@
 			}
 		} else {
 			alert("Coordinates File does not exist, but you can still view the video");
+			selectedGPSData = null;
+			gpsData = [];
 		}
 
 		selectedMenu = 3;
 		isLoading = false;
 		goTop();
 	};
-
-	let selectedVideoFile = null;
 </script>
 
 <PageHeader title={"Dashboard Camera Viewer"} color="bg-dark" zHeight="z-10" />
@@ -149,30 +154,36 @@ car's driving metrics on the screen as your video plays."
 			<Layers bind:layerList />
 		</div>
 
+		{#if selectedMenu === 0}
+			<div class="col-span-1 md:col-span-3 row-span-1">
+				<DateTime bind:dateTimeDictionary />
+			</div>
+			<div class="col-span-1 md:col-span-3 row-span-1">
+				<SearchDetails bind:dateTimeDictionary {fetchFirebaseData} />
+			</div>
+		{/if}
+
 		<div class={`col-span-1 md:col-span-3 row-span-1 ${selectedMenu === 1 ? "" : "hidden"}`}>
 			<StreetView bind:pointOfInterest />
 		</div>
 
-		<div class={`col-span-1 md:col-span-3 row-span-1 ${selectedMenu === 2 ? "" : "hidden"}`}>
-			<Profile bind:user {signOut} />
-		</div>
+		{#if selectedMenu === 2}
+			<div class={`col-span-1 md:col-span-3 row-span-1 `}>
+				<Profile bind:user {signOut} />
+			</div>
+		{/if}
 
 		{#if selectedMenu === 3}
 			<div class={`col-span-1 md:col-span-3 row-span-1 `}>
 				<Video bind:selectedVideoFile />
 			</div>
 
-			<div class={`col-span-1 md:col-span-1 row-span-1 `}>
-				<SpeedView />
+			<div class="col-span-1 md:col-span-2 row-span-1">
+				<SpeedChart bind:selectedGPSData />
 			</div>
-		{/if}
 
-		{#if selectedMenu === 0}
-			<div class="col-span-1 md:col-span-3 row-span-1">
-				<DateTime bind:dateTimeDictionary />
-			</div>
-			<div class="col-span-1 md:col-span-1 row-span-1">
-				<SearchDetails bind:dateTimeDictionary {fetchFirebaseData} />
+			<div class={`col-span-1 md:col-span-1 row-span-1 `}>
+				<SpeedView bind:selectedGPSData/>
 			</div>
 		{/if}
 	</div>

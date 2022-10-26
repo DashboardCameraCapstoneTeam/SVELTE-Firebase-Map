@@ -4,6 +4,16 @@
 /* eslint-disable no-restricted-syntax */
 import { v4 as uuidv4 } from 'uuid';
 
+const getSpeed = (properties) => {
+  for (const [key, value] of Object.entries(properties)) {
+    const lowerKey = key.toLowerCase();
+    if (lowerKey.includes('speed')) {
+      return value;
+    }
+  }
+  return 0;
+};
+
 export const gpsJsonToGeojson = (rawData) => {
   const geoJsonArray = [];
   rawData.forEach((rawGeoJsonFile) => {
@@ -28,11 +38,11 @@ export const gpsJsonToGeojson = (rawData) => {
           Id: point.properties.Id ? point.properties.Id : uuidv4(),
           Item: point.properties.Item ? point.properties.Item : 'POI',
           Count: point.properties.Count ? point.properties.Count : 1,
-          Time: point.properties.Time ? point.properties.Time : '00-00',
-          Color: point.properties['marker-color'] ? point.properties['marker-color'] : 'Green',
+          Color: point.properties['Color'] ? point.properties['Color'] : 'Green',
         };
       }
       properties = point.properties;
+      properties['Speed'] = getSpeed(properties);
       const feature = {
         type: 'Feature',
         geometry: { type: point.geometry.type, coordinates: coordinate },
