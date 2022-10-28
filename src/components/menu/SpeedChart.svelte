@@ -97,6 +97,7 @@
 					orientation: "horizontal",
 				})
 			);
+			chart.set("scrollbarY", am5.Scrollbar.new(root, { orientation: "vertical" }));
 			let chartData = filterGPSData();
 			xAxis.data.setAll(chartData);
 			series.data.setAll(chartData);
