@@ -16,11 +16,7 @@
 	export let selectedVideoFile;
 	export let fetchGPSDataForFile;
 
-	const saveFilesToLocalStorage = () => {
-		if (files.length > 0 && sessionStorage.getItem("Files") !== JSON.stringify(files)) {
-			sessionStorage.setItem("Files", JSON.stringify(files));
-		}
-	};
+
 
 	const getDriveFiles = async () => {
 		await verifyAccessToken();
@@ -29,8 +25,6 @@
 			response.data.files.length >= 1 ? alert("Found Dashcam Files") : alert("No Dashcam Files found");
 			files = response.data.files;
 			console.log("App.js | files", response.data.files);
-
-			saveFilesToLocalStorage();
 		} else {
 			alert(response.message);
 		}
@@ -64,7 +58,6 @@
 		}
 
 		files = tempList;
-		saveFilesToLocalStorage();
 	};
 
 	const startMachineLearning = async (videoFile) => {

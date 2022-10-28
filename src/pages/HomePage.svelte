@@ -20,6 +20,7 @@
 	import Video from "../components/menu/Video.svelte";
 	import SpeedView from "../components/menu/SpeedView.svelte";
 	import SpeedChart from "../components/menu/SpeedChart.svelte";
+  import LoadingSpinner from "../components/loading/LoadingSpinner.svelte";
 
 	export let user;
 	export let signOut;
@@ -91,10 +92,6 @@
 	};
 
 	let files = [];
-	if (sessionStorage.getItem("Files")) {
-		files = JSON.parse(sessionStorage.getItem("Files"));
-	}
-
 	let selectedVideoFile = null;
 	let selectedGPSData = null;
 
@@ -196,7 +193,7 @@ car's driving metrics on the screen as your video plays."
 
 		{#if isLoading === true}
 			<div class="absolute top-0 z-100 map-loading rounded-lg">
-				<p class="align-middle">Loading Data...</p>
+				<LoadingSpinner />
 			</div>
 		{/if}
 

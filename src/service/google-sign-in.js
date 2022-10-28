@@ -8,4 +8,4 @@ export const googleSignIn = async () => {
 
   return accessToken;
 };
-export default googleSignIn();
+export default googleSignIn;
