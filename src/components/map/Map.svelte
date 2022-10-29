@@ -57,11 +57,15 @@
 	const addDataSources = () => {
 		try {
 			//Get the elements
-			const BuildingsElement = getObjectsWhereKeyEqualsValue(layerList, "layerName", "3D-Buildings")[0];
-
-			//Add the layer
 			addTerrainLayer();
-			addBuildingLayer(BuildingsElement);
+
+			layerList.forEach(function (gpsElement) {
+				const dataName = gpsElement.layerName;
+				//Add the buildings layer
+				if (dataName.includes("Buildings")) {
+					addBuildingLayer(gpsElement);
+				}
+			});
 			isInitialDataLoaded = true;
 		} catch (e) {
 			console.error(e);
@@ -245,7 +249,6 @@
 		if (map === null || gpsData.length <= 0) return;
 		try {
 			gpsData.forEach(function (gpsElement) {
-				console.log(gpsElement);
 				const dataName = gpsElement.dataName;
 				const dataSourceName = `${dataName}Source`;
 				const dataType = gpsElement.dataType;

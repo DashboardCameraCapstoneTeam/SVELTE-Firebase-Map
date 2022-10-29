@@ -20,7 +20,9 @@
 	import Video from "../components/menu/Video.svelte";
 	import SpeedView from "../components/menu/SpeedView.svelte";
 	import SpeedChart from "../components/menu/SpeedChart.svelte";
-  import LoadingSpinner from "../components/loading/LoadingSpinner.svelte";
+	import LoadingSpinner from "../components/loading/LoadingSpinner.svelte";
+	import TableView from "../components/menu/TableView.svelte";
+	import ModalCard from "../components/widget/ModalCard.svelte";
 
 	export let user;
 	export let signOut;
@@ -29,6 +31,16 @@
 		accessTokenValue = value;
 	});
 
+	let isModalOpen = false;
+	let modalPayload = {
+		title: "",
+		message: "",
+		successFunction: null,
+		successBtnMessage: "",
+		element: null,
+		cancelBtnMessage: "",
+		cancelFunction: null,
+	};
 	let isReadyForStyleSwitching = false;
 	let pointOfInterest = null;
 	let layerList = [];
@@ -58,14 +70,14 @@
 	let gpsData = [];
 	let isLoading = false;
 	let isError = false;
-
+	let selectedFirebaseGPSData = [];
 	const fetchFirebaseData = async () => {
 		isLoading = true;
 		isError = false;
 		const response = await fetchDataFromFirebase(user, dateTimeDictionary);
 		if (response.status === 200) {
-			if (response.data.length >= 1) {
-				gpsData = gpsJsonToGeojson(response.data);
+			if (response.documentList.length >= 1) {
+				gpsData = gpsJsonToGeojson(response.documentList);
 				cityDetails = {
 					id: 0,
 					center: gpsData[0].features[0].geometry.coordinates,
@@ -73,6 +85,7 @@
 					pitch: 0,
 					bearing: -17.6,
 				};
+				selectedFirebaseGPSData = gpsData;
 				alert("Successfully loaded Firebase Data");
 			} else {
 				alert("No GPS data found");
@@ -82,6 +95,36 @@
 			isError = true;
 		}
 		isLoading = false;
+	};
+
+	const closeModal = () => {
+		modalPayload = {
+			title: "",
+			message: "",
+			successFunction: null,
+			successBtnMessage: "",
+			element: null,
+			cancelBtnMessage: "",
+			cancelFunction: null,
+		};
+		isModalOpen = false;
+	};
+
+	const openModel = (title = "Title", message = "Message", successBtnMessage = "Okay", successFunction = null, element = null, cancelBtnMessage = "Cancel", cancelFunction = closeModal) => {
+		modalPayload = {
+			title,
+			message,
+			successBtnMessage,
+			successFunction,
+			element,
+			cancelBtnMessage,
+			cancelFunction,
+		};
+		isModalOpen = true;
+	};
+
+	const deleteFirebaseElement = async () => {
+		console.log("Bruh");
 	};
 
 	const verifyAccessToken = async () => {
@@ -137,6 +180,10 @@
 	};
 </script>
 
+{#if isModalOpen}
+	<ModalCard bind:modalPayload />
+{/if}
+
 <PageHeader title={"Dashboard Camera Viewer"} color="bg-dark" zHeight="z-10" />
 <AttentionBar
 	message="Dashcam Viewer shows all of your trips data. It displays your
@@ -151,6 +198,9 @@ car's driving metrics on the screen as your video plays."
 			<Layers bind:layerList />
 		</div>
 
+		<div class="col-span-1 md:col-span-3 row-span-1">
+			<TableView bind:selectedFirebaseGPSData {openModel} {deleteFirebaseElement} />
+		</div>
 		{#if selectedMenu === 0}
 			<div class="col-span-1 md:col-span-3 row-span-1">
 				<DateTime bind:dateTimeDictionary />
@@ -180,7 +230,7 @@ car's driving metrics on the screen as your video plays."
 			</div>
 
 			<div class={`col-span-1 md:col-span-1 row-span-1 `}>
-				<SpeedView bind:selectedGPSData/>
+				<SpeedView bind:selectedGPSData />
 			</div>
 		{/if}
 	</div>
@@ -205,6 +255,6 @@ car's driving metrics on the screen as your video plays."
 	</div>
 </section>
 
-<Recordings bind:user bind:accessTokenValue {verifyAccessToken} bind:files bind:selectedVideoFile {fetchGPSDataForFile} />
+<Recordings {openModel} bind:user bind:accessTokenValue {verifyAccessToken} bind:files bind:selectedVideoFile {fetchGPSDataForFile} />
 
 <Footer />

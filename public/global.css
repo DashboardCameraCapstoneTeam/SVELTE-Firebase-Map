@@ -149,6 +149,18 @@ h6 {
   background-color: var(--error-color);
 }
 
+
+.card-btn-black-outline {
+  border: 2px solid var(--dark);
+  transition: all 200ms;
+}
+
+.card-btn-black-outline:hover {
+  color: white;
+  background-color: var(--dark);
+}
+
+
 .card-btn-red-outline {
   color: var(--error-color);
   border: 2px solid var(--error-color);
@@ -317,4 +329,71 @@ h6 {
   background-color: var(--color);
   border-radius: 50%;
   display: inline-block;
+}
+
+
+.table th:first-child{
+  border-top-left-radius: 0.5rem;
+}
+
+.table th:last-child{
+  border-top-right-radius: 0.5rem;
+}
+
+.table td, .table th {
+  
+  border: 1px solid #ddd;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.table tr:nth-child(even){background-color: var(--smoke);}
+
+.table tr:hover {background-color: var(--smoke);}
+
+.table th {
+  text-align: left;
+  background-color: var(--primary-color);
+  color: white;
+}
+
+
+
+.table-btn {
+  display: inline-block;
+  padding: 1rem;
+  text-align: left;
+  -webkit-transition: all 200ms;
+  transition: all 200ms;
+  border-radius: 0.5rem;
+  width: 100%;
+}
+
+
+.modal {
+  position: fixed; /* Stay in place */
+  z-index:100; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+  margin: 15% auto; /* 15% from the top and centered */
+  width: 40%; /* Could be more or less, depending on screen size */
+  border-radius: 0.5rem;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  background-color: var(--card-bg-color);
+  color: var(--card-text-color);
+  border-width: 2px;
+  border-style: solid; 
 }

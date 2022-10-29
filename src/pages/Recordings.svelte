@@ -15,8 +15,7 @@
 	export let accessTokenValue;
 	export let selectedVideoFile;
 	export let fetchGPSDataForFile;
-
-
+	export let openModel;
 
 	const getDriveFiles = async () => {
 		await verifyAccessToken();
@@ -48,9 +47,13 @@
 			if (response.status === 204) {
 				tempList = tempList.filter((item) => item.id !== videoFile.id);
 				//* Remove the selected videoFile if deleted
-				if (selectedVideoFile.id == videoFile.id) {
-					selectedVideoFile = null;
+
+				if (selectedVideoFile) {
+					if (selectedVideoFile.id == videoFile.id) {
+						selectedVideoFile = null;
+					}
 				}
+
 				alert("Successfully Deleted Google Drive Video File");
 			} else {
 				alert("Cannot delete Google Drive Video File");
@@ -133,7 +136,7 @@
 		{#each files as videoFile}
 			{#if videoFile.fileExtension === "MP4" || videoFile.fileExtension === "mp4"}
 				<div class="col-span-1 md:col-span-3">
-					<Card bind:videoFile {deleteDriveFile} {startMachineLearning} {fetchGPSDataForFile}/>
+					<Card {openModel} bind:videoFile {deleteDriveFile} {startMachineLearning} {fetchGPSDataForFile} />
 				</div>
 			{/if}
 		{/each}

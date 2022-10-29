@@ -4,7 +4,9 @@
 	export let deleteDriveFile;
 	export let startMachineLearning;
 	export let fetchGPSDataForFile;
+	export let openModel;
 </script>
+
 <section class="card h-fit">
 	<div class={`bg-dark rounded-lg py-5 text-center text-white sticky top-0 `}>
 		<p>{videoFile.name}</p>
@@ -44,7 +46,10 @@
 		</div>
 		<hr class="solid my-4" />
 		<div class="flex">
-			<button class={`card-btn card-btn-red-outline my-1`} on:click={() => deleteDriveFile(videoFile)}>
+			<button
+				class={`card-btn card-btn-red-outline my-1`}
+				on:click={() => openModel("Delete Google Drive Recording", "Do you want to delete the Google Drive Recording?", "Delete Recording", deleteDriveFile, videoFile)}
+			>
 				<i class="fa-solid fa-trash" />
 				Delete
 			</button>
