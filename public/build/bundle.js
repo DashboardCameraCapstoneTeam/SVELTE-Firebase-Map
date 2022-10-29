@@ -38167,7 +38167,6 @@ var app = (function () {
         let isDocumentDeleted = false;
         querySnapshot.forEach((document) => {
           if (document.id === documentId) {
-            console.log(document);
             Il(document.ref);
             isDocumentDeleted = true;
           }
@@ -38177,7 +38176,6 @@ var app = (function () {
         }
         return { status: 400, message: 'Document does not exist' };
       } catch (error) {
-        console.log(error);
         return error;
       }
     };

@@ -39,7 +39,6 @@ export const deleteDocumentFromFirebase = async (user, documentId) => {
     let isDocumentDeleted = false;
     querySnapshot.forEach((document) => {
       if (document.id === documentId) {
-        console.log(document);
         deleteDoc(document.ref);
         isDocumentDeleted = true;
       }
@@ -49,7 +48,6 @@ export const deleteDocumentFromFirebase = async (user, documentId) => {
     }
     return { status: 400, message: 'Document does not exist' };
   } catch (error) {
-    console.log(error);
     return error;
   }
 };
