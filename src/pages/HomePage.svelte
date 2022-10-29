@@ -6,7 +6,7 @@
 	import Layers from "components/map/Layers.svelte";
 	import MapStyleSelector from "components/map/MapStyleSelector.svelte";
 	import StreetView from "components/menu/StreetView.svelte";
-	import { fetchDataFromFirebase } from "service/google-firestore";
+	import { fetchDataFromFirebase, deleteDocumentFromFirebase } from "service/google-firestore";
 	import { gpsJsonToGeojson } from "utils/geojson-utils.js";
 	import { googleSignIn } from "service/google-sign-in";
 	import { accessToken } from "store/access-token-store.js";
@@ -123,8 +123,28 @@
 		isModalOpen = true;
 	};
 
-	const deleteFirebaseElement = async () => {
-		console.log("Bruh");
+	const deleteFirebaseElement = async (documentId) => {
+		
+		const response = await deleteDocumentFromFirebase(user, documentId);
+		if (response.status === 200) {
+
+			let tempGPSData = selectedFirebaseGPSData;
+			tempGPSData = tempGPSData.filter((obj) => obj.dataId !== documentId);
+			gpsData = tempGPSData;
+			cityDetails = {
+				id: 0,
+				center: gpsData[0].features[0].geometry.coordinates,
+				zoom: 15,
+				pitch: 0,
+				bearing: -17.6,
+			};
+			selectedFirebaseGPSData = gpsData;
+			alert("Successfully Deleted GPS Data");
+		} else {
+			console.log(response)
+			alert(response);
+			isError = true;
+		}
 	};
 
 	const verifyAccessToken = async () => {

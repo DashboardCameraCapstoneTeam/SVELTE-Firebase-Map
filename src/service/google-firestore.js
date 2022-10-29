@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import {
-  collection, query, orderBy, doc, getDocs, where,
+  collection, query, orderBy, doc, getDocs, where, deleteDoc,
 } from 'firebase/firestore';
 import { db, firebase } from '../config/firebase';
 
@@ -27,6 +27,29 @@ export const fetchDataFromFirebase = async (user, dateTimeDictionary) => {
 
     return { status: 200, documentList };
   } catch (error) {
+    return error;
+  }
+};
+
+export const deleteDocumentFromFirebase = async (user, documentId) => {
+  try {
+    const docRef = doc(db, 'users', user.uid);
+    const colRef = query(collection(docRef, 'geojson'));
+    const querySnapshot = await getDocs(colRef);
+    let isDocumentDeleted = false;
+    querySnapshot.forEach((document) => {
+      if (document.id === documentId) {
+        console.log(document);
+        deleteDoc(document.ref);
+        isDocumentDeleted = true;
+      }
+    });
+    if (isDocumentDeleted) {
+      return { status: 200, message: 'Deleted Document' };
+    }
+    return { status: 400, message: 'Document does not exist' };
+  } catch (error) {
+    console.log(error);
     return error;
   }
 };

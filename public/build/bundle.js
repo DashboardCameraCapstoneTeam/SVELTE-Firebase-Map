@@ -1130,9 +1130,9 @@ var app = (function () {
     			div0 = element("div");
     			attr_dev(div0, "class", "h-full rounded-lg");
     			attr_dev(div0, "id", "map");
-    			add_location(div0, file$l, 383, 44, 11064);
+    			add_location(div0, file$l, 398, 44, 11537);
     			attr_dev(div1, "class", "h-96 md:h-full scale-in-center");
-    			add_location(div1, file$l, 383, 0, 11020);
+    			add_location(div1, file$l, 398, 0, 11493);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1431,6 +1431,21 @@ var app = (function () {
     		if (map === null || gpsData.length <= 0) return;
 
     		try {
+    			layerList.forEach(function (gpsElement) {
+    				const layerName = gpsElement.layerName;
+    				const sourceName = gpsElement.sourceName;
+
+    				if (map.getLayer(layerName) && layerName != '3D-Buildings') {
+    					map.removeLayer(layerName);
+    					map.removeSource(sourceName);
+    				}
+    			});
+
+    			let tempLayerList = layerList;
+    			tempLayerList = tempLayerList.filter(obj => obj.layerName === '3D-Buildings');
+    			$$invalidate(0, layerList = tempLayerList);
+    			console.log(layerList);
+
     			gpsData.forEach(function (gpsElement) {
     				const dataName = gpsElement.dataName;
     				const dataSourceName = `${dataName}Source`;
@@ -38140,6 +38155,29 @@ var app = (function () {
 
         return { status: 200, documentList };
       } catch (error) {
+        return error;
+      }
+    };
+
+    const deleteDocumentFromFirebase = async (user, documentId) => {
+      try {
+        const docRef = Da(db, 'users', user.uid);
+        const colRef = Uh(Va(docRef, 'geojson'));
+        const querySnapshot = await wl(colRef);
+        let isDocumentDeleted = false;
+        querySnapshot.forEach((document) => {
+          if (document.id === documentId) {
+            console.log(document);
+            Il(document.ref);
+            isDocumentDeleted = true;
+          }
+        });
+        if (isDocumentDeleted) {
+          return { status: 200, message: 'Deleted Document' };
+        }
+        return { status: 400, message: 'Document does not exist' };
+      } catch (error) {
+        console.log(error);
         return error;
       }
     };
@@ -87196,7 +87234,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (43:2) {:else}
+    // (35:2) {:else}
     function create_else_block$1(ctx) {
     	let div;
 
@@ -87206,7 +87244,7 @@ var app = (function () {
     			div.textContent = "No Firebase GPS Data Selected.";
     			attr_dev(div, "class", "alert alert-red my-1");
     			attr_dev(div, "role", "alert");
-    			add_location(div, file$3, 43, 3, 1125);
+    			add_location(div, file$3, 35, 3, 1006);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -87221,7 +87259,7 @@ var app = (function () {
     		block,
     		id: create_else_block$1.name,
     		type: "else",
-    		source: "(43:2) {:else}",
+    		source: "(35:2) {:else}",
     		ctx
     	});
 
@@ -87239,8 +87277,6 @@ var app = (function () {
     	let t3;
     	let th2;
     	let t5;
-    	let th3;
-    	let t7;
     	let tbody;
     	let each_value = /*selectedFirebaseGPSData*/ ctx[0];
     	validate_each_argument(each_value);
@@ -87256,17 +87292,14 @@ var app = (function () {
     			thead = element("thead");
     			tr = element("tr");
     			th0 = element("th");
-    			th0.textContent = "Id";
+    			th0.textContent = "Data Name";
     			t1 = space();
     			th1 = element("th");
-    			th1.textContent = "Data Name";
+    			th1.textContent = "Date Time";
     			t3 = space();
     			th2 = element("th");
-    			th2.textContent = "Date Time";
+    			th2.textContent = "Options";
     			t5 = space();
-    			th3 = element("th");
-    			th3.textContent = "Options";
-    			t7 = space();
     			tbody = element("tbody");
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -87274,12 +87307,11 @@ var app = (function () {
     			}
 
     			add_location(th0, file$3, 14, 6, 357);
-    			add_location(th1, file$3, 15, 6, 376);
-    			add_location(th2, file$3, 16, 6, 402);
-    			add_location(th3, file$3, 17, 6, 428);
+    			add_location(th1, file$3, 15, 6, 383);
+    			add_location(th2, file$3, 16, 6, 409);
     			add_location(tr, file$3, 13, 5, 345);
     			add_location(thead, file$3, 12, 4, 331);
-    			add_location(tbody, file$3, 20, 4, 476);
+    			add_location(tbody, file$3, 19, 4, 457);
     			attr_dev(table, "class", "table w-full rounded-lg");
     			add_location(table, file$3, 11, 3, 286);
     		},
@@ -87292,9 +87324,7 @@ var app = (function () {
     			append_dev(tr, th1);
     			append_dev(tr, t3);
     			append_dev(tr, th2);
-    			append_dev(tr, t5);
-    			append_dev(tr, th3);
-    			append_dev(table, t7);
+    			append_dev(table, t5);
     			append_dev(table, tbody);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -87343,28 +87373,28 @@ var app = (function () {
     	return block;
     }
 
-    // (22:5) {#each selectedFirebaseGPSData as gpsElement}
+    // (21:5) {#each selectedFirebaseGPSData as gpsElement}
     function create_each_block(ctx) {
     	let tr;
     	let td0;
-    	let t0_value = /*gpsElement*/ ctx[4].dataId + "";
+    	let t0_value = /*gpsElement*/ ctx[4].dataName + "";
     	let t0;
     	let t1;
     	let td1;
-    	let t2_value = /*gpsElement*/ ctx[4].dataName + "";
+    	let t2_value = /*gpsElement*/ ctx[4].dateTime + "";
     	let t2;
     	let t3;
     	let td2;
-    	let t4_value = /*gpsElement*/ ctx[4].dateTime + "";
-    	let t4;
-    	let t5;
-    	let td3;
     	let button;
     	let i;
-    	let t6;
-    	let t7;
+    	let t4;
+    	let t5;
     	let mounted;
     	let dispose;
+
+    	function click_handler() {
+    		return /*click_handler*/ ctx[3](/*gpsElement*/ ctx[4]);
+    	}
 
     	const block = {
     		c: function create() {
@@ -87376,22 +87406,18 @@ var app = (function () {
     			t2 = text(t2_value);
     			t3 = space();
     			td2 = element("td");
-    			t4 = text(t4_value);
-    			t5 = space();
-    			td3 = element("td");
     			button = element("button");
     			i = element("i");
-    			t6 = text(" Delete");
-    			t7 = space();
-    			add_location(td0, file$3, 23, 7, 556);
-    			add_location(td1, file$3, 24, 7, 593);
-    			add_location(td2, file$3, 25, 7, 632);
+    			t4 = text(" Delete");
+    			t5 = space();
+    			add_location(td0, file$3, 22, 7, 537);
+    			add_location(td1, file$3, 23, 7, 576);
     			attr_dev(i, "class", "fa-solid fa-trash ");
-    			add_location(i, file$3, 35, 53, 983);
+    			add_location(i, file$3, 27, 53, 864);
     			attr_dev(button, "class", `table-btn  card-btn-red-outline  `);
-    			add_location(button, file$3, 27, 9, 685);
-    			add_location(td3, file$3, 26, 7, 671);
-    			add_location(tr, file$3, 22, 6, 543);
+    			add_location(button, file$3, 25, 9, 629);
+    			add_location(td2, file$3, 24, 7, 615);
+    			add_location(tr, file$3, 21, 6, 524);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, tr, anchor);
@@ -87402,23 +87428,20 @@ var app = (function () {
     			append_dev(td1, t2);
     			append_dev(tr, t3);
     			append_dev(tr, td2);
-    			append_dev(td2, t4);
-    			append_dev(tr, t5);
-    			append_dev(tr, td3);
-    			append_dev(td3, button);
+    			append_dev(td2, button);
     			append_dev(button, i);
-    			append_dev(button, t6);
-    			append_dev(tr, t7);
+    			append_dev(button, t4);
+    			append_dev(tr, t5);
 
     			if (!mounted) {
-    				dispose = listen_dev(button, "click", /*click_handler*/ ctx[3], false, false, false);
+    				dispose = listen_dev(button, "click", click_handler, false, false, false);
     				mounted = true;
     			}
     		},
-    		p: function update(ctx, dirty) {
-    			if (dirty & /*selectedFirebaseGPSData*/ 1 && t0_value !== (t0_value = /*gpsElement*/ ctx[4].dataId + "")) set_data_dev(t0, t0_value);
-    			if (dirty & /*selectedFirebaseGPSData*/ 1 && t2_value !== (t2_value = /*gpsElement*/ ctx[4].dataName + "")) set_data_dev(t2, t2_value);
-    			if (dirty & /*selectedFirebaseGPSData*/ 1 && t4_value !== (t4_value = /*gpsElement*/ ctx[4].dateTime + "")) set_data_dev(t4, t4_value);
+    		p: function update(new_ctx, dirty) {
+    			ctx = new_ctx;
+    			if (dirty & /*selectedFirebaseGPSData*/ 1 && t0_value !== (t0_value = /*gpsElement*/ ctx[4].dataName + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*selectedFirebaseGPSData*/ 1 && t2_value !== (t2_value = /*gpsElement*/ ctx[4].dateTime + "")) set_data_dev(t2, t2_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(tr);
@@ -87431,7 +87454,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(22:5) {#each selectedFirebaseGPSData as gpsElement}",
+    		source: "(21:5) {#each selectedFirebaseGPSData as gpsElement}",
     		ctx
     	});
 
@@ -87521,7 +87544,7 @@ var app = (function () {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<TableView> was created with unknown prop '${key}'`);
     	});
 
-    	const click_handler = () => openModel("Delete Firebase Element", "Do you want to delete the Firebase GPS Data?", "Delete GPS Data", deleteFirebaseElement);
+    	const click_handler = gpsElement => openModel("Delete Firebase Element", "Do you want to delete the Firebase GPS Data?", "Delete GPS Data", deleteFirebaseElement, gpsElement.dataId);
 
     	$$self.$$set = $$props => {
     		if ('selectedFirebaseGPSData' in $$props) $$invalidate(0, selectedFirebaseGPSData = $$props.selectedFirebaseGPSData);
@@ -87795,7 +87818,7 @@ var app = (function () {
     const { console: console_1 } = globals;
     const file$1 = "src\\pages\\HomePage.svelte";
 
-    // (183:0) {#if isModalOpen}
+    // (203:0) {#if isModalOpen}
     function create_if_block_5(ctx) {
     	let modalcard;
     	let updating_modalPayload;
@@ -87851,14 +87874,14 @@ var app = (function () {
     		block,
     		id: create_if_block_5.name,
     		type: "if",
-    		source: "(183:0) {#if isModalOpen}",
+    		source: "(203:0) {#if isModalOpen}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (204:2) {#if selectedMenu === 0}
+    // (224:2) {#if selectedMenu === 0}
     function create_if_block_4(ctx) {
     	let div0;
     	let datetime;
@@ -87909,9 +87932,9 @@ var app = (function () {
     			div1 = element("div");
     			create_component(searchdetails.$$.fragment);
     			attr_dev(div0, "class", "col-span-1 md:col-span-3 row-span-1");
-    			add_location(div0, file$1, 204, 3, 6102);
+    			add_location(div0, file$1, 224, 3, 6691);
     			attr_dev(div1, "class", "col-span-1 md:col-span-3 row-span-1");
-    			add_location(div1, file$1, 207, 3, 6209);
+    			add_location(div1, file$1, 227, 3, 6798);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div0, anchor);
@@ -87965,14 +87988,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(204:2) {#if selectedMenu === 0}",
+    		source: "(224:2) {#if selectedMenu === 0}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (217:2) {#if selectedMenu === 2}
+    // (237:2) {#if selectedMenu === 2}
     function create_if_block_3(ctx) {
     	let div;
     	let profile;
@@ -87997,7 +88020,7 @@ var app = (function () {
     			div = element("div");
     			create_component(profile.$$.fragment);
     			attr_dev(div, "class", `col-span-1 md:col-span-3 row-span-1 `);
-    			add_location(div, file$1, 217, 3, 6525);
+    			add_location(div, file$1, 237, 3, 7114);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -88035,14 +88058,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(217:2) {#if selectedMenu === 2}",
+    		source: "(237:2) {#if selectedMenu === 2}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (223:2) {#if selectedMenu === 3}
+    // (243:2) {#if selectedMenu === 3}
     function create_if_block_2(ctx) {
     	let div0;
     	let video;
@@ -88107,11 +88130,11 @@ var app = (function () {
     			div2 = element("div");
     			create_component(speedview.$$.fragment);
     			attr_dev(div0, "class", `col-span-1 md:col-span-3 row-span-1 `);
-    			add_location(div0, file$1, 223, 3, 6669);
+    			add_location(div0, file$1, 243, 3, 7258);
     			attr_dev(div1, "class", "col-span-1 md:col-span-2 row-span-1");
-    			add_location(div1, file$1, 227, 3, 6777);
+    			add_location(div1, file$1, 247, 3, 7366);
     			attr_dev(div2, "class", `col-span-1 md:col-span-1 row-span-1 `);
-    			add_location(div2, file$1, 231, 3, 6885);
+    			add_location(div2, file$1, 251, 3, 7474);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div0, anchor);
@@ -88182,14 +88205,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(223:2) {#if selectedMenu === 3}",
+    		source: "(243:2) {#if selectedMenu === 3}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (244:2) {#if isLoading === true}
+    // (264:2) {#if isLoading === true}
     function create_if_block_1(ctx) {
     	let div;
     	let loadingspinner;
@@ -88201,7 +88224,7 @@ var app = (function () {
     			div = element("div");
     			create_component(loadingspinner.$$.fragment);
     			attr_dev(div, "class", "absolute top-0 z-100 map-loading rounded-lg");
-    			add_location(div, file$1, 244, 3, 7363);
+    			add_location(div, file$1, 264, 3, 7952);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -88227,14 +88250,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(244:2) {#if isLoading === true}",
+    		source: "(264:2) {#if isLoading === true}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (250:2) {#if isError === true}
+    // (270:2) {#if isError === true}
     function create_if_block$2(ctx) {
     	let div;
     	let p;
@@ -88245,9 +88268,9 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Error, unable to Fetch Data";
     			attr_dev(p, "class", "align-middle");
-    			add_location(p, file$1, 251, 4, 7558);
+    			add_location(p, file$1, 271, 4, 8147);
     			attr_dev(div, "class", "absolute top-0 z-100 map-error rounded-lg");
-    			add_location(div, file$1, 250, 3, 7497);
+    			add_location(div, file$1, 270, 3, 8086);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -88262,7 +88285,7 @@ var app = (function () {
     		block,
     		id: create_if_block$2.name,
     		type: "if",
-    		source: "(250:2) {#if isError === true}",
+    		source: "(270:2) {#if isError === true}",
     		ctx
     	});
 
@@ -88588,19 +88611,19 @@ var app = (function () {
     			t14 = space();
     			create_component(footer.$$.fragment);
     			attr_dev(div0, "class", "col-span-1 md:col-span-3 row-span-1");
-    			add_location(div0, file$1, 196, 2, 5832);
+    			add_location(div0, file$1, 216, 2, 6421);
     			attr_dev(div1, "class", "col-span-1 md:col-span-3 row-span-1");
-    			add_location(div1, file$1, 200, 2, 5927);
+    			add_location(div1, file$1, 220, 2, 6516);
     			attr_dev(div2, "class", div2_class_value = `col-span-1 md:col-span-3 row-span-1 ${/*selectedMenu*/ ctx[12] === 1 ? "" : "hidden"}`);
-    			add_location(div2, file$1, 212, 2, 6351);
+    			add_location(div2, file$1, 232, 2, 6940);
     			attr_dev(div3, "class", "col-span-1 md:col-span-6 row-span-6 grid grid-cols-1 md:grid-cols-3 gap-4 h-fit");
-    			add_location(div3, file$1, 195, 1, 5735);
+    			add_location(div3, file$1, 215, 1, 6324);
     			attr_dev(div4, "class", "absolute top-1 left-1 ");
-    			add_location(div4, file$1, 239, 2, 7213);
+    			add_location(div4, file$1, 259, 2, 7802);
     			attr_dev(div5, "class", "col-span-1 md:col-span-6 row-span-6 relative");
-    			add_location(div5, file$1, 237, 1, 7011);
+    			add_location(div5, file$1, 257, 1, 7600);
     			attr_dev(section, "class", "grid grid-cols-1 md:grid-cols-12 grid-rows-6 gap-4 my-4 px-4 h-fit ");
-    			add_location(section, file$1, 194, 0, 5645);
+    			add_location(section, file$1, 214, 0, 6234);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -89112,8 +89135,29 @@ var app = (function () {
     		$$invalidate(3, isModalOpen = true);
     	};
 
-    	const deleteFirebaseElement = async () => {
-    		console.log("Bruh");
+    	const deleteFirebaseElement = async documentId => {
+    		const response = await deleteDocumentFromFirebase(user, documentId);
+
+    		if (response.status === 200) {
+    			let tempGPSData = selectedFirebaseGPSData;
+    			tempGPSData = tempGPSData.filter(obj => obj.dataId !== documentId);
+    			$$invalidate(13, gpsData = tempGPSData);
+
+    			$$invalidate(10, cityDetails = {
+    				id: 0,
+    				center: gpsData[0].features[0].geometry.coordinates,
+    				zoom: 15,
+    				pitch: 0,
+    				bearing: -17.6
+    			});
+
+    			$$invalidate(16, selectedFirebaseGPSData = gpsData);
+    			alert("Successfully Deleted GPS Data");
+    		} else {
+    			console.log(response);
+    			alert(response);
+    			$$invalidate(15, isError = true);
+    		}
     	};
 
     	const verifyAccessToken = async () => {
@@ -89313,6 +89357,7 @@ var app = (function () {
     		MapStyleSelector,
     		StreetView,
     		fetchDataFromFirebase,
+    		deleteDocumentFromFirebase,
     		gpsJsonToGeojson,
     		googleSignIn,
     		accessToken,

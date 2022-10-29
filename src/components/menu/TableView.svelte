@@ -12,7 +12,6 @@
 			<table class="table w-full rounded-lg">
 				<thead>
 					<tr>
-						<th>Id</th>
 						<th>Data Name</th>
 						<th>Date Time</th>
 						<th>Options</th>
@@ -21,18 +20,11 @@
 				<tbody>
 					{#each selectedFirebaseGPSData as gpsElement}
 						<tr>
-							<td>{gpsElement.dataId}</td>
 							<td>{gpsElement.dataName}</td>
 							<td>{gpsElement.dateTime}</td>
 							<td
 								><button
-									on:click={() =>
-										openModel(
-											"Delete Firebase Element",
-											"Do you want to delete the Firebase GPS Data?",
-											"Delete GPS Data",         
-											deleteFirebaseElement,
-										)}
+									on:click={() => openModel("Delete Firebase Element", "Do you want to delete the Firebase GPS Data?", "Delete GPS Data", deleteFirebaseElement, gpsElement.dataId)}
 									class={`table-btn  card-btn-red-outline  `}><i class="fa-solid fa-trash " /> Delete</button
 								></td
 							>

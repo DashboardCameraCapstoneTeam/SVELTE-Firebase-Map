@@ -248,6 +248,21 @@
 	const addNewDynamicGPS = () => {
 		if (map === null || gpsData.length <= 0) return;
 		try {
+
+			layerList.forEach(function (gpsElement) {
+				const layerName = gpsElement.layerName;
+				const sourceName = gpsElement.sourceName;
+				if (map.getLayer(layerName) && layerName!= '3D-Buildings') {
+					map.removeLayer(layerName);
+					map.removeSource(sourceName);
+				}
+			});
+
+			let tempLayerList = layerList;
+			tempLayerList = tempLayerList.filter((obj) => obj.layerName === '3D-Buildings');
+			layerList = tempLayerList
+
+			console.log(layerList);
 			gpsData.forEach(function (gpsElement) {
 				const dataName = gpsElement.dataName;
 				const dataSourceName = `${dataName}Source`;
