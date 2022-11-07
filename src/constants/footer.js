@@ -1,24 +1,32 @@
-export const projectList = [
+export const ABOUT_LIST = [
   {
     id: 0,
-    name: 'Mapping UI Github',
-    link: 'https://github.com/canaleal/Capstone_Map_Client',
+    name: 'Github',
+    link: 'https://github.com/GeotabInternalDevelopment',
   },
   {
     id: 1,
-    name: 'Pothole Object Detection',
-    link: 'https://github.com/canaleal/PotholeObjectDetection',
+    name: 'Geotab',
+    link: 'https://www.geotab.com/',
   },
-  { id: 2, name: 'Project Capstone', link: 'https://github.com/canaleal/Capstone' },
+  {
+    id: 2,
+    name: 'Smarter AI',
+    link: 'https://smarterai.camera/',
+  },
+  {
+    id: 3,
+    name: 'Sheridan College',
+    link: 'https://www.sheridancollege.ca/',
+  },
 ];
 
-export const applicationToolsList = [
+export const APPLICATION_TOOLS_LIST = [
   {
     id: 0,
     name: 'Animista',
     link: 'https://animista.net/play/basic',
   },
-
   {
     id: 1,
     name: 'Developer Icons',
@@ -46,20 +54,27 @@ export const applicationToolsList = [
   },
 ];
 
-export const aboutList = [
+export const DETAILS_LIST = [
   {
     id: 0,
-    name: 'Linkedin',
-    link: 'https://www.linkedin.com/in/alex-canales',
+    name: 'Security',
+    link: 'https://www.geotab.com/security/',
   },
   {
     id: 1,
-    name: 'Github',
-    link: 'https://github.com/canaleal',
+    name: 'Social Responsibility',
+    link: 'https://www.geotab.com/about/corporate-social-responsibility/',
   },
   {
     id: 2,
-    name: 'Bitbucket',
-    link: 'https://bitbucket.org/Canaleal/',
+    name: 'Smarter AI',
+    link: 'https://smarterai.camera/',
+  },
+  {
+    id: 3,
+    name: 'Contact Us',
+    link: 'https://github.com/GeotabInternalDevelopment',
   },
 ];
+
+export const PROGRAMMING_TOOLS = ['nextjs', 'svelte', 'nodejs', 'express', 'nginx', 'github', 'docker', 'googlecloud'];

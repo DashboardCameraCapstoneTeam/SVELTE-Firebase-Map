@@ -6,15 +6,15 @@
 <section class="card h-full scale-in-center">
 	<div class="p-4">
 		<p class="font-bold my-1">Speed Legend (Km/h):</p>
-		{#if selectedGPSData === null}
-		<div class="alert alert-red my-1" role="alert">No GPS Data Selected.</div>
+		{#if selectedGPSData}
+			<div class="overflow-auto h-full">
+				{#each speedColors as speedColor, i}
+					<p class="list-item my-2"><i class="dot" style={`--color:${speedColor}`} /> {i * 10} - {(i + 1) * 10 - 1}</p>
+				{/each}
+				<p class="list-item my-2"><i class="dot" style={`--color:${speedColors[speedColors.length - 1]}`} /> 100+</p>
+			</div>
 		{:else}
-		<div class="overflow-auto h-full">
-			{#each speedColors as speedColor, i}
-				<p class="list-item my-2"><i class="dot" style={`--color:${speedColor}`} /> {i * 10} - {(i + 1) * 10 - 1}</p>
-			{/each}
-			<p class="list-item my-2"><i class="dot" style={`--color:${speedColors[speedColors.length-1]}`} /> 100+</p>
-		</div>
+			<div class="alert alert-red my-1" role="alert">No GPS Data Selected.</div>
 		{/if}
 	</div>
 </section>

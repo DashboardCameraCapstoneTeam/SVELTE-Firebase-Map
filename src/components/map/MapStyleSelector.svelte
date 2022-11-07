@@ -14,35 +14,33 @@
 			mapStyle = mapStyleItem;
 			isReadyForStyleSwitching = true;
 		} catch (e) {
-			alert('Unable to toggle Map Style')
+			alert("Unable to toggle Map Style");
 		}
 	};
 	const toggleMenu = () => {
 		isLargeMenu = !isLargeMenu;
 	};
 </script>
+
 <div class="absolute top-2 left-2">
-
-
-<section class="card h-fit scale-in-center p-4" >
-	
-	<button class="card-btn  my-1  text-center" on:click={toggleMenu}> <i class={`fa-solid ${isLargeMenu ? "fa-minimize" : "fa-expand"}`} /> </button>
-	<p class=" my-1">Map Style:</p>
-	{#if isLargeMenu === true}
-		<div class="flex flex-col">
-			{#each mapStyleList as mapStyleItem}
-			<button class={`map-style my-1 ${mapStyle === mapStyleItem.id ? "map-style-selected" : ""}`} on:click={() => toggleStyle(mapStyleItem.id)}><img class="mapstyle-img" src={mapStyleItem.img} height="100" width="100" alt="" /></button>
-			{/each}
-		</div>
-	{:else}
-		{#each mapStyleList as mapStyleItem}
-			<div key={mapStyleItem.id}>
-				<input id={mapStyleItem.name} type="radio" value={mapStyleItem.id} checked={mapStyle === mapStyleItem.id} on:click={() => toggleStyle(mapStyleItem.id)} />
-				<label class="ml-2" for={mapStyleItem.name}>{mapStyleItem.name}</label>
+	<section class="card h-fit scale-in-center p-4">
+		<button class="card-btn  my-1  text-center" on:click={toggleMenu}> <i class={`fa-solid ${isLargeMenu ? "fa-minimize" : "fa-expand"}`} /> </button>
+		<p class=" my-1">Map Style:</p>
+		{#if isLargeMenu === true}
+			<div class="flex flex-col">
+				{#each mapStyleList as mapStyleItem}
+					<button class={`map-style my-1 ${mapStyle === mapStyleItem.id ? "map-style-selected" : ""}`} on:click={() => toggleStyle(mapStyleItem.id)}
+						><img class="mapstyle-img" src={mapStyleItem.img} height="100" width="100" alt="" /></button
+					>
+				{/each}
 			</div>
-		{/each}
-	{/if}
-	
-	
-</section>
+		{:else}
+			{#each mapStyleList as mapStyleItem}
+				<div key={mapStyleItem.id}>
+					<input id={mapStyleItem.name} type="radio" value={mapStyleItem.id} checked={mapStyle === mapStyleItem.id} on:click={() => toggleStyle(mapStyleItem.id)} />
+					<label class="ml-2" for={mapStyleItem.name}>{mapStyleItem.name}</label>
+				</div>
+			{/each}
+		{/if}
+	</section>
 </div>

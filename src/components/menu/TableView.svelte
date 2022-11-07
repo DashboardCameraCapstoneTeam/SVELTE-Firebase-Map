@@ -3,11 +3,9 @@
 	export let openModel;
 	export let deleteFirebaseElement;
 </script>
-
 <section class="card h-fit scale-in-center">
 	<div class="p-4">
 		<p class="font-bold my-1">GPS Table View:</p>
-
 		{#if selectedFirebaseGPSData.length >= 1}
 			<table class="table w-full rounded-lg">
 				<thead>

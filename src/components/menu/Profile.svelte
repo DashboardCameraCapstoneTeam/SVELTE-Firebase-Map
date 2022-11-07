@@ -4,7 +4,7 @@
 </script>
 <section class="card h-fit scale-in-center">
 	<div class="p-4">
-		<img class="w-16 h-16 rounded-lg" src={`${user.photoURL}`} alt="Default avatar">
+	
 		<p class="font-bold my-1">Name:</p>
 		<p>{user.displayName}</p>
 		<p class="font-bold my-1">Email:</p>
