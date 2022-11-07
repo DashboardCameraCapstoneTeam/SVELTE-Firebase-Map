@@ -355,13 +355,6 @@ car's driving metrics on the screen as your video plays."
 			<RecordingsTable bind:files {openModel} {deleteDriveFile} {startMachineLearning} {fetchGPSDataForFile}  />
 		</div>
 
-		<!-- {#each files as videoFile}
-			{#if videoFile.fileExtension === "MP4" || videoFile.fileExtension === "mp4"}
-				<div class="col-span-1 md:col-span-3">
-					<RecordingsCard {openModel} bind:videoFile {deleteDriveFile} {startMachineLearning} {fetchGPSDataForFile} />
-				</div>
-			{/if}
-		{/each} -->
 	{:else}
 		<div class="col-span-1 md:col-span-3">
 			<section class="card h-fit scale-in-center">

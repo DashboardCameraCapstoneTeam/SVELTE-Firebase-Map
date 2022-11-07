@@ -23,9 +23,9 @@
 							<td
 								><button
 									on:click={() => openModel("Delete Firebase Element", "Do you want to delete the Firebase GPS Data?", "Delete GPS Data", deleteFirebaseElement, gpsElement.dataId)}
-									class={`table-btn  btn-error-outline  `}><i class="fa-solid fa-trash " /> Delete</button
-								></td
-							>
+									class={`card-btn btn-error-outline  `}><i class="fa-solid fa-trash " /> Delete</button
+								></td>
+							
 						</tr>
 					{/each}
 				</tbody>

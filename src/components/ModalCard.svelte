@@ -10,7 +10,7 @@
 	};
 </script>
 <div class="modal">
-	<div class="p-4 modal-content">
+	<div class="p-4 modal-content bg-white">
 		<p class="font-bold my-1">{modalPayload.title}</p>
 		<p>{modalPayload.message}</p>
 		<hr class="solid my-4" />

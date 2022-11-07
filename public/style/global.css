@@ -157,6 +157,7 @@ h6 {
 .table td {
   border: 1px solid #ddd;
   padding: 1rem;
+  text-align: left;
 }
 
 .table tr:nth-child(even){background-color: var(--smoke);}
@@ -170,17 +171,6 @@ h6 {
   color: white;
 }
 
-
-
-.table-btn {
-  display: inline-block;
-  padding: 1rem;
-  text-align: left;
-  -webkit-transition: all 200ms;
-  transition: all 200ms;
-  border-radius: 0.5rem;
-  width: 100%;
-}
 
 
 .modal {
@@ -203,8 +193,8 @@ h6 {
   box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   font-size: 0.875rem;
   line-height: 1.25rem;
-  background-color: var(--card-bg-color);
-  color: var(--card-text-color);
+  background-color: var(--white);
+  color: var(--dark);
   border-width: 2px;
   border-style: solid; 
 }

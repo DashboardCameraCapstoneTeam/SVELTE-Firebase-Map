@@ -20,25 +20,22 @@
 						<th>Owner</th>
 						<th>Size</th>
 						<th>Options</th>
-						<th>Manage</th>
+			
 					</tr>
 				</thead>
 				<tbody>
 					{#each files as videoFile}
 						{#if videoFile.fileExtension === "MP4" || videoFile.fileExtension === "mp4"}
 							<tr>
-								<td>
+								<td class="w-64">
 									{#if videoFile.webViewLink && videoFile.thumbnailLink}
-										<a href={videoFile.webViewLink} target="_blank" class="text-white text-xl  borderRounded"
-											><img
-												src={videoFile.thumbnailLink}
-												onerror="https://i.picsum.photos/id/870/200/300.jpg?blur=2&grayscale&hmac=ujRymp644uYVjdKJM7kyLDSsrqNSMVRPnGU99cKl6Vs"
-												alt="Dashcam"
-												class="h-32 w-auto object-cover rounded-lg"
-												width="500"
-												height="600"
-											/></a
-										>
+                                 
+                                    <img
+                                        src={videoFile.thumbnailLink}
+                                        onerror="https://i.picsum.photos/id/870/200/300.jpg?blur=2&grayscale&hmac=ujRymp644uYVjdKJM7kyLDSsrqNSMVRPnGU99cKl6Vs"
+                                        alt="Dashcam"
+                                        class="h-full w-auto object-cover rounded-lg"
+                                    />
 									{/if}
 								</td>
 								<td>{videoFile.name}</td>
@@ -46,27 +43,30 @@
 								<td>{videoFile.owners[0].displayName}</td>
 								<td>{calculateFileSizeString(videoFile.size)}</td>
 								<td>
-									<div class="flex">
-										<a a href={videoFile.webViewLink} target="_blank" class={`card-btn btn-primary my-1 mr-1`}>
-											<i class="fa-solid fa-eye" />
-											Watch
-										</a>
-										<button class={`card-btn btn-primary my-1 mr-1`} on:click={() => fetchGPSDataForFile(videoFile)}>
-											<i class="fa-solid fa-share" />
-											Add to Map
-										</button>
-									</div>
+
+                                    <div class="flex flex-row">
+                                        <a a href={videoFile.webViewLink} target="_blank" class={`card-btn btn-primary my-1`}>
+                                            <i class="fa-solid fa-eye" />
+                                            Watch
+                                        </a>
+                                        <button class={`card-btn btn-primary my-1 mx-1`} on:click={() => fetchGPSDataForFile(videoFile)}>
+                                            <i class="fa-solid fa-share" />
+                                            Add to Map
+                                        </button>
+    
+                                        <button
+                                            class={`card-btn btn-error-outline my-1`}
+                                            on:click={() => openModel("Delete Google Drive Recording", "Do you want to delete the Google Drive Recording?", "Delete Recording", deleteDriveFile, videoFile)}>
+                                            <i class="fa-solid fa-trash" />
+                                            Delete
+                                        </button>
+                                    </div>
+                                    
+                                        
+
+                                
 								</td>
 
-								<td>
-									<button
-										class={`card-btn btn-error-outline my-1`}
-										on:click={() => openModel("Delete Google Drive Recording", "Do you want to delete the Google Drive Recording?", "Delete Recording", deleteDriveFile, videoFile)}
-									>
-										<i class="fa-solid fa-trash" />
-										Delete
-									</button>
-								</td>
 							</tr>
 						{/if}
 					{/each}

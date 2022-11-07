@@ -85215,7 +85215,7 @@ var app = (function () {
     			div.textContent = "No Firebase GPS Data Selected.";
     			attr_dev(div, "class", "alert alert-red my-1");
     			attr_dev(div, "role", "alert");
-    			add_location(div, file$8, 33, 3, 999);
+    			add_location(div, file$8, 33, 3, 997);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -85384,8 +85384,8 @@ var app = (function () {
     			add_location(td0, file$8, 20, 7, 533);
     			add_location(td1, file$8, 21, 7, 572);
     			attr_dev(i, "class", "fa-solid fa-trash ");
-    			add_location(i, file$8, 25, 50, 857);
-    			attr_dev(button, "class", `table-btn  btn-error-outline  `);
+    			add_location(i, file$8, 25, 48, 855);
+    			attr_dev(button, "class", `card-btn btn-error-outline  `);
     			add_location(button, file$8, 23, 9, 625);
     			add_location(td2, file$8, 22, 7, 611);
     			add_location(tr, file$8, 19, 6, 520);
@@ -85647,17 +85647,17 @@ var app = (function () {
     			button1 = element("button");
     			t7 = text(t7_value);
     			attr_dev(p0, "class", "font-bold my-1");
-    			add_location(p0, file$7, 13, 2, 263);
-    			add_location(p1, file$7, 14, 2, 317);
+    			add_location(p0, file$7, 13, 2, 272);
+    			add_location(p1, file$7, 14, 2, 326);
     			attr_dev(hr, "class", "solid my-4");
-    			add_location(hr, file$7, 15, 2, 350);
+    			add_location(hr, file$7, 15, 2, 359);
     			attr_dev(button0, "class", "card-btn btn-primary mr-1");
-    			add_location(button0, file$7, 17, 3, 402);
+    			add_location(button0, file$7, 17, 3, 411);
     			attr_dev(button1, "class", "ml-1 card-btn btn-black-outline");
-    			add_location(button1, file$7, 24, 3, 626);
+    			add_location(button1, file$7, 24, 3, 635);
     			attr_dev(div0, "class", "flex");
-    			add_location(div0, file$7, 16, 2, 379);
-    			attr_dev(div1, "class", "p-4 modal-content");
+    			add_location(div0, file$7, 16, 2, 388);
+    			attr_dev(div1, "class", "p-4 modal-content bg-white");
     			add_location(div1, file$7, 12, 1, 228);
     			attr_dev(div2, "class", "modal");
     			add_location(div2, file$7, 11, 0, 206);
@@ -86926,7 +86926,7 @@ var app = (function () {
     			div.textContent = "No Firebase GPS Data Selected.";
     			attr_dev(div, "class", "alert alert-red my-1");
     			attr_dev(div, "role", "alert");
-    			add_location(div, file$2, 75, 3, 2427);
+    			add_location(div, file$2, 75, 3, 3044);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -86965,8 +86965,6 @@ var app = (function () {
     	let t9;
     	let th5;
     	let t11;
-    	let th6;
-    	let t13;
     	let tbody;
     	let each_value = /*files*/ ctx[0];
     	validate_each_argument(each_value);
@@ -86999,9 +86997,6 @@ var app = (function () {
     			th5 = element("th");
     			th5.textContent = "Options";
     			t11 = space();
-    			th6 = element("th");
-    			th6.textContent = "Manage";
-    			t13 = space();
     			tbody = element("tbody");
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -87014,10 +87009,9 @@ var app = (function () {
     			add_location(th3, file$2, 19, 6, 515);
     			add_location(th4, file$2, 20, 6, 537);
     			add_location(th5, file$2, 21, 6, 558);
-    			add_location(th6, file$2, 22, 6, 582);
     			add_location(tr, file$2, 15, 5, 425);
     			add_location(thead, file$2, 14, 4, 411);
-    			add_location(tbody, file$2, 25, 4, 629);
+    			add_location(tbody, file$2, 25, 4, 611);
     			attr_dev(table, "class", "table w-full rounded-lg");
     			add_location(table, file$2, 13, 3, 366);
     		},
@@ -87036,9 +87030,7 @@ var app = (function () {
     			append_dev(tr, th4);
     			append_dev(tr, t9);
     			append_dev(tr, th5);
-    			append_dev(tr, t11);
-    			append_dev(tr, th6);
-    			append_dev(table, t13);
+    			append_dev(table, t11);
     			append_dev(table, tbody);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -87119,7 +87111,6 @@ var app = (function () {
     	let i1;
     	let t11;
     	let t12;
-    	let td6;
     	let button1;
     	let i2;
     	let t13;
@@ -87158,42 +87149,41 @@ var app = (function () {
     			div = element("div");
     			a = element("a");
     			i0 = element("i");
-    			t9 = text("\r\n\t\t\t\t\t\t\t\t\t\t\tWatch");
+    			t9 = text("\r\n                                            Watch");
     			t10 = space();
     			button0 = element("button");
     			i1 = element("i");
-    			t11 = text("\r\n\t\t\t\t\t\t\t\t\t\t\tAdd to Map");
+    			t11 = text("\r\n                                            Add to Map");
     			t12 = space();
-    			td6 = element("td");
     			button1 = element("button");
     			i2 = element("i");
-    			t13 = text("\r\n\t\t\t\t\t\t\t\t\t\tDelete");
+    			t13 = text("\r\n                                            Delete");
     			t14 = space();
-    			add_location(td0, file$2, 29, 8, 776);
-    			add_location(td1, file$2, 43, 8, 1346);
-    			add_location(td2, file$2, 44, 8, 1381);
-    			add_location(td3, file$2, 45, 8, 1423);
-    			add_location(td4, file$2, 46, 8, 1475);
+    			attr_dev(td0, "class", "w-64");
+    			add_location(td0, file$2, 29, 8, 758);
+    			add_location(td1, file$2, 40, 8, 1371);
+    			add_location(td2, file$2, 41, 8, 1406);
+    			add_location(td3, file$2, 42, 8, 1448);
+    			add_location(td4, file$2, 43, 8, 1500);
     			attr_dev(i0, "class", "fa-solid fa-eye");
-    			add_location(i0, file$2, 50, 11, 1684);
+    			add_location(i0, file$2, 48, 44, 1805);
     			attr_dev(a, "a", "");
     			attr_dev(a, "href", a_href_value = /*videoFile*/ ctx[7].webViewLink);
     			attr_dev(a, "target", "_blank");
-    			attr_dev(a, "class", `card-btn btn-primary my-1 mr-1`);
-    			add_location(a, file$2, 49, 10, 1580);
+    			attr_dev(a, "class", `card-btn btn-primary my-1`);
+    			add_location(a, file$2, 47, 40, 1673);
     			attr_dev(i1, "class", "fa-solid fa-share");
-    			add_location(i1, file$2, 54, 11, 1869);
-    			attr_dev(button0, "class", `card-btn btn-primary my-1 mr-1`);
-    			add_location(button0, file$2, 53, 10, 1759);
-    			attr_dev(div, "class", "flex");
-    			add_location(div, file$2, 48, 9, 1550);
-    			add_location(td5, file$2, 47, 8, 1535);
+    			add_location(i1, file$2, 52, 44, 2116);
+    			attr_dev(button0, "class", `card-btn btn-primary my-1 mx-1`);
+    			add_location(button0, file$2, 51, 40, 1973);
     			attr_dev(i2, "class", "fa-solid fa-trash");
-    			add_location(i2, file$2, 65, 10, 2259);
+    			add_location(i2, file$2, 59, 44, 2649);
     			attr_dev(button1, "class", `card-btn btn-error-outline my-1`);
-    			add_location(button1, file$2, 61, 9, 2003);
-    			add_location(td6, file$2, 60, 8, 1988);
-    			add_location(tr, file$2, 28, 7, 762);
+    			add_location(button1, file$2, 56, 40, 2302);
+    			attr_dev(div, "class", "flex flex-row");
+    			add_location(div, file$2, 46, 36, 1604);
+    			add_location(td5, file$2, 44, 8, 1560);
+    			add_location(tr, file$2, 28, 7, 744);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, tr, anchor);
@@ -87221,9 +87211,8 @@ var app = (function () {
     			append_dev(div, button0);
     			append_dev(button0, i1);
     			append_dev(button0, t11);
-    			append_dev(tr, t12);
-    			append_dev(tr, td6);
-    			append_dev(td6, button1);
+    			append_dev(div, t12);
+    			append_dev(div, button1);
     			append_dev(button1, i2);
     			append_dev(button1, t13);
     			append_dev(tr, t14);
@@ -87283,42 +87272,28 @@ var app = (function () {
 
     // (31:9) {#if videoFile.webViewLink && videoFile.thumbnailLink}
     function create_if_block_2$1(ctx) {
-    	let a;
     	let img;
     	let img_src_value;
-    	let a_href_value;
 
     	const block = {
     		c: function create() {
-    			a = element("a");
     			img = element("img");
     			if (!src_url_equal(img.src, img_src_value = /*videoFile*/ ctx[7].thumbnailLink)) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "onerror", "https://i.picsum.photos/id/870/200/300.jpg?blur=2&grayscale&hmac=ujRymp644uYVjdKJM7kyLDSsrqNSMVRPnGU99cKl6Vs");
     			attr_dev(img, "alt", "Dashcam");
-    			attr_dev(img, "class", "h-32 w-auto object-cover rounded-lg");
-    			attr_dev(img, "width", "500");
-    			attr_dev(img, "height", "600");
-    			add_location(img, file$2, 32, 12, 960);
-    			attr_dev(a, "href", a_href_value = /*videoFile*/ ctx[7].webViewLink);
-    			attr_dev(a, "target", "_blank");
-    			attr_dev(a, "class", "text-white text-xl borderRounded");
-    			add_location(a, file$2, 31, 10, 857);
+    			attr_dev(img, "class", "h-full w-auto object-cover rounded-lg");
+    			add_location(img, file$2, 32, 36, 913);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, a, anchor);
-    			append_dev(a, img);
+    			insert_dev(target, img, anchor);
     		},
     		p: function update(ctx, dirty) {
     			if (dirty & /*files*/ 1 && !src_url_equal(img.src, img_src_value = /*videoFile*/ ctx[7].thumbnailLink)) {
     				attr_dev(img, "src", img_src_value);
     			}
-
-    			if (dirty & /*files*/ 1 && a_href_value !== (a_href_value = /*videoFile*/ ctx[7].webViewLink)) {
-    				attr_dev(a, "href", a_href_value);
-    			}
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(a);
+    			if (detaching) detach_dev(img);
     		}
     	};
 
@@ -88071,7 +88046,7 @@ var app = (function () {
     	return block;
     }
 
-    // (365:1) {:else}
+    // (358:1) {:else}
     function create_else_block$1(ctx) {
     	let div2;
     	let section;
@@ -88091,16 +88066,16 @@ var app = (function () {
     			div0 = element("div");
     			div0.textContent = "No Recordings Found";
     			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file$1, 368, 5, 12582);
+    			add_location(p, file$1, 361, 5, 12270);
     			attr_dev(div0, "class", "alert alert-red my-1");
     			attr_dev(div0, "role", "alert");
-    			add_location(div0, file$1, 369, 5, 12630);
+    			add_location(div0, file$1, 362, 5, 12318);
     			attr_dev(div1, "class", "p-4");
-    			add_location(div1, file$1, 367, 4, 12558);
+    			add_location(div1, file$1, 360, 4, 12246);
     			attr_dev(section, "class", "card h-fit scale-in-center");
-    			add_location(section, file$1, 366, 3, 12508);
+    			add_location(section, file$1, 359, 3, 12196);
     			attr_dev(div2, "class", "col-span-1 md:col-span-3");
-    			add_location(div2, file$1, 365, 2, 12465);
+    			add_location(div2, file$1, 358, 2, 12153);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -88122,7 +88097,7 @@ var app = (function () {
     		block,
     		id: create_else_block$1.name,
     		type: "else",
-    		source: "(365:1) {:else}",
+    		source: "(358:1) {:else}",
     		ctx
     	});
 
