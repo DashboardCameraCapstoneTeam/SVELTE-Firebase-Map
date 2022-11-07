@@ -37,10 +37,10 @@
 <section class="card h-fit scale-in-center">
 	<div class="p-4">
 		<p class="font-bold my-1">Layers:</p>
-		<button on:click={toggleLayers} class={`card-btn   ${showAllLayers ? "card-btn-green" : " card-btn-red-outline"}  my-1 `}> {showAllLayers ? "Show All" : "Disable All"} </button>
+		<button on:click={toggleLayers} class={`card-btn   ${showAllLayers ? "btn-green" : " btn-error-outline"}  my-1 `}> {showAllLayers ? "Show All" : "Disable All"} </button>
 		<div class="overflow-auto">
 			{#each layerList as layer}
-				<button key={layer.name} on:click={() => toggleLayer(layer)} class={`card-btn ${layer.isShown ? "card-btn-blue" : ""} my-1 `}>
+				<button key={layer.name} on:click={() => toggleLayer(layer)} class={`card-btn ${layer.isShown ? "btn-primary" : ""} my-1 `}>
 					<i class="fa-solid {layer.icon} " />
 					{layer.name}
 				</button>

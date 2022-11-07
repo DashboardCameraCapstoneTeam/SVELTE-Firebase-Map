@@ -1,0 +1,38 @@
+@import './global.css';
+
+.map-style {
+    transition: all 0.5s;
+    border-radius: var(--radius-lg);
+    border-width: 0.25rem;
+    border-style: solid;
+}
+.map-style:hover {
+    border-color: var(--primary-color);
+}
+.map-loading {
+    background-color: var(--gray);
+    color: white;
+    opacity: 0.9;
+    display: grid;
+    place-items: center;
+    height: 100%;
+    width: 100%;
+}
+.map-error {
+    background-color: var(--error-color);
+    color: white;
+    opacity: 0.9;
+    display: grid;
+    place-items: center;
+    height: 100%;
+    width: 100%;
+}
+.map-style-selected {
+    border-color: var(--primary-color);
+}
+.mapboxgl-popup {
+    border-radius: var(--radius-lg);
+}
+.mapboxgl-popup-content {
+    padding: 1rem !important;
+}

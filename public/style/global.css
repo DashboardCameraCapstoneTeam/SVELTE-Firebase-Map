@@ -1,0 +1,210 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@300&display=swap');
+
+:root {
+  font-family: 'Quicksand', sans-serif;
+  --white: rgb(255, 255, 255);
+  --smoke: rgb(250, 250, 250);
+  --dark: rgb(37, 37, 37);
+  --black: rgb(0, 0, 0);
+  --gray: rgb(116, 116, 116);
+
+  --primary-color:rgb(41, 72, 161);
+  --primary-color-hover: rgb(32, 58, 136);
+
+  --success-color: rgb(83, 165, 72);
+  --success-color-hover: rgb(69, 144, 59);
+  --success-color-light: rgb(220, 252, 231);
+
+  --error-color: rgb(255, 90, 95);
+  --error-color-hover: rgb(180, 41, 41);
+  --error-color-light: rgb(254, 226, 226);
+
+  --btn-default: rgb(255, 255, 255);
+  --btn-default-hover: rgb(219, 219, 219);
+
+  --radius-lg:  0.5rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--white);
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Source Serif Pro', serif;
+}
+
+
+.bg-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+.bg-error {
+  background-color: var(--error-color);
+  color: white;
+}
+.bg-smoke {
+  background-color: var(--smoke);
+}
+.bg-dark {
+  background-color: var(--dark);
+}
+
+.btn-primary {
+  color: white;
+  background-color: var(--primary-color);
+}
+.btn-primary:hover {
+  background-color: var(--primary-color-hover);
+}
+.btn-error {
+  color: white;
+  background-color: var(--error-color);
+}
+.btn-black-outline {
+  color: var(--dark);
+  border: 2px solid var(--dark);
+  transition: all 200ms;
+}
+.btn-error-outline {
+  color: var(--error-color);
+  border: 2px solid var(--error-color);
+  transition: all 200ms;
+}
+.btn-error-outline:hover {
+  color: white;
+  background-color: var(--error-color);
+}
+.btn-error:hover {
+  background-color: var(--error-color-hover);
+}
+.btn-green {
+  color: white;
+  background-color: var(--success-color);
+}
+.btn-green:hover {
+  background-color: var(--success-color-hover);
+}
+
+.date-picker{
+  display: block; 
+  margin: 0; 
+  background-clip: padding-box; 
+  background-color: var(--btn-default); 
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform; 
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); 
+  width: 100%; 
+  border-radius: var(--radius-lg);
+  border-width: 1px; 
+  border-color: var(--btn-default-hover); 
+  border-style: solid; 
+}
+
+
+
+.img-icon {
+	transition: all 0.5s;
+}
+.img-icon:hover {
+  transform: rotate(10deg) scale(1.2);
+  filter: opacity(1) saturate(150%);
+}
+
+.alert {
+  padding: 1rem;
+  text-align: left;
+  border-radius: var(--radius-lg);
+}
+.alert-red {
+  color: var(--error-color);
+  background-color: var(--error-color-light);
+}
+.alert-green {
+  color: var(--success-color);
+  background-color: var(--success-color-light);
+}
+
+.dot {
+  height: 1rem;
+  width: 1rem;
+  background-color: var(--color);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+
+
+.table th:first-child{
+  border-top-left-radius: 0.5rem;
+}
+
+.table th:last-child{
+  border-top-right-radius: 0.5rem;
+}
+
+.table td {
+  border: 1px solid #ddd;
+  padding: 1rem;
+}
+
+.table tr:nth-child(even){background-color: var(--smoke);}
+
+.table tr:hover {background-color: var(--smoke);}
+
+.table th {
+  padding: 1rem;
+  text-align: left;
+  background-color: var(--dark);
+  color: white;
+}
+
+
+
+.table-btn {
+  display: inline-block;
+  padding: 1rem;
+  text-align: left;
+  -webkit-transition: all 200ms;
+  transition: all 200ms;
+  border-radius: 0.5rem;
+  width: 100%;
+}
+
+
+.modal {
+  position: fixed; /* Stay in place */
+  z-index:100; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+  margin: 15% auto; /* 15% from the top and centered */
+  width: 40%; /* Could be more or less, depending on screen size */
+  border-radius: 0.5rem;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  background-color: var(--card-bg-color);
+  color: var(--card-text-color);
+  border-width: 2px;
+  border-style: solid; 
+}

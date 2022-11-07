@@ -25,6 +25,7 @@
 	import RecordingsCard from "components/recordings/RecordingsCard.svelte";
 	import { sortBySizeSmallToLarge, sortBySizeLargeToSmall, sortByTimeRecentToOldest, sortByTimeOldestToRecent } from "utils/sorting-video-assets";
 	import RecordingsMenuBar from "components/recordings/RecordingsMenuBar.svelte";
+  import RecordingsTable from "../components/recordings/RecordingsTable.svelte";
 
 	export let user;
 	export let signOut;
@@ -349,13 +350,18 @@ car's driving metrics on the screen as your video plays."
 
 <section class="grid grid-cols-1 gap-4 lg:grid-cols-12 my-4 px-4">
 	{#if files.length}
-		{#each files as videoFile}
+
+		<div class="col-span-1 md:col-span-12">
+			<RecordingsTable bind:files {openModel} {deleteDriveFile} {startMachineLearning} {fetchGPSDataForFile}  />
+		</div>
+
+		<!-- {#each files as videoFile}
 			{#if videoFile.fileExtension === "MP4" || videoFile.fileExtension === "mp4"}
 				<div class="col-span-1 md:col-span-3">
 					<RecordingsCard {openModel} bind:videoFile {deleteDriveFile} {startMachineLearning} {fetchGPSDataForFile} />
 				</div>
 			{/if}
-		{/each}
+		{/each} -->
 	{:else}
 		<div class="col-span-1 md:col-span-3">
 			<section class="card h-fit scale-in-center">

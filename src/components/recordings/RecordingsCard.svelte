@@ -35,11 +35,11 @@
 			<p>{calculateFileSizeString(videoFile.size)}</p>
 		</div>
 		<div class="flex">
-			<a a href={videoFile.webViewLink} target="_blank" class={`card-btn card-btn-blue my-1 mr-1`}>
+			<a a href={videoFile.webViewLink} target="_blank" class={`card-btn btn-primary my-1 mr-1`}>
 				<i class="fa-solid fa-eye" />
 				Watch
 			</a>
-			<button class={`card-btn card-btn-blue my-1`} on:click={() => fetchGPSDataForFile(videoFile)}>
+			<button class={`card-btn btn-primary my-1`} on:click={() => fetchGPSDataForFile(videoFile)}>
 				<i class="fa-solid fa-share" />
 				Add to Map
 			</button>
@@ -47,7 +47,7 @@
 		<hr class="solid my-4" />
 		<div class="flex">
 			<button
-				class={`card-btn card-btn-red-outline my-1`}
+				class={`card-btn btn-error-outline my-1`}
 				on:click={() => openModel("Delete Google Drive Recording", "Do you want to delete the Google Drive Recording?", "Delete Recording", deleteDriveFile, videoFile)}
 			>
 				<i class="fa-solid fa-trash" />
@@ -56,7 +56,7 @@
 		</div>
 		<hr class="solid my-4" />
 		<div class="flex">
-			<button class={`card-btn card-btn-blue my-1`} on:click={() => startMachineLearning(videoFile)}>
+			<button class={`card-btn btn-primary my-1`} on:click={() => startMachineLearning(videoFile)}>
 				<i class="fa-solid fa-robot" />
 				Machine Learning
 			</button>

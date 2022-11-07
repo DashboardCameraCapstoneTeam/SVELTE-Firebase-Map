@@ -14,6 +14,6 @@
 
 
 		<hr class="solid my-4" />
-		<button class="card-btn card-btn-red-outline my-1" on:click={signOut}><i class="fa-solid fa-right-from-bracket" /> Sign Out </button>
+		<button class="card-btn btn-error-outline my-1" on:click={signOut}><i class="fa-solid fa-right-from-bracket" /> Sign Out </button>
 	</div>
 </section>

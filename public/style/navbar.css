@@ -1,0 +1,15 @@
+@import './global.css';
+
+.navbar-btn {
+  flex: auto;
+  padding: 1rem;
+  text-align: left;
+  transition: all 400ms;
+  background-color: var(--btn-default);
+}
+
+.navbar-btn:hover {
+  background-color: var(--btn-default-hover);
+  padding-left: 2rem;
+  padding-right: 2rem;
+}

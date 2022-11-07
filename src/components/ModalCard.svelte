@@ -16,13 +16,13 @@
 		<hr class="solid my-4" />
 		<div class="flex">
 			<button
-				class="card-btn card-btn-blue mr-1"
+				class="card-btn btn-primary mr-1"
 				on:click={() => {
 					modalPayload.successFunction(modalPayload.element);
 					modalPayload.cancelFunction();
 				}}>{modalPayload.successBtnMessage}</button
 			>
-			<button class="ml-1 card-btn card-btn-black-outline" on:click={() => modalPayload.cancelFunction()}>{modalPayload.cancelBtnMessage}</button>
+			<button class="ml-1 card-btn btn-black-outline" on:click={() => modalPayload.cancelFunction()}>{modalPayload.cancelBtnMessage}</button>
 		</div>
 	</div>
 </div>

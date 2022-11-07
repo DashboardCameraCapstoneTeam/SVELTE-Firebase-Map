@@ -1,13 +1,13 @@
 export const sortByTimeRecentToOldest = (videoArray) => {
   const sortedArray = videoArray.sort(
-    (objA, objB) => objB.createdTime - objA.createdTime,
+    (objA, objB) => new Date(objB.createdTime) - new Date(objA.createdTime),
   );
   return sortedArray;
 };
 
 export const sortByTimeOldestToRecent = (videoArray) => {
   const sortedArray = videoArray.sort(
-    (objA, objB) => objA.createdTime - objB.createdTime,
+    (objA, objB) => new Date(objA.createdTime) - new Date(objB.createdTime),
   );
   return sortedArray;
 };
