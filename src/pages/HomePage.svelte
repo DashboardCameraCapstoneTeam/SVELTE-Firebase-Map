@@ -26,7 +26,6 @@
 	import { sortBySizeSmallToLarge, sortBySizeLargeToSmall, sortByTimeRecentToOldest, sortByTimeOldestToRecent } from "utils/sorting-video-assets";
 	import RecordingsMenuBar from "components/recordings/RecordingsMenuBar.svelte";
 
-	
 	export let user;
 	export let signOut;
 	let accessTokenValue;
@@ -65,10 +64,49 @@
 		{ id: 3, title: "Video Player", icon: "fa-video" },
 	];
 	let selectedMenu = menuComponents[0].id;
-	let gpsData = [];
+
 	let isLoading = false;
 	let isError = false;
 	let selectedFirebaseGPSData = [];
+
+	function setLocalStorageWithExpiry(key, data) {
+		const now = new Date();
+		const item = {
+			value: data,
+			expiry: now.getTime() + 3600000,
+		};
+		localStorage.setItem(key, JSON.stringify(item));
+	}
+
+	function getWithExpiry(key) {
+		const itemStr = localStorage.getItem(key);
+		if (!itemStr) {
+			return [];
+		}
+		const item = JSON.parse(itemStr);
+		const now = new Date();
+		if (now.getTime() > item.expiry) {
+			localStorage.removeItem(key);
+			return [];
+		}
+		return item.value;
+	}
+	let gpsData = [];
+	let files = getWithExpiry("GoogleFiles");
+
+	let selectedVideoFile = null;
+	let selectedGPSData = null;
+
+	const updateMapCenter = (coordinates) => {
+		cityDetails = {
+			id: 0,
+			center: coordinates,
+			zoom: 15,
+			pitch: 0,
+			bearing: -17.6,
+		};
+	};
+
 	const fetchFirebaseData = async () => {
 		isLoading = true;
 		isError = false;
@@ -76,13 +114,7 @@
 		if (response.status === 200) {
 			if (response.documentList.length >= 1) {
 				gpsData = gpsJsonToGeojson(response.documentList);
-				cityDetails = {
-					id: 0,
-					center: gpsData[0].features[0].geometry.coordinates,
-					zoom: 15,
-					pitch: 0,
-					bearing: -17.6,
-				};
+				updateMapCenter(gpsData[0].features[0].geometry.coordinates);
 				selectedFirebaseGPSData = gpsData;
 				alert("Successfully loaded Firebase Data");
 			} else {
@@ -145,9 +177,7 @@
 			accessToken.set(accessTokenValue);
 		}
 	};
-	let files = [];
-	let selectedVideoFile = null;
-	let selectedGPSData = null;
+
 	function goTop() {
 		document.body.scrollIntoView();
 	}
@@ -162,13 +192,7 @@
 			if (response.status === 200) {
 				if (response.data) {
 					gpsData = gpsJsonToGeojson([response.data]);
-					cityDetails = {
-						id: 0,
-						center: gpsData[0].features[0].geometry.coordinates,
-						zoom: 15,
-						pitch: 0,
-						bearing: -17.6,
-					};
+					updateMapCenter(gpsData[0].features[0].geometry.coordinates);
 					selectedGPSData = gpsData[0];
 					alert("Added Trip to the Map");
 				} else {
@@ -186,13 +210,18 @@
 		selectedMenu = 3;
 		isLoading = false;
 	};
+
 	const getDriveFiles = async () => {
 		await verifyAccessToken();
 		const response = await getDashcamVideos(accessTokenValue);
 		if (response.status === 200) {
-			response.data.files.length >= 1 ? alert("Found Dashcam Files") : alert("No Dashcam Files found");
-			files = response.data.files;
-			console.log("App.js | files", response.data.files);
+			if (response.data.files.length) {
+				files = response.data.files;
+				setLocalStorageWithExpiry("GoogleFiles", response.data.files);
+				alert("Found Dashcam Files");
+			} else {
+				alert("No Dashcam Files found");
+			}
 		} else {
 			alert(response.message);
 		}
@@ -202,6 +231,7 @@
 		let tempList = files;
 		const coordFile = getGoogleDriveCoordFile(videoFile, files);
 		if (coordFile) {
+			const response = await deleteGoogleDriveFile(accessTokenValue, coordFile.id);
 			if (response.status === 204) {
 				tempList = tempList.filter((item) => item.id !== coordFile.id);
 				alert("Successfully Deleted Google Drive Coordinates File");
@@ -210,20 +240,19 @@
 			}
 		}
 		const response = await deleteGoogleDriveFile(accessTokenValue, videoFile.id);
-		if (videoFile) {
-			if (response.status === 204) {
-				tempList = tempList.filter((item) => item.id !== videoFile.id);
-				if (selectedVideoFile) {
-					if (selectedVideoFile.id == videoFile.id) {
-						selectedVideoFile = null;
-					}
+		if (response.status === 204) {
+			tempList = tempList.filter((item) => item.id !== videoFile.id);
+			files = tempList;
+			setLocalStorageWithExpiry("GoogleFiles", tempList);
+			if (selectedVideoFile) {
+				if (selectedVideoFile.id == videoFile.id) {
+					selectedVideoFile = null;
 				}
-				alert("Successfully Deleted Google Drive Video File");
-			} else {
-				alert("Cannot delete Google Drive Video File");
 			}
+			alert("Successfully Deleted Google Drive Video File");
+		} else {
+			alert("Cannot delete Google Drive Video File");
 		}
-		files = tempList;
 	};
 	const startMachineLearning = async (videoFile) => {
 		const coordFile = getGoogleDriveCoordFile(videoFile, files);

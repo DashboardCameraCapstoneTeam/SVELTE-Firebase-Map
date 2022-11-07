@@ -86914,13 +86914,13 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[55] = list[i];
-    	child_ctx[56] = list;
-    	child_ctx[57] = i;
+    	child_ctx[56] = list[i];
+    	child_ctx[57] = list;
+    	child_ctx[58] = i;
     	return child_ctx;
     }
 
-    // (282:0) {#if isModalOpen}
+    // (311:0) {#if isModalOpen}
     function create_if_block_8(ctx) {
     	let modalcard;
     	let updating_modalPayload;
@@ -86976,14 +86976,14 @@ var app = (function () {
     		block,
     		id: create_if_block_8.name,
     		type: "if",
-    		source: "(282:0) {#if isModalOpen}",
+    		source: "(311:0) {#if isModalOpen}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (301:31) 
+    // (330:31) 
     function create_if_block_7(ctx) {
     	let video;
     	let updating_selectedVideoFile;
@@ -87072,14 +87072,14 @@ var app = (function () {
     		block,
     		id: create_if_block_7.name,
     		type: "if",
-    		source: "(301:31) ",
+    		source: "(330:31) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (299:31) 
+    // (328:31) 
     function create_if_block_6(ctx) {
     	let profile;
     	let updating_user;
@@ -87136,14 +87136,14 @@ var app = (function () {
     		block,
     		id: create_if_block_6.name,
     		type: "if",
-    		source: "(299:31) ",
+    		source: "(328:31) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (297:31) 
+    // (326:31) 
     function create_if_block_5(ctx) {
     	let streetview;
     	let updating_pointOfInterest;
@@ -87199,14 +87199,14 @@ var app = (function () {
     		block,
     		id: create_if_block_5.name,
     		type: "if",
-    		source: "(297:31) ",
+    		source: "(326:31) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (294:2) {#if selectedMenu === 0}
+    // (323:2) {#if selectedMenu === 0}
     function create_if_block_4(ctx) {
     	let tableview;
     	let updating_selectedFirebaseGPSData;
@@ -87224,8 +87224,8 @@ var app = (function () {
     		deleteFirebaseElement: /*deleteFirebaseElement*/ ctx[21]
     	};
 
-    	if (/*selectedFirebaseGPSData*/ ctx[15] !== void 0) {
-    		tableview_props.selectedFirebaseGPSData = /*selectedFirebaseGPSData*/ ctx[15];
+    	if (/*selectedFirebaseGPSData*/ ctx[14] !== void 0) {
+    		tableview_props.selectedFirebaseGPSData = /*selectedFirebaseGPSData*/ ctx[14];
     	}
 
     	tableview = new TableView({ props: tableview_props, $$inline: true });
@@ -87265,9 +87265,9 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			const tableview_changes = {};
 
-    			if (!updating_selectedFirebaseGPSData && dirty[0] & /*selectedFirebaseGPSData*/ 32768) {
+    			if (!updating_selectedFirebaseGPSData && dirty[0] & /*selectedFirebaseGPSData*/ 16384) {
     				updating_selectedFirebaseGPSData = true;
-    				tableview_changes.selectedFirebaseGPSData = /*selectedFirebaseGPSData*/ ctx[15];
+    				tableview_changes.selectedFirebaseGPSData = /*selectedFirebaseGPSData*/ ctx[14];
     				add_flush_callback(() => updating_selectedFirebaseGPSData = false);
     			}
 
@@ -87304,14 +87304,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(294:2) {#if selectedMenu === 0}",
+    		source: "(323:2) {#if selectedMenu === 0}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (309:2) {#if isLoading === true}
+    // (338:2) {#if isLoading === true}
     function create_if_block_3(ctx) {
     	let maploadingspinner;
     	let current;
@@ -87343,14 +87343,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(309:2) {#if isLoading === true}",
+    		source: "(338:2) {#if isLoading === true}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (312:2) {#if isError === true}
+    // (341:2) {#if isError === true}
     function create_if_block_2(ctx) {
     	let maperror;
     	let current;
@@ -87382,14 +87382,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(312:2) {#if isError === true}",
+    		source: "(341:2) {#if isError === true}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (330:1) {:else}
+    // (359:1) {:else}
     function create_else_block$1(ctx) {
     	let div2;
     	let section;
@@ -87409,16 +87409,16 @@ var app = (function () {
     			div0 = element("div");
     			div0.textContent = "No Recordings Found";
     			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file$1, 333, 5, 11653);
+    			add_location(p, file$1, 362, 5, 12323);
     			attr_dev(div0, "class", "alert alert-red my-1");
     			attr_dev(div0, "role", "alert");
-    			add_location(div0, file$1, 334, 5, 11701);
+    			add_location(div0, file$1, 363, 5, 12371);
     			attr_dev(div1, "class", "p-4");
-    			add_location(div1, file$1, 332, 4, 11629);
+    			add_location(div1, file$1, 361, 4, 12299);
     			attr_dev(section, "class", "card h-fit scale-in-center");
-    			add_location(section, file$1, 331, 3, 11579);
+    			add_location(section, file$1, 360, 3, 12249);
     			attr_dev(div2, "class", "col-span-1 md:col-span-3");
-    			add_location(div2, file$1, 330, 2, 11536);
+    			add_location(div2, file$1, 359, 2, 12206);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -87440,14 +87440,14 @@ var app = (function () {
     		block,
     		id: create_else_block$1.name,
     		type: "else",
-    		source: "(330:1) {:else}",
+    		source: "(359:1) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (322:1) {#if files.length}
+    // (351:1) {#if files.length}
     function create_if_block$2(ctx) {
     	let each_1_anchor;
     	let current;
@@ -87536,14 +87536,14 @@ var app = (function () {
     		block,
     		id: create_if_block$2.name,
     		type: "if",
-    		source: "(322:1) {#if files.length}",
+    		source: "(351:1) {#if files.length}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (324:3) {#if videoFile.fileExtension === "MP4" || videoFile.fileExtension === "mp4"}
+    // (353:3) {#if videoFile.fileExtension === "MP4" || videoFile.fileExtension === "mp4"}
     function create_if_block_1(ctx) {
     	let div;
     	let recordingscard;
@@ -87552,7 +87552,7 @@ var app = (function () {
     	let current;
 
     	function recordingscard_videoFile_binding(value) {
-    		/*recordingscard_videoFile_binding*/ ctx[45](value, /*videoFile*/ ctx[55], /*each_value*/ ctx[56], /*videoFile_index*/ ctx[57]);
+    		/*recordingscard_videoFile_binding*/ ctx[45](value, /*videoFile*/ ctx[56], /*each_value*/ ctx[57], /*videoFile_index*/ ctx[58]);
     	}
 
     	let recordingscard_props = {
@@ -87562,8 +87562,8 @@ var app = (function () {
     		fetchGPSDataForFile: /*fetchGPSDataForFile*/ ctx[22]
     	};
 
-    	if (/*videoFile*/ ctx[55] !== void 0) {
-    		recordingscard_props.videoFile = /*videoFile*/ ctx[55];
+    	if (/*videoFile*/ ctx[56] !== void 0) {
+    		recordingscard_props.videoFile = /*videoFile*/ ctx[56];
     	}
 
     	recordingscard = new RecordingsCard({
@@ -87579,7 +87579,7 @@ var app = (function () {
     			create_component(recordingscard.$$.fragment);
     			t = space();
     			attr_dev(div, "class", "col-span-1 md:col-span-3");
-    			add_location(div, file$1, 324, 4, 11336);
+    			add_location(div, file$1, 353, 4, 12006);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -87593,7 +87593,7 @@ var app = (function () {
 
     			if (!updating_videoFile && dirty[0] & /*files*/ 65536) {
     				updating_videoFile = true;
-    				recordingscard_changes.videoFile = /*videoFile*/ ctx[55];
+    				recordingscard_changes.videoFile = /*videoFile*/ ctx[56];
     				add_flush_callback(() => updating_videoFile = false);
     			}
 
@@ -87618,18 +87618,18 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(324:3) {#if videoFile.fileExtension === \\\"MP4\\\" || videoFile.fileExtension === \\\"mp4\\\"}",
+    		source: "(353:3) {#if videoFile.fileExtension === \\\"MP4\\\" || videoFile.fileExtension === \\\"mp4\\\"}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (323:2) {#each files as videoFile}
+    // (352:2) {#each files as videoFile}
     function create_each_block(ctx) {
     	let if_block_anchor;
     	let current;
-    	let if_block = (/*videoFile*/ ctx[55].fileExtension === "MP4" || /*videoFile*/ ctx[55].fileExtension === "mp4") && create_if_block_1(ctx);
+    	let if_block = (/*videoFile*/ ctx[56].fileExtension === "MP4" || /*videoFile*/ ctx[56].fileExtension === "mp4") && create_if_block_1(ctx);
 
     	const block = {
     		c: function create() {
@@ -87642,7 +87642,7 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (/*videoFile*/ ctx[55].fileExtension === "MP4" || /*videoFile*/ ctx[55].fileExtension === "mp4") {
+    			if (/*videoFile*/ ctx[56].fileExtension === "MP4" || /*videoFile*/ ctx[56].fileExtension === "mp4") {
     				if (if_block) {
     					if_block.p(ctx, dirty);
 
@@ -87684,7 +87684,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(323:2) {#each files as videoFile}",
+    		source: "(352:2) {#each files as videoFile}",
     		ctx
     	});
 
@@ -87838,8 +87838,8 @@ var app = (function () {
     		map_props.cityDetails = /*cityDetails*/ ctx[9];
     	}
 
-    	if (/*gpsData*/ ctx[12] !== void 0) {
-    		map_props.gpsData = /*gpsData*/ ctx[12];
+    	if (/*gpsData*/ ctx[15] !== void 0) {
+    		map_props.gpsData = /*gpsData*/ ctx[15];
     	}
 
     	if (/*isReadyForStyleSwitching*/ ctx[4] !== void 0) {
@@ -87896,8 +87896,8 @@ var app = (function () {
 
     	binding_callbacks.push(() => bind$2(mapstyleselector, 'mapStyle', mapstyleselector_mapStyle_binding));
     	binding_callbacks.push(() => bind$2(mapstyleselector, 'isReadyForStyleSwitching', mapstyleselector_isReadyForStyleSwitching_binding));
-    	let if_block2 = /*isLoading*/ ctx[13] === true && create_if_block_3(ctx);
-    	let if_block3 = /*isError*/ ctx[14] === true && create_if_block_2(ctx);
+    	let if_block2 = /*isLoading*/ ctx[12] === true && create_if_block_3(ctx);
+    	let if_block3 = /*isError*/ ctx[13] === true && create_if_block_2(ctx);
 
     	pageheader1 = new Navbar({
     			props: {
@@ -87970,13 +87970,13 @@ var app = (function () {
     			t13 = space();
     			create_component(footer.$$.fragment);
     			attr_dev(div0, "class", `col-span-1 lg:col-span-6 flex flex-col gap-4`);
-    			add_location(div0, file$1, 291, 1, 9961);
+    			add_location(div0, file$1, 320, 1, 10631);
     			attr_dev(div1, "class", "col-span-1 md:col-span-6 row-span-6 relative");
-    			add_location(div1, file$1, 305, 1, 10500);
+    			add_location(div1, file$1, 334, 1, 11170);
     			attr_dev(main, "class", "grid grid-cols-1 gap-4 lg:grid-cols-12 my-4 px-4");
-    			add_location(main, file$1, 290, 0, 9895);
+    			add_location(main, file$1, 319, 0, 10565);
     			attr_dev(section, "class", "grid grid-cols-1 gap-4 lg:grid-cols-12 my-4 px-4");
-    			add_location(section, file$1, 320, 0, 11132);
+    			add_location(section, file$1, 349, 0, 11802);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -88112,9 +88112,9 @@ var app = (function () {
     				add_flush_callback(() => updating_cityDetails = false);
     			}
 
-    			if (!updating_gpsData && dirty[0] & /*gpsData*/ 4096) {
+    			if (!updating_gpsData && dirty[0] & /*gpsData*/ 32768) {
     				updating_gpsData = true;
-    				map_changes.gpsData = /*gpsData*/ ctx[12];
+    				map_changes.gpsData = /*gpsData*/ ctx[15];
     				add_flush_callback(() => updating_gpsData = false);
     			}
 
@@ -88165,9 +88165,9 @@ var app = (function () {
 
     			mapstyleselector.$set(mapstyleselector_changes);
 
-    			if (/*isLoading*/ ctx[13] === true) {
+    			if (/*isLoading*/ ctx[12] === true) {
     				if (if_block2) {
-    					if (dirty[0] & /*isLoading*/ 8192) {
+    					if (dirty[0] & /*isLoading*/ 4096) {
     						transition_in(if_block2, 1);
     					}
     				} else {
@@ -88186,9 +88186,9 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (/*isError*/ ctx[14] === true) {
+    			if (/*isError*/ ctx[13] === true) {
     				if (if_block3) {
-    					if (dirty[0] & /*isError*/ 16384) {
+    					if (dirty[0] & /*isError*/ 8192) {
     						transition_in(if_block3, 1);
     					}
     				} else {
@@ -88315,6 +88315,35 @@ var app = (function () {
     	return block;
     }
 
+    function setLocalStorageWithExpiry(key, data) {
+    	const now = new Date();
+
+    	const item = {
+    		value: data,
+    		expiry: now.getTime() + 3600000
+    	};
+
+    	localStorage.setItem(key, JSON.stringify(item));
+    }
+
+    function getWithExpiry(key) {
+    	const itemStr = localStorage.getItem(key);
+
+    	if (!itemStr) {
+    		return [];
+    	}
+
+    	const item = JSON.parse(itemStr);
+    	const now = new Date();
+
+    	if (now.getTime() > item.expiry) {
+    		localStorage.removeItem(key);
+    		return [];
+    	}
+
+    	return item.value;
+    }
+
     function goTop() {
     	document.body.scrollIntoView();
     }
@@ -88381,39 +88410,44 @@ var app = (function () {
     	];
 
     	let selectedMenu = menuComponents[0].id;
-    	let gpsData = [];
     	let isLoading = false;
     	let isError = false;
     	let selectedFirebaseGPSData = [];
+    	let gpsData = [];
+    	let files = getWithExpiry("GoogleFiles");
+    	let selectedVideoFile = null;
+    	let selectedGPSData = null;
+
+    	const updateMapCenter = coordinates => {
+    		$$invalidate(9, cityDetails = {
+    			id: 0,
+    			center: coordinates,
+    			zoom: 15,
+    			pitch: 0,
+    			bearing: -17.6
+    		});
+    	};
 
     	const fetchFirebaseData = async () => {
-    		$$invalidate(13, isLoading = true);
-    		$$invalidate(14, isError = false);
+    		$$invalidate(12, isLoading = true);
+    		$$invalidate(13, isError = false);
     		const response = await fetchDataFromFirebase(user, dateTimeDictionary);
 
     		if (response.status === 200) {
     			if (response.documentList.length >= 1) {
-    				$$invalidate(12, gpsData = gpsJsonToGeojson(response.documentList));
-
-    				$$invalidate(9, cityDetails = {
-    					id: 0,
-    					center: gpsData[0].features[0].geometry.coordinates,
-    					zoom: 15,
-    					pitch: 0,
-    					bearing: -17.6
-    				});
-
-    				$$invalidate(15, selectedFirebaseGPSData = gpsData);
+    				$$invalidate(15, gpsData = gpsJsonToGeojson(response.documentList));
+    				updateMapCenter(gpsData[0].features[0].geometry.coordinates);
+    				$$invalidate(14, selectedFirebaseGPSData = gpsData);
     				alert("Successfully loaded Firebase Data");
     			} else {
     				alert("No GPS data found");
     			}
     		} else {
     			alert(response.message);
-    			$$invalidate(14, isError = true);
+    			$$invalidate(13, isError = true);
     		}
 
-    		$$invalidate(13, isLoading = false);
+    		$$invalidate(12, isLoading = false);
     	};
 
     	const closeModal = () => {
@@ -88450,7 +88484,7 @@ var app = (function () {
     		if (response.status === 200) {
     			let tempGPSData = selectedFirebaseGPSData;
     			tempGPSData = tempGPSData.filter(obj => obj.dataId !== documentId);
-    			$$invalidate(12, gpsData = tempGPSData);
+    			$$invalidate(15, gpsData = tempGPSData);
 
     			$$invalidate(9, cityDetails = {
     				id: 0,
@@ -88460,12 +88494,12 @@ var app = (function () {
     				bearing: -17.6
     			});
 
-    			$$invalidate(15, selectedFirebaseGPSData = gpsData);
+    			$$invalidate(14, selectedFirebaseGPSData = gpsData);
     			alert("Successfully Deleted GPS Data");
     		} else {
     			console.log(response);
     			alert(response);
-    			$$invalidate(14, isError = true);
+    			$$invalidate(13, isError = true);
     		}
     	};
 
@@ -88476,13 +88510,9 @@ var app = (function () {
     		}
     	};
 
-    	let files = [];
-    	let selectedVideoFile = null;
-    	let selectedGPSData = null;
-
     	const fetchGPSDataForFile = async videoFile => {
-    		$$invalidate(13, isLoading = true);
-    		$$invalidate(14, isError = false);
+    		$$invalidate(12, isLoading = true);
+    		$$invalidate(13, isError = false);
     		$$invalidate(17, selectedVideoFile = videoFile);
     		goTop();
     		const coordFile = getGoogleDriveCoordFile(videoFile, files);
@@ -88492,16 +88522,8 @@ var app = (function () {
 
     			if (response.status === 200) {
     				if (response.data) {
-    					$$invalidate(12, gpsData = gpsJsonToGeojson([response.data]));
-
-    					$$invalidate(9, cityDetails = {
-    						id: 0,
-    						center: gpsData[0].features[0].geometry.coordinates,
-    						zoom: 15,
-    						pitch: 0,
-    						bearing: -17.6
-    					});
-
+    					$$invalidate(15, gpsData = gpsJsonToGeojson([response.data]));
+    					updateMapCenter(gpsData[0].features[0].geometry.coordinates);
     					$$invalidate(18, selectedGPSData = gpsData[0]);
     					alert("Added Trip to the Map");
     				} else {
@@ -88509,16 +88531,16 @@ var app = (function () {
     				}
     			} else {
     				alert(response);
-    				$$invalidate(14, isError = true);
+    				$$invalidate(13, isError = true);
     			}
     		} else {
     			alert("Coordinates File does not exist, but you can still view the video");
     			$$invalidate(18, selectedGPSData = null);
-    			$$invalidate(12, gpsData = []);
+    			$$invalidate(15, gpsData = []);
     		}
 
     		$$invalidate(11, selectedMenu = 3);
-    		$$invalidate(13, isLoading = false);
+    		$$invalidate(12, isLoading = false);
     	};
 
     	const getDriveFiles = async () => {
@@ -88526,12 +88548,13 @@ var app = (function () {
     		const response = await getDashcamVideos(accessTokenValue);
 
     		if (response.status === 200) {
-    			response.data.files.length >= 1
-    			? alert("Found Dashcam Files")
-    			: alert("No Dashcam Files found");
-
-    			$$invalidate(16, files = response.data.files);
-    			console.log("App.js | files", response.data.files);
+    			if (response.data.files.length) {
+    				$$invalidate(16, files = response.data.files);
+    				setLocalStorageWithExpiry("GoogleFiles", response.data.files);
+    				alert("Found Dashcam Files");
+    			} else {
+    				alert("No Dashcam Files found");
+    			}
     		} else {
     			alert(response.message);
     		}
@@ -88543,6 +88566,8 @@ var app = (function () {
     		const coordFile = getGoogleDriveCoordFile(videoFile, files);
 
     		if (coordFile) {
+    			const response = await deleteGoogleDriveFile(accessTokenValue, coordFile.id);
+
     			if (response.status === 204) {
     				tempList = tempList.filter(item => item.id !== coordFile.id);
     				alert("Successfully Deleted Google Drive Coordinates File");
@@ -88553,23 +88578,21 @@ var app = (function () {
 
     		const response = await deleteGoogleDriveFile(accessTokenValue, videoFile.id);
 
-    		if (videoFile) {
-    			if (response.status === 204) {
-    				tempList = tempList.filter(item => item.id !== videoFile.id);
+    		if (response.status === 204) {
+    			tempList = tempList.filter(item => item.id !== videoFile.id);
+    			$$invalidate(16, files = tempList);
+    			setLocalStorageWithExpiry("GoogleFiles", tempList);
 
-    				if (selectedVideoFile) {
-    					if (selectedVideoFile.id == videoFile.id) {
-    						$$invalidate(17, selectedVideoFile = null);
-    					}
+    			if (selectedVideoFile) {
+    				if (selectedVideoFile.id == videoFile.id) {
+    					$$invalidate(17, selectedVideoFile = null);
     				}
-
-    				alert("Successfully Deleted Google Drive Video File");
-    			} else {
-    				alert("Cannot delete Google Drive Video File");
     			}
-    		}
 
-    		$$invalidate(16, files = tempList);
+    			alert("Successfully Deleted Google Drive Video File");
+    		} else {
+    			alert("Cannot delete Google Drive Video File");
+    		}
     	};
 
     	const startMachineLearning = async videoFile => {
@@ -88691,7 +88714,7 @@ var app = (function () {
 
     	function tableview_selectedFirebaseGPSData_binding(value) {
     		selectedFirebaseGPSData = value;
-    		$$invalidate(15, selectedFirebaseGPSData);
+    		$$invalidate(14, selectedFirebaseGPSData);
     	}
 
     	function searchdetails_dateTimeDictionary_binding(value) {
@@ -88726,7 +88749,7 @@ var app = (function () {
 
     	function map_gpsData_binding(value) {
     		gpsData = value;
-    		$$invalidate(12, gpsData);
+    		$$invalidate(15, gpsData);
     	}
 
     	function map_isReadyForStyleSwitching_binding(value) {
@@ -88820,18 +88843,21 @@ var app = (function () {
     		cityDetails,
     		menuComponents,
     		selectedMenu,
-    		gpsData,
     		isLoading,
     		isError,
     		selectedFirebaseGPSData,
+    		setLocalStorageWithExpiry,
+    		getWithExpiry,
+    		gpsData,
+    		files,
+    		selectedVideoFile,
+    		selectedGPSData,
+    		updateMapCenter,
     		fetchFirebaseData,
     		closeModal,
     		openModel,
     		deleteFirebaseElement,
     		verifyAccessToken,
-    		files,
-    		selectedVideoFile,
-    		selectedGPSData,
     		goTop,
     		fetchGPSDataForFile,
     		getDriveFiles,
@@ -88859,10 +88885,10 @@ var app = (function () {
     		if ('cityDetails' in $$props) $$invalidate(9, cityDetails = $$props.cityDetails);
     		if ('menuComponents' in $$props) $$invalidate(10, menuComponents = $$props.menuComponents);
     		if ('selectedMenu' in $$props) $$invalidate(11, selectedMenu = $$props.selectedMenu);
-    		if ('gpsData' in $$props) $$invalidate(12, gpsData = $$props.gpsData);
-    		if ('isLoading' in $$props) $$invalidate(13, isLoading = $$props.isLoading);
-    		if ('isError' in $$props) $$invalidate(14, isError = $$props.isError);
-    		if ('selectedFirebaseGPSData' in $$props) $$invalidate(15, selectedFirebaseGPSData = $$props.selectedFirebaseGPSData);
+    		if ('isLoading' in $$props) $$invalidate(12, isLoading = $$props.isLoading);
+    		if ('isError' in $$props) $$invalidate(13, isError = $$props.isError);
+    		if ('selectedFirebaseGPSData' in $$props) $$invalidate(14, selectedFirebaseGPSData = $$props.selectedFirebaseGPSData);
+    		if ('gpsData' in $$props) $$invalidate(15, gpsData = $$props.gpsData);
     		if ('files' in $$props) $$invalidate(16, files = $$props.files);
     		if ('selectedVideoFile' in $$props) $$invalidate(17, selectedVideoFile = $$props.selectedVideoFile);
     		if ('selectedGPSData' in $$props) $$invalidate(18, selectedGPSData = $$props.selectedGPSData);
@@ -88886,10 +88912,10 @@ var app = (function () {
     		cityDetails,
     		menuComponents,
     		selectedMenu,
-    		gpsData,
     		isLoading,
     		isError,
     		selectedFirebaseGPSData,
+    		gpsData,
     		files,
     		selectedVideoFile,
     		selectedGPSData,
