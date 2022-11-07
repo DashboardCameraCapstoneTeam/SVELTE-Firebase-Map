@@ -44,15 +44,13 @@
 	});
 </script>
 
-<section class="card h-fit scale-in-center">
-	<div class="p-4">
-		<p class="font-bold my-1">Street View:</p>
-		{#if pointOfInterest == null}
-			<div class="alert alert-red my-1" role="alert">Select a point on the map.</div>
-		{/if}
-		{#if error !== null}
-			<div class="alert alert-red my-1" role="alert">{error}</div>
-		{/if}
-		<div bind:this={streetViewContainer} class={`${pointOfInterest == null ? "h-0" : "h-96"} w-full rounded-lg`} />
-	</div>
+<section class="card h-fit scale-in-center p-4">
+	<p class=" my-1">Street View:</p>
+	{#if pointOfInterest == null}
+		<div class="alert alert-red my-1" role="alert">Select a point on the map.</div>
+	{/if}
+	{#if error !== null}
+		<div class="alert alert-red my-1" role="alert">{error}</div>
+	{/if}
+	<div bind:this={streetViewContainer} class={`${pointOfInterest == null ? "h-0" : "h-96"} w-full rounded-lg`} />
 </section>
