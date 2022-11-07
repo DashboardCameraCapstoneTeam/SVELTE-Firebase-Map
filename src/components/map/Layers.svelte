@@ -1,5 +1,4 @@
 <script>
-	import AlertCard from "components/AlertCard.svelte";
 	export let layerList = [];
 	let showAllLayers = false;
 	const toggleLayers = () => {

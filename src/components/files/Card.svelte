@@ -54,12 +54,12 @@
 				Delete
 			</button>
 		</div>
-		<!-- <hr class="solid my-4" />
+		<hr class="solid my-4" />
 		<div class="flex">
 			<button class={`card-btn card-btn-blue my-1`} on:click={() => startMachineLearning(videoFile)}>
 				<i class="fa-solid fa-robot" />
 				Machine Learning
 			</button>
-		</div> -->
+		</div>
 	</div>
 </section>

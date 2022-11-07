@@ -13,7 +13,7 @@
 	import Profile from "../components/menu/Profile.svelte";
 	import { getGoogleDriveCoordFile } from "utils/filter-data.js";
 	import { processWithMachineLearning, fetchGPSDataFromGoogleDrive } from "service/custom-api";
-	import PageHeader from "../components/PageHeader.svelte";
+	import PageHeader from "../components/Navbar.svelte";
 	import AttentionBar from "../components/AttentionBar.svelte";
 	import ButtonFlex from "../components/menu/ButtonFlex.svelte";
 	import Recordings from "./Recordings.svelte";
@@ -165,6 +165,8 @@
 		isLoading = true;
 		isError = false;
 		selectedVideoFile = videoFile;
+
+		goTop();
 		const coordFile = getGoogleDriveCoordFile(videoFile, files);
 		if (coordFile) {
 			const response = await fetchGPSDataFromGoogleDrive(user, coordFile);
@@ -195,7 +197,7 @@
 
 		selectedMenu = 3;
 		isLoading = false;
-		goTop();
+		
 	};
 </script>
 

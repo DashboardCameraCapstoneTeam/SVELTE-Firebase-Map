@@ -1,9 +1,8 @@
 <script>
 	import { getDashcamVideos, deleteGoogleDriveFile } from "service/google-drive";
 	import Card from "components/files/Card.svelte";
-	import AlertCard from "components/AlertCard.svelte";
 	import { processWithMachineLearning } from "service/custom-api";
-	import PageHeader from "../components/PageHeader.svelte";
+	import PageHeader from "../components/Navbar.svelte";
 	import AttentionBar from "../components/AttentionBar.svelte";
 	import { getGoogleDriveCoordFile } from "utils/filter-data.js";
 	import { sortBySizeSmallToLarge, sortBySizeLargeToSmall, sortByTimeRecentToOldest, sortByTimeOldestToRecent } from "utils/sorting-video-assets";
@@ -15,6 +14,9 @@
 	export let selectedVideoFile;
 	export let fetchGPSDataForFile;
 	export let openModel;
+
+
+	
 
 	const getDriveFiles = async () => {
 		await verifyAccessToken();
@@ -121,7 +123,6 @@
 <PageHeader title={"Recordings"} color="bg-dark" zHeight="z-10" />
 <AttentionBar message="Load, view, and sort all Google Drive Recordings. Use Pagination to sort between videos." />
 
-
 <section class="shadow-xl">
 	<div class="flex flex-row ">
 		{#each functionComponents as menuItem}
@@ -132,13 +133,24 @@
 
 <section class="grid grid-cols-1  md:grid-cols-12  gap-4 my-4 px-4 h-fit divide-x-1 ">
 	{#if files === null}
-		<div class="col-span-1 md:col-span-3">
-			<AlertCard title="Recordings" message="Records have not been fetched." styleColor="red" />
-		</div>
+	<div class="col-span-1 md:col-span-3">
+		<section class="card h-fit scale-in-center">
+			<div class="p-4">
+				<p class="font-bold my-1">Recordings:</p>
+				<div class="alert alert-red my-1" role="alert">Recordings have not been Fetched</div>
+			</div>
+		</section>
+	</div>
 	{:else if files.length <= 0}
 		<div class="col-span-1 md:col-span-3">
-			<AlertCard title="Recordings" message="No Recordings found." styleColor="red" />
+			<section class="card h-fit scale-in-center">
+				<div class="p-4">
+					<p class="font-bold my-1">Recordings:</p>
+					<div class="alert alert-red my-1" role="alert">No Recordings Found</div>
+				</div>
+			</section>
 		</div>
+	
 	{:else}
 		{#each files as videoFile}
 			{#if videoFile.fileExtension === "MP4" || videoFile.fileExtension === "mp4"}
