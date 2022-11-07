@@ -1,5 +1,5 @@
 <script>
-	import Footer from "components/widget/Footer.svelte";
+	import Footer from "components/Footer.svelte";
 	import Map from "components/map/Map.svelte";
 	import SearchDetails from "components/menu/SearchDetails.svelte";
 	import DateTime from "components/menu/DateTime.svelte";
@@ -13,16 +13,17 @@
 	import Profile from "../components/menu/Profile.svelte";
 	import { getGoogleDriveCoordFile } from "utils/filter-data.js";
 	import { processWithMachineLearning, fetchGPSDataFromGoogleDrive } from "service/custom-api";
-	import PageHeader from "../components/widget/PageHeader.svelte";
-	import AttentionBar from "../components/widget/AttentionBar.svelte";
+	import PageHeader from "../components/PageHeader.svelte";
+	import AttentionBar from "../components/AttentionBar.svelte";
 	import ButtonFlex from "../components/menu/ButtonFlex.svelte";
 	import Recordings from "./Recordings.svelte";
 	import Video from "../components/menu/Video.svelte";
 	import SpeedView from "../components/menu/SpeedView.svelte";
 	import SpeedChart from "../components/menu/SpeedChart.svelte";
-	import LoadingSpinner from "../components/loading/LoadingSpinner.svelte";
 	import TableView from "../components/menu/TableView.svelte";
-	import ModalCard from "../components/widget/ModalCard.svelte";
+	import ModalCard from "../components/ModalCard.svelte";
+	import MapLoadingSpinner from "../components/map/MapLoadingSpinner.svelte";
+	import MapError from "../components/map/MapError.svelte";
 
 	export let user;
 	export let signOut;
@@ -124,10 +125,8 @@
 	};
 
 	const deleteFirebaseElement = async (documentId) => {
-		
 		const response = await deleteDocumentFromFirebase(user, documentId);
 		if (response.status === 200) {
-
 			let tempGPSData = selectedFirebaseGPSData;
 			tempGPSData = tempGPSData.filter((obj) => obj.dataId !== documentId);
 			gpsData = tempGPSData;
@@ -141,7 +140,7 @@
 			selectedFirebaseGPSData = gpsData;
 			alert("Successfully Deleted GPS Data");
 		} else {
-			console.log(response)
+			console.log(response);
 			alert(response);
 			isError = true;
 		}
@@ -212,16 +211,17 @@ car's driving metrics on the screen as your video plays."
 
 <ButtonFlex bind:selectedMenu bind:menuComponents />
 
-<section class="grid grid-cols-1  md:grid-cols-12 grid-rows-6  gap-4 my-4 px-4 h-fit ">
+<main class="grid grid-cols-1 gap-4 lg:grid-cols-12 my-4 px-4">
 	<div class="col-span-1 md:col-span-6 row-span-6 grid grid-cols-1 md:grid-cols-3 gap-4 h-fit">
 		<div class="col-span-1 md:col-span-3 row-span-1">
 			<Layers bind:layerList />
 		</div>
 
-		<div class="col-span-1 md:col-span-3 row-span-1">
-			<TableView bind:selectedFirebaseGPSData {openModel} {deleteFirebaseElement} />
-		</div>
 		{#if selectedMenu === 0}
+			<div class="col-span-1 md:col-span-3 row-span-1">
+				<TableView bind:selectedFirebaseGPSData {openModel} {deleteFirebaseElement} />
+			</div>
+
 			<div class="col-span-1 md:col-span-3 row-span-1">
 				<DateTime bind:dateTimeDictionary />
 			</div>
@@ -257,23 +257,18 @@ car's driving metrics on the screen as your video plays."
 
 	<div class="col-span-1 md:col-span-6  row-span-6 relative">
 		<Map bind:cityDetails bind:gpsData bind:isReadyForStyleSwitching bind:layerList bind:mapStyle bind:pointOfInterest bind:selectedMenu />
-		<div class="absolute top-1 left-1 ">
-			<MapStyleSelector bind:mapStyle bind:isReadyForStyleSwitching />
-		</div>
+
+		<MapStyleSelector bind:mapStyle bind:isReadyForStyleSwitching />
 
 		{#if isLoading === true}
-			<div class="absolute top-0 z-100 map-loading rounded-lg">
-				<LoadingSpinner />
-			</div>
+			<MapLoadingSpinner />
 		{/if}
 
 		{#if isError === true}
-			<div class="absolute top-0 z-100 map-error rounded-lg">
-				<p class="align-middle">Error, unable to Fetch Data</p>
-			</div>
+			<MapError />
 		{/if}
 	</div>
-</section>
+</main>
 
 <Recordings {openModel} bind:user bind:accessTokenValue {verifyAccessToken} bind:files bind:selectedVideoFile {fetchGPSDataForFile} />
 

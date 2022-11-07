@@ -1,8 +1,6 @@
 <script>
 	export let user;
 	export let signOut;
-
-	console.log(user);
 </script>
 <section class="card h-fit scale-in-center">
 	<div class="p-4">

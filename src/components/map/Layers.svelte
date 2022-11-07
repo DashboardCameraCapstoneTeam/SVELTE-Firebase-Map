@@ -1,5 +1,5 @@
 <script>
-	import AlertCard from "components/widget/AlertCard.svelte";
+	import AlertCard from "components/AlertCard.svelte";
 	export let layerList = [];
 	let showAllLayers = false;
 	const toggleLayers = () => {
@@ -35,23 +35,17 @@
 		return layerList.every((element) => element.isShown === initialIsShown);
 	};
 </script>
-{#if layerList === null}
-	<AlertCard title="Layers" message="Loading Layers on the map." styleColor="red" />
-{:else if layerList.length <= 0}
-	<AlertCard title="Recordings" message="No Layers added." styleColor="red" />
-{:else}
-	<section class="card h-fit scale-in-center">
-		<div class="p-4">
-			<p class="font-bold my-1">Layers:</p>
-			<button on:click={toggleLayers} class={`card-btn   ${showAllLayers ? "card-btn-green" : " card-btn-red-outline"}  my-1 `}> {showAllLayers ? "Show All" : "Disable All"} </button>
-			<div class="overflow-auto">
-				{#each layerList as layer}
-					<button key={layer.name} on:click={() => toggleLayer(layer)} class={`card-btn ${layer.isShown ? "card-btn-blue" : ""} my-1 `}>
-						<i class="fa-solid {layer.icon} " />
-						{layer.name}
-					</button>
-				{/each}
-			</div>
+<section class="card h-fit scale-in-center">
+	<div class="p-4">
+		<p class="font-bold my-1">Layers:</p>
+		<button on:click={toggleLayers} class={`card-btn   ${showAllLayers ? "card-btn-green" : " card-btn-red-outline"}  my-1 `}> {showAllLayers ? "Show All" : "Disable All"} </button>
+		<div class="overflow-auto">
+			{#each layerList as layer}
+				<button key={layer.name} on:click={() => toggleLayer(layer)} class={`card-btn ${layer.isShown ? "card-btn-blue" : ""} my-1 `}>
+					<i class="fa-solid {layer.icon} " />
+					{layer.name}
+				</button>
+			{/each}
 		</div>
-	</section>
-{/if}
+	</div>
+</section>

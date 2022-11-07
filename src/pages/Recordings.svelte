@@ -1,11 +1,10 @@
 <script>
 	import { getDashcamVideos, deleteGoogleDriveFile } from "service/google-drive";
 	import Card from "components/files/Card.svelte";
-	import RecordingsButtonFlex from "components/files/RecordingsButtonFlex.svelte";
-	import AlertCard from "components/widget/AlertCard.svelte";
+	import AlertCard from "components/AlertCard.svelte";
 	import { processWithMachineLearning } from "service/custom-api";
-	import PageHeader from "../components/widget/PageHeader.svelte";
-	import AttentionBar from "../components/widget/AttentionBar.svelte";
+	import PageHeader from "../components/PageHeader.svelte";
+	import AttentionBar from "../components/AttentionBar.svelte";
 	import { getGoogleDriveCoordFile } from "utils/filter-data.js";
 	import { sortBySizeSmallToLarge, sortBySizeLargeToSmall, sortByTimeRecentToOldest, sortByTimeOldestToRecent } from "utils/sorting-video-assets";
 
@@ -121,7 +120,15 @@
 
 <PageHeader title={"Recordings"} color="bg-dark" zHeight="z-10" />
 <AttentionBar message="Load, view, and sort all Google Drive Recordings. Use Pagination to sort between videos." />
-<RecordingsButtonFlex bind:functionComponents />
+
+
+<section class="shadow-xl">
+	<div class="flex flex-row ">
+		{#each functionComponents as menuItem}
+			<button class={` navbar-btn ${menuItem.id == 0 ? "navbar-btn-blue" : ""} `} on:click={() => menuItem.function()}><i class="{menuItem.icon} " /> {menuItem.title} </button>
+		{/each}
+	</div>
+</section>
 
 <section class="grid grid-cols-1  md:grid-cols-12  gap-4 my-4 px-4 h-fit divide-x-1 ">
 	{#if files === null}
