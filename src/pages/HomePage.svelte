@@ -9,19 +9,24 @@
 	import { gpsJsonToGeojson } from "utils/geojson-utils.js";
 	import { googleSignIn } from "service/google-sign-in";
 	import { accessToken } from "store/access-token-store.js";
-	import Profile from "../components/menu/Profile.svelte";
+	import Profile from "components/menu/Profile.svelte";
 	import { getGoogleDriveCoordFile } from "utils/filter-data.js";
 	import { processWithMachineLearning, fetchGPSDataFromGoogleDrive } from "service/custom-api";
-	import PageHeader from "../components/Navbar.svelte";
-	import AttentionBar from "../components/AttentionBar.svelte";
-	import ButtonFlex from "../components/menu/ButtonFlex.svelte";
-	import Recordings from "./Recordings.svelte";
-	import Video from "../components/menu/Video.svelte";
-	import SpeedChart from "../components/menu/SpeedChart.svelte";
-	import TableView from "../components/menu/TableView.svelte";
-	import ModalCard from "../components/ModalCard.svelte";
-	import MapLoadingSpinner from "../components/map/MapLoadingSpinner.svelte";
-	import MapError from "../components/map/MapError.svelte";
+	import PageHeader from "components/Navbar.svelte";
+	import AttentionBar from "components/AttentionBar.svelte";
+	import MenuBar from "components/menu/MenuBar.svelte";
+	import Video from "components/menu/Video.svelte";
+	import SpeedChart from "components/menu/SpeedChart.svelte";
+	import TableView from "components/menu/TableView.svelte";
+	import ModalCard from "components/ModalCard.svelte";
+	import MapLoadingSpinner from "components/map/MapLoadingSpinner.svelte";
+	import MapError from "components/map/MapError.svelte";
+	import { getDashcamVideos, deleteGoogleDriveFile } from "service/google-drive";
+	import RecordingsCard from "components/recordings/RecordingsCard.svelte";
+	import { sortBySizeSmallToLarge, sortBySizeLargeToSmall, sortByTimeRecentToOldest, sortByTimeOldestToRecent } from "utils/sorting-video-assets";
+	import RecordingsMenuBar from "components/recordings/RecordingsMenuBar.svelte";
+
+	
 	export let user;
 	export let signOut;
 	let accessTokenValue;
@@ -181,7 +186,99 @@
 		selectedMenu = 3;
 		isLoading = false;
 	};
+	const getDriveFiles = async () => {
+		await verifyAccessToken();
+		const response = await getDashcamVideos(accessTokenValue);
+		if (response.status === 200) {
+			response.data.files.length >= 1 ? alert("Found Dashcam Files") : alert("No Dashcam Files found");
+			files = response.data.files;
+			console.log("App.js | files", response.data.files);
+		} else {
+			alert(response.message);
+		}
+	};
+	const deleteDriveFile = async (videoFile) => {
+		await verifyAccessToken();
+		let tempList = files;
+		const coordFile = getGoogleDriveCoordFile(videoFile, files);
+		if (coordFile) {
+			if (response.status === 204) {
+				tempList = tempList.filter((item) => item.id !== coordFile.id);
+				alert("Successfully Deleted Google Drive Coordinates File");
+			} else {
+				alert("Cannot delete Google Drive Coordinates File");
+			}
+		}
+		const response = await deleteGoogleDriveFile(accessTokenValue, videoFile.id);
+		if (videoFile) {
+			if (response.status === 204) {
+				tempList = tempList.filter((item) => item.id !== videoFile.id);
+				if (selectedVideoFile) {
+					if (selectedVideoFile.id == videoFile.id) {
+						selectedVideoFile = null;
+					}
+				}
+				alert("Successfully Deleted Google Drive Video File");
+			} else {
+				alert("Cannot delete Google Drive Video File");
+			}
+		}
+		files = tempList;
+	};
+	const startMachineLearning = async (videoFile) => {
+		const coordFile = getGoogleDriveCoordFile(videoFile, files);
+		if (coordFile) {
+			alert("Processing Dashcam Video. This will take some time, please wait");
+			const response = await processWithMachineLearning(user, videoFile, coordFile);
+			if (response.status === 200) {
+				alert("Succesfully Processed Video");
+			} else {
+				alert(response.message);
+			}
+		} else {
+			alert("Coordinates File does not exist");
+		}
+	};
+	//* Sort the videos and reset the initial video list
+	const sortBySizeASC = () => {
+		const tempList = files;
+		const sortedArray = sortBySizeSmallToLarge(tempList);
+		files = sortedArray;
+	};
+	//* Sort the videos and reset the initial video list
+	const sortBySizeDSC = () => {
+		const tempList = files;
+		const sortedArray = sortBySizeLargeToSmall(tempList);
+		files = sortedArray;
+	};
+	//* Sort the videos and reset the initial video list
+	const sortByTimeASC = () => {
+		const tempList = files;
+		const sortedArray = sortByTimeOldestToRecent(tempList);
+		files = sortedArray;
+	};
+	//* Sort the videos and reset the initial video list
+	const sortByTimeDSC = () => {
+		const tempList = files;
+		const sortedArray = sortByTimeRecentToOldest(tempList);
+		files = sortedArray;
+	};
+	//* To reset the video list, use the sortByTimeRecentToOldest function
+	const resetVideoList = () => {
+		const tempList = files;
+		const sortedArray = sortByTimeRecentToOldest(tempList);
+		files = sortedArray;
+	};
+	let functionComponents = [
+		{ id: 0, title: "Fetch Google Drive Data", icon: "fa-brands fa-google-drive", function: getDriveFiles },
+		{ id: 1, title: "Sort by Size ASC", icon: "fa-solid fa-filter", function: sortBySizeASC },
+		{ id: 2, title: "Sort by Size DSC", icon: "fa-solid fa-filter", function: sortBySizeDSC },
+		{ id: 3, title: "Sort by Time ASC", icon: "fa-solid fa-filter", function: sortByTimeASC },
+		{ id: 4, title: "Sort by Time DSC", icon: "fa-solid fa-filter", function: sortByTimeDSC },
+		{ id: 5, title: "Reset Video List", icon: "fa-solid fa-clock-rotate-left", function: resetVideoList },
+	];
 </script>
+
 {#if isModalOpen}
 	<ModalCard bind:modalPayload />
 {/if}
@@ -190,13 +287,13 @@
 	message="Dashcam Viewer shows all of your trips data. It displays your
 car's driving metrics on the screen as your video plays."
 />
-<ButtonFlex bind:selectedMenu bind:menuComponents />
+<MenuBar bind:selectedMenu bind:menuComponents />
 <main class="grid grid-cols-1 gap-4 lg:grid-cols-12 my-4 px-4">
 	<div class={`col-span-1 lg:col-span-6 flex flex-col gap-4`}>
 		<Layers bind:layerList />
 		{#if selectedMenu === 0}
 			<TableView bind:selectedFirebaseGPSData {openModel} {deleteFirebaseElement} />
-			<SearchDetails bind:dateTimeDictionary {fetchFirebaseData}/>
+			<SearchDetails bind:dateTimeDictionary {fetchFirebaseData} />
 		{:else if selectedMenu === 1}
 			<StreetView bind:pointOfInterest />
 		{:else if selectedMenu === 2}
@@ -217,5 +314,28 @@ car's driving metrics on the screen as your video plays."
 		{/if}
 	</div>
 </main>
-<Recordings {openModel} bind:user bind:accessTokenValue {verifyAccessToken} bind:files bind:selectedVideoFile {fetchGPSDataForFile} />
+<PageHeader title={"Recordings"} color="bg-dark" zHeight="z-10" />
+<AttentionBar message="Load, view, and sort all Google Drive Recordings. Use Pagination to sort between videos." />
+<RecordingsMenuBar {functionComponents} />
+
+<section class="grid grid-cols-1 gap-4 lg:grid-cols-12 my-4 px-4">
+	{#if files.length}
+		{#each files as videoFile}
+			{#if videoFile.fileExtension === "MP4" || videoFile.fileExtension === "mp4"}
+				<div class="col-span-1 md:col-span-3">
+					<RecordingsCard {openModel} bind:videoFile {deleteDriveFile} {startMachineLearning} {fetchGPSDataForFile} />
+				</div>
+			{/if}
+		{/each}
+	{:else}
+		<div class="col-span-1 md:col-span-3">
+			<section class="card h-fit scale-in-center">
+				<div class="p-4">
+					<p class="font-bold my-1">Recordings:</p>
+					<div class="alert alert-red my-1" role="alert">No Recordings Found</div>
+				</div>
+			</section>
+		</div>
+	{/if}
+</section>
 <Footer />
