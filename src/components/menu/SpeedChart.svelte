@@ -112,6 +112,7 @@
 		}
 	};
 	onMount(() => {
+		if (selectedGPSData === null) return;
 		initializeChartView();
 	});
 	const onGPSDataChange = () => {
@@ -119,6 +120,9 @@
 		try {
 			if (chartViewObject) {
 				updateChartView();
+			}
+			else{
+				initializeChartView();
 			}
 		} catch (err) {
 			alert(err);
@@ -134,7 +138,7 @@
 			{#if selectedGPSData === null}
 				<div class="alert alert-red my-1" role="alert">No GPS Data Selected.</div>
 			{/if}
-			<div bind:this={chartDiv} class={`${selectedGPSData === null ? "h-0" : "h-96"} w-full rounded-lg`} />
+			<div bind:this={chartDiv} class={`${selectedGPSData === null ? "hidden" : "h-96"} w-full rounded-lg`} />
 		</div>
 	</section>
 

@@ -1996,7 +1996,7 @@ var app = (function () {
     }
 
     // (46:2) {#if dateTimeDictionary.startDateTime === "" || dateTimeDictionary.endDateTime === ""}
-    function create_if_block$a(ctx) {
+    function create_if_block$b(ctx) {
     	let div;
 
     	const block = {
@@ -2018,7 +2018,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$a.name,
+    		id: create_if_block$b.name,
     		type: "if",
     		source: "(46:2) {#if dateTimeDictionary.startDateTime === \\\"\\\" || dateTimeDictionary.endDateTime === \\\"\\\"}",
     		ctx
@@ -2051,11 +2051,15 @@ var app = (function () {
     	let i;
     	let t11;
     	let t12;
+    	let t13;
+    	let hr;
+    	let t14;
+    	let p2;
     	let mounted;
     	let dispose;
 
     	function select_block_type(ctx, dirty) {
-    		if (/*dateTimeDictionary*/ ctx[0].startDateTime === "" || /*dateTimeDictionary*/ ctx[0].endDateTime === "") return create_if_block$a;
+    		if (/*dateTimeDictionary*/ ctx[0].startDateTime === "" || /*dateTimeDictionary*/ ctx[0].endDateTime === "") return create_if_block$b;
     		return create_else_block$7;
     	}
 
@@ -2092,6 +2096,11 @@ var app = (function () {
     			i = element("i");
     			t11 = space();
     			t12 = text(/*searchMessage*/ ctx[2]);
+    			t13 = space();
+    			hr = element("hr");
+    			t14 = space();
+    			p2 = element("p");
+    			p2.textContent = "Firebase data is only created after the dashcam videos and its coordinates have already been processed.";
     			attr_dev(p0, "class", "font-bold my-1");
     			add_location(p0, file$i, 20, 2, 610);
     			attr_dev(input0, "type", "datetime-local");
@@ -2128,6 +2137,9 @@ var app = (function () {
     			add_location(i, file$i, 58, 75, 2110);
     			attr_dev(button, "class", `card-btn btn-primary my-1`);
     			add_location(button, file$i, 58, 2, 2037);
+    			attr_dev(hr, "class", "my-2");
+    			add_location(hr, file$i, 60, 2, 2184);
+    			add_location(p2, file$i, 61, 2, 2207);
     			attr_dev(div3, "class", "p-4");
     			add_location(div3, file$i, 56, 1, 1962);
     			attr_dev(section1, "class", "card h-fit scale-in-center");
@@ -2163,6 +2175,10 @@ var app = (function () {
     			append_dev(button, i);
     			append_dev(button, t11);
     			append_dev(button, t12);
+    			append_dev(div3, t13);
+    			append_dev(div3, hr);
+    			append_dev(div3, t14);
+    			append_dev(div3, p2);
 
     			if (!mounted) {
     				dispose = [
@@ -2750,7 +2766,7 @@ var app = (function () {
     }
 
     // (29:2) {#if isLargeMenu === true}
-    function create_if_block$9(ctx) {
+    function create_if_block$a(ctx) {
     	let div;
     	let each_value = /*mapStyleList*/ ctx[2];
     	validate_each_argument(each_value);
@@ -2811,7 +2827,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$9.name,
+    		id: create_if_block$a.name,
     		type: "if",
     		source: "(29:2) {#if isLargeMenu === true}",
     		ctx
@@ -2973,7 +2989,7 @@ var app = (function () {
     	let dispose;
 
     	function select_block_type(ctx, dirty) {
-    		if (/*isLargeMenu*/ ctx[1] === true) return create_if_block$9;
+    		if (/*isLargeMenu*/ ctx[1] === true) return create_if_block$a;
     		return create_else_block$6;
     	}
 
@@ -3227,7 +3243,7 @@ var app = (function () {
     }
 
     // (52:1) {#if error !== null}
-    function create_if_block$8(ctx) {
+    function create_if_block$9(ctx) {
     	let div;
     	let t;
 
@@ -3253,7 +3269,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$8.name,
+    		id: create_if_block$9.name,
     		type: "if",
     		source: "(52:1) {#if error !== null}",
     		ctx
@@ -3271,7 +3287,7 @@ var app = (function () {
     	let div;
     	let div_class_value;
     	let if_block0 = /*pointOfInterest*/ ctx[0] == null && create_if_block_1$3(ctx);
-    	let if_block1 = /*error*/ ctx[2] !== null && create_if_block$8(ctx);
+    	let if_block1 = /*error*/ ctx[2] !== null && create_if_block$9(ctx);
 
     	const block = {
     		c: function create() {
@@ -3321,7 +3337,7 @@ var app = (function () {
     				if (if_block1) {
     					if_block1.p(ctx, dirty);
     				} else {
-    					if_block1 = create_if_block$8(ctx);
+    					if_block1 = create_if_block$9(ctx);
     					if_block1.c();
     					if_block1.m(section, t3);
     				}
@@ -38290,136 +38306,240 @@ var app = (function () {
 
     const file$e = "src\\components\\menu\\Profile.svelte";
 
-    function create_fragment$f(ctx) {
-    	let section;
-    	let div;
-    	let p0;
-    	let t1;
-    	let p1;
-    	let t2_value = /*user*/ ctx[0].displayName + "";
-    	let t2;
-    	let t3;
-    	let p2;
-    	let t5;
-    	let p3;
-    	let t6_value = /*user*/ ctx[0].email + "";
-    	let t6;
-    	let t7;
-    	let p4;
-    	let t9;
-    	let p5;
-    	let t10_value = /*user*/ ctx[0].emailVerified + "";
-    	let t10;
-    	let t11;
+    // (33:2) {#if showTerms}
+    function create_if_block$8(ctx) {
     	let hr;
-    	let t12;
+    	let t0;
+    	let p;
+    	let t2;
+    	let div;
     	let button;
     	let i;
+    	let t3;
+
+    	const block = {
+    		c: function create() {
+    			hr = element("hr");
+    			t0 = space();
+    			p = element("p");
+    			p.textContent = "Attention! deleting your account will remove all the GPS Data on Firebase. Videos collected through the dashcam will not be deleted.";
+    			t2 = space();
+    			div = element("div");
+    			button = element("button");
+    			i = element("i");
+    			t3 = text("\r\n\t\t\t\t\tDelete Account");
+    			attr_dev(hr, "class", "my-2");
+    			add_location(hr, file$e, 33, 2, 804);
+    			add_location(p, file$e, 35, 3, 830);
+    			attr_dev(i, "class", "fa-solid fa-trash");
+    			add_location(i, file$e, 42, 5, 1083);
+    			attr_dev(button, "class", `card-btn btn-error-outline my-1`);
+    			add_location(button, file$e, 41, 4, 1026);
+    			attr_dev(div, "class", "flex flex-row");
+    			add_location(div, file$e, 39, 3, 988);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, hr, anchor);
+    			insert_dev(target, t0, anchor);
+    			insert_dev(target, p, anchor);
+    			insert_dev(target, t2, anchor);
+    			insert_dev(target, div, anchor);
+    			append_dev(div, button);
+    			append_dev(button, i);
+    			append_dev(button, t3);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(hr);
+    			if (detaching) detach_dev(t0);
+    			if (detaching) detach_dev(p);
+    			if (detaching) detach_dev(t2);
+    			if (detaching) detach_dev(div);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block$8.name,
+    		type: "if",
+    		source: "(33:2) {#if showTerms}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$f(ctx) {
+    	let section;
+    	let div1;
+    	let div0;
+    	let button0;
+    	let i0;
+    	let t0;
+    	let t1;
+    	let p0;
+    	let t3;
+    	let p1;
+    	let t4_value = /*user*/ ctx[0].displayName + "";
+    	let t4;
+    	let t5;
+    	let p2;
+    	let t7;
+    	let p3;
+    	let t8_value = /*user*/ ctx[0].email + "";
+    	let t8;
+    	let t9;
+    	let p4;
+    	let t11;
+    	let p5;
+    	let t12_value = /*user*/ ctx[0].emailVerified + "";
+    	let t12;
     	let t13;
+    	let hr;
+    	let t14;
+    	let button1;
+    	let i1;
+    	let t15;
+    	let t16;
     	let mounted;
     	let dispose;
+    	let if_block = /*showTerms*/ ctx[2] && create_if_block$8(ctx);
 
     	const block = {
     		c: function create() {
     			section = element("section");
-    			div = element("div");
+    			div1 = element("div");
+    			div0 = element("div");
+    			button0 = element("button");
+    			i0 = element("i");
+    			t0 = text("\r\n\t\t\t\tManage Account");
+    			t1 = space();
     			p0 = element("p");
     			p0.textContent = "Name:";
-    			t1 = space();
-    			p1 = element("p");
-    			t2 = text(t2_value);
     			t3 = space();
+    			p1 = element("p");
+    			t4 = text(t4_value);
+    			t5 = space();
     			p2 = element("p");
     			p2.textContent = "Email:";
-    			t5 = space();
-    			p3 = element("p");
-    			t6 = text(t6_value);
     			t7 = space();
+    			p3 = element("p");
+    			t8 = text(t8_value);
+    			t9 = space();
     			p4 = element("p");
     			p4.textContent = "Email Verified:";
-    			t9 = space();
-    			p5 = element("p");
-    			t10 = text(t10_value);
     			t11 = space();
+    			p5 = element("p");
+    			t12 = text(t12_value);
+    			t13 = space();
     			hr = element("hr");
-    			t12 = space();
-    			button = element("button");
-    			i = element("i");
-    			t13 = text(" Sign Out");
+    			t14 = space();
+    			button1 = element("button");
+    			i1 = element("i");
+    			t15 = text(" Sign Out");
+    			t16 = space();
+    			if (if_block) if_block.c();
+    			attr_dev(i0, "class", "fa-solid fa-gear");
+    			add_location(i0, file$e, 17, 4, 330);
+    			attr_dev(button0, "class", "text-center hover:underline");
+    			add_location(button0, file$e, 16, 3, 257);
+    			attr_dev(div0, "class", "float-right");
+    			add_location(div0, file$e, 14, 2, 225);
     			attr_dev(p0, "class", "font-bold my-1");
-    			add_location(p0, file$e, 7, 2, 133);
-    			add_location(p1, file$e, 8, 2, 172);
+    			add_location(p0, file$e, 21, 2, 405);
+    			add_location(p1, file$e, 22, 2, 444);
     			attr_dev(p2, "class", "font-bold my-1");
-    			add_location(p2, file$e, 9, 2, 201);
-    			add_location(p3, file$e, 10, 2, 241);
+    			add_location(p2, file$e, 23, 2, 473);
+    			add_location(p3, file$e, 24, 2, 513);
     			attr_dev(p4, "class", "font-bold my-1");
-    			add_location(p4, file$e, 11, 2, 264);
-    			add_location(p5, file$e, 12, 2, 313);
-    			attr_dev(hr, "class", "solid my-4");
-    			add_location(hr, file$e, 15, 2, 348);
-    			attr_dev(i, "class", "fa-solid fa-right-from-bracket");
-    			add_location(i, file$e, 16, 69, 444);
-    			attr_dev(button, "class", "card-btn btn-error-outline my-1");
-    			add_location(button, file$e, 16, 2, 377);
-    			attr_dev(div, "class", "p-4");
-    			add_location(div, file$e, 5, 1, 109);
+    			add_location(p4, file$e, 25, 2, 536);
+    			add_location(p5, file$e, 26, 2, 585);
+    			attr_dev(hr, "class", "solid my-2");
+    			add_location(hr, file$e, 28, 2, 618);
+    			attr_dev(i1, "class", "fa-solid fa-right-from-bracket");
+    			add_location(i1, file$e, 29, 69, 714);
+    			attr_dev(button1, "class", "card-btn btn-error-outline my-1");
+    			add_location(button1, file$e, 29, 2, 647);
+    			attr_dev(div1, "class", "p-4");
+    			add_location(div1, file$e, 12, 1, 202);
     			attr_dev(section, "class", "card h-fit scale-in-center");
-    			add_location(section, file$e, 4, 0, 62);
+    			add_location(section, file$e, 11, 0, 155);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
-    			append_dev(section, div);
-    			append_dev(div, p0);
-    			append_dev(div, t1);
-    			append_dev(div, p1);
-    			append_dev(p1, t2);
-    			append_dev(div, t3);
-    			append_dev(div, p2);
-    			append_dev(div, t5);
-    			append_dev(div, p3);
-    			append_dev(p3, t6);
-    			append_dev(div, t7);
-    			append_dev(div, p4);
-    			append_dev(div, t9);
-    			append_dev(div, p5);
-    			append_dev(p5, t10);
-    			append_dev(div, t11);
-    			append_dev(div, hr);
-    			append_dev(div, t12);
-    			append_dev(div, button);
-    			append_dev(button, i);
-    			append_dev(button, t13);
+    			append_dev(section, div1);
+    			append_dev(div1, div0);
+    			append_dev(div0, button0);
+    			append_dev(button0, i0);
+    			append_dev(button0, t0);
+    			append_dev(div1, t1);
+    			append_dev(div1, p0);
+    			append_dev(div1, t3);
+    			append_dev(div1, p1);
+    			append_dev(p1, t4);
+    			append_dev(div1, t5);
+    			append_dev(div1, p2);
+    			append_dev(div1, t7);
+    			append_dev(div1, p3);
+    			append_dev(p3, t8);
+    			append_dev(div1, t9);
+    			append_dev(div1, p4);
+    			append_dev(div1, t11);
+    			append_dev(div1, p5);
+    			append_dev(p5, t12);
+    			append_dev(div1, t13);
+    			append_dev(div1, hr);
+    			append_dev(div1, t14);
+    			append_dev(div1, button1);
+    			append_dev(button1, i1);
+    			append_dev(button1, t15);
+    			append_dev(div1, t16);
+    			if (if_block) if_block.m(div1, null);
 
     			if (!mounted) {
-    				dispose = listen_dev(
-    					button,
-    					"click",
-    					function () {
-    						if (is_function(/*signOut*/ ctx[1])) /*signOut*/ ctx[1].apply(this, arguments);
-    					},
-    					false,
-    					false,
-    					false
-    				);
+    				dispose = [
+    					listen_dev(button0, "click", /*toggleTerms*/ ctx[3], false, false, false),
+    					listen_dev(
+    						button1,
+    						"click",
+    						function () {
+    							if (is_function(/*signOut*/ ctx[1])) /*signOut*/ ctx[1].apply(this, arguments);
+    						},
+    						false,
+    						false,
+    						false
+    					)
+    				];
 
     				mounted = true;
     			}
     		},
     		p: function update(new_ctx, [dirty]) {
     			ctx = new_ctx;
-    			if (dirty & /*user*/ 1 && t2_value !== (t2_value = /*user*/ ctx[0].displayName + "")) set_data_dev(t2, t2_value);
-    			if (dirty & /*user*/ 1 && t6_value !== (t6_value = /*user*/ ctx[0].email + "")) set_data_dev(t6, t6_value);
-    			if (dirty & /*user*/ 1 && t10_value !== (t10_value = /*user*/ ctx[0].emailVerified + "")) set_data_dev(t10, t10_value);
+    			if (dirty & /*user*/ 1 && t4_value !== (t4_value = /*user*/ ctx[0].displayName + "")) set_data_dev(t4, t4_value);
+    			if (dirty & /*user*/ 1 && t8_value !== (t8_value = /*user*/ ctx[0].email + "")) set_data_dev(t8, t8_value);
+    			if (dirty & /*user*/ 1 && t12_value !== (t12_value = /*user*/ ctx[0].emailVerified + "")) set_data_dev(t12, t12_value);
+
+    			if (/*showTerms*/ ctx[2]) {
+    				if (if_block) ; else {
+    					if_block = create_if_block$8(ctx);
+    					if_block.c();
+    					if_block.m(div1, null);
+    				}
+    			} else if (if_block) {
+    				if_block.d(1);
+    				if_block = null;
+    			}
     		},
     		i: noop$2,
     		o: noop$2,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(section);
+    			if (if_block) if_block.d();
     			mounted = false;
-    			dispose();
+    			run_all(dispose);
     		}
     	};
 
@@ -38439,6 +38559,12 @@ var app = (function () {
     	validate_slots('Profile', slots, []);
     	let { user } = $$props;
     	let { signOut } = $$props;
+    	let showTerms = false;
+
+    	const toggleTerms = () => {
+    		$$invalidate(2, showTerms = !showTerms);
+    	};
+
     	const writable_props = ['user', 'signOut'];
 
     	Object.keys($$props).forEach(key => {
@@ -38450,18 +38576,19 @@ var app = (function () {
     		if ('signOut' in $$props) $$invalidate(1, signOut = $$props.signOut);
     	};
 
-    	$$self.$capture_state = () => ({ user, signOut });
+    	$$self.$capture_state = () => ({ user, signOut, showTerms, toggleTerms });
 
     	$$self.$inject_state = $$props => {
     		if ('user' in $$props) $$invalidate(0, user = $$props.user);
     		if ('signOut' in $$props) $$invalidate(1, signOut = $$props.signOut);
+    		if ('showTerms' in $$props) $$invalidate(2, showTerms = $$props.showTerms);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [user, signOut];
+    	return [user, signOut, showTerms, toggleTerms];
     }
 
     class Profile extends SvelteComponentDev {
@@ -84649,7 +84776,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (134:3) {#if selectedGPSData === null}
+    // (138:3) {#if selectedGPSData === null}
     function create_if_block_1$2(ctx) {
     	let div;
 
@@ -84659,7 +84786,7 @@ var app = (function () {
     			div.textContent = "No GPS Data Selected.";
     			attr_dev(div, "class", "alert alert-red my-1");
     			attr_dev(div, "role", "alert");
-    			add_location(div, file$9, 134, 4, 3604);
+    			add_location(div, file$9, 138, 4, 3689);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -84673,14 +84800,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$2.name,
     		type: "if",
-    		source: "(134:3) {#if selectedGPSData === null}",
+    		source: "(138:3) {#if selectedGPSData === null}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (151:3) {:else}
+    // (155:3) {:else}
     function create_else_block$4(ctx) {
     	let div;
 
@@ -84690,7 +84817,7 @@ var app = (function () {
     			div.textContent = "No GPS Data Selected.";
     			attr_dev(div, "class", "alert alert-red my-1");
     			attr_dev(div, "role", "alert");
-    			add_location(div, file$9, 151, 4, 4339);
+    			add_location(div, file$9, 155, 4, 4427);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -84705,14 +84832,14 @@ var app = (function () {
     		block,
     		id: create_else_block$4.name,
     		type: "else",
-    		source: "(151:3) {:else}",
+    		source: "(155:3) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (144:3) {#if selectedGPSData}
+    // (148:3) {#if selectedGPSData}
     function create_if_block$6(ctx) {
     	let div;
     	let t0;
@@ -84741,11 +84868,11 @@ var app = (function () {
     			t1 = text(" 100+");
     			attr_dev(i, "class", "dot");
     			attr_dev(i, "style", `--color:${/*speedColors*/ ctx[2][/*speedColors*/ ctx[2].length - 1]}`);
-    			add_location(i, file$9, 148, 31, 4226);
+    			add_location(i, file$9, 152, 31, 4314);
     			attr_dev(p, "class", "list-item my-2");
-    			add_location(p, file$9, 148, 5, 4200);
+    			add_location(p, file$9, 152, 5, 4288);
     			attr_dev(div, "class", "overflow-auto h-full");
-    			add_location(div, file$9, 144, 4, 3985);
+    			add_location(div, file$9, 148, 4, 4073);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -84794,14 +84921,14 @@ var app = (function () {
     		block,
     		id: create_if_block$6.name,
     		type: "if",
-    		source: "(144:3) {#if selectedGPSData}",
+    		source: "(148:3) {#if selectedGPSData}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (146:5) {#each speedColors as speedColor, i}
+    // (150:5) {#each speedColors as speedColor, i}
     function create_each_block$3(ctx) {
     	let p;
     	let i_1;
@@ -84822,9 +84949,9 @@ var app = (function () {
     			t3 = text(t3_value);
     			attr_dev(i_1, "class", "dot");
     			attr_dev(i_1, "style", `--color:${/*speedColor*/ ctx[11]}`);
-    			add_location(i_1, file$9, 146, 32, 4096);
+    			add_location(i_1, file$9, 150, 32, 4184);
     			attr_dev(p, "class", "list-item my-2");
-    			add_location(p, file$9, 146, 6, 4070);
+    			add_location(p, file$9, 150, 6, 4158);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -84844,7 +84971,7 @@ var app = (function () {
     		block,
     		id: create_each_block$3.name,
     		type: "each",
-    		source: "(146:5) {#each speedColors as speedColor, i}",
+    		source: "(150:5) {#each speedColors as speedColor, i}",
     		ctx
     	});
 
@@ -84894,21 +85021,21 @@ var app = (function () {
     			t5 = space();
     			if_block1.c();
     			attr_dev(p0, "class", "font-bold my-1");
-    			add_location(p0, file$9, 132, 3, 3514);
-    			attr_dev(div0, "class", div0_class_value = `${/*selectedGPSData*/ ctx[0] === null ? "h-0" : "h-96"} w-full rounded-lg`);
-    			add_location(div0, file$9, 136, 3, 3693);
+    			add_location(p0, file$9, 136, 3, 3599);
+    			attr_dev(div0, "class", div0_class_value = `${/*selectedGPSData*/ ctx[0] === null ? "hidden" : "h-96"} w-full rounded-lg`);
+    			add_location(div0, file$9, 140, 3, 3778);
     			attr_dev(div1, "class", "p-4");
-    			add_location(div1, file$9, 131, 2, 3492);
+    			add_location(div1, file$9, 135, 2, 3577);
     			attr_dev(section0, "class", "card h-fit scale-in-center flex-1");
-    			add_location(section0, file$9, 130, 1, 3437);
+    			add_location(section0, file$9, 134, 1, 3522);
     			attr_dev(p1, "class", "font-bold my-1");
-    			add_location(p1, file$9, 142, 3, 3903);
+    			add_location(p1, file$9, 146, 3, 3991);
     			attr_dev(div2, "class", "p-4");
-    			add_location(div2, file$9, 141, 2, 3881);
+    			add_location(div2, file$9, 145, 2, 3969);
     			attr_dev(section1, "class", "card h-full scale-in-center flex-none");
-    			add_location(section1, file$9, 140, 1, 3822);
+    			add_location(section1, file$9, 144, 1, 3910);
     			attr_dev(div3, "class", "flex flex-row gap-4 h-full");
-    			add_location(div3, file$9, 129, 0, 3394);
+    			add_location(div3, file$9, 133, 0, 3479);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -84942,7 +85069,7 @@ var app = (function () {
     				if_block0 = null;
     			}
 
-    			if (dirty & /*selectedGPSData*/ 1 && div0_class_value !== (div0_class_value = `${/*selectedGPSData*/ ctx[0] === null ? "h-0" : "h-96"} w-full rounded-lg`)) {
+    			if (dirty & /*selectedGPSData*/ 1 && div0_class_value !== (div0_class_value = `${/*selectedGPSData*/ ctx[0] === null ? "hidden" : "h-96"} w-full rounded-lg`)) {
     				attr_dev(div0, "class", div0_class_value);
     			}
 
@@ -85098,6 +85225,7 @@ var app = (function () {
     	};
 
     	onMount(() => {
+    		if (selectedGPSData === null) return;
     		initializeChartView();
     	});
 
@@ -85107,6 +85235,8 @@ var app = (function () {
     		try {
     			if (chartViewObject) {
     				updateChartView();
+    			} else {
+    				initializeChartView();
     			}
     		} catch(err) {
     			alert(err);
