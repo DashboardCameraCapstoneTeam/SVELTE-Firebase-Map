@@ -84649,7 +84649,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (132:2) {#if selectedGPSData === null}
+    // (134:3) {#if selectedGPSData === null}
     function create_if_block_1$2(ctx) {
     	let div;
 
@@ -84659,7 +84659,7 @@ var app = (function () {
     			div.textContent = "No GPS Data Selected.";
     			attr_dev(div, "class", "alert alert-red my-1");
     			attr_dev(div, "role", "alert");
-    			add_location(div, file$9, 132, 3, 3548);
+    			add_location(div, file$9, 134, 4, 3604);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -84673,14 +84673,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$2.name,
     		type: "if",
-    		source: "(132:2) {#if selectedGPSData === null}",
+    		source: "(134:3) {#if selectedGPSData === null}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (149:2) {:else}
+    // (151:3) {:else}
     function create_else_block$4(ctx) {
     	let div;
 
@@ -84690,7 +84690,7 @@ var app = (function () {
     			div.textContent = "No GPS Data Selected.";
     			attr_dev(div, "class", "alert alert-red my-1");
     			attr_dev(div, "role", "alert");
-    			add_location(div, file$9, 149, 3, 4257);
+    			add_location(div, file$9, 151, 4, 4339);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -84705,14 +84705,14 @@ var app = (function () {
     		block,
     		id: create_else_block$4.name,
     		type: "else",
-    		source: "(149:2) {:else}",
+    		source: "(151:3) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (142:2) {#if selectedGPSData}
+    // (144:3) {#if selectedGPSData}
     function create_if_block$6(ctx) {
     	let div;
     	let t0;
@@ -84741,11 +84741,11 @@ var app = (function () {
     			t1 = text(" 100+");
     			attr_dev(i, "class", "dot");
     			attr_dev(i, "style", `--color:${/*speedColors*/ ctx[2][/*speedColors*/ ctx[2].length - 1]}`);
-    			add_location(i, file$9, 146, 30, 4147);
+    			add_location(i, file$9, 148, 31, 4226);
     			attr_dev(p, "class", "list-item my-2");
-    			add_location(p, file$9, 146, 4, 4121);
+    			add_location(p, file$9, 148, 5, 4200);
     			attr_dev(div, "class", "overflow-auto h-full");
-    			add_location(div, file$9, 142, 3, 3910);
+    			add_location(div, file$9, 144, 4, 3985);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -84794,14 +84794,14 @@ var app = (function () {
     		block,
     		id: create_if_block$6.name,
     		type: "if",
-    		source: "(142:2) {#if selectedGPSData}",
+    		source: "(144:3) {#if selectedGPSData}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (144:4) {#each speedColors as speedColor, i}
+    // (146:5) {#each speedColors as speedColor, i}
     function create_each_block$3(ctx) {
     	let p;
     	let i_1;
@@ -84822,9 +84822,9 @@ var app = (function () {
     			t3 = text(t3_value);
     			attr_dev(i_1, "class", "dot");
     			attr_dev(i_1, "style", `--color:${/*speedColor*/ ctx[11]}`);
-    			add_location(i_1, file$9, 144, 31, 4019);
+    			add_location(i_1, file$9, 146, 32, 4096);
     			attr_dev(p, "class", "list-item my-2");
-    			add_location(p, file$9, 144, 5, 3993);
+    			add_location(p, file$9, 146, 6, 4070);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -84844,7 +84844,7 @@ var app = (function () {
     		block,
     		id: create_each_block$3.name,
     		type: "each",
-    		source: "(144:4) {#each speedColors as speedColor, i}",
+    		source: "(146:5) {#each speedColors as speedColor, i}",
     		ctx
     	});
 
@@ -84852,6 +84852,7 @@ var app = (function () {
     }
 
     function create_fragment$a(ctx) {
+    	let div3;
     	let section0;
     	let div1;
     	let p0;
@@ -84876,6 +84877,7 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
+    			div3 = element("div");
     			section0 = element("section");
     			div1 = element("div");
     			p0 = element("p");
@@ -84892,25 +84894,28 @@ var app = (function () {
     			t5 = space();
     			if_block1.c();
     			attr_dev(p0, "class", "font-bold my-1");
-    			add_location(p0, file$9, 130, 2, 3460);
+    			add_location(p0, file$9, 132, 3, 3514);
     			attr_dev(div0, "class", div0_class_value = `${/*selectedGPSData*/ ctx[0] === null ? "h-0" : "h-96"} w-full rounded-lg`);
-    			add_location(div0, file$9, 134, 2, 3635);
+    			add_location(div0, file$9, 136, 3, 3693);
     			attr_dev(div1, "class", "p-4");
-    			add_location(div1, file$9, 129, 1, 3439);
-    			attr_dev(section0, "class", "card h-fit scale-in-center");
-    			add_location(section0, file$9, 128, 0, 3392);
+    			add_location(div1, file$9, 131, 2, 3492);
+    			attr_dev(section0, "class", "card h-fit scale-in-center flex-1");
+    			add_location(section0, file$9, 130, 1, 3437);
     			attr_dev(p1, "class", "font-bold my-1");
-    			add_location(p1, file$9, 140, 2, 3830);
+    			add_location(p1, file$9, 142, 3, 3903);
     			attr_dev(div2, "class", "p-4");
-    			add_location(div2, file$9, 139, 1, 3809);
-    			attr_dev(section1, "class", "card h-full scale-in-center");
-    			add_location(section1, file$9, 138, 0, 3761);
+    			add_location(div2, file$9, 141, 2, 3881);
+    			attr_dev(section1, "class", "card h-full scale-in-center flex-none");
+    			add_location(section1, file$9, 140, 1, 3822);
+    			attr_dev(div3, "class", "flex flex-row gap-4 h-full");
+    			add_location(div3, file$9, 129, 0, 3394);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, section0, anchor);
+    			insert_dev(target, div3, anchor);
+    			append_dev(div3, section0);
     			append_dev(section0, div1);
     			append_dev(div1, p0);
     			append_dev(div1, t1);
@@ -84918,8 +84923,8 @@ var app = (function () {
     			append_dev(div1, t2);
     			append_dev(div1, div0);
     			/*div0_binding*/ ctx[3](div0);
-    			insert_dev(target, t3, anchor);
-    			insert_dev(target, section1, anchor);
+    			append_dev(div3, t3);
+    			append_dev(div3, section1);
     			append_dev(section1, div2);
     			append_dev(div2, p1);
     			append_dev(div2, t5);
@@ -84956,11 +84961,9 @@ var app = (function () {
     		i: noop$2,
     		o: noop$2,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(section0);
+    			if (detaching) detach_dev(div3);
     			if (if_block0) if_block0.d();
     			/*div0_binding*/ ctx[3](null);
-    			if (detaching) detach_dev(t3);
-    			if (detaching) detach_dev(section1);
     			if_block1.d();
     		}
     	};
@@ -87577,7 +87580,7 @@ var app = (function () {
     const { console: console_1 } = globals;
     const file$1 = "src\\pages\\HomePage.svelte";
 
-    // (312:0) {#if isModalOpen}
+    // (313:0) {#if isModalOpen}
     function create_if_block_7(ctx) {
     	let modalcard;
     	let updating_modalPayload;
@@ -87633,14 +87636,14 @@ var app = (function () {
     		block,
     		id: create_if_block_7.name,
     		type: "if",
-    		source: "(312:0) {#if isModalOpen}",
+    		source: "(313:0) {#if isModalOpen}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (331:31) 
+    // (332:31) 
     function create_if_block_6(ctx) {
     	let video;
     	let updating_selectedVideoFile;
@@ -87729,14 +87732,14 @@ var app = (function () {
     		block,
     		id: create_if_block_6.name,
     		type: "if",
-    		source: "(331:31) ",
+    		source: "(332:31) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (329:31) 
+    // (330:31) 
     function create_if_block_5(ctx) {
     	let profile;
     	let updating_user;
@@ -87793,14 +87796,14 @@ var app = (function () {
     		block,
     		id: create_if_block_5.name,
     		type: "if",
-    		source: "(329:31) ",
+    		source: "(330:31) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (327:31) 
+    // (328:31) 
     function create_if_block_4(ctx) {
     	let streetview;
     	let updating_pointOfInterest;
@@ -87856,14 +87859,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(327:31) ",
+    		source: "(328:31) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (324:2) {#if selectedMenu === 0}
+    // (325:2) {#if selectedMenu === 0}
     function create_if_block_3(ctx) {
     	let tableview;
     	let updating_selectedFirebaseGPSData;
@@ -87961,14 +87964,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(324:2) {#if selectedMenu === 0}",
+    		source: "(325:2) {#if selectedMenu === 0}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (339:2) {#if isLoading === true}
+    // (340:2) {#if isLoading === true}
     function create_if_block_2(ctx) {
     	let maploadingspinner;
     	let current;
@@ -88000,14 +88003,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(339:2) {#if isLoading === true}",
+    		source: "(340:2) {#if isLoading === true}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (342:2) {#if isError === true}
+    // (343:2) {#if isError === true}
     function create_if_block_1(ctx) {
     	let maperror;
     	let current;
@@ -88039,14 +88042,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(342:2) {#if isError === true}",
+    		source: "(343:2) {#if isError === true}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (358:1) {:else}
+    // (359:1) {:else}
     function create_else_block$1(ctx) {
     	let div2;
     	let section;
@@ -88066,16 +88069,16 @@ var app = (function () {
     			div0 = element("div");
     			div0.textContent = "No Recordings Found";
     			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file$1, 361, 5, 12270);
+    			add_location(p, file$1, 362, 5, 12274);
     			attr_dev(div0, "class", "alert alert-red my-1");
     			attr_dev(div0, "role", "alert");
-    			add_location(div0, file$1, 362, 5, 12318);
+    			add_location(div0, file$1, 363, 5, 12322);
     			attr_dev(div1, "class", "p-4");
-    			add_location(div1, file$1, 360, 4, 12246);
+    			add_location(div1, file$1, 361, 4, 12250);
     			attr_dev(section, "class", "card h-fit scale-in-center");
-    			add_location(section, file$1, 359, 3, 12196);
+    			add_location(section, file$1, 360, 3, 12200);
     			attr_dev(div2, "class", "col-span-1 md:col-span-3");
-    			add_location(div2, file$1, 358, 2, 12153);
+    			add_location(div2, file$1, 359, 2, 12157);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -88097,14 +88100,14 @@ var app = (function () {
     		block,
     		id: create_else_block$1.name,
     		type: "else",
-    		source: "(358:1) {:else}",
+    		source: "(359:1) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (352:1) {#if files.length}
+    // (353:1) {#if files.length}
     function create_if_block$2(ctx) {
     	let div;
     	let recordingstable;
@@ -88138,7 +88141,7 @@ var app = (function () {
     			div = element("div");
     			create_component(recordingstable.$$.fragment);
     			attr_dev(div, "class", "col-span-1 md:col-span-12");
-    			add_location(div, file$1, 353, 2, 11977);
+    			add_location(div, file$1, 354, 2, 11981);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -88175,7 +88178,7 @@ var app = (function () {
     		block,
     		id: create_if_block$2.name,
     		type: "if",
-    		source: "(352:1) {#if files.length}",
+    		source: "(353:1) {#if files.length}",
     		ctx
     	});
 
@@ -88461,13 +88464,13 @@ var app = (function () {
     			t13 = space();
     			create_component(footer.$$.fragment);
     			attr_dev(div0, "class", `col-span-1 lg:col-span-6 flex flex-col gap-4`);
-    			add_location(div0, file$1, 321, 1, 10713);
+    			add_location(div0, file$1, 322, 1, 10717);
     			attr_dev(div1, "class", "col-span-1 md:col-span-6 row-span-6 relative");
-    			add_location(div1, file$1, 335, 1, 11252);
+    			add_location(div1, file$1, 336, 1, 11256);
     			attr_dev(main, "class", "grid grid-cols-1 gap-4 lg:grid-cols-12 my-4 px-4");
-    			add_location(main, file$1, 320, 0, 10647);
+    			add_location(main, file$1, 321, 0, 10651);
     			attr_dev(section, "class", "grid grid-cols-1 gap-4 lg:grid-cols-12 my-4 px-4");
-    			add_location(section, file$1, 350, 0, 11884);
+    			add_location(section, file$1, 351, 0, 11888);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -89005,6 +89008,7 @@ var app = (function () {
     		$$invalidate(12, isLoading = true);
     		$$invalidate(13, isError = false);
     		$$invalidate(17, selectedVideoFile = videoFile);
+    		$$invalidate(11, selectedMenu = 3);
     		goTop();
     		const coordFile = getGoogleDriveCoordFile(videoFile, files);
 
@@ -89030,7 +89034,6 @@ var app = (function () {
     			$$invalidate(15, gpsData = []);
     		}
 
-    		$$invalidate(11, selectedMenu = 3);
     		$$invalidate(12, isLoading = false);
     	};
 
@@ -90095,10 +90098,10 @@ var app = (function () {
     			hr = element("hr");
     			t0 = space();
     			p = element("p");
-    			p.textContent = "The GPS vidoes collected through the dashcam are saved in each users Google Drive Account. Users who accept the machine learning terms and conditions are also allowed to process their videos\r\n\t\t\t\t\tand use the online dashcam managment tool.";
+    			p.textContent = "The GPS videos collected through the dashcam are saved in each users Google Drive Account. Users who accept the machine learning terms and conditions are also allowed to process their videos\r\n\t\t\t\t\tand use the online dashcam managment tool.";
     			attr_dev(hr, "class", "my-2");
-    			add_location(hr, file, 19, 4, 705);
-    			add_location(p, file, 20, 4, 730);
+    			add_location(hr, file, 19, 4, 703);
+    			add_location(p, file, 20, 4, 728);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, hr, anchor);
@@ -90165,13 +90168,13 @@ var app = (function () {
     			attr_dev(p1, "class", "text-center my-2");
     			add_location(p1, file, 12, 2, 331);
     			attr_dev(i, "class", "fa-brands fa-google");
-    			add_location(i, file, 13, 63, 451);
-    			attr_dev(button0, "class", "card-btn card-btn-blue my-4");
+    			add_location(i, file, 13, 61, 449);
+    			attr_dev(button0, "class", "card-btn btn-primary my-4");
     			add_location(button0, file, 13, 2, 390);
     			attr_dev(button1, "class", "text-center hover:underline");
-    			add_location(button1, file, 16, 3, 570);
+    			add_location(button1, file, 16, 3, 568);
     			attr_dev(div, "class", "items-center justify-center mt-4");
-    			add_location(div, file, 15, 2, 519);
+    			add_location(div, file, 15, 2, 517);
     			attr_dev(section0, "class", "h-fit card rounded-lg shadow-xl p-4 text-sm w-96 text-center");
     			add_location(section0, file, 10, 1, 204);
     			attr_dev(section1, "class", "py-4 px-4 flex h-screen items-center justify-center");

@@ -186,6 +186,7 @@
 		isLoading = true;
 		isError = false;
 		selectedVideoFile = videoFile;
+		selectedMenu = 3;
 		goTop();
 		const coordFile = getGoogleDriveCoordFile(videoFile, files);
 		if (coordFile) {
@@ -208,7 +209,7 @@
 			selectedGPSData = null;
 			gpsData = [];
 		}
-		selectedMenu = 3;
+		
 		isLoading = false;
 	};
 
