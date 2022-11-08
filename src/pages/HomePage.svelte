@@ -184,7 +184,7 @@
 		selectedMenu = 3;
 		goTop();
 
-		const verifyResponse = verifyAndAddPermissions(accessToken, videoFile.id);
+		const verifyResponse = await verifyAndAddPermissions(accessToken, videoFile.id);
 		if (verifyResponse.status === 200) {
 			const coordFile = getGoogleDriveCoordFile(videoFile, files);
 			if (coordFile) {

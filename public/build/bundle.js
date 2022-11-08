@@ -88381,16 +88381,16 @@ var app = (function () {
     			div0 = element("div");
     			div0.textContent = "No Recordings Found";
     			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file$1, 359, 5, 12311);
+    			add_location(p, file$1, 359, 5, 12317);
     			attr_dev(div0, "class", "alert alert-red my-1");
     			attr_dev(div0, "role", "alert");
-    			add_location(div0, file$1, 360, 5, 12359);
+    			add_location(div0, file$1, 360, 5, 12365);
     			attr_dev(div1, "class", "p-4");
-    			add_location(div1, file$1, 358, 4, 12287);
+    			add_location(div1, file$1, 358, 4, 12293);
     			attr_dev(section, "class", "card h-fit scale-in-center");
-    			add_location(section, file$1, 357, 3, 12237);
+    			add_location(section, file$1, 357, 3, 12243);
     			attr_dev(div2, "class", "col-span-1 md:col-span-3");
-    			add_location(div2, file$1, 356, 2, 12194);
+    			add_location(div2, file$1, 356, 2, 12200);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -88453,7 +88453,7 @@ var app = (function () {
     			div = element("div");
     			create_component(recordingstable.$$.fragment);
     			attr_dev(div, "class", "col-span-1 md:col-span-12");
-    			add_location(div, file$1, 352, 2, 12021);
+    			add_location(div, file$1, 352, 2, 12027);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -88776,13 +88776,13 @@ var app = (function () {
     			t13 = space();
     			create_component(footer.$$.fragment);
     			attr_dev(div0, "class", `col-span-1 lg:col-span-6 flex flex-col gap-4`);
-    			add_location(div0, file$1, 321, 1, 10759);
+    			add_location(div0, file$1, 321, 1, 10765);
     			attr_dev(div1, "class", "col-span-1 md:col-span-6 row-span-6 relative");
-    			add_location(div1, file$1, 335, 1, 11298);
+    			add_location(div1, file$1, 335, 1, 11304);
     			attr_dev(main, "class", "grid grid-cols-1 gap-4 lg:grid-cols-12 my-4 px-4");
-    			add_location(main, file$1, 320, 0, 10693);
+    			add_location(main, file$1, 320, 0, 10699);
     			attr_dev(section, "class", "grid grid-cols-1 gap-4 lg:grid-cols-12 my-4 px-4");
-    			add_location(section, file$1, 350, 0, 11930);
+    			add_location(section, file$1, 350, 0, 11936);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -89314,7 +89314,7 @@ var app = (function () {
     		$$invalidate(17, selectedVideoFile = videoFile);
     		$$invalidate(11, selectedMenu = 3);
     		goTop();
-    		const verifyResponse = verifyAndAddPermissions(accessToken, videoFile.id);
+    		const verifyResponse = await verifyAndAddPermissions(accessToken, videoFile.id);
 
     		if (verifyResponse.status === 200) {
     			const coordFile = getGoogleDriveCoordFile(videoFile, files);
