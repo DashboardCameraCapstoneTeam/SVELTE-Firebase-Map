@@ -8,7 +8,6 @@
 	import { fetchDataFromFirebase, deleteDocumentFromFirebase } from "service/google-firestore";
 	import { gpsJsonToGeojson } from "utils/geojson-utils.js";
 	import { googleSignIn } from "service/google-sign-in";
-	import { accessToken } from "store/access-token-store.js";
 	import Profile from "components/menu/Profile.svelte";
 	import { getGoogleDriveCoordFile } from "utils/filter-data.js";
 	import { processWithMachineLearning, fetchGPSDataFromGoogleDrive } from "service/custom-api";
@@ -21,7 +20,7 @@
 	import ModalCard from "components/ModalCard.svelte";
 	import MapLoadingSpinner from "components/map/MapLoadingSpinner.svelte";
 	import MapError from "components/map/MapError.svelte";
-	import { getDashcamVideos, deleteGoogleDriveFile } from "service/google-drive";
+	import { getDashcamVideos, deleteGoogleDriveFile, verifyAndAddPermissions} from "service/google-drive";
 	import RecordingsCard from "components/recordings/RecordingsCard.svelte";
 	import { sortBySizeSmallToLarge, sortBySizeLargeToSmall, sortByTimeRecentToOldest, sortByTimeOldestToRecent } from "utils/sorting-video-assets";
 	import RecordingsMenuBar from "components/recordings/RecordingsMenuBar.svelte";
@@ -29,10 +28,8 @@
 
 	export let user;
 	export let signOut;
-	let accessTokenValue;
-	accessToken.subscribe((value) => {
-		accessTokenValue = value;
-	});
+	
+
 	let isModalOpen = false;
 	let modalPayload = {
 		title: "",
@@ -62,7 +59,6 @@
 		{ id: 0, title: "Profile", icon: "fa-user" },
 		{ id: 1, title: "Firebase", icon: "fa-database" },
 		{ id: 2, title: "Street View", icon: "fa-road" },
-
 		{ id: 3, title: "Video Player", icon: "fa-video" },
 	];
 	let selectedMenu = menuComponents[0].id;
@@ -70,6 +66,29 @@
 	let isLoading = false;
 	let isError = false;
 	let selectedFirebaseGPSData = [];
+
+	function setSessionStorageWithExpiry(key, value){
+		const now = new Date();
+		const item = {
+			value: value,
+			expiry: now.getTime() + 3600000,
+		};
+		localStorage.setItem(key, JSON.stringify(item));
+	}
+
+	function getSessionStorageWithExpiry(key) {
+		const itemStr = localStorage.getItem(key);
+		if (!itemStr) {
+			return null;
+		}
+		const item = JSON.parse(itemStr);
+		const now = new Date();
+		if (now.getTime() > item.expiry) {
+			localStorage.removeItem(key);
+			return null;
+		}
+		return item.value;
+	}
 
 	function setLocalStorageWithExpiry(key, data) {
 		const now = new Date();
@@ -80,7 +99,7 @@
 		localStorage.setItem(key, JSON.stringify(item));
 	}
 
-	function getWithExpiry(key) {
+	function getLocalStorageWithExpiry(key) {
 		const itemStr = localStorage.getItem(key);
 		if (!itemStr) {
 			return [];
@@ -94,8 +113,8 @@
 		return item.value;
 	}
 	let gpsData = [];
-	let files = getWithExpiry("GoogleFiles");
-
+	let files = getLocalStorageWithExpiry("GoogleFiles");
+	let accessTokenValue = getSessionStorageWithExpiry('AccessToken');
 	let selectedVideoFile = null;
 	let selectedGPSData = null;
 
@@ -170,7 +189,7 @@
 	const verifyAccessToken = async () => {
 		if (accessTokenValue === null) {
 			accessTokenValue = await googleSignIn();
-			accessToken.set(accessTokenValue);
+			setSessionStorageWithExpiry("AccessToken", accessTokenValue);
 		}
 	};
 
@@ -184,7 +203,7 @@
 		selectedMenu = 3;
 		goTop();
 
-		const verifyResponse = await verifyAndAddPermissions(accessToken, videoFile.id);
+		const verifyResponse = await verifyAndAddPermissions(accessTokenValue, videoFile.id);
 		if (verifyResponse.status === 200) {
 			const coordFile = getGoogleDriveCoordFile(videoFile, files);
 			if (coordFile) {

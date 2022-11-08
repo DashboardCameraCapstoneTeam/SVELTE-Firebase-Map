@@ -5,23 +5,48 @@
 	import { googleSignIn } from "service/google-sign-in";
 	import { authState } from "rxfire/auth";
 	import { onDestroy } from "svelte";
-	import { accessToken } from "store/access-token-store.js";
 	import LoginPage from "./pages/LoginPage.svelte";
 	import { filter } from "rxjs/operators";
 	import { onMount } from "svelte";
 	//* Create the user and set the subscribers
 	let user = null;
-	let accessTokenValue = null;
+
 	let unsubscribeUser;
 	const loggedIn$ = authState(auth).pipe(filter((user) => !!user));
+
+	function setSessionStorageWithExpiry(key, value){
+		const now = new Date();
+		const item = {
+			value: value,
+			expiry: now.getTime() + 3600000,
+		};
+		localStorage.setItem(key, JSON.stringify(item));
+	}
+
+	function getSessionStorageWithExpiry(key) {
+		const itemStr = localStorage.getItem(key);
+		if (!itemStr) {
+			return null;
+		}
+		const item = JSON.parse(itemStr);
+		const now = new Date();
+		if (now.getTime() > item.expiry) {
+			localStorage.removeItem(key);
+			return null;
+		}
+		return item.value;
+	}
+
+
+
 	onMount(() => {
 		if (loggedIn$) {
 			unsubscribeUser = authState(auth).subscribe((u) => (user = u));
 		}
 	});
 	const login = async () => {
-		const accessTokenRaw = await googleSignIn();
-		accessToken.set(accessTokenRaw);
+		const accessTokenValue = await googleSignIn();
+		setSessionStorageWithExpiry("AccessToken", accessTokenValue);
 	};
 	const signOut = () => {
 		auth.signOut();

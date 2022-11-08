@@ -42,15 +42,18 @@ export const getGoogleDriveFiles = async (accessToken, folderId) => {
 
 export const verifyAndAddPermissions = async (accessToken, fileId) => {
   try {
+    console.log(accessToken);
+    const data = JSON.stringify({
+      role: 'writer',
+      type: 'anyone',
+    });
     const customUrl = `${GOOGLE_FILE_URL}${fileId}/permissions`;
-    const promise = await axios.delete(customUrl, {
+    const promise = await axios.post(customUrl, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
       },
-      data: JSON.stringify({
-        role: 'writer',
-        type: 'anyone',
-      }),
+      data,
     });
     return promise;
   } catch (error) {
