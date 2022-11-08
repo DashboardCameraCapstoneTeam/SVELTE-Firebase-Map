@@ -45,7 +45,7 @@
 </script>
 
 <section class="card h-fit scale-in-center p-4">
-	<p class=" my-1">Street View:</p>
+	<p class="font-bold my-1">Street View:</p>
 	{#if pointOfInterest == null}
 		<div class="alert alert-red my-1" role="alert">Select a point on the map.</div>
 	{/if}

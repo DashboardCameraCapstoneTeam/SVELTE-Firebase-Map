@@ -157,7 +157,7 @@ h6 {
 .table td {
   border: 1px solid #ddd;
   padding: 1rem;
-  text-align: left;
+  text-align: center;
 }
 
 .table tr:nth-child(even){background-color: var(--smoke);}
@@ -166,7 +166,7 @@ h6 {
 
 .table th {
   padding: 1rem;
-  text-align: left;
+  text-align: center;
   background-color: var(--dark);
   color: white;
 }

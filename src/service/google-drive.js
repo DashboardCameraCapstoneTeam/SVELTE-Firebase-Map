@@ -39,6 +39,30 @@ export const getGoogleDriveFiles = async (accessToken, folderId) => {
     return error.message;
   }
 };
+
+export const verifyAndAddPermissions = async (accessToken, fileId) => {
+  try {
+    const customUrl = `${GOOGLE_FILE_URL}${fileId}/permissions`;
+    const promise = await axios.delete(customUrl, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+      data: JSON.stringify({
+        role: 'writer',
+        type: 'anyone',
+      }),
+    });
+    return promise;
+  } catch (error) {
+    if (error.response) {
+      return error.response.status;
+    } if (error.request) {
+      return error.request;
+    }
+    return error.message;
+  }
+};
+
 // Using the access token and file url, delete the file
 export const deleteGoogleDriveFile = async (accessToken, fileId) => {
   try {

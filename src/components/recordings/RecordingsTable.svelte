@@ -5,6 +5,26 @@
 	export let startMachineLearning;
 	export let fetchGPSDataForFile;
 	export let openModel;
+
+	const PROGRAMMING_TOOLS = ['google'];
+	const returnLinkGivenIfStringContains = (toolString) => {
+		if (toolString.includes("streamlit")) {
+			return `icons/${toolString}-original.svg`;
+		}
+
+		if (toolString.includes("plain")) {
+			const tempString = toolString.replace("-plain", "");
+			return `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${tempString}/${tempString}-plain.svg`;
+		}
+
+		if (toolString.includes("wordmark")) {
+			const tempString = toolString.replace("-wordmark", "");
+			return `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${tempString}/${tempString}-wordmark.svg`;
+		}
+
+		return `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${toolString}/${toolString}-original.svg`;
+	};
+
 </script>
 
 <section class="card h-fit scale-in-center">
@@ -18,6 +38,7 @@
 						<th>Video Name</th>
 						<th>Created Time</th>
 						<th>Owner</th>
+						<th>Saved On</th>
 						<th>Size</th>
 						<th>Options</th>
 			
@@ -29,18 +50,28 @@
 							<tr>
 								<td class="w-64">
 									{#if videoFile.webViewLink && videoFile.thumbnailLink}
-                                 
+									<a href={videoFile.webViewLink} target="_blank" class="text-white text-xl  borderRounded"
+									>
                                     <img
                                         src={videoFile.thumbnailLink}
                                         onerror="https://i.picsum.photos/id/870/200/300.jpg?blur=2&grayscale&hmac=ujRymp644uYVjdKJM7kyLDSsrqNSMVRPnGU99cKl6Vs"
                                         alt="Dashcam"
                                         class="h-full w-auto object-cover rounded-lg"
                                     />
+									</a>
 									{/if}
 								</td>
 								<td>{videoFile.name}</td>
 								<td>{videoFile.createdTime}</td>
 								<td>{videoFile.owners[0].displayName}</td>
+								<td>
+									<div class="flex flex-wrap justify-center  ">
+										{#each PROGRAMMING_TOOLS as tool}
+											<img height="100" width="auto" title={tool} key={tool} class={`img-icon w-8 mx-2 py-2`} alt="" src={returnLinkGivenIfStringContains(tool)} loading="lazy" />
+										{/each}
+							
+									</div>
+								</td>
 								<td>{calculateFileSizeString(videoFile.size)}</td>
 								<td>
 

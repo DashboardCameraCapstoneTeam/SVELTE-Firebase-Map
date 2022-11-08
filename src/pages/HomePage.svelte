@@ -25,7 +25,7 @@
 	import RecordingsCard from "components/recordings/RecordingsCard.svelte";
 	import { sortBySizeSmallToLarge, sortBySizeLargeToSmall, sortByTimeRecentToOldest, sortByTimeOldestToRecent } from "utils/sorting-video-assets";
 	import RecordingsMenuBar from "components/recordings/RecordingsMenuBar.svelte";
-  import RecordingsTable from "../components/recordings/RecordingsTable.svelte";
+	import RecordingsTable from "../components/recordings/RecordingsTable.svelte";
 
 	export let user;
 	export let signOut;
@@ -59,9 +59,10 @@
 		bearing: -17.6,
 	};
 	let menuComponents = [
-		{ id: 0, title: "Firebase", icon: "fa-database" },
-		{ id: 1, title: "Street View", icon: "fa-road" },
-		{ id: 2, title: "Profile", icon: "fa-user" },
+		{ id: 0, title: "Profile", icon: "fa-user" },
+		{ id: 1, title: "Firebase", icon: "fa-database" },
+		{ id: 2, title: "Street View", icon: "fa-road" },
+
 		{ id: 3, title: "Video Player", icon: "fa-video" },
 	];
 	let selectedMenu = menuComponents[0].id;
@@ -113,8 +114,8 @@
 		isError = false;
 		const response = await fetchDataFromFirebase(user, dateTimeDictionary);
 		if (response.status === 200) {
-			if (response.documentList.length >= 1) {
-				gpsData = gpsJsonToGeojson(response.documentList);
+			if (response.data.length) {
+				gpsData = gpsJsonToGeojson(response.data);
 				updateMapCenter(gpsData[0].features[0].geometry.coordinates);
 				selectedFirebaseGPSData = gpsData;
 				alert("Successfully loaded Firebase Data");
@@ -157,13 +158,7 @@
 			let tempGPSData = selectedFirebaseGPSData;
 			tempGPSData = tempGPSData.filter((obj) => obj.dataId !== documentId);
 			gpsData = tempGPSData;
-			cityDetails = {
-				id: 0,
-				center: gpsData[0].features[0].geometry.coordinates,
-				zoom: 15,
-				pitch: 0,
-				bearing: -17.6,
-			};
+			updateMapCenter(gpsData[0].features[0].geometry.coordinates);
 			selectedFirebaseGPSData = gpsData;
 			alert("Successfully Deleted GPS Data");
 		} else {
@@ -188,28 +183,32 @@
 		selectedVideoFile = videoFile;
 		selectedMenu = 3;
 		goTop();
-		const coordFile = getGoogleDriveCoordFile(videoFile, files);
-		if (coordFile) {
-			const response = await fetchGPSDataFromGoogleDrive(user, coordFile);
-			if (response.status === 200) {
-				if (response.data) {
-					gpsData = gpsJsonToGeojson([response.data]);
-					updateMapCenter(gpsData[0].features[0].geometry.coordinates);
-					selectedGPSData = gpsData[0];
-					alert("Added Trip to the Map");
+
+		const verifyResponse = verifyAndAddPermissions(accessToken, videoFile.id);
+		if (verifyResponse.status === 200) {
+			const coordFile = getGoogleDriveCoordFile(videoFile, files);
+			if (coordFile) {
+				const response = await fetchGPSDataFromGoogleDrive(user, coordFile);
+				if (response.status === 200) {
+					if (response.data) {
+						gpsData = gpsJsonToGeojson([response.data]);
+						updateMapCenter(gpsData[0].features[0].geometry.coordinates);
+						selectedGPSData = gpsData[0];
+						alert("Added Trip to the Map");
+					} else {
+						alert("No GPS data found");
+					}
 				} else {
-					alert("No GPS data found");
+					isError = true;
+					alert(response);
 				}
 			} else {
-				alert(response);
-				isError = true;
+				selectedGPSData = null;
+				gpsData = [];
+				alert("Coordinates File does not exist, but you can still view the video");
 			}
-		} else {
-			alert("Coordinates File does not exist, but you can still view the video");
-			selectedGPSData = null;
-			gpsData = [];
 		}
-		
+
 		isLoading = false;
 	};
 
@@ -323,12 +322,12 @@ car's driving metrics on the screen as your video plays."
 	<div class={`col-span-1 lg:col-span-6 flex flex-col gap-4`}>
 		<Layers bind:layerList />
 		{#if selectedMenu === 0}
+			<Profile bind:user {signOut} />
+		{:else if selectedMenu === 1}
 			<TableView bind:selectedFirebaseGPSData {openModel} {deleteFirebaseElement} />
 			<SearchDetails bind:dateTimeDictionary {fetchFirebaseData} />
-		{:else if selectedMenu === 1}
-			<StreetView bind:pointOfInterest />
 		{:else if selectedMenu === 2}
-			<Profile bind:user {signOut} />
+			<StreetView bind:pointOfInterest />
 		{:else if selectedMenu === 3}
 			<Video bind:selectedVideoFile />
 			<SpeedChart bind:selectedGPSData />
@@ -351,11 +350,9 @@ car's driving metrics on the screen as your video plays."
 
 <section class="grid grid-cols-1 gap-4 lg:grid-cols-12 my-4 px-4">
 	{#if files.length}
-
 		<div class="col-span-1 md:col-span-12">
-			<RecordingsTable bind:files {openModel} {deleteDriveFile} {startMachineLearning} {fetchGPSDataForFile}  />
+			<RecordingsTable bind:files {openModel} {deleteDriveFile} {startMachineLearning} {fetchGPSDataForFile} />
 		</div>
-
 	{:else}
 		<div class="col-span-1 md:col-span-3">
 			<section class="card h-fit scale-in-center">

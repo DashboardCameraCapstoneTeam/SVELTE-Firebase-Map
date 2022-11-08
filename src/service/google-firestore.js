@@ -6,7 +6,7 @@ import { db, firebase } from '../config/firebase';
 
 export const fetchDataFromFirebase = async (user, dateTimeDictionary) => {
   try {
-    const documentList = [];
+    const data = [];
     const docRef = doc(db, 'users', user.uid);
 
     let colRef = null;
@@ -20,12 +20,12 @@ export const fetchDataFromFirebase = async (user, dateTimeDictionary) => {
 
     const querySnapshot = await getDocs(colRef);
     querySnapshot.forEach((document) => {
-      const data = document.data();
-      data.dataId = document.id;
-      documentList.push(data);
+      const docData = document.data();
+      docData.dataId = document.id;
+      data.push(docData);
     });
 
-    return { status: 200, documentList };
+    return { status: 200, data };
   } catch (error) {
     return error;
   }
