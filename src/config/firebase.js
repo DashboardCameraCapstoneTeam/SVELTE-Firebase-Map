@@ -20,6 +20,7 @@ googleProvider.setCustomParameters({
   prompt: 'select_account',
 });
 googleProvider.addScope('https://www.googleapis.com/auth/drive');
+googleProvider.addScope('https://www.googleapis.com/auth/drive.file');
 export {
   firebase, auth, db, googleProvider,
 };

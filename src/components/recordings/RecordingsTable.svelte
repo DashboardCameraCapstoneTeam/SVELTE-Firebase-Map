@@ -92,12 +92,8 @@
                                             Delete
                                         </button>
                                     </div>
-                                    
-                                        
-
-                                
+                                     
 								</td>
-
 							</tr>
 						{/if}
 					{/each}

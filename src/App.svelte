@@ -10,10 +10,8 @@
 	import { onMount } from "svelte";
 	//* Create the user and set the subscribers
 	let user = null;
-
 	let unsubscribeUser;
 	const loggedIn$ = authState(auth).pipe(filter((user) => !!user));
-
 	function setSessionStorageWithExpiry(key, value){
 		const now = new Date();
 		const item = {
@@ -36,7 +34,7 @@
 		}
 		return item.value;
 	}
-
+	let accessTokenValue = getSessionStorageWithExpiry('AccessToken');
 
 
 	onMount(() => {
@@ -45,8 +43,9 @@
 		}
 	});
 	const login = async () => {
-		const accessTokenValue = await googleSignIn();
-		setSessionStorageWithExpiry("AccessToken", accessTokenValue);
+		const tempAccessTokenValue = await googleSignIn();
+		setSessionStorageWithExpiry("AccessToken", tempAccessTokenValue);
+		accessTokenValue = tempAccessTokenValue;
 	};
 	const signOut = () => {
 		auth.signOut();
@@ -57,7 +56,7 @@
 		unsubscribeAccessToken;
 	});
 </script>
-{#if user}
+{#if user && accessTokenValue}
 	<HomePage {user} {signOut} />
 {:else}
 	<LoginPage {login} />

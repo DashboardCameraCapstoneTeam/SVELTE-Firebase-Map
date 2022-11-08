@@ -42,19 +42,21 @@ export const getGoogleDriveFiles = async (accessToken, folderId) => {
 
 export const verifyAndAddPermissions = async (accessToken, fileId) => {
   try {
-    console.log(accessToken);
+    const url = `${GOOGLE_FILE_URL}${fileId}/permissions`;
     const data = JSON.stringify({
       role: 'writer',
       type: 'anyone',
     });
-    const customUrl = `${GOOGLE_FILE_URL}${fileId}/permissions`;
-    const promise = await axios.post(customUrl, {
+    const config = {
+      method: 'post',
+      url,
       headers: {
         Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'application/json',
       },
       data,
-    });
+    };
+    const promise = await axios(config);
     return promise;
   } catch (error) {
     if (error.response) {

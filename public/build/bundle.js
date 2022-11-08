@@ -1929,7 +1929,7 @@ var app = (function () {
     const file$i = "src\\components\\menu\\SearchDetails.svelte";
 
     // (48:2) {:else}
-    function create_else_block$7(ctx) {
+    function create_else_block$6(ctx) {
     	let div;
     	let t0_value = /*dateTimeDictionary*/ ctx[0].startDateTime + "";
     	let t0;
@@ -1986,7 +1986,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_else_block$7.name,
+    		id: create_else_block$6.name,
     		type: "else",
     		source: "(48:2) {:else}",
     		ctx
@@ -2060,7 +2060,7 @@ var app = (function () {
 
     	function select_block_type(ctx, dirty) {
     		if (/*dateTimeDictionary*/ ctx[0].startDateTime === "" || /*dateTimeDictionary*/ ctx[0].endDateTime === "") return create_if_block$b;
-    		return create_else_block$7;
+    		return create_else_block$6;
     	}
 
     	let current_block_type = select_block_type(ctx);
@@ -2698,7 +2698,7 @@ var app = (function () {
     }
 
     // (37:2) {:else}
-    function create_else_block$6(ctx) {
+    function create_else_block$5(ctx) {
     	let each_1_anchor;
     	let each_value_1 = /*mapStyleList*/ ctx[2];
     	validate_each_argument(each_value_1);
@@ -2756,7 +2756,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_else_block$6.name,
+    		id: create_else_block$5.name,
     		type: "else",
     		source: "(37:2) {:else}",
     		ctx
@@ -2990,7 +2990,7 @@ var app = (function () {
 
     	function select_block_type(ctx, dirty) {
     		if (/*isLargeMenu*/ ctx[1] === true) return create_if_block$a;
-    		return create_else_block$6;
+    		return create_else_block$5;
     	}
 
     	let current_block_type = select_block_type(ctx);
@@ -38118,6 +38118,7 @@ var app = (function () {
       prompt: 'select_account',
     });
     googleProvider.addScope('https://www.googleapis.com/auth/drive');
+    googleProvider.addScope('https://www.googleapis.com/auth/drive.file');
 
     /* eslint-disable max-len */
 
@@ -41195,7 +41196,7 @@ var app = (function () {
     const file$a = "src\\components\\menu\\Video.svelte";
 
     // (11:1) {:else}
-    function create_else_block$5(ctx) {
+    function create_else_block$4(ctx) {
     	let iframe;
     	let iframe_title_value;
     	let iframe_src_value;
@@ -41232,7 +41233,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_else_block$5.name,
+    		id: create_else_block$4.name,
     		type: "else",
     		source: "(11:1) {:else}",
     		ctx
@@ -41293,7 +41294,7 @@ var app = (function () {
 
     	function select_block_type(ctx, dirty) {
     		if (/*selectedVideoFile*/ ctx[0] == null) return create_if_block$7;
-    		return create_else_block$5;
+    		return create_else_block$4;
     	}
 
     	let current_block_type = select_block_type(ctx);
@@ -84763,7 +84764,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (138:3) {#if selectedGPSData === null}
+    // (148:3) {#if selectedGPSData === null}
     function create_if_block_1$2(ctx) {
     	let div;
 
@@ -84773,7 +84774,7 @@ var app = (function () {
     			div.textContent = "No GPS Data Selected.";
     			attr_dev(div, "class", "alert alert-red my-1");
     			attr_dev(div, "role", "alert");
-    			add_location(div, file$9, 138, 4, 3689);
+    			add_location(div, file$9, 148, 4, 3887);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -84787,15 +84788,15 @@ var app = (function () {
     		block,
     		id: create_if_block_1$2.name,
     		type: "if",
-    		source: "(138:3) {#if selectedGPSData === null}",
+    		source: "(148:3) {#if selectedGPSData === null}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (155:3) {:else}
-    function create_else_block$4(ctx) {
+    // (159:3) {#if selectedGPSData === null}
+    function create_if_block$6(ctx) {
     	let div;
 
     	const block = {
@@ -84804,103 +84805,13 @@ var app = (function () {
     			div.textContent = "No GPS Data Selected.";
     			attr_dev(div, "class", "alert alert-red my-1");
     			attr_dev(div, "role", "alert");
-    			add_location(div, file$9, 155, 4, 4424);
+    			add_location(div, file$9, 159, 4, 4239);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
     		},
-    		p: noop$2,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_else_block$4.name,
-    		type: "else",
-    		source: "(155:3) {:else}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (148:3) {#if selectedGPSData}
-    function create_if_block$6(ctx) {
-    	let div;
-    	let t0;
-    	let p;
-    	let i;
-    	let t1;
-    	let each_value = /*speedColors*/ ctx[2];
-    	validate_each_argument(each_value);
-    	let each_blocks = [];
-
-    	for (let i = 0; i < each_value.length; i += 1) {
-    		each_blocks[i] = create_each_block$3(get_each_context$3(ctx, each_value, i));
-    	}
-
-    	const block = {
-    		c: function create() {
-    			div = element("div");
-
-    			for (let i = 0; i < each_blocks.length; i += 1) {
-    				each_blocks[i].c();
-    			}
-
-    			t0 = space();
-    			p = element("p");
-    			i = element("i");
-    			t1 = text(" 100+");
-    			attr_dev(i, "class", "dot");
-    			attr_dev(i, "style", `--color:${/*speedColors*/ ctx[2][/*speedColors*/ ctx[2].length - 1]}`);
-    			add_location(i, file$9, 152, 31, 4311);
-    			attr_dev(p, "class", "list-item my-2");
-    			add_location(p, file$9, 152, 5, 4285);
-    			attr_dev(div, "class", "overflow-auto h-full");
-    			add_location(div, file$9, 148, 4, 4070);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, div, anchor);
-
-    			for (let i = 0; i < each_blocks.length; i += 1) {
-    				each_blocks[i].m(div, null);
-    			}
-
-    			append_dev(div, t0);
-    			append_dev(div, p);
-    			append_dev(p, i);
-    			append_dev(p, t1);
-    		},
-    		p: function update(ctx, dirty) {
-    			if (dirty & /*speedColors*/ 4) {
-    				each_value = /*speedColors*/ ctx[2];
-    				validate_each_argument(each_value);
-    				let i;
-
-    				for (i = 0; i < each_value.length; i += 1) {
-    					const child_ctx = get_each_context$3(ctx, each_value, i);
-
-    					if (each_blocks[i]) {
-    						each_blocks[i].p(child_ctx, dirty);
-    					} else {
-    						each_blocks[i] = create_each_block$3(child_ctx);
-    						each_blocks[i].c();
-    						each_blocks[i].m(div, t0);
-    					}
-    				}
-
-    				for (; i < each_blocks.length; i += 1) {
-    					each_blocks[i].d(1);
-    				}
-
-    				each_blocks.length = each_value.length;
-    			}
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div);
-    			destroy_each(each_blocks, detaching);
     		}
     	};
 
@@ -84908,14 +84819,14 @@ var app = (function () {
     		block,
     		id: create_if_block$6.name,
     		type: "if",
-    		source: "(148:3) {#if selectedGPSData}",
+    		source: "(159:3) {#if selectedGPSData === null}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (150:5) {#each speedColors as speedColor, i}
+    // (163:4) {#each speedColors as speedColor, i}
     function create_each_block$3(ctx) {
     	let p;
     	let i_1;
@@ -84936,9 +84847,9 @@ var app = (function () {
     			t3 = text(t3_value);
     			attr_dev(i_1, "class", "dot");
     			attr_dev(i_1, "style", `--color:${/*speedColor*/ ctx[11]}`);
-    			add_location(i_1, file$9, 150, 32, 4181);
+    			add_location(i_1, file$9, 163, 31, 4437);
     			attr_dev(p, "class", "list-item my-2");
-    			add_location(p, file$9, 150, 6, 4155);
+    			add_location(p, file$9, 163, 5, 4411);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -84958,7 +84869,7 @@ var app = (function () {
     		block,
     		id: create_each_block$3.name,
     		type: "each",
-    		source: "(150:5) {#each speedColors as speedColor, i}",
+    		source: "(163:4) {#each speedColors as speedColor, i}",
     		ctx
     	});
 
@@ -84966,32 +84877,41 @@ var app = (function () {
     }
 
     function create_fragment$a(ctx) {
-    	let div3;
+    	let div4;
     	let section0;
     	let div1;
     	let p0;
     	let t1;
     	let t2;
     	let div0;
-    	let div0_class_value;
     	let t3;
     	let section1;
-    	let div2;
+    	let div3;
     	let p1;
     	let t5;
+    	let t6;
+    	let div2;
+    	let t7;
+    	let p2;
+    	let i;
+    	let t8;
+    	let t9;
+    	let hr;
+    	let t10;
+    	let p3;
     	let if_block0 = /*selectedGPSData*/ ctx[0] === null && create_if_block_1$2(ctx);
+    	let if_block1 = /*selectedGPSData*/ ctx[0] === null && create_if_block$6(ctx);
+    	let each_value = /*speedColors*/ ctx[2];
+    	validate_each_argument(each_value);
+    	let each_blocks = [];
 
-    	function select_block_type(ctx, dirty) {
-    		if (/*selectedGPSData*/ ctx[0]) return create_if_block$6;
-    		return create_else_block$4;
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		each_blocks[i] = create_each_block$3(get_each_context$3(ctx, each_value, i));
     	}
-
-    	let current_block_type = select_block_type(ctx);
-    	let if_block1 = current_block_type(ctx);
 
     	const block = {
     		c: function create() {
-    			div3 = element("div");
+    			div4 = element("div");
     			section0 = element("section");
     			div1 = element("div");
     			p0 = element("p");
@@ -85002,34 +84922,60 @@ var app = (function () {
     			div0 = element("div");
     			t3 = space();
     			section1 = element("section");
-    			div2 = element("div");
+    			div3 = element("div");
     			p1 = element("p");
     			p1.textContent = "Speed Legend (Km/h):";
     			t5 = space();
-    			if_block1.c();
+    			if (if_block1) if_block1.c();
+    			t6 = space();
+    			div2 = element("div");
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			t7 = space();
+    			p2 = element("p");
+    			i = element("i");
+    			t8 = text(" 100+");
+    			t9 = space();
+    			hr = element("hr");
+    			t10 = space();
+    			p3 = element("p");
+    			p3.textContent = "Attention! Speed color is not indicative of speeding.";
     			attr_dev(p0, "class", "font-bold my-1");
-    			add_location(p0, file$9, 136, 3, 3599);
-    			attr_dev(div0, "class", div0_class_value = `${/*selectedGPSData*/ ctx[0] === null ? "h-0" : "h-96"} w-full rounded-lg`);
-    			add_location(div0, file$9, 140, 3, 3778);
+    			add_location(p0, file$9, 146, 3, 3797);
+    			attr_dev(div0, "class", `h-96 w-full rounded-lg`);
+    			add_location(div0, file$9, 151, 3, 3978);
     			attr_dev(div1, "class", "p-4");
-    			add_location(div1, file$9, 135, 2, 3577);
+    			add_location(div1, file$9, 145, 2, 3775);
     			attr_dev(section0, "class", "card h-fit scale-in-center flex-1");
-    			add_location(section0, file$9, 134, 1, 3522);
+    			add_location(section0, file$9, 144, 1, 3720);
     			attr_dev(p1, "class", "font-bold my-1");
-    			add_location(p1, file$9, 146, 3, 3988);
-    			attr_dev(div2, "class", "p-4");
-    			add_location(div2, file$9, 145, 2, 3966);
+    			add_location(p1, file$9, 157, 3, 4148);
+    			attr_dev(i, "class", "dot");
+    			attr_dev(i, "style", `--color:${/*speedColors*/ ctx[2][/*speedColors*/ ctx[2].length - 1]}`);
+    			add_location(i, file$9, 165, 30, 4565);
+    			attr_dev(p2, "class", "list-item my-2");
+    			add_location(p2, file$9, 165, 4, 4539);
+    			attr_dev(div2, "class", "overflow-auto h-full");
+    			add_location(div2, file$9, 161, 3, 4328);
+    			attr_dev(hr, "class", "my-2");
+    			add_location(hr, file$9, 168, 3, 4666);
+    			add_location(p3, file$9, 170, 3, 4692);
+    			attr_dev(div3, "class", "p-4");
+    			add_location(div3, file$9, 156, 2, 4126);
     			attr_dev(section1, "class", "card h-full scale-in-center flex-none");
-    			add_location(section1, file$9, 144, 1, 3907);
-    			attr_dev(div3, "class", "flex flex-row gap-4 h-full");
-    			add_location(div3, file$9, 133, 0, 3479);
+    			add_location(section1, file$9, 155, 1, 4067);
+    			attr_dev(div4, "class", "flex flex-row gap-4 h-full");
+    			add_location(div4, file$9, 143, 0, 3677);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div3, anchor);
-    			append_dev(div3, section0);
+    			insert_dev(target, div4, anchor);
+    			append_dev(div4, section0);
     			append_dev(section0, div1);
     			append_dev(div1, p0);
     			append_dev(div1, t1);
@@ -85037,12 +84983,27 @@ var app = (function () {
     			append_dev(div1, t2);
     			append_dev(div1, div0);
     			/*div0_binding*/ ctx[3](div0);
-    			append_dev(div3, t3);
-    			append_dev(div3, section1);
-    			append_dev(section1, div2);
-    			append_dev(div2, p1);
-    			append_dev(div2, t5);
-    			if_block1.m(div2, null);
+    			append_dev(div4, t3);
+    			append_dev(div4, section1);
+    			append_dev(section1, div3);
+    			append_dev(div3, p1);
+    			append_dev(div3, t5);
+    			if (if_block1) if_block1.m(div3, null);
+    			append_dev(div3, t6);
+    			append_dev(div3, div2);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(div2, null);
+    			}
+
+    			append_dev(div2, t7);
+    			append_dev(div2, p2);
+    			append_dev(p2, i);
+    			append_dev(p2, t8);
+    			append_dev(div3, t9);
+    			append_dev(div3, hr);
+    			append_dev(div3, t10);
+    			append_dev(div3, p3);
     		},
     		p: function update(ctx, [dirty]) {
     			if (/*selectedGPSData*/ ctx[0] === null) {
@@ -85056,29 +85017,49 @@ var app = (function () {
     				if_block0 = null;
     			}
 
-    			if (dirty & /*selectedGPSData*/ 1 && div0_class_value !== (div0_class_value = `${/*selectedGPSData*/ ctx[0] === null ? "h-0" : "h-96"} w-full rounded-lg`)) {
-    				attr_dev(div0, "class", div0_class_value);
+    			if (/*selectedGPSData*/ ctx[0] === null) {
+    				if (if_block1) ; else {
+    					if_block1 = create_if_block$6(ctx);
+    					if_block1.c();
+    					if_block1.m(div3, t6);
+    				}
+    			} else if (if_block1) {
+    				if_block1.d(1);
+    				if_block1 = null;
     			}
 
-    			if (current_block_type === (current_block_type = select_block_type(ctx)) && if_block1) {
-    				if_block1.p(ctx, dirty);
-    			} else {
-    				if_block1.d(1);
-    				if_block1 = current_block_type(ctx);
+    			if (dirty & /*speedColors*/ 4) {
+    				each_value = /*speedColors*/ ctx[2];
+    				validate_each_argument(each_value);
+    				let i;
 
-    				if (if_block1) {
-    					if_block1.c();
-    					if_block1.m(div2, null);
+    				for (i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context$3(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    					} else {
+    						each_blocks[i] = create_each_block$3(child_ctx);
+    						each_blocks[i].c();
+    						each_blocks[i].m(div2, t7);
+    					}
     				}
+
+    				for (; i < each_blocks.length; i += 1) {
+    					each_blocks[i].d(1);
+    				}
+
+    				each_blocks.length = each_value.length;
     			}
     		},
     		i: noop$2,
     		o: noop$2,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div3);
+    			if (detaching) detach_dev(div4);
     			if (if_block0) if_block0.d();
     			/*div0_binding*/ ctx[3](null);
-    			if_block1.d();
+    			if (if_block1) if_block1.d();
+    			destroy_each(each_blocks, detaching);
     		}
     	};
 
@@ -85124,7 +85105,17 @@ var app = (function () {
 
     			coordinates.forEach((element, index) => {
     				const speed = element.properties.Speed ? element.properties.Speed : 0;
-    				data.push({ index, value: speed });
+    				const strokeSettings = { stroke: element.properties.Color };
+    				const bulletSettings = { fill: element.properties.Color };
+    				const fillSettings = { fill: element.properties.Color };
+
+    				data.push({
+    					index,
+    					value: speed,
+    					strokeSettings,
+    					bulletSettings,
+    					fillSettings
+    				});
     			});
     		} else {
     			data.push({ index: 0, value: 0 });
@@ -85140,79 +85131,86 @@ var app = (function () {
     	};
 
     	const initializeChartView = () => {
-    		try {
-    			let root = Root.new(chartDiv);
+    		let root = Root.new(chartDiv);
 
-    			let chart = root.container.children.push(XYChart.new(root, {
-    				panX: true,
-    				panY: true,
-    				wheelX: "panX",
-    				wheelY: "zoomX",
-    				pinchZoomX: true
-    			}));
+    		let chart = root.container.children.push(XYChart.new(root, {
+    			panX: true,
+    			panY: true,
+    			wheelX: "panX",
+    			wheelY: "zoomX",
+    			pinchZoomX: true
+    		}));
 
-    			// Add cursor
-    			// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
-    			var cursor = chart.set("cursor", XYCursor.new(root, { behavior: "none" }));
+    		// Add cursor
+    		// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+    		var cursor = chart.set("cursor", XYCursor.new(root, { behavior: "none" }));
 
-    			cursor.lineY.set("visible", false);
-    			let xRenderer = AxisRendererX.new(root, { minGridDistance: 30 });
+    		cursor.lineY.set("visible", false);
+    		let xRenderer = AxisRendererX.new(root, { minGridDistance: 30 });
 
-    			xRenderer.labels.template.setAll({
-    				rotation: -90,
-    				centerY: p50,
-    				centerX: p100,
-    				paddingRight: 15
+    		xRenderer.labels.template.setAll({
+    			rotation: -90,
+    			centerY: p50,
+    			centerX: p100,
+    			paddingRight: 15
+    		});
+
+    		xAxis = chart.xAxes.push(CategoryAxis.new(root, {
+    			categoryField: "index",
+    			renderer: xRenderer,
+    			tooltip: Tooltip.new(root, {})
+    		}));
+
+    		var yAxis = chart.yAxes.push(ValueAxis.new(root, {
+    			renderer: AxisRendererY.new(root, {})
+    		}));
+
+    		// Add series
+    		// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+    		series = chart.series.push(LineSeries.new(root, {
+    			name: "Series",
+    			xAxis,
+    			yAxis,
+    			valueYField: "value",
+    			categoryXField: "index"
+    		}));
+
+    		var tooltip = series.set("tooltip", Tooltip.new(root, {}));
+    		tooltip.label.set("text", "{valueY}");
+
+    		series = chart.series.push(LineSeries.new(root, {
+    			name: "Series",
+    			xAxis,
+    			yAxis,
+    			valueYField: "value",
+    			sequencedInterpolation: true,
+    			categoryXField: "index",
+    			tooltip: Tooltip.new(root, { labelText: "{valueY}" })
+    		}));
+
+    		series.strokes.template.setAll({
+    			templateField: "strokeSettings",
+    			strokeWidth: 2
+    		});
+
+    		series.bullets.push(function () {
+    			return Bullet.new(root, {
+    				sprite: Circle.new(root, {
+    					templateField: "bulletSettings",
+    					radius: 5
+    				})
     			});
+    		});
 
-    			xAxis = chart.xAxes.push(CategoryAxis.new(root, {
-    				categoryField: "index",
-    				renderer: xRenderer,
-    				tooltip: Tooltip.new(root, {})
-    			}));
-
-    			var yAxis = chart.yAxes.push(ValueAxis.new(root, {
-    				renderer: AxisRendererY.new(root, {})
-    			}));
-
-    			// Add series
-    			// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
-    			series = chart.series.push(LineSeries.new(root, {
-    				name: "Series",
-    				xAxis,
-    				yAxis,
-    				valueYField: "value",
-    				categoryXField: "index"
-    			}));
-
-    			var tooltip = series.set("tooltip", Tooltip.new(root, {}));
-    			tooltip.label.set("text", "{valueY}");
-
-    			series = chart.series.push(LineSeries.new(root, {
-    				name: "Series",
-    				xAxis,
-    				yAxis,
-    				valueYField: "value",
-    				sequencedInterpolation: true,
-    				categoryXField: "index",
-    				tooltip: Tooltip.new(root, { labelText: "{valueY}" })
-    			}));
-
-    			chart.set("scrollbarX", Scrollbar.new(root, { orientation: "horizontal" }));
-    			chart.set("scrollbarY", Scrollbar.new(root, { orientation: "vertical" }));
-    			let chartData = filterGPSData();
-    			xAxis.data.setAll(chartData);
-    			series.data.setAll(chartData);
-    			chartViewObject = true;
-    			series.appear(1000);
-    			chart.appear(1000, 100);
-    		} catch(err) {
-    			alert(err);
-    		}
+    		let chartData = filterGPSData();
+    		xAxis.data.setAll(chartData);
+    		series.data.setAll(chartData);
+    		chartViewObject = true;
+    		series.appear(1000);
+    		chart.appear(1000, 100);
     	};
 
     	onMount(() => {
-    		if (selectedGPSData === null) return;
     		initializeChartView();
     	});
 
@@ -86252,19 +86250,21 @@ var app = (function () {
 
     const verifyAndAddPermissions = async (accessToken, fileId) => {
       try {
-        console.log(accessToken);
+        const url = `${GOOGLE_FILE_URL}${fileId}/permissions`;
         const data = JSON.stringify({
           role: 'writer',
           type: 'anyone',
         });
-        const customUrl = `${GOOGLE_FILE_URL}${fileId}/permissions`;
-        const promise = await axios.post(customUrl, {
+        const config = {
+          method: 'post',
+          url,
           headers: {
             Authorization: `Bearer ${accessToken}`,
             'Content-Type': 'application/json',
           },
           data,
-        });
+        };
+        const promise = await axios(config);
         return promise;
       } catch (error) {
         if (error.response) {
@@ -87069,7 +87069,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (106:2) {:else}
+    // (102:2) {:else}
     function create_else_block$2(ctx) {
     	let div;
 
@@ -87079,7 +87079,7 @@ var app = (function () {
     			div.textContent = "No Firebase GPS Data Selected.";
     			attr_dev(div, "class", "alert alert-red my-1");
     			attr_dev(div, "role", "alert");
-    			add_location(div, file$2, 106, 3, 4237);
+    			add_location(div, file$2, 102, 3, 4158);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -87094,7 +87094,7 @@ var app = (function () {
     		block,
     		id: create_else_block$2.name,
     		type: "else",
-    		source: "(106:2) {:else}",
+    		source: "(102:2) {:else}",
     		ctx
     	});
 
@@ -90620,13 +90620,13 @@ var app = (function () {
 
     /* src\App.svelte generated by Svelte v3.49.0 */
 
-    // (62:0) {:else}
+    // (61:0) {:else}
     function create_else_block(ctx) {
     	let loginpage;
     	let current;
 
     	loginpage = new LoginPage({
-    			props: { login: /*login*/ ctx[1] },
+    			props: { login: /*login*/ ctx[2] },
     			$$inline: true
     		});
 
@@ -90657,14 +90657,14 @@ var app = (function () {
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(62:0) {:else}",
+    		source: "(61:0) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (60:0) {#if user}
+    // (59:0) {#if user && accessTokenValue}
     function create_if_block(ctx) {
     	let homepage;
     	let current;
@@ -90672,7 +90672,7 @@ var app = (function () {
     	homepage = new HomePage({
     			props: {
     				user: /*user*/ ctx[0],
-    				signOut: /*signOut*/ ctx[2]
+    				signOut: /*signOut*/ ctx[3]
     			},
     			$$inline: true
     		});
@@ -90708,7 +90708,7 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(60:0) {#if user}",
+    		source: "(59:0) {#if user && accessTokenValue}",
     		ctx
     	});
 
@@ -90724,7 +90724,7 @@ var app = (function () {
     	const if_blocks = [];
 
     	function select_block_type(ctx, dirty) {
-    		if (/*user*/ ctx[0]) return 0;
+    		if (/*user*/ ctx[0] && /*accessTokenValue*/ ctx[1]) return 0;
     		return 1;
     	}
 
@@ -90827,6 +90827,7 @@ var app = (function () {
     	let user = null;
     	let unsubscribeUser;
     	const loggedIn$ = authState(auth).pipe(filter(user => !!user));
+    	let accessTokenValue = getSessionStorageWithExpiry('AccessToken');
 
     	onMount(() => {
     		if (loggedIn$) {
@@ -90835,8 +90836,9 @@ var app = (function () {
     	});
 
     	const login = async () => {
-    		const accessTokenValue = await googleSignIn();
-    		setSessionStorageWithExpiry("AccessToken", accessTokenValue);
+    		const tempAccessTokenValue = await googleSignIn();
+    		setSessionStorageWithExpiry("AccessToken", tempAccessTokenValue);
+    		$$invalidate(1, accessTokenValue = tempAccessTokenValue);
     	};
 
     	const signOut = () => {
@@ -90868,6 +90870,7 @@ var app = (function () {
     		loggedIn$,
     		setSessionStorageWithExpiry,
     		getSessionStorageWithExpiry,
+    		accessTokenValue,
     		login,
     		signOut
     	});
@@ -90875,13 +90878,14 @@ var app = (function () {
     	$$self.$inject_state = $$props => {
     		if ('user' in $$props) $$invalidate(0, user = $$props.user);
     		if ('unsubscribeUser' in $$props) unsubscribeUser = $$props.unsubscribeUser;
+    		if ('accessTokenValue' in $$props) $$invalidate(1, accessTokenValue = $$props.accessTokenValue);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [user, login, signOut];
+    	return [user, accessTokenValue, login, signOut];
     }
 
     class App extends SvelteComponentDev {
