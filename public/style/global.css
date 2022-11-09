@@ -20,7 +20,7 @@
   --error-color-hover: rgb(180, 41, 41);
   --error-color-light: rgb(254, 226, 226);
 
-  --btn-default: rgb(255, 255, 255);
+  --btn-default: rgb(247, 247, 247);
   --btn-default-hover: rgb(219, 219, 219);
 
   --radius-lg:  0.5rem;
@@ -112,6 +112,28 @@ h6 {
   border-style: solid; 
 }
 
+.btn-pagination{
+  border-width: 1px; 
+  border-color: var(--btn-default-hover); 
+  border-style: solid; 
+  border-radius: var(--radius-lg);
+  background-color: var(--btn-default);
+}
+
+.btn-pagination:hover{
+  background-color: var(--btn-default-hover);
+}
+
+
+.btn-pagination-primary{
+  border-radius: var(--radius-lg);
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.btn-pagination-primary:hover{
+  background-color: var(--primary-color-hover);
+}
 
 
 .img-icon {
