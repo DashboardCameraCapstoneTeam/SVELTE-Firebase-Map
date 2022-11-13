@@ -88161,7 +88161,7 @@ var app = (function () {
     const { console: console_1 } = globals;
     const file$1 = "src\\pages\\HomePage.svelte";
 
-    // (331:0) {#if isModalOpen}
+    // (333:0) {#if isModalOpen}
     function create_if_block_7(ctx) {
     	let modalcard;
     	let updating_modalPayload;
@@ -88217,14 +88217,14 @@ var app = (function () {
     		block,
     		id: create_if_block_7.name,
     		type: "if",
-    		source: "(331:0) {#if isModalOpen}",
+    		source: "(333:0) {#if isModalOpen}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (350:31) 
+    // (352:31) 
     function create_if_block_6(ctx) {
     	let video;
     	let updating_selectedVideoFile;
@@ -88313,14 +88313,14 @@ var app = (function () {
     		block,
     		id: create_if_block_6.name,
     		type: "if",
-    		source: "(350:31) ",
+    		source: "(352:31) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (348:31) 
+    // (350:31) 
     function create_if_block_5(ctx) {
     	let streetview;
     	let updating_pointOfInterest;
@@ -88376,14 +88376,14 @@ var app = (function () {
     		block,
     		id: create_if_block_5.name,
     		type: "if",
-    		source: "(348:31) ",
+    		source: "(350:31) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (345:31) 
+    // (347:31) 
     function create_if_block_4(ctx) {
     	let tableview;
     	let updating_selectedFirebaseGPSData;
@@ -88481,14 +88481,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(345:31) ",
+    		source: "(347:31) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (343:2) {#if selectedMenu === 0}
+    // (345:2) {#if selectedMenu === 0}
     function create_if_block_3(ctx) {
     	let profile;
     	let updating_user;
@@ -88545,14 +88545,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(343:2) {#if selectedMenu === 0}",
+    		source: "(345:2) {#if selectedMenu === 0}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (358:2) {#if isLoading === true}
+    // (360:2) {#if isLoading === true}
     function create_if_block_2(ctx) {
     	let maploadingspinner;
     	let current;
@@ -88584,14 +88584,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(358:2) {#if isLoading === true}",
+    		source: "(360:2) {#if isLoading === true}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (361:2) {#if isError === true}
+    // (363:2) {#if isError === true}
     function create_if_block_1(ctx) {
     	let maperror;
     	let current;
@@ -88623,14 +88623,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(361:2) {#if isError === true}",
+    		source: "(363:2) {#if isError === true}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (375:1) {:else}
+    // (377:1) {:else}
     function create_else_block$1(ctx) {
     	let div2;
     	let section;
@@ -88650,16 +88650,16 @@ var app = (function () {
     			div0 = element("div");
     			div0.textContent = "No Recordings Found";
     			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file$1, 378, 5, 12848);
+    			add_location(p, file$1, 380, 5, 12949);
     			attr_dev(div0, "class", "alert alert-red my-1");
     			attr_dev(div0, "role", "alert");
-    			add_location(div0, file$1, 379, 5, 12896);
+    			add_location(div0, file$1, 381, 5, 12997);
     			attr_dev(div1, "class", "p-4");
-    			add_location(div1, file$1, 377, 4, 12824);
+    			add_location(div1, file$1, 379, 4, 12925);
     			attr_dev(section, "class", "card h-fit scale-in-center");
-    			add_location(section, file$1, 376, 3, 12774);
+    			add_location(section, file$1, 378, 3, 12875);
     			attr_dev(div2, "class", "col-span-1 md:col-span-3");
-    			add_location(div2, file$1, 375, 2, 12731);
+    			add_location(div2, file$1, 377, 2, 12832);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -88681,14 +88681,14 @@ var app = (function () {
     		block,
     		id: create_else_block$1.name,
     		type: "else",
-    		source: "(375:1) {:else}",
+    		source: "(377:1) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (371:1) {#if files.length}
+    // (373:1) {#if files.length}
     function create_if_block$2(ctx) {
     	let div;
     	let recordingstable;
@@ -88722,7 +88722,7 @@ var app = (function () {
     			div = element("div");
     			create_component(recordingstable.$$.fragment);
     			attr_dev(div, "class", "col-span-1 md:col-span-12");
-    			add_location(div, file$1, 371, 2, 12558);
+    			add_location(div, file$1, 373, 2, 12659);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -88759,7 +88759,7 @@ var app = (function () {
     		block,
     		id: create_if_block$2.name,
     		type: "if",
-    		source: "(371:1) {#if files.length}",
+    		source: "(373:1) {#if files.length}",
     		ctx
     	});
 
@@ -89055,13 +89055,13 @@ var app = (function () {
     			t13 = space();
     			create_component(footer.$$.fragment);
     			attr_dev(div0, "class", `col-span-1 lg:col-span-6 flex flex-col gap-4`);
-    			add_location(div0, file$1, 340, 1, 11293);
+    			add_location(div0, file$1, 342, 1, 11394);
     			attr_dev(div1, "class", "col-span-1 md:col-span-6 row-span-6 relative");
-    			add_location(div1, file$1, 354, 1, 11832);
+    			add_location(div1, file$1, 356, 1, 11933);
     			attr_dev(main, "class", "grid grid-cols-1 gap-4 lg:grid-cols-12 my-4 px-4");
-    			add_location(main, file$1, 339, 0, 11227);
+    			add_location(main, file$1, 341, 0, 11328);
     			attr_dev(section, "class", "grid grid-cols-1 gap-4 lg:grid-cols-12 my-4 px-4");
-    			add_location(section, file$1, 369, 0, 12467);
+    			add_location(section, file$1, 371, 0, 12568);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -89609,7 +89609,9 @@ var app = (function () {
     	};
 
     	const verifyAccessToken = async () => {
-    		if (accessTokenValue === null) {
+    		const tempAccessToken = getSessionStorageWithExpiry$1('AccessToken');
+
+    		if (tempAccessToken === null) {
     			accessTokenValue = await googleSignIn();
     			setSessionStorageWithExpiry$1("AccessToken", accessTokenValue);
     		}
@@ -89622,6 +89624,7 @@ var app = (function () {
     		$$invalidate(11, selectedMenu = 3);
     		goTop();
     		const verifyResponse = await verifyAndAddPermissions(accessTokenValue, videoFile.id);
+    		console.log(verifyResponse);
 
     		if (verifyResponse.status === 200) {
     			const coordFile = getGoogleDriveCoordFile(videoFile, files);

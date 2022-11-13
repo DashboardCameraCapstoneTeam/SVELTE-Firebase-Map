@@ -187,7 +187,8 @@
 		}
 	};
 	const verifyAccessToken = async () => {
-		if (accessTokenValue === null) {
+		const tempAccessToken = getSessionStorageWithExpiry('AccessToken');
+		if (tempAccessToken === null) {
 			accessTokenValue = await googleSignIn();
 			setSessionStorageWithExpiry("AccessToken", accessTokenValue);
 		}
@@ -204,6 +205,7 @@
 		goTop();
 
 		const verifyResponse = await verifyAndAddPermissions(accessTokenValue, videoFile.id);
+		console.log(verifyResponse)
 		if (verifyResponse.status === 200) {
 			const coordFile = getGoogleDriveCoordFile(videoFile, files);
 			if (coordFile) {
