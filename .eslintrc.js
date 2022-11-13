@@ -24,6 +24,8 @@ module.exports = {
     },
   ],
   rules: {
+    'no-alert': 0,
+    'no-console': 0,
     'linebreak-style': 0,
     'react/prop-types': 'off',
   },

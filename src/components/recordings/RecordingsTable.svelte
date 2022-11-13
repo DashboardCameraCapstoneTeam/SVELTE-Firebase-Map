@@ -7,10 +7,10 @@
 	export let fetchGPSDataForFile;
 	export let openModel;
 
-	const PROGRAMMING_TOOLS = ["google"];
+	const PROGRAMMING_TOOLS = ["GoogleDrive"];
 	const returnLinkGivenIfStringContains = (toolString) => {
-		if (toolString.includes("streamlit")) {
-			return `icons/${toolString}-original.svg`;
+		if (toolString.includes("GoogleDrive")) {
+			return `icons/${toolString}.svg`;
 		}
 
 		if (toolString.includes("plain")) {
@@ -26,15 +26,14 @@
 		return `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${toolString}/${toolString}-original.svg`;
 	};
 
-	let videoFiles = files.filter((videoFile) => videoFile.fileExtension === "MP4" || videoFile.fileExtension === "mp4");
-
+	let videoFiles = [];
 	let paginatedFiles = [];
 	let paginationPage = 0;
 	const numberOfItemsPerPageList = [10, 20, 30];
 	let numberOfItemsPerPage = numberOfItemsPerPageList[0];
-	let numberOfPages = Math.ceil(videoFiles.length / numberOfItemsPerPage);
-	let paginationFrom = paginationPage * numberOfItemsPerPage;
-	let paginationTo = Math.min((paginationPage + 1) * numberOfItemsPerPage, videoFiles.length);
+	let numberOfPages = 0;
+	let paginationFrom = 0;
+	let paginationTo = 0;
 
 	onMount(() => {
 		updatePaginationFiles();
@@ -54,8 +53,14 @@
 	};
 
 	const updatePaginationFiles = () => {
+		videoFiles = files.filter((videoFile) => videoFile.fileExtension === "MP4" || videoFile.fileExtension === "mp4");
+		numberOfPages = Math.ceil(videoFiles.length / numberOfItemsPerPage);
+		paginationFrom = paginationPage * numberOfItemsPerPage;
+		paginationTo = Math.min((paginationPage + 1) * numberOfItemsPerPage, videoFiles.length);
 		paginatedFiles = videoFiles.slice(paginationPage * numberOfItemsPerPage, paginationPage * numberOfItemsPerPage + numberOfItemsPerPage);
 	};
+
+	$:files && updatePaginationFiles();
 </script>
 
 <section class="card h-fit scale-in-center">

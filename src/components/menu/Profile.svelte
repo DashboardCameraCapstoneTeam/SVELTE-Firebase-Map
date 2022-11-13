@@ -9,14 +9,7 @@
 	};
 </script>
 
-<div class="flex flex-row gap-4 h-full">
-	<section class="card h-fit scale-in-center flex-1">
-		<img src={"https://alexcanalesportfolio.netlify.app/assets/images/art/raw/mountains.webp"} alt="Dashcam" class="h-64 w-auto object-cover rounded-lg" />
-	</section>
-	<section class="card h-fit scale-in-center flex-1">
-		<img src={"https://assets.website-files.com/5e832e12eb7ca02ee9064d42/5f7db57af8fb5265fc92b03a_Group%20801.jpg"} alt="Dashcam" class="h-64 w-auto object-cover rounded-lg" />
-	</section>
-</div>
+
 <section class="card h-fit scale-in-center">
 	<div class="p-4">
 		<div class="float-right">

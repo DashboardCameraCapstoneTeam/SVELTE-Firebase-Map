@@ -38345,7 +38345,7 @@ var app = (function () {
 
     const file$e = "src\\components\\menu\\Profile.svelte";
 
-    // (39:2) {#if showTerms}
+    // (32:2) {#if showTerms}
     function create_if_block$8(ctx) {
     	let hr;
     	let t0;
@@ -38368,14 +38368,14 @@ var app = (function () {
     			i = element("i");
     			t3 = text("\r\n\t\t\t\t\tDelete Account");
     			attr_dev(hr, "class", "my-2");
-    			add_location(hr, file$e, 39, 3, 1319);
-    			add_location(p, file$e, 41, 3, 1345);
+    			add_location(hr, file$e, 32, 3, 806);
+    			add_location(p, file$e, 34, 3, 832);
     			attr_dev(i, "class", "fa-solid fa-trash");
-    			add_location(i, file$e, 45, 5, 1581);
+    			add_location(i, file$e, 38, 5, 1068);
     			attr_dev(button, "class", `card-btn btn-error-outline my-1`);
-    			add_location(button, file$e, 44, 4, 1524);
+    			add_location(button, file$e, 37, 4, 1011);
     			attr_dev(div, "class", "flex flex-row");
-    			add_location(div, file$e, 43, 3, 1491);
+    			add_location(div, file$e, 36, 3, 978);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, hr, anchor);
@@ -38400,7 +38400,7 @@ var app = (function () {
     		block,
     		id: create_if_block$8.name,
     		type: "if",
-    		source: "(39:2) {#if showTerms}",
+    		source: "(32:2) {#if showTerms}",
     		ctx
     	});
 
@@ -38408,171 +38408,134 @@ var app = (function () {
     }
 
     function create_fragment$f(ctx) {
-    	let div0;
-    	let section0;
-    	let img0;
-    	let img0_src_value;
-    	let t0;
-    	let section1;
-    	let img1;
-    	let img1_src_value;
-    	let t1;
-    	let section2;
-    	let div2;
+    	let section;
     	let div1;
+    	let div0;
     	let button0;
     	let i0;
-    	let t2;
-    	let t3;
+    	let t0;
+    	let t1;
     	let p0;
-    	let t5;
+    	let t3;
     	let p1;
-    	let t6_value = /*user*/ ctx[0].displayName + "";
-    	let t6;
-    	let t7;
+    	let t4_value = /*user*/ ctx[0].displayName + "";
+    	let t4;
+    	let t5;
     	let p2;
-    	let t9;
+    	let t7;
     	let p3;
-    	let t10_value = /*user*/ ctx[0].email + "";
-    	let t10;
-    	let t11;
+    	let t8_value = /*user*/ ctx[0].email + "";
+    	let t8;
+    	let t9;
     	let p4;
-    	let t13;
+    	let t11;
     	let p5;
-    	let t14_value = /*user*/ ctx[0].emailVerified + "";
-    	let t14;
-    	let t15;
+    	let t12_value = /*user*/ ctx[0].emailVerified + "";
+    	let t12;
+    	let t13;
     	let hr;
-    	let t16;
+    	let t14;
     	let button1;
     	let i1;
-    	let t17;
-    	let t18;
+    	let t15;
+    	let t16;
     	let mounted;
     	let dispose;
     	let if_block = /*showTerms*/ ctx[2] && create_if_block$8(ctx);
 
     	const block = {
     		c: function create() {
-    			div0 = element("div");
-    			section0 = element("section");
-    			img0 = element("img");
-    			t0 = space();
-    			section1 = element("section");
-    			img1 = element("img");
-    			t1 = space();
-    			section2 = element("section");
-    			div2 = element("div");
+    			section = element("section");
     			div1 = element("div");
+    			div0 = element("div");
     			button0 = element("button");
     			i0 = element("i");
-    			t2 = text("\r\n\t\t\t\tManage Account");
-    			t3 = space();
+    			t0 = text("\r\n\t\t\t\tManage Account");
+    			t1 = space();
     			p0 = element("p");
     			p0.textContent = "Name:";
-    			t5 = space();
+    			t3 = space();
     			p1 = element("p");
-    			t6 = text(t6_value);
-    			t7 = space();
+    			t4 = text(t4_value);
+    			t5 = space();
     			p2 = element("p");
     			p2.textContent = "Email:";
-    			t9 = space();
+    			t7 = space();
     			p3 = element("p");
-    			t10 = text(t10_value);
-    			t11 = space();
+    			t8 = text(t8_value);
+    			t9 = space();
     			p4 = element("p");
     			p4.textContent = "Email Verified:";
-    			t13 = space();
+    			t11 = space();
     			p5 = element("p");
-    			t14 = text(t14_value);
-    			t15 = space();
+    			t12 = text(t12_value);
+    			t13 = space();
     			hr = element("hr");
-    			t16 = space();
+    			t14 = space();
     			button1 = element("button");
     			i1 = element("i");
-    			t17 = text(" Sign Out");
-    			t18 = space();
+    			t15 = text(" Sign Out");
+    			t16 = space();
     			if (if_block) if_block.c();
-    			if (!src_url_equal(img0.src, img0_src_value = "https://alexcanalesportfolio.netlify.app/assets/images/art/raw/mountains.webp")) attr_dev(img0, "src", img0_src_value);
-    			attr_dev(img0, "alt", "Dashcam");
-    			attr_dev(img0, "class", "h-64 w-auto object-cover rounded-lg");
-    			add_location(img0, file$e, 13, 2, 253);
-    			attr_dev(section0, "class", "card h-fit scale-in-center flex-1");
-    			add_location(section0, file$e, 12, 1, 198);
-    			if (!src_url_equal(img1.src, img1_src_value = "https://assets.website-files.com/5e832e12eb7ca02ee9064d42/5f7db57af8fb5265fc92b03a_Group%20801.jpg")) attr_dev(img1, "src", img1_src_value);
-    			attr_dev(img1, "alt", "Dashcam");
-    			attr_dev(img1, "class", "h-64 w-auto object-cover rounded-lg");
-    			add_location(img1, file$e, 16, 2, 475);
-    			attr_dev(section1, "class", "card h-fit scale-in-center flex-1");
-    			add_location(section1, file$e, 15, 1, 420);
-    			attr_dev(div0, "class", "flex flex-row gap-4 h-full");
-    			add_location(div0, file$e, 11, 0, 155);
     			attr_dev(i0, "class", "fa-solid fa-gear");
-    			add_location(i0, file$e, 23, 4, 841);
+    			add_location(i0, file$e, 16, 4, 328);
     			attr_dev(button0, "class", "text-center hover:underline");
-    			add_location(button0, file$e, 22, 3, 768);
-    			attr_dev(div1, "class", "float-right");
-    			add_location(div1, file$e, 21, 2, 738);
+    			add_location(button0, file$e, 15, 3, 255);
+    			attr_dev(div0, "class", "float-right");
+    			add_location(div0, file$e, 14, 2, 225);
     			attr_dev(p0, "class", "font-bold my-1");
-    			add_location(p0, file$e, 28, 2, 921);
-    			add_location(p1, file$e, 29, 2, 960);
+    			add_location(p0, file$e, 21, 2, 408);
+    			add_location(p1, file$e, 22, 2, 447);
     			attr_dev(p2, "class", "font-bold my-1");
-    			add_location(p2, file$e, 30, 2, 989);
-    			add_location(p3, file$e, 31, 2, 1029);
+    			add_location(p2, file$e, 23, 2, 476);
+    			add_location(p3, file$e, 24, 2, 516);
     			attr_dev(p4, "class", "font-bold my-1");
-    			add_location(p4, file$e, 32, 2, 1052);
-    			add_location(p5, file$e, 33, 2, 1101);
+    			add_location(p4, file$e, 25, 2, 539);
+    			add_location(p5, file$e, 26, 2, 588);
     			attr_dev(hr, "class", "solid my-2");
-    			add_location(hr, file$e, 35, 2, 1134);
+    			add_location(hr, file$e, 28, 2, 621);
     			attr_dev(i1, "class", "fa-solid fa-right-from-bracket");
-    			add_location(i1, file$e, 36, 69, 1230);
+    			add_location(i1, file$e, 29, 69, 717);
     			attr_dev(button1, "class", "card-btn btn-error-outline my-1");
-    			add_location(button1, file$e, 36, 2, 1163);
-    			attr_dev(div2, "class", "p-4");
-    			add_location(div2, file$e, 20, 1, 717);
-    			attr_dev(section2, "class", "card h-fit scale-in-center");
-    			add_location(section2, file$e, 19, 0, 670);
+    			add_location(button1, file$e, 29, 2, 650);
+    			attr_dev(div1, "class", "p-4");
+    			add_location(div1, file$e, 13, 1, 204);
+    			attr_dev(section, "class", "card h-fit scale-in-center");
+    			add_location(section, file$e, 12, 0, 157);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div0, anchor);
-    			append_dev(div0, section0);
-    			append_dev(section0, img0);
-    			append_dev(div0, t0);
-    			append_dev(div0, section1);
-    			append_dev(section1, img1);
-    			insert_dev(target, t1, anchor);
-    			insert_dev(target, section2, anchor);
-    			append_dev(section2, div2);
-    			append_dev(div2, div1);
-    			append_dev(div1, button0);
+    			insert_dev(target, section, anchor);
+    			append_dev(section, div1);
+    			append_dev(div1, div0);
+    			append_dev(div0, button0);
     			append_dev(button0, i0);
-    			append_dev(button0, t2);
-    			append_dev(div2, t3);
-    			append_dev(div2, p0);
-    			append_dev(div2, t5);
-    			append_dev(div2, p1);
-    			append_dev(p1, t6);
-    			append_dev(div2, t7);
-    			append_dev(div2, p2);
-    			append_dev(div2, t9);
-    			append_dev(div2, p3);
-    			append_dev(p3, t10);
-    			append_dev(div2, t11);
-    			append_dev(div2, p4);
-    			append_dev(div2, t13);
-    			append_dev(div2, p5);
-    			append_dev(p5, t14);
-    			append_dev(div2, t15);
-    			append_dev(div2, hr);
-    			append_dev(div2, t16);
-    			append_dev(div2, button1);
+    			append_dev(button0, t0);
+    			append_dev(div1, t1);
+    			append_dev(div1, p0);
+    			append_dev(div1, t3);
+    			append_dev(div1, p1);
+    			append_dev(p1, t4);
+    			append_dev(div1, t5);
+    			append_dev(div1, p2);
+    			append_dev(div1, t7);
+    			append_dev(div1, p3);
+    			append_dev(p3, t8);
+    			append_dev(div1, t9);
+    			append_dev(div1, p4);
+    			append_dev(div1, t11);
+    			append_dev(div1, p5);
+    			append_dev(p5, t12);
+    			append_dev(div1, t13);
+    			append_dev(div1, hr);
+    			append_dev(div1, t14);
+    			append_dev(div1, button1);
     			append_dev(button1, i1);
-    			append_dev(button1, t17);
-    			append_dev(div2, t18);
-    			if (if_block) if_block.m(div2, null);
+    			append_dev(button1, t15);
+    			append_dev(div1, t16);
+    			if (if_block) if_block.m(div1, null);
 
     			if (!mounted) {
     				dispose = [
@@ -38594,15 +38557,15 @@ var app = (function () {
     		},
     		p: function update(new_ctx, [dirty]) {
     			ctx = new_ctx;
-    			if (dirty & /*user*/ 1 && t6_value !== (t6_value = /*user*/ ctx[0].displayName + "")) set_data_dev(t6, t6_value);
-    			if (dirty & /*user*/ 1 && t10_value !== (t10_value = /*user*/ ctx[0].email + "")) set_data_dev(t10, t10_value);
-    			if (dirty & /*user*/ 1 && t14_value !== (t14_value = /*user*/ ctx[0].emailVerified + "")) set_data_dev(t14, t14_value);
+    			if (dirty & /*user*/ 1 && t4_value !== (t4_value = /*user*/ ctx[0].displayName + "")) set_data_dev(t4, t4_value);
+    			if (dirty & /*user*/ 1 && t8_value !== (t8_value = /*user*/ ctx[0].email + "")) set_data_dev(t8, t8_value);
+    			if (dirty & /*user*/ 1 && t12_value !== (t12_value = /*user*/ ctx[0].emailVerified + "")) set_data_dev(t12, t12_value);
 
     			if (/*showTerms*/ ctx[2]) {
     				if (if_block) ; else {
     					if_block = create_if_block$8(ctx);
     					if_block.c();
-    					if_block.m(div2, null);
+    					if_block.m(div1, null);
     				}
     			} else if (if_block) {
     				if_block.d(1);
@@ -38612,9 +38575,7 @@ var app = (function () {
     		i: noop$2,
     		o: noop$2,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div0);
-    			if (detaching) detach_dev(t1);
-    			if (detaching) detach_dev(section2);
+    			if (detaching) detach_dev(section);
     			if (if_block) if_block.d();
     			mounted = false;
     			run_all(dispose);
@@ -87166,7 +87127,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (141:2) {:else}
+    // (146:2) {:else}
     function create_else_block$2(ctx) {
     	let div;
 
@@ -87176,7 +87137,7 @@ var app = (function () {
     			div.textContent = "No Google Drive Files Found.";
     			attr_dev(div, "class", "alert alert-red my-1");
     			attr_dev(div, "role", "alert");
-    			add_location(div, file$2, 141, 3, 5200);
+    			add_location(div, file$2, 146, 3, 5322);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -87191,14 +87152,14 @@ var app = (function () {
     		block,
     		id: create_else_block$2.name,
     		type: "else",
-    		source: "(141:2) {:else}",
+    		source: "(146:2) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (64:2) {#if paginatedFiles.length}
+    // (69:2) {#if paginatedFiles.length}
     function create_if_block$3(ctx) {
     	let table;
     	let thead;
@@ -87222,6 +87183,8 @@ var app = (function () {
     	let hr;
     	let t15;
     	let p;
+    	let t16_value = `${/*paginationFrom*/ ctx[7] + 1}-${/*paginationTo*/ ctx[8]} of ${/*videoFiles*/ ctx[3].length}` + "";
+    	let t16;
     	let t17;
     	let div;
     	let button0;
@@ -87232,7 +87195,7 @@ var app = (function () {
     	let button1;
     	let mounted;
     	let dispose;
-    	let each_value_1 = /*paginatedFiles*/ ctx[3];
+    	let each_value_1 = /*paginatedFiles*/ ctx[4];
     	validate_each_argument(each_value_1);
     	let each_blocks_1 = [];
 
@@ -87240,7 +87203,7 @@ var app = (function () {
     		each_blocks_1[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
     	}
 
-    	let each_value = Array(/*numberOfPages*/ ctx[8]);
+    	let each_value = Array(/*numberOfPages*/ ctx[6]);
     	validate_each_argument(each_value);
     	const get_key = ctx => /*index*/ ctx[24];
     	validate_each_keys(ctx, each_value, get_each_context, get_key);
@@ -87287,7 +87250,7 @@ var app = (function () {
     			hr = element("hr");
     			t15 = space();
     			p = element("p");
-    			p.textContent = `${`${/*paginationFrom*/ ctx[9] + 1}-${/*paginationTo*/ ctx[10]} of ${/*videoFiles*/ ctx[7].length}`}`;
+    			t16 = text(t16_value);
     			t17 = space();
     			div = element("div");
     			button0 = element("button");
@@ -87301,27 +87264,27 @@ var app = (function () {
     			t20 = space();
     			button1 = element("button");
     			button1.textContent = "Next";
-    			add_location(th0, file$2, 67, 6, 2252);
-    			add_location(th1, file$2, 68, 6, 2274);
-    			add_location(th2, file$2, 69, 6, 2301);
-    			add_location(th3, file$2, 70, 6, 2330);
-    			add_location(th4, file$2, 71, 6, 2352);
-    			add_location(th5, file$2, 72, 6, 2377);
-    			add_location(th6, file$2, 73, 6, 2398);
-    			add_location(tr, file$2, 66, 5, 2240);
-    			add_location(thead, file$2, 65, 4, 2226);
-    			add_location(tbody, file$2, 76, 4, 2446);
+    			add_location(th0, file$2, 72, 6, 2374);
+    			add_location(th1, file$2, 73, 6, 2396);
+    			add_location(th2, file$2, 74, 6, 2423);
+    			add_location(th3, file$2, 75, 6, 2452);
+    			add_location(th4, file$2, 76, 6, 2474);
+    			add_location(th5, file$2, 77, 6, 2499);
+    			add_location(th6, file$2, 78, 6, 2520);
+    			add_location(tr, file$2, 71, 5, 2362);
+    			add_location(thead, file$2, 70, 4, 2348);
+    			add_location(tbody, file$2, 81, 4, 2568);
     			attr_dev(table, "class", "table w-full rounded-lg");
-    			add_location(table, file$2, 64, 3, 2181);
+    			add_location(table, file$2, 69, 3, 2303);
     			attr_dev(hr, "class", "my-4");
-    			add_location(hr, file$2, 129, 3, 4525);
-    			add_location(p, file$2, 130, 3, 4549);
+    			add_location(hr, file$2, 134, 3, 4647);
+    			add_location(p, file$2, 135, 3, 4671);
     			attr_dev(button0, "class", "px-4 py-2 btn-pagination");
-    			add_location(button0, file$2, 132, 4, 4678);
+    			add_location(button0, file$2, 137, 4, 4800);
     			attr_dev(button1, "class", "px-4 py-2 btn-pagination ");
-    			add_location(button1, file$2, 138, 4, 5060);
+    			add_location(button1, file$2, 143, 4, 5182);
     			attr_dev(div, "class", "flex items-center space-x-2 mt-2");
-    			add_location(div, file$2, 131, 3, 4626);
+    			add_location(div, file$2, 136, 3, 4748);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, table, anchor);
@@ -87351,6 +87314,7 @@ var app = (function () {
     			insert_dev(target, hr, anchor);
     			insert_dev(target, t15, anchor);
     			insert_dev(target, p, anchor);
+    			append_dev(p, t16);
     			insert_dev(target, t17, anchor);
     			insert_dev(target, div, anchor);
     			append_dev(div, button0);
@@ -87373,8 +87337,8 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*openModel, deleteDriveFile, paginatedFiles, fetchGPSDataForFile, calculateFileSizeString, PROGRAMMING_TOOLS, returnLinkGivenIfStringContains*/ 111) {
-    				each_value_1 = /*paginatedFiles*/ ctx[3];
+    			if (dirty & /*openModel, deleteDriveFile, paginatedFiles, fetchGPSDataForFile, calculateFileSizeString, PROGRAMMING_TOOLS, returnLinkGivenIfStringContains*/ 1559) {
+    				each_value_1 = /*paginatedFiles*/ ctx[4];
     				validate_each_argument(each_value_1);
     				let i;
 
@@ -87397,8 +87361,10 @@ var app = (function () {
     				each_blocks_1.length = each_value_1.length;
     			}
 
-    			if (dirty & /*paginationPage, Array, numberOfPages, setPaginationPage*/ 2320) {
-    				each_value = Array(/*numberOfPages*/ ctx[8]);
+    			if (dirty & /*paginationFrom, paginationTo, videoFiles*/ 392 && t16_value !== (t16_value = `${/*paginationFrom*/ ctx[7] + 1}-${/*paginationTo*/ ctx[8]} of ${/*videoFiles*/ ctx[3].length}` + "")) set_data_dev(t16, t16_value);
+
+    			if (dirty & /*paginationPage, Array, numberOfPages, setPaginationPage*/ 2144) {
+    				each_value = Array(/*numberOfPages*/ ctx[6]);
     				validate_each_argument(each_value);
     				validate_each_keys(ctx, each_value, get_each_context, get_key);
     				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value, each1_lookup, div, destroy_block, create_each_block, t20, get_each_context);
@@ -87427,14 +87393,14 @@ var app = (function () {
     		block,
     		id: create_if_block$3.name,
     		type: "if",
-    		source: "(64:2) {#if paginatedFiles.length}",
+    		source: "(69:2) {#if paginatedFiles.length}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (79:6) {#if videoFile.fileExtension === "MP4" || videoFile.fileExtension === "mp4"}
+    // (84:6) {#if videoFile.fileExtension === "MP4" || videoFile.fileExtension === "mp4"}
     function create_if_block_1$1(ctx) {
     	let tr;
     	let td0;
@@ -87476,7 +87442,7 @@ var app = (function () {
     	let mounted;
     	let dispose;
     	let if_block = /*videoFile*/ ctx[25].webViewLink && /*videoFile*/ ctx[25].thumbnailLink && create_if_block_2$1(ctx);
-    	let each_value_2 = /*PROGRAMMING_TOOLS*/ ctx[5];
+    	let each_value_2 = /*PROGRAMMING_TOOLS*/ ctx[9];
     	validate_each_argument(each_value_2);
     	let each_blocks = [];
 
@@ -87533,33 +87499,33 @@ var app = (function () {
     			t14 = text("\r\n\t\t\t\t\t\t\t\t\t\t\tDelete");
     			t15 = space();
     			attr_dev(td0, "class", "w-64");
-    			add_location(td0, file$2, 80, 8, 2602);
-    			add_location(td1, file$2, 92, 8, 3136);
-    			add_location(td2, file$2, 93, 8, 3171);
-    			add_location(td3, file$2, 94, 8, 3213);
+    			add_location(td0, file$2, 85, 8, 2724);
+    			add_location(td1, file$2, 97, 8, 3258);
+    			add_location(td2, file$2, 98, 8, 3293);
+    			add_location(td3, file$2, 99, 8, 3335);
     			attr_dev(div0, "class", "flex flex-wrap justify-center ");
-    			add_location(div0, file$2, 96, 9, 3280);
-    			add_location(td4, file$2, 95, 8, 3265);
-    			add_location(td5, file$2, 102, 8, 3600);
+    			add_location(div0, file$2, 101, 9, 3402);
+    			add_location(td4, file$2, 100, 8, 3387);
+    			add_location(td5, file$2, 107, 8, 3722);
     			attr_dev(i0, "class", "fa-solid fa-eye");
-    			add_location(i0, file$2, 106, 11, 3813);
+    			add_location(i0, file$2, 111, 11, 3935);
     			attr_dev(a, "a", "");
     			attr_dev(a, "href", a_href_value = /*videoFile*/ ctx[25].webViewLink);
     			attr_dev(a, "target", "_blank");
     			attr_dev(a, "class", `card-btn btn-primary my-1`);
-    			add_location(a, file$2, 105, 10, 3714);
+    			add_location(a, file$2, 110, 10, 3836);
     			attr_dev(i1, "class", "fa-solid fa-share");
-    			add_location(i1, file$2, 110, 11, 3998);
+    			add_location(i1, file$2, 115, 11, 4120);
     			attr_dev(button0, "class", `card-btn btn-primary my-1 mx-1`);
-    			add_location(button0, file$2, 109, 10, 3888);
+    			add_location(button0, file$2, 114, 10, 4010);
     			attr_dev(i2, "class", "fa-solid fa-trash");
-    			add_location(i2, file$2, 118, 11, 4347);
+    			add_location(i2, file$2, 123, 11, 4469);
     			attr_dev(button1, "class", `card-btn btn-error-outline my-1`);
-    			add_location(button1, file$2, 114, 10, 4087);
+    			add_location(button1, file$2, 119, 10, 4209);
     			attr_dev(div1, "class", "flex flex-row");
-    			add_location(div1, file$2, 104, 9, 3675);
-    			add_location(td6, file$2, 103, 8, 3660);
-    			add_location(tr, file$2, 79, 7, 2588);
+    			add_location(div1, file$2, 109, 9, 3797);
+    			add_location(td6, file$2, 108, 8, 3782);
+    			add_location(tr, file$2, 84, 7, 2710);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, tr, anchor);
@@ -87626,12 +87592,12 @@ var app = (function () {
     				if_block = null;
     			}
 
-    			if (dirty & /*paginatedFiles*/ 8 && t1_value !== (t1_value = /*videoFile*/ ctx[25].name + "")) set_data_dev(t1, t1_value);
-    			if (dirty & /*paginatedFiles*/ 8 && t3_value !== (t3_value = /*videoFile*/ ctx[25].createdTime + "")) set_data_dev(t3, t3_value);
-    			if (dirty & /*paginatedFiles*/ 8 && t5_value !== (t5_value = /*videoFile*/ ctx[25].owners[0].displayName + "")) set_data_dev(t5, t5_value);
+    			if (dirty & /*paginatedFiles*/ 16 && t1_value !== (t1_value = /*videoFile*/ ctx[25].name + "")) set_data_dev(t1, t1_value);
+    			if (dirty & /*paginatedFiles*/ 16 && t3_value !== (t3_value = /*videoFile*/ ctx[25].createdTime + "")) set_data_dev(t3, t3_value);
+    			if (dirty & /*paginatedFiles*/ 16 && t5_value !== (t5_value = /*videoFile*/ ctx[25].owners[0].displayName + "")) set_data_dev(t5, t5_value);
 
-    			if (dirty & /*PROGRAMMING_TOOLS, returnLinkGivenIfStringContains*/ 96) {
-    				each_value_2 = /*PROGRAMMING_TOOLS*/ ctx[5];
+    			if (dirty & /*PROGRAMMING_TOOLS, returnLinkGivenIfStringContains*/ 1536) {
+    				each_value_2 = /*PROGRAMMING_TOOLS*/ ctx[9];
     				validate_each_argument(each_value_2);
     				let i;
 
@@ -87654,9 +87620,9 @@ var app = (function () {
     				each_blocks.length = each_value_2.length;
     			}
 
-    			if (dirty & /*paginatedFiles*/ 8 && t8_value !== (t8_value = calculateFileSizeString(/*videoFile*/ ctx[25].size) + "")) set_data_dev(t8, t8_value);
+    			if (dirty & /*paginatedFiles*/ 16 && t8_value !== (t8_value = calculateFileSizeString(/*videoFile*/ ctx[25].size) + "")) set_data_dev(t8, t8_value);
 
-    			if (dirty & /*paginatedFiles*/ 8 && a_href_value !== (a_href_value = /*videoFile*/ ctx[25].webViewLink)) {
+    			if (dirty & /*paginatedFiles*/ 16 && a_href_value !== (a_href_value = /*videoFile*/ ctx[25].webViewLink)) {
     				attr_dev(a, "href", a_href_value);
     			}
     		},
@@ -87673,14 +87639,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$1.name,
     		type: "if",
-    		source: "(79:6) {#if videoFile.fileExtension === \\\"MP4\\\" || videoFile.fileExtension === \\\"mp4\\\"}",
+    		source: "(84:6) {#if videoFile.fileExtension === \\\"MP4\\\" || videoFile.fileExtension === \\\"mp4\\\"}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (82:9) {#if videoFile.webViewLink && videoFile.thumbnailLink}
+    // (87:9) {#if videoFile.webViewLink && videoFile.thumbnailLink}
     function create_if_block_2$1(ctx) {
     	let a;
     	let img;
@@ -87695,22 +87661,22 @@ var app = (function () {
     			attr_dev(img, "onerror", "https://i.picsum.photos/id/870/200/300.jpg?blur=2&grayscale&hmac=ujRymp644uYVjdKJM7kyLDSsrqNSMVRPnGU99cKl6Vs");
     			attr_dev(img, "alt", "Dashcam");
     			attr_dev(img, "class", "h-full w-auto object-cover rounded-lg");
-    			add_location(img, file$2, 83, 11, 2799);
+    			add_location(img, file$2, 88, 11, 2921);
     			attr_dev(a, "href", a_href_value = /*videoFile*/ ctx[25].webViewLink);
     			attr_dev(a, "target", "_blank");
     			attr_dev(a, "class", "text-white text-xl borderRounded");
-    			add_location(a, file$2, 82, 10, 2696);
+    			add_location(a, file$2, 87, 10, 2818);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, a, anchor);
     			append_dev(a, img);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*paginatedFiles*/ 8 && !src_url_equal(img.src, img_src_value = /*videoFile*/ ctx[25].thumbnailLink)) {
+    			if (dirty & /*paginatedFiles*/ 16 && !src_url_equal(img.src, img_src_value = /*videoFile*/ ctx[25].thumbnailLink)) {
     				attr_dev(img, "src", img_src_value);
     			}
 
-    			if (dirty & /*paginatedFiles*/ 8 && a_href_value !== (a_href_value = /*videoFile*/ ctx[25].webViewLink)) {
+    			if (dirty & /*paginatedFiles*/ 16 && a_href_value !== (a_href_value = /*videoFile*/ ctx[25].webViewLink)) {
     				attr_dev(a, "href", a_href_value);
     			}
     		},
@@ -87723,14 +87689,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2$1.name,
     		type: "if",
-    		source: "(82:9) {#if videoFile.webViewLink && videoFile.thumbnailLink}",
+    		source: "(87:9) {#if videoFile.webViewLink && videoFile.thumbnailLink}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (98:10) {#each PROGRAMMING_TOOLS as tool}
+    // (103:10) {#each PROGRAMMING_TOOLS as tool}
     function create_each_block_2(ctx) {
     	let img;
     	let img_src_value;
@@ -87744,9 +87710,9 @@ var app = (function () {
     			attr_dev(img, "key", /*tool*/ ctx[28]);
     			attr_dev(img, "class", `img-icon w-8 mx-2 py-2`);
     			attr_dev(img, "alt", "");
-    			if (!src_url_equal(img.src, img_src_value = /*returnLinkGivenIfStringContains*/ ctx[6](/*tool*/ ctx[28]))) attr_dev(img, "src", img_src_value);
+    			if (!src_url_equal(img.src, img_src_value = /*returnLinkGivenIfStringContains*/ ctx[10](/*tool*/ ctx[28]))) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "loading", "lazy");
-    			add_location(img, file$2, 98, 11, 3383);
+    			add_location(img, file$2, 103, 11, 3505);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, img, anchor);
@@ -87761,14 +87727,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2.name,
     		type: "each",
-    		source: "(98:10) {#each PROGRAMMING_TOOLS as tool}",
+    		source: "(103:10) {#each PROGRAMMING_TOOLS as tool}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (78:5) {#each paginatedFiles as videoFile}
+    // (83:5) {#each paginatedFiles as videoFile}
     function create_each_block_1(ctx) {
     	let if_block_anchor;
     	let if_block = (/*videoFile*/ ctx[25].fileExtension === "MP4" || /*videoFile*/ ctx[25].fileExtension === "mp4") && create_if_block_1$1(ctx);
@@ -87806,14 +87772,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(78:5) {#each paginatedFiles as videoFile}",
+    		source: "(83:5) {#each paginatedFiles as videoFile}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (134:4) {#each Array(numberOfPages) as _, index (index)}
+    // (139:4) {#each Array(numberOfPages) as _, index (index)}
     function create_each_block(key_1, ctx) {
     	let button;
     	let t_value = /*index*/ ctx[24] + "";
@@ -87833,11 +87799,11 @@ var app = (function () {
     			button = element("button");
     			t = text(t_value);
 
-    			attr_dev(button, "class", button_class_value = `px-4 py-2 ${/*paginationPage*/ ctx[4] === /*index*/ ctx[24]
+    			attr_dev(button, "class", button_class_value = `px-4 py-2 ${/*paginationPage*/ ctx[5] === /*index*/ ctx[24]
 			? "btn-pagination-primary font-bold "
 			: "btn-pagination"}`);
 
-    			add_location(button, file$2, 134, 5, 4855);
+    			add_location(button, file$2, 139, 5, 4977);
     			this.first = button;
     		},
     		m: function mount(target, anchor) {
@@ -87851,8 +87817,9 @@ var app = (function () {
     		},
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
+    			if (dirty & /*numberOfPages*/ 64 && t_value !== (t_value = /*index*/ ctx[24] + "")) set_data_dev(t, t_value);
 
-    			if (dirty & /*paginationPage*/ 16 && button_class_value !== (button_class_value = `px-4 py-2 ${/*paginationPage*/ ctx[4] === /*index*/ ctx[24]
+    			if (dirty & /*paginationPage, numberOfPages*/ 96 && button_class_value !== (button_class_value = `px-4 py-2 ${/*paginationPage*/ ctx[5] === /*index*/ ctx[24]
 			? "btn-pagination-primary font-bold "
 			: "btn-pagination"}`)) {
     				attr_dev(button, "class", button_class_value);
@@ -87869,7 +87836,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(134:4) {#each Array(numberOfPages) as _, index (index)}",
+    		source: "(139:4) {#each Array(numberOfPages) as _, index (index)}",
     		ctx
     	});
 
@@ -87883,7 +87850,7 @@ var app = (function () {
     	let t1;
 
     	function select_block_type(ctx, dirty) {
-    		if (/*paginatedFiles*/ ctx[3].length) return create_if_block$3;
+    		if (/*paginatedFiles*/ ctx[4].length) return create_if_block$3;
     		return create_else_block$2;
     	}
 
@@ -87899,11 +87866,11 @@ var app = (function () {
     			t1 = space();
     			if_block.c();
     			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file$2, 62, 2, 2100);
+    			add_location(p, file$2, 67, 2, 2222);
     			attr_dev(div, "class", "p-4");
-    			add_location(div, file$2, 61, 1, 2079);
+    			add_location(div, file$2, 66, 1, 2201);
     			attr_dev(section, "class", "card h-fit scale-in-center");
-    			add_location(section, file$2, 60, 0, 2032);
+    			add_location(section, file$2, 65, 0, 2154);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -87955,11 +87922,11 @@ var app = (function () {
     	let { startMachineLearning } = $$props;
     	let { fetchGPSDataForFile } = $$props;
     	let { openModel } = $$props;
-    	const PROGRAMMING_TOOLS = ["google"];
+    	const PROGRAMMING_TOOLS = ["GoogleDrive"];
 
     	const returnLinkGivenIfStringContains = toolString => {
-    		if (toolString.includes("streamlit")) {
-    			return `icons/${toolString}-original.svg`;
+    		if (toolString.includes("GoogleDrive")) {
+    			return `icons/${toolString}.svg`;
     		}
 
     		if (toolString.includes("plain")) {
@@ -87975,14 +87942,14 @@ var app = (function () {
     		return `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${toolString}/${toolString}-original.svg`;
     	};
 
-    	let videoFiles = files.filter(videoFile => videoFile.fileExtension === "MP4" || videoFile.fileExtension === "mp4");
+    	let videoFiles = [];
     	let paginatedFiles = [];
     	let paginationPage = 0;
     	const numberOfItemsPerPageList = [10, 20, 30];
     	let numberOfItemsPerPage = numberOfItemsPerPageList[0];
-    	let numberOfPages = Math.ceil(videoFiles.length / numberOfItemsPerPage);
-    	let paginationFrom = paginationPage * numberOfItemsPerPage;
-    	let paginationTo = Math.min((paginationPage + 1) * numberOfItemsPerPage, videoFiles.length);
+    	let numberOfPages = 0;
+    	let paginationFrom = 0;
+    	let paginationTo = 0;
 
     	onMount(() => {
     		updatePaginationFiles();
@@ -87991,18 +87958,22 @@ var app = (function () {
     	//* Update the current pagination page
     	const setPaginationPage = page => {
     		if (page < 0) {
-    			$$invalidate(4, paginationPage = 0);
+    			$$invalidate(5, paginationPage = 0);
     		} else if (page >= numberOfPages) {
-    			$$invalidate(4, paginationPage = numberOfPages - 1);
+    			$$invalidate(5, paginationPage = numberOfPages - 1);
     		} else {
-    			$$invalidate(4, paginationPage = page);
+    			$$invalidate(5, paginationPage = page);
     		}
 
     		updatePaginationFiles();
     	};
 
     	const updatePaginationFiles = () => {
-    		$$invalidate(3, paginatedFiles = videoFiles.slice(paginationPage * numberOfItemsPerPage, paginationPage * numberOfItemsPerPage + numberOfItemsPerPage));
+    		$$invalidate(3, videoFiles = files.filter(videoFile => videoFile.fileExtension === "MP4" || videoFile.fileExtension === "mp4"));
+    		$$invalidate(6, numberOfPages = Math.ceil(videoFiles.length / numberOfItemsPerPage));
+    		$$invalidate(7, paginationFrom = paginationPage * numberOfItemsPerPage);
+    		$$invalidate(8, paginationTo = Math.min((paginationPage + 1) * numberOfItemsPerPage, videoFiles.length));
+    		$$invalidate(4, paginatedFiles = videoFiles.slice(paginationPage * numberOfItemsPerPage, paginationPage * numberOfItemsPerPage + numberOfItemsPerPage));
     	};
 
     	const writable_props = [
@@ -88059,31 +88030,37 @@ var app = (function () {
     		if ('startMachineLearning' in $$props) $$invalidate(13, startMachineLearning = $$props.startMachineLearning);
     		if ('fetchGPSDataForFile' in $$props) $$invalidate(1, fetchGPSDataForFile = $$props.fetchGPSDataForFile);
     		if ('openModel' in $$props) $$invalidate(2, openModel = $$props.openModel);
-    		if ('videoFiles' in $$props) $$invalidate(7, videoFiles = $$props.videoFiles);
-    		if ('paginatedFiles' in $$props) $$invalidate(3, paginatedFiles = $$props.paginatedFiles);
-    		if ('paginationPage' in $$props) $$invalidate(4, paginationPage = $$props.paginationPage);
+    		if ('videoFiles' in $$props) $$invalidate(3, videoFiles = $$props.videoFiles);
+    		if ('paginatedFiles' in $$props) $$invalidate(4, paginatedFiles = $$props.paginatedFiles);
+    		if ('paginationPage' in $$props) $$invalidate(5, paginationPage = $$props.paginationPage);
     		if ('numberOfItemsPerPage' in $$props) numberOfItemsPerPage = $$props.numberOfItemsPerPage;
-    		if ('numberOfPages' in $$props) $$invalidate(8, numberOfPages = $$props.numberOfPages);
-    		if ('paginationFrom' in $$props) $$invalidate(9, paginationFrom = $$props.paginationFrom);
-    		if ('paginationTo' in $$props) $$invalidate(10, paginationTo = $$props.paginationTo);
+    		if ('numberOfPages' in $$props) $$invalidate(6, numberOfPages = $$props.numberOfPages);
+    		if ('paginationFrom' in $$props) $$invalidate(7, paginationFrom = $$props.paginationFrom);
+    		if ('paginationTo' in $$props) $$invalidate(8, paginationTo = $$props.paginationTo);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
+    	$$self.$$.update = () => {
+    		if ($$self.$$.dirty & /*files*/ 4096) {
+    			files && updatePaginationFiles();
+    		}
+    	};
+
     	return [
     		deleteDriveFile,
     		fetchGPSDataForFile,
     		openModel,
+    		videoFiles,
     		paginatedFiles,
     		paginationPage,
-    		PROGRAMMING_TOOLS,
-    		returnLinkGivenIfStringContains,
-    		videoFiles,
     		numberOfPages,
     		paginationFrom,
     		paginationTo,
+    		PROGRAMMING_TOOLS,
+    		returnLinkGivenIfStringContains,
     		setPaginationPage,
     		files,
     		startMachineLearning,
@@ -88420,8 +88397,8 @@ var app = (function () {
     	}
 
     	let tableview_props = {
-    		openModel: /*openModel*/ ctx[20],
-    		deleteFirebaseElement: /*deleteFirebaseElement*/ ctx[21]
+    		openModel: /*openModel*/ ctx[21],
+    		deleteFirebaseElement: /*deleteFirebaseElement*/ ctx[22]
     	};
 
     	if (/*selectedFirebaseGPSData*/ ctx[14] !== void 0) {
@@ -88436,7 +88413,7 @@ var app = (function () {
     	}
 
     	let searchdetails_props = {
-    		fetchFirebaseData: /*fetchFirebaseData*/ ctx[19]
+    		fetchFirebaseData: /*fetchFirebaseData*/ ctx[20]
     	};
 
     	if (/*dateTimeDictionary*/ ctx[7] !== void 0) {
@@ -88673,16 +88650,16 @@ var app = (function () {
     			div0 = element("div");
     			div0.textContent = "No Recordings Found";
     			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file$1, 378, 5, 12845);
+    			add_location(p, file$1, 378, 5, 12848);
     			attr_dev(div0, "class", "alert alert-red my-1");
     			attr_dev(div0, "role", "alert");
-    			add_location(div0, file$1, 379, 5, 12893);
+    			add_location(div0, file$1, 379, 5, 12896);
     			attr_dev(div1, "class", "p-4");
-    			add_location(div1, file$1, 377, 4, 12821);
+    			add_location(div1, file$1, 377, 4, 12824);
     			attr_dev(section, "class", "card h-fit scale-in-center");
-    			add_location(section, file$1, 376, 3, 12771);
+    			add_location(section, file$1, 376, 3, 12774);
     			attr_dev(div2, "class", "col-span-1 md:col-span-3");
-    			add_location(div2, file$1, 375, 2, 12728);
+    			add_location(div2, file$1, 375, 2, 12731);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -88719,14 +88696,14 @@ var app = (function () {
     	let current;
 
     	function recordingstable_files_binding(value) {
-    		/*recordingstable_files_binding*/ ctx[45](value);
+    		/*recordingstable_files_binding*/ ctx[46](value);
     	}
 
     	let recordingstable_props = {
-    		openModel: /*openModel*/ ctx[20],
-    		deleteDriveFile: /*deleteDriveFile*/ ctx[23],
-    		startMachineLearning: /*startMachineLearning*/ ctx[24],
-    		fetchGPSDataForFile: /*fetchGPSDataForFile*/ ctx[22]
+    		openModel: /*openModel*/ ctx[21],
+    		deleteDriveFile: /*deleteDriveFile*/ ctx[24],
+    		startMachineLearning: /*startMachineLearning*/ ctx[25],
+    		fetchGPSDataForFile: /*fetchGPSDataForFile*/ ctx[23]
     	};
 
     	if (/*files*/ ctx[16] !== void 0) {
@@ -88745,7 +88722,7 @@ var app = (function () {
     			div = element("div");
     			create_component(recordingstable.$$.fragment);
     			attr_dev(div, "class", "col-span-1 md:col-span-12");
-    			add_location(div, file$1, 371, 2, 12555);
+    			add_location(div, file$1, 371, 2, 12558);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -88828,6 +88805,7 @@ var app = (function () {
     	let attentionbar1;
     	let t11;
     	let recordingsmenubar;
+    	let updating_functionComponents;
     	let t12;
     	let section;
     	let current_block_type_index_1;
@@ -89013,13 +88991,22 @@ var app = (function () {
     			$$inline: true
     		});
 
+    	function recordingsmenubar_functionComponents_binding(value) {
+    		/*recordingsmenubar_functionComponents_binding*/ ctx[45](value);
+    	}
+
+    	let recordingsmenubar_props = {};
+
+    	if (/*functionComponents*/ ctx[19] !== void 0) {
+    		recordingsmenubar_props.functionComponents = /*functionComponents*/ ctx[19];
+    	}
+
     	recordingsmenubar = new RecordingsMenuBar({
-    			props: {
-    				functionComponents: /*functionComponents*/ ctx[25]
-    			},
+    			props: recordingsmenubar_props,
     			$$inline: true
     		});
 
+    	binding_callbacks.push(() => bind$2(recordingsmenubar, 'functionComponents', recordingsmenubar_functionComponents_binding));
     	const if_block_creators_1 = [create_if_block$2, create_else_block$1];
     	const if_blocks_1 = [];
 
@@ -89074,7 +89061,7 @@ var app = (function () {
     			attr_dev(main, "class", "grid grid-cols-1 gap-4 lg:grid-cols-12 my-4 px-4");
     			add_location(main, file$1, 339, 0, 11227);
     			attr_dev(section, "class", "grid grid-cols-1 gap-4 lg:grid-cols-12 my-4 px-4");
-    			add_location(section, file$1, 369, 0, 12464);
+    			add_location(section, file$1, 369, 0, 12467);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -89305,6 +89292,15 @@ var app = (function () {
     				check_outros();
     			}
 
+    			const recordingsmenubar_changes = {};
+
+    			if (!updating_functionComponents && dirty[0] & /*functionComponents*/ 524288) {
+    				updating_functionComponents = true;
+    				recordingsmenubar_changes.functionComponents = /*functionComponents*/ ctx[19];
+    				add_flush_callback(() => updating_functionComponents = false);
+    			}
+
+    			recordingsmenubar.$set(recordingsmenubar_changes);
     			let previous_block_index_1 = current_block_type_index_1;
     			current_block_type_index_1 = select_block_type_1(ctx);
 
@@ -89900,6 +89896,11 @@ var app = (function () {
     		$$invalidate(4, isReadyForStyleSwitching);
     	}
 
+    	function recordingsmenubar_functionComponents_binding(value) {
+    		functionComponents = value;
+    		$$invalidate(19, functionComponents);
+    	}
+
     	function recordingstable_files_binding(value) {
     		files = value;
     		$$invalidate(16, files);
@@ -90008,7 +90009,7 @@ var app = (function () {
     		if ('accessTokenValue' in $$props) accessTokenValue = $$props.accessTokenValue;
     		if ('selectedVideoFile' in $$props) $$invalidate(17, selectedVideoFile = $$props.selectedVideoFile);
     		if ('selectedGPSData' in $$props) $$invalidate(18, selectedGPSData = $$props.selectedGPSData);
-    		if ('functionComponents' in $$props) $$invalidate(25, functionComponents = $$props.functionComponents);
+    		if ('functionComponents' in $$props) $$invalidate(19, functionComponents = $$props.functionComponents);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -90035,13 +90036,13 @@ var app = (function () {
     		files,
     		selectedVideoFile,
     		selectedGPSData,
+    		functionComponents,
     		fetchFirebaseData,
     		openModel,
     		deleteFirebaseElement,
     		fetchGPSDataForFile,
     		deleteDriveFile,
     		startMachineLearning,
-    		functionComponents,
     		modalcard_modalPayload_binding,
     		menubar_selectedMenu_binding,
     		menubar_menuComponents_binding,
@@ -90061,6 +90062,7 @@ var app = (function () {
     		map_selectedMenu_binding,
     		mapstyleselector_mapStyle_binding,
     		mapstyleselector_isReadyForStyleSwitching_binding,
+    		recordingsmenubar_functionComponents_binding,
     		recordingstable_files_binding
     	];
     }

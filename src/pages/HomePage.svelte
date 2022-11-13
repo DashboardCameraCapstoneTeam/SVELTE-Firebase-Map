@@ -365,7 +365,7 @@ car's driving metrics on the screen as your video plays."
 </main>
 <PageHeader title={"Recordings"} color="bg-dark" zHeight="z-10" />
 <AttentionBar message="Load, view, and sort all Google Drive Recordings. Use Pagination to sort between videos." />
-<RecordingsMenuBar {functionComponents} />
+<RecordingsMenuBar bind:functionComponents />
 
 <section class="grid grid-cols-1 gap-4 lg:grid-cols-12 my-4 px-4">
 	{#if files.length}
