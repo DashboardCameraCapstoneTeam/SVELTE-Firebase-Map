@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from "svelte";
 	import calculateFileSizeString from "utils/file-size.js";
+	import { returnLinkGivenIfStringContains } from "utils/devicon.js";
 	export let files;
 	export let deleteDriveFile;
 	export let startMachineLearning;
@@ -8,24 +9,6 @@
 	export let openModel;
 
 	const PROGRAMMING_TOOLS = ["GoogleDrive"];
-	const returnLinkGivenIfStringContains = (toolString) => {
-		if (toolString.includes("GoogleDrive")) {
-			return `icons/${toolString}.svg`;
-		}
-
-		if (toolString.includes("plain")) {
-			const tempString = toolString.replace("-plain", "");
-			return `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${tempString}/${tempString}-plain.svg`;
-		}
-
-		if (toolString.includes("wordmark")) {
-			const tempString = toolString.replace("-wordmark", "");
-			return `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${tempString}/${tempString}-wordmark.svg`;
-		}
-
-		return `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${toolString}/${toolString}-original.svg`;
-	};
-
 	let videoFiles = [];
 	let paginatedFiles = [];
 	let paginationPage = 0;

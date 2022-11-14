@@ -62,7 +62,6 @@
 		{ id: 3, title: "Video Player", icon: "fa-video" },
 	];
 	let selectedMenu = menuComponents[0].id;
-
 	let isLoading = false;
 	let isError = false;
 	let selectedFirebaseGPSData = [];
@@ -113,8 +112,8 @@
 		return item.value;
 	}
 	let gpsData = [];
-	let files = getLocalStorageWithExpiry("GoogleFiles");
 	let accessTokenValue = getSessionStorageWithExpiry('AccessToken');
+	let files = getLocalStorageWithExpiry("GoogleFiles");
 	let selectedVideoFile = null;
 	let selectedGPSData = null;
 
@@ -248,6 +247,15 @@
 			alert(response.message);
 		}
 	};
+
+	const checkAndSetFiles = () =>{
+		if(!files.length){
+			files = getDriveFiles();
+		}
+	}
+	checkAndSetFiles();
+
+
 	const deleteDriveFile = async (videoFile) => {
 		await verifyAccessToken();
 		let tempList = files;

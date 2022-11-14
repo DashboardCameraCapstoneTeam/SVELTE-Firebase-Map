@@ -649,7 +649,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    function get_each_context_1$2(ctx, list, i) {
+    function get_each_context_1$3(ctx, list, i) {
     	const child_ctx = ctx.slice();
     	child_ctx[4] = list[i];
     	return child_ctx;
@@ -760,7 +760,7 @@ var app = (function () {
     }
 
     // (48:3) {#each DETAILS_LIST as item}
-    function create_each_block_1$2(ctx) {
+    function create_each_block_1$3(ctx) {
     	let div;
     	let a;
     	let t0_value = /*item*/ ctx[4].name + "";
@@ -796,7 +796,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_each_block_1$2.name,
+    		id: create_each_block_1$3.name,
     		type: "each",
     		source: "(48:3) {#each DETAILS_LIST as item}",
     		ctx
@@ -899,7 +899,7 @@ var app = (function () {
     	let each_blocks_1 = [];
 
     	for (let i = 0; i < each_value_1.length; i += 1) {
-    		each_blocks_1[i] = create_each_block_1$2(get_each_context_1$2(ctx, each_value_1, i));
+    		each_blocks_1[i] = create_each_block_1$3(get_each_context_1$3(ctx, each_value_1, i));
     	}
 
     	let each_value = PROGRAMMING_TOOLS;
@@ -1121,12 +1121,12 @@ var app = (function () {
     				let i;
 
     				for (i = 0; i < each_value_1.length; i += 1) {
-    					const child_ctx = get_each_context_1$2(ctx, each_value_1, i);
+    					const child_ctx = get_each_context_1$3(ctx, each_value_1, i);
 
     					if (each_blocks_1[i]) {
     						each_blocks_1[i].p(child_ctx, dirty);
     					} else {
-    						each_blocks_1[i] = create_each_block_1$2(child_ctx);
+    						each_blocks_1[i] = create_each_block_1$3(child_ctx);
     						each_blocks_1[i].c();
     						each_blocks_1[i].m(div2, null);
     					}
@@ -2775,7 +2775,7 @@ var app = (function () {
 
     const file$g = "src\\components\\map\\MapStyleSelector.svelte";
 
-    function get_each_context_1$1(ctx, list, i) {
+    function get_each_context_1$2(ctx, list, i) {
     	const child_ctx = ctx.slice();
     	child_ctx[8] = list[i];
     	return child_ctx;
@@ -2795,7 +2795,7 @@ var app = (function () {
     	let each_blocks = [];
 
     	for (let i = 0; i < each_value_1.length; i += 1) {
-    		each_blocks[i] = create_each_block_1$1(get_each_context_1$1(ctx, each_value_1, i));
+    		each_blocks[i] = create_each_block_1$2(get_each_context_1$2(ctx, each_value_1, i));
     	}
 
     	const block = {
@@ -2820,12 +2820,12 @@ var app = (function () {
     				let i;
 
     				for (i = 0; i < each_value_1.length; i += 1) {
-    					const child_ctx = get_each_context_1$1(ctx, each_value_1, i);
+    					const child_ctx = get_each_context_1$2(ctx, each_value_1, i);
 
     					if (each_blocks[i]) {
     						each_blocks[i].p(child_ctx, dirty);
     					} else {
-    						each_blocks[i] = create_each_block_1$1(child_ctx);
+    						each_blocks[i] = create_each_block_1$2(child_ctx);
     						each_blocks[i].c();
     						each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
     					}
@@ -2927,7 +2927,7 @@ var app = (function () {
     }
 
     // (38:3) {#each mapStyleList as mapStyleItem}
-    function create_each_block_1$1(ctx) {
+    function create_each_block_1$2(ctx) {
     	let div;
     	let input;
     	let input_checked_value;
@@ -2991,7 +2991,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_each_block_1$1.name,
+    		id: create_each_block_1$2.name,
     		type: "each",
     		source: "(38:3) {#each mapStyleList as mapStyleItem}",
     		ctx
@@ -84815,7 +84815,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (148:3) {#if selectedGPSData === null}
+    // (150:3) {#if selectedGPSData === null}
     function create_if_block_1$2(ctx) {
     	let div;
 
@@ -84825,7 +84825,7 @@ var app = (function () {
     			div.textContent = "No GPS Data Selected.";
     			attr_dev(div, "class", "alert alert-red my-1");
     			attr_dev(div, "role", "alert");
-    			add_location(div, file$9, 148, 4, 3887);
+    			add_location(div, file$9, 150, 4, 3907);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -84839,14 +84839,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$2.name,
     		type: "if",
-    		source: "(148:3) {#if selectedGPSData === null}",
+    		source: "(150:3) {#if selectedGPSData === null}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (159:3) {#if selectedGPSData === null}
+    // (161:3) {#if selectedGPSData === null}
     function create_if_block$6(ctx) {
     	let div;
 
@@ -84856,7 +84856,7 @@ var app = (function () {
     			div.textContent = "No GPS Data Selected.";
     			attr_dev(div, "class", "alert alert-red my-1");
     			attr_dev(div, "role", "alert");
-    			add_location(div, file$9, 159, 4, 4239);
+    			add_location(div, file$9, 161, 4, 4259);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -84870,14 +84870,14 @@ var app = (function () {
     		block,
     		id: create_if_block$6.name,
     		type: "if",
-    		source: "(159:3) {#if selectedGPSData === null}",
+    		source: "(161:3) {#if selectedGPSData === null}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (163:4) {#each speedColors as speedColor, i}
+    // (165:4) {#each speedColors as speedColor, i}
     function create_each_block$3(ctx) {
     	let p;
     	let i_1;
@@ -84898,9 +84898,9 @@ var app = (function () {
     			t3 = text(t3_value);
     			attr_dev(i_1, "class", "dot");
     			attr_dev(i_1, "style", `--color:${/*speedColor*/ ctx[11]}`);
-    			add_location(i_1, file$9, 163, 31, 4437);
+    			add_location(i_1, file$9, 165, 31, 4457);
     			attr_dev(p, "class", "list-item my-2");
-    			add_location(p, file$9, 163, 5, 4411);
+    			add_location(p, file$9, 165, 5, 4431);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -84920,7 +84920,7 @@ var app = (function () {
     		block,
     		id: create_each_block$3.name,
     		type: "each",
-    		source: "(163:4) {#each speedColors as speedColor, i}",
+    		source: "(165:4) {#each speedColors as speedColor, i}",
     		ctx
     	});
 
@@ -84995,31 +84995,31 @@ var app = (function () {
     			p3 = element("p");
     			p3.textContent = "Attention! Speed color is not indicative of speeding.";
     			attr_dev(p0, "class", "font-bold my-1");
-    			add_location(p0, file$9, 146, 3, 3797);
+    			add_location(p0, file$9, 148, 3, 3817);
     			attr_dev(div0, "class", `h-96 w-full rounded-lg`);
-    			add_location(div0, file$9, 151, 3, 3978);
+    			add_location(div0, file$9, 153, 3, 3998);
     			attr_dev(div1, "class", "p-4");
-    			add_location(div1, file$9, 145, 2, 3775);
+    			add_location(div1, file$9, 147, 2, 3795);
     			attr_dev(section0, "class", "card h-fit scale-in-center flex-1");
-    			add_location(section0, file$9, 144, 1, 3720);
+    			add_location(section0, file$9, 146, 1, 3740);
     			attr_dev(p1, "class", "font-bold my-1");
-    			add_location(p1, file$9, 157, 3, 4148);
+    			add_location(p1, file$9, 159, 3, 4168);
     			attr_dev(i, "class", "dot");
     			attr_dev(i, "style", `--color:${/*speedColors*/ ctx[2][/*speedColors*/ ctx[2].length - 1]}`);
-    			add_location(i, file$9, 165, 30, 4565);
+    			add_location(i, file$9, 167, 30, 4585);
     			attr_dev(p2, "class", "list-item my-2");
-    			add_location(p2, file$9, 165, 4, 4539);
+    			add_location(p2, file$9, 167, 4, 4559);
     			attr_dev(div2, "class", "overflow-auto h-full");
-    			add_location(div2, file$9, 161, 3, 4328);
+    			add_location(div2, file$9, 163, 3, 4348);
     			attr_dev(hr, "class", "my-2");
-    			add_location(hr, file$9, 168, 3, 4666);
-    			add_location(p3, file$9, 170, 3, 4692);
+    			add_location(hr, file$9, 170, 3, 4686);
+    			add_location(p3, file$9, 172, 3, 4712);
     			attr_dev(div3, "class", "p-4");
-    			add_location(div3, file$9, 156, 2, 4126);
+    			add_location(div3, file$9, 158, 2, 4146);
     			attr_dev(section1, "class", "card h-full scale-in-center flex-none");
-    			add_location(section1, file$9, 155, 1, 4067);
+    			add_location(section1, file$9, 157, 1, 4087);
     			attr_dev(div4, "class", "flex flex-row gap-4 h-full");
-    			add_location(div4, file$9, 143, 0, 3677);
+    			add_location(div4, file$9, 145, 0, 3697);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -85268,16 +85268,17 @@ var app = (function () {
     	const onGPSDataChange = () => {
     		if (selectedGPSData === null) return;
 
-    		try {
-    			if (chartViewObject) {
-    				updateChartView();
-    			} else {
-    				initializeChartView();
-    			}
-    		} catch(err) {
-    			alert(err);
+    		if (chartViewObject) {
+    			updateChartView();
     		}
     	};
+
+    	onDestroy(() => {
+    		chartViewObject = false;
+    		$$invalidate(1, chartDiv = null);
+    		xAxis = null;
+    		series = null;
+    	});
 
     	const writable_props = ['selectedGPSData'];
 
@@ -85364,17 +85365,40 @@ var app = (function () {
     	}
     }
 
-    /* src\components\menu\TableView.svelte generated by Svelte v3.49.0 */
+    const returnLinkGivenIfStringContains = (toolString) => {
+      if (toolString.includes('GoogleDrive')) {
+        return `icons/${toolString}.svg`;
+      }
 
+      if (toolString.includes('plain')) {
+        const tempString = toolString.replace('-plain', '');
+        return `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${tempString}/${tempString}-plain.svg`;
+      }
+
+      if (toolString.includes('wordmark')) {
+        const tempString = toolString.replace('-wordmark', '');
+        return `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${tempString}/${tempString}-wordmark.svg`;
+      }
+
+      return `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${toolString}/${toolString}-original.svg`;
+    };
+
+    /* src\components\menu\TableView.svelte generated by Svelte v3.49.0 */
     const file$8 = "src\\components\\menu\\TableView.svelte";
 
     function get_each_context$2(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[4] = list[i];
+    	child_ctx[5] = list[i];
     	return child_ctx;
     }
 
-    // (33:2) {:else}
+    function get_each_context_1$1(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[8] = list[i];
+    	return child_ctx;
+    }
+
+    // (46:2) {:else}
     function create_else_block$3(ctx) {
     	let div;
 
@@ -85384,7 +85408,7 @@ var app = (function () {
     			div.textContent = "No Firebase GPS Data Selected.";
     			attr_dev(div, "class", "alert alert-red my-1");
     			attr_dev(div, "role", "alert");
-    			add_location(div, file$8, 33, 3, 997);
+    			add_location(div, file$8, 46, 3, 1474);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -85399,14 +85423,14 @@ var app = (function () {
     		block,
     		id: create_else_block$3.name,
     		type: "else",
-    		source: "(33:2) {:else}",
+    		source: "(46:2) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (9:2) {#if selectedFirebaseGPSData.length >= 1}
+    // (14:2) {#if selectedFirebaseGPSData.length >= 1}
     function create_if_block$5(ctx) {
     	let table;
     	let thead;
@@ -85417,6 +85441,8 @@ var app = (function () {
     	let t3;
     	let th2;
     	let t5;
+    	let th3;
+    	let t7;
     	let tbody;
     	let each_value = /*selectedFirebaseGPSData*/ ctx[0];
     	validate_each_argument(each_value);
@@ -85438,22 +85464,26 @@ var app = (function () {
     			th1.textContent = "Date Time";
     			t3 = space();
     			th2 = element("th");
-    			th2.textContent = "Options";
+    			th2.textContent = "Saved On";
     			t5 = space();
+    			th3 = element("th");
+    			th3.textContent = "Options";
+    			t7 = space();
     			tbody = element("tbody");
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
-    			add_location(th0, file$8, 12, 6, 353);
-    			add_location(th1, file$8, 13, 6, 379);
-    			add_location(th2, file$8, 14, 6, 405);
-    			add_location(tr, file$8, 11, 5, 341);
-    			add_location(thead, file$8, 10, 4, 327);
-    			add_location(tbody, file$8, 17, 4, 453);
+    			add_location(th0, file$8, 17, 6, 477);
+    			add_location(th1, file$8, 18, 6, 503);
+    			add_location(th2, file$8, 19, 6, 529);
+    			add_location(th3, file$8, 20, 6, 554);
+    			add_location(tr, file$8, 16, 5, 465);
+    			add_location(thead, file$8, 15, 4, 451);
+    			add_location(tbody, file$8, 23, 4, 602);
     			attr_dev(table, "class", "table w-full rounded-lg");
-    			add_location(table, file$8, 9, 3, 282);
+    			add_location(table, file$8, 14, 3, 406);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, table, anchor);
@@ -85464,7 +85494,9 @@ var app = (function () {
     			append_dev(tr, th1);
     			append_dev(tr, t3);
     			append_dev(tr, th2);
-    			append_dev(table, t5);
+    			append_dev(tr, t5);
+    			append_dev(tr, th3);
+    			append_dev(table, t7);
     			append_dev(table, tbody);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -85472,7 +85504,7 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*openModel, deleteFirebaseElement, selectedFirebaseGPSData*/ 7) {
+    			if (dirty & /*openModel, deleteFirebaseElement, selectedFirebaseGPSData, PROGRAMMING_TOOLS, returnLinkGivenIfStringContains*/ 15) {
     				each_value = /*selectedFirebaseGPSData*/ ctx[0];
     				validate_each_argument(each_value);
     				let i;
@@ -85506,34 +85538,82 @@ var app = (function () {
     		block,
     		id: create_if_block$5.name,
     		type: "if",
-    		source: "(9:2) {#if selectedFirebaseGPSData.length >= 1}",
+    		source: "(14:2) {#if selectedFirebaseGPSData.length >= 1}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (19:5) {#each selectedFirebaseGPSData as gpsElement}
+    // (31:9) {#each PROGRAMMING_TOOLS as tool}
+    function create_each_block_1$1(ctx) {
+    	let img;
+    	let img_src_value;
+
+    	const block = {
+    		c: function create() {
+    			img = element("img");
+    			attr_dev(img, "height", "100");
+    			attr_dev(img, "width", "auto");
+    			attr_dev(img, "title", /*tool*/ ctx[8]);
+    			attr_dev(img, "key", /*tool*/ ctx[8]);
+    			attr_dev(img, "class", `img-icon w-8 mx-2 py-2`);
+    			attr_dev(img, "alt", "");
+    			if (!src_url_equal(img.src, img_src_value = returnLinkGivenIfStringContains(/*tool*/ ctx[8]))) attr_dev(img, "src", img_src_value);
+    			attr_dev(img, "loading", "lazy");
+    			add_location(img, file$8, 31, 10, 875);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, img, anchor);
+    		},
+    		p: noop$2,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(img);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block_1$1.name,
+    		type: "each",
+    		source: "(31:9) {#each PROGRAMMING_TOOLS as tool}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (25:5) {#each selectedFirebaseGPSData as gpsElement}
     function create_each_block$2(ctx) {
     	let tr;
     	let td0;
-    	let t0_value = /*gpsElement*/ ctx[4].dataName + "";
+    	let t0_value = /*gpsElement*/ ctx[5].dataName + "";
     	let t0;
     	let t1;
     	let td1;
-    	let t2_value = /*gpsElement*/ ctx[4].dateTime + "";
+    	let t2_value = /*gpsElement*/ ctx[5].dateTime + "";
     	let t2;
     	let t3;
     	let td2;
+    	let div;
+    	let t4;
+    	let td3;
     	let button;
     	let i;
-    	let t4;
     	let t5;
+    	let t6;
     	let mounted;
     	let dispose;
+    	let each_value_1 = /*PROGRAMMING_TOOLS*/ ctx[3];
+    	validate_each_argument(each_value_1);
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value_1.length; i += 1) {
+    		each_blocks[i] = create_each_block_1$1(get_each_context_1$1(ctx, each_value_1, i));
+    	}
 
     	function click_handler() {
-    		return /*click_handler*/ ctx[3](/*gpsElement*/ ctx[4]);
+    		return /*click_handler*/ ctx[4](/*gpsElement*/ ctx[5]);
     	}
 
     	const block = {
@@ -85546,18 +85626,29 @@ var app = (function () {
     			t2 = text(t2_value);
     			t3 = space();
     			td2 = element("td");
+    			div = element("div");
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			t4 = space();
+    			td3 = element("td");
     			button = element("button");
     			i = element("i");
-    			t4 = text(" Delete");
-    			t5 = space();
-    			add_location(td0, file$8, 20, 7, 533);
-    			add_location(td1, file$8, 21, 7, 572);
+    			t5 = text(" Delete");
+    			t6 = space();
+    			add_location(td0, file$8, 26, 7, 682);
+    			add_location(td1, file$8, 27, 7, 721);
+    			attr_dev(div, "class", "flex flex-wrap justify-center ");
+    			add_location(div, file$8, 29, 8, 774);
+    			add_location(td2, file$8, 28, 7, 760);
     			attr_dev(i, "class", "fa-solid fa-trash ");
-    			add_location(i, file$8, 25, 48, 855);
+    			add_location(i, file$8, 38, 48, 1332);
     			attr_dev(button, "class", `card-btn btn-error-outline  `);
-    			add_location(button, file$8, 23, 9, 625);
-    			add_location(td2, file$8, 22, 7, 611);
-    			add_location(tr, file$8, 19, 6, 520);
+    			add_location(button, file$8, 36, 9, 1102);
+    			add_location(td3, file$8, 35, 7, 1088);
+    			add_location(tr, file$8, 25, 6, 669);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, tr, anchor);
@@ -85568,10 +85659,18 @@ var app = (function () {
     			append_dev(td1, t2);
     			append_dev(tr, t3);
     			append_dev(tr, td2);
-    			append_dev(td2, button);
+    			append_dev(td2, div);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(div, null);
+    			}
+
+    			append_dev(tr, t4);
+    			append_dev(tr, td3);
+    			append_dev(td3, button);
     			append_dev(button, i);
-    			append_dev(button, t4);
-    			append_dev(tr, t5);
+    			append_dev(button, t5);
+    			append_dev(tr, t6);
 
     			if (!mounted) {
     				dispose = listen_dev(button, "click", click_handler, false, false, false);
@@ -85580,11 +85679,36 @@ var app = (function () {
     		},
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
-    			if (dirty & /*selectedFirebaseGPSData*/ 1 && t0_value !== (t0_value = /*gpsElement*/ ctx[4].dataName + "")) set_data_dev(t0, t0_value);
-    			if (dirty & /*selectedFirebaseGPSData*/ 1 && t2_value !== (t2_value = /*gpsElement*/ ctx[4].dateTime + "")) set_data_dev(t2, t2_value);
+    			if (dirty & /*selectedFirebaseGPSData*/ 1 && t0_value !== (t0_value = /*gpsElement*/ ctx[5].dataName + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*selectedFirebaseGPSData*/ 1 && t2_value !== (t2_value = /*gpsElement*/ ctx[5].dateTime + "")) set_data_dev(t2, t2_value);
+
+    			if (dirty & /*PROGRAMMING_TOOLS, returnLinkGivenIfStringContains*/ 8) {
+    				each_value_1 = /*PROGRAMMING_TOOLS*/ ctx[3];
+    				validate_each_argument(each_value_1);
+    				let i;
+
+    				for (i = 0; i < each_value_1.length; i += 1) {
+    					const child_ctx = get_each_context_1$1(ctx, each_value_1, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    					} else {
+    						each_blocks[i] = create_each_block_1$1(child_ctx);
+    						each_blocks[i].c();
+    						each_blocks[i].m(div, null);
+    					}
+    				}
+
+    				for (; i < each_blocks.length; i += 1) {
+    					each_blocks[i].d(1);
+    				}
+
+    				each_blocks.length = each_value_1.length;
+    			}
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(tr);
+    			destroy_each(each_blocks, detaching);
     			mounted = false;
     			dispose();
     		}
@@ -85594,7 +85718,7 @@ var app = (function () {
     		block,
     		id: create_each_block$2.name,
     		type: "each",
-    		source: "(19:5) {#each selectedFirebaseGPSData as gpsElement}",
+    		source: "(25:5) {#each selectedFirebaseGPSData as gpsElement}",
     		ctx
     	});
 
@@ -85624,11 +85748,11 @@ var app = (function () {
     			t1 = space();
     			if_block.c();
     			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file$8, 7, 2, 187);
+    			add_location(p, file$8, 12, 2, 311);
     			attr_dev(div, "class", "p-4");
-    			add_location(div, file$8, 6, 1, 166);
+    			add_location(div, file$8, 11, 1, 290);
     			attr_dev(section, "class", "card h-fit scale-in-center");
-    			add_location(section, file$8, 5, 0, 119);
+    			add_location(section, file$8, 10, 0, 243);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -85678,6 +85802,7 @@ var app = (function () {
     	let { selectedFirebaseGPSData } = $$props;
     	let { openModel } = $$props;
     	let { deleteFirebaseElement } = $$props;
+    	const PROGRAMMING_TOOLS = ["firebase-plain"];
     	const writable_props = ['selectedFirebaseGPSData', 'openModel', 'deleteFirebaseElement'];
 
     	Object.keys($$props).forEach(key => {
@@ -85693,9 +85818,11 @@ var app = (function () {
     	};
 
     	$$self.$capture_state = () => ({
+    		returnLinkGivenIfStringContains,
     		selectedFirebaseGPSData,
     		openModel,
-    		deleteFirebaseElement
+    		deleteFirebaseElement,
+    		PROGRAMMING_TOOLS
     	});
 
     	$$self.$inject_state = $$props => {
@@ -85708,7 +85835,13 @@ var app = (function () {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [selectedFirebaseGPSData, openModel, deleteFirebaseElement, click_handler];
+    	return [
+    		selectedFirebaseGPSData,
+    		openModel,
+    		deleteFirebaseElement,
+    		PROGRAMMING_TOOLS,
+    		click_handler
+    	];
     }
 
     class TableView extends SvelteComponentDev {
@@ -87110,24 +87243,24 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[22] = list[i];
-    	child_ctx[24] = i;
+    	child_ctx[21] = list[i];
+    	child_ctx[23] = i;
     	return child_ctx;
     }
 
     function get_each_context_1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[25] = list[i];
+    	child_ctx[24] = list[i];
     	return child_ctx;
     }
 
     function get_each_context_2(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[28] = list[i];
+    	child_ctx[27] = list[i];
     	return child_ctx;
     }
 
-    // (146:2) {:else}
+    // (129:2) {:else}
     function create_else_block$2(ctx) {
     	let div;
 
@@ -87137,7 +87270,7 @@ var app = (function () {
     			div.textContent = "No Google Drive Files Found.";
     			attr_dev(div, "class", "alert alert-red my-1");
     			attr_dev(div, "role", "alert");
-    			add_location(div, file$2, 146, 3, 5322);
+    			add_location(div, file$2, 129, 3, 4709);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -87152,14 +87285,14 @@ var app = (function () {
     		block,
     		id: create_else_block$2.name,
     		type: "else",
-    		source: "(146:2) {:else}",
+    		source: "(129:2) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (69:2) {#if paginatedFiles.length}
+    // (52:2) {#if paginatedFiles.length}
     function create_if_block$3(ctx) {
     	let table;
     	let thead;
@@ -87205,7 +87338,7 @@ var app = (function () {
 
     	let each_value = Array(/*numberOfPages*/ ctx[6]);
     	validate_each_argument(each_value);
-    	const get_key = ctx => /*index*/ ctx[24];
+    	const get_key = ctx => /*index*/ ctx[23];
     	validate_each_keys(ctx, each_value, get_each_context, get_key);
 
     	for (let i = 0; i < each_value.length; i += 1) {
@@ -87264,27 +87397,27 @@ var app = (function () {
     			t20 = space();
     			button1 = element("button");
     			button1.textContent = "Next";
-    			add_location(th0, file$2, 72, 6, 2374);
-    			add_location(th1, file$2, 73, 6, 2396);
-    			add_location(th2, file$2, 74, 6, 2423);
-    			add_location(th3, file$2, 75, 6, 2452);
-    			add_location(th4, file$2, 76, 6, 2474);
-    			add_location(th5, file$2, 77, 6, 2499);
-    			add_location(th6, file$2, 78, 6, 2520);
-    			add_location(tr, file$2, 71, 5, 2362);
-    			add_location(thead, file$2, 70, 4, 2348);
-    			add_location(tbody, file$2, 81, 4, 2568);
+    			add_location(th0, file$2, 55, 6, 1761);
+    			add_location(th1, file$2, 56, 6, 1783);
+    			add_location(th2, file$2, 57, 6, 1810);
+    			add_location(th3, file$2, 58, 6, 1839);
+    			add_location(th4, file$2, 59, 6, 1861);
+    			add_location(th5, file$2, 60, 6, 1886);
+    			add_location(th6, file$2, 61, 6, 1907);
+    			add_location(tr, file$2, 54, 5, 1749);
+    			add_location(thead, file$2, 53, 4, 1735);
+    			add_location(tbody, file$2, 64, 4, 1955);
     			attr_dev(table, "class", "table w-full rounded-lg");
-    			add_location(table, file$2, 69, 3, 2303);
+    			add_location(table, file$2, 52, 3, 1690);
     			attr_dev(hr, "class", "my-4");
-    			add_location(hr, file$2, 134, 3, 4647);
-    			add_location(p, file$2, 135, 3, 4671);
+    			add_location(hr, file$2, 117, 3, 4034);
+    			add_location(p, file$2, 118, 3, 4058);
     			attr_dev(button0, "class", "px-4 py-2 btn-pagination");
-    			add_location(button0, file$2, 137, 4, 4800);
+    			add_location(button0, file$2, 120, 4, 4187);
     			attr_dev(button1, "class", "px-4 py-2 btn-pagination ");
-    			add_location(button1, file$2, 143, 4, 5182);
+    			add_location(button1, file$2, 126, 4, 4569);
     			attr_dev(div, "class", "flex items-center space-x-2 mt-2");
-    			add_location(div, file$2, 136, 3, 4748);
+    			add_location(div, file$2, 119, 3, 4135);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, table, anchor);
@@ -87329,15 +87462,15 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(button0, "click", /*click_handler_2*/ ctx[16], false, false, false),
-    					listen_dev(button1, "click", /*click_handler_4*/ ctx[18], false, false, false)
+    					listen_dev(button0, "click", /*click_handler_2*/ ctx[15], false, false, false),
+    					listen_dev(button1, "click", /*click_handler_4*/ ctx[17], false, false, false)
     				];
 
     				mounted = true;
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*openModel, deleteDriveFile, paginatedFiles, fetchGPSDataForFile, calculateFileSizeString, PROGRAMMING_TOOLS, returnLinkGivenIfStringContains*/ 1559) {
+    			if (dirty & /*openModel, deleteDriveFile, paginatedFiles, fetchGPSDataForFile, calculateFileSizeString, PROGRAMMING_TOOLS, returnLinkGivenIfStringContains*/ 535) {
     				each_value_1 = /*paginatedFiles*/ ctx[4];
     				validate_each_argument(each_value_1);
     				let i;
@@ -87363,7 +87496,7 @@ var app = (function () {
 
     			if (dirty & /*paginationFrom, paginationTo, videoFiles*/ 392 && t16_value !== (t16_value = `${/*paginationFrom*/ ctx[7] + 1}-${/*paginationTo*/ ctx[8]} of ${/*videoFiles*/ ctx[3].length}` + "")) set_data_dev(t16, t16_value);
 
-    			if (dirty & /*paginationPage, Array, numberOfPages, setPaginationPage*/ 2144) {
+    			if (dirty & /*paginationPage, Array, numberOfPages, setPaginationPage*/ 1120) {
     				each_value = Array(/*numberOfPages*/ ctx[6]);
     				validate_each_argument(each_value);
     				validate_each_keys(ctx, each_value, get_each_context, get_key);
@@ -87393,35 +87526,35 @@ var app = (function () {
     		block,
     		id: create_if_block$3.name,
     		type: "if",
-    		source: "(69:2) {#if paginatedFiles.length}",
+    		source: "(52:2) {#if paginatedFiles.length}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (84:6) {#if videoFile.fileExtension === "MP4" || videoFile.fileExtension === "mp4"}
+    // (67:6) {#if videoFile.fileExtension === "MP4" || videoFile.fileExtension === "mp4"}
     function create_if_block_1$1(ctx) {
     	let tr;
     	let td0;
     	let t0;
     	let td1;
-    	let t1_value = /*videoFile*/ ctx[25].name + "";
+    	let t1_value = /*videoFile*/ ctx[24].name + "";
     	let t1;
     	let t2;
     	let td2;
-    	let t3_value = /*videoFile*/ ctx[25].createdTime + "";
+    	let t3_value = /*videoFile*/ ctx[24].createdTime + "";
     	let t3;
     	let t4;
     	let td3;
-    	let t5_value = /*videoFile*/ ctx[25].owners[0].displayName + "";
+    	let t5_value = /*videoFile*/ ctx[24].owners[0].displayName + "";
     	let t5;
     	let t6;
     	let td4;
     	let div0;
     	let t7;
     	let td5;
-    	let t8_value = calculateFileSizeString(/*videoFile*/ ctx[25].size) + "";
+    	let t8_value = calculateFileSizeString(/*videoFile*/ ctx[24].size) + "";
     	let t8;
     	let t9;
     	let td6;
@@ -87441,7 +87574,7 @@ var app = (function () {
     	let t15;
     	let mounted;
     	let dispose;
-    	let if_block = /*videoFile*/ ctx[25].webViewLink && /*videoFile*/ ctx[25].thumbnailLink && create_if_block_2$1(ctx);
+    	let if_block = /*videoFile*/ ctx[24].webViewLink && /*videoFile*/ ctx[24].thumbnailLink && create_if_block_2$1(ctx);
     	let each_value_2 = /*PROGRAMMING_TOOLS*/ ctx[9];
     	validate_each_argument(each_value_2);
     	let each_blocks = [];
@@ -87451,11 +87584,11 @@ var app = (function () {
     	}
 
     	function click_handler() {
-    		return /*click_handler*/ ctx[14](/*videoFile*/ ctx[25]);
+    		return /*click_handler*/ ctx[13](/*videoFile*/ ctx[24]);
     	}
 
     	function click_handler_1() {
-    		return /*click_handler_1*/ ctx[15](/*videoFile*/ ctx[25]);
+    		return /*click_handler_1*/ ctx[14](/*videoFile*/ ctx[24]);
     	}
 
     	const block = {
@@ -87499,33 +87632,33 @@ var app = (function () {
     			t14 = text("\r\n\t\t\t\t\t\t\t\t\t\t\tDelete");
     			t15 = space();
     			attr_dev(td0, "class", "w-64");
-    			add_location(td0, file$2, 85, 8, 2724);
-    			add_location(td1, file$2, 97, 8, 3258);
-    			add_location(td2, file$2, 98, 8, 3293);
-    			add_location(td3, file$2, 99, 8, 3335);
+    			add_location(td0, file$2, 68, 8, 2111);
+    			add_location(td1, file$2, 80, 8, 2645);
+    			add_location(td2, file$2, 81, 8, 2680);
+    			add_location(td3, file$2, 82, 8, 2722);
     			attr_dev(div0, "class", "flex flex-wrap justify-center ");
-    			add_location(div0, file$2, 101, 9, 3402);
-    			add_location(td4, file$2, 100, 8, 3387);
-    			add_location(td5, file$2, 107, 8, 3722);
+    			add_location(div0, file$2, 84, 9, 2789);
+    			add_location(td4, file$2, 83, 8, 2774);
+    			add_location(td5, file$2, 90, 8, 3109);
     			attr_dev(i0, "class", "fa-solid fa-eye");
-    			add_location(i0, file$2, 111, 11, 3935);
+    			add_location(i0, file$2, 94, 11, 3322);
     			attr_dev(a, "a", "");
-    			attr_dev(a, "href", a_href_value = /*videoFile*/ ctx[25].webViewLink);
+    			attr_dev(a, "href", a_href_value = /*videoFile*/ ctx[24].webViewLink);
     			attr_dev(a, "target", "_blank");
     			attr_dev(a, "class", `card-btn btn-primary my-1`);
-    			add_location(a, file$2, 110, 10, 3836);
+    			add_location(a, file$2, 93, 10, 3223);
     			attr_dev(i1, "class", "fa-solid fa-share");
-    			add_location(i1, file$2, 115, 11, 4120);
+    			add_location(i1, file$2, 98, 11, 3507);
     			attr_dev(button0, "class", `card-btn btn-primary my-1 mx-1`);
-    			add_location(button0, file$2, 114, 10, 4010);
+    			add_location(button0, file$2, 97, 10, 3397);
     			attr_dev(i2, "class", "fa-solid fa-trash");
-    			add_location(i2, file$2, 123, 11, 4469);
+    			add_location(i2, file$2, 106, 11, 3856);
     			attr_dev(button1, "class", `card-btn btn-error-outline my-1`);
-    			add_location(button1, file$2, 119, 10, 4209);
+    			add_location(button1, file$2, 102, 10, 3596);
     			attr_dev(div1, "class", "flex flex-row");
-    			add_location(div1, file$2, 109, 9, 3797);
-    			add_location(td6, file$2, 108, 8, 3782);
-    			add_location(tr, file$2, 84, 7, 2710);
+    			add_location(div1, file$2, 92, 9, 3184);
+    			add_location(td6, file$2, 91, 8, 3169);
+    			add_location(tr, file$2, 67, 7, 2097);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, tr, anchor);
@@ -87579,7 +87712,7 @@ var app = (function () {
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
 
-    			if (/*videoFile*/ ctx[25].webViewLink && /*videoFile*/ ctx[25].thumbnailLink) {
+    			if (/*videoFile*/ ctx[24].webViewLink && /*videoFile*/ ctx[24].thumbnailLink) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
@@ -87592,11 +87725,11 @@ var app = (function () {
     				if_block = null;
     			}
 
-    			if (dirty & /*paginatedFiles*/ 16 && t1_value !== (t1_value = /*videoFile*/ ctx[25].name + "")) set_data_dev(t1, t1_value);
-    			if (dirty & /*paginatedFiles*/ 16 && t3_value !== (t3_value = /*videoFile*/ ctx[25].createdTime + "")) set_data_dev(t3, t3_value);
-    			if (dirty & /*paginatedFiles*/ 16 && t5_value !== (t5_value = /*videoFile*/ ctx[25].owners[0].displayName + "")) set_data_dev(t5, t5_value);
+    			if (dirty & /*paginatedFiles*/ 16 && t1_value !== (t1_value = /*videoFile*/ ctx[24].name + "")) set_data_dev(t1, t1_value);
+    			if (dirty & /*paginatedFiles*/ 16 && t3_value !== (t3_value = /*videoFile*/ ctx[24].createdTime + "")) set_data_dev(t3, t3_value);
+    			if (dirty & /*paginatedFiles*/ 16 && t5_value !== (t5_value = /*videoFile*/ ctx[24].owners[0].displayName + "")) set_data_dev(t5, t5_value);
 
-    			if (dirty & /*PROGRAMMING_TOOLS, returnLinkGivenIfStringContains*/ 1536) {
+    			if (dirty & /*PROGRAMMING_TOOLS, returnLinkGivenIfStringContains*/ 512) {
     				each_value_2 = /*PROGRAMMING_TOOLS*/ ctx[9];
     				validate_each_argument(each_value_2);
     				let i;
@@ -87620,9 +87753,9 @@ var app = (function () {
     				each_blocks.length = each_value_2.length;
     			}
 
-    			if (dirty & /*paginatedFiles*/ 16 && t8_value !== (t8_value = calculateFileSizeString(/*videoFile*/ ctx[25].size) + "")) set_data_dev(t8, t8_value);
+    			if (dirty & /*paginatedFiles*/ 16 && t8_value !== (t8_value = calculateFileSizeString(/*videoFile*/ ctx[24].size) + "")) set_data_dev(t8, t8_value);
 
-    			if (dirty & /*paginatedFiles*/ 16 && a_href_value !== (a_href_value = /*videoFile*/ ctx[25].webViewLink)) {
+    			if (dirty & /*paginatedFiles*/ 16 && a_href_value !== (a_href_value = /*videoFile*/ ctx[24].webViewLink)) {
     				attr_dev(a, "href", a_href_value);
     			}
     		},
@@ -87639,14 +87772,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$1.name,
     		type: "if",
-    		source: "(84:6) {#if videoFile.fileExtension === \\\"MP4\\\" || videoFile.fileExtension === \\\"mp4\\\"}",
+    		source: "(67:6) {#if videoFile.fileExtension === \\\"MP4\\\" || videoFile.fileExtension === \\\"mp4\\\"}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (87:9) {#if videoFile.webViewLink && videoFile.thumbnailLink}
+    // (70:9) {#if videoFile.webViewLink && videoFile.thumbnailLink}
     function create_if_block_2$1(ctx) {
     	let a;
     	let img;
@@ -87657,26 +87790,26 @@ var app = (function () {
     		c: function create() {
     			a = element("a");
     			img = element("img");
-    			if (!src_url_equal(img.src, img_src_value = /*videoFile*/ ctx[25].thumbnailLink)) attr_dev(img, "src", img_src_value);
+    			if (!src_url_equal(img.src, img_src_value = /*videoFile*/ ctx[24].thumbnailLink)) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "onerror", "https://i.picsum.photos/id/870/200/300.jpg?blur=2&grayscale&hmac=ujRymp644uYVjdKJM7kyLDSsrqNSMVRPnGU99cKl6Vs");
     			attr_dev(img, "alt", "Dashcam");
     			attr_dev(img, "class", "h-full w-auto object-cover rounded-lg");
-    			add_location(img, file$2, 88, 11, 2921);
-    			attr_dev(a, "href", a_href_value = /*videoFile*/ ctx[25].webViewLink);
+    			add_location(img, file$2, 71, 11, 2308);
+    			attr_dev(a, "href", a_href_value = /*videoFile*/ ctx[24].webViewLink);
     			attr_dev(a, "target", "_blank");
     			attr_dev(a, "class", "text-white text-xl borderRounded");
-    			add_location(a, file$2, 87, 10, 2818);
+    			add_location(a, file$2, 70, 10, 2205);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, a, anchor);
     			append_dev(a, img);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*paginatedFiles*/ 16 && !src_url_equal(img.src, img_src_value = /*videoFile*/ ctx[25].thumbnailLink)) {
+    			if (dirty & /*paginatedFiles*/ 16 && !src_url_equal(img.src, img_src_value = /*videoFile*/ ctx[24].thumbnailLink)) {
     				attr_dev(img, "src", img_src_value);
     			}
 
-    			if (dirty & /*paginatedFiles*/ 16 && a_href_value !== (a_href_value = /*videoFile*/ ctx[25].webViewLink)) {
+    			if (dirty & /*paginatedFiles*/ 16 && a_href_value !== (a_href_value = /*videoFile*/ ctx[24].webViewLink)) {
     				attr_dev(a, "href", a_href_value);
     			}
     		},
@@ -87689,14 +87822,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2$1.name,
     		type: "if",
-    		source: "(87:9) {#if videoFile.webViewLink && videoFile.thumbnailLink}",
+    		source: "(70:9) {#if videoFile.webViewLink && videoFile.thumbnailLink}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (103:10) {#each PROGRAMMING_TOOLS as tool}
+    // (86:10) {#each PROGRAMMING_TOOLS as tool}
     function create_each_block_2(ctx) {
     	let img;
     	let img_src_value;
@@ -87706,13 +87839,13 @@ var app = (function () {
     			img = element("img");
     			attr_dev(img, "height", "100");
     			attr_dev(img, "width", "auto");
-    			attr_dev(img, "title", /*tool*/ ctx[28]);
-    			attr_dev(img, "key", /*tool*/ ctx[28]);
+    			attr_dev(img, "title", /*tool*/ ctx[27]);
+    			attr_dev(img, "key", /*tool*/ ctx[27]);
     			attr_dev(img, "class", `img-icon w-8 mx-2 py-2`);
     			attr_dev(img, "alt", "");
-    			if (!src_url_equal(img.src, img_src_value = /*returnLinkGivenIfStringContains*/ ctx[10](/*tool*/ ctx[28]))) attr_dev(img, "src", img_src_value);
+    			if (!src_url_equal(img.src, img_src_value = returnLinkGivenIfStringContains(/*tool*/ ctx[27]))) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "loading", "lazy");
-    			add_location(img, file$2, 103, 11, 3505);
+    			add_location(img, file$2, 86, 11, 2892);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, img, anchor);
@@ -87727,17 +87860,17 @@ var app = (function () {
     		block,
     		id: create_each_block_2.name,
     		type: "each",
-    		source: "(103:10) {#each PROGRAMMING_TOOLS as tool}",
+    		source: "(86:10) {#each PROGRAMMING_TOOLS as tool}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (83:5) {#each paginatedFiles as videoFile}
+    // (66:5) {#each paginatedFiles as videoFile}
     function create_each_block_1(ctx) {
     	let if_block_anchor;
-    	let if_block = (/*videoFile*/ ctx[25].fileExtension === "MP4" || /*videoFile*/ ctx[25].fileExtension === "mp4") && create_if_block_1$1(ctx);
+    	let if_block = (/*videoFile*/ ctx[24].fileExtension === "MP4" || /*videoFile*/ ctx[24].fileExtension === "mp4") && create_if_block_1$1(ctx);
 
     	const block = {
     		c: function create() {
@@ -87749,7 +87882,7 @@ var app = (function () {
     			insert_dev(target, if_block_anchor, anchor);
     		},
     		p: function update(ctx, dirty) {
-    			if (/*videoFile*/ ctx[25].fileExtension === "MP4" || /*videoFile*/ ctx[25].fileExtension === "mp4") {
+    			if (/*videoFile*/ ctx[24].fileExtension === "MP4" || /*videoFile*/ ctx[24].fileExtension === "mp4") {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
@@ -87772,24 +87905,24 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(83:5) {#each paginatedFiles as videoFile}",
+    		source: "(66:5) {#each paginatedFiles as videoFile}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (139:4) {#each Array(numberOfPages) as _, index (index)}
+    // (122:4) {#each Array(numberOfPages) as _, index (index)}
     function create_each_block(key_1, ctx) {
     	let button;
-    	let t_value = /*index*/ ctx[24] + "";
+    	let t_value = /*index*/ ctx[23] + "";
     	let t;
     	let button_class_value;
     	let mounted;
     	let dispose;
 
     	function click_handler_3() {
-    		return /*click_handler_3*/ ctx[17](/*index*/ ctx[24]);
+    		return /*click_handler_3*/ ctx[16](/*index*/ ctx[23]);
     	}
 
     	const block = {
@@ -87799,11 +87932,11 @@ var app = (function () {
     			button = element("button");
     			t = text(t_value);
 
-    			attr_dev(button, "class", button_class_value = `px-4 py-2 ${/*paginationPage*/ ctx[5] === /*index*/ ctx[24]
+    			attr_dev(button, "class", button_class_value = `px-4 py-2 ${/*paginationPage*/ ctx[5] === /*index*/ ctx[23]
 			? "btn-pagination-primary font-bold "
 			: "btn-pagination"}`);
 
-    			add_location(button, file$2, 139, 5, 4977);
+    			add_location(button, file$2, 122, 5, 4364);
     			this.first = button;
     		},
     		m: function mount(target, anchor) {
@@ -87817,9 +87950,9 @@ var app = (function () {
     		},
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
-    			if (dirty & /*numberOfPages*/ 64 && t_value !== (t_value = /*index*/ ctx[24] + "")) set_data_dev(t, t_value);
+    			if (dirty & /*numberOfPages*/ 64 && t_value !== (t_value = /*index*/ ctx[23] + "")) set_data_dev(t, t_value);
 
-    			if (dirty & /*paginationPage, numberOfPages*/ 96 && button_class_value !== (button_class_value = `px-4 py-2 ${/*paginationPage*/ ctx[5] === /*index*/ ctx[24]
+    			if (dirty & /*paginationPage, numberOfPages*/ 96 && button_class_value !== (button_class_value = `px-4 py-2 ${/*paginationPage*/ ctx[5] === /*index*/ ctx[23]
 			? "btn-pagination-primary font-bold "
 			: "btn-pagination"}`)) {
     				attr_dev(button, "class", button_class_value);
@@ -87836,7 +87969,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(139:4) {#each Array(numberOfPages) as _, index (index)}",
+    		source: "(122:4) {#each Array(numberOfPages) as _, index (index)}",
     		ctx
     	});
 
@@ -87866,11 +87999,11 @@ var app = (function () {
     			t1 = space();
     			if_block.c();
     			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file$2, 67, 2, 2222);
+    			add_location(p, file$2, 50, 2, 1609);
     			attr_dev(div, "class", "p-4");
-    			add_location(div, file$2, 66, 1, 2201);
+    			add_location(div, file$2, 49, 1, 1588);
     			attr_dev(section, "class", "card h-fit scale-in-center");
-    			add_location(section, file$2, 65, 0, 2154);
+    			add_location(section, file$2, 48, 0, 1541);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -87923,25 +88056,6 @@ var app = (function () {
     	let { fetchGPSDataForFile } = $$props;
     	let { openModel } = $$props;
     	const PROGRAMMING_TOOLS = ["GoogleDrive"];
-
-    	const returnLinkGivenIfStringContains = toolString => {
-    		if (toolString.includes("GoogleDrive")) {
-    			return `icons/${toolString}.svg`;
-    		}
-
-    		if (toolString.includes("plain")) {
-    			const tempString = toolString.replace("-plain", "");
-    			return `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${tempString}/${tempString}-plain.svg`;
-    		}
-
-    		if (toolString.includes("wordmark")) {
-    			const tempString = toolString.replace("-wordmark", "");
-    			return `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${tempString}/${tempString}-wordmark.svg`;
-    		}
-
-    		return `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${toolString}/${toolString}-original.svg`;
-    	};
-
     	let videoFiles = [];
     	let paginatedFiles = [];
     	let paginationPage = 0;
@@ -87995,9 +88109,9 @@ var app = (function () {
     	const click_handler_4 = () => setPaginationPage(paginationPage + 1);
 
     	$$self.$$set = $$props => {
-    		if ('files' in $$props) $$invalidate(12, files = $$props.files);
+    		if ('files' in $$props) $$invalidate(11, files = $$props.files);
     		if ('deleteDriveFile' in $$props) $$invalidate(0, deleteDriveFile = $$props.deleteDriveFile);
-    		if ('startMachineLearning' in $$props) $$invalidate(13, startMachineLearning = $$props.startMachineLearning);
+    		if ('startMachineLearning' in $$props) $$invalidate(12, startMachineLearning = $$props.startMachineLearning);
     		if ('fetchGPSDataForFile' in $$props) $$invalidate(1, fetchGPSDataForFile = $$props.fetchGPSDataForFile);
     		if ('openModel' in $$props) $$invalidate(2, openModel = $$props.openModel);
     	};
@@ -88005,13 +88119,13 @@ var app = (function () {
     	$$self.$capture_state = () => ({
     		onMount,
     		calculateFileSizeString,
+    		returnLinkGivenIfStringContains,
     		files,
     		deleteDriveFile,
     		startMachineLearning,
     		fetchGPSDataForFile,
     		openModel,
     		PROGRAMMING_TOOLS,
-    		returnLinkGivenIfStringContains,
     		videoFiles,
     		paginatedFiles,
     		paginationPage,
@@ -88025,9 +88139,9 @@ var app = (function () {
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ('files' in $$props) $$invalidate(12, files = $$props.files);
+    		if ('files' in $$props) $$invalidate(11, files = $$props.files);
     		if ('deleteDriveFile' in $$props) $$invalidate(0, deleteDriveFile = $$props.deleteDriveFile);
-    		if ('startMachineLearning' in $$props) $$invalidate(13, startMachineLearning = $$props.startMachineLearning);
+    		if ('startMachineLearning' in $$props) $$invalidate(12, startMachineLearning = $$props.startMachineLearning);
     		if ('fetchGPSDataForFile' in $$props) $$invalidate(1, fetchGPSDataForFile = $$props.fetchGPSDataForFile);
     		if ('openModel' in $$props) $$invalidate(2, openModel = $$props.openModel);
     		if ('videoFiles' in $$props) $$invalidate(3, videoFiles = $$props.videoFiles);
@@ -88044,7 +88158,7 @@ var app = (function () {
     	}
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty & /*files*/ 4096) {
+    		if ($$self.$$.dirty & /*files*/ 2048) {
     			files && updatePaginationFiles();
     		}
     	};
@@ -88060,7 +88174,6 @@ var app = (function () {
     		paginationFrom,
     		paginationTo,
     		PROGRAMMING_TOOLS,
-    		returnLinkGivenIfStringContains,
     		setPaginationPage,
     		files,
     		startMachineLearning,
@@ -88077,9 +88190,9 @@ var app = (function () {
     		super(options);
 
     		init(this, options, instance$3, create_fragment$3, safe_not_equal, {
-    			files: 12,
+    			files: 11,
     			deleteDriveFile: 0,
-    			startMachineLearning: 13,
+    			startMachineLearning: 12,
     			fetchGPSDataForFile: 1,
     			openModel: 2
     		});
@@ -88094,7 +88207,7 @@ var app = (function () {
     		const { ctx } = this.$$;
     		const props = options.props || {};
 
-    		if (/*files*/ ctx[12] === undefined && !('files' in props)) {
+    		if (/*files*/ ctx[11] === undefined && !('files' in props)) {
     			console.warn("<RecordingsTable> was created without expected prop 'files'");
     		}
 
@@ -88102,7 +88215,7 @@ var app = (function () {
     			console.warn("<RecordingsTable> was created without expected prop 'deleteDriveFile'");
     		}
 
-    		if (/*startMachineLearning*/ ctx[13] === undefined && !('startMachineLearning' in props)) {
+    		if (/*startMachineLearning*/ ctx[12] === undefined && !('startMachineLearning' in props)) {
     			console.warn("<RecordingsTable> was created without expected prop 'startMachineLearning'");
     		}
 
@@ -88161,7 +88274,7 @@ var app = (function () {
     const { console: console_1 } = globals;
     const file$1 = "src\\pages\\HomePage.svelte";
 
-    // (333:0) {#if isModalOpen}
+    // (341:0) {#if isModalOpen}
     function create_if_block_7(ctx) {
     	let modalcard;
     	let updating_modalPayload;
@@ -88217,14 +88330,14 @@ var app = (function () {
     		block,
     		id: create_if_block_7.name,
     		type: "if",
-    		source: "(333:0) {#if isModalOpen}",
+    		source: "(341:0) {#if isModalOpen}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (352:31) 
+    // (360:31) 
     function create_if_block_6(ctx) {
     	let video;
     	let updating_selectedVideoFile;
@@ -88313,14 +88426,14 @@ var app = (function () {
     		block,
     		id: create_if_block_6.name,
     		type: "if",
-    		source: "(352:31) ",
+    		source: "(360:31) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (350:31) 
+    // (358:31) 
     function create_if_block_5(ctx) {
     	let streetview;
     	let updating_pointOfInterest;
@@ -88376,14 +88489,14 @@ var app = (function () {
     		block,
     		id: create_if_block_5.name,
     		type: "if",
-    		source: "(350:31) ",
+    		source: "(358:31) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (347:31) 
+    // (355:31) 
     function create_if_block_4(ctx) {
     	let tableview;
     	let updating_selectedFirebaseGPSData;
@@ -88481,14 +88594,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(347:31) ",
+    		source: "(355:31) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (345:2) {#if selectedMenu === 0}
+    // (353:2) {#if selectedMenu === 0}
     function create_if_block_3(ctx) {
     	let profile;
     	let updating_user;
@@ -88545,14 +88658,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(345:2) {#if selectedMenu === 0}",
+    		source: "(353:2) {#if selectedMenu === 0}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (360:2) {#if isLoading === true}
+    // (368:2) {#if isLoading === true}
     function create_if_block_2(ctx) {
     	let maploadingspinner;
     	let current;
@@ -88584,14 +88697,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(360:2) {#if isLoading === true}",
+    		source: "(368:2) {#if isLoading === true}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (363:2) {#if isError === true}
+    // (371:2) {#if isError === true}
     function create_if_block_1(ctx) {
     	let maperror;
     	let current;
@@ -88623,14 +88736,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(363:2) {#if isError === true}",
+    		source: "(371:2) {#if isError === true}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (377:1) {:else}
+    // (385:1) {:else}
     function create_else_block$1(ctx) {
     	let div2;
     	let section;
@@ -88650,16 +88763,16 @@ var app = (function () {
     			div0 = element("div");
     			div0.textContent = "No Recordings Found";
     			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file$1, 380, 5, 12949);
+    			add_location(p, file$1, 388, 5, 13069);
     			attr_dev(div0, "class", "alert alert-red my-1");
     			attr_dev(div0, "role", "alert");
-    			add_location(div0, file$1, 381, 5, 12997);
+    			add_location(div0, file$1, 389, 5, 13117);
     			attr_dev(div1, "class", "p-4");
-    			add_location(div1, file$1, 379, 4, 12925);
+    			add_location(div1, file$1, 387, 4, 13045);
     			attr_dev(section, "class", "card h-fit scale-in-center");
-    			add_location(section, file$1, 378, 3, 12875);
+    			add_location(section, file$1, 386, 3, 12995);
     			attr_dev(div2, "class", "col-span-1 md:col-span-3");
-    			add_location(div2, file$1, 377, 2, 12832);
+    			add_location(div2, file$1, 385, 2, 12952);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -88681,14 +88794,14 @@ var app = (function () {
     		block,
     		id: create_else_block$1.name,
     		type: "else",
-    		source: "(377:1) {:else}",
+    		source: "(385:1) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (373:1) {#if files.length}
+    // (381:1) {#if files.length}
     function create_if_block$2(ctx) {
     	let div;
     	let recordingstable;
@@ -88722,7 +88835,7 @@ var app = (function () {
     			div = element("div");
     			create_component(recordingstable.$$.fragment);
     			attr_dev(div, "class", "col-span-1 md:col-span-12");
-    			add_location(div, file$1, 373, 2, 12659);
+    			add_location(div, file$1, 381, 2, 12779);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -88759,7 +88872,7 @@ var app = (function () {
     		block,
     		id: create_if_block$2.name,
     		type: "if",
-    		source: "(373:1) {#if files.length}",
+    		source: "(381:1) {#if files.length}",
     		ctx
     	});
 
@@ -89055,13 +89168,13 @@ var app = (function () {
     			t13 = space();
     			create_component(footer.$$.fragment);
     			attr_dev(div0, "class", `col-span-1 lg:col-span-6 flex flex-col gap-4`);
-    			add_location(div0, file$1, 342, 1, 11394);
+    			add_location(div0, file$1, 350, 1, 11514);
     			attr_dev(div1, "class", "col-span-1 md:col-span-6 row-span-6 relative");
-    			add_location(div1, file$1, 356, 1, 11933);
+    			add_location(div1, file$1, 364, 1, 12053);
     			attr_dev(main, "class", "grid grid-cols-1 gap-4 lg:grid-cols-12 my-4 px-4");
-    			add_location(main, file$1, 341, 0, 11328);
+    			add_location(main, file$1, 349, 0, 11448);
     			attr_dev(section, "class", "grid grid-cols-1 gap-4 lg:grid-cols-12 my-4 px-4");
-    			add_location(section, file$1, 371, 0, 12568);
+    			add_location(section, file$1, 379, 0, 12688);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -89526,8 +89639,8 @@ var app = (function () {
     	let isError = false;
     	let selectedFirebaseGPSData = [];
     	let gpsData = [];
-    	let files = getLocalStorageWithExpiry("GoogleFiles");
     	let accessTokenValue = getSessionStorageWithExpiry$1('AccessToken');
+    	let files = getLocalStorageWithExpiry("GoogleFiles");
     	let selectedVideoFile = null;
     	let selectedGPSData = null;
 
@@ -89671,6 +89784,14 @@ var app = (function () {
     			alert(response.message);
     		}
     	};
+
+    	const checkAndSetFiles = () => {
+    		if (!files.length) {
+    			$$invalidate(16, files = getDriveFiles());
+    		}
+    	};
+
+    	checkAndSetFiles();
 
     	const deleteDriveFile = async videoFile => {
     		await verifyAccessToken();
@@ -89968,8 +90089,8 @@ var app = (function () {
     		setLocalStorageWithExpiry,
     		getLocalStorageWithExpiry,
     		gpsData,
-    		files,
     		accessTokenValue,
+    		files,
     		selectedVideoFile,
     		selectedGPSData,
     		updateMapCenter,
@@ -89981,6 +90102,7 @@ var app = (function () {
     		goTop,
     		fetchGPSDataForFile,
     		getDriveFiles,
+    		checkAndSetFiles,
     		deleteDriveFile,
     		startMachineLearning,
     		sortBySizeASC,
@@ -90008,8 +90130,8 @@ var app = (function () {
     		if ('isError' in $$props) $$invalidate(13, isError = $$props.isError);
     		if ('selectedFirebaseGPSData' in $$props) $$invalidate(14, selectedFirebaseGPSData = $$props.selectedFirebaseGPSData);
     		if ('gpsData' in $$props) $$invalidate(15, gpsData = $$props.gpsData);
-    		if ('files' in $$props) $$invalidate(16, files = $$props.files);
     		if ('accessTokenValue' in $$props) accessTokenValue = $$props.accessTokenValue;
+    		if ('files' in $$props) $$invalidate(16, files = $$props.files);
     		if ('selectedVideoFile' in $$props) $$invalidate(17, selectedVideoFile = $$props.selectedVideoFile);
     		if ('selectedGPSData' in $$props) $$invalidate(18, selectedGPSData = $$props.selectedGPSData);
     		if ('functionComponents' in $$props) $$invalidate(19, functionComponents = $$props.functionComponents);

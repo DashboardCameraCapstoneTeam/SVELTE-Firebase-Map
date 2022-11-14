@@ -128,17 +128,19 @@
 	});
 	const onGPSDataChange = () => {
 		if (selectedGPSData === null) return;
-		try {
-			if (chartViewObject) {
-				updateChartView();
-			} else {
-				initializeChartView();
-			}
-		} catch (err) {
-			alert(err);
+
+		if (chartViewObject) {
+			updateChartView();
 		}
 	};
 	$: selectedGPSData && onGPSDataChange();
+
+	onDestroy(() => {
+		chartViewObject = false;
+		chartDiv = null;
+		xAxis = null;
+		series = null;
+	});
 </script>
 
 <div class="flex flex-row gap-4 h-full">
@@ -169,7 +171,6 @@
 			<hr class="my-2" />
 
 			<p>Attention! Speed color is not indicative of speeding.</p>
-
 		</div>
 	</section>
 </div>
