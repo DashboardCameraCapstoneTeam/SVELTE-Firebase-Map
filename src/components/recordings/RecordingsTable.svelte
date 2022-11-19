@@ -37,11 +37,14 @@
 
 	const updatePaginationFiles = () => {
 		videoFiles = files.filter((videoFile) => videoFile.fileExtension === "MP4" || videoFile.fileExtension === "mp4");
+		console.log(videoFiles);
 		numberOfPages = Math.ceil(videoFiles.length / numberOfItemsPerPage);
 		paginationFrom = paginationPage * numberOfItemsPerPage;
 		paginationTo = Math.min((paginationPage + 1) * numberOfItemsPerPage, videoFiles.length);
 		paginatedFiles = videoFiles.slice(paginationPage * numberOfItemsPerPage, paginationPage * numberOfItemsPerPage + numberOfItemsPerPage);
 	};
+
+	
 
 	$:files && updatePaginationFiles();
 </script>
@@ -64,10 +67,10 @@
 				</thead>
 				<tbody>
 					{#each paginatedFiles as videoFile}
-						{#if videoFile.fileExtension === "MP4" || videoFile.fileExtension === "mp4"}
+						
 							<tr>
 								<td class="w-64">
-									{#if videoFile.webViewLink && videoFile.thumbnailLink}
+									{#if videoFile.thumbnailLink}
 										<a href={videoFile.webViewLink} target="_blank" class="text-white text-xl  borderRounded">
 											<img
 												src={videoFile.thumbnailLink}
@@ -110,7 +113,7 @@
 									</div>
 								</td>
 							</tr>
-						{/if}
+					
 					{/each}
 				</tbody>
 			</table>

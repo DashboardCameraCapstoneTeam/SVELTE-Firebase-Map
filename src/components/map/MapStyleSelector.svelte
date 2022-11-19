@@ -14,7 +14,7 @@
 			mapStyle = mapStyleItem;
 			isReadyForStyleSwitching = true;
 		} catch (e) {
-			alert("Unable to toggle Map Style");
+			console.log("Unable to toggle Map Style");
 		}
 	};
 	const toggleMenu = () => {

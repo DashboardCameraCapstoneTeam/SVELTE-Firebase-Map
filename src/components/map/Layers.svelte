@@ -12,7 +12,7 @@
 			layerList = tempCollection;
 			showAllLayers = !showAllLayers;
 		} catch (e) {
-			alert('Unable to toggle Layers');
+			console.log('Unable to toggle Layers');
 		}
 	};
 	const toggleLayer = (selectedLayer) => {
@@ -26,7 +26,7 @@
 				showAllLayers = !tempCollection[index].isShown;
 			}
 		} catch (e) {
-			alert('Unable to toggle Layer')
+			console.log('Unable to toggle Layer')
 		}
 	};
 	const checkIfAllLayersAreSame = () => {

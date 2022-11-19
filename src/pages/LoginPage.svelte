@@ -9,7 +9,19 @@
 
 <section class="py-4 px-4 flex h-screen items-center justify-center">
 	<section class="h-fit card rounded-lg shadow-xl p-4 text-sm w-96 text-center">
-		<p class="text-bold text-2xl">Sign In</p>
+
+		<div class="items-center justify-center text-align-center my-4">
+
+			<img
+			src={'images/LogoBlue.svg'}
+			onerror="https://i.picsum.photos/id/870/200/300.jpg?blur=2&grayscale&hmac=ujRymp644uYVjdKJM7kyLDSsrqNSMVRPnGU99cKl6Vs"
+			alt="Dashcam"
+			class="h-64 w-auto object-cover rounded-lg m-auto"
+			/>
+		</div>
+		
+
+		<p class="text-bold text-2xl mt-4">Sign In</p>
 		<p class="text-center my-2">Use your Google Account</p>
 		<button class="card-btn btn-primary my-4" on:click={login}><i class="fa-brands fa-google" /> Signin with Google </button>
 

@@ -146,21 +146,17 @@
 <div class="flex flex-row gap-4 h-full">
 	<section class="card h-fit scale-in-center flex-1">
 		<div class="p-4">
-			<p class="font-bold my-1">Speed Chart (Km/h):</p>
-			{#if selectedGPSData === null}
-				<div class="alert alert-red my-1" role="alert">No GPS Data Selected.</div>
-			{/if}
-
+			<p class="font-bold my-1">Vehicle Speed Chart (Km/h):</p>
+		
+ 
 			<div bind:this={chartDiv} class={`h-96 w-full rounded-lg`} />
 		</div>
 	</section>
 
 	<section class="card h-full scale-in-center flex-none">
 		<div class="p-4">
-			<p class="font-bold my-1">Speed Legend (Km/h):</p>
-			{#if selectedGPSData === null}
-				<div class="alert alert-red my-1" role="alert">No GPS Data Selected.</div>
-			{/if}
+			<p class="font-bold my-1">Vehicle Speed Legend (Km/h):</p>
+			
 			<div class="overflow-auto h-full">
 				{#each speedColors as speedColor, i}
 					<p class="list-item my-2"><i class="dot" style={`--color:${speedColor}`} /> {i * 10} - {(i + 1) * 10 - 1}</p>

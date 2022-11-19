@@ -4,7 +4,6 @@
 	import SearchDetails from "components/menu/SearchDetails.svelte";
 	import Layers from "components/map/Layers.svelte";
 	import MapStyleSelector from "components/map/MapStyleSelector.svelte";
-	import StreetView from "components/menu/StreetView.svelte";
 	import { fetchDataFromFirebase, deleteDocumentFromFirebase } from "service/google-firestore";
 	import { gpsJsonToGeojson } from "utils/geojson-utils.js";
 	import { googleSignIn } from "service/google-sign-in";
@@ -20,15 +19,14 @@
 	import ModalCard from "components/ModalCard.svelte";
 	import MapLoadingSpinner from "components/map/MapLoadingSpinner.svelte";
 	import MapError from "components/map/MapError.svelte";
-	import { getDashcamVideos, deleteGoogleDriveFile, verifyAndAddPermissions} from "service/google-drive";
-	import RecordingsCard from "components/recordings/RecordingsCard.svelte";
+	import { getDashcamVideos, deleteGoogleDriveFile, verifyAndAddPermissions } from "service/google-drive";
+
 	import { sortBySizeSmallToLarge, sortBySizeLargeToSmall, sortByTimeRecentToOldest, sortByTimeOldestToRecent } from "utils/sorting-video-assets";
 	import RecordingsMenuBar from "components/recordings/RecordingsMenuBar.svelte";
 	import RecordingsTable from "../components/recordings/RecordingsTable.svelte";
 
 	export let user;
 	export let signOut;
-	
 
 	let isModalOpen = false;
 	let modalPayload = {
@@ -58,15 +56,14 @@
 	let menuComponents = [
 		{ id: 0, title: "Profile", icon: "fa-user" },
 		{ id: 1, title: "Firebase", icon: "fa-database" },
-		{ id: 2, title: "Street View", icon: "fa-road" },
-		{ id: 3, title: "Video Player", icon: "fa-video" },
+		{ id: 2, title: "Video Player", icon: "fa-video" },
 	];
 	let selectedMenu = menuComponents[0].id;
 	let isLoading = false;
 	let isError = false;
 	let selectedFirebaseGPSData = [];
 
-	function setSessionStorageWithExpiry(key, value){
+	function setSessionStorageWithExpiry(key, value) {
 		const now = new Date();
 		const item = {
 			value: value,
@@ -112,7 +109,7 @@
 		return item.value;
 	}
 	let gpsData = [];
-	let accessTokenValue = getSessionStorageWithExpiry('AccessToken');
+	let accessTokenValue = getSessionStorageWithExpiry("AccessToken");
 	let files = getLocalStorageWithExpiry("GoogleFiles");
 	let selectedVideoFile = null;
 	let selectedGPSData = null;
@@ -136,12 +133,12 @@
 				gpsData = gpsJsonToGeojson(response.data);
 				updateMapCenter(gpsData[0].features[0].geometry.coordinates);
 				selectedFirebaseGPSData = gpsData;
-				alert("Successfully loaded Firebase Data");
+				console.log("Successfully loaded Firebase Data");
 			} else {
-				alert("No GPS data found");
+				console.log("No GPS data found");
 			}
 		} else {
-			alert(response.message);
+			console.log(response.message);
 			isError = true;
 		}
 		isLoading = false;
@@ -178,15 +175,15 @@
 			gpsData = tempGPSData;
 			updateMapCenter(gpsData[0].features[0].geometry.coordinates);
 			selectedFirebaseGPSData = gpsData;
-			alert("Successfully Deleted GPS Data");
+			console.log("Successfully Deleted GPS Data");
 		} else {
 			console.log(response);
-			alert(response);
+			console.log(response);
 			isError = true;
 		}
 	};
 	const verifyAccessToken = async () => {
-		const tempAccessToken = getSessionStorageWithExpiry('AccessToken');
+		const tempAccessToken = getSessionStorageWithExpiry("AccessToken");
 		if (tempAccessToken === null) {
 			accessTokenValue = await googleSignIn();
 			setSessionStorageWithExpiry("AccessToken", accessTokenValue);
@@ -199,36 +196,38 @@
 	const fetchGPSDataForFile = async (videoFile) => {
 		isLoading = true;
 		isError = false;
-		selectedVideoFile = videoFile;
-		selectedMenu = 3;
-		goTop();
 
-		const verifyResponse = await verifyAndAddPermissions(accessTokenValue, videoFile.id);
-		console.log(verifyResponse)
-		if (verifyResponse.status === 200) {
+		//* Check permissions
+		const hasPermissions = videoFile.permissionIds.includes("anyoneWithLink");
+		if (!hasPermissions) {
+			//* Set the permissions
+			const verifyResponse = await verifyAndAddPermissions(accessTokenValue, videoFile.id);
+			if (verifyResponse.status === 200) {
+				
+			}
+		} else {
+			//Check if coords file exists
 			const coordFile = getGoogleDriveCoordFile(videoFile, files);
 			if (coordFile) {
 				const response = await fetchGPSDataFromGoogleDrive(user, coordFile);
 				if (response.status === 200) {
-					if (response.data) {
-						gpsData = gpsJsonToGeojson([response.data]);
-						updateMapCenter(gpsData[0].features[0].geometry.coordinates);
-						selectedGPSData = gpsData[0];
-						alert("Added Trip to the Map");
-					} else {
-						alert("No GPS data found");
-					}
+					gpsData = gpsJsonToGeojson([response.data]);
+					updateMapCenter(gpsData[0].features[0].geometry.coordinates);
+					selectedGPSData = gpsData[0];
 				} else {
 					isError = true;
-					alert(response);
+					console.log(response);
 				}
 			} else {
 				selectedGPSData = null;
 				gpsData = [];
-				alert("Coordinates File does not exist, but you can still view the video");
+				console.log("Coordinates File does not exist, but you can still view the video");
 			}
-		}
 
+			selectedVideoFile = videoFile;
+			selectedMenu = 2;
+			goTop();
+		}
 		isLoading = false;
 	};
 
@@ -239,22 +238,21 @@
 			if (response.data.files.length) {
 				files = response.data.files;
 				setLocalStorageWithExpiry("GoogleFiles", response.data.files);
-				alert("Found Dashcam Files");
+				console.log("Found Dashcam Files");
 			} else {
-				alert("No Dashcam Files found");
+				console.log("No Dashcam Files found");
 			}
 		} else {
-			alert(response.message);
+			console.log(response.message);
 		}
 	};
 
-	const checkAndSetFiles = () =>{
-		if(!files.length){
+	const checkAndSetFiles = () => {
+		if (!files.length) {
 			files = getDriveFiles();
 		}
-	}
+	};
 	checkAndSetFiles();
-
 
 	const deleteDriveFile = async (videoFile) => {
 		await verifyAccessToken();
@@ -264,9 +262,9 @@
 			const response = await deleteGoogleDriveFile(accessTokenValue, coordFile.id);
 			if (response.status === 204) {
 				tempList = tempList.filter((item) => item.id !== coordFile.id);
-				alert("Successfully Deleted Google Drive Coordinates File");
+				console.log("Successfully Deleted Google Drive Coordinates File");
 			} else {
-				alert("Cannot delete Google Drive Coordinates File");
+				console.log("Cannot delete Google Drive Coordinates File");
 			}
 		}
 		const response = await deleteGoogleDriveFile(accessTokenValue, videoFile.id);
@@ -279,23 +277,23 @@
 					selectedVideoFile = null;
 				}
 			}
-			alert("Successfully Deleted Google Drive Video File");
+			console.log("Successfully Deleted Google Drive Video File");
 		} else {
-			alert("Cannot delete Google Drive Video File");
+			console.log("Cannot delete Google Drive Video File");
 		}
 	};
 	const startMachineLearning = async (videoFile) => {
 		const coordFile = getGoogleDriveCoordFile(videoFile, files);
 		if (coordFile) {
-			alert("Processing Dashcam Video. This will take some time, please wait");
+			console.log("Processing Dashcam Video. This will take some time, please wait");
 			const response = await processWithMachineLearning(user, videoFile, coordFile);
 			if (response.status === 200) {
-				alert("Succesfully Processed Video");
+				console.log("Succesfully Processed Video");
 			} else {
-				alert(response.message);
+				console.log(response.message);
 			}
 		} else {
-			alert("Coordinates File does not exist");
+			console.log("Coordinates File does not exist");
 		}
 	};
 	//* Sort the videos and reset the initial video list
@@ -356,8 +354,6 @@ car's driving metrics on the screen as your video plays."
 			<TableView bind:selectedFirebaseGPSData {openModel} {deleteFirebaseElement} />
 			<SearchDetails bind:dateTimeDictionary {fetchFirebaseData} />
 		{:else if selectedMenu === 2}
-			<StreetView bind:pointOfInterest />
-		{:else if selectedMenu === 3}
 			<Video bind:selectedVideoFile />
 			<SpeedChart bind:selectedGPSData />
 		{/if}
@@ -373,6 +369,7 @@ car's driving metrics on the screen as your video plays."
 		{/if}
 	</div>
 </main>
+
 <PageHeader title={"Recordings"} color="bg-dark" zHeight="z-10" />
 <AttentionBar message="Load, view, and sort all Google Drive Recordings. Use Pagination to sort between videos." />
 <RecordingsMenuBar bind:functionComponents />
