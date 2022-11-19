@@ -2,6 +2,7 @@
 	import { onMount } from "svelte";
 	import calculateFileSizeString from "utils/file-size.js";
 	import { returnLinkGivenIfStringContains } from "utils/devicon.js";
+	import { getGoogleDriveCoordFile } from "utils/filter-data.js";
 	export let files;
 	export let deleteDriveFile;
 	export let startMachineLearning;
@@ -62,6 +63,8 @@
 						<th>Owner</th>
 						<th>Saved On</th>
 						<th>Size</th>
+						<th>Has GPS Data</th>
+						<th>Has Permissions</th>
 						<th>Options</th>
 					</tr>
 				</thead>
@@ -92,6 +95,27 @@
 									</div>
 								</td>
 								<td>{calculateFileSizeString(videoFile.size)}</td>
+
+								<td>
+									{#if getGoogleDriveCoordFile(videoFile, files)}
+									<i class="fa-solid fa-check text-green fa-lg"></i>
+								{:else}
+									<i class="fa-solid fa-x text-error fa-lg"></i>
+								{/if}
+
+								</td>
+
+								<td>
+
+									{#if videoFile.permissionIds.includes('anyoneWithLink')}
+										<i class="fa-solid fa-check text-green fa-lg"></i>
+									{:else}
+										<i class="fa-solid fa-x text-error fa-lg"></i>
+									{/if}
+							
+							
+							</td>
+								
 								<td>
 									<div class="flex flex-row">
 										<a a href={videoFile.webViewLink} target="_blank" class={`card-btn btn-primary my-1`}>

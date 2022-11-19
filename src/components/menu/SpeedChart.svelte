@@ -3,6 +3,7 @@
 	import * as am5xy from "@amcharts/amcharts5/xy";
 	import { onMount, onDestroy } from "svelte";
 	export let selectedGPSData;
+	export let setGPSDataWithSelectedData;
 
 	let speedColors = ["#fa6e6e", "#fa9b45", "#fbf01c", "#88ed02", "#13c600", "#00ba73", "#00a9d1", "#0093ff", "#0071ff", "#1800ff"];
 
@@ -12,8 +13,8 @@
 	let series;
 	const filterGPSData = () => {
 		let data = [];
-		if (selectedGPSData) {
-			const coordinates = selectedGPSData.features;
+		if (selectedGPSData.length) {
+			const coordinates = selectedGPSData[0].features;
 			coordinates.forEach((element, index) => {
 				const speed = element.properties.Speed ? element.properties.Speed : 0;
 				const strokeSettings = {
@@ -27,7 +28,15 @@
 				data.push({ index: index, value: speed, strokeSettings, bulletSettings, fillSettings });
 			});
 		} else {
-			data.push({ index: 0, value: 0 });
+		
+				const strokeSettings = {
+					stroke: 'Green',
+				};
+				const bulletSettings = { fill: 'Green' };
+				const fillSettings = {
+					fill: 'Green',
+				};
+			data.push({ index: 0, value: 0 , strokeSettings, bulletSettings, fillSettings });
 		}
 		return data;
 	};
@@ -127,8 +136,6 @@
 		initializeChartView();
 	});
 	const onGPSDataChange = () => {
-		if (selectedGPSData === null) return;
-
 		if (chartViewObject) {
 			updateChartView();
 		}
@@ -147,16 +154,24 @@
 	<section class="card h-fit scale-in-center flex-1">
 		<div class="p-4">
 			<p class="font-bold my-1">Vehicle Speed Chart (Km/h):</p>
-		
- 
+
 			<div bind:this={chartDiv} class={`h-96 w-full rounded-lg`} />
+
+			{#if selectedGPSData.length}
+				<hr class="my-2" />
+
+				<button class={`card-btn btn-primary mx-1`} on:click={() => setGPSDataWithSelectedData(selectedGPSData)}>
+					<i class="fa-solid fa-refresh" />
+					Refresh and only show Selected Trip Data
+				</button>
+			{/if}
 		</div>
 	</section>
 
 	<section class="card h-full scale-in-center flex-none">
 		<div class="p-4">
 			<p class="font-bold my-1">Vehicle Speed Legend (Km/h):</p>
-			
+
 			<div class="overflow-auto h-full">
 				{#each speedColors as speedColor, i}
 					<p class="list-item my-2"><i class="dot" style={`--color:${speedColor}`} /> {i * 10} - {(i + 1) * 10 - 1}</p>

@@ -606,7 +606,7 @@ var app = (function () {
     /* eslint-disable quotes */
     const GOOGLE_FOLDER_URL = `https://www.googleapis.com/drive/v3/files?q=mimeType='application/vnd.google-apps.folder'`;
     const GOOGLE_QUERY_URL = 'https://www.googleapis.com/drive/v3/files?q=';
-    const GOOGLE_FILE_URL = 'https://www.googleapis.com/drive/v3/files/';
+    const GOOGLE_FILE_URL = 'https://www.googleapis.com/drive/v3/files';
     const MACHINE_LEARNING_PROCESS_URL = 'http://127.0.0.1:8000/process';
     const FETCH_GPS_DATA_URL = 'https://lit-headland-20478.herokuapp.com/fetchGPSData';
 
@@ -626,7 +626,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    function get_each_context_2$1(ctx, list, i) {
+    function get_each_context_2$2(ctx, list, i) {
     	const child_ctx = ctx.slice();
     	child_ctx[4] = list[i];
     	return child_ctx;
@@ -685,7 +685,7 @@ var app = (function () {
     }
 
     // (38:3) {#each APPLICATION_TOOLS_LIST as item}
-    function create_each_block_2$1(ctx) {
+    function create_each_block_2$2(ctx) {
     	let div;
     	let a;
     	let t0_value = /*item*/ ctx[4].name + "";
@@ -721,7 +721,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_each_block_2$1.name,
+    		id: create_each_block_2$2.name,
     		type: "each",
     		source: "(38:3) {#each APPLICATION_TOOLS_LIST as item}",
     		ctx
@@ -862,7 +862,7 @@ var app = (function () {
     	let each_blocks_2 = [];
 
     	for (let i = 0; i < each_value_2.length; i += 1) {
-    		each_blocks_2[i] = create_each_block_2$1(get_each_context_2$1(ctx, each_value_2, i));
+    		each_blocks_2[i] = create_each_block_2$2(get_each_context_2$2(ctx, each_value_2, i));
     	}
 
     	let each_value_1 = DETAILS_LIST;
@@ -1068,12 +1068,12 @@ var app = (function () {
     				let i;
 
     				for (i = 0; i < each_value_2.length; i += 1) {
-    					const child_ctx = get_each_context_2$1(ctx, each_value_2, i);
+    					const child_ctx = get_each_context_2$2(ctx, each_value_2, i);
 
     					if (each_blocks_2[i]) {
     						each_blocks_2[i].p(child_ctx, dirty);
     					} else {
-    						each_blocks_2[i] = create_each_block_2$1(child_ctx);
+    						each_blocks_2[i] = create_each_block_2$2(child_ctx);
     						each_blocks_2[i].c();
     						each_blocks_2[i].m(div1, null);
     					}
@@ -1324,9 +1324,9 @@ var app = (function () {
     			div0 = element("div");
     			attr_dev(div0, "class", "h-full rounded-lg");
     			attr_dev(div0, "id", "map");
-    			add_location(div0, file$h, 398, 44, 11537);
+    			add_location(div0, file$h, 397, 44, 11509);
     			attr_dev(div1, "class", "h-96 md:h-full scale-in-center");
-    			add_location(div1, file$h, 398, 0, 11493);
+    			add_location(div1, file$h, 397, 0, 11465);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1638,7 +1638,6 @@ var app = (function () {
     			let tempLayerList = layerList;
     			tempLayerList = tempLayerList.filter(obj => obj.layerName === '3D-Buildings');
     			$$invalidate(0, layerList = tempLayerList);
-    			console.log(layerList);
 
     			gpsData.forEach(function (gpsElement) {
     				const dataName = gpsElement.dataName;
@@ -2057,7 +2056,7 @@ var app = (function () {
     }
 
     // (46:2) {#if dateTimeDictionary.startDateTime === "" || dateTimeDictionary.endDateTime === ""}
-    function create_if_block$8(ctx) {
+    function create_if_block$9(ctx) {
     	let div;
 
     	const block = {
@@ -2079,7 +2078,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$8.name,
+    		id: create_if_block$9.name,
     		type: "if",
     		source: "(46:2) {#if dateTimeDictionary.startDateTime === \\\"\\\" || dateTimeDictionary.endDateTime === \\\"\\\"}",
     		ctx
@@ -2120,7 +2119,7 @@ var app = (function () {
     	let dispose;
 
     	function select_block_type(ctx, dirty) {
-    		if (/*dateTimeDictionary*/ ctx[0].startDateTime === "" || /*dateTimeDictionary*/ ctx[0].endDateTime === "") return create_if_block$8;
+    		if (/*dateTimeDictionary*/ ctx[0].startDateTime === "" || /*dateTimeDictionary*/ ctx[0].endDateTime === "") return create_if_block$9;
     		return create_else_block$6;
     	}
 
@@ -2829,7 +2828,7 @@ var app = (function () {
     }
 
     // (29:2) {#if isLargeMenu === true}
-    function create_if_block$7(ctx) {
+    function create_if_block$8(ctx) {
     	let div;
     	let each_value = /*mapStyleList*/ ctx[2];
     	validate_each_argument(each_value);
@@ -2890,7 +2889,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$7.name,
+    		id: create_if_block$8.name,
     		type: "if",
     		source: "(29:2) {#if isLargeMenu === true}",
     		ctx
@@ -3052,7 +3051,7 @@ var app = (function () {
     	let dispose;
 
     	function select_block_type(ctx, dirty) {
-    		if (/*isLargeMenu*/ ctx[1] === true) return create_if_block$7;
+    		if (/*isLargeMenu*/ ctx[1] === true) return create_if_block$8;
     		return create_else_block$5;
     	}
 
@@ -37975,10 +37974,10 @@ var app = (function () {
     const gpsJsonToGeojson = (rawData) => {
       const geoJsonArray = [];
       rawData.forEach((rawGeoJsonFile) => {
-        const dataId = rawGeoJsonFile.dataId ? rawGeoJsonFile.dataId : null;
-        const dataName = rawGeoJsonFile.dataName ? rawGeoJsonFile.dataName : v4();
+        const dataId = rawGeoJsonFile.dataId || null;
+        const dataName = rawGeoJsonFile.dataName || v4();
         const dateTime = rawGeoJsonFile.dateTime ? convertDateTimeToString(rawGeoJsonFile.dateTime) : null;
-        const dataType = rawGeoJsonFile.dataType ? rawGeoJsonFile.dataType : rawGeoJsonFile.features[0].geometry.type;
+        const dataType = rawGeoJsonFile.dataType || rawGeoJsonFile.features[0].geometry.type;
         const hasFilter = !!rawGeoJsonFile.dataName; // If the name exists, that means we need to make a filter
 
         const geoJson = {
@@ -37995,14 +37994,17 @@ var app = (function () {
           let properties = {};
           if (point.properties === null) {
             properties = {
-              Id: point.properties.Id ? point.properties.Id : v4(),
-              Item: point.properties.Item ? point.properties.Item : 'POI',
-              Count: point.properties.Count ? point.properties.Count : 1,
-              Color: point.properties['Color'] ? point.properties['Color'] : 'Green',
+              Id: `Firebase-${v4()}`,
+              Item: 'POI',
+              Count: 1,
+              Color: 'Green',
             };
+          } else {
+            properties = point.properties;
+            properties['Speed'] = getSpeed(properties);
+            properties['Color'] = point.properties['Color'] || '#53a548';
           }
-          properties = point.properties;
-          properties['Speed'] = getSpeed(properties);
+
           const feature = {
             type: 'Feature',
             geometry: { type: point.geometry.type, coordinates: coordinate },
@@ -38029,7 +38031,7 @@ var app = (function () {
     const file$d = "src\\components\\menu\\Profile.svelte";
 
     // (32:2) {#if showTerms}
-    function create_if_block$6(ctx) {
+    function create_if_block$7(ctx) {
     	let hr;
     	let t0;
     	let p;
@@ -38081,7 +38083,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$6.name,
+    		id: create_if_block$7.name,
     		type: "if",
     		source: "(32:2) {#if showTerms}",
     		ctx
@@ -38124,7 +38126,7 @@ var app = (function () {
     	let t16;
     	let mounted;
     	let dispose;
-    	let if_block = /*showTerms*/ ctx[2] && create_if_block$6(ctx);
+    	let if_block = /*showTerms*/ ctx[2] && create_if_block$7(ctx);
 
     	const block = {
     		c: function create() {
@@ -38246,7 +38248,7 @@ var app = (function () {
 
     			if (/*showTerms*/ ctx[2]) {
     				if (if_block) ; else {
-    					if_block = create_if_block$6(ctx);
+    					if_block = create_if_block$7(ctx);
     					if_block.c();
     					if_block.m(div1, null);
     				}
@@ -40977,7 +40979,7 @@ var app = (function () {
     }
 
     // (6:1) {#if selectedVideoFile == null}
-    function create_if_block$5(ctx) {
+    function create_if_block$6(ctx) {
     	let div1;
     	let p;
     	let t1;
@@ -41013,7 +41015,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$5.name,
+    		id: create_if_block$6.name,
     		type: "if",
     		source: "(6:1) {#if selectedVideoFile == null}",
     		ctx
@@ -41027,7 +41029,7 @@ var app = (function () {
     	let section_class_value;
 
     	function select_block_type(ctx, dirty) {
-    		if (/*selectedVideoFile*/ ctx[0] == null) return create_if_block$5;
+    		if (/*selectedVideoFile*/ ctx[0] == null) return create_if_block$6;
     		return create_else_block$4;
     	}
 
@@ -84493,20 +84495,77 @@ var app = (function () {
 
     function get_each_context$3(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[11] = list[i];
-    	child_ctx[13] = i;
+    	child_ctx[13] = list[i];
+    	child_ctx[15] = i;
     	return child_ctx;
     }
 
-    // (161:4) {#each speedColors as speedColor, i}
+    // (160:3) {#if selectedGPSData.length}
+    function create_if_block$5(ctx) {
+    	let hr;
+    	let t0;
+    	let button;
+    	let i;
+    	let t1;
+    	let mounted;
+    	let dispose;
+
+    	const block = {
+    		c: function create() {
+    			hr = element("hr");
+    			t0 = space();
+    			button = element("button");
+    			i = element("i");
+    			t1 = text("\r\n\t\t\t\t\tRefresh and only show Selected Trip Data");
+    			attr_dev(hr, "class", "my-2");
+    			add_location(hr, file$8, 160, 4, 4207);
+    			attr_dev(i, "class", "fa-solid fa-refresh");
+    			add_location(i, file$8, 163, 5, 4346);
+    			attr_dev(button, "class", `card-btn btn-primary mx-1`);
+    			add_location(button, file$8, 162, 4, 4234);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, hr, anchor);
+    			insert_dev(target, t0, anchor);
+    			insert_dev(target, button, anchor);
+    			append_dev(button, i);
+    			append_dev(button, t1);
+
+    			if (!mounted) {
+    				dispose = listen_dev(button, "click", /*click_handler*/ ctx[5], false, false, false);
+    				mounted = true;
+    			}
+    		},
+    		p: noop$2,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(hr);
+    			if (detaching) detach_dev(t0);
+    			if (detaching) detach_dev(button);
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block$5.name,
+    		type: "if",
+    		source: "(160:3) {#if selectedGPSData.length}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (176:4) {#each speedColors as speedColor, i}
     function create_each_block$3(ctx) {
     	let p;
     	let i_1;
     	let t0;
-    	let t1_value = /*i*/ ctx[13] * 10 + "";
+    	let t1_value = /*i*/ ctx[15] * 10 + "";
     	let t1;
     	let t2;
-    	let t3_value = (/*i*/ ctx[13] + 1) * 10 - 1 + "";
+    	let t3_value = (/*i*/ ctx[15] + 1) * 10 - 1 + "";
     	let t3;
 
     	const block = {
@@ -84518,10 +84577,10 @@ var app = (function () {
     			t2 = text(" - ");
     			t3 = text(t3_value);
     			attr_dev(i_1, "class", "dot");
-    			attr_dev(i_1, "style", `--color:${/*speedColor*/ ctx[11]}`);
-    			add_location(i_1, file$8, 161, 31, 4233);
+    			attr_dev(i_1, "style", `--color:${/*speedColor*/ ctx[13]}`);
+    			add_location(i_1, file$8, 176, 31, 4734);
     			attr_dev(p, "class", "list-item my-2");
-    			add_location(p, file$8, 161, 5, 4207);
+    			add_location(p, file$8, 176, 5, 4708);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -84541,7 +84600,7 @@ var app = (function () {
     		block,
     		id: create_each_block$3.name,
     		type: "each",
-    		source: "(161:4) {#each speedColors as speedColor, i}",
+    		source: "(176:4) {#each speedColors as speedColor, i}",
     		ctx
     	});
 
@@ -84556,20 +84615,22 @@ var app = (function () {
     	let t1;
     	let div0;
     	let t2;
+    	let t3;
     	let section1;
     	let div3;
     	let p1;
-    	let t4;
-    	let div2;
     	let t5;
+    	let div2;
+    	let t6;
     	let p2;
     	let i;
-    	let t6;
     	let t7;
-    	let hr;
     	let t8;
+    	let hr;
+    	let t9;
     	let p3;
-    	let each_value = /*speedColors*/ ctx[1];
+    	let if_block = /*selectedGPSData*/ ctx[0].length && create_if_block$5(ctx);
+    	let each_value = /*speedColors*/ ctx[3];
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
@@ -84587,52 +84648,54 @@ var app = (function () {
     			t1 = space();
     			div0 = element("div");
     			t2 = space();
+    			if (if_block) if_block.c();
+    			t3 = space();
     			section1 = element("section");
     			div3 = element("div");
     			p1 = element("p");
     			p1.textContent = "Vehicle Speed Legend (Km/h):";
-    			t4 = space();
+    			t5 = space();
     			div2 = element("div");
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
-    			t5 = space();
+    			t6 = space();
     			p2 = element("p");
     			i = element("i");
-    			t6 = text(" 100+");
-    			t7 = space();
-    			hr = element("hr");
+    			t7 = text(" 100+");
     			t8 = space();
+    			hr = element("hr");
+    			t9 = space();
     			p3 = element("p");
     			p3.textContent = "Attention! Speed color is not indicative of speeding.";
     			attr_dev(p0, "class", "font-bold my-1");
-    			add_location(p0, file$8, 148, 3, 3817);
+    			add_location(p0, file$8, 155, 3, 4041);
     			attr_dev(div0, "class", `h-96 w-full rounded-lg`);
-    			add_location(div0, file$8, 151, 3, 3886);
+    			add_location(div0, file$8, 157, 3, 4105);
     			attr_dev(div1, "class", "p-4");
-    			add_location(div1, file$8, 147, 2, 3795);
+    			add_location(div1, file$8, 154, 2, 4019);
     			attr_dev(section0, "class", "card h-fit scale-in-center flex-1");
-    			add_location(section0, file$8, 146, 1, 3740);
+    			add_location(section0, file$8, 153, 1, 3964);
     			attr_dev(p1, "class", "font-bold my-1");
-    			add_location(p1, file$8, 157, 3, 4056);
+    			add_location(p1, file$8, 172, 3, 4560);
     			attr_dev(i, "class", "dot");
-    			attr_dev(i, "style", `--color:${/*speedColors*/ ctx[1][/*speedColors*/ ctx[1].length - 1]}`);
-    			add_location(i, file$8, 163, 30, 4361);
+    			attr_dev(i, "style", `--color:${/*speedColors*/ ctx[3][/*speedColors*/ ctx[3].length - 1]}`);
+    			add_location(i, file$8, 178, 30, 4862);
     			attr_dev(p2, "class", "list-item my-2");
-    			add_location(p2, file$8, 163, 4, 4335);
+    			add_location(p2, file$8, 178, 4, 4836);
     			attr_dev(div2, "class", "overflow-auto h-full");
-    			add_location(div2, file$8, 159, 3, 4124);
+    			add_location(div2, file$8, 174, 3, 4625);
     			attr_dev(hr, "class", "my-2");
-    			add_location(hr, file$8, 166, 3, 4462);
-    			add_location(p3, file$8, 168, 3, 4488);
+    			add_location(hr, file$8, 181, 3, 4963);
+    			add_location(p3, file$8, 183, 3, 4989);
     			attr_dev(div3, "class", "p-4");
-    			add_location(div3, file$8, 156, 2, 4034);
+    			add_location(div3, file$8, 171, 2, 4538);
     			attr_dev(section1, "class", "card h-full scale-in-center flex-none");
-    			add_location(section1, file$8, 155, 1, 3975);
+    			add_location(section1, file$8, 170, 1, 4479);
     			attr_dev(div4, "class", "flex flex-row gap-4 h-full");
-    			add_location(div4, file$8, 145, 0, 3697);
+    			add_location(div4, file$8, 152, 0, 3921);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -84644,30 +84707,45 @@ var app = (function () {
     			append_dev(div1, p0);
     			append_dev(div1, t1);
     			append_dev(div1, div0);
-    			/*div0_binding*/ ctx[3](div0);
-    			append_dev(div4, t2);
+    			/*div0_binding*/ ctx[4](div0);
+    			append_dev(div1, t2);
+    			if (if_block) if_block.m(div1, null);
+    			append_dev(div4, t3);
     			append_dev(div4, section1);
     			append_dev(section1, div3);
     			append_dev(div3, p1);
-    			append_dev(div3, t4);
+    			append_dev(div3, t5);
     			append_dev(div3, div2);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].m(div2, null);
     			}
 
-    			append_dev(div2, t5);
+    			append_dev(div2, t6);
     			append_dev(div2, p2);
     			append_dev(p2, i);
-    			append_dev(p2, t6);
-    			append_dev(div3, t7);
-    			append_dev(div3, hr);
+    			append_dev(p2, t7);
     			append_dev(div3, t8);
+    			append_dev(div3, hr);
+    			append_dev(div3, t9);
     			append_dev(div3, p3);
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*speedColors*/ 2) {
-    				each_value = /*speedColors*/ ctx[1];
+    			if (/*selectedGPSData*/ ctx[0].length) {
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
+    				} else {
+    					if_block = create_if_block$5(ctx);
+    					if_block.c();
+    					if_block.m(div1, null);
+    				}
+    			} else if (if_block) {
+    				if_block.d(1);
+    				if_block = null;
+    			}
+
+    			if (dirty & /*speedColors*/ 8) {
+    				each_value = /*speedColors*/ ctx[3];
     				validate_each_argument(each_value);
     				let i;
 
@@ -84679,7 +84757,7 @@ var app = (function () {
     					} else {
     						each_blocks[i] = create_each_block$3(child_ctx);
     						each_blocks[i].c();
-    						each_blocks[i].m(div2, t5);
+    						each_blocks[i].m(div2, t6);
     					}
     				}
 
@@ -84694,7 +84772,8 @@ var app = (function () {
     		o: noop$2,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div4);
-    			/*div0_binding*/ ctx[3](null);
+    			/*div0_binding*/ ctx[4](null);
+    			if (if_block) if_block.d();
     			destroy_each(each_blocks, detaching);
     		}
     	};
@@ -84714,6 +84793,7 @@ var app = (function () {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('SpeedChart', slots, []);
     	let { selectedGPSData } = $$props;
+    	let { setGPSDataWithSelectedData } = $$props;
 
     	let speedColors = [
     		"#fa6e6e",
@@ -84736,8 +84816,8 @@ var app = (function () {
     	const filterGPSData = () => {
     		let data = [];
 
-    		if (selectedGPSData) {
-    			const coordinates = selectedGPSData.features;
+    		if (selectedGPSData.length) {
+    			const coordinates = selectedGPSData[0].features;
 
     			coordinates.forEach((element, index) => {
     				const speed = element.properties.Speed ? element.properties.Speed : 0;
@@ -84754,7 +84834,17 @@ var app = (function () {
     				});
     			});
     		} else {
-    			data.push({ index: 0, value: 0 });
+    			const strokeSettings = { stroke: 'Green' };
+    			const bulletSettings = { fill: 'Green' };
+    			const fillSettings = { fill: 'Green' };
+
+    			data.push({
+    				index: 0,
+    				value: 0,
+    				strokeSettings,
+    				bulletSettings,
+    				fillSettings
+    			});
     		}
 
     		return data;
@@ -84851,8 +84941,6 @@ var app = (function () {
     	});
 
     	const onGPSDataChange = () => {
-    		if (selectedGPSData === null) return;
-
     		if (chartViewObject) {
     			updateChartView();
     		}
@@ -84860,12 +84948,12 @@ var app = (function () {
 
     	onDestroy(() => {
     		chartViewObject = false;
-    		$$invalidate(0, chartDiv = null);
+    		$$invalidate(2, chartDiv = null);
     		xAxis = null;
     		series = null;
     	});
 
-    	const writable_props = ['selectedGPSData'];
+    	const writable_props = ['selectedGPSData', 'setGPSDataWithSelectedData'];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<SpeedChart> was created with unknown prop '${key}'`);
@@ -84874,12 +84962,15 @@ var app = (function () {
     	function div0_binding($$value) {
     		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
     			chartDiv = $$value;
-    			$$invalidate(0, chartDiv);
+    			$$invalidate(2, chartDiv);
     		});
     	}
 
+    	const click_handler = () => setGPSDataWithSelectedData(selectedGPSData);
+
     	$$self.$$set = $$props => {
-    		if ('selectedGPSData' in $$props) $$invalidate(2, selectedGPSData = $$props.selectedGPSData);
+    		if ('selectedGPSData' in $$props) $$invalidate(0, selectedGPSData = $$props.selectedGPSData);
+    		if ('setGPSDataWithSelectedData' in $$props) $$invalidate(1, setGPSDataWithSelectedData = $$props.setGPSDataWithSelectedData);
     	};
 
     	$$self.$capture_state = () => ({
@@ -84888,6 +84979,7 @@ var app = (function () {
     		onMount,
     		onDestroy,
     		selectedGPSData,
+    		setGPSDataWithSelectedData,
     		speedColors,
     		chartViewObject,
     		chartDiv,
@@ -84900,10 +84992,11 @@ var app = (function () {
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ('selectedGPSData' in $$props) $$invalidate(2, selectedGPSData = $$props.selectedGPSData);
-    		if ('speedColors' in $$props) $$invalidate(1, speedColors = $$props.speedColors);
+    		if ('selectedGPSData' in $$props) $$invalidate(0, selectedGPSData = $$props.selectedGPSData);
+    		if ('setGPSDataWithSelectedData' in $$props) $$invalidate(1, setGPSDataWithSelectedData = $$props.setGPSDataWithSelectedData);
+    		if ('speedColors' in $$props) $$invalidate(3, speedColors = $$props.speedColors);
     		if ('chartViewObject' in $$props) chartViewObject = $$props.chartViewObject;
-    		if ('chartDiv' in $$props) $$invalidate(0, chartDiv = $$props.chartDiv);
+    		if ('chartDiv' in $$props) $$invalidate(2, chartDiv = $$props.chartDiv);
     		if ('xAxis' in $$props) xAxis = $$props.xAxis;
     		if ('series' in $$props) series = $$props.series;
     	};
@@ -84913,18 +85006,29 @@ var app = (function () {
     	}
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty & /*selectedGPSData*/ 4) {
+    		if ($$self.$$.dirty & /*selectedGPSData*/ 1) {
     			selectedGPSData && onGPSDataChange();
     		}
     	};
 
-    	return [chartDiv, speedColors, selectedGPSData, div0_binding];
+    	return [
+    		selectedGPSData,
+    		setGPSDataWithSelectedData,
+    		chartDiv,
+    		speedColors,
+    		div0_binding,
+    		click_handler
+    	];
     }
 
     class SpeedChart extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$9, create_fragment$9, safe_not_equal, { selectedGPSData: 2 });
+
+    		init(this, options, instance$9, create_fragment$9, safe_not_equal, {
+    			selectedGPSData: 0,
+    			setGPSDataWithSelectedData: 1
+    		});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -84936,8 +85040,12 @@ var app = (function () {
     		const { ctx } = this.$$;
     		const props = options.props || {};
 
-    		if (/*selectedGPSData*/ ctx[2] === undefined && !('selectedGPSData' in props)) {
+    		if (/*selectedGPSData*/ ctx[0] === undefined && !('selectedGPSData' in props)) {
     			console.warn("<SpeedChart> was created without expected prop 'selectedGPSData'");
+    		}
+
+    		if (/*setGPSDataWithSelectedData*/ ctx[1] === undefined && !('setGPSDataWithSelectedData' in props)) {
+    			console.warn("<SpeedChart> was created without expected prop 'setGPSDataWithSelectedData'");
     		}
     	}
 
@@ -84946,6 +85054,14 @@ var app = (function () {
     	}
 
     	set selectedGPSData(value) {
+    		throw new Error("<SpeedChart>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get setGPSDataWithSelectedData() {
+    		throw new Error("<SpeedChart>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set setGPSDataWithSelectedData(value) {
     		throw new Error("<SpeedChart>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
@@ -84973,17 +85089,24 @@ var app = (function () {
 
     function get_each_context$2(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[5] = list[i];
+    	child_ctx[22] = list[i];
+    	child_ctx[24] = i;
     	return child_ctx;
     }
 
     function get_each_context_1$1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[8] = list[i];
+    	child_ctx[25] = list[i];
     	return child_ctx;
     }
 
-    // (46:2) {:else}
+    function get_each_context_2$1(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[28] = list[i];
+    	return child_ctx;
+    }
+
+    // (119:2) {:else}
     function create_else_block$3(ctx) {
     	let div;
 
@@ -84993,7 +85116,7 @@ var app = (function () {
     			div.textContent = "No Firebase GPS Data Selected.";
     			attr_dev(div, "class", "alert alert-red my-1");
     			attr_dev(div, "role", "alert");
-    			add_location(div, file$7, 46, 3, 1474);
+    			add_location(div, file$7, 119, 3, 3950);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -85008,114 +85131,255 @@ var app = (function () {
     		block,
     		id: create_else_block$3.name,
     		type: "else",
-    		source: "(46:2) {:else}",
+    		source: "(119:2) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (14:2) {#if selectedFirebaseGPSData.length >= 1}
+    // (52:2) {#if selectedFirebaseGPSData.length}
     function create_if_block$4(ctx) {
+    	let hr0;
+    	let t0;
     	let table;
     	let thead;
     	let tr;
     	let th0;
-    	let t1;
+    	let t2;
     	let th1;
-    	let t3;
+    	let t4;
     	let th2;
-    	let t5;
+    	let t6;
     	let th3;
-    	let t7;
+    	let t8;
     	let tbody;
-    	let each_value = /*selectedFirebaseGPSData*/ ctx[0];
-    	validate_each_argument(each_value);
+    	let t9;
+    	let hr1;
+    	let t10;
+    	let p;
+    	let t11_value = `${/*paginationFrom*/ ctx[7] + 1}-${/*paginationTo*/ ctx[8]} of ${/*selectedFirebaseGPSData*/ ctx[0].length}` + "";
+    	let t11;
+    	let t12;
+    	let div;
+    	let button0;
+    	let t14;
     	let each_blocks = [];
+    	let each1_lookup = new Map();
+    	let t15;
+    	let button1;
+    	let t17;
+    	let hr2;
+    	let t18;
+    	let button2;
+    	let i;
+    	let t19;
+    	let mounted;
+    	let dispose;
+    	let each_value_1 = /*paginatedDocuments*/ ctx[4];
+    	validate_each_argument(each_value_1);
+    	let each_blocks_1 = [];
+
+    	for (let i = 0; i < each_value_1.length; i += 1) {
+    		each_blocks_1[i] = create_each_block_1$1(get_each_context_1$1(ctx, each_value_1, i));
+    	}
+
+    	let each_value = Array(/*numberOfPages*/ ctx[6]);
+    	validate_each_argument(each_value);
+    	const get_key = ctx => /*index*/ ctx[24];
+    	validate_each_keys(ctx, each_value, get_each_context$2, get_key);
 
     	for (let i = 0; i < each_value.length; i += 1) {
-    		each_blocks[i] = create_each_block$2(get_each_context$2(ctx, each_value, i));
+    		let child_ctx = get_each_context$2(ctx, each_value, i);
+    		let key = get_key(child_ctx);
+    		each1_lookup.set(key, each_blocks[i] = create_each_block$2(key, child_ctx));
     	}
 
     	const block = {
     		c: function create() {
+    			hr0 = element("hr");
+    			t0 = space();
     			table = element("table");
     			thead = element("thead");
     			tr = element("tr");
     			th0 = element("th");
     			th0.textContent = "Data Name";
-    			t1 = space();
+    			t2 = space();
     			th1 = element("th");
     			th1.textContent = "Date Time";
-    			t3 = space();
+    			t4 = space();
     			th2 = element("th");
     			th2.textContent = "Saved On";
-    			t5 = space();
+    			t6 = space();
     			th3 = element("th");
     			th3.textContent = "Options";
-    			t7 = space();
+    			t8 = space();
     			tbody = element("tbody");
+
+    			for (let i = 0; i < each_blocks_1.length; i += 1) {
+    				each_blocks_1[i].c();
+    			}
+
+    			t9 = space();
+    			hr1 = element("hr");
+    			t10 = space();
+    			p = element("p");
+    			t11 = text(t11_value);
+    			t12 = space();
+    			div = element("div");
+    			button0 = element("button");
+    			button0.textContent = "Previous";
+    			t14 = space();
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
-    			add_location(th0, file$7, 17, 6, 477);
-    			add_location(th1, file$7, 18, 6, 503);
-    			add_location(th2, file$7, 19, 6, 529);
-    			add_location(th3, file$7, 20, 6, 554);
-    			add_location(tr, file$7, 16, 5, 465);
-    			add_location(thead, file$7, 15, 4, 451);
-    			add_location(tbody, file$7, 23, 4, 602);
+    			t15 = space();
+    			button1 = element("button");
+    			button1.textContent = "Next";
+    			t17 = space();
+    			hr2 = element("hr");
+    			t18 = space();
+    			button2 = element("button");
+    			i = element("i");
+    			t19 = text("\r\n\t\t\t\tRefresh and only show All Firebase Data");
+    			attr_dev(hr0, "class", "my-2");
+    			add_location(hr0, file$7, 56, 2, 1672);
+    			add_location(th0, file$7, 61, 6, 1769);
+    			add_location(th1, file$7, 62, 6, 1795);
+    			add_location(th2, file$7, 63, 6, 1821);
+    			add_location(th3, file$7, 64, 6, 1846);
+    			add_location(tr, file$7, 60, 5, 1757);
+    			add_location(thead, file$7, 59, 4, 1743);
+    			add_location(tbody, file$7, 67, 4, 1894);
     			attr_dev(table, "class", "table w-full rounded-lg");
-    			add_location(table, file$7, 14, 3, 406);
+    			add_location(table, file$7, 58, 3, 1698);
+    			attr_dev(hr1, "class", "my-4");
+    			add_location(hr1, file$7, 99, 3, 3016);
+    			add_location(p, file$7, 100, 3, 3040);
+    			attr_dev(button0, "class", "px-4 py-2 btn-pagination");
+    			add_location(button0, file$7, 102, 4, 3182);
+    			attr_dev(button1, "class", "px-4 py-2 btn-pagination ");
+    			add_location(button1, file$7, 108, 4, 3564);
+    			attr_dev(div, "class", "flex items-center space-x-2 mt-2");
+    			add_location(div, file$7, 101, 3, 3130);
+    			attr_dev(hr2, "class", "my-4");
+    			add_location(hr2, file$7, 112, 3, 3697);
+    			attr_dev(i, "class", "fa-solid fa-refresh");
+    			add_location(i, file$7, 115, 4, 3842);
+    			attr_dev(button2, "class", `card-btn btn-primary mx-1`);
+    			add_location(button2, file$7, 114, 3, 3723);
     		},
     		m: function mount(target, anchor) {
+    			insert_dev(target, hr0, anchor);
+    			insert_dev(target, t0, anchor);
     			insert_dev(target, table, anchor);
     			append_dev(table, thead);
     			append_dev(thead, tr);
     			append_dev(tr, th0);
-    			append_dev(tr, t1);
+    			append_dev(tr, t2);
     			append_dev(tr, th1);
-    			append_dev(tr, t3);
+    			append_dev(tr, t4);
     			append_dev(tr, th2);
-    			append_dev(tr, t5);
+    			append_dev(tr, t6);
     			append_dev(tr, th3);
-    			append_dev(table, t7);
+    			append_dev(table, t8);
     			append_dev(table, tbody);
 
+    			for (let i = 0; i < each_blocks_1.length; i += 1) {
+    				each_blocks_1[i].m(tbody, null);
+    			}
+
+    			insert_dev(target, t9, anchor);
+    			insert_dev(target, hr1, anchor);
+    			insert_dev(target, t10, anchor);
+    			insert_dev(target, p, anchor);
+    			append_dev(p, t11);
+    			insert_dev(target, t12, anchor);
+    			insert_dev(target, div, anchor);
+    			append_dev(div, button0);
+    			append_dev(div, t14);
+
     			for (let i = 0; i < each_blocks.length; i += 1) {
-    				each_blocks[i].m(tbody, null);
+    				each_blocks[i].m(div, null);
+    			}
+
+    			append_dev(div, t15);
+    			append_dev(div, button1);
+    			insert_dev(target, t17, anchor);
+    			insert_dev(target, hr2, anchor);
+    			insert_dev(target, t18, anchor);
+    			insert_dev(target, button2, anchor);
+    			append_dev(button2, i);
+    			append_dev(button2, t19);
+
+    			if (!mounted) {
+    				dispose = [
+    					listen_dev(button0, "click", /*click_handler_2*/ ctx[14], false, false, false),
+    					listen_dev(button1, "click", /*click_handler_4*/ ctx[16], false, false, false),
+    					listen_dev(button2, "click", /*click_handler_5*/ ctx[17], false, false, false)
+    				];
+
+    				mounted = true;
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*openModel, deleteFirebaseElement, selectedFirebaseGPSData, PROGRAMMING_TOOLS, returnLinkGivenIfStringContains*/ 15) {
-    				each_value = /*selectedFirebaseGPSData*/ ctx[0];
-    				validate_each_argument(each_value);
+    			if (dirty & /*openModel, deleteFirebaseElement, paginatedDocuments, setGPSDataWithSelectedData, PROGRAMMING_TOOLS, returnLinkGivenIfStringContains*/ 542) {
+    				each_value_1 = /*paginatedDocuments*/ ctx[4];
+    				validate_each_argument(each_value_1);
     				let i;
 
-    				for (i = 0; i < each_value.length; i += 1) {
-    					const child_ctx = get_each_context$2(ctx, each_value, i);
+    				for (i = 0; i < each_value_1.length; i += 1) {
+    					const child_ctx = get_each_context_1$1(ctx, each_value_1, i);
 
-    					if (each_blocks[i]) {
-    						each_blocks[i].p(child_ctx, dirty);
+    					if (each_blocks_1[i]) {
+    						each_blocks_1[i].p(child_ctx, dirty);
     					} else {
-    						each_blocks[i] = create_each_block$2(child_ctx);
-    						each_blocks[i].c();
-    						each_blocks[i].m(tbody, null);
+    						each_blocks_1[i] = create_each_block_1$1(child_ctx);
+    						each_blocks_1[i].c();
+    						each_blocks_1[i].m(tbody, null);
     					}
     				}
 
-    				for (; i < each_blocks.length; i += 1) {
-    					each_blocks[i].d(1);
+    				for (; i < each_blocks_1.length; i += 1) {
+    					each_blocks_1[i].d(1);
     				}
 
-    				each_blocks.length = each_value.length;
+    				each_blocks_1.length = each_value_1.length;
+    			}
+
+    			if (dirty & /*paginationFrom, paginationTo, selectedFirebaseGPSData*/ 385 && t11_value !== (t11_value = `${/*paginationFrom*/ ctx[7] + 1}-${/*paginationTo*/ ctx[8]} of ${/*selectedFirebaseGPSData*/ ctx[0].length}` + "")) set_data_dev(t11, t11_value);
+
+    			if (dirty & /*paginationPage, Array, numberOfPages, setPaginationPage*/ 1120) {
+    				each_value = Array(/*numberOfPages*/ ctx[6]);
+    				validate_each_argument(each_value);
+    				validate_each_keys(ctx, each_value, get_each_context$2, get_key);
+    				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value, each1_lookup, div, destroy_block, create_each_block$2, t15, get_each_context$2);
     			}
     		},
     		d: function destroy(detaching) {
+    			if (detaching) detach_dev(hr0);
+    			if (detaching) detach_dev(t0);
     			if (detaching) detach_dev(table);
-    			destroy_each(each_blocks, detaching);
+    			destroy_each(each_blocks_1, detaching);
+    			if (detaching) detach_dev(t9);
+    			if (detaching) detach_dev(hr1);
+    			if (detaching) detach_dev(t10);
+    			if (detaching) detach_dev(p);
+    			if (detaching) detach_dev(t12);
+    			if (detaching) detach_dev(div);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].d();
+    			}
+
+    			if (detaching) detach_dev(t17);
+    			if (detaching) detach_dev(hr2);
+    			if (detaching) detach_dev(t18);
+    			if (detaching) detach_dev(button2);
+    			mounted = false;
+    			run_all(dispose);
     		}
     	};
 
@@ -85123,15 +85387,15 @@ var app = (function () {
     		block,
     		id: create_if_block$4.name,
     		type: "if",
-    		source: "(14:2) {#if selectedFirebaseGPSData.length >= 1}",
+    		source: "(52:2) {#if selectedFirebaseGPSData.length}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (31:9) {#each PROGRAMMING_TOOLS as tool}
-    function create_each_block_1$1(ctx) {
+    // (75:9) {#each PROGRAMMING_TOOLS as tool}
+    function create_each_block_2$1(ctx) {
     	let img;
     	let img_src_value;
 
@@ -85140,13 +85404,13 @@ var app = (function () {
     			img = element("img");
     			attr_dev(img, "height", "100");
     			attr_dev(img, "width", "auto");
-    			attr_dev(img, "title", /*tool*/ ctx[8]);
-    			attr_dev(img, "key", /*tool*/ ctx[8]);
+    			attr_dev(img, "title", /*tool*/ ctx[28]);
+    			attr_dev(img, "key", /*tool*/ ctx[28]);
     			attr_dev(img, "class", `img-icon w-8 mx-2 py-2`);
     			attr_dev(img, "alt", "");
-    			if (!src_url_equal(img.src, img_src_value = returnLinkGivenIfStringContains(/*tool*/ ctx[8]))) attr_dev(img, "src", img_src_value);
+    			if (!src_url_equal(img.src, img_src_value = returnLinkGivenIfStringContains(/*tool*/ ctx[28]))) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "loading", "lazy");
-    			add_location(img, file$7, 31, 10, 875);
+    			add_location(img, file$7, 75, 10, 2162);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, img, anchor);
@@ -85159,46 +85423,55 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_each_block_1$1.name,
+    		id: create_each_block_2$1.name,
     		type: "each",
-    		source: "(31:9) {#each PROGRAMMING_TOOLS as tool}",
+    		source: "(75:9) {#each PROGRAMMING_TOOLS as tool}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (25:5) {#each selectedFirebaseGPSData as gpsElement}
-    function create_each_block$2(ctx) {
+    // (69:5) {#each paginatedDocuments as gpsElement}
+    function create_each_block_1$1(ctx) {
     	let tr;
     	let td0;
-    	let t0_value = /*gpsElement*/ ctx[5].dataName + "";
+    	let t0_value = /*gpsElement*/ ctx[25].dataName + "";
     	let t0;
     	let t1;
     	let td1;
-    	let t2_value = /*gpsElement*/ ctx[5].dateTime + "";
+    	let t2_value = /*gpsElement*/ ctx[25].dateTime + "";
     	let t2;
     	let t3;
     	let td2;
-    	let div;
+    	let div0;
     	let t4;
     	let td3;
-    	let button;
-    	let i;
+    	let div1;
+    	let button0;
+    	let i0;
     	let t5;
     	let t6;
+    	let button1;
+    	let i1;
+    	let t7;
+    	let t8;
     	let mounted;
     	let dispose;
-    	let each_value_1 = /*PROGRAMMING_TOOLS*/ ctx[3];
-    	validate_each_argument(each_value_1);
+    	let each_value_2 = /*PROGRAMMING_TOOLS*/ ctx[9];
+    	validate_each_argument(each_value_2);
     	let each_blocks = [];
 
-    	for (let i = 0; i < each_value_1.length; i += 1) {
-    		each_blocks[i] = create_each_block_1$1(get_each_context_1$1(ctx, each_value_1, i));
+    	for (let i = 0; i < each_value_2.length; i += 1) {
+    		each_blocks[i] = create_each_block_2$1(get_each_context_2$1(ctx, each_value_2, i));
     	}
 
     	function click_handler() {
-    		return /*click_handler*/ ctx[4](/*gpsElement*/ ctx[5]);
+    		return /*click_handler*/ ctx[12](/*gpsElement*/ ctx[25]);
+    	}
+
+    	function click_handler_1() {
+    		return /*click_handler_1*/ ctx[13](/*gpsElement*/ ctx[25]);
     	}
 
     	const block = {
@@ -85211,7 +85484,7 @@ var app = (function () {
     			t2 = text(t2_value);
     			t3 = space();
     			td2 = element("td");
-    			div = element("div");
+    			div0 = element("div");
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
@@ -85219,21 +85492,32 @@ var app = (function () {
 
     			t4 = space();
     			td3 = element("td");
-    			button = element("button");
-    			i = element("i");
-    			t5 = text(" Delete");
+    			div1 = element("div");
+    			button0 = element("button");
+    			i0 = element("i");
+    			t5 = text("\r\n\t\t\t\t\t\t\t\t\t\tAdd to Map");
     			t6 = space();
-    			add_location(td0, file$7, 26, 7, 682);
-    			add_location(td1, file$7, 27, 7, 721);
-    			attr_dev(div, "class", "flex flex-wrap justify-center ");
-    			add_location(div, file$7, 29, 8, 774);
-    			add_location(td2, file$7, 28, 7, 760);
-    			attr_dev(i, "class", "fa-solid fa-trash ");
-    			add_location(i, file$7, 38, 48, 1332);
-    			attr_dev(button, "class", `card-btn btn-error-outline  `);
-    			add_location(button, file$7, 36, 9, 1102);
-    			add_location(td3, file$7, 35, 7, 1088);
-    			add_location(tr, file$7, 25, 6, 669);
+    			button1 = element("button");
+    			i1 = element("i");
+    			t7 = text(" Delete");
+    			t8 = space();
+    			add_location(td0, file$7, 70, 7, 1969);
+    			add_location(td1, file$7, 71, 7, 2008);
+    			attr_dev(div0, "class", "flex flex-wrap justify-center ");
+    			add_location(div0, file$7, 73, 8, 2061);
+    			add_location(td2, file$7, 72, 7, 2047);
+    			attr_dev(i0, "class", "fa-solid fa-eye");
+    			add_location(i0, file$7, 82, 10, 2541);
+    			attr_dev(button0, "class", `card-btn btn-primary mx-1`);
+    			add_location(button0, file$7, 81, 9, 2427);
+    			attr_dev(i1, "class", "fa-solid fa-trash ");
+    			add_location(i1, file$7, 88, 49, 2857);
+    			attr_dev(button1, "class", `card-btn btn-error-outline  `);
+    			add_location(button1, file$7, 86, 9, 2625);
+    			attr_dev(div1, "class", "flex flex-row");
+    			add_location(div1, file$7, 80, 8, 2389);
+    			add_location(td3, file$7, 79, 7, 2375);
+    			add_location(tr, file$7, 69, 6, 1956);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, tr, anchor);
@@ -85244,43 +85528,52 @@ var app = (function () {
     			append_dev(td1, t2);
     			append_dev(tr, t3);
     			append_dev(tr, td2);
-    			append_dev(td2, div);
+    			append_dev(td2, div0);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
-    				each_blocks[i].m(div, null);
+    				each_blocks[i].m(div0, null);
     			}
 
     			append_dev(tr, t4);
     			append_dev(tr, td3);
-    			append_dev(td3, button);
-    			append_dev(button, i);
-    			append_dev(button, t5);
-    			append_dev(tr, t6);
+    			append_dev(td3, div1);
+    			append_dev(div1, button0);
+    			append_dev(button0, i0);
+    			append_dev(button0, t5);
+    			append_dev(div1, t6);
+    			append_dev(div1, button1);
+    			append_dev(button1, i1);
+    			append_dev(button1, t7);
+    			append_dev(tr, t8);
 
     			if (!mounted) {
-    				dispose = listen_dev(button, "click", click_handler, false, false, false);
+    				dispose = [
+    					listen_dev(button0, "click", click_handler, false, false, false),
+    					listen_dev(button1, "click", click_handler_1, false, false, false)
+    				];
+
     				mounted = true;
     			}
     		},
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
-    			if (dirty & /*selectedFirebaseGPSData*/ 1 && t0_value !== (t0_value = /*gpsElement*/ ctx[5].dataName + "")) set_data_dev(t0, t0_value);
-    			if (dirty & /*selectedFirebaseGPSData*/ 1 && t2_value !== (t2_value = /*gpsElement*/ ctx[5].dateTime + "")) set_data_dev(t2, t2_value);
+    			if (dirty & /*paginatedDocuments*/ 16 && t0_value !== (t0_value = /*gpsElement*/ ctx[25].dataName + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*paginatedDocuments*/ 16 && t2_value !== (t2_value = /*gpsElement*/ ctx[25].dateTime + "")) set_data_dev(t2, t2_value);
 
-    			if (dirty & /*PROGRAMMING_TOOLS, returnLinkGivenIfStringContains*/ 8) {
-    				each_value_1 = /*PROGRAMMING_TOOLS*/ ctx[3];
-    				validate_each_argument(each_value_1);
+    			if (dirty & /*PROGRAMMING_TOOLS, returnLinkGivenIfStringContains*/ 512) {
+    				each_value_2 = /*PROGRAMMING_TOOLS*/ ctx[9];
+    				validate_each_argument(each_value_2);
     				let i;
 
-    				for (i = 0; i < each_value_1.length; i += 1) {
-    					const child_ctx = get_each_context_1$1(ctx, each_value_1, i);
+    				for (i = 0; i < each_value_2.length; i += 1) {
+    					const child_ctx = get_each_context_2$1(ctx, each_value_2, i);
 
     					if (each_blocks[i]) {
     						each_blocks[i].p(child_ctx, dirty);
     					} else {
-    						each_blocks[i] = create_each_block_1$1(child_ctx);
+    						each_blocks[i] = create_each_block_2$1(child_ctx);
     						each_blocks[i].c();
-    						each_blocks[i].m(div, null);
+    						each_blocks[i].m(div0, null);
     					}
     				}
 
@@ -85288,12 +85581,76 @@ var app = (function () {
     					each_blocks[i].d(1);
     				}
 
-    				each_blocks.length = each_value_1.length;
+    				each_blocks.length = each_value_2.length;
     			}
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(tr);
     			destroy_each(each_blocks, detaching);
+    			mounted = false;
+    			run_all(dispose);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block_1$1.name,
+    		type: "each",
+    		source: "(69:5) {#each paginatedDocuments as gpsElement}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (104:4) {#each Array(numberOfPages) as _, index (index)}
+    function create_each_block$2(key_1, ctx) {
+    	let button;
+    	let t_value = /*index*/ ctx[24] + "";
+    	let t;
+    	let button_class_value;
+    	let mounted;
+    	let dispose;
+
+    	function click_handler_3() {
+    		return /*click_handler_3*/ ctx[15](/*index*/ ctx[24]);
+    	}
+
+    	const block = {
+    		key: key_1,
+    		first: null,
+    		c: function create() {
+    			button = element("button");
+    			t = text(t_value);
+
+    			attr_dev(button, "class", button_class_value = `px-4 py-2 ${/*paginationPage*/ ctx[5] === /*index*/ ctx[24]
+			? "btn-pagination-primary font-bold "
+			: "btn-pagination"}`);
+
+    			add_location(button, file$7, 104, 5, 3359);
+    			this.first = button;
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, button, anchor);
+    			append_dev(button, t);
+
+    			if (!mounted) {
+    				dispose = listen_dev(button, "click", click_handler_3, false, false, false);
+    				mounted = true;
+    			}
+    		},
+    		p: function update(new_ctx, dirty) {
+    			ctx = new_ctx;
+    			if (dirty & /*numberOfPages*/ 64 && t_value !== (t_value = /*index*/ ctx[24] + "")) set_data_dev(t, t_value);
+
+    			if (dirty & /*paginationPage, numberOfPages*/ 96 && button_class_value !== (button_class_value = `px-4 py-2 ${/*paginationPage*/ ctx[5] === /*index*/ ctx[24]
+			? "btn-pagination-primary font-bold "
+			: "btn-pagination"}`)) {
+    				attr_dev(button, "class", button_class_value);
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(button);
     			mounted = false;
     			dispose();
     		}
@@ -85303,7 +85660,7 @@ var app = (function () {
     		block,
     		id: create_each_block$2.name,
     		type: "each",
-    		source: "(25:5) {#each selectedFirebaseGPSData as gpsElement}",
+    		source: "(104:4) {#each Array(numberOfPages) as _, index (index)}",
     		ctx
     	});
 
@@ -85317,7 +85674,7 @@ var app = (function () {
     	let t1;
 
     	function select_block_type(ctx, dirty) {
-    		if (/*selectedFirebaseGPSData*/ ctx[0].length >= 1) return create_if_block$4;
+    		if (/*selectedFirebaseGPSData*/ ctx[0].length) return create_if_block$4;
     		return create_else_block$3;
     	}
 
@@ -85333,11 +85690,11 @@ var app = (function () {
     			t1 = space();
     			if_block.c();
     			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file$7, 12, 2, 311);
+    			add_location(p, file$7, 50, 2, 1572);
     			attr_dev(div, "class", "p-4");
-    			add_location(div, file$7, 11, 1, 290);
+    			add_location(div, file$7, 49, 1, 1551);
     			attr_dev(section, "class", "card h-fit scale-in-center");
-    			add_location(section, file$7, 10, 0, 243);
+    			add_location(section, file$7, 48, 0, 1504);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -85387,45 +85744,135 @@ var app = (function () {
     	let { selectedFirebaseGPSData } = $$props;
     	let { openModel } = $$props;
     	let { deleteFirebaseElement } = $$props;
+    	let { setGPSDataWithSelectedData } = $$props;
+    	let { focusOnSelectedGPSData } = $$props;
     	const PROGRAMMING_TOOLS = ["firebase-plain"];
-    	const writable_props = ['selectedFirebaseGPSData', 'openModel', 'deleteFirebaseElement'];
+    	let firebaseDocuments = [];
+    	let paginatedDocuments = [];
+    	let paginationPage = 0;
+    	const numberOfItemsPerPageList = [5, 10, 20];
+    	let numberOfItemsPerPage = numberOfItemsPerPageList[0];
+    	let numberOfPages = 0;
+    	let paginationFrom = 0;
+    	let paginationTo = 0;
+
+    	onMount(() => {
+    		updatePaginationFiles();
+    	});
+
+    	//* Update the current pagination page
+    	const setPaginationPage = page => {
+    		if (page < 0) {
+    			$$invalidate(5, paginationPage = 0);
+    		} else if (page >= numberOfPages) {
+    			$$invalidate(5, paginationPage = numberOfPages - 1);
+    		} else {
+    			$$invalidate(5, paginationPage = page);
+    		}
+
+    		updatePaginationFiles();
+    	};
+
+    	const updatePaginationFiles = () => {
+    		firebaseDocuments = selectedFirebaseGPSData;
+    		$$invalidate(6, numberOfPages = Math.ceil(firebaseDocuments.length / numberOfItemsPerPage));
+    		$$invalidate(7, paginationFrom = paginationPage * numberOfItemsPerPage);
+    		$$invalidate(8, paginationTo = Math.min((paginationPage + 1) * numberOfItemsPerPage, firebaseDocuments.length));
+    		$$invalidate(4, paginatedDocuments = firebaseDocuments.slice(paginationPage * numberOfItemsPerPage, paginationPage * numberOfItemsPerPage + numberOfItemsPerPage));
+    	};
+
+    	const writable_props = [
+    		'selectedFirebaseGPSData',
+    		'openModel',
+    		'deleteFirebaseElement',
+    		'setGPSDataWithSelectedData',
+    		'focusOnSelectedGPSData'
+    	];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<TableView> was created with unknown prop '${key}'`);
     	});
 
-    	const click_handler = gpsElement => openModel("Delete Firebase Element", "Do you want to delete the Firebase GPS Data?", "Delete GPS Data", deleteFirebaseElement, gpsElement.dataId);
+    	const click_handler = gpsElement => setGPSDataWithSelectedData([gpsElement]);
+    	const click_handler_1 = gpsElement => openModel("Delete Firebase Element", "Do you want to delete the Firebase GPS Data?", "Delete GPS Data", deleteFirebaseElement, gpsElement.dataId);
+    	const click_handler_2 = () => setPaginationPage(paginationPage - 1);
+    	const click_handler_3 = index => setPaginationPage(index);
+    	const click_handler_4 = () => setPaginationPage(paginationPage + 1);
+    	const click_handler_5 = () => setGPSDataWithSelectedData(selectedFirebaseGPSData);
 
     	$$self.$$set = $$props => {
     		if ('selectedFirebaseGPSData' in $$props) $$invalidate(0, selectedFirebaseGPSData = $$props.selectedFirebaseGPSData);
     		if ('openModel' in $$props) $$invalidate(1, openModel = $$props.openModel);
     		if ('deleteFirebaseElement' in $$props) $$invalidate(2, deleteFirebaseElement = $$props.deleteFirebaseElement);
+    		if ('setGPSDataWithSelectedData' in $$props) $$invalidate(3, setGPSDataWithSelectedData = $$props.setGPSDataWithSelectedData);
+    		if ('focusOnSelectedGPSData' in $$props) $$invalidate(11, focusOnSelectedGPSData = $$props.focusOnSelectedGPSData);
     	};
 
     	$$self.$capture_state = () => ({
+    		onMount,
     		returnLinkGivenIfStringContains,
     		selectedFirebaseGPSData,
     		openModel,
     		deleteFirebaseElement,
-    		PROGRAMMING_TOOLS
+    		setGPSDataWithSelectedData,
+    		focusOnSelectedGPSData,
+    		PROGRAMMING_TOOLS,
+    		firebaseDocuments,
+    		paginatedDocuments,
+    		paginationPage,
+    		numberOfItemsPerPageList,
+    		numberOfItemsPerPage,
+    		numberOfPages,
+    		paginationFrom,
+    		paginationTo,
+    		setPaginationPage,
+    		updatePaginationFiles
     	});
 
     	$$self.$inject_state = $$props => {
     		if ('selectedFirebaseGPSData' in $$props) $$invalidate(0, selectedFirebaseGPSData = $$props.selectedFirebaseGPSData);
     		if ('openModel' in $$props) $$invalidate(1, openModel = $$props.openModel);
     		if ('deleteFirebaseElement' in $$props) $$invalidate(2, deleteFirebaseElement = $$props.deleteFirebaseElement);
+    		if ('setGPSDataWithSelectedData' in $$props) $$invalidate(3, setGPSDataWithSelectedData = $$props.setGPSDataWithSelectedData);
+    		if ('focusOnSelectedGPSData' in $$props) $$invalidate(11, focusOnSelectedGPSData = $$props.focusOnSelectedGPSData);
+    		if ('firebaseDocuments' in $$props) firebaseDocuments = $$props.firebaseDocuments;
+    		if ('paginatedDocuments' in $$props) $$invalidate(4, paginatedDocuments = $$props.paginatedDocuments);
+    		if ('paginationPage' in $$props) $$invalidate(5, paginationPage = $$props.paginationPage);
+    		if ('numberOfItemsPerPage' in $$props) numberOfItemsPerPage = $$props.numberOfItemsPerPage;
+    		if ('numberOfPages' in $$props) $$invalidate(6, numberOfPages = $$props.numberOfPages);
+    		if ('paginationFrom' in $$props) $$invalidate(7, paginationFrom = $$props.paginationFrom);
+    		if ('paginationTo' in $$props) $$invalidate(8, paginationTo = $$props.paginationTo);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
+    	$$self.$$.update = () => {
+    		if ($$self.$$.dirty & /*selectedFirebaseGPSData*/ 1) {
+    			selectedFirebaseGPSData && updatePaginationFiles();
+    		}
+    	};
+
     	return [
     		selectedFirebaseGPSData,
     		openModel,
     		deleteFirebaseElement,
+    		setGPSDataWithSelectedData,
+    		paginatedDocuments,
+    		paginationPage,
+    		numberOfPages,
+    		paginationFrom,
+    		paginationTo,
     		PROGRAMMING_TOOLS,
-    		click_handler
+    		setPaginationPage,
+    		focusOnSelectedGPSData,
+    		click_handler,
+    		click_handler_1,
+    		click_handler_2,
+    		click_handler_3,
+    		click_handler_4,
+    		click_handler_5
     	];
     }
 
@@ -85436,7 +85883,9 @@ var app = (function () {
     		init(this, options, instance$8, create_fragment$8, safe_not_equal, {
     			selectedFirebaseGPSData: 0,
     			openModel: 1,
-    			deleteFirebaseElement: 2
+    			deleteFirebaseElement: 2,
+    			setGPSDataWithSelectedData: 3,
+    			focusOnSelectedGPSData: 11
     		});
 
     		dispatch_dev("SvelteRegisterComponent", {
@@ -85459,6 +85908,14 @@ var app = (function () {
 
     		if (/*deleteFirebaseElement*/ ctx[2] === undefined && !('deleteFirebaseElement' in props)) {
     			console.warn("<TableView> was created without expected prop 'deleteFirebaseElement'");
+    		}
+
+    		if (/*setGPSDataWithSelectedData*/ ctx[3] === undefined && !('setGPSDataWithSelectedData' in props)) {
+    			console.warn("<TableView> was created without expected prop 'setGPSDataWithSelectedData'");
+    		}
+
+    		if (/*focusOnSelectedGPSData*/ ctx[11] === undefined && !('focusOnSelectedGPSData' in props)) {
+    			console.warn("<TableView> was created without expected prop 'focusOnSelectedGPSData'");
     		}
     	}
 
@@ -85483,6 +85940,22 @@ var app = (function () {
     	}
 
     	set deleteFirebaseElement(value) {
+    		throw new Error("<TableView>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get setGPSDataWithSelectedData() {
+    		throw new Error("<TableView>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set setGPSDataWithSelectedData(value) {
+    		throw new Error("<TableView>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get focusOnSelectedGPSData() {
+    		throw new Error("<TableView>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set focusOnSelectedGPSData(value) {
     		throw new Error("<TableView>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
@@ -85982,11 +86455,14 @@ var app = (function () {
 
     const getGoogleDriveFolders = async (accessToken) => {
       try {
-        const promise = await axios.get(GOOGLE_FOLDER_URL, {
+        const config = {
+          method: 'get',
+          url: GOOGLE_FOLDER_URL,
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
-        });
+        };
+        const promise = await axios(config);
         return promise;
       } catch (error) {
         if (error.response) {
@@ -86001,11 +86477,15 @@ var app = (function () {
     const getGoogleDriveFiles = async (accessToken, folderId) => {
       try {
         const customUrl = `${GOOGLE_QUERY_URL}'${folderId}'+in+parents&trashed=false&fields=files(*)`;
-        const promise = await axios.get(customUrl, {
+        const config = {
+          method: 'get',
+          url: customUrl,
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
-        });
+        };
+
+        const promise = await axios(config);
         return promise;
       } catch (error) {
         if (error.response) {
@@ -86019,7 +86499,7 @@ var app = (function () {
 
     const verifyAndAddPermissions = async (accessToken, fileId) => {
       try {
-        const url = `${GOOGLE_FILE_URL}${fileId}/permissions`;
+        const url = `${GOOGLE_FILE_URL}/${fileId}/permissions`;
         const data = JSON.stringify({
           role: 'writer',
           type: 'anyone',
@@ -86048,12 +86528,67 @@ var app = (function () {
     // Using the access token and file url, delete the file
     const deleteGoogleDriveFile = async (accessToken, fileId) => {
       try {
-        const customUrl = `${GOOGLE_FILE_URL}${fileId}`;
-        const promise = await axios.delete(customUrl, {
+        const customUrl = `${GOOGLE_FILE_URL}/${fileId}`;
+        const config = {
+          method: 'delete',
+          url: customUrl,
           headers: {
             Authorization: `Bearer ${accessToken}`,
+            'Content-Type': 'application/json',
           },
-        });
+        };
+
+        const promise = await axios(config);
+        return promise;
+      } catch (error) {
+        if (error.response) {
+          return error.response.status;
+        } if (error.request) {
+          return error.request;
+        }
+        return error.message;
+      }
+    };
+
+    const getGoogleDriveFile = async (accessToken, fileId) => {
+      try {
+        const customUrl = `${GOOGLE_FILE_URL}/${fileId}`;
+        const config = {
+          method: 'get',
+          url: customUrl,
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            'Content-Type': 'application/json',
+          },
+        };
+        const promise = await axios(config);
+        return promise;
+      } catch (error) {
+        if (error.response) {
+          return error.response.status;
+        } if (error.request) {
+          return error.request;
+        }
+        return error.message;
+      }
+    };
+
+    const createDashcamFolder = async (accessToken) => {
+      try {
+        const config = {
+          method: 'POST',
+          url: GOOGLE_FILE_URL,
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            'Content-Type': 'application/json',
+          },
+          data: JSON.stringify({
+            mimeType: 'application/vnd.google-apps.folder',
+            name: 'Dashcam',
+          }),
+        };
+
+        const promise = await axios(config);
         return promise;
       } catch (error) {
         if (error.response) {
@@ -86070,11 +86605,20 @@ var app = (function () {
         const response = await getGoogleDriveFolders(accessToken);
         if (response.status === 200) {
           const cameraFolder = getObjectsWhereKeyEqualsValue(response.data.files, 'name', 'Dashcam')[0];
-          const documentsResponse = await getGoogleDriveFiles(accessToken, cameraFolder.id);
-          return documentsResponse;
+          if (cameraFolder) {
+            const documentsResponse = await getGoogleDriveFiles(accessToken, cameraFolder.id);
+            return documentsResponse;
+          }
+          const createResponse = await createDashcamFolder(accessToken);
+          if (createResponse === 200) {
+            getDashcamVideos(accessToken);
+          } else {
+            return createResponse;
+          }
         }
         return response;
       } catch (error) {
+        console.log(error);
         return error;
       }
     };
@@ -86360,8 +86904,8 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (132:2) {:else}
-    function create_else_block$2(ctx) {
+    // (156:2) {:else}
+    function create_else_block_2(ctx) {
     	let div;
 
     	const block = {
@@ -86370,7 +86914,7 @@ var app = (function () {
     			div.textContent = "No Google Drive Files Found.";
     			attr_dev(div, "class", "alert alert-red my-1");
     			attr_dev(div, "role", "alert");
-    			add_location(div, file$2, 132, 3, 4635);
+    			add_location(div, file$2, 156, 3, 5284);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -86383,16 +86927,16 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_else_block$2.name,
+    		id: create_else_block_2.name,
     		type: "else",
-    		source: "(132:2) {:else}",
+    		source: "(156:2) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (55:2) {#if paginatedFiles.length}
+    // (56:2) {#if paginatedFiles.length}
     function create_if_block$3(ctx) {
     	let table;
     	let thead;
@@ -86411,24 +86955,28 @@ var app = (function () {
     	let t11;
     	let th6;
     	let t13;
-    	let tbody;
-    	let t14;
-    	let hr;
+    	let th7;
     	let t15;
-    	let p;
-    	let t16_value = `${/*paginationFrom*/ ctx[7] + 1}-${/*paginationTo*/ ctx[8]} of ${/*videoFiles*/ ctx[3].length}` + "";
-    	let t16;
+    	let th8;
     	let t17;
+    	let tbody;
+    	let t18;
+    	let hr;
+    	let t19;
+    	let p;
+    	let t20_value = `${/*paginationFrom*/ ctx[8] + 1}-${/*paginationTo*/ ctx[9]} of ${/*videoFiles*/ ctx[4].length}` + "";
+    	let t20;
+    	let t21;
     	let div;
     	let button0;
-    	let t19;
+    	let t23;
     	let each_blocks = [];
     	let each1_lookup = new Map();
-    	let t20;
+    	let t24;
     	let button1;
     	let mounted;
     	let dispose;
-    	let each_value_1 = /*paginatedFiles*/ ctx[4];
+    	let each_value_1 = /*paginatedFiles*/ ctx[5];
     	validate_each_argument(each_value_1);
     	let each_blocks_1 = [];
 
@@ -86436,7 +86984,7 @@ var app = (function () {
     		each_blocks_1[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
     	}
 
-    	let each_value = Array(/*numberOfPages*/ ctx[6]);
+    	let each_value = Array(/*numberOfPages*/ ctx[7]);
     	validate_each_argument(each_value);
     	const get_key = ctx => /*index*/ ctx[23];
     	validate_each_keys(ctx, each_value, get_each_context, get_key);
@@ -86471,53 +87019,61 @@ var app = (function () {
     			th5.textContent = "Size";
     			t11 = space();
     			th6 = element("th");
-    			th6.textContent = "Options";
+    			th6.textContent = "Has GPS Data";
     			t13 = space();
+    			th7 = element("th");
+    			th7.textContent = "Has Permissions";
+    			t15 = space();
+    			th8 = element("th");
+    			th8.textContent = "Options";
+    			t17 = space();
     			tbody = element("tbody");
 
     			for (let i = 0; i < each_blocks_1.length; i += 1) {
     				each_blocks_1[i].c();
     			}
 
-    			t14 = space();
+    			t18 = space();
     			hr = element("hr");
-    			t15 = space();
+    			t19 = space();
     			p = element("p");
-    			t16 = text(t16_value);
-    			t17 = space();
+    			t20 = text(t20_value);
+    			t21 = space();
     			div = element("div");
     			button0 = element("button");
     			button0.textContent = "Previous";
-    			t19 = space();
+    			t23 = space();
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
-    			t20 = space();
+    			t24 = space();
     			button1 = element("button");
     			button1.textContent = "Next";
-    			add_location(th0, file$2, 58, 6, 1794);
-    			add_location(th1, file$2, 59, 6, 1816);
-    			add_location(th2, file$2, 60, 6, 1843);
-    			add_location(th3, file$2, 61, 6, 1872);
-    			add_location(th4, file$2, 62, 6, 1894);
-    			add_location(th5, file$2, 63, 6, 1919);
-    			add_location(th6, file$2, 64, 6, 1940);
-    			add_location(tr, file$2, 57, 5, 1782);
-    			add_location(thead, file$2, 56, 4, 1768);
-    			add_location(tbody, file$2, 67, 4, 1988);
+    			add_location(th0, file$2, 59, 6, 1860);
+    			add_location(th1, file$2, 60, 6, 1882);
+    			add_location(th2, file$2, 61, 6, 1909);
+    			add_location(th3, file$2, 62, 6, 1938);
+    			add_location(th4, file$2, 63, 6, 1960);
+    			add_location(th5, file$2, 64, 6, 1985);
+    			add_location(th6, file$2, 65, 6, 2006);
+    			add_location(th7, file$2, 66, 6, 2035);
+    			add_location(th8, file$2, 67, 6, 2067);
+    			add_location(tr, file$2, 58, 5, 1848);
+    			add_location(thead, file$2, 57, 4, 1834);
+    			add_location(tbody, file$2, 70, 4, 2115);
     			attr_dev(table, "class", "table w-full rounded-lg");
-    			add_location(table, file$2, 55, 3, 1723);
+    			add_location(table, file$2, 56, 3, 1789);
     			attr_dev(hr, "class", "my-4");
-    			add_location(hr, file$2, 120, 3, 3960);
-    			add_location(p, file$2, 121, 3, 3984);
+    			add_location(hr, file$2, 144, 3, 4609);
+    			add_location(p, file$2, 145, 3, 4633);
     			attr_dev(button0, "class", "px-4 py-2 btn-pagination");
-    			add_location(button0, file$2, 123, 4, 4113);
+    			add_location(button0, file$2, 147, 4, 4762);
     			attr_dev(button1, "class", "px-4 py-2 btn-pagination ");
-    			add_location(button1, file$2, 129, 4, 4495);
+    			add_location(button1, file$2, 153, 4, 5144);
     			attr_dev(div, "class", "flex items-center space-x-2 mt-2");
-    			add_location(div, file$2, 122, 3, 4061);
+    			add_location(div, file$2, 146, 3, 4710);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, table, anchor);
@@ -86536,28 +87092,32 @@ var app = (function () {
     			append_dev(tr, th5);
     			append_dev(tr, t11);
     			append_dev(tr, th6);
-    			append_dev(table, t13);
+    			append_dev(tr, t13);
+    			append_dev(tr, th7);
+    			append_dev(tr, t15);
+    			append_dev(tr, th8);
+    			append_dev(table, t17);
     			append_dev(table, tbody);
 
     			for (let i = 0; i < each_blocks_1.length; i += 1) {
     				each_blocks_1[i].m(tbody, null);
     			}
 
-    			insert_dev(target, t14, anchor);
+    			insert_dev(target, t18, anchor);
     			insert_dev(target, hr, anchor);
-    			insert_dev(target, t15, anchor);
+    			insert_dev(target, t19, anchor);
     			insert_dev(target, p, anchor);
-    			append_dev(p, t16);
-    			insert_dev(target, t17, anchor);
+    			append_dev(p, t20);
+    			insert_dev(target, t21, anchor);
     			insert_dev(target, div, anchor);
     			append_dev(div, button0);
-    			append_dev(div, t19);
+    			append_dev(div, t23);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].m(div, null);
     			}
 
-    			append_dev(div, t20);
+    			append_dev(div, t24);
     			append_dev(div, button1);
 
     			if (!mounted) {
@@ -86570,8 +87130,8 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*openModel, deleteDriveFile, paginatedFiles, fetchGPSDataForFile, calculateFileSizeString, PROGRAMMING_TOOLS, returnLinkGivenIfStringContains*/ 535) {
-    				each_value_1 = /*paginatedFiles*/ ctx[4];
+    			if (dirty & /*openModel, deleteDriveFile, paginatedFiles, fetchGPSDataForFile, getGoogleDriveCoordFile, files, calculateFileSizeString, PROGRAMMING_TOOLS, returnLinkGivenIfStringContains*/ 1071) {
+    				each_value_1 = /*paginatedFiles*/ ctx[5];
     				validate_each_argument(each_value_1);
     				let i;
 
@@ -86594,23 +87154,23 @@ var app = (function () {
     				each_blocks_1.length = each_value_1.length;
     			}
 
-    			if (dirty & /*paginationFrom, paginationTo, videoFiles*/ 392 && t16_value !== (t16_value = `${/*paginationFrom*/ ctx[7] + 1}-${/*paginationTo*/ ctx[8]} of ${/*videoFiles*/ ctx[3].length}` + "")) set_data_dev(t16, t16_value);
+    			if (dirty & /*paginationFrom, paginationTo, videoFiles*/ 784 && t20_value !== (t20_value = `${/*paginationFrom*/ ctx[8] + 1}-${/*paginationTo*/ ctx[9]} of ${/*videoFiles*/ ctx[4].length}` + "")) set_data_dev(t20, t20_value);
 
-    			if (dirty & /*paginationPage, Array, numberOfPages, setPaginationPage*/ 1120) {
-    				each_value = Array(/*numberOfPages*/ ctx[6]);
+    			if (dirty & /*paginationPage, Array, numberOfPages, setPaginationPage*/ 2240) {
+    				each_value = Array(/*numberOfPages*/ ctx[7]);
     				validate_each_argument(each_value);
     				validate_each_keys(ctx, each_value, get_each_context, get_key);
-    				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value, each1_lookup, div, destroy_block, create_each_block, t20, get_each_context);
+    				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value, each1_lookup, div, destroy_block, create_each_block, t24, get_each_context);
     			}
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(table);
     			destroy_each(each_blocks_1, detaching);
-    			if (detaching) detach_dev(t14);
+    			if (detaching) detach_dev(t18);
     			if (detaching) detach_dev(hr);
-    			if (detaching) detach_dev(t15);
+    			if (detaching) detach_dev(t19);
     			if (detaching) detach_dev(p);
-    			if (detaching) detach_dev(t17);
+    			if (detaching) detach_dev(t21);
     			if (detaching) detach_dev(div);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -86626,15 +87186,15 @@ var app = (function () {
     		block,
     		id: create_if_block$3.name,
     		type: "if",
-    		source: "(55:2) {#if paginatedFiles.length}",
+    		source: "(56:2) {#if paginatedFiles.length}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (73:9) {#if videoFile.thumbnailLink}
-    function create_if_block_1$1(ctx) {
+    // (76:9) {#if videoFile.thumbnailLink}
+    function create_if_block_3$1(ctx) {
     	let a;
     	let img;
     	let img_src_value;
@@ -86648,22 +87208,22 @@ var app = (function () {
     			attr_dev(img, "onerror", "https://i.picsum.photos/id/870/200/300.jpg?blur=2&grayscale&hmac=ujRymp644uYVjdKJM7kyLDSsrqNSMVRPnGU99cKl6Vs");
     			attr_dev(img, "alt", "Dashcam");
     			attr_dev(img, "class", "h-full w-auto object-cover rounded-lg");
-    			add_location(img, file$2, 74, 11, 2240);
+    			add_location(img, file$2, 77, 11, 2367);
     			attr_dev(a, "href", a_href_value = /*videoFile*/ ctx[24].webViewLink);
     			attr_dev(a, "target", "_blank");
     			attr_dev(a, "class", "text-white text-xl borderRounded");
-    			add_location(a, file$2, 73, 10, 2137);
+    			add_location(a, file$2, 76, 10, 2264);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, a, anchor);
     			append_dev(a, img);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*paginatedFiles*/ 16 && !src_url_equal(img.src, img_src_value = /*videoFile*/ ctx[24].thumbnailLink)) {
+    			if (dirty & /*paginatedFiles*/ 32 && !src_url_equal(img.src, img_src_value = /*videoFile*/ ctx[24].thumbnailLink)) {
     				attr_dev(img, "src", img_src_value);
     			}
 
-    			if (dirty & /*paginatedFiles*/ 16 && a_href_value !== (a_href_value = /*videoFile*/ ctx[24].webViewLink)) {
+    			if (dirty & /*paginatedFiles*/ 32 && a_href_value !== (a_href_value = /*videoFile*/ ctx[24].webViewLink)) {
     				attr_dev(a, "href", a_href_value);
     			}
     		},
@@ -86674,16 +87234,16 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_1$1.name,
+    		id: create_if_block_3$1.name,
     		type: "if",
-    		source: "(73:9) {#if videoFile.thumbnailLink}",
+    		source: "(76:9) {#if videoFile.thumbnailLink}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (89:10) {#each PROGRAMMING_TOOLS as tool}
+    // (92:10) {#each PROGRAMMING_TOOLS as tool}
     function create_each_block_2(ctx) {
     	let img;
     	let img_src_value;
@@ -86699,7 +87259,7 @@ var app = (function () {
     			attr_dev(img, "alt", "");
     			if (!src_url_equal(img.src, img_src_value = returnLinkGivenIfStringContains(/*tool*/ ctx[27]))) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "loading", "lazy");
-    			add_location(img, file$2, 89, 11, 2824);
+    			add_location(img, file$2, 92, 11, 2951);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, img, anchor);
@@ -86714,14 +87274,130 @@ var app = (function () {
     		block,
     		id: create_each_block_2.name,
     		type: "each",
-    		source: "(89:10) {#each PROGRAMMING_TOOLS as tool}",
+    		source: "(92:10) {#each PROGRAMMING_TOOLS as tool}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (69:5) {#each paginatedFiles as videoFile}
+    // (102:8) {:else}
+    function create_else_block_1(ctx) {
+    	let i;
+
+    	const block = {
+    		c: function create() {
+    			i = element("i");
+    			attr_dev(i, "class", "fa-solid fa-x text-error fa-lg");
+    			add_location(i, file$2, 102, 9, 3381);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, i, anchor);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(i);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_else_block_1.name,
+    		type: "else",
+    		source: "(102:8) {:else}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (100:9) {#if getGoogleDriveCoordFile(videoFile, files)}
+    function create_if_block_2$1(ctx) {
+    	let i;
+
+    	const block = {
+    		c: function create() {
+    			i = element("i");
+    			attr_dev(i, "class", "fa-solid fa-check text-green fa-lg");
+    			add_location(i, file$2, 100, 9, 3303);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, i, anchor);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(i);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_2$1.name,
+    		type: "if",
+    		source: "(100:9) {#if getGoogleDriveCoordFile(videoFile, files)}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (112:9) {:else}
+    function create_else_block$2(ctx) {
+    	let i;
+
+    	const block = {
+    		c: function create() {
+    			i = element("i");
+    			attr_dev(i, "class", "fa-solid fa-x text-error fa-lg");
+    			add_location(i, file$2, 112, 10, 3636);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, i, anchor);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(i);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_else_block$2.name,
+    		type: "else",
+    		source: "(112:9) {:else}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (110:9) {#if videoFile.permissionIds.includes('anyoneWithLink')}
+    function create_if_block_1$1(ctx) {
+    	let i;
+
+    	const block = {
+    		c: function create() {
+    			i = element("i");
+    			attr_dev(i, "class", "fa-solid fa-check text-green fa-lg");
+    			add_location(i, file$2, 110, 10, 3556);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, i, anchor);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(i);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_1$1.name,
+    		type: "if",
+    		source: "(110:9) {#if videoFile.permissionIds.includes('anyoneWithLink')}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (72:5) {#each paginatedFiles as videoFile}
     function create_each_block_1(ctx) {
     	let tr;
     	let td0;
@@ -86746,30 +87422,56 @@ var app = (function () {
     	let t8;
     	let t9;
     	let td6;
+    	let show_if_1;
+    	let t10;
+    	let td7;
+    	let show_if;
+    	let t11;
+    	let td8;
     	let div1;
     	let a;
     	let i0;
-    	let t10;
+    	let t12;
     	let a_href_value;
-    	let t11;
+    	let t13;
     	let button0;
     	let i1;
-    	let t12;
-    	let t13;
-    	let button1;
-    	let i2;
     	let t14;
     	let t15;
+    	let button1;
+    	let i2;
+    	let t16;
+    	let t17;
     	let mounted;
     	let dispose;
-    	let if_block = /*videoFile*/ ctx[24].thumbnailLink && create_if_block_1$1(ctx);
-    	let each_value_2 = /*PROGRAMMING_TOOLS*/ ctx[9];
+    	let if_block0 = /*videoFile*/ ctx[24].thumbnailLink && create_if_block_3$1(ctx);
+    	let each_value_2 = /*PROGRAMMING_TOOLS*/ ctx[10];
     	validate_each_argument(each_value_2);
     	let each_blocks = [];
 
     	for (let i = 0; i < each_value_2.length; i += 1) {
     		each_blocks[i] = create_each_block_2(get_each_context_2(ctx, each_value_2, i));
     	}
+
+    	function select_block_type_1(ctx, dirty) {
+    		if (dirty & /*paginatedFiles, files*/ 33) show_if_1 = null;
+    		if (show_if_1 == null) show_if_1 = !!getGoogleDriveCoordFile(/*videoFile*/ ctx[24], /*files*/ ctx[0]);
+    		if (show_if_1) return create_if_block_2$1;
+    		return create_else_block_1;
+    	}
+
+    	let current_block_type = select_block_type_1(ctx, -1);
+    	let if_block1 = current_block_type(ctx);
+
+    	function select_block_type_2(ctx, dirty) {
+    		if (dirty & /*paginatedFiles*/ 32) show_if = null;
+    		if (show_if == null) show_if = !!/*videoFile*/ ctx[24].permissionIds.includes('anyoneWithLink');
+    		if (show_if) return create_if_block_1$1;
+    		return create_else_block$2;
+    	}
+
+    	let current_block_type_1 = select_block_type_2(ctx, -1);
+    	let if_block2 = current_block_type_1(ctx);
 
     	function click_handler() {
     		return /*click_handler*/ ctx[13](/*videoFile*/ ctx[24]);
@@ -86783,7 +87485,7 @@ var app = (function () {
     		c: function create() {
     			tr = element("tr");
     			td0 = element("td");
-    			if (if_block) if_block.c();
+    			if (if_block0) if_block0.c();
     			t0 = space();
     			td1 = element("td");
     			t1 = text(t1_value);
@@ -86806,52 +87508,60 @@ var app = (function () {
     			t8 = text(t8_value);
     			t9 = space();
     			td6 = element("td");
+    			if_block1.c();
+    			t10 = space();
+    			td7 = element("td");
+    			if_block2.c();
+    			t11 = space();
+    			td8 = element("td");
     			div1 = element("div");
     			a = element("a");
     			i0 = element("i");
-    			t10 = text("\r\n\t\t\t\t\t\t\t\t\t\t\tWatch");
-    			t11 = space();
+    			t12 = text("\r\n\t\t\t\t\t\t\t\t\t\t\tWatch");
+    			t13 = space();
     			button0 = element("button");
     			i1 = element("i");
-    			t12 = text("\r\n\t\t\t\t\t\t\t\t\t\t\tAdd to Map");
-    			t13 = space();
+    			t14 = text("\r\n\t\t\t\t\t\t\t\t\t\t\tAdd to Map");
+    			t15 = space();
     			button1 = element("button");
     			i2 = element("i");
-    			t14 = text("\r\n\t\t\t\t\t\t\t\t\t\t\tDelete");
-    			t15 = space();
+    			t16 = text("\r\n\t\t\t\t\t\t\t\t\t\t\tDelete");
+    			t17 = space();
     			attr_dev(td0, "class", "w-64");
-    			add_location(td0, file$2, 71, 8, 2068);
-    			add_location(td1, file$2, 83, 8, 2577);
-    			add_location(td2, file$2, 84, 8, 2612);
-    			add_location(td3, file$2, 85, 8, 2654);
+    			add_location(td0, file$2, 74, 8, 2195);
+    			add_location(td1, file$2, 86, 8, 2704);
+    			add_location(td2, file$2, 87, 8, 2739);
+    			add_location(td3, file$2, 88, 8, 2781);
     			attr_dev(div0, "class", "flex flex-wrap justify-center ");
-    			add_location(div0, file$2, 87, 9, 2721);
-    			add_location(td4, file$2, 86, 8, 2706);
-    			add_location(td5, file$2, 93, 8, 3041);
+    			add_location(div0, file$2, 90, 9, 2848);
+    			add_location(td4, file$2, 89, 8, 2833);
+    			add_location(td5, file$2, 96, 8, 3168);
+    			add_location(td6, file$2, 98, 8, 3230);
+    			add_location(td7, file$2, 107, 8, 3471);
     			attr_dev(i0, "class", "fa-solid fa-eye");
-    			add_location(i0, file$2, 97, 11, 3254);
+    			add_location(i0, file$2, 121, 11, 3903);
     			attr_dev(a, "a", "");
     			attr_dev(a, "href", a_href_value = /*videoFile*/ ctx[24].webViewLink);
     			attr_dev(a, "target", "_blank");
     			attr_dev(a, "class", `card-btn btn-primary my-1`);
-    			add_location(a, file$2, 96, 10, 3155);
+    			add_location(a, file$2, 120, 10, 3804);
     			attr_dev(i1, "class", "fa-solid fa-share");
-    			add_location(i1, file$2, 101, 11, 3439);
+    			add_location(i1, file$2, 125, 11, 4088);
     			attr_dev(button0, "class", `card-btn btn-primary my-1 mx-1`);
-    			add_location(button0, file$2, 100, 10, 3329);
+    			add_location(button0, file$2, 124, 10, 3978);
     			attr_dev(i2, "class", "fa-solid fa-trash");
-    			add_location(i2, file$2, 109, 11, 3788);
+    			add_location(i2, file$2, 133, 11, 4437);
     			attr_dev(button1, "class", `card-btn btn-error-outline my-1`);
-    			add_location(button1, file$2, 105, 10, 3528);
+    			add_location(button1, file$2, 129, 10, 4177);
     			attr_dev(div1, "class", "flex flex-row");
-    			add_location(div1, file$2, 95, 9, 3116);
-    			add_location(td6, file$2, 94, 8, 3101);
-    			add_location(tr, file$2, 70, 7, 2054);
+    			add_location(div1, file$2, 119, 9, 3765);
+    			add_location(td8, file$2, 118, 8, 3750);
+    			add_location(tr, file$2, 73, 7, 2181);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, tr, anchor);
     			append_dev(tr, td0);
-    			if (if_block) if_block.m(td0, null);
+    			if (if_block0) if_block0.m(td0, null);
     			append_dev(tr, t0);
     			append_dev(tr, td1);
     			append_dev(td1, t1);
@@ -86874,19 +87584,25 @@ var app = (function () {
     			append_dev(td5, t8);
     			append_dev(tr, t9);
     			append_dev(tr, td6);
-    			append_dev(td6, div1);
+    			if_block1.m(td6, null);
+    			append_dev(tr, t10);
+    			append_dev(tr, td7);
+    			if_block2.m(td7, null);
+    			append_dev(tr, t11);
+    			append_dev(tr, td8);
+    			append_dev(td8, div1);
     			append_dev(div1, a);
     			append_dev(a, i0);
-    			append_dev(a, t10);
-    			append_dev(div1, t11);
+    			append_dev(a, t12);
+    			append_dev(div1, t13);
     			append_dev(div1, button0);
     			append_dev(button0, i1);
-    			append_dev(button0, t12);
-    			append_dev(div1, t13);
+    			append_dev(button0, t14);
+    			append_dev(div1, t15);
     			append_dev(div1, button1);
     			append_dev(button1, i2);
-    			append_dev(button1, t14);
-    			append_dev(tr, t15);
+    			append_dev(button1, t16);
+    			append_dev(tr, t17);
 
     			if (!mounted) {
     				dispose = [
@@ -86901,24 +87617,24 @@ var app = (function () {
     			ctx = new_ctx;
 
     			if (/*videoFile*/ ctx[24].thumbnailLink) {
-    				if (if_block) {
-    					if_block.p(ctx, dirty);
+    				if (if_block0) {
+    					if_block0.p(ctx, dirty);
     				} else {
-    					if_block = create_if_block_1$1(ctx);
-    					if_block.c();
-    					if_block.m(td0, null);
+    					if_block0 = create_if_block_3$1(ctx);
+    					if_block0.c();
+    					if_block0.m(td0, null);
     				}
-    			} else if (if_block) {
-    				if_block.d(1);
-    				if_block = null;
+    			} else if (if_block0) {
+    				if_block0.d(1);
+    				if_block0 = null;
     			}
 
-    			if (dirty & /*paginatedFiles*/ 16 && t1_value !== (t1_value = /*videoFile*/ ctx[24].name + "")) set_data_dev(t1, t1_value);
-    			if (dirty & /*paginatedFiles*/ 16 && t3_value !== (t3_value = /*videoFile*/ ctx[24].createdTime + "")) set_data_dev(t3, t3_value);
-    			if (dirty & /*paginatedFiles*/ 16 && t5_value !== (t5_value = /*videoFile*/ ctx[24].owners[0].displayName + "")) set_data_dev(t5, t5_value);
+    			if (dirty & /*paginatedFiles*/ 32 && t1_value !== (t1_value = /*videoFile*/ ctx[24].name + "")) set_data_dev(t1, t1_value);
+    			if (dirty & /*paginatedFiles*/ 32 && t3_value !== (t3_value = /*videoFile*/ ctx[24].createdTime + "")) set_data_dev(t3, t3_value);
+    			if (dirty & /*paginatedFiles*/ 32 && t5_value !== (t5_value = /*videoFile*/ ctx[24].owners[0].displayName + "")) set_data_dev(t5, t5_value);
 
-    			if (dirty & /*PROGRAMMING_TOOLS, returnLinkGivenIfStringContains*/ 512) {
-    				each_value_2 = /*PROGRAMMING_TOOLS*/ ctx[9];
+    			if (dirty & /*PROGRAMMING_TOOLS, returnLinkGivenIfStringContains*/ 1024) {
+    				each_value_2 = /*PROGRAMMING_TOOLS*/ ctx[10];
     				validate_each_argument(each_value_2);
     				let i;
 
@@ -86941,16 +87657,38 @@ var app = (function () {
     				each_blocks.length = each_value_2.length;
     			}
 
-    			if (dirty & /*paginatedFiles*/ 16 && t8_value !== (t8_value = calculateFileSizeString(/*videoFile*/ ctx[24].size) + "")) set_data_dev(t8, t8_value);
+    			if (dirty & /*paginatedFiles*/ 32 && t8_value !== (t8_value = calculateFileSizeString(/*videoFile*/ ctx[24].size) + "")) set_data_dev(t8, t8_value);
 
-    			if (dirty & /*paginatedFiles*/ 16 && a_href_value !== (a_href_value = /*videoFile*/ ctx[24].webViewLink)) {
+    			if (current_block_type !== (current_block_type = select_block_type_1(ctx, dirty))) {
+    				if_block1.d(1);
+    				if_block1 = current_block_type(ctx);
+
+    				if (if_block1) {
+    					if_block1.c();
+    					if_block1.m(td6, null);
+    				}
+    			}
+
+    			if (current_block_type_1 !== (current_block_type_1 = select_block_type_2(ctx, dirty))) {
+    				if_block2.d(1);
+    				if_block2 = current_block_type_1(ctx);
+
+    				if (if_block2) {
+    					if_block2.c();
+    					if_block2.m(td7, null);
+    				}
+    			}
+
+    			if (dirty & /*paginatedFiles*/ 32 && a_href_value !== (a_href_value = /*videoFile*/ ctx[24].webViewLink)) {
     				attr_dev(a, "href", a_href_value);
     			}
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(tr);
-    			if (if_block) if_block.d();
+    			if (if_block0) if_block0.d();
     			destroy_each(each_blocks, detaching);
+    			if_block1.d();
+    			if_block2.d();
     			mounted = false;
     			run_all(dispose);
     		}
@@ -86960,14 +87698,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(69:5) {#each paginatedFiles as videoFile}",
+    		source: "(72:5) {#each paginatedFiles as videoFile}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (125:4) {#each Array(numberOfPages) as _, index (index)}
+    // (149:4) {#each Array(numberOfPages) as _, index (index)}
     function create_each_block(key_1, ctx) {
     	let button;
     	let t_value = /*index*/ ctx[23] + "";
@@ -86987,11 +87725,11 @@ var app = (function () {
     			button = element("button");
     			t = text(t_value);
 
-    			attr_dev(button, "class", button_class_value = `px-4 py-2 ${/*paginationPage*/ ctx[5] === /*index*/ ctx[23]
+    			attr_dev(button, "class", button_class_value = `px-4 py-2 ${/*paginationPage*/ ctx[6] === /*index*/ ctx[23]
 			? "btn-pagination-primary font-bold "
 			: "btn-pagination"}`);
 
-    			add_location(button, file$2, 125, 5, 4290);
+    			add_location(button, file$2, 149, 5, 4939);
     			this.first = button;
     		},
     		m: function mount(target, anchor) {
@@ -87005,9 +87743,9 @@ var app = (function () {
     		},
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
-    			if (dirty & /*numberOfPages*/ 64 && t_value !== (t_value = /*index*/ ctx[23] + "")) set_data_dev(t, t_value);
+    			if (dirty & /*numberOfPages*/ 128 && t_value !== (t_value = /*index*/ ctx[23] + "")) set_data_dev(t, t_value);
 
-    			if (dirty & /*paginationPage, numberOfPages*/ 96 && button_class_value !== (button_class_value = `px-4 py-2 ${/*paginationPage*/ ctx[5] === /*index*/ ctx[23]
+    			if (dirty & /*paginationPage, numberOfPages*/ 192 && button_class_value !== (button_class_value = `px-4 py-2 ${/*paginationPage*/ ctx[6] === /*index*/ ctx[23]
 			? "btn-pagination-primary font-bold "
 			: "btn-pagination"}`)) {
     				attr_dev(button, "class", button_class_value);
@@ -87024,7 +87762,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(125:4) {#each Array(numberOfPages) as _, index (index)}",
+    		source: "(149:4) {#each Array(numberOfPages) as _, index (index)}",
     		ctx
     	});
 
@@ -87038,8 +87776,8 @@ var app = (function () {
     	let t1;
 
     	function select_block_type(ctx, dirty) {
-    		if (/*paginatedFiles*/ ctx[4].length) return create_if_block$3;
-    		return create_else_block$2;
+    		if (/*paginatedFiles*/ ctx[5].length) return create_if_block$3;
+    		return create_else_block_2;
     	}
 
     	let current_block_type = select_block_type(ctx);
@@ -87054,11 +87792,11 @@ var app = (function () {
     			t1 = space();
     			if_block.c();
     			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file$2, 53, 2, 1642);
+    			add_location(p, file$2, 54, 2, 1708);
     			attr_dev(div, "class", "p-4");
-    			add_location(div, file$2, 52, 1, 1621);
+    			add_location(div, file$2, 53, 1, 1687);
     			attr_dev(section, "class", "card h-fit scale-in-center");
-    			add_location(section, file$2, 51, 0, 1574);
+    			add_location(section, file$2, 52, 0, 1640);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -87127,23 +87865,23 @@ var app = (function () {
     	//* Update the current pagination page
     	const setPaginationPage = page => {
     		if (page < 0) {
-    			$$invalidate(5, paginationPage = 0);
+    			$$invalidate(6, paginationPage = 0);
     		} else if (page >= numberOfPages) {
-    			$$invalidate(5, paginationPage = numberOfPages - 1);
+    			$$invalidate(6, paginationPage = numberOfPages - 1);
     		} else {
-    			$$invalidate(5, paginationPage = page);
+    			$$invalidate(6, paginationPage = page);
     		}
 
     		updatePaginationFiles();
     	};
 
     	const updatePaginationFiles = () => {
-    		$$invalidate(3, videoFiles = files.filter(videoFile => videoFile.fileExtension === "MP4" || videoFile.fileExtension === "mp4"));
+    		$$invalidate(4, videoFiles = files.filter(videoFile => videoFile.fileExtension === "MP4" || videoFile.fileExtension === "mp4"));
     		console.log(videoFiles);
-    		$$invalidate(6, numberOfPages = Math.ceil(videoFiles.length / numberOfItemsPerPage));
-    		$$invalidate(7, paginationFrom = paginationPage * numberOfItemsPerPage);
-    		$$invalidate(8, paginationTo = Math.min((paginationPage + 1) * numberOfItemsPerPage, videoFiles.length));
-    		$$invalidate(4, paginatedFiles = videoFiles.slice(paginationPage * numberOfItemsPerPage, paginationPage * numberOfItemsPerPage + numberOfItemsPerPage));
+    		$$invalidate(7, numberOfPages = Math.ceil(videoFiles.length / numberOfItemsPerPage));
+    		$$invalidate(8, paginationFrom = paginationPage * numberOfItemsPerPage);
+    		$$invalidate(9, paginationTo = Math.min((paginationPage + 1) * numberOfItemsPerPage, videoFiles.length));
+    		$$invalidate(5, paginatedFiles = videoFiles.slice(paginationPage * numberOfItemsPerPage, paginationPage * numberOfItemsPerPage + numberOfItemsPerPage));
     	};
 
     	const writable_props = [
@@ -87165,17 +87903,18 @@ var app = (function () {
     	const click_handler_4 = () => setPaginationPage(paginationPage + 1);
 
     	$$self.$$set = $$props => {
-    		if ('files' in $$props) $$invalidate(11, files = $$props.files);
-    		if ('deleteDriveFile' in $$props) $$invalidate(0, deleteDriveFile = $$props.deleteDriveFile);
+    		if ('files' in $$props) $$invalidate(0, files = $$props.files);
+    		if ('deleteDriveFile' in $$props) $$invalidate(1, deleteDriveFile = $$props.deleteDriveFile);
     		if ('startMachineLearning' in $$props) $$invalidate(12, startMachineLearning = $$props.startMachineLearning);
-    		if ('fetchGPSDataForFile' in $$props) $$invalidate(1, fetchGPSDataForFile = $$props.fetchGPSDataForFile);
-    		if ('openModel' in $$props) $$invalidate(2, openModel = $$props.openModel);
+    		if ('fetchGPSDataForFile' in $$props) $$invalidate(2, fetchGPSDataForFile = $$props.fetchGPSDataForFile);
+    		if ('openModel' in $$props) $$invalidate(3, openModel = $$props.openModel);
     	};
 
     	$$self.$capture_state = () => ({
     		onMount,
     		calculateFileSizeString,
     		returnLinkGivenIfStringContains,
+    		getGoogleDriveCoordFile,
     		files,
     		deleteDriveFile,
     		startMachineLearning,
@@ -87195,18 +87934,18 @@ var app = (function () {
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ('files' in $$props) $$invalidate(11, files = $$props.files);
-    		if ('deleteDriveFile' in $$props) $$invalidate(0, deleteDriveFile = $$props.deleteDriveFile);
+    		if ('files' in $$props) $$invalidate(0, files = $$props.files);
+    		if ('deleteDriveFile' in $$props) $$invalidate(1, deleteDriveFile = $$props.deleteDriveFile);
     		if ('startMachineLearning' in $$props) $$invalidate(12, startMachineLearning = $$props.startMachineLearning);
-    		if ('fetchGPSDataForFile' in $$props) $$invalidate(1, fetchGPSDataForFile = $$props.fetchGPSDataForFile);
-    		if ('openModel' in $$props) $$invalidate(2, openModel = $$props.openModel);
-    		if ('videoFiles' in $$props) $$invalidate(3, videoFiles = $$props.videoFiles);
-    		if ('paginatedFiles' in $$props) $$invalidate(4, paginatedFiles = $$props.paginatedFiles);
-    		if ('paginationPage' in $$props) $$invalidate(5, paginationPage = $$props.paginationPage);
+    		if ('fetchGPSDataForFile' in $$props) $$invalidate(2, fetchGPSDataForFile = $$props.fetchGPSDataForFile);
+    		if ('openModel' in $$props) $$invalidate(3, openModel = $$props.openModel);
+    		if ('videoFiles' in $$props) $$invalidate(4, videoFiles = $$props.videoFiles);
+    		if ('paginatedFiles' in $$props) $$invalidate(5, paginatedFiles = $$props.paginatedFiles);
+    		if ('paginationPage' in $$props) $$invalidate(6, paginationPage = $$props.paginationPage);
     		if ('numberOfItemsPerPage' in $$props) numberOfItemsPerPage = $$props.numberOfItemsPerPage;
-    		if ('numberOfPages' in $$props) $$invalidate(6, numberOfPages = $$props.numberOfPages);
-    		if ('paginationFrom' in $$props) $$invalidate(7, paginationFrom = $$props.paginationFrom);
-    		if ('paginationTo' in $$props) $$invalidate(8, paginationTo = $$props.paginationTo);
+    		if ('numberOfPages' in $$props) $$invalidate(7, numberOfPages = $$props.numberOfPages);
+    		if ('paginationFrom' in $$props) $$invalidate(8, paginationFrom = $$props.paginationFrom);
+    		if ('paginationTo' in $$props) $$invalidate(9, paginationTo = $$props.paginationTo);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -87214,12 +87953,13 @@ var app = (function () {
     	}
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty & /*files*/ 2048) {
+    		if ($$self.$$.dirty & /*files*/ 1) {
     			files && updatePaginationFiles();
     		}
     	};
 
     	return [
+    		files,
     		deleteDriveFile,
     		fetchGPSDataForFile,
     		openModel,
@@ -87231,7 +87971,6 @@ var app = (function () {
     		paginationTo,
     		PROGRAMMING_TOOLS,
     		setPaginationPage,
-    		files,
     		startMachineLearning,
     		click_handler,
     		click_handler_1,
@@ -87246,11 +87985,11 @@ var app = (function () {
     		super(options);
 
     		init(this, options, instance$3, create_fragment$3, safe_not_equal, {
-    			files: 11,
-    			deleteDriveFile: 0,
+    			files: 0,
+    			deleteDriveFile: 1,
     			startMachineLearning: 12,
-    			fetchGPSDataForFile: 1,
-    			openModel: 2
+    			fetchGPSDataForFile: 2,
+    			openModel: 3
     		});
 
     		dispatch_dev("SvelteRegisterComponent", {
@@ -87263,11 +88002,11 @@ var app = (function () {
     		const { ctx } = this.$$;
     		const props = options.props || {};
 
-    		if (/*files*/ ctx[11] === undefined && !('files' in props)) {
+    		if (/*files*/ ctx[0] === undefined && !('files' in props)) {
     			console_1$1.warn("<RecordingsTable> was created without expected prop 'files'");
     		}
 
-    		if (/*deleteDriveFile*/ ctx[0] === undefined && !('deleteDriveFile' in props)) {
+    		if (/*deleteDriveFile*/ ctx[1] === undefined && !('deleteDriveFile' in props)) {
     			console_1$1.warn("<RecordingsTable> was created without expected prop 'deleteDriveFile'");
     		}
 
@@ -87275,11 +88014,11 @@ var app = (function () {
     			console_1$1.warn("<RecordingsTable> was created without expected prop 'startMachineLearning'");
     		}
 
-    		if (/*fetchGPSDataForFile*/ ctx[1] === undefined && !('fetchGPSDataForFile' in props)) {
+    		if (/*fetchGPSDataForFile*/ ctx[2] === undefined && !('fetchGPSDataForFile' in props)) {
     			console_1$1.warn("<RecordingsTable> was created without expected prop 'fetchGPSDataForFile'");
     		}
 
-    		if (/*openModel*/ ctx[2] === undefined && !('openModel' in props)) {
+    		if (/*openModel*/ ctx[3] === undefined && !('openModel' in props)) {
     			console_1$1.warn("<RecordingsTable> was created without expected prop 'openModel'");
     		}
     	}
@@ -87330,14 +88069,14 @@ var app = (function () {
     const { console: console_1 } = globals;
     const file$1 = "src\\pages\\HomePage.svelte";
 
-    // (339:0) {#if isModalOpen}
+    // (379:0) {#if isModalOpen}
     function create_if_block_6(ctx) {
     	let modalcard;
     	let updating_modalPayload;
     	let current;
 
     	function modalcard_modalPayload_binding(value) {
-    		/*modalcard_modalPayload_binding*/ ctx[26](value);
+    		/*modalcard_modalPayload_binding*/ ctx[28](value);
     	}
 
     	let modalcard_props = {};
@@ -87386,14 +88125,14 @@ var app = (function () {
     		block,
     		id: create_if_block_6.name,
     		type: "if",
-    		source: "(339:0) {#if isModalOpen}",
+    		source: "(379:0) {#if isModalOpen}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (356:31) 
+    // (396:31) 
     function create_if_block_5(ctx) {
     	let video;
     	let updating_selectedVideoFile;
@@ -87403,7 +88142,7 @@ var app = (function () {
     	let current;
 
     	function video_selectedVideoFile_binding(value) {
-    		/*video_selectedVideoFile_binding*/ ctx[33](value);
+    		/*video_selectedVideoFile_binding*/ ctx[35](value);
     	}
 
     	let video_props = {};
@@ -87416,10 +88155,12 @@ var app = (function () {
     	binding_callbacks.push(() => bind$2(video, 'selectedVideoFile', video_selectedVideoFile_binding));
 
     	function speedchart_selectedGPSData_binding(value) {
-    		/*speedchart_selectedGPSData_binding*/ ctx[34](value);
+    		/*speedchart_selectedGPSData_binding*/ ctx[36](value);
     	}
 
-    	let speedchart_props = {};
+    	let speedchart_props = {
+    		setGPSDataWithSelectedData: /*setGPSDataWithSelectedData*/ ctx[24]
+    	};
 
     	if (/*selectedGPSData*/ ctx[18] !== void 0) {
     		speedchart_props.selectedGPSData = /*selectedGPSData*/ ctx[18];
@@ -87482,14 +88223,14 @@ var app = (function () {
     		block,
     		id: create_if_block_5.name,
     		type: "if",
-    		source: "(356:31) ",
+    		source: "(396:31) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (353:31) 
+    // (393:31) 
     function create_if_block_4(ctx) {
     	let tableview;
     	let updating_selectedFirebaseGPSData;
@@ -87499,23 +88240,25 @@ var app = (function () {
     	let current;
 
     	function tableview_selectedFirebaseGPSData_binding(value) {
-    		/*tableview_selectedFirebaseGPSData_binding*/ ctx[31](value);
+    		/*tableview_selectedFirebaseGPSData_binding*/ ctx[33](value);
     	}
 
     	let tableview_props = {
     		openModel: /*openModel*/ ctx[21],
-    		deleteFirebaseElement: /*deleteFirebaseElement*/ ctx[22]
+    		deleteFirebaseElement: /*deleteFirebaseElement*/ ctx[22],
+    		setGPSDataWithSelectedData: /*setGPSDataWithSelectedData*/ ctx[24],
+    		focusOnSelectedGPSData: /*focusOnSelectedGPSData*/ ctx[25]
     	};
 
-    	if (/*selectedFirebaseGPSData*/ ctx[14] !== void 0) {
-    		tableview_props.selectedFirebaseGPSData = /*selectedFirebaseGPSData*/ ctx[14];
+    	if (/*selectedFirebaseGPSData*/ ctx[16] !== void 0) {
+    		tableview_props.selectedFirebaseGPSData = /*selectedFirebaseGPSData*/ ctx[16];
     	}
 
     	tableview = new TableView({ props: tableview_props, $$inline: true });
     	binding_callbacks.push(() => bind$2(tableview, 'selectedFirebaseGPSData', tableview_selectedFirebaseGPSData_binding));
 
     	function searchdetails_dateTimeDictionary_binding(value) {
-    		/*searchdetails_dateTimeDictionary_binding*/ ctx[32](value);
+    		/*searchdetails_dateTimeDictionary_binding*/ ctx[34](value);
     	}
 
     	let searchdetails_props = {
@@ -87548,9 +88291,9 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			const tableview_changes = {};
 
-    			if (!updating_selectedFirebaseGPSData && dirty[0] & /*selectedFirebaseGPSData*/ 16384) {
+    			if (!updating_selectedFirebaseGPSData && dirty[0] & /*selectedFirebaseGPSData*/ 65536) {
     				updating_selectedFirebaseGPSData = true;
-    				tableview_changes.selectedFirebaseGPSData = /*selectedFirebaseGPSData*/ ctx[14];
+    				tableview_changes.selectedFirebaseGPSData = /*selectedFirebaseGPSData*/ ctx[16];
     				add_flush_callback(() => updating_selectedFirebaseGPSData = false);
     			}
 
@@ -87587,21 +88330,21 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(353:31) ",
+    		source: "(393:31) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (351:2) {#if selectedMenu === 0}
+    // (391:2) {#if selectedMenu === 0}
     function create_if_block_3(ctx) {
     	let profile;
     	let updating_user;
     	let current;
 
     	function profile_user_binding(value) {
-    		/*profile_user_binding*/ ctx[30](value);
+    		/*profile_user_binding*/ ctx[32](value);
     	}
 
     	let profile_props = { signOut: /*signOut*/ ctx[1] };
@@ -87651,14 +88394,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(351:2) {#if selectedMenu === 0}",
+    		source: "(391:2) {#if selectedMenu === 0}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (364:2) {#if isLoading === true}
+    // (404:2) {#if isLoading === true}
     function create_if_block_2(ctx) {
     	let maploadingspinner;
     	let current;
@@ -87690,14 +88433,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(364:2) {#if isLoading === true}",
+    		source: "(404:2) {#if isLoading === true}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (367:2) {#if isError === true}
+    // (407:2) {#if isError === true}
     function create_if_block_1(ctx) {
     	let maperror;
     	let current;
@@ -87729,14 +88472,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(367:2) {#if isError === true}",
+    		source: "(407:2) {#if isError === true}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (382:1) {:else}
+    // (422:1) {:else}
     function create_else_block$1(ctx) {
     	let div2;
     	let section;
@@ -87756,16 +88499,16 @@ var app = (function () {
     			div0 = element("div");
     			div0.textContent = "No Recordings Found";
     			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file$1, 385, 5, 12980);
+    			add_location(p, file$1, 425, 5, 14198);
     			attr_dev(div0, "class", "alert alert-red my-1");
     			attr_dev(div0, "role", "alert");
-    			add_location(div0, file$1, 386, 5, 13028);
+    			add_location(div0, file$1, 426, 5, 14246);
     			attr_dev(div1, "class", "p-4");
-    			add_location(div1, file$1, 384, 4, 12956);
+    			add_location(div1, file$1, 424, 4, 14174);
     			attr_dev(section, "class", "card h-fit scale-in-center");
-    			add_location(section, file$1, 383, 3, 12906);
+    			add_location(section, file$1, 423, 3, 14124);
     			attr_dev(div2, "class", "col-span-1 md:col-span-3");
-    			add_location(div2, file$1, 382, 2, 12863);
+    			add_location(div2, file$1, 422, 2, 14081);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -87787,14 +88530,14 @@ var app = (function () {
     		block,
     		id: create_else_block$1.name,
     		type: "else",
-    		source: "(382:1) {:else}",
+    		source: "(422:1) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (378:1) {#if files.length}
+    // (418:1) {#if files.length}
     function create_if_block$2(ctx) {
     	let div;
     	let recordingstable;
@@ -87802,18 +88545,18 @@ var app = (function () {
     	let current;
 
     	function recordingstable_files_binding(value) {
-    		/*recordingstable_files_binding*/ ctx[45](value);
+    		/*recordingstable_files_binding*/ ctx[47](value);
     	}
 
     	let recordingstable_props = {
     		openModel: /*openModel*/ ctx[21],
-    		deleteDriveFile: /*deleteDriveFile*/ ctx[24],
-    		startMachineLearning: /*startMachineLearning*/ ctx[25],
+    		deleteDriveFile: /*deleteDriveFile*/ ctx[26],
+    		startMachineLearning: /*startMachineLearning*/ ctx[27],
     		fetchGPSDataForFile: /*fetchGPSDataForFile*/ ctx[23]
     	};
 
-    	if (/*files*/ ctx[16] !== void 0) {
-    		recordingstable_props.files = /*files*/ ctx[16];
+    	if (/*files*/ ctx[15] !== void 0) {
+    		recordingstable_props.files = /*files*/ ctx[15];
     	}
 
     	recordingstable = new RecordingsTable({
@@ -87828,7 +88571,7 @@ var app = (function () {
     			div = element("div");
     			create_component(recordingstable.$$.fragment);
     			attr_dev(div, "class", "col-span-1 md:col-span-12");
-    			add_location(div, file$1, 378, 2, 12690);
+    			add_location(div, file$1, 418, 2, 13908);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -87838,9 +88581,9 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			const recordingstable_changes = {};
 
-    			if (!updating_files && dirty[0] & /*files*/ 65536) {
+    			if (!updating_files && dirty[0] & /*files*/ 32768) {
     				updating_files = true;
-    				recordingstable_changes.files = /*files*/ ctx[16];
+    				recordingstable_changes.files = /*files*/ ctx[15];
     				add_flush_callback(() => updating_files = false);
     			}
 
@@ -87865,7 +88608,7 @@ var app = (function () {
     		block,
     		id: create_if_block$2.name,
     		type: "if",
-    		source: "(378:1) {#if files.length}",
+    		source: "(418:1) {#if files.length}",
     		ctx
     	});
 
@@ -87938,11 +88681,11 @@ var app = (function () {
     		});
 
     	function menubar_selectedMenu_binding(value) {
-    		/*menubar_selectedMenu_binding*/ ctx[27](value);
+    		/*menubar_selectedMenu_binding*/ ctx[29](value);
     	}
 
     	function menubar_menuComponents_binding(value) {
-    		/*menubar_menuComponents_binding*/ ctx[28](value);
+    		/*menubar_menuComponents_binding*/ ctx[30](value);
     	}
 
     	let menubar_props = {};
@@ -87960,7 +88703,7 @@ var app = (function () {
     	binding_callbacks.push(() => bind$2(menubar, 'menuComponents', menubar_menuComponents_binding));
 
     	function layers_layerList_binding(value) {
-    		/*layers_layerList_binding*/ ctx[29](value);
+    		/*layers_layerList_binding*/ ctx[31](value);
     	}
 
     	let layers_props = {};
@@ -87986,31 +88729,31 @@ var app = (function () {
     	}
 
     	function map_cityDetails_binding(value) {
-    		/*map_cityDetails_binding*/ ctx[35](value);
+    		/*map_cityDetails_binding*/ ctx[37](value);
     	}
 
     	function map_gpsData_binding(value) {
-    		/*map_gpsData_binding*/ ctx[36](value);
+    		/*map_gpsData_binding*/ ctx[38](value);
     	}
 
     	function map_isReadyForStyleSwitching_binding(value) {
-    		/*map_isReadyForStyleSwitching_binding*/ ctx[37](value);
+    		/*map_isReadyForStyleSwitching_binding*/ ctx[39](value);
     	}
 
     	function map_layerList_binding(value) {
-    		/*map_layerList_binding*/ ctx[38](value);
+    		/*map_layerList_binding*/ ctx[40](value);
     	}
 
     	function map_mapStyle_binding(value) {
-    		/*map_mapStyle_binding*/ ctx[39](value);
+    		/*map_mapStyle_binding*/ ctx[41](value);
     	}
 
     	function map_pointOfInterest_binding(value) {
-    		/*map_pointOfInterest_binding*/ ctx[40](value);
+    		/*map_pointOfInterest_binding*/ ctx[42](value);
     	}
 
     	function map_selectedMenu_binding(value) {
-    		/*map_selectedMenu_binding*/ ctx[41](value);
+    		/*map_selectedMenu_binding*/ ctx[43](value);
     	}
 
     	let map_props = {};
@@ -88019,8 +88762,8 @@ var app = (function () {
     		map_props.cityDetails = /*cityDetails*/ ctx[9];
     	}
 
-    	if (/*gpsData*/ ctx[15] !== void 0) {
-    		map_props.gpsData = /*gpsData*/ ctx[15];
+    	if (/*gpsData*/ ctx[14] !== void 0) {
+    		map_props.gpsData = /*gpsData*/ ctx[14];
     	}
 
     	if (/*isReadyForStyleSwitching*/ ctx[4] !== void 0) {
@@ -88053,11 +88796,11 @@ var app = (function () {
     	binding_callbacks.push(() => bind$2(map, 'selectedMenu', map_selectedMenu_binding));
 
     	function mapstyleselector_mapStyle_binding(value) {
-    		/*mapstyleselector_mapStyle_binding*/ ctx[42](value);
+    		/*mapstyleselector_mapStyle_binding*/ ctx[44](value);
     	}
 
     	function mapstyleselector_isReadyForStyleSwitching_binding(value) {
-    		/*mapstyleselector_isReadyForStyleSwitching_binding*/ ctx[43](value);
+    		/*mapstyleselector_isReadyForStyleSwitching_binding*/ ctx[45](value);
     	}
 
     	let mapstyleselector_props = {};
@@ -88097,7 +88840,7 @@ var app = (function () {
     		});
 
     	function recordingsmenubar_functionComponents_binding(value) {
-    		/*recordingsmenubar_functionComponents_binding*/ ctx[44](value);
+    		/*recordingsmenubar_functionComponents_binding*/ ctx[46](value);
     	}
 
     	let recordingsmenubar_props = {};
@@ -88116,7 +88859,7 @@ var app = (function () {
     	const if_blocks_1 = [];
 
     	function select_block_type_1(ctx, dirty) {
-    		if (/*files*/ ctx[16].length) return 0;
+    		if (/*files*/ ctx[15].length) return 0;
     		return 1;
     	}
 
@@ -88160,13 +88903,13 @@ var app = (function () {
     			t13 = space();
     			create_component(footer.$$.fragment);
     			attr_dev(div0, "class", `col-span-1 lg:col-span-6 flex flex-col gap-4`);
-    			add_location(div0, file$1, 348, 1, 11496);
+    			add_location(div0, file$1, 388, 1, 12631);
     			attr_dev(div1, "class", "col-span-1 md:col-span-6 row-span-6 relative");
-    			add_location(div1, file$1, 360, 1, 11962);
+    			add_location(div1, file$1, 400, 1, 13180);
     			attr_dev(main, "class", "grid grid-cols-1 gap-4 lg:grid-cols-12 my-4 px-4");
-    			add_location(main, file$1, 347, 0, 11430);
+    			add_location(main, file$1, 387, 0, 12565);
     			attr_dev(section, "class", "grid grid-cols-1 gap-4 lg:grid-cols-12 my-4 px-4");
-    			add_location(section, file$1, 376, 0, 12599);
+    			add_location(section, file$1, 416, 0, 13817);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -88302,9 +89045,9 @@ var app = (function () {
     				add_flush_callback(() => updating_cityDetails = false);
     			}
 
-    			if (!updating_gpsData && dirty[0] & /*gpsData*/ 32768) {
+    			if (!updating_gpsData && dirty[0] & /*gpsData*/ 16384) {
     				updating_gpsData = true;
-    				map_changes.gpsData = /*gpsData*/ ctx[15];
+    				map_changes.gpsData = /*gpsData*/ ctx[14];
     				add_flush_callback(() => updating_gpsData = false);
     			}
 
@@ -88624,12 +89367,12 @@ var app = (function () {
     	let selectedMenu = menuComponents[0].id;
     	let isLoading = false;
     	let isError = false;
-    	let selectedFirebaseGPSData = [];
     	let gpsData = [];
     	let accessTokenValue = getSessionStorageWithExpiry$1("AccessToken");
     	let files = getLocalStorageWithExpiry("GoogleFiles");
-    	let selectedVideoFile = null;
-    	let selectedGPSData = null;
+    	let selectedFirebaseGPSData = getLocalStorageWithExpiry("FirebaseData");
+    	let selectedVideoFile = getSessionStorageWithExpiry$1("VideoFile");
+    	let selectedGPSData = getLocalStorageWithExpiry('SelectedTrip');
 
     	const updateMapCenter = coordinates => {
     		$$invalidate(9, cityDetails = {
@@ -88648,9 +89391,10 @@ var app = (function () {
 
     		if (response.status === 200) {
     			if (response.data.length) {
-    				$$invalidate(15, gpsData = gpsJsonToGeojson(response.data));
+    				$$invalidate(14, gpsData = gpsJsonToGeojson(response.data));
+    				$$invalidate(16, selectedFirebaseGPSData = gpsData);
     				updateMapCenter(gpsData[0].features[0].geometry.coordinates);
-    				$$invalidate(14, selectedFirebaseGPSData = gpsData);
+    				setLocalStorageWithExpiry("FirebaseData", selectedFirebaseGPSData);
     				console.log("Successfully loaded Firebase Data");
     			} else {
     				console.log("No GPS data found");
@@ -88697,12 +89441,11 @@ var app = (function () {
     		if (response.status === 200) {
     			let tempGPSData = selectedFirebaseGPSData;
     			tempGPSData = tempGPSData.filter(obj => obj.dataId !== documentId);
-    			$$invalidate(15, gpsData = tempGPSData);
+    			$$invalidate(14, gpsData = tempGPSData);
+    			$$invalidate(16, selectedFirebaseGPSData = gpsData);
     			updateMapCenter(gpsData[0].features[0].geometry.coordinates);
-    			$$invalidate(14, selectedFirebaseGPSData = gpsData);
     			console.log("Successfully Deleted GPS Data");
     		} else {
-    			console.log(response);
     			console.log(response);
     			$$invalidate(13, isError = true);
     		}
@@ -88717,54 +89460,13 @@ var app = (function () {
     		}
     	};
 
-    	const fetchGPSDataForFile = async videoFile => {
-    		$$invalidate(12, isLoading = true);
-    		$$invalidate(13, isError = false);
-
-    		//* Check permissions
-    		const hasPermissions = videoFile.permissionIds.includes("anyoneWithLink");
-
-    		if (!hasPermissions) {
-    			//* Set the permissions
-    			const verifyResponse = await verifyAndAddPermissions(accessTokenValue, videoFile.id);
-
-    			if (verifyResponse.status === 200) ;
-    		} else {
-    			//Check if coords file exists
-    			const coordFile = getGoogleDriveCoordFile(videoFile, files);
-
-    			if (coordFile) {
-    				const response = await fetchGPSDataFromGoogleDrive(user, coordFile);
-
-    				if (response.status === 200) {
-    					$$invalidate(15, gpsData = gpsJsonToGeojson([response.data]));
-    					updateMapCenter(gpsData[0].features[0].geometry.coordinates);
-    					$$invalidate(18, selectedGPSData = gpsData[0]);
-    				} else {
-    					$$invalidate(13, isError = true);
-    					console.log(response);
-    				}
-    			} else {
-    				$$invalidate(18, selectedGPSData = null);
-    				$$invalidate(15, gpsData = []);
-    				console.log("Coordinates File does not exist, but you can still view the video");
-    			}
-
-    			$$invalidate(17, selectedVideoFile = videoFile);
-    			$$invalidate(11, selectedMenu = 2);
-    			goTop();
-    		}
-
-    		$$invalidate(12, isLoading = false);
-    	};
-
     	const getDriveFiles = async () => {
     		await verifyAccessToken();
     		const response = await getDashcamVideos(accessTokenValue);
 
     		if (response.status === 200) {
     			if (response.data.files.length) {
-    				$$invalidate(16, files = response.data.files);
+    				$$invalidate(15, files = response.data.files);
     				setLocalStorageWithExpiry("GoogleFiles", response.data.files);
     				console.log("Found Dashcam Files");
     			} else {
@@ -88775,13 +89477,88 @@ var app = (function () {
     		}
     	};
 
+    	const fetchGPSDataForFile = async videoFile => {
+    		$$invalidate(12, isLoading = true);
+    		$$invalidate(13, isError = false);
+
+    		//* Check permissions
+    		let fetchNewFiles = false;
+
+    		let coordHasPermissions = false;
+    		let videoHasPermissions = videoFile.permissionIds.includes("anyoneWithLink");
+    		const coordFile = getGoogleDriveCoordFile(videoFile, files);
+
+    		if (coordFile) {
+    			coordHasPermissions = coordFile.permissionIds.includes("anyoneWithLink");
+
+    			if (!coordHasPermissions) {
+    				const verifyResponse = await verifyAndAddPermissions(accessTokenValue, coordFile.id);
+
+    				if (verifyResponse.status === 200) {
+    					coordHasPermissions = true;
+    					fetchNewFiles = true;
+    				}
+    			}
+    		} else {
+    			console.log("Unable to set permissions for coordinates file");
+    		}
+
+    		if (!videoHasPermissions) {
+    			const verifyResponse = await verifyAndAddPermissions(accessTokenValue, videoFile.id);
+
+    			if (verifyResponse.status === 200) {
+    				videoHasPermissions = true;
+    				fetchNewFiles = true;
+    			}
+    		}
+
+    		if (fetchNewFiles) {
+    			await getDriveFiles();
+    		}
+
+    		if (videoHasPermissions || coordHasPermissions) {
+    			if (coordFile) {
+    				const response = await fetchGPSDataFromGoogleDrive(user, coordFile);
+
+    				if (response.status === 200) {
+    					$$invalidate(14, gpsData = gpsJsonToGeojson([response.data]));
+    					updateMapCenter(gpsData[0].features[0].geometry.coordinates);
+    					$$invalidate(18, selectedGPSData = [gpsData[0]]);
+    				} else {
+    					$$invalidate(13, isError = true);
+    					console.log(response);
+    				}
+    			} else {
+    				$$invalidate(14, gpsData = []);
+    				$$invalidate(18, selectedGPSData = []);
+    			}
+
+    			$$invalidate(17, selectedVideoFile = videoFile);
+    			$$invalidate(11, selectedMenu = 2);
+    			setSessionStorageWithExpiry$1('VideoFile', selectedVideoFile);
+    			setLocalStorageWithExpiry('SelectedTrip', selectedGPSData);
+    			goTop();
+    		}
+
+    		$$invalidate(12, isLoading = false);
+    	};
+
     	const checkAndSetFiles = () => {
     		if (!files.length) {
-    			$$invalidate(16, files = getDriveFiles());
+    			$$invalidate(15, files = getDriveFiles());
     		}
     	};
 
     	checkAndSetFiles();
+
+    	const setGPSDataWithSelectedData = tempAllData => {
+    		$$invalidate(14, gpsData = tempAllData);
+    		updateMapCenter(tempAllData[0].features[0].geometry.coordinates);
+    	};
+
+    	const focusOnSelectedGPSData = tempSelectedGPSData => {
+    		updateMapCenter(tempSelectedGPSData.features[0].geometry.coordinates);
+    	};
 
     	const deleteDriveFile = async videoFile => {
     		await verifyAccessToken();
@@ -88803,7 +89580,7 @@ var app = (function () {
 
     		if (response.status === 204) {
     			tempList = tempList.filter(item => item.id !== videoFile.id);
-    			$$invalidate(16, files = tempList);
+    			$$invalidate(15, files = tempList);
     			setLocalStorageWithExpiry("GoogleFiles", tempList);
 
     			if (selectedVideoFile) {
@@ -88839,35 +89616,35 @@ var app = (function () {
     	const sortBySizeASC = () => {
     		const tempList = files;
     		const sortedArray = sortBySizeSmallToLarge(tempList);
-    		$$invalidate(16, files = sortedArray);
+    		$$invalidate(15, files = sortedArray);
     	};
 
     	//* Sort the videos and reset the initial video list
     	const sortBySizeDSC = () => {
     		const tempList = files;
     		const sortedArray = sortBySizeLargeToSmall(tempList);
-    		$$invalidate(16, files = sortedArray);
+    		$$invalidate(15, files = sortedArray);
     	};
 
     	//* Sort the videos and reset the initial video list
     	const sortByTimeASC = () => {
     		const tempList = files;
     		const sortedArray = sortByTimeOldestToRecent(tempList);
-    		$$invalidate(16, files = sortedArray);
+    		$$invalidate(15, files = sortedArray);
     	};
 
     	//* Sort the videos and reset the initial video list
     	const sortByTimeDSC = () => {
     		const tempList = files;
     		const sortedArray = sortByTimeRecentToOldest(tempList);
-    		$$invalidate(16, files = sortedArray);
+    		$$invalidate(15, files = sortedArray);
     	};
 
     	//* To reset the video list, use the sortByTimeRecentToOldest function
     	const resetVideoList = () => {
     		const tempList = files;
     		const sortedArray = sortByTimeRecentToOldest(tempList);
-    		$$invalidate(16, files = sortedArray);
+    		$$invalidate(15, files = sortedArray);
     	};
 
     	let functionComponents = [
@@ -88942,7 +89719,7 @@ var app = (function () {
 
     	function tableview_selectedFirebaseGPSData_binding(value) {
     		selectedFirebaseGPSData = value;
-    		$$invalidate(14, selectedFirebaseGPSData);
+    		$$invalidate(16, selectedFirebaseGPSData);
     	}
 
     	function searchdetails_dateTimeDictionary_binding(value) {
@@ -88967,7 +89744,7 @@ var app = (function () {
 
     	function map_gpsData_binding(value) {
     		gpsData = value;
-    		$$invalidate(15, gpsData);
+    		$$invalidate(14, gpsData);
     	}
 
     	function map_isReadyForStyleSwitching_binding(value) {
@@ -89012,7 +89789,7 @@ var app = (function () {
 
     	function recordingstable_files_binding(value) {
     		files = value;
-    		$$invalidate(16, files);
+    		$$invalidate(15, files);
     	}
 
     	$$self.$$set = $$props => {
@@ -89046,6 +89823,7 @@ var app = (function () {
     		getDashcamVideos,
     		deleteGoogleDriveFile,
     		verifyAndAddPermissions,
+    		getGoogleDriveFile,
     		sortBySizeSmallToLarge,
     		sortBySizeLargeToSmall,
     		sortByTimeRecentToOldest,
@@ -89066,7 +89844,6 @@ var app = (function () {
     		selectedMenu,
     		isLoading,
     		isError,
-    		selectedFirebaseGPSData,
     		setSessionStorageWithExpiry: setSessionStorageWithExpiry$1,
     		getSessionStorageWithExpiry: getSessionStorageWithExpiry$1,
     		setLocalStorageWithExpiry,
@@ -89074,6 +89851,7 @@ var app = (function () {
     		gpsData,
     		accessTokenValue,
     		files,
+    		selectedFirebaseGPSData,
     		selectedVideoFile,
     		selectedGPSData,
     		updateMapCenter,
@@ -89083,9 +89861,11 @@ var app = (function () {
     		deleteFirebaseElement,
     		verifyAccessToken,
     		goTop,
-    		fetchGPSDataForFile,
     		getDriveFiles,
+    		fetchGPSDataForFile,
     		checkAndSetFiles,
+    		setGPSDataWithSelectedData,
+    		focusOnSelectedGPSData,
     		deleteDriveFile,
     		startMachineLearning,
     		sortBySizeASC,
@@ -89111,10 +89891,10 @@ var app = (function () {
     		if ('selectedMenu' in $$props) $$invalidate(11, selectedMenu = $$props.selectedMenu);
     		if ('isLoading' in $$props) $$invalidate(12, isLoading = $$props.isLoading);
     		if ('isError' in $$props) $$invalidate(13, isError = $$props.isError);
-    		if ('selectedFirebaseGPSData' in $$props) $$invalidate(14, selectedFirebaseGPSData = $$props.selectedFirebaseGPSData);
-    		if ('gpsData' in $$props) $$invalidate(15, gpsData = $$props.gpsData);
+    		if ('gpsData' in $$props) $$invalidate(14, gpsData = $$props.gpsData);
     		if ('accessTokenValue' in $$props) accessTokenValue = $$props.accessTokenValue;
-    		if ('files' in $$props) $$invalidate(16, files = $$props.files);
+    		if ('files' in $$props) $$invalidate(15, files = $$props.files);
+    		if ('selectedFirebaseGPSData' in $$props) $$invalidate(16, selectedFirebaseGPSData = $$props.selectedFirebaseGPSData);
     		if ('selectedVideoFile' in $$props) $$invalidate(17, selectedVideoFile = $$props.selectedVideoFile);
     		if ('selectedGPSData' in $$props) $$invalidate(18, selectedGPSData = $$props.selectedGPSData);
     		if ('functionComponents' in $$props) $$invalidate(19, functionComponents = $$props.functionComponents);
@@ -89139,9 +89919,9 @@ var app = (function () {
     		selectedMenu,
     		isLoading,
     		isError,
-    		selectedFirebaseGPSData,
     		gpsData,
     		files,
+    		selectedFirebaseGPSData,
     		selectedVideoFile,
     		selectedGPSData,
     		functionComponents,
@@ -89149,6 +89929,8 @@ var app = (function () {
     		openModel,
     		deleteFirebaseElement,
     		fetchGPSDataForFile,
+    		setGPSDataWithSelectedData,
+    		focusOnSelectedGPSData,
     		deleteDriveFile,
     		startMachineLearning,
     		modalcard_modalPayload_binding,

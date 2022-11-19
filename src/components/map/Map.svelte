@@ -262,7 +262,6 @@
 			tempLayerList = tempLayerList.filter((obj) => obj.layerName === '3D-Buildings');
 			layerList = tempLayerList
 
-			console.log(layerList);
 			gpsData.forEach(function (gpsElement) {
 				const dataName = gpsElement.dataName;
 				const dataSourceName = `${dataName}Source`;

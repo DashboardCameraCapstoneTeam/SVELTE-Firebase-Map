@@ -98,6 +98,14 @@ h6 {
   background-color: var(--success-color-hover);
 }
 
+.text-error{
+  color: var(--error-color);
+}
+
+.text-green{
+  color: var(--success-color)
+}
+
 .date-picker{
   display: block; 
   margin: 0; 

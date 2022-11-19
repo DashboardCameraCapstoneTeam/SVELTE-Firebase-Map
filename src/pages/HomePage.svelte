@@ -19,7 +19,7 @@
 	import ModalCard from "components/ModalCard.svelte";
 	import MapLoadingSpinner from "components/map/MapLoadingSpinner.svelte";
 	import MapError from "components/map/MapError.svelte";
-	import { getDashcamVideos, deleteGoogleDriveFile, verifyAndAddPermissions } from "service/google-drive";
+	import { getDashcamVideos, deleteGoogleDriveFile, verifyAndAddPermissions, getGoogleDriveFile } from "service/google-drive";
 
 	import { sortBySizeSmallToLarge, sortBySizeLargeToSmall, sortByTimeRecentToOldest, sortByTimeOldestToRecent } from "utils/sorting-video-assets";
 	import RecordingsMenuBar from "components/recordings/RecordingsMenuBar.svelte";
@@ -61,8 +61,7 @@
 	let selectedMenu = menuComponents[0].id;
 	let isLoading = false;
 	let isError = false;
-	let selectedFirebaseGPSData = [];
-
+	
 	function setSessionStorageWithExpiry(key, value) {
 		const now = new Date();
 		const item = {
@@ -111,8 +110,10 @@
 	let gpsData = [];
 	let accessTokenValue = getSessionStorageWithExpiry("AccessToken");
 	let files = getLocalStorageWithExpiry("GoogleFiles");
-	let selectedVideoFile = null;
-	let selectedGPSData = null;
+	let selectedFirebaseGPSData = getLocalStorageWithExpiry("FirebaseData");
+
+	let selectedVideoFile = getSessionStorageWithExpiry("VideoFile");
+	let selectedGPSData = getLocalStorageWithExpiry('SelectedTrip')
 
 	const updateMapCenter = (coordinates) => {
 		cityDetails = {
@@ -131,8 +132,9 @@
 		if (response.status === 200) {
 			if (response.data.length) {
 				gpsData = gpsJsonToGeojson(response.data);
-				updateMapCenter(gpsData[0].features[0].geometry.coordinates);
 				selectedFirebaseGPSData = gpsData;
+				updateMapCenter(gpsData[0].features[0].geometry.coordinates);
+				setLocalStorageWithExpiry("FirebaseData", selectedFirebaseGPSData);
 				console.log("Successfully loaded Firebase Data");
 			} else {
 				console.log("No GPS data found");
@@ -167,17 +169,19 @@
 		};
 		isModalOpen = true;
 	};
+
+
+
 	const deleteFirebaseElement = async (documentId) => {
 		const response = await deleteDocumentFromFirebase(user, documentId);
 		if (response.status === 200) {
 			let tempGPSData = selectedFirebaseGPSData;
 			tempGPSData = tempGPSData.filter((obj) => obj.dataId !== documentId);
 			gpsData = tempGPSData;
-			updateMapCenter(gpsData[0].features[0].geometry.coordinates);
 			selectedFirebaseGPSData = gpsData;
+			updateMapCenter(gpsData[0].features[0].geometry.coordinates);
 			console.log("Successfully Deleted GPS Data");
 		} else {
-			console.log(response);
 			console.log(response);
 			isError = true;
 		}
@@ -193,43 +197,6 @@
 	function goTop() {
 		document.body.scrollIntoView();
 	}
-	const fetchGPSDataForFile = async (videoFile) => {
-		isLoading = true;
-		isError = false;
-
-		//* Check permissions
-		const hasPermissions = videoFile.permissionIds.includes("anyoneWithLink");
-		if (!hasPermissions) {
-			//* Set the permissions
-			const verifyResponse = await verifyAndAddPermissions(accessTokenValue, videoFile.id);
-			if (verifyResponse.status === 200) {
-				
-			}
-		} else {
-			//Check if coords file exists
-			const coordFile = getGoogleDriveCoordFile(videoFile, files);
-			if (coordFile) {
-				const response = await fetchGPSDataFromGoogleDrive(user, coordFile);
-				if (response.status === 200) {
-					gpsData = gpsJsonToGeojson([response.data]);
-					updateMapCenter(gpsData[0].features[0].geometry.coordinates);
-					selectedGPSData = gpsData[0];
-				} else {
-					isError = true;
-					console.log(response);
-				}
-			} else {
-				selectedGPSData = null;
-				gpsData = [];
-				console.log("Coordinates File does not exist, but you can still view the video");
-			}
-
-			selectedVideoFile = videoFile;
-			selectedMenu = 2;
-			goTop();
-		}
-		isLoading = false;
-	};
 
 	const getDriveFiles = async () => {
 		await verifyAccessToken();
@@ -247,12 +214,85 @@
 		}
 	};
 
+	const fetchGPSDataForFile = async (videoFile) => {
+		isLoading = true;
+		isError = false;
+
+		//* Check permissions
+		let fetchNewFiles = false;
+		let coordHasPermissions = false;
+		let videoHasPermissions = videoFile.permissionIds.includes("anyoneWithLink");
+
+		const coordFile = getGoogleDriveCoordFile(videoFile, files);
+		if (coordFile) {
+			coordHasPermissions = coordFile.permissionIds.includes("anyoneWithLink");
+			if (!coordHasPermissions) {
+				const verifyResponse = await verifyAndAddPermissions(accessTokenValue, coordFile.id);
+				if (verifyResponse.status === 200) {
+					coordHasPermissions = true;
+					fetchNewFiles = true;
+				}
+			}
+		} else {
+			console.log("Unable to set permissions for coordinates file");
+		}
+
+		if (!videoHasPermissions) {
+			const verifyResponse = await verifyAndAddPermissions(accessTokenValue, videoFile.id);
+			if (verifyResponse.status === 200) {
+				videoHasPermissions = true;
+				fetchNewFiles = true;
+			}
+		}
+
+		if (fetchNewFiles) {
+			await getDriveFiles();
+		}
+
+		if (videoHasPermissions || coordHasPermissions) {
+			if (coordFile) {
+				const response = await fetchGPSDataFromGoogleDrive(user, coordFile);
+				if (response.status === 200) {
+					gpsData = gpsJsonToGeojson([response.data]);
+					updateMapCenter(gpsData[0].features[0].geometry.coordinates);
+					selectedGPSData = [gpsData[0]];
+					
+				} else {
+					isError = true;
+					console.log(response);
+				}
+			}
+			else{
+				gpsData = [];
+				selectedGPSData = [];
+			}
+
+			selectedVideoFile = videoFile;
+			selectedMenu = 2;
+			setSessionStorageWithExpiry('VideoFile', selectedVideoFile);
+			setLocalStorageWithExpiry('SelectedTrip', selectedGPSData)
+			goTop();
+		}
+
+		isLoading = false;
+	};
+
 	const checkAndSetFiles = () => {
 		if (!files.length) {
 			files = getDriveFiles();
 		}
 	};
 	checkAndSetFiles();
+
+	const setGPSDataWithSelectedData = (tempAllData) =>{
+		gpsData = tempAllData;
+		updateMapCenter(tempAllData[0].features[0].geometry.coordinates);
+	}
+
+	const focusOnSelectedGPSData = (tempSelectedGPSData) =>{
+		updateMapCenter(tempSelectedGPSData.features[0].geometry.coordinates);
+	}
+
 
 	const deleteDriveFile = async (videoFile) => {
 		await verifyAccessToken();
@@ -351,11 +391,11 @@ car's driving metrics on the screen as your video plays."
 		{#if selectedMenu === 0}
 			<Profile bind:user {signOut} />
 		{:else if selectedMenu === 1}
-			<TableView bind:selectedFirebaseGPSData {openModel} {deleteFirebaseElement} />
+			<TableView bind:selectedFirebaseGPSData {openModel} {deleteFirebaseElement} {setGPSDataWithSelectedData} {focusOnSelectedGPSData} />
 			<SearchDetails bind:dateTimeDictionary {fetchFirebaseData} />
 		{:else if selectedMenu === 2}
 			<Video bind:selectedVideoFile />
-			<SpeedChart bind:selectedGPSData />
+			<SpeedChart bind:selectedGPSData {setGPSDataWithSelectedData} />
 		{/if}
 	</div>
 	<div class="col-span-1 md:col-span-6  row-span-6 relative">

@@ -18,10 +18,10 @@ const getSpeed = (properties) => {
 export const gpsJsonToGeojson = (rawData) => {
   const geoJsonArray = [];
   rawData.forEach((rawGeoJsonFile) => {
-    const dataId = rawGeoJsonFile.dataId ? rawGeoJsonFile.dataId : null;
-    const dataName = rawGeoJsonFile.dataName ? rawGeoJsonFile.dataName : uuidv4();
+    const dataId = rawGeoJsonFile.dataId || null;
+    const dataName = rawGeoJsonFile.dataName || uuidv4();
     const dateTime = rawGeoJsonFile.dateTime ? convertDateTimeToString(rawGeoJsonFile.dateTime) : null;
-    const dataType = rawGeoJsonFile.dataType ? rawGeoJsonFile.dataType : rawGeoJsonFile.features[0].geometry.type;
+    const dataType = rawGeoJsonFile.dataType || rawGeoJsonFile.features[0].geometry.type;
     const hasFilter = !!rawGeoJsonFile.dataName; // If the name exists, that means we need to make a filter
 
     const geoJson = {
@@ -38,14 +38,17 @@ export const gpsJsonToGeojson = (rawData) => {
       let properties = {};
       if (point.properties === null) {
         properties = {
-          Id: point.properties.Id ? point.properties.Id : uuidv4(),
-          Item: point.properties.Item ? point.properties.Item : 'POI',
-          Count: point.properties.Count ? point.properties.Count : 1,
-          Color: point.properties['Color'] ? point.properties['Color'] : 'Green',
+          Id: `Firebase-${uuidv4()}`,
+          Item: 'POI',
+          Count: 1,
+          Color: 'Green',
         };
+      } else {
+        properties = point.properties;
+        properties['Speed'] = getSpeed(properties);
+        properties['Color'] = point.properties['Color'] || '#53a548';
       }
-      properties = point.properties;
-      properties['Speed'] = getSpeed(properties);
+
       const feature = {
         type: 'Feature',
         geometry: { type: point.geometry.type, coordinates: coordinate },
