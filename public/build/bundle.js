@@ -555,7 +555,7 @@ var app = (function () {
     const GOOGLE_QUERY_URL = 'https://www.googleapis.com/drive/v3/files?q=';
     const GOOGLE_FILE_URL = 'https://www.googleapis.com/drive/v3/files';
     const MACHINE_LEARNING_PROCESS_URL = 'http://127.0.0.1:8000/process';
-    const FETCH_GPS_DATA_URL = 'https://lit-headland-20478.herokuapp.com/fetchGPSData';
+    const FETCH_GPS_DATA_URL = 'https://geojson-utility-api.onrender.com/geojson/clean';
 
     const ABOUT_LIST = [
       {
@@ -40413,22 +40413,23 @@ var app = (function () {
 
     const fetchGPSDataFromGoogleDrive = async (user, coordFile) => {
       try {
-        const payload = {
-          key: 1,
+        const data = JSON.stringify({
           user_id: `${user.uid}`,
           coord_link: `https://drive.google.com/file/d/${coordFile.id}/view?usp=sharing`,
-        };
+        });
 
-        const promise = await axios({
+        const config = {
           method: 'post',
           url: FETCH_GPS_DATA_URL,
           headers: {
             'Content-Type': 'application/json',
           },
-          data: JSON.stringify(payload),
-        });
+          data,
+        };
+        const promise = await axios(config);
         return promise;
       } catch (error) {
+        console.log(error);
         if (error.response) {
           return error.response.status;
         } if (error.request) {

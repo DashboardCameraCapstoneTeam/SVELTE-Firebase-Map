@@ -31,22 +31,23 @@ export const processWithMachineLearning = async (user, videoFile, coordFile) => 
 
 export const fetchGPSDataFromGoogleDrive = async (user, coordFile) => {
   try {
-    const payload = {
-      key: 1,
+    const data = JSON.stringify({
       user_id: `${user.uid}`,
       coord_link: `https://drive.google.com/file/d/${coordFile.id}/view?usp=sharing`,
-    };
+    });
 
-    const promise = await axios({
-      method: 'get',
+    const config = {
+      method: 'post',
       url: FETCH_GPS_DATA_URL,
       headers: {
         'Content-Type': 'application/json',
       },
-      data: JSON.stringify(payload),
-    });
+      data,
+    };
+    const promise = await axios(config);
     return promise;
   } catch (error) {
+    console.log(error);
     if (error.response) {
       return error.response.status;
     } if (error.request) {
