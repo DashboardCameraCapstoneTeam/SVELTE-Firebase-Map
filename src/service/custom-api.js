@@ -38,7 +38,7 @@ export const fetchGPSDataFromGoogleDrive = async (user, coordFile) => {
     };
 
     const promise = await axios({
-      method: 'post',
+      method: 'get',
       url: FETCH_GPS_DATA_URL,
       headers: {
         'Content-Type': 'application/json',
