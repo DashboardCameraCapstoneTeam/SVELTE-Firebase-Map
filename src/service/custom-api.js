@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { MACHINE_LEARNING_PROCESS_URL, FETCH_GPS_DATA_URL } from '../constants';
+import { MACHINE_LEARNING_PROCESS_URL, FETCH_GPS_DATA_URL, FETCH_AND_SAVE_GPS_DATA_URL } from '../constants';
 
 export const processWithMachineLearning = async (user, videoFile, coordFile) => {
   try {
@@ -39,6 +39,34 @@ export const fetchGPSDataFromGoogleDrive = async (user, coordFile) => {
     const config = {
       method: 'post',
       url: FETCH_GPS_DATA_URL,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      data,
+    };
+    const promise = await axios(config);
+    return promise;
+  } catch (error) {
+    console.log(error);
+    if (error.response) {
+      return error.response.status;
+    } if (error.request) {
+      return error.request;
+    }
+    return error.message;
+  }
+};
+
+export const fetchAndSaveGPSDataFromGoogleDrive = async (user, coordFile) => {
+  try {
+    const data = JSON.stringify({
+      user_id: `${user.uid}`,
+      coord_link: `https://drive.google.com/file/d/${coordFile.id}/view?usp=sharing`,
+    });
+
+    const config = {
+      method: 'post',
+      url: FETCH_AND_SAVE_GPS_DATA_URL,
       headers: {
         'Content-Type': 'application/json',
       },

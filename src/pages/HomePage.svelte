@@ -9,7 +9,7 @@
 	import { googleSignIn } from "service/google-sign-in";
 	import Profile from "components/menu/Profile.svelte";
 	import { getGoogleDriveCoordFile } from "utils/filter-data.js";
-	import { processWithMachineLearning, fetchGPSDataFromGoogleDrive } from "service/custom-api";
+	import { processWithMachineLearning, fetchGPSDataFromGoogleDrive, fetchAndSaveGPSDataFromGoogleDrive } from "service/custom-api";
 	import PageHeader from "components/Navbar.svelte";
 	import AttentionBar from "components/AttentionBar.svelte";
 	import MenuBar from "components/menu/MenuBar.svelte";
@@ -214,7 +214,7 @@
 		}
 	};
 
-	const fetchGPSDataForFile = async (videoFile) => {
+	const fetchGPSDataForFile = async (videoFile, saveToFirebase = false) => {
 		isLoading = true;
 		isError = false;
 
@@ -251,7 +251,15 @@
 
 		if (videoHasPermissions || coordHasPermissions) {
 			if (coordFile) {
-				const response = await fetchGPSDataFromGoogleDrive(user, coordFile);
+
+				let response = {}
+				if(saveToFirebase){
+					response = await fetchAndSaveGPSDataFromGoogleDrive(user, coordFile);
+				}
+				else{
+					response = await fetchGPSDataFromGoogleDrive(user, coordFile);
+				}
+				
 				if (response.status === 200) {
 					gpsData = gpsJsonToGeojson([response.data]);
 					updateMapCenter(gpsData[0].features[0].geometry.coordinates);

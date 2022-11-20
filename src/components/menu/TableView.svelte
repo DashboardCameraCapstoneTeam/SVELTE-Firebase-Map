@@ -73,15 +73,15 @@
 								</div>
 							</td>
 							<td>
-								<div class="flex flex-row">
-									<button class={`card-btn btn-primary mx-1`} on:click={() => setGPSDataWithSelectedData([gpsElement])}>
+								<div class="flex flex-col">
+									<button class={`card-btn btn-primary my-1`} on:click={() => setGPSDataWithSelectedData([gpsElement])}>
 										<i class="fa-solid fa-eye" />
 										Add to Map
 									</button>
 
 									<button
 										on:click={() => openModel("Delete Firebase Element", "Do you want to delete the Firebase GPS Data?", "Delete GPS Data", deleteFirebaseElement, gpsElement.dataId)}
-										class={`card-btn btn-error-outline  `}><i class="fa-solid fa-trash " /> Delete</button
+										class={`card-btn btn-error-outline my-1 `}><i class="fa-solid fa-trash " /> Delete</button
 									>
 								</div>
 							</td>

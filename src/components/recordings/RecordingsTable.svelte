@@ -109,15 +109,22 @@
 							</td>
 
 							<td>
-								<div class="flex flex-row">
+								<div class="flex flex-col">
 									<a a href={videoFile.webViewLink} target="_blank" class={`card-btn btn-primary my-1`}>
 										<i class="fa-solid fa-eye" />
 										Watch
 									</a>
-									<button class={`card-btn btn-primary my-1 mx-1`} on:click={() => fetchGPSDataForFile(videoFile)}>
+									<button class={`card-btn btn-primary my-1`} on:click={() => fetchGPSDataForFile(videoFile, false)}>
 										<i class="fa-solid fa-share" />
 										Add to Map
 									</button>
+									{#if getGoogleDriveCoordFile(videoFile, files)}
+									<button class={`card-btn btn-primary-outline my-1`} on:click={() => fetchGPSDataForFile(videoFile, true)}>
+										<i class="fa-solid fa-share" />
+										Save GPS Data to Firebase
+									</button>
+
+									{/if}
 
 									<button
 										class={`card-btn btn-error-outline my-1`}

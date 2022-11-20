@@ -73,6 +73,18 @@ h6 {
   color: white;
   background-color: var(--error-color);
 }
+
+.btn-primary-outline{
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  transition: all 200ms;
+}
+
+.btn-primary-outline:hover{
+  color: white;
+  background-color: var(--primary-color);
+}
+
 .btn-black-outline {
   color: var(--dark);
   border: 2px solid var(--dark);
