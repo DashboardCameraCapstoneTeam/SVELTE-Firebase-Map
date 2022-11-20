@@ -1,23 +1,6 @@
 <script>
 	import { ABOUT_LIST, APPLICATION_TOOLS_LIST, DETAILS_LIST, PROGRAMMING_TOOLS } from "constants";
-
-	const returnLinkGivenIfStringContains = (toolString) => {
-		if (toolString.includes("streamlit")) {
-			return `icons/${toolString}-original.svg`;
-		}
-
-		if (toolString.includes("plain")) {
-			const tempString = toolString.replace("-plain", "");
-			return `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${tempString}/${tempString}-plain.svg`;
-		}
-
-		if (toolString.includes("wordmark")) {
-			const tempString = toolString.replace("-wordmark", "");
-			return `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${tempString}/${tempString}-wordmark.svg`;
-		}
-
-		return `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${toolString}/${toolString}-original.svg`;
-	};
+	import { returnLinkGivenIfStringContains } from "utils/devicon.js";
 </script>
 
 <hr />

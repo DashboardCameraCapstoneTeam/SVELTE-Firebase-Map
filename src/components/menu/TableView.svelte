@@ -6,7 +6,6 @@
 	export let openModel;
 	export let deleteFirebaseElement;
 	export let setGPSDataWithSelectedData;
-	export let focusOnSelectedGPSData;
 	const PROGRAMMING_TOOLS = ["firebase-plain"];
 
 	let firebaseDocuments = [];
@@ -50,11 +49,7 @@
 	<div class="p-4">
 		<p class="font-bold my-1">GPS Table View:</p>
 		{#if selectedFirebaseGPSData.length}
-
-		
-	
-
-		<hr class="my-2" />
+			<hr class="my-2" />
 
 			<table class="table w-full rounded-lg">
 				<thead>
@@ -94,8 +89,6 @@
 					{/each}
 				</tbody>
 			</table>
-		
-			
 
 			<hr class="my-4" />
 			<p>{`${paginationFrom + 1}-${paginationTo} of ${selectedFirebaseGPSData.length}`}</p>
@@ -108,7 +101,6 @@
 				{/each}
 				<button on:click={() => setPaginationPage(paginationPage + 1)} class="px-4 py-2  btn-pagination "> Next </button>
 			</div>
-
 
 			<hr class="my-4" />
 

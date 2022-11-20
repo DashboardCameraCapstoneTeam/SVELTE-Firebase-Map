@@ -1,5 +1,5 @@
 <script>
-	export let functionComponents;
+	export let functionComponents = [];
 </script>
 
 <section class="shadow-xl">
