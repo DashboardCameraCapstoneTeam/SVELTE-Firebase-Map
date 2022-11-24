@@ -88494,7 +88494,7 @@ var app = (function () {
     	return block;
     }
 
-    // (423:2) {#if isLoading === true}
+    // (421:2) {#if isLoading === true}
     function create_if_block_2(ctx) {
     	let maploadingspinner;
     	let current;
@@ -88526,14 +88526,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(423:2) {#if isLoading === true}",
+    		source: "(421:2) {#if isLoading === true}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (426:2) {#if isError === true}
+    // (424:2) {#if isError === true}
     function create_if_block_1(ctx) {
     	let maperror;
     	let current;
@@ -88565,14 +88565,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(426:2) {#if isError === true}",
+    		source: "(424:2) {#if isError === true}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (441:1) {:else}
+    // (439:1) {:else}
     function create_else_block$1(ctx) {
     	let div2;
     	let section;
@@ -88592,16 +88592,16 @@ var app = (function () {
     			div0 = element("div");
     			div0.textContent = "No Recordings Found";
     			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file$1, 444, 5, 14300);
+    			add_location(p, file$1, 442, 5, 14027);
     			attr_dev(div0, "class", "alert alert-red my-1");
     			attr_dev(div0, "role", "alert");
-    			add_location(div0, file$1, 445, 5, 14347);
+    			add_location(div0, file$1, 443, 5, 14074);
     			attr_dev(div1, "class", "p-4");
-    			add_location(div1, file$1, 443, 4, 14277);
+    			add_location(div1, file$1, 441, 4, 14004);
     			attr_dev(section, "class", "card h-fit scale-in-center");
-    			add_location(section, file$1, 442, 3, 14228);
+    			add_location(section, file$1, 440, 3, 13955);
     			attr_dev(div2, "class", "col-span-1 md:col-span-3");
-    			add_location(div2, file$1, 441, 2, 14186);
+    			add_location(div2, file$1, 439, 2, 13913);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -88623,14 +88623,14 @@ var app = (function () {
     		block,
     		id: create_else_block$1.name,
     		type: "else",
-    		source: "(441:1) {:else}",
+    		source: "(439:1) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (437:1) {#if files.length}
+    // (435:1) {#if files.length}
     function create_if_block$2(ctx) {
     	let div;
     	let recordingstable;
@@ -88664,7 +88664,7 @@ var app = (function () {
     			div = element("div");
     			create_component(recordingstable.$$.fragment);
     			attr_dev(div, "class", "col-span-1 md:col-span-12");
-    			add_location(div, file$1, 437, 2, 14017);
+    			add_location(div, file$1, 435, 2, 13744);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -88701,7 +88701,7 @@ var app = (function () {
     		block,
     		id: create_if_block$2.name,
     		type: "if",
-    		source: "(437:1) {#if files.length}",
+    		source: "(435:1) {#if files.length}",
     		ctx
     	});
 
@@ -89006,7 +89006,7 @@ var app = (function () {
     			attr_dev(main, "class", "flex-1 grid-cols-1 gap-4 lg:grid-cols-12");
     			add_location(main, file$1, 395, 0, 12382);
     			attr_dev(section, "class", "grid grid-cols-1 gap-4 lg:grid-cols-12 my-4 px-4");
-    			add_location(section, file$1, 435, 0, 13928);
+    			add_location(section, file$1, 433, 0, 13655);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");

@@ -417,9 +417,7 @@ car's driving metrics on the screen as your video plays."
 	</div>
 
 
-	<!-- <div class="col-span-1 md:col-span-6  row-span-6 relative">
-		<Map bind:cityDetails bind:gpsData bind:isReadyForStyleSwitching bind:layerList bind:mapStyle bind:pointOfInterest bind:selectedMenu />
-		<MapStyleSelector bind:mapStyle bind:isReadyForStyleSwitching /> -->
+	
 		{#if isLoading === true}
 			<MapLoadingSpinner />
 		{/if}
