@@ -38042,7 +38042,7 @@ var app = (function () {
 
     const file$d = "src/components/menu/Profile.svelte";
 
-    // (32:2) {#if showTerms}
+    // (40:2) {#if showTerms}
     function create_if_block$7(ctx) {
     	let hr;
     	let t0;
@@ -38065,14 +38065,14 @@ var app = (function () {
     			i = element("i");
     			t3 = text("\n\t\t\t\t\tDelete Account");
     			attr_dev(hr, "class", "my-2");
-    			add_location(hr, file$d, 32, 3, 774);
-    			add_location(p, file$d, 34, 3, 798);
+    			add_location(hr, file$d, 40, 3, 903);
+    			add_location(p, file$d, 42, 3, 927);
     			attr_dev(i, "class", "fa-solid fa-trash");
-    			add_location(i, file$d, 38, 5, 1030);
+    			add_location(i, file$d, 46, 5, 1159);
     			attr_dev(button, "class", `card-btn btn-error-outline my-1`);
-    			add_location(button, file$d, 37, 4, 974);
+    			add_location(button, file$d, 45, 4, 1103);
     			attr_dev(div, "class", "flex flex-row");
-    			add_location(div, file$d, 36, 3, 942);
+    			add_location(div, file$d, 44, 3, 1071);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, hr, anchor);
@@ -38097,7 +38097,7 @@ var app = (function () {
     		block,
     		id: create_if_block$7.name,
     		type: "if",
-    		source: "(32:2) {#if showTerms}",
+    		source: "(40:2) {#if showTerms}",
     		ctx
     	});
 
@@ -38106,36 +38106,42 @@ var app = (function () {
 
     function create_fragment$e(ctx) {
     	let section;
-    	let div1;
+    	let div4;
     	let div0;
+    	let t0;
+    	let div3;
+    	let div1;
+    	let p0;
+    	let t2;
+    	let div2;
     	let button0;
     	let i0;
-    	let t0;
-    	let t1;
-    	let p0;
     	let t3;
-    	let p1;
-    	let t4_value = /*user*/ ctx[0].displayName + "";
     	let t4;
-    	let t5;
+    	let p1;
+    	let t6;
     	let p2;
+    	let t7_value = /*user*/ ctx[0].displayName + "";
     	let t7;
-    	let p3;
-    	let t8_value = /*user*/ ctx[0].email + "";
     	let t8;
-    	let t9;
+    	let p3;
+    	let t10;
     	let p4;
+    	let t11_value = /*user*/ ctx[0].email + "";
     	let t11;
-    	let p5;
-    	let t12_value = /*user*/ ctx[0].emailVerified + "";
     	let t12;
-    	let t13;
-    	let hr;
+    	let p5;
     	let t14;
-    	let button1;
-    	let i1;
+    	let p6;
+    	let t15_value = /*user*/ ctx[0].emailVerified + "";
     	let t15;
     	let t16;
+    	let hr;
+    	let t17;
+    	let button1;
+    	let i1;
+    	let t18;
+    	let t19;
     	let mounted;
     	let dispose;
     	let if_block = /*showTerms*/ ctx[2] && create_if_block$7(ctx);
@@ -38143,61 +38149,73 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			section = element("section");
-    			div1 = element("div");
+    			div4 = element("div");
     			div0 = element("div");
+    			t0 = space();
+    			div3 = element("div");
+    			div1 = element("div");
+    			p0 = element("p");
+    			p0.textContent = "Account:";
+    			t2 = space();
+    			div2 = element("div");
     			button0 = element("button");
     			i0 = element("i");
-    			t0 = text("\n\t\t\t\tManage Account");
-    			t1 = space();
-    			p0 = element("p");
-    			p0.textContent = "Name:";
-    			t3 = space();
+    			t3 = text("\n\t\t\t\tManage Account");
+    			t4 = space();
     			p1 = element("p");
-    			t4 = text(t4_value);
-    			t5 = space();
+    			p1.textContent = "Name:";
+    			t6 = space();
     			p2 = element("p");
-    			p2.textContent = "Email:";
-    			t7 = space();
+    			t7 = text(t7_value);
+    			t8 = space();
     			p3 = element("p");
-    			t8 = text(t8_value);
-    			t9 = space();
+    			p3.textContent = "Email:";
+    			t10 = space();
     			p4 = element("p");
-    			p4.textContent = "Email Verified:";
-    			t11 = space();
+    			t11 = text(t11_value);
+    			t12 = space();
     			p5 = element("p");
-    			t12 = text(t12_value);
-    			t13 = space();
-    			hr = element("hr");
+    			p5.textContent = "Email Verified:";
     			t14 = space();
+    			p6 = element("p");
+    			t15 = text(t15_value);
+    			t16 = space();
+    			hr = element("hr");
+    			t17 = space();
     			button1 = element("button");
     			i1 = element("i");
-    			t15 = text(" Sign Out");
-    			t16 = space();
+    			t18 = text(" Sign Out");
+    			t19 = space();
     			if (if_block) if_block.c();
-    			attr_dev(i0, "class", "fa-solid fa-gear");
-    			add_location(i0, file$d, 16, 4, 312);
-    			attr_dev(button0, "class", "text-center hover:underline");
-    			add_location(button0, file$d, 15, 3, 240);
     			attr_dev(div0, "class", "float-right");
-    			add_location(div0, file$d, 14, 2, 211);
-    			attr_dev(p0, "class", "font-bold my-1");
-    			add_location(p0, file$d, 21, 2, 387);
-    			add_location(p1, file$d, 22, 2, 425);
-    			attr_dev(p2, "class", "font-bold my-1");
-    			add_location(p2, file$d, 23, 2, 453);
-    			add_location(p3, file$d, 24, 2, 492);
-    			attr_dev(p4, "class", "font-bold my-1");
-    			add_location(p4, file$d, 25, 2, 514);
-    			add_location(p5, file$d, 26, 2, 562);
+    			add_location(div0, file$d, 14, 2, 216);
+    			add_location(p0, file$d, 18, 5, 319);
+    			add_location(div1, file$d, 17, 4, 308);
+    			attr_dev(i0, "class", "fa-solid fa-gear");
+    			add_location(i0, file$d, 24, 4, 436);
+    			attr_dev(button0, "class", "text-center hover:underline");
+    			add_location(button0, file$d, 23, 3, 364);
+    			add_location(div2, file$d, 22, 3, 355);
+    			attr_dev(div3, "class", "flex flow-row justify-between my-1");
+    			add_location(div3, file$d, 16, 3, 255);
+    			attr_dev(p1, "class", "font-bold my-1");
+    			add_location(p1, file$d, 29, 2, 516);
+    			add_location(p2, file$d, 30, 2, 554);
+    			attr_dev(p3, "class", "font-bold my-1");
+    			add_location(p3, file$d, 31, 2, 582);
+    			add_location(p4, file$d, 32, 2, 621);
+    			attr_dev(p5, "class", "font-bold my-1");
+    			add_location(p5, file$d, 33, 2, 643);
+    			add_location(p6, file$d, 34, 2, 691);
     			attr_dev(hr, "class", "solid my-2");
-    			add_location(hr, file$d, 28, 2, 593);
+    			add_location(hr, file$d, 36, 2, 722);
     			attr_dev(i1, "class", "fa-solid fa-right-from-bracket");
-    			add_location(i1, file$d, 29, 69, 688);
+    			add_location(i1, file$d, 37, 69, 817);
     			attr_dev(button1, "class", "card-btn btn-error-outline my-1");
-    			add_location(button1, file$d, 29, 2, 621);
-    			attr_dev(div1, "class", "p-4");
-    			add_location(div1, file$d, 13, 1, 191);
-    			attr_dev(section, "class", "card h-fit scale-in-center");
+    			add_location(button1, file$d, 37, 2, 750);
+    			attr_dev(div4, "class", "p-4");
+    			add_location(div4, file$d, 13, 1, 196);
+    			attr_dev(section, "class", "card h-fit scale-in-center w-96");
     			add_location(section, file$d, 12, 0, 145);
     		},
     		l: function claim(nodes) {
@@ -38205,34 +38223,40 @@ var app = (function () {
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
-    			append_dev(section, div1);
-    			append_dev(div1, div0);
-    			append_dev(div0, button0);
-    			append_dev(button0, i0);
-    			append_dev(button0, t0);
-    			append_dev(div1, t1);
+    			append_dev(section, div4);
+    			append_dev(div4, div0);
+    			append_dev(div4, t0);
+    			append_dev(div4, div3);
+    			append_dev(div3, div1);
     			append_dev(div1, p0);
-    			append_dev(div1, t3);
-    			append_dev(div1, p1);
-    			append_dev(p1, t4);
-    			append_dev(div1, t5);
-    			append_dev(div1, p2);
-    			append_dev(div1, t7);
-    			append_dev(div1, p3);
-    			append_dev(p3, t8);
-    			append_dev(div1, t9);
-    			append_dev(div1, p4);
-    			append_dev(div1, t11);
-    			append_dev(div1, p5);
-    			append_dev(p5, t12);
-    			append_dev(div1, t13);
-    			append_dev(div1, hr);
-    			append_dev(div1, t14);
-    			append_dev(div1, button1);
+    			append_dev(div3, t2);
+    			append_dev(div3, div2);
+    			append_dev(div2, button0);
+    			append_dev(button0, i0);
+    			append_dev(button0, t3);
+    			append_dev(div4, t4);
+    			append_dev(div4, p1);
+    			append_dev(div4, t6);
+    			append_dev(div4, p2);
+    			append_dev(p2, t7);
+    			append_dev(div4, t8);
+    			append_dev(div4, p3);
+    			append_dev(div4, t10);
+    			append_dev(div4, p4);
+    			append_dev(p4, t11);
+    			append_dev(div4, t12);
+    			append_dev(div4, p5);
+    			append_dev(div4, t14);
+    			append_dev(div4, p6);
+    			append_dev(p6, t15);
+    			append_dev(div4, t16);
+    			append_dev(div4, hr);
+    			append_dev(div4, t17);
+    			append_dev(div4, button1);
     			append_dev(button1, i1);
-    			append_dev(button1, t15);
-    			append_dev(div1, t16);
-    			if (if_block) if_block.m(div1, null);
+    			append_dev(button1, t18);
+    			append_dev(div4, t19);
+    			if (if_block) if_block.m(div4, null);
 
     			if (!mounted) {
     				dispose = [
@@ -38254,15 +38278,15 @@ var app = (function () {
     		},
     		p: function update(new_ctx, [dirty]) {
     			ctx = new_ctx;
-    			if (dirty & /*user*/ 1 && t4_value !== (t4_value = /*user*/ ctx[0].displayName + "")) set_data_dev(t4, t4_value);
-    			if (dirty & /*user*/ 1 && t8_value !== (t8_value = /*user*/ ctx[0].email + "")) set_data_dev(t8, t8_value);
-    			if (dirty & /*user*/ 1 && t12_value !== (t12_value = /*user*/ ctx[0].emailVerified + "")) set_data_dev(t12, t12_value);
+    			if (dirty & /*user*/ 1 && t7_value !== (t7_value = /*user*/ ctx[0].displayName + "")) set_data_dev(t7, t7_value);
+    			if (dirty & /*user*/ 1 && t11_value !== (t11_value = /*user*/ ctx[0].email + "")) set_data_dev(t11, t11_value);
+    			if (dirty & /*user*/ 1 && t15_value !== (t15_value = /*user*/ ctx[0].emailVerified + "")) set_data_dev(t15, t15_value);
 
     			if (/*showTerms*/ ctx[2]) {
     				if (if_block) ; else {
     					if_block = create_if_block$7(ctx);
     					if_block.c();
-    					if_block.m(div1, null);
+    					if_block.m(div4, null);
     				}
     			} else if (if_block) {
     				if_block.d(1);

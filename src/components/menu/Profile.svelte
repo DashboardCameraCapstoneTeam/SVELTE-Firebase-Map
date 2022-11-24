@@ -10,13 +10,21 @@
 </script>
 
 
-<section class="card h-fit scale-in-center">
+<section class="card h-fit scale-in-center w-96">
 	<div class="p-4">
 		<div class="float-right">
+			</div>
+			<div class='flex flow-row justify-between my-1'>
+				<div>
+					<p> Account:</p>
+				</div>
+
+			
+			<div>
 			<button on:click={toggleTerms} class="text-center hover:underline">
 				<i class="fa-solid fa-gear" />
-				Manage Account</button
-			>
+				Manage Account</button>
+		</div>
 		</div>
 
 		<p class="font-bold my-1">Name:</p>
