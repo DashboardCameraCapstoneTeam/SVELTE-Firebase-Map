@@ -75,7 +75,7 @@
 											src={videoFile.thumbnailLink}
 											onerror="https://i.picsum.photos/id/870/200/300.jpg?blur=2&grayscale&hmac=ujRymp644uYVjdKJM7kyLDSsrqNSMVRPnGU99cKl6Vs"
 											alt="Dashcam"
-											class="h-full w-auto object-cover rounded-lg"
+											class="h-32 w-32 object-cover rounded-lg"
 										/>
 									</a>
 								{/if}

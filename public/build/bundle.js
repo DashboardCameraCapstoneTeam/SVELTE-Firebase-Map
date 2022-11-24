@@ -86909,7 +86909,7 @@ var app = (function () {
     			div.textContent = "No Google Drive Files Found.";
     			attr_dev(div, "class", "alert alert-red my-1");
     			attr_dev(div, "role", "alert");
-    			add_location(div, file$2, 154, 3, 5292);
+    			add_location(div, file$2, 154, 3, 5288);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -87061,14 +87061,14 @@ var app = (function () {
     			attr_dev(table, "class", "table w-full rounded-lg");
     			add_location(table, file$2, 53, 3, 1709);
     			attr_dev(hr, "class", "my-4");
-    			add_location(hr, file$2, 142, 3, 4629);
-    			add_location(p, file$2, 143, 3, 4652);
+    			add_location(hr, file$2, 142, 3, 4625);
+    			add_location(p, file$2, 143, 3, 4648);
     			attr_dev(button0, "class", "px-4 py-2 btn-pagination");
-    			add_location(button0, file$2, 145, 4, 4779);
+    			add_location(button0, file$2, 145, 4, 4775);
     			attr_dev(button1, "class", "px-4 py-2 btn-pagination ");
-    			add_location(button1, file$2, 151, 4, 5155);
+    			add_location(button1, file$2, 151, 4, 5151);
     			attr_dev(div, "class", "flex items-center space-x-2 mt-2");
-    			add_location(div, file$2, 144, 3, 4728);
+    			add_location(div, file$2, 144, 3, 4724);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, table, anchor);
@@ -87202,7 +87202,7 @@ var app = (function () {
     			if (!src_url_equal(img.src, img_src_value = /*videoFile*/ ctx[25].thumbnailLink)) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "onerror", "https://i.picsum.photos/id/870/200/300.jpg?blur=2&grayscale&hmac=ujRymp644uYVjdKJM7kyLDSsrqNSMVRPnGU99cKl6Vs");
     			attr_dev(img, "alt", "Dashcam");
-    			attr_dev(img, "class", "h-full w-auto object-cover rounded-lg");
+    			attr_dev(img, "class", "h-32 w-32 object-cover rounded-lg");
     			add_location(img, file$2, 73, 10, 2254);
     			attr_dev(a, "href", a_href_value = /*videoFile*/ ctx[25].webViewLink);
     			attr_dev(a, "target", "_blank");
@@ -87254,7 +87254,7 @@ var app = (function () {
     			attr_dev(img, "alt", "");
     			if (!src_url_equal(img.src, img_src_value = returnLinkGivenIfStringContains(/*tool*/ ctx[28]))) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "loading", "lazy");
-    			add_location(img, file$2, 88, 10, 2808);
+    			add_location(img, file$2, 88, 10, 2804);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, img, anchor);
@@ -87284,7 +87284,7 @@ var app = (function () {
     		c: function create() {
     			i = element("i");
     			attr_dev(i, "class", "fa-solid fa-x text-error fa-lg");
-    			add_location(i, file$2, 98, 9, 3220);
+    			add_location(i, file$2, 98, 9, 3216);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, i, anchor);
@@ -87313,7 +87313,7 @@ var app = (function () {
     		c: function create() {
     			i = element("i");
     			attr_dev(i, "class", "fa-solid fa-check text-green fa-lg");
-    			add_location(i, file$2, 96, 9, 3146);
+    			add_location(i, file$2, 96, 9, 3142);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, i, anchor);
@@ -87342,7 +87342,7 @@ var app = (function () {
     		c: function create() {
     			i = element("i");
     			attr_dev(i, "class", "fa-solid fa-x text-error fa-lg");
-    			add_location(i, file$2, 106, 9, 3453);
+    			add_location(i, file$2, 106, 9, 3449);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, i, anchor);
@@ -87371,7 +87371,7 @@ var app = (function () {
     		c: function create() {
     			i = element("i");
     			attr_dev(i, "class", "fa-solid fa-check text-green fa-lg");
-    			add_location(i, file$2, 104, 9, 3379);
+    			add_location(i, file$2, 104, 9, 3375);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, i, anchor);
@@ -87410,9 +87410,9 @@ var app = (function () {
     			i = element("i");
     			t = text("\n\t\t\t\t\t\t\t\t\t\tSave GPS Data to Firebase");
     			attr_dev(i, "class", "fa-solid fa-share");
-    			add_location(i, file$2, 122, 10, 4114);
+    			add_location(i, file$2, 122, 10, 4110);
     			attr_dev(button, "class", `card-btn btn-primary-outline my-1`);
-    			add_location(button, file$2, 121, 9, 3997);
+    			add_location(button, file$2, 121, 9, 3993);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, button, anchor);
@@ -87583,33 +87583,33 @@ var app = (function () {
     			t18 = space();
     			attr_dev(td0, "class", "w-64");
     			add_location(td0, file$2, 70, 7, 2088);
-    			add_location(td1, file$2, 82, 7, 2573);
-    			add_location(td2, file$2, 83, 7, 2606);
-    			add_location(td3, file$2, 84, 7, 2646);
+    			add_location(td1, file$2, 82, 7, 2569);
+    			add_location(td2, file$2, 83, 7, 2602);
+    			add_location(td3, file$2, 84, 7, 2642);
     			attr_dev(div0, "class", "flex flex-wrap justify-center ");
-    			add_location(div0, file$2, 86, 8, 2709);
-    			add_location(td4, file$2, 85, 7, 2696);
-    			add_location(td5, file$2, 92, 7, 3017);
-    			add_location(td6, file$2, 94, 7, 3076);
-    			add_location(td7, file$2, 102, 7, 3300);
+    			add_location(div0, file$2, 86, 8, 2705);
+    			add_location(td4, file$2, 85, 7, 2692);
+    			add_location(td5, file$2, 92, 7, 3013);
+    			add_location(td6, file$2, 94, 7, 3072);
+    			add_location(td7, file$2, 102, 7, 3296);
     			attr_dev(i0, "class", "fa-solid fa-eye");
-    			add_location(i0, file$2, 113, 10, 3680);
+    			add_location(i0, file$2, 113, 10, 3676);
     			attr_dev(a, "a", "");
     			attr_dev(a, "href", a_href_value = /*videoFile*/ ctx[25].webViewLink);
     			attr_dev(a, "target", "_blank");
     			attr_dev(a, "class", `card-btn btn-primary my-1`);
-    			add_location(a, file$2, 112, 9, 3583);
+    			add_location(a, file$2, 112, 9, 3579);
     			attr_dev(i1, "class", "fa-solid fa-share");
-    			add_location(i1, file$2, 117, 10, 3859);
+    			add_location(i1, file$2, 117, 10, 3855);
     			attr_dev(button0, "class", `card-btn btn-primary my-1`);
-    			add_location(button0, file$2, 116, 9, 3749);
+    			add_location(button0, file$2, 116, 9, 3745);
     			attr_dev(i2, "class", "fa-solid fa-trash");
-    			add_location(i2, file$2, 132, 10, 4479);
+    			add_location(i2, file$2, 132, 10, 4475);
     			attr_dev(button1, "class", `card-btn btn-error-outline my-1`);
-    			add_location(button1, file$2, 128, 9, 4227);
+    			add_location(button1, file$2, 128, 9, 4223);
     			attr_dev(div1, "class", "flex flex-col");
-    			add_location(div1, file$2, 111, 8, 3546);
-    			add_location(td8, file$2, 110, 7, 3533);
+    			add_location(div1, file$2, 111, 8, 3542);
+    			add_location(td8, file$2, 110, 7, 3529);
     			add_location(tr, file$2, 69, 6, 2076);
     		},
     		m: function mount(target, anchor) {
@@ -87801,7 +87801,7 @@ var app = (function () {
 			? "btn-pagination-primary font-bold "
 			: "btn-pagination"}`);
 
-    			add_location(button, file$2, 147, 5, 4954);
+    			add_location(button, file$2, 147, 5, 4950);
     			this.first = button;
     		},
     		m: function mount(target, anchor) {
