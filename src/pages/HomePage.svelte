@@ -398,7 +398,10 @@ car's driving metrics on the screen as your video plays."
 		<Map bind:cityDetails bind:gpsData bind:isReadyForStyleSwitching bind:layerList 
 		bind:mapStyle bind:pointOfInterest bind:selectedMenu/>
 
+		<div class="absolute top-2 left-2 flex flex-row gap-4 z-100">
+			<div class={`flex flex-col gap-4`}>
 		
+
 		<Layers bind:layerList />
 		{#if selectedMenu === 0}
 			<Profile bind:user {signOut} />
@@ -410,9 +413,13 @@ car's driving metrics on the screen as your video plays."
 			<SpeedChart bind:selectedGPSData {setGPSDataWithSelectedData} />
 		{/if}
 	</div>
-	<div class="col-span-1 md:col-span-6  row-span-6 relative">
+	<MapStyleSelector bind:mapStyle bind:isReadyForStyleSwitching/>
+	</div>
+
+
+	<!-- <div class="col-span-1 md:col-span-6  row-span-6 relative">
 		<Map bind:cityDetails bind:gpsData bind:isReadyForStyleSwitching bind:layerList bind:mapStyle bind:pointOfInterest bind:selectedMenu />
-		<MapStyleSelector bind:mapStyle bind:isReadyForStyleSwitching />
+		<MapStyleSelector bind:mapStyle bind:isReadyForStyleSwitching /> -->
 		{#if isLoading === true}
 			<MapLoadingSpinner />
 		{/if}

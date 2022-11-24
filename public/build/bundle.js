@@ -88225,7 +88225,7 @@ var app = (function () {
     	return block;
     }
 
-    // (408:31) 
+    // (411:31) 
     function create_if_block_5(ctx) {
     	let video;
     	let updating_selectedVideoFile;
@@ -88316,14 +88316,14 @@ var app = (function () {
     		block,
     		id: create_if_block_5.name,
     		type: "if",
-    		source: "(408:31) ",
+    		source: "(411:31) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (405:31) 
+    // (408:31) 
     function create_if_block_4(ctx) {
     	let tableview;
     	let updating_selectedFirebaseGPSData;
@@ -88423,14 +88423,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(405:31) ",
+    		source: "(408:31) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (403:2) {#if selectedMenu === 0}
+    // (406:2) {#if selectedMenu === 0}
     function create_if_block_3(ctx) {
     	let profile;
     	let updating_user;
@@ -88487,14 +88487,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(403:2) {#if selectedMenu === 0}",
+    		source: "(406:2) {#if selectedMenu === 0}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (416:2) {#if isLoading === true}
+    // (423:2) {#if isLoading === true}
     function create_if_block_2(ctx) {
     	let maploadingspinner;
     	let current;
@@ -88526,14 +88526,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(416:2) {#if isLoading === true}",
+    		source: "(423:2) {#if isLoading === true}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (419:2) {#if isError === true}
+    // (426:2) {#if isError === true}
     function create_if_block_1(ctx) {
     	let maperror;
     	let current;
@@ -88565,14 +88565,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(419:2) {#if isError === true}",
+    		source: "(426:2) {#if isError === true}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (434:1) {:else}
+    // (441:1) {:else}
     function create_else_block$1(ctx) {
     	let div2;
     	let section;
@@ -88592,16 +88592,16 @@ var app = (function () {
     			div0 = element("div");
     			div0.textContent = "No Recordings Found";
     			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file$1, 437, 5, 14112);
+    			add_location(p, file$1, 444, 5, 14300);
     			attr_dev(div0, "class", "alert alert-red my-1");
     			attr_dev(div0, "role", "alert");
-    			add_location(div0, file$1, 438, 5, 14159);
+    			add_location(div0, file$1, 445, 5, 14347);
     			attr_dev(div1, "class", "p-4");
-    			add_location(div1, file$1, 436, 4, 14089);
+    			add_location(div1, file$1, 443, 4, 14277);
     			attr_dev(section, "class", "card h-fit scale-in-center");
-    			add_location(section, file$1, 435, 3, 14040);
+    			add_location(section, file$1, 442, 3, 14228);
     			attr_dev(div2, "class", "col-span-1 md:col-span-3");
-    			add_location(div2, file$1, 434, 2, 13998);
+    			add_location(div2, file$1, 441, 2, 14186);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -88623,14 +88623,14 @@ var app = (function () {
     		block,
     		id: create_else_block$1.name,
     		type: "else",
-    		source: "(434:1) {:else}",
+    		source: "(441:1) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (430:1) {#if files.length}
+    // (437:1) {#if files.length}
     function create_if_block$2(ctx) {
     	let div;
     	let recordingstable;
@@ -88638,7 +88638,7 @@ var app = (function () {
     	let current;
 
     	function recordingstable_files_binding(value) {
-    		/*recordingstable_files_binding*/ ctx[54](value);
+    		/*recordingstable_files_binding*/ ctx[47](value);
     	}
 
     	let recordingstable_props = {
@@ -88664,7 +88664,7 @@ var app = (function () {
     			div = element("div");
     			create_component(recordingstable.$$.fragment);
     			attr_dev(div, "class", "col-span-1 md:col-span-12");
-    			add_location(div, file$1, 430, 2, 13829);
+    			add_location(div, file$1, 437, 2, 14017);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -88701,7 +88701,7 @@ var app = (function () {
     		block,
     		id: create_if_block$2.name,
     		type: "if",
-    		source: "(430:1) {#if files.length}",
+    		source: "(437:1) {#if files.length}",
     		ctx
     	});
 
@@ -88719,8 +88719,8 @@ var app = (function () {
     	let updating_menuComponents;
     	let t3;
     	let main;
-    	let div0;
-    	let map0;
+    	let div2;
+    	let map;
     	let updating_cityDetails;
     	let updating_gpsData;
     	let updating_isReadyForStyleSwitching;
@@ -88729,39 +88729,31 @@ var app = (function () {
     	let updating_pointOfInterest;
     	let updating_selectedMenu_1;
     	let t4;
+    	let div1;
+    	let div0;
     	let layers;
     	let updating_layerList_1;
     	let t5;
     	let current_block_type_index;
     	let if_block1;
     	let t6;
-    	let div1;
-    	let map1;
-    	let updating_cityDetails_1;
-    	let updating_gpsData_1;
-    	let updating_isReadyForStyleSwitching_1;
-    	let updating_layerList_2;
-    	let updating_mapStyle_1;
-    	let updating_pointOfInterest_1;
-    	let updating_selectedMenu_2;
-    	let t7;
     	let mapstyleselector;
-    	let updating_mapStyle_2;
-    	let updating_isReadyForStyleSwitching_2;
+    	let updating_mapStyle_1;
+    	let updating_isReadyForStyleSwitching_1;
+    	let t7;
     	let t8;
     	let t9;
-    	let t10;
     	let pageheader1;
-    	let t11;
+    	let t10;
     	let attentionbar1;
-    	let t12;
+    	let t11;
     	let recordingsmenubar;
     	let updating_functionComponents;
-    	let t13;
+    	let t12;
     	let section;
     	let current_block_type_index_1;
     	let if_block4;
-    	let t14;
+    	let t13;
     	let footer;
     	let current;
     	let if_block0 = /*isModalOpen*/ ctx[2] && create_if_block_6(ctx);
@@ -88804,72 +88796,72 @@ var app = (function () {
     	binding_callbacks.push(() => bind$2(menubar, 'selectedMenu', menubar_selectedMenu_binding));
     	binding_callbacks.push(() => bind$2(menubar, 'menuComponents', menubar_menuComponents_binding));
 
-    	function map0_cityDetails_binding(value) {
-    		/*map0_cityDetails_binding*/ ctx[31](value);
+    	function map_cityDetails_binding(value) {
+    		/*map_cityDetails_binding*/ ctx[31](value);
     	}
 
-    	function map0_gpsData_binding(value) {
-    		/*map0_gpsData_binding*/ ctx[32](value);
+    	function map_gpsData_binding(value) {
+    		/*map_gpsData_binding*/ ctx[32](value);
     	}
 
-    	function map0_isReadyForStyleSwitching_binding(value) {
-    		/*map0_isReadyForStyleSwitching_binding*/ ctx[33](value);
+    	function map_isReadyForStyleSwitching_binding(value) {
+    		/*map_isReadyForStyleSwitching_binding*/ ctx[33](value);
     	}
 
-    	function map0_layerList_binding(value) {
-    		/*map0_layerList_binding*/ ctx[34](value);
+    	function map_layerList_binding(value) {
+    		/*map_layerList_binding*/ ctx[34](value);
     	}
 
-    	function map0_mapStyle_binding(value) {
-    		/*map0_mapStyle_binding*/ ctx[35](value);
+    	function map_mapStyle_binding(value) {
+    		/*map_mapStyle_binding*/ ctx[35](value);
     	}
 
-    	function map0_pointOfInterest_binding(value) {
-    		/*map0_pointOfInterest_binding*/ ctx[36](value);
+    	function map_pointOfInterest_binding(value) {
+    		/*map_pointOfInterest_binding*/ ctx[36](value);
     	}
 
-    	function map0_selectedMenu_binding(value) {
-    		/*map0_selectedMenu_binding*/ ctx[37](value);
+    	function map_selectedMenu_binding(value) {
+    		/*map_selectedMenu_binding*/ ctx[37](value);
     	}
 
-    	let map0_props = {};
+    	let map_props = {};
 
     	if (/*cityDetails*/ ctx[9] !== void 0) {
-    		map0_props.cityDetails = /*cityDetails*/ ctx[9];
+    		map_props.cityDetails = /*cityDetails*/ ctx[9];
     	}
 
     	if (/*gpsData*/ ctx[14] !== void 0) {
-    		map0_props.gpsData = /*gpsData*/ ctx[14];
+    		map_props.gpsData = /*gpsData*/ ctx[14];
     	}
 
     	if (/*isReadyForStyleSwitching*/ ctx[4] !== void 0) {
-    		map0_props.isReadyForStyleSwitching = /*isReadyForStyleSwitching*/ ctx[4];
+    		map_props.isReadyForStyleSwitching = /*isReadyForStyleSwitching*/ ctx[4];
     	}
 
     	if (/*layerList*/ ctx[6] !== void 0) {
-    		map0_props.layerList = /*layerList*/ ctx[6];
+    		map_props.layerList = /*layerList*/ ctx[6];
     	}
 
     	if (/*mapStyle*/ ctx[8] !== void 0) {
-    		map0_props.mapStyle = /*mapStyle*/ ctx[8];
+    		map_props.mapStyle = /*mapStyle*/ ctx[8];
     	}
 
     	if (/*pointOfInterest*/ ctx[5] !== void 0) {
-    		map0_props.pointOfInterest = /*pointOfInterest*/ ctx[5];
+    		map_props.pointOfInterest = /*pointOfInterest*/ ctx[5];
     	}
 
     	if (/*selectedMenu*/ ctx[11] !== void 0) {
-    		map0_props.selectedMenu = /*selectedMenu*/ ctx[11];
+    		map_props.selectedMenu = /*selectedMenu*/ ctx[11];
     	}
 
-    	map0 = new Map$1({ props: map0_props, $$inline: true });
-    	binding_callbacks.push(() => bind$2(map0, 'cityDetails', map0_cityDetails_binding));
-    	binding_callbacks.push(() => bind$2(map0, 'gpsData', map0_gpsData_binding));
-    	binding_callbacks.push(() => bind$2(map0, 'isReadyForStyleSwitching', map0_isReadyForStyleSwitching_binding));
-    	binding_callbacks.push(() => bind$2(map0, 'layerList', map0_layerList_binding));
-    	binding_callbacks.push(() => bind$2(map0, 'mapStyle', map0_mapStyle_binding));
-    	binding_callbacks.push(() => bind$2(map0, 'pointOfInterest', map0_pointOfInterest_binding));
-    	binding_callbacks.push(() => bind$2(map0, 'selectedMenu', map0_selectedMenu_binding));
+    	map = new Map$1({ props: map_props, $$inline: true });
+    	binding_callbacks.push(() => bind$2(map, 'cityDetails', map_cityDetails_binding));
+    	binding_callbacks.push(() => bind$2(map, 'gpsData', map_gpsData_binding));
+    	binding_callbacks.push(() => bind$2(map, 'isReadyForStyleSwitching', map_isReadyForStyleSwitching_binding));
+    	binding_callbacks.push(() => bind$2(map, 'layerList', map_layerList_binding));
+    	binding_callbacks.push(() => bind$2(map, 'mapStyle', map_mapStyle_binding));
+    	binding_callbacks.push(() => bind$2(map, 'pointOfInterest', map_pointOfInterest_binding));
+    	binding_callbacks.push(() => bind$2(map, 'selectedMenu', map_selectedMenu_binding));
 
     	function layers_layerList_binding(value) {
     		/*layers_layerList_binding*/ ctx[38](value);
@@ -88897,79 +88889,12 @@ var app = (function () {
     		if_block1 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
     	}
 
-    	function map1_cityDetails_binding(value) {
-    		/*map1_cityDetails_binding*/ ctx[44](value);
-    	}
-
-    	function map1_gpsData_binding(value) {
-    		/*map1_gpsData_binding*/ ctx[45](value);
-    	}
-
-    	function map1_isReadyForStyleSwitching_binding(value) {
-    		/*map1_isReadyForStyleSwitching_binding*/ ctx[46](value);
-    	}
-
-    	function map1_layerList_binding(value) {
-    		/*map1_layerList_binding*/ ctx[47](value);
-    	}
-
-    	function map1_mapStyle_binding(value) {
-    		/*map1_mapStyle_binding*/ ctx[48](value);
-    	}
-
-    	function map1_pointOfInterest_binding(value) {
-    		/*map1_pointOfInterest_binding*/ ctx[49](value);
-    	}
-
-    	function map1_selectedMenu_binding(value) {
-    		/*map1_selectedMenu_binding*/ ctx[50](value);
-    	}
-
-    	let map1_props = {};
-
-    	if (/*cityDetails*/ ctx[9] !== void 0) {
-    		map1_props.cityDetails = /*cityDetails*/ ctx[9];
-    	}
-
-    	if (/*gpsData*/ ctx[14] !== void 0) {
-    		map1_props.gpsData = /*gpsData*/ ctx[14];
-    	}
-
-    	if (/*isReadyForStyleSwitching*/ ctx[4] !== void 0) {
-    		map1_props.isReadyForStyleSwitching = /*isReadyForStyleSwitching*/ ctx[4];
-    	}
-
-    	if (/*layerList*/ ctx[6] !== void 0) {
-    		map1_props.layerList = /*layerList*/ ctx[6];
-    	}
-
-    	if (/*mapStyle*/ ctx[8] !== void 0) {
-    		map1_props.mapStyle = /*mapStyle*/ ctx[8];
-    	}
-
-    	if (/*pointOfInterest*/ ctx[5] !== void 0) {
-    		map1_props.pointOfInterest = /*pointOfInterest*/ ctx[5];
-    	}
-
-    	if (/*selectedMenu*/ ctx[11] !== void 0) {
-    		map1_props.selectedMenu = /*selectedMenu*/ ctx[11];
-    	}
-
-    	map1 = new Map$1({ props: map1_props, $$inline: true });
-    	binding_callbacks.push(() => bind$2(map1, 'cityDetails', map1_cityDetails_binding));
-    	binding_callbacks.push(() => bind$2(map1, 'gpsData', map1_gpsData_binding));
-    	binding_callbacks.push(() => bind$2(map1, 'isReadyForStyleSwitching', map1_isReadyForStyleSwitching_binding));
-    	binding_callbacks.push(() => bind$2(map1, 'layerList', map1_layerList_binding));
-    	binding_callbacks.push(() => bind$2(map1, 'mapStyle', map1_mapStyle_binding));
-    	binding_callbacks.push(() => bind$2(map1, 'pointOfInterest', map1_pointOfInterest_binding));
-    	binding_callbacks.push(() => bind$2(map1, 'selectedMenu', map1_selectedMenu_binding));
-
     	function mapstyleselector_mapStyle_binding(value) {
-    		/*mapstyleselector_mapStyle_binding*/ ctx[51](value);
+    		/*mapstyleselector_mapStyle_binding*/ ctx[44](value);
     	}
 
     	function mapstyleselector_isReadyForStyleSwitching_binding(value) {
-    		/*mapstyleselector_isReadyForStyleSwitching_binding*/ ctx[52](value);
+    		/*mapstyleselector_isReadyForStyleSwitching_binding*/ ctx[45](value);
     	}
 
     	let mapstyleselector_props = {};
@@ -89009,7 +88934,7 @@ var app = (function () {
     		});
 
     	function recordingsmenubar_functionComponents_binding(value) {
-    		/*recordingsmenubar_functionComponents_binding*/ ctx[53](value);
+    		/*recordingsmenubar_functionComponents_binding*/ ctx[46](value);
     	}
 
     	let recordingsmenubar_props = {};
@@ -89047,40 +88972,41 @@ var app = (function () {
     			create_component(menubar.$$.fragment);
     			t3 = space();
     			main = element("main");
-    			div0 = element("div");
-    			create_component(map0.$$.fragment);
+    			div2 = element("div");
+    			create_component(map.$$.fragment);
     			t4 = space();
+    			div1 = element("div");
+    			div0 = element("div");
     			create_component(layers.$$.fragment);
     			t5 = space();
     			if (if_block1) if_block1.c();
     			t6 = space();
-    			div1 = element("div");
-    			create_component(map1.$$.fragment);
-    			t7 = space();
     			create_component(mapstyleselector.$$.fragment);
-    			t8 = space();
+    			t7 = space();
     			if (if_block2) if_block2.c();
-    			t9 = space();
+    			t8 = space();
     			if (if_block3) if_block3.c();
-    			t10 = space();
+    			t9 = space();
     			create_component(pageheader1.$$.fragment);
-    			t11 = space();
+    			t10 = space();
     			create_component(attentionbar1.$$.fragment);
-    			t12 = space();
+    			t11 = space();
     			create_component(recordingsmenubar.$$.fragment);
-    			t13 = space();
+    			t12 = space();
     			section = element("section");
     			if_block4.c();
-    			t14 = space();
+    			t13 = space();
     			create_component(footer.$$.fragment);
-    			attr_dev(div0, "class", "col-span-1 md:col-span-12 row-span-6 relative");
-    			add_location(div0, file$1, 396, 1, 12439);
-    			attr_dev(div1, "class", "col-span-1 md:col-span-6 row-span-6 relative");
-    			add_location(div1, file$1, 412, 1, 13119);
+    			attr_dev(div0, "class", `flex flex-col gap-4`);
+    			add_location(div0, file$1, 401, 3, 12707);
+    			attr_dev(div1, "class", "absolute top-2 left-2 flex flex-row gap-4 z-100");
+    			add_location(div1, file$1, 400, 2, 12642);
+    			attr_dev(div2, "class", "col-span-1 md:col-span-12 row-span-6 relative");
+    			add_location(div2, file$1, 396, 1, 12439);
     			attr_dev(main, "class", "flex-1 grid-cols-1 gap-4 lg:grid-cols-12");
     			add_location(main, file$1, 395, 0, 12382);
     			attr_dev(section, "class", "grid grid-cols-1 gap-4 lg:grid-cols-12 my-4 px-4");
-    			add_location(section, file$1, 428, 0, 13740);
+    			add_location(section, file$1, 435, 0, 13928);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -89095,9 +89021,11 @@ var app = (function () {
     			mount_component(menubar, target, anchor);
     			insert_dev(target, t3, anchor);
     			insert_dev(target, main, anchor);
-    			append_dev(main, div0);
-    			mount_component(map0, div0, null);
-    			append_dev(div0, t4);
+    			append_dev(main, div2);
+    			mount_component(map, div2, null);
+    			append_dev(div2, t4);
+    			append_dev(div2, div1);
+    			append_dev(div1, div0);
     			mount_component(layers, div0, null);
     			append_dev(div0, t5);
 
@@ -89105,25 +89033,22 @@ var app = (function () {
     				if_blocks[current_block_type_index].m(div0, null);
     			}
 
-    			append_dev(main, t6);
-    			append_dev(main, div1);
-    			mount_component(map1, div1, null);
-    			append_dev(div1, t7);
+    			append_dev(div1, t6);
     			mount_component(mapstyleselector, div1, null);
-    			append_dev(div1, t8);
-    			if (if_block2) if_block2.m(div1, null);
-    			append_dev(div1, t9);
-    			if (if_block3) if_block3.m(div1, null);
-    			insert_dev(target, t10, anchor);
+    			append_dev(div2, t7);
+    			if (if_block2) if_block2.m(div2, null);
+    			append_dev(div2, t8);
+    			if (if_block3) if_block3.m(div2, null);
+    			insert_dev(target, t9, anchor);
     			mount_component(pageheader1, target, anchor);
-    			insert_dev(target, t11, anchor);
+    			insert_dev(target, t10, anchor);
     			mount_component(attentionbar1, target, anchor);
-    			insert_dev(target, t12, anchor);
+    			insert_dev(target, t11, anchor);
     			mount_component(recordingsmenubar, target, anchor);
-    			insert_dev(target, t13, anchor);
+    			insert_dev(target, t12, anchor);
     			insert_dev(target, section, anchor);
     			if_blocks_1[current_block_type_index_1].m(section, null);
-    			insert_dev(target, t14, anchor);
+    			insert_dev(target, t13, anchor);
     			mount_component(footer, target, anchor);
     			current = true;
     		},
@@ -89166,51 +89091,51 @@ var app = (function () {
     			}
 
     			menubar.$set(menubar_changes);
-    			const map0_changes = {};
+    			const map_changes = {};
 
     			if (!updating_cityDetails && dirty[0] & /*cityDetails*/ 512) {
     				updating_cityDetails = true;
-    				map0_changes.cityDetails = /*cityDetails*/ ctx[9];
+    				map_changes.cityDetails = /*cityDetails*/ ctx[9];
     				add_flush_callback(() => updating_cityDetails = false);
     			}
 
     			if (!updating_gpsData && dirty[0] & /*gpsData*/ 16384) {
     				updating_gpsData = true;
-    				map0_changes.gpsData = /*gpsData*/ ctx[14];
+    				map_changes.gpsData = /*gpsData*/ ctx[14];
     				add_flush_callback(() => updating_gpsData = false);
     			}
 
     			if (!updating_isReadyForStyleSwitching && dirty[0] & /*isReadyForStyleSwitching*/ 16) {
     				updating_isReadyForStyleSwitching = true;
-    				map0_changes.isReadyForStyleSwitching = /*isReadyForStyleSwitching*/ ctx[4];
+    				map_changes.isReadyForStyleSwitching = /*isReadyForStyleSwitching*/ ctx[4];
     				add_flush_callback(() => updating_isReadyForStyleSwitching = false);
     			}
 
     			if (!updating_layerList && dirty[0] & /*layerList*/ 64) {
     				updating_layerList = true;
-    				map0_changes.layerList = /*layerList*/ ctx[6];
+    				map_changes.layerList = /*layerList*/ ctx[6];
     				add_flush_callback(() => updating_layerList = false);
     			}
 
     			if (!updating_mapStyle && dirty[0] & /*mapStyle*/ 256) {
     				updating_mapStyle = true;
-    				map0_changes.mapStyle = /*mapStyle*/ ctx[8];
+    				map_changes.mapStyle = /*mapStyle*/ ctx[8];
     				add_flush_callback(() => updating_mapStyle = false);
     			}
 
     			if (!updating_pointOfInterest && dirty[0] & /*pointOfInterest*/ 32) {
     				updating_pointOfInterest = true;
-    				map0_changes.pointOfInterest = /*pointOfInterest*/ ctx[5];
+    				map_changes.pointOfInterest = /*pointOfInterest*/ ctx[5];
     				add_flush_callback(() => updating_pointOfInterest = false);
     			}
 
     			if (!updating_selectedMenu_1 && dirty[0] & /*selectedMenu*/ 2048) {
     				updating_selectedMenu_1 = true;
-    				map0_changes.selectedMenu = /*selectedMenu*/ ctx[11];
+    				map_changes.selectedMenu = /*selectedMenu*/ ctx[11];
     				add_flush_callback(() => updating_selectedMenu_1 = false);
     			}
 
-    			map0.$set(map0_changes);
+    			map.$set(map_changes);
     			const layers_changes = {};
 
     			if (!updating_layerList_1 && dirty[0] & /*layerList*/ 64) {
@@ -89255,63 +89180,18 @@ var app = (function () {
     				}
     			}
 
-    			const map1_changes = {};
+    			const mapstyleselector_changes = {};
 
-    			if (!updating_cityDetails_1 && dirty[0] & /*cityDetails*/ 512) {
-    				updating_cityDetails_1 = true;
-    				map1_changes.cityDetails = /*cityDetails*/ ctx[9];
-    				add_flush_callback(() => updating_cityDetails_1 = false);
-    			}
-
-    			if (!updating_gpsData_1 && dirty[0] & /*gpsData*/ 16384) {
-    				updating_gpsData_1 = true;
-    				map1_changes.gpsData = /*gpsData*/ ctx[14];
-    				add_flush_callback(() => updating_gpsData_1 = false);
+    			if (!updating_mapStyle_1 && dirty[0] & /*mapStyle*/ 256) {
+    				updating_mapStyle_1 = true;
+    				mapstyleselector_changes.mapStyle = /*mapStyle*/ ctx[8];
+    				add_flush_callback(() => updating_mapStyle_1 = false);
     			}
 
     			if (!updating_isReadyForStyleSwitching_1 && dirty[0] & /*isReadyForStyleSwitching*/ 16) {
     				updating_isReadyForStyleSwitching_1 = true;
-    				map1_changes.isReadyForStyleSwitching = /*isReadyForStyleSwitching*/ ctx[4];
-    				add_flush_callback(() => updating_isReadyForStyleSwitching_1 = false);
-    			}
-
-    			if (!updating_layerList_2 && dirty[0] & /*layerList*/ 64) {
-    				updating_layerList_2 = true;
-    				map1_changes.layerList = /*layerList*/ ctx[6];
-    				add_flush_callback(() => updating_layerList_2 = false);
-    			}
-
-    			if (!updating_mapStyle_1 && dirty[0] & /*mapStyle*/ 256) {
-    				updating_mapStyle_1 = true;
-    				map1_changes.mapStyle = /*mapStyle*/ ctx[8];
-    				add_flush_callback(() => updating_mapStyle_1 = false);
-    			}
-
-    			if (!updating_pointOfInterest_1 && dirty[0] & /*pointOfInterest*/ 32) {
-    				updating_pointOfInterest_1 = true;
-    				map1_changes.pointOfInterest = /*pointOfInterest*/ ctx[5];
-    				add_flush_callback(() => updating_pointOfInterest_1 = false);
-    			}
-
-    			if (!updating_selectedMenu_2 && dirty[0] & /*selectedMenu*/ 2048) {
-    				updating_selectedMenu_2 = true;
-    				map1_changes.selectedMenu = /*selectedMenu*/ ctx[11];
-    				add_flush_callback(() => updating_selectedMenu_2 = false);
-    			}
-
-    			map1.$set(map1_changes);
-    			const mapstyleselector_changes = {};
-
-    			if (!updating_mapStyle_2 && dirty[0] & /*mapStyle*/ 256) {
-    				updating_mapStyle_2 = true;
-    				mapstyleselector_changes.mapStyle = /*mapStyle*/ ctx[8];
-    				add_flush_callback(() => updating_mapStyle_2 = false);
-    			}
-
-    			if (!updating_isReadyForStyleSwitching_2 && dirty[0] & /*isReadyForStyleSwitching*/ 16) {
-    				updating_isReadyForStyleSwitching_2 = true;
     				mapstyleselector_changes.isReadyForStyleSwitching = /*isReadyForStyleSwitching*/ ctx[4];
-    				add_flush_callback(() => updating_isReadyForStyleSwitching_2 = false);
+    				add_flush_callback(() => updating_isReadyForStyleSwitching_1 = false);
     			}
 
     			mapstyleselector.$set(mapstyleselector_changes);
@@ -89325,7 +89205,7 @@ var app = (function () {
     					if_block2 = create_if_block_2(ctx);
     					if_block2.c();
     					transition_in(if_block2, 1);
-    					if_block2.m(div1, t9);
+    					if_block2.m(div2, t8);
     				}
     			} else if (if_block2) {
     				group_outros();
@@ -89346,7 +89226,7 @@ var app = (function () {
     					if_block3 = create_if_block_1(ctx);
     					if_block3.c();
     					transition_in(if_block3, 1);
-    					if_block3.m(div1, null);
+    					if_block3.m(div2, null);
     				}
     			} else if (if_block3) {
     				group_outros();
@@ -89399,10 +89279,9 @@ var app = (function () {
     			transition_in(pageheader0.$$.fragment, local);
     			transition_in(attentionbar0.$$.fragment, local);
     			transition_in(menubar.$$.fragment, local);
-    			transition_in(map0.$$.fragment, local);
+    			transition_in(map.$$.fragment, local);
     			transition_in(layers.$$.fragment, local);
     			transition_in(if_block1);
-    			transition_in(map1.$$.fragment, local);
     			transition_in(mapstyleselector.$$.fragment, local);
     			transition_in(if_block2);
     			transition_in(if_block3);
@@ -89418,10 +89297,9 @@ var app = (function () {
     			transition_out(pageheader0.$$.fragment, local);
     			transition_out(attentionbar0.$$.fragment, local);
     			transition_out(menubar.$$.fragment, local);
-    			transition_out(map0.$$.fragment, local);
+    			transition_out(map.$$.fragment, local);
     			transition_out(layers.$$.fragment, local);
     			transition_out(if_block1);
-    			transition_out(map1.$$.fragment, local);
     			transition_out(mapstyleselector.$$.fragment, local);
     			transition_out(if_block2);
     			transition_out(if_block3);
@@ -89442,27 +89320,26 @@ var app = (function () {
     			destroy_component(menubar, detaching);
     			if (detaching) detach_dev(t3);
     			if (detaching) detach_dev(main);
-    			destroy_component(map0);
+    			destroy_component(map);
     			destroy_component(layers);
 
     			if (~current_block_type_index) {
     				if_blocks[current_block_type_index].d();
     			}
 
-    			destroy_component(map1);
     			destroy_component(mapstyleselector);
     			if (if_block2) if_block2.d();
     			if (if_block3) if_block3.d();
-    			if (detaching) detach_dev(t10);
+    			if (detaching) detach_dev(t9);
     			destroy_component(pageheader1, detaching);
-    			if (detaching) detach_dev(t11);
+    			if (detaching) detach_dev(t10);
     			destroy_component(attentionbar1, detaching);
-    			if (detaching) detach_dev(t12);
+    			if (detaching) detach_dev(t11);
     			destroy_component(recordingsmenubar, detaching);
-    			if (detaching) detach_dev(t13);
+    			if (detaching) detach_dev(t12);
     			if (detaching) detach_dev(section);
     			if_blocks_1[current_block_type_index_1].d();
-    			if (detaching) detach_dev(t14);
+    			if (detaching) detach_dev(t13);
     			destroy_component(footer, detaching);
     		}
     	};
@@ -89934,37 +89811,37 @@ var app = (function () {
     		$$invalidate(10, menuComponents);
     	}
 
-    	function map0_cityDetails_binding(value) {
+    	function map_cityDetails_binding(value) {
     		cityDetails = value;
     		$$invalidate(9, cityDetails);
     	}
 
-    	function map0_gpsData_binding(value) {
+    	function map_gpsData_binding(value) {
     		gpsData = value;
     		$$invalidate(14, gpsData);
     	}
 
-    	function map0_isReadyForStyleSwitching_binding(value) {
+    	function map_isReadyForStyleSwitching_binding(value) {
     		isReadyForStyleSwitching = value;
     		$$invalidate(4, isReadyForStyleSwitching);
     	}
 
-    	function map0_layerList_binding(value) {
+    	function map_layerList_binding(value) {
     		layerList = value;
     		$$invalidate(6, layerList);
     	}
 
-    	function map0_mapStyle_binding(value) {
+    	function map_mapStyle_binding(value) {
     		mapStyle = value;
     		$$invalidate(8, mapStyle);
     	}
 
-    	function map0_pointOfInterest_binding(value) {
+    	function map_pointOfInterest_binding(value) {
     		pointOfInterest = value;
     		$$invalidate(5, pointOfInterest);
     	}
 
-    	function map0_selectedMenu_binding(value) {
+    	function map_selectedMenu_binding(value) {
     		selectedMenu = value;
     		$$invalidate(11, selectedMenu);
     	}
@@ -89997,41 +89874,6 @@ var app = (function () {
     	function speedchart_selectedGPSData_binding(value) {
     		selectedGPSData = value;
     		$$invalidate(18, selectedGPSData);
-    	}
-
-    	function map1_cityDetails_binding(value) {
-    		cityDetails = value;
-    		$$invalidate(9, cityDetails);
-    	}
-
-    	function map1_gpsData_binding(value) {
-    		gpsData = value;
-    		$$invalidate(14, gpsData);
-    	}
-
-    	function map1_isReadyForStyleSwitching_binding(value) {
-    		isReadyForStyleSwitching = value;
-    		$$invalidate(4, isReadyForStyleSwitching);
-    	}
-
-    	function map1_layerList_binding(value) {
-    		layerList = value;
-    		$$invalidate(6, layerList);
-    	}
-
-    	function map1_mapStyle_binding(value) {
-    		mapStyle = value;
-    		$$invalidate(8, mapStyle);
-    	}
-
-    	function map1_pointOfInterest_binding(value) {
-    		pointOfInterest = value;
-    		$$invalidate(5, pointOfInterest);
-    	}
-
-    	function map1_selectedMenu_binding(value) {
-    		selectedMenu = value;
-    		$$invalidate(11, selectedMenu);
     	}
 
     	function mapstyleselector_mapStyle_binding(value) {
@@ -90199,26 +90041,19 @@ var app = (function () {
     		modalcard_modalPayload_binding,
     		menubar_selectedMenu_binding,
     		menubar_menuComponents_binding,
-    		map0_cityDetails_binding,
-    		map0_gpsData_binding,
-    		map0_isReadyForStyleSwitching_binding,
-    		map0_layerList_binding,
-    		map0_mapStyle_binding,
-    		map0_pointOfInterest_binding,
-    		map0_selectedMenu_binding,
+    		map_cityDetails_binding,
+    		map_gpsData_binding,
+    		map_isReadyForStyleSwitching_binding,
+    		map_layerList_binding,
+    		map_mapStyle_binding,
+    		map_pointOfInterest_binding,
+    		map_selectedMenu_binding,
     		layers_layerList_binding,
     		profile_user_binding,
     		tableview_selectedFirebaseGPSData_binding,
     		searchdetails_dateTimeDictionary_binding,
     		video_selectedVideoFile_binding,
     		speedchart_selectedGPSData_binding,
-    		map1_cityDetails_binding,
-    		map1_gpsData_binding,
-    		map1_isReadyForStyleSwitching_binding,
-    		map1_layerList_binding,
-    		map1_mapStyle_binding,
-    		map1_pointOfInterest_binding,
-    		map1_selectedMenu_binding,
     		mapstyleselector_mapStyle_binding,
     		mapstyleselector_isReadyForStyleSwitching_binding,
     		recordingsmenubar_functionComponents_binding,
@@ -90229,7 +90064,7 @@ var app = (function () {
     class HomePage extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$2, create_fragment$2, safe_not_equal, { user: 0, signOut: 1 }, null, [-1, -1, -1]);
+    		init(this, options, instance$2, create_fragment$2, safe_not_equal, { user: 0, signOut: 1 }, null, [-1, -1]);
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
