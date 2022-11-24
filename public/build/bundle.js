@@ -1334,10 +1334,10 @@ var app = (function () {
     		c: function create() {
     			div1 = element("div");
     			div0 = element("div");
-    			attr_dev(div0, "class", "h-full rounded-lg");
+    			attr_dev(div0, "class", "h-full");
     			attr_dev(div0, "id", "map");
-    			add_location(div0, file$h, 397, 44, 11112);
-    			attr_dev(div1, "class", "h-96 md:h-full scale-in-center");
+    			add_location(div0, file$h, 397, 46, 11114);
+    			attr_dev(div1, "class", "h-96 md:h-screen scale-in-center");
     			add_location(div1, file$h, 397, 0, 11068);
     		},
     		l: function claim(nodes) {
