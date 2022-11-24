@@ -395,6 +395,10 @@ car's driving metrics on the screen as your video plays."
 <MenuBar bind:selectedMenu bind:menuComponents />
 <main class="flex-1 grid-cols-1 gap-4 lg:grid-cols-12">
 	<div class="col-span-1 md:col-span-12 row-span-6 relative">
+		<Map bind:cityDetails bind:gpsData bind:isReadyForStyleSwitching bind:layerList 
+		bind:mapStyle bind:pointOfInterest bind:selectedMenu/>
+
+		
 		<Layers bind:layerList />
 		{#if selectedMenu === 0}
 			<Profile bind:user {signOut} />
