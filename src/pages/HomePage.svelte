@@ -393,8 +393,8 @@
 car's driving metrics on the screen as your video plays."
 />
 <MenuBar bind:selectedMenu bind:menuComponents />
-<main class="grid grid-cols-1 gap-4 lg:grid-cols-12 my-4 px-4">
-	<div class={`col-span-1 lg:col-span-6 flex flex-col gap-4`}>
+<main class="flex-1 grid-cols-1 gap-4 lg:grid-cols-12">
+	<div class="col-span-1 md:col-span-12 row-span-6 relative">
 		<Layers bind:layerList />
 		{#if selectedMenu === 0}
 			<Profile bind:user {signOut} />

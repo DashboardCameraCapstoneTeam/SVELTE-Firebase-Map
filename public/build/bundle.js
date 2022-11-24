@@ -88592,16 +88592,16 @@ var app = (function () {
     			div0 = element("div");
     			div0.textContent = "No Recordings Found";
     			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file$1, 433, 5, 13977);
+    			add_location(p, file$1, 433, 5, 13968);
     			attr_dev(div0, "class", "alert alert-red my-1");
     			attr_dev(div0, "role", "alert");
-    			add_location(div0, file$1, 434, 5, 14024);
+    			add_location(div0, file$1, 434, 5, 14015);
     			attr_dev(div1, "class", "p-4");
-    			add_location(div1, file$1, 432, 4, 13954);
+    			add_location(div1, file$1, 432, 4, 13945);
     			attr_dev(section, "class", "card h-fit scale-in-center");
-    			add_location(section, file$1, 431, 3, 13905);
+    			add_location(section, file$1, 431, 3, 13896);
     			attr_dev(div2, "class", "col-span-1 md:col-span-3");
-    			add_location(div2, file$1, 430, 2, 13863);
+    			add_location(div2, file$1, 430, 2, 13854);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -88664,7 +88664,7 @@ var app = (function () {
     			div = element("div");
     			create_component(recordingstable.$$.fragment);
     			attr_dev(div, "class", "col-span-1 md:col-span-12");
-    			add_location(div, file$1, 426, 2, 13694);
+    			add_location(div, file$1, 426, 2, 13685);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -88995,14 +88995,14 @@ var app = (function () {
     			if_block4.c();
     			t13 = space();
     			create_component(footer.$$.fragment);
-    			attr_dev(div0, "class", `col-span-1 lg:col-span-6 flex flex-col gap-4`);
-    			add_location(div0, file$1, 396, 1, 12447);
+    			attr_dev(div0, "class", "col-span-1 md:col-span-12 row-span-6 relative");
+    			add_location(div0, file$1, 396, 1, 12439);
     			attr_dev(div1, "class", "col-span-1 md:col-span-6 row-span-6 relative");
-    			add_location(div1, file$1, 408, 1, 12984);
-    			attr_dev(main, "class", "grid grid-cols-1 gap-4 lg:grid-cols-12 my-4 px-4");
+    			add_location(div1, file$1, 408, 1, 12975);
+    			attr_dev(main, "class", "flex-1 grid-cols-1 gap-4 lg:grid-cols-12");
     			add_location(main, file$1, 395, 0, 12382);
     			attr_dev(section, "class", "grid grid-cols-1 gap-4 lg:grid-cols-12 my-4 px-4");
-    			add_location(section, file$1, 424, 0, 13605);
+    			add_location(section, file$1, 424, 0, 13596);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
