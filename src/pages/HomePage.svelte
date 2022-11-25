@@ -5,7 +5,7 @@
 	import Layers from "components/map/Layers.svelte";
 	import MapStyleSelector from "components/map/MapStyleSelector.svelte";
 	import { fetchDataFromFirebase, deleteDocumentFromFirebase } from "service/google-firestore";
-	import { gpsJsonToGeojson } from "utils/geojson-utils.js";
+	import { gpsJsonToGeojson, rawGPSDataToGeojsonData } from "utils/geojson-utils.js";
 	import { googleSignIn } from "service/google-sign-in";
 	import Profile from "components/menu/Profile.svelte";
 	import { getGoogleDriveCoordFile } from "utils/filter-data.js";
@@ -24,6 +24,7 @@
 	import { sortBySizeSmallToLarge, sortBySizeLargeToSmall, sortByTimeRecentToOldest, sortByTimeOldestToRecent } from "utils/sorting-video-assets";
 	import RecordingsMenuBar from "components/recordings/RecordingsMenuBar.svelte";
 	import RecordingsTable from "../components/recordings/RecordingsTable.svelte";
+  import AddGeojson from "../components/menu/AddGeojson.svelte";
 
 	export let user;
 	export let signOut;
@@ -57,11 +58,12 @@
 		{ id: 0, title: "Profile", icon: "fa-user" },
 		{ id: 1, title: "Firebase", icon: "fa-database" },
 		{ id: 2, title: "Video Player", icon: "fa-video" },
+		{ id: 3, title: 'Add Geojson', icon: 'fa-map' }
 	];
 	let selectedMenu = menuComponents[0].id;
 	let isLoading = false;
 	let isError = false;
-	
+
 	function setSessionStorageWithExpiry(key, value) {
 		const now = new Date();
 		const item = {
@@ -113,7 +115,7 @@
 	let selectedFirebaseGPSData = getLocalStorageWithExpiry("FirebaseData");
 
 	let selectedVideoFile = getSessionStorageWithExpiry("VideoFile");
-	let selectedGPSData = getLocalStorageWithExpiry('SelectedTrip')
+	let selectedGPSData = getLocalStorageWithExpiry("SelectedTrip");
 
 	const updateMapCenter = (coordinates) => {
 		cityDetails = {
@@ -169,8 +171,6 @@
 		};
 		isModalOpen = true;
 	};
-
-
 
 	const deleteFirebaseElement = async (documentId) => {
 		const response = await deleteDocumentFromFirebase(user, documentId);
@@ -251,34 +251,30 @@
 
 		if (videoHasPermissions || coordHasPermissions) {
 			if (coordFile) {
-
-				let response = {}
-				if(saveToFirebase){
+				let response = {};
+				if (saveToFirebase) {
 					response = await fetchAndSaveGPSDataFromGoogleDrive(user, coordFile);
-				}
-				else{
+				} else {
 					response = await fetchGPSDataFromGoogleDrive(user, coordFile);
 				}
-				
+
 				if (response.status === 200) {
 					gpsData = gpsJsonToGeojson([response.data]);
 					updateMapCenter(gpsData[0].features[0].geometry.coordinates);
 					selectedGPSData = [gpsData[0]];
-					
 				} else {
 					isError = true;
 					console.log(response);
 				}
-			}
-			else{
+			} else {
 				gpsData = [];
 				selectedGPSData = [];
 			}
 
 			selectedVideoFile = videoFile;
 			selectedMenu = 2;
-			setSessionStorageWithExpiry('VideoFile', selectedVideoFile);
-			setLocalStorageWithExpiry('SelectedTrip', selectedGPSData)
+			setSessionStorageWithExpiry("VideoFile", selectedVideoFile);
+			setLocalStorageWithExpiry("SelectedTrip", selectedGPSData);
 			goTop();
 		}
 
@@ -292,15 +288,14 @@
 	};
 	checkAndSetFiles();
 
-	const setGPSDataWithSelectedData = (tempAllData) =>{
+	const setGPSDataWithSelectedData = (tempAllData) => {
 		gpsData = tempAllData;
 		updateMapCenter(tempAllData[0].features[0].geometry.coordinates);
-	}
+	};
 
-	const focusOnSelectedGPSData = (tempSelectedGPSData) =>{
+	const focusOnSelectedGPSData = (tempSelectedGPSData) => {
 		updateMapCenter(tempSelectedGPSData.features[0].geometry.coordinates);
-	}
-
+	};
 
 	const deleteDriveFile = async (videoFile) => {
 		await verifyAccessToken();
@@ -382,6 +377,11 @@
 		{ id: 4, title: "Sort by Time DSC", icon: "fa-solid fa-filter", function: sortByTimeDSC },
 		{ id: 5, title: "Reset Video List", icon: "fa-solid fa-clock-rotate-left", function: resetVideoList },
 	];
+
+	const addGeojsonData = (input, name = "Own Data", dataType = "Point", color = "Red") => {
+		gpsData = [rawGPSDataToGeojsonData(input, name, dataType, color)];
+		updateMapCenter(gpsData[0].features[0].geometry.coordinates)
+	};
 </script>
 
 {#if isModalOpen}
@@ -395,29 +395,26 @@ car's driving metrics on the screen as your video plays."
 <MenuBar bind:selectedMenu bind:menuComponents />
 <main class="flex-1 grid-cols-1 gap-4 lg:grid-cols-12">
 	<div class="col-span-1 md:col-span-12 row-span-6 relative">
-		<Map bind:cityDetails bind:gpsData bind:isReadyForStyleSwitching bind:layerList 
-		bind:mapStyle bind:pointOfInterest bind:selectedMenu/>
+		<Map bind:cityDetails bind:gpsData bind:isReadyForStyleSwitching bind:layerList bind:mapStyle bind:pointOfInterest bind:selectedMenu />
 
 		<div class="absolute top-2 left-2 flex flex-row gap-4 z-100">
 			<div class={`flex flex-col gap-4`}>
-		
+				<Layers bind:layerList />
+				{#if selectedMenu === 0}
+					<Profile bind:user {signOut} />
+				{:else if selectedMenu === 1}
+					<TableView bind:selectedFirebaseGPSData {openModel} {deleteFirebaseElement} {setGPSDataWithSelectedData} {focusOnSelectedGPSData} />
+					<SearchDetails bind:dateTimeDictionary {fetchFirebaseData} />
+				{:else if selectedMenu === 2}
+					<Video bind:selectedVideoFile />
+					<SpeedChart bind:selectedGPSData {setGPSDataWithSelectedData} />
+				{:else if selectedMenu === 3}
+					<AddGeojson {addGeojsonData} />
+				{/if}
+			</div>
+			<MapStyleSelector bind:mapStyle bind:isReadyForStyleSwitching />
+		</div>
 
-		<Layers bind:layerList />
-		{#if selectedMenu === 0}
-			<Profile bind:user {signOut} />
-		{:else if selectedMenu === 1}
-			<TableView bind:selectedFirebaseGPSData {openModel} {deleteFirebaseElement} {setGPSDataWithSelectedData} {focusOnSelectedGPSData} />
-			<SearchDetails bind:dateTimeDictionary {fetchFirebaseData} />
-		{:else if selectedMenu === 2}
-			<Video bind:selectedVideoFile />
-			<SpeedChart bind:selectedGPSData {setGPSDataWithSelectedData} />
-		{/if}
-	</div>
-	<MapStyleSelector bind:mapStyle bind:isReadyForStyleSwitching/>
-	</div>
-
-
-	
 		{#if isLoading === true}
 			<MapLoadingSpinner />
 		{/if}

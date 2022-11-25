@@ -24,7 +24,7 @@
 
  
 	<section class="card h-fit scale-in-center p-4">
-		<button class="card-btn  my-1  text-center" on:click={toggleMenu}> <i class={`fa-solid ${isLargeMenu ? "fa-minimize" : "fa-expand"}`} /> </button>
+		<button class="card-btn  btn-black-outline my-1" on:click={toggleMenu}> <i class={`fa-solid ${isLargeMenu ? "fa-minimize" : "fa-expand"}`} /> Map Style</button>
 		<p class=" my-1">Map Style:</p>
 		{#if isLargeMenu === true}
 			<div class="flex flex-col">

@@ -61,4 +61,38 @@ export const gpsJsonToGeojson = (rawData) => {
   return geoJsonArray;
 };
 
+export const rawGPSDataToGeojsonData = (data, name = 'General', geojsonDataType = 'Point', color = 'Blue') => {
+  const rawData = JSON.parse(data);
+  //* Set initial Geojson element details
+  const dataName = rawData.dataName || name;
+  const dateTime = rawData.dateTime || uuidv4();
+  const dataType = rawData.dataType || geojsonDataType;
+
+  //* Create Geojson feature collection
+  const geoJson = {
+    type: 'FeatureCollection',
+    dataName,
+    dateTime,
+    dataType,
+    features: [],
+  };
+
+  console.log(rawData);
+  //* For every bigquery row create a GEOJSON GPS element
+  for (const gpsElement of rawData.features) {
+    console.log(gpsElement);
+    const coordinates = gpsElement.geometry.coordinates;
+    const properties = gpsElement.properties;
+    properties.Size = 1;
+    properties.Color = color;
+
+    //* Create the final feature config and add the feature id for the ability to hover
+    const feature = {
+      type: 'Feature', geometry: { type: geojsonDataType, coordinates }, properties,
+    };
+    geoJson.features.push(feature);
+  }
+  return geoJson;
+};
+
 export default gpsJsonToGeojson;

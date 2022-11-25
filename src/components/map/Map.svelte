@@ -183,7 +183,7 @@
 				id: fillList.layerName,
 				type: "circle",
 				source: fillList.sourceName,
-				minzoom: 12,
+				minzoom: 1,
 
 				paint: {
 					"circle-radius": [

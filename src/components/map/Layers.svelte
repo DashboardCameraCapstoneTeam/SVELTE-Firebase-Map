@@ -34,7 +34,7 @@
 		return layerList.every((element) => element.isShown === initialIsShown);
 	};
 </script>
-<section class="card h-fit scale-in-center">
+<section class="card h-fit scale-in-center ">
 	<div class="p-4">
 		<p class="font-bold my-1">Layers:</p>
 		<button on:click={toggleLayers} class={`card-btn   ${showAllLayers ? "btn-green" : " btn-error-outline"}  my-1 `}> {showAllLayers ? "Show All" : "Disable All"} </button>

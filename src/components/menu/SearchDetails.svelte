@@ -16,7 +16,7 @@
 		Object.keys(dateTimeDictionary).forEach((dateTime) => (dateTimeDictionary[dateTime] = ""));
 	};
 </script>
-<section class="card h-fit scale-in-center">
+<section class="card h-fit scale-in-center ">
 	<div class="p-4">
 		<p class="font-bold my-1">Date Time Selection:</p>
 		<div class="datepicker form-floating my-1  w-full" data-mdb-toggle-button="false">
@@ -53,7 +53,7 @@
 	</div>
 </section>
 
-<section class="card h-fit scale-in-center">
+<section class="card h-fit scale-in-center ">
 	<div class="p-4">
 		<p class="font-bold my-1">Fetch Firebase Data:</p>
 		<button class={`card-btn btn-primary my-1`} on:click={fetchFirebaseData}><i class="fa-solid fa-magnifying-glass" /> {searchMessage} </button>
@@ -64,3 +64,4 @@
 		</p>
 	</div>
 </section>
+
