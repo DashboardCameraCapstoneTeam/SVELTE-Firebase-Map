@@ -10,7 +10,7 @@
 </script>
 
 
-<section class="card h-fit scale-in-center w-96">
+<section class="card h-fit scale-in-center w-[32rem]">
 	<div class="p-4">
 		<div class="float-right">
 			</div>

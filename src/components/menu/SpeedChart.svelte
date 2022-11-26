@@ -150,8 +150,8 @@
 	});
 </script>
 
-<div class="flex flex-row gap-4 h-full">
-	<section class="card h-fit scale-in-center flex-1">
+<div class="flex flex-row gap-4 h-full ">
+	<section class="card h-fit scale-in-center flex-1 w-[32rem]">
 		<div class="p-4">
 			<p class="font-bold my-1">Vehicle Speed Chart (Km/h):</p>
 
