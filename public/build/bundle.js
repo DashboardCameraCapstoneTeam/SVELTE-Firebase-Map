@@ -40529,60 +40529,76 @@ var app = (function () {
     const file$d = "src/components/Navbar.svelte";
 
     function create_fragment$e(ctx) {
-    	let div1;
+    	let div2;
     	let div0;
     	let p;
     	let t0;
     	let t1;
+    	let div1;
+    	let a;
+    	let t3;
     	let h1;
-    	let t2;
-    	let div1_class_value;
+    	let t4;
+    	let div2_class_value;
 
     	const block = {
     		c: function create() {
-    			div1 = element("div");
+    			div2 = element("div");
     			div0 = element("div");
     			p = element("p");
     			t0 = text(/*title*/ ctx[0]);
     			t1 = space();
+    			div1 = element("div");
+    			a = element("a");
+    			a.textContent = "Create GEOJSON";
+    			t3 = space();
     			h1 = element("h1");
-    			t2 = text(/*title*/ ctx[0]);
+    			t4 = text(/*title*/ ctx[0]);
     			attr_dev(p, "class", "text-xl");
     			add_location(p, file$d, 9, 5, 228);
     			add_location(div0, file$d, 9, 0, 223);
+    			attr_dev(a, "class", "hover:underline");
+    			attr_dev(a, "href", "https://geojson.io/#map=10.9/44.2456/-76.5014");
+    			attr_dev(a, "target", "_blank");
+    			attr_dev(a, "rel", "noreferrer");
+    			add_location(a, file$d, 10, 5, 271);
+    			add_location(div1, file$d, 10, 0, 266);
     			attr_dev(h1, "class", "text-4xl ");
-    			add_location(h1, file$d, 11, 1, 268);
+    			add_location(h1, file$d, 13, 1, 413);
 
-    			attr_dev(div1, "class", div1_class_value = `${/*color*/ ctx[1]} ${/*rounded*/ ctx[2]}  px-4 py-4 text-white sticky top-0 ${/*zHeight*/ ctx[3]}
+    			attr_dev(div2, "class", div2_class_value = `${/*color*/ ctx[1]} ${/*rounded*/ ctx[2]}  px-4 py-4 text-white sticky top-0 ${/*zHeight*/ ctx[3]}
 flex justify-between`);
 
-    			add_location(div1, file$d, 7, 0, 120);
+    			add_location(div2, file$d, 7, 0, 120);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div1, anchor);
-    			append_dev(div1, div0);
+    			insert_dev(target, div2, anchor);
+    			append_dev(div2, div0);
     			append_dev(div0, p);
     			append_dev(p, t0);
-    			append_dev(div1, t1);
-    			append_dev(div1, h1);
-    			append_dev(h1, t2);
+    			append_dev(div2, t1);
+    			append_dev(div2, div1);
+    			append_dev(div1, a);
+    			append_dev(div2, t3);
+    			append_dev(div2, h1);
+    			append_dev(h1, t4);
     		},
     		p: function update(ctx, [dirty]) {
     			if (dirty & /*title*/ 1) set_data_dev(t0, /*title*/ ctx[0]);
-    			if (dirty & /*title*/ 1) set_data_dev(t2, /*title*/ ctx[0]);
+    			if (dirty & /*title*/ 1) set_data_dev(t4, /*title*/ ctx[0]);
 
-    			if (dirty & /*color, rounded, zHeight*/ 14 && div1_class_value !== (div1_class_value = `${/*color*/ ctx[1]} ${/*rounded*/ ctx[2]}  px-4 py-4 text-white sticky top-0 ${/*zHeight*/ ctx[3]}
+    			if (dirty & /*color, rounded, zHeight*/ 14 && div2_class_value !== (div2_class_value = `${/*color*/ ctx[1]} ${/*rounded*/ ctx[2]}  px-4 py-4 text-white sticky top-0 ${/*zHeight*/ ctx[3]}
 flex justify-between`)) {
-    				attr_dev(div1, "class", div1_class_value);
+    				attr_dev(div2, "class", div2_class_value);
     			}
     		},
     		i: noop$2,
     		o: noop$2,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div1);
+    			if (detaching) detach_dev(div2);
     		}
     	};
 
