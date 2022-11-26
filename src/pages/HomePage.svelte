@@ -380,7 +380,13 @@
 
 	const addGeojsonData = (input, name = "Own Data", dataType = "Point", color = "Red") => {
 		gpsData = [rawGPSDataToGeojsonData(input, name, dataType, color)];
-		updateMapCenter(gpsData[0].features[0].geometry.coordinates)
+		if(dataType ==='Point'){
+			updateMapCenter(gpsData[0].features[0].geometry.coordinates)
+		}
+		else{
+			updateMapCenter(gpsData[0].features[0].geometry.coordinates[0][0])
+		}
+		
 	};
 </script>
 
