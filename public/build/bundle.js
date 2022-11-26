@@ -40503,8 +40503,11 @@ var app = (function () {
     			h1 = element("h1");
     			t = text(/*title*/ ctx[0]);
     			attr_dev(h1, "class", "text-4xl ");
-    			add_location(h1, file$c, 8, 1, 210);
-    			attr_dev(div, "class", div_class_value = `${/*color*/ ctx[1]} ${/*rounded*/ ctx[2]}  py-5 text-center text-white sticky top-0 ${/*zHeight*/ ctx[3]}`);
+    			add_location(h1, file$c, 10, 1, 225);
+
+    			attr_dev(div, "class", div_class_value = `${/*color*/ ctx[1]} ${/*rounded*/ ctx[2]}  px-4 py-4 text-white sticky top-0 ${/*zHeight*/ ctx[3]}
+flex justify-between`);
+
     			add_location(div, file$c, 7, 0, 120);
     		},
     		l: function claim(nodes) {
@@ -40518,7 +40521,8 @@ var app = (function () {
     		p: function update(ctx, [dirty]) {
     			if (dirty & /*title*/ 1) set_data_dev(t, /*title*/ ctx[0]);
 
-    			if (dirty & /*color, rounded, zHeight*/ 14 && div_class_value !== (div_class_value = `${/*color*/ ctx[1]} ${/*rounded*/ ctx[2]}  py-5 text-center text-white sticky top-0 ${/*zHeight*/ ctx[3]}`)) {
+    			if (dirty & /*color, rounded, zHeight*/ 14 && div_class_value !== (div_class_value = `${/*color*/ ctx[1]} ${/*rounded*/ ctx[2]}  px-4 py-4 text-white sticky top-0 ${/*zHeight*/ ctx[3]}
+flex justify-between`)) {
     				attr_dev(div, "class", div_class_value);
     			}
     		},

@@ -5,6 +5,8 @@
 	export let zHeight = "";
 </script>
 
-<div class={`${color} ${rounded}  py-5 text-center text-white sticky top-0 ${zHeight}`}>
+<div class={`${color} ${rounded}  px-4 py-4 text-white sticky top-0 ${zHeight}
+flex justify-between`}>
+
 	<h1 class="text-4xl  ">{title}</h1>
 </div>
