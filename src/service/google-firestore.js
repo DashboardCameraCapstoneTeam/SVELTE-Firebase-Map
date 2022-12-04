@@ -31,6 +31,17 @@ export const fetchDataFromFirebase = async (user, dateTimeDictionary) => {
   }
 };
 
+export const uploadDocumentToFirebase = async (user, geoJson) => {
+  try {
+    const docRef = doc(db, 'users', user.uid);
+    const colRef = collection(docRef, 'geojson');
+    await colRef.add(geoJson);
+    return { status: 200 };
+  } catch (error) {
+    return error;
+  }
+};
+
 export const deleteDocumentFromFirebase = async (user, documentId) => {
   try {
     const docRef = doc(db, 'users', user.uid);

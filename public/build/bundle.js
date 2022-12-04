@@ -89135,7 +89135,7 @@ flex justify-between`)) {
     const { console: console_1 } = globals;
     const file$1 = "src\\pages\\HomePage.svelte";
 
-    // (412:0) {#if isModalOpen}
+    // (414:0) {#if isModalOpen}
     function create_if_block_8(ctx) {
     	let modalcard;
     	let updating_modalPayload;
@@ -89191,14 +89191,14 @@ flex justify-between`)) {
     		block,
     		id: create_if_block_8.name,
     		type: "if",
-    		source: "(412:0) {#if isModalOpen}",
+    		source: "(414:0) {#if isModalOpen}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (438:33) 
+    // (440:33) 
     function create_if_block_7(ctx) {
     	let addgeojson;
     	let current;
@@ -89237,14 +89237,14 @@ flex justify-between`)) {
     		block,
     		id: create_if_block_7.name,
     		type: "if",
-    		source: "(438:33) ",
+    		source: "(440:33) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (436:33) 
+    // (438:33) 
     function create_if_block_6(ctx) {
     	let streetview;
     	let updating_pointOfInterest;
@@ -89300,14 +89300,14 @@ flex justify-between`)) {
     		block,
     		id: create_if_block_6.name,
     		type: "if",
-    		source: "(436:33) ",
+    		source: "(438:33) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (433:33) 
+    // (435:33) 
     function create_if_block_5(ctx) {
     	let video;
     	let updating_selectedVideoFile;
@@ -89398,14 +89398,14 @@ flex justify-between`)) {
     		block,
     		id: create_if_block_5.name,
     		type: "if",
-    		source: "(433:33) ",
+    		source: "(435:33) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (430:33) 
+    // (432:33) 
     function create_if_block_4(ctx) {
     	let tableview;
     	let updating_selectedFirebaseGPSData;
@@ -89505,14 +89505,14 @@ flex justify-between`)) {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(430:33) ",
+    		source: "(432:33) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (428:4) {#if selectedMenu === 0}
+    // (430:4) {#if selectedMenu === 0}
     function create_if_block_3(ctx) {
     	let profile;
     	let updating_user;
@@ -89569,14 +89569,14 @@ flex justify-between`)) {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(428:4) {#if selectedMenu === 0}",
+    		source: "(430:4) {#if selectedMenu === 0}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (445:2) {#if isLoading === true}
+    // (447:2) {#if isLoading === true}
     function create_if_block_2(ctx) {
     	let maploadingspinner;
     	let current;
@@ -89608,14 +89608,14 @@ flex justify-between`)) {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(445:2) {#if isLoading === true}",
+    		source: "(447:2) {#if isLoading === true}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (448:2) {#if isError === true}
+    // (450:2) {#if isError === true}
     function create_if_block_1(ctx) {
     	let maperror;
     	let current;
@@ -89647,14 +89647,14 @@ flex justify-between`)) {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(448:2) {#if isError === true}",
+    		source: "(450:2) {#if isError === true}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (463:1) {:else}
+    // (465:1) {:else}
     function create_else_block$1(ctx) {
     	let div2;
     	let section;
@@ -89674,16 +89674,16 @@ flex justify-between`)) {
     			div0 = element("div");
     			div0.textContent = "No Recordings Found";
     			attr_dev(p, "class", "font-bold my-1");
-    			add_location(p, file$1, 466, 5, 15573);
+    			add_location(p, file$1, 468, 5, 15578);
     			attr_dev(div0, "class", "alert alert-red my-1");
     			attr_dev(div0, "role", "alert");
-    			add_location(div0, file$1, 467, 5, 15621);
+    			add_location(div0, file$1, 469, 5, 15626);
     			attr_dev(div1, "class", "p-4");
-    			add_location(div1, file$1, 465, 4, 15549);
+    			add_location(div1, file$1, 467, 4, 15554);
     			attr_dev(section, "class", "card h-fit scale-in-center");
-    			add_location(section, file$1, 464, 3, 15499);
+    			add_location(section, file$1, 466, 3, 15504);
     			attr_dev(div2, "class", "col-span-1 md:col-span-3");
-    			add_location(div2, file$1, 463, 2, 15456);
+    			add_location(div2, file$1, 465, 2, 15461);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -89705,14 +89705,14 @@ flex justify-between`)) {
     		block,
     		id: create_else_block$1.name,
     		type: "else",
-    		source: "(463:1) {:else}",
+    		source: "(465:1) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (459:1) {#if files.length}
+    // (461:1) {#if files.length}
     function create_if_block$2(ctx) {
     	let div;
     	let recordingstable;
@@ -89746,7 +89746,7 @@ flex justify-between`)) {
     			div = element("div");
     			create_component(recordingstable.$$.fragment);
     			attr_dev(div, "class", "col-span-1 md:col-span-12");
-    			add_location(div, file$1, 459, 2, 15283);
+    			add_location(div, file$1, 461, 2, 15288);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -89783,7 +89783,7 @@ flex justify-between`)) {
     		block,
     		id: create_if_block$2.name,
     		type: "if",
-    		source: "(459:1) {#if files.length}",
+    		source: "(461:1) {#if files.length}",
     		ctx
     	});
 
@@ -90090,15 +90090,15 @@ flex justify-between`)) {
     			t13 = space();
     			create_component(footer.$$.fragment);
     			attr_dev(div0, "class", `flex flex-col gap-4`);
-    			add_location(div0, file$1, 425, 3, 14047);
+    			add_location(div0, file$1, 427, 3, 14052);
     			attr_dev(div1, "class", "absolute top-2 left-2 flex flex-row gap-4 z-100");
-    			add_location(div1, file$1, 424, 2, 13981);
+    			add_location(div1, file$1, 426, 2, 13986);
     			attr_dev(div2, "class", "col-span-1 md:col-span-12 row-span-6 relative");
-    			add_location(div2, file$1, 421, 1, 13777);
+    			add_location(div2, file$1, 423, 1, 13782);
     			attr_dev(main, "class", "flex-1 grid-cols-1 gap-4 lg:grid-cols-12");
-    			add_location(main, file$1, 420, 0, 13719);
+    			add_location(main, file$1, 422, 0, 13724);
     			attr_dev(section, "class", "grid grid-cols-1 gap-4 lg:grid-cols-12 my-4 px-4");
-    			add_location(section, file$1, 457, 0, 15192);
+    			add_location(section, file$1, 459, 0, 15197);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -90679,6 +90679,7 @@ flex justify-between`)) {
     	const fetchGPSDataForFile = async (videoFile, saveToFirebase = false) => {
     		$$invalidate(12, isLoading = true);
     		$$invalidate(13, isError = false);
+    		goTop();
 
     		// Check permissions
     		const { coordHasPermissions, videoHasPermissions, coordFile } = await checkPermissions(accessTokenValue, videoFile, files);
@@ -90710,7 +90711,6 @@ flex justify-between`)) {
     			$$invalidate(11, selectedMenu = 2);
     			setSessionStorageWithExpiry$1("VideoFile", selectedVideoFile);
     			setLocalStorageWithExpiry("SelectedTrip", selectedGPSData);
-    			goTop();
     		}
 
     		$$invalidate(12, isLoading = false);

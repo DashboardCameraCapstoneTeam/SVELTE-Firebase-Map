@@ -224,6 +224,8 @@
   isLoading = true;
   isError = false;
 
+  goTop();
+
   // Check permissions
   const {
     coordHasPermissions,
@@ -257,7 +259,7 @@
     selectedMenu = 2;
     setSessionStorageWithExpiry("VideoFile", selectedVideoFile);
     setLocalStorageWithExpiry("SelectedTrip", selectedGPSData);
-    goTop();
+   
   }
 
   isLoading = false;
