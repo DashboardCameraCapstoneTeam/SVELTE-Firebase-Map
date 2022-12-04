@@ -5,7 +5,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import { convertDateTimeToString } from './date-time-converter';
 
-const getSpeed = (properties) => {
+export const getSpeed = (properties) => {
   for (const [key, value] of Object.entries(properties)) {
     const lowerKey = key.toLowerCase();
     if (lowerKey.includes('speed')) {

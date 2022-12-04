@@ -4,6 +4,21 @@
 	let name = '';
 	let color = '#e66465';
 
+	let geojsonButtons = [
+		{
+			id: 0,
+			title: 'Points',
+			value: 'Point'
+		},
+		{
+			id: 1,
+			title: 'Polygons',
+			value: 'Polygon'
+		}
+	];
+	let selectedGeojsonButton = geojsonButtons[0];
+
+
 	let showTerms = true;
 	const toggleTerms = () => {
 		showTerms = !showTerms;
@@ -44,12 +59,22 @@
 
 		<hr class="my-2" />
 
-       {#if value !== '' && name !== '' && color !== ''}
+		<div class="flex flex-row gap-4">
+			{#each geojsonButtons as geojsonButton}
+				<button
+					class={`card-btn ${geojsonButton === selectedGeojsonButton ?  'btn-primary' : 'btn-black-outline'} my-1`}
+					on:click={() => selectedGeojsonButton = geojsonButton}
+					><i class="fa-solid fa-plus " /> {geojsonButton.title}
+				</button>
+			{/each}
+		</div>
+
+       {#if value !== '' && name !== '' && color !== '' && selectedGeojsonButton}
          <!-- content here -->
      
 		<button
 			class={`card-btn btn-primary my-1`}
-			on:click={() => addGeojsonData(value, name, 'Point', color)}
+			on:click={() => addGeojsonData(value, name, selectedGeojsonButton.value, color)}
 			><i class="fa-solid fa-plus " /> Add Geojson Data
 		</button>
 

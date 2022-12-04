@@ -1,8 +1,11 @@
 /* eslint-disable no-unused-vars */
 import {
-  getListOfObjectWhereKeyContainsString, getObjectsWhereKeyAnyValidStrings,
-  getObjectsWhereKeyEqualsValue, checkIfElementExists,
+  getListOfObjectWhereKeyContainsString,
+  getObjectsWhereKeyAnyValidStrings,
+  getObjectsWhereKeyEqualsValue,
+  checkIfElementExists,
   removeObjectWhereValueEqualsString,
+  getGoogleDriveCoordFile,
 } from '../src/utils/filter-data';
 
 test('getListOfObjectWhereKeyContainsString is valid', () => {
@@ -43,4 +46,23 @@ test('checkIfElementExists is valid', () => {
 test('removeObjectWhereValueEqualsString is valid', () => {
   const input = [{ Name: 'Alex' }, { Name: 'Bush' }, { Name: 'Mark' }];
   expect(removeObjectWhereValueEqualsString(input, 'Name', 'Alex')).toStrictEqual([{ Name: 'Bush' }, { Name: 'Mark' }]);
+});
+
+describe('getListOfObjectWhereKeyContainsString', () => {
+  test('returns an array of objects where the specified key contains the specified string', () => {
+    const listOfObjects = [
+      { id: 1, name: 'apple', color: 'red' },
+      { id: 2, name: 'banana', color: 'yellow' },
+      { id: 3, name: 'grape', color: 'purple' },
+      { id: 4, name: 'orange', color: 'orange' },
+      { id: 5, name: 'strawberry', color: 'red' },
+    ];
+
+    const expected = [
+      { id: 2, name: 'banana', color: 'yellow' },
+      { id: 4, name: 'orange', color: 'orange' },
+    ];
+
+    expect(getListOfObjectWhereKeyContainsString(listOfObjects, 'name', 'an')).toEqual(expected);
+  });
 });

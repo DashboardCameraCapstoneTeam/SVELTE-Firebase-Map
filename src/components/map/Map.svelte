@@ -238,6 +238,10 @@
 					if (dataType === "Point") {
 						addPointLayer(gpsElement, "Count", ["get", "Color"]);
 					}
+
+					if(dataType === 'Polygon'){
+						addPolygonLayer(gpsElement, 0.5,  ["get", "Color"]);
+					}
 				}
 			});
 		} catch (err) {
@@ -280,6 +284,10 @@
 				addMapSource(gpsListElement);
 				if (dataType === "Point") {
 					addPointLayer(gpsListElement, "Count", ["get", "Color"]);
+				}
+				
+				if(dataType === 'Polygon'){
+					addPolygonLayer(gpsListElement, 0.5,  ["get", "Color"]);
 				}
 			});
 		} catch (err) {
