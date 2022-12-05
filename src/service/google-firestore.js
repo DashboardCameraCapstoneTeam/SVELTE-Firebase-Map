@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import {
-  collection, query, orderBy, doc, getDocs, where, deleteDoc,
+  collection, query, orderBy, doc, getDocs, where, deleteDoc, setDoc,
 } from 'firebase/firestore';
 import { db, firebase } from '../config/firebase';
 
@@ -31,11 +31,12 @@ export const fetchDataFromFirebase = async (user, dateTimeDictionary) => {
   }
 };
 
-export const uploadDocumentToFirebase = async (user, geoJson) => {
+export const uploadDocumentToFirebase = async (user, name, geoJson) => {
   try {
     const docRef = doc(db, 'users', user.uid);
     const colRef = collection(docRef, 'geojson');
-    await colRef.add(geoJson);
+
+    await setDoc(doc(colRef), geoJson);
     return { status: 200 };
   } catch (error) {
     return error;

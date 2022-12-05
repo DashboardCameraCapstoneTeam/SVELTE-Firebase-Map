@@ -4,8 +4,8 @@
 	import SearchDetails from "components/menu/SearchDetails.svelte";
 	import Layers from "components/map/Layers.svelte";
 	import MapStyleSelector from "components/map/MapStyleSelector.svelte";
-	import { fetchDataFromFirebase, deleteDocumentFromFirebase } from "service/google-firestore";
-	import { gpsJsonToGeojson, rawGPSDataToGeojsonData } from "utils/geojson-utils.js";
+	import { fetchDataFromFirebase, deleteDocumentFromFirebase, uploadDocumentToFirebase  } from "service/google-firestore";
+	import { gpsJsonToGeojson, rawGPSDataToGeojsonData, removeFeaturesUntilLessThan1MB } from "utils/geojson-utils.js";
 	import { googleSignIn } from "service/google-sign-in";
 	import Profile from "components/menu/Profile.svelte";
 	import { getGoogleDriveCoordFile } from "utils/filter-data.js";
@@ -174,8 +174,20 @@
 		isModalOpen = true;
 	};
 
-
-	
+	const addFirebaseElement = async (input, name = "Own Data", dataType = "Point", color = "Red") => {
+		isLoading = true;
+		isError = false;
+		let GeoJSON = rawGPSDataToGeojsonData(input, name, dataType, color);
+		GeoJSON = await removeFeaturesUntilLessThan1MB(GeoJSON);
+		const response = await uploadDocumentToFirebase(user, name, GeoJSON);
+		if (response.status === 200) {
+			console.log("Successfully added Firebase Data");
+		} else {
+			console.log(response.message);
+			isError = true;
+		}
+		isLoading = false;
+	};
 
 	const deleteFirebaseElement = async (documentId) => {
 		const response = await deleteDocumentFromFirebase(user, documentId);
@@ -203,8 +215,6 @@
 		document.body.scrollIntoView();
 	}
 
-
-
 	const getDriveFiles = async () => {
 		try {
 			const response = await getDashcamVideos(accessTokenValue);
@@ -221,88 +231,82 @@
 	};
 
 	const fetchGPSDataForFile = async (videoFile, saveToFirebase = false) => {
-  isLoading = true;
-  isError = false;
+		isLoading = true;
+		isError = false;
 
-  goTop();
+		goTop();
 
-  // Check permissions
-  const {
-    coordHasPermissions,
-    videoHasPermissions,
-    coordFile
-  } = await checkPermissions(accessTokenValue, videoFile, files);
+		// Check permissions
+		const { coordHasPermissions, videoHasPermissions, coordFile } = await checkPermissions(accessTokenValue, videoFile, files);
 
-  if (videoHasPermissions || coordHasPermissions) {
-    if (coordFile) {
-      let response = {};
-      if (saveToFirebase) {
-        response = await fetchAndSaveGPSDataFromGoogleDrive(user, coordFile);
-      } else {
-        response = await fetchGPSDataFromGoogleDrive(user, coordFile);
-      }
+		if (videoHasPermissions || coordHasPermissions) {
+			if (coordFile) {
+				let response = {};
+				if (saveToFirebase) {
+					response = await fetchAndSaveGPSDataFromGoogleDrive(user, coordFile);
+				} else {
+					response = await fetchGPSDataFromGoogleDrive(user, coordFile);
+				}
 
-      if (response.status === 200) {
-        gpsData = gpsJsonToGeojson([response.data]);
-        updateMapCenter(gpsData[0].features[0].geometry.coordinates);
-        selectedGPSData = [gpsData[0]];
-      } else {
-        isError = true;
-        console.log(response);
-      }
-    } else {
-      gpsData = [];
-      selectedGPSData = [];
-    }
+				if (response.status === 200) {
+					gpsData = gpsJsonToGeojson([response.data]);
+					updateMapCenter(gpsData[0].features[0].geometry.coordinates);
+					selectedGPSData = [gpsData[0]];
+				} else {
+					isError = true;
+					console.log(response);
+				}
+			} else {
+				gpsData = [];
+				selectedGPSData = [];
+			}
 
-    selectedVideoFile = videoFile;
-    selectedMenu = 2;
-    setSessionStorageWithExpiry("VideoFile", selectedVideoFile);
-    setLocalStorageWithExpiry("SelectedTrip", selectedGPSData);
-   
-  }
+			selectedVideoFile = videoFile;
+			selectedMenu = 2;
+			setSessionStorageWithExpiry("VideoFile", selectedVideoFile);
+			setLocalStorageWithExpiry("SelectedTrip", selectedGPSData);
+		}
 
-  isLoading = false;
-};
+		isLoading = false;
+	};
 
-const checkPermissions = async (accessTokenValue, videoFile, files) => {
-  let fetchNewFiles = false;
-  let coordHasPermissions = false;
-  let videoHasPermissions = videoFile.permissionIds.includes("anyoneWithLink");
+	const checkPermissions = async (accessTokenValue, videoFile, files) => {
+		let fetchNewFiles = false;
+		let coordHasPermissions = false;
+		let videoHasPermissions = videoFile.permissionIds.includes("anyoneWithLink");
 
-  const coordFile = getGoogleDriveCoordFile(videoFile, files);
-  if (coordFile) {
-    coordHasPermissions = coordFile.permissionIds.includes("anyoneWithLink");
-    if (!coordHasPermissions) {
-      const verifyResponse = await verifyAndAddPermissions(accessTokenValue, coordFile.id);
-      if (verifyResponse.status === 200) {
-        coordHasPermissions = true;
-        fetchNewFiles = true;
-      }
-    }
-  } else {
-    console.log("Unable to set permissions for coordinates file");
-  }
+		const coordFile = getGoogleDriveCoordFile(videoFile, files);
+		if (coordFile) {
+			coordHasPermissions = coordFile.permissionIds.includes("anyoneWithLink");
+			if (!coordHasPermissions) {
+				const verifyResponse = await verifyAndAddPermissions(accessTokenValue, coordFile.id);
+				if (verifyResponse.status === 200) {
+					coordHasPermissions = true;
+					fetchNewFiles = true;
+				}
+			}
+		} else {
+			console.log("Unable to set permissions for coordinates file");
+		}
 
-  if (!videoHasPermissions) {
-    const verifyResponse = await verifyAndAddPermissions(accessTokenValue, videoFile.id);
-    if (verifyResponse.status === 200) {
-      videoHasPermissions = true;
-      fetchNewFiles = true;
-    }
-  }
+		if (!videoHasPermissions) {
+			const verifyResponse = await verifyAndAddPermissions(accessTokenValue, videoFile.id);
+			if (verifyResponse.status === 200) {
+				videoHasPermissions = true;
+				fetchNewFiles = true;
+			}
+		}
 
-  if (fetchNewFiles) {
-    await getDriveFiles();
-  }
+		if (fetchNewFiles) {
+			await getDriveFiles();
+		}
 
-  return {
-    coordHasPermissions,
-    videoHasPermissions,
-    coordFile
-  };
-};
-
+		return {
+			coordHasPermissions,
+			videoHasPermissions,
+			coordFile,
+		};
+	};
 
 	const checkAndSetFiles = () => {
 		if (!files.length) {
@@ -438,7 +442,7 @@ car's driving metrics on the screen as your video plays."
 				{:else if selectedMenu === 3}
 					<StreetView bind:pointOfInterest />
 				{:else if selectedMenu === 4}
-					<AddGeojson {addGeojsonData} />
+					<AddGeojson {addGeojsonData} {addFirebaseElement} />
 				{/if}
 			</div>
 			<MapStyleSelector bind:mapStyle bind:isReadyForStyleSwitching />

@@ -77,10 +77,8 @@ export const rawGPSDataToGeojsonData = (data, name = 'General', geojsonDataType 
     features: [],
   };
 
-  console.log(rawData);
   //* For every bigquery row create a GEOJSON GPS element
   for (const gpsElement of rawData.features) {
-    console.log(gpsElement);
     const coordinates = gpsElement.geometry.coordinates;
     const properties = gpsElement.properties;
     properties.Size = 1;
@@ -96,3 +94,20 @@ export const rawGPSDataToGeojsonData = (data, name = 'General', geojsonDataType 
 };
 
 export default gpsJsonToGeojson;
+
+export const removeFeaturesUntilLessThan1MB = (geojson) => {
+  // Make a deep copy of the GeoJSON object to avoid modifying the original
+  const copy = JSON.parse(JSON.stringify(geojson));
+
+  // Keep track of the size of the GeoJSON object in bytes
+  let sizeInBytes = JSON.stringify(copy).length;
+  // Loop through the features in the GeoJSON object and remove them until the object is less than 1,048,576 bytes
+  while (sizeInBytes > 1048576) {
+    console.log('Removing feature');
+    copy.features = copy.features.slice(0, -100);
+    // Calculate the size of the GeoJSON object in bytes
+    sizeInBytes = JSON.stringify(copy).length;
+  }
+
+  return copy;
+};
