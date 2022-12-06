@@ -32,4 +32,31 @@
             error = err;
         }
     });
+
+    //When the location changes, set the new latlong to the map
+const onLocationChange =() => {
+    try{
+        streetViewObject === null
+        ? initializeStreetView()
+        : streetViewObject.setPosition(selectedPOI);
+
+    }catch(err){
+        error = err;
+    }
+};
+$: selectedPOI && onLocationChange();
+onDestroy(() => {
+    try{
+        streetViewObject = null;
+        streetViewContainer = null;
+    } catch (e){}
+});
+
+
+
+
+
+
+
+
 </script>
