@@ -52,11 +52,9 @@ onDestroy(() => {
     } catch (e){}
 });
 
-
-
-
-
-
-
+let showTerms = true;
+const toggleTerms  = () => {
+    showTerms = !showTerms;
+};
 
 </script>
