@@ -62,4 +62,7 @@ export const DETAILS_LIST = [
   },
 ];
 
-export const PROGRAMMING_TOOLS = ['nextjs', 'svelte', 'nodejs', 'express', 'nginx', 'github', 'docker', 'googlecloud'];
+export const FRONTEND_TOOLS = ['svelte', 'javascript', 'typescript', 'sass', 'tailwindcss-plain', 'webpack', 'babel'];
+export const API_TOOLS = ['firebase-plain', 'googlecloud'];
+export const BACKEND_TOOLS = ['fastapi', 'nginx', 'github', 'docker', 'googlecloud'];
+export const UTILITY_TOOLS = ['google', 'tensorflow', 'pytest', 'jest-plain', 'jupyter'];

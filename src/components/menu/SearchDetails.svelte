@@ -50,11 +50,7 @@
 				{dateTimeDictionary.startDateTime} to {dateTimeDictionary.endDateTime} <button class="float-right fa-lg" on:click={clearDateTime}><i class="fa-solid fa-xmark " /></button>
 			</div>
 		{/if}
-	</div>
-</section>
 
-<section class="card h-fit scale-in-center ">
-	<div class="p-4">
 		<p class="font-bold my-1">Fetch Firebase Data:</p>
 		<button class={`card-btn btn-primary my-1`} on:click={fetchFirebaseData}><i class="fa-solid fa-magnifying-glass" /> {searchMessage} </button>
 
@@ -64,4 +60,3 @@
 		</p>
 	</div>
 </section>
-

@@ -3,6 +3,7 @@
 	import { onDestroy } from "svelte";
 	import { getObjectsWhereKeyEqualsValue, removeObjectWhereValueEqualsString, checkIfElementExists } from "utils/filter-data.js";
 	import { v4 as uuidv4 } from "uuid";
+	import { buildPopup } from 'utils/map-popup.js';
 
 	export let layerList;
 	export let mapStyle;
@@ -207,9 +208,7 @@
 		map.on("click", fillList.layerName, (e) => {
 			let description = "";
 			const sliced = Object.fromEntries(Object.entries(e.features[0].properties).slice(0, 8));
-			for (const [key, value] of Object.entries(sliced)) {
-				description += `<span class="block font-bold">${key}</span><span class="block">${value}</span>`;
-			}
+			description = buildPopup(sliced)
 
 			smallPopup.setLngLat(e.lngLat).setHTML(description).addTo(map);
 			pointOfInterest = { lat: e.lngLat.lat, lng: e.lngLat.lng };
@@ -237,6 +236,10 @@
 					addMapSource(gpsElement);
 					if (dataType === "Point") {
 						addPointLayer(gpsElement, "Count", ["get", "Color"]);
+					}
+
+					if(dataType === 'Polygon'){
+						addPolygonLayer(gpsElement, 0.5,  ["get", "Color"]);
 					}
 				}
 			});
@@ -280,6 +283,10 @@
 				addMapSource(gpsListElement);
 				if (dataType === "Point") {
 					addPointLayer(gpsListElement, "Count", ["get", "Color"]);
+				}
+				
+				if(dataType === 'Polygon'){
+					addPolygonLayer(gpsListElement, 0.5,  ["get", "Color"]);
 				}
 			});
 		} catch (err) {

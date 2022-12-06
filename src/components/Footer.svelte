@@ -1,5 +1,5 @@
 <script>
-	import { ABOUT_LIST, APPLICATION_TOOLS_LIST, DETAILS_LIST, PROGRAMMING_TOOLS } from "constants";
+	import { ABOUT_LIST, APPLICATION_TOOLS_LIST, UTILITY_TOOLS, FRONTEND_TOOLS, API_TOOLS,  BACKEND_TOOLS} from "constants";
 	import { returnLinkGivenIfStringContains } from "utils/devicon.js";
 </script>
 
@@ -25,14 +25,45 @@
 			{/each}
 		</div>
 
-		<div class="col-span-1 ">
-			<p>Details</p>
+		<div class="col-span-1">
 
-			{#each DETAILS_LIST as item}
-				<div key={item.id} class="my-2">
-					<a href={`${item.link}`} target="_blank" class="text-sm  hover:underline" rel="noreferrer">{item.name}</a>
-				</div>
-			{/each}
+			<p>Front End Tools</p>
+			<div class="flex flex-wrap ">
+			
+				{#each FRONTEND_TOOLS as tool}
+				<img height="100" width="auto" title={tool} key={tool} class={`img-icon w-8 mx-2 py-2`} alt="" src={returnLinkGivenIfStringContains(tool)} loading="lazy" />
+				{/each}
+	
+			</div>
+
+
+			<p>API Tools</p>
+			<div class="flex flex-wrap">
+				
+				{#each API_TOOLS as tool}
+				<img height="100" width="auto" title={tool} key={tool} class={`img-icon w-8 mx-2 py-2`} alt="" src={returnLinkGivenIfStringContains(tool)} loading="lazy" />
+				{/each}
+	
+			</div>
+
+
+			<p>Back End Tools</p>
+			<div class="flex flex-wrap ">
+				
+				{#each BACKEND_TOOLS as tool}
+				<img height="100" width="auto" title={tool} key={tool} class={`img-icon w-8 mx-2 py-2`} alt="" src={returnLinkGivenIfStringContains(tool)} loading="lazy" />
+				{/each}
+	
+			</div>
+
+			<p>Utility Tools</p>
+			<div class="flex flex-wrap">
+				
+				{#each UTILITY_TOOLS as tool}
+				<img height="100" width="auto" title={tool} key={tool} class={`img-icon w-8 mx-2 py-2`} alt="" src={returnLinkGivenIfStringContains(tool)} loading="lazy" />
+				{/each}
+	
+			</div>
 		</div>
 	</div>
 
@@ -59,13 +90,10 @@
 				multitude of 3rd party APIs.
 			</p>
 
-			<div class="flex flex-wrap justify-between  ">
-				{#each PROGRAMMING_TOOLS as tool}
-				<img height="100" width="auto" title={tool} key={tool} class={`img-icon w-8 mx-2 py-2`} alt="" src={returnLinkGivenIfStringContains(tool)} loading="lazy" />
-				{/each}
-	
-			</div>
+		
 		
 		</div>
+
+		
 	</div>
 </footer>

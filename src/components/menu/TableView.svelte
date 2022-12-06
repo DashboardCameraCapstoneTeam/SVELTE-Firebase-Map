@@ -45,26 +45,26 @@
 	$: selectedFirebaseGPSData && updatePaginationFiles();
 </script>
 
-<section class="card h-fit scale-in-center">
+<section class="card h-fit scale-in-center w-[64rem]">
 	<div class="p-4">
 		<p class="font-bold my-1">GPS Table View:</p>
 		{#if selectedFirebaseGPSData.length}
 			<hr class="my-2" />
-
-			<table class="table w-full rounded-lg">
-				<thead>
-					<tr>
-						<th>Data Name</th>
-						<th>Date Time</th>
-						<th>Saved On</th>
-						<th>Options</th>
+			<div class="overflow-y-auto h-64">
+			<table class="table-auto overflow-auto table w-full rounded-lg h-64">
+				<thead >
+					<tr class="sticky top-0">
+						<th class="sticky">Data Name</th>
+						
+						<th class="sticky">Saved On</th>
+						<th class="sticky">Options</th>
 					</tr>
 				</thead>
 				<tbody>
 					{#each paginatedDocuments as gpsElement}
 						<tr>
 							<td>{gpsElement.dataName}</td>
-							<td>{gpsElement.dateTime}</td>
+							
 							<td>
 								<div class="flex flex-wrap justify-center  ">
 									{#each PROGRAMMING_TOOLS as tool}
@@ -73,7 +73,7 @@
 								</div>
 							</td>
 							<td>
-								<div class="flex flex-col">
+								<div class="flex flex-row gap-4">
 									<button class={`card-btn btn-primary my-1`} on:click={() => setGPSDataWithSelectedData([gpsElement])}>
 										<i class="fa-solid fa-eye" />
 										Add to Map
@@ -89,6 +89,8 @@
 					{/each}
 				</tbody>
 			</table>
+			</div>
+
 
 			<hr class="my-4" />
 			<p>{`${paginationFrom + 1}-${paginationTo} of ${selectedFirebaseGPSData.length}`}</p>
