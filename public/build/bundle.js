@@ -604,25 +604,10 @@ var app = (function () {
       },
     ];
 
-    const DETAILS_LIST = [
-      {
-        id: 0,
-        name: 'Animista',
-        link: 'https://animista.net/play/basic',
-      },
-      {
-        id: 1,
-        name: 'Developer Icons',
-        link: 'https://devicon.dev/',
-      },
-      {
-        id: 2,
-        name: 'Color Designer',
-        link: 'https://colordesigner.io/tools',
-      },
-    ];
-
-    const PROGRAMMING_TOOLS = ['nextjs', 'svelte', 'nodejs', 'express', 'nginx', 'github', 'docker', 'googlecloud'];
+    const FRONTEND_TOOLS = ['svelte', 'javascript', 'typescript', 'sass', 'tailwindcss-plain', 'webpack', 'babel'];
+    const API_TOOLS = ['firebase-plain', 'googlecloud'];
+    const BACKEND_TOOLS = ['fastapi', 'nginx', 'github', 'docker', 'googlecloud'];
+    const UTILITY_TOOLS = ['google', 'tensorflow', 'pytest', 'jest-plain', 'jupyter'];
 
     const returnLinkGivenIfStringContains = (toolString) => {
       if (toolString.includes('GoogleDrive')) {
@@ -653,27 +638,39 @@ var app = (function () {
 
     function get_each_context_1$3(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[3] = list[i];
+    	child_ctx[0] = list[i];
     	return child_ctx;
     }
 
     function get_each_context_2$2(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[3] = list[i];
+    	child_ctx[0] = list[i];
     	return child_ctx;
     }
 
     function get_each_context_3(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[3] = list[i];
+    	child_ctx[0] = list[i];
+    	return child_ctx;
+    }
+
+    function get_each_context_4(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[9] = list[i];
+    	return child_ctx;
+    }
+
+    function get_each_context_5(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[9] = list[i];
     	return child_ctx;
     }
 
     // (12:3) {#each ABOUT_LIST as item}
-    function create_each_block_3(ctx) {
+    function create_each_block_5(ctx) {
     	let div;
     	let a;
-    	let t0_value = /*item*/ ctx[3].name + "";
+    	let t0_value = /*item*/ ctx[9].name + "";
     	let t0;
     	let t1;
 
@@ -683,14 +680,14 @@ var app = (function () {
     			a = element("a");
     			t0 = text(t0_value);
     			t1 = space();
-    			attr_dev(a, "href", `${/*item*/ ctx[3].link}`);
+    			attr_dev(a, "href", `${/*item*/ ctx[9].link}`);
     			attr_dev(a, "target", "_blank");
     			attr_dev(a, "class", "text-sm hover:underline");
     			attr_dev(a, "rel", "noreferrer");
-    			add_location(a, file$k, 13, 5, 418);
-    			attr_dev(div, "key", /*item*/ ctx[3].id);
+    			add_location(a, file$k, 13, 5, 442);
+    			attr_dev(div, "key", /*item*/ ctx[9].id);
     			attr_dev(div, "class", "my-2");
-    			add_location(div, file$k, 12, 4, 379);
+    			add_location(div, file$k, 12, 4, 403);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -706,7 +703,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_each_block_3.name,
+    		id: create_each_block_5.name,
     		type: "each",
     		source: "(12:3) {#each ABOUT_LIST as item}",
     		ctx
@@ -716,10 +713,10 @@ var app = (function () {
     }
 
     // (21:3) {#each APPLICATION_TOOLS_LIST as item}
-    function create_each_block_2$2(ctx) {
+    function create_each_block_4(ctx) {
     	let div;
     	let a;
-    	let t0_value = /*item*/ ctx[3].name + "";
+    	let t0_value = /*item*/ ctx[9].name + "";
     	let t0;
     	let t1;
 
@@ -729,14 +726,14 @@ var app = (function () {
     			a = element("a");
     			t0 = text(t0_value);
     			t1 = space();
-    			attr_dev(a, "href", `${/*item*/ ctx[3].link}`);
+    			attr_dev(a, "href", `${/*item*/ ctx[9].link}`);
     			attr_dev(a, "target", "_blank");
     			attr_dev(a, "rel", "noreferrer");
     			attr_dev(a, "class", "text-sm hover:underline");
-    			add_location(a, file$k, 22, 5, 705);
-    			attr_dev(div, "key", /*item*/ ctx[3].id);
+    			add_location(a, file$k, 22, 5, 729);
+    			attr_dev(div, "key", /*item*/ ctx[9].id);
     			attr_dev(div, "class", "my-2");
-    			add_location(div, file$k, 21, 4, 666);
+    			add_location(div, file$k, 21, 4, 690);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -752,7 +749,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_each_block_2$2.name,
+    		id: create_each_block_4.name,
     		type: "each",
     		source: "(21:3) {#each APPLICATION_TOOLS_LIST as item}",
     		ctx
@@ -761,38 +758,106 @@ var app = (function () {
     	return block;
     }
 
-    // (31:3) {#each DETAILS_LIST as item}
-    function create_each_block_1$3(ctx) {
-    	let div;
-    	let a;
-    	let t0_value = /*item*/ ctx[3].name + "";
-    	let t0;
-    	let t1;
+    // (33:4) {#each FRONTEND_TOOLS as tool}
+    function create_each_block_3(ctx) {
+    	let img;
+    	let img_src_value;
 
     	const block = {
     		c: function create() {
-    			div = element("div");
-    			a = element("a");
-    			t0 = text(t0_value);
-    			t1 = space();
-    			attr_dev(a, "href", `${/*item*/ ctx[3].link}`);
-    			attr_dev(a, "target", "_blank");
-    			attr_dev(a, "class", "text-sm hover:underline");
-    			attr_dev(a, "rel", "noreferrer");
-    			add_location(a, file$k, 32, 5, 975);
-    			attr_dev(div, "key", /*item*/ ctx[3].id);
-    			attr_dev(div, "class", "my-2");
-    			add_location(div, file$k, 31, 4, 936);
+    			img = element("img");
+    			attr_dev(img, "height", "100");
+    			attr_dev(img, "width", "auto");
+    			attr_dev(img, "title", /*tool*/ ctx[0]);
+    			attr_dev(img, "key", /*tool*/ ctx[0]);
+    			attr_dev(img, "class", `img-icon w-8 mx-2 py-2`);
+    			attr_dev(img, "alt", "");
+    			if (!src_url_equal(img.src, img_src_value = returnLinkGivenIfStringContains(/*tool*/ ctx[0]))) attr_dev(img, "src", img_src_value);
+    			attr_dev(img, "loading", "lazy");
+    			add_location(img, file$k, 33, 4, 1009);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div, anchor);
-    			append_dev(div, a);
-    			append_dev(a, t0);
-    			append_dev(div, t1);
+    			insert_dev(target, img, anchor);
     		},
     		p: noop$2,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div);
+    			if (detaching) detach_dev(img);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block_3.name,
+    		type: "each",
+    		source: "(33:4) {#each FRONTEND_TOOLS as tool}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (43:4) {#each API_TOOLS as tool}
+    function create_each_block_2$2(ctx) {
+    	let img;
+    	let img_src_value;
+
+    	const block = {
+    		c: function create() {
+    			img = element("img");
+    			attr_dev(img, "height", "100");
+    			attr_dev(img, "width", "auto");
+    			attr_dev(img, "title", /*tool*/ ctx[0]);
+    			attr_dev(img, "key", /*tool*/ ctx[0]);
+    			attr_dev(img, "class", `img-icon w-8 mx-2 py-2`);
+    			attr_dev(img, "alt", "");
+    			if (!src_url_equal(img.src, img_src_value = returnLinkGivenIfStringContains(/*tool*/ ctx[0]))) attr_dev(img, "src", img_src_value);
+    			attr_dev(img, "loading", "lazy");
+    			add_location(img, file$k, 43, 4, 1293);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, img, anchor);
+    		},
+    		p: noop$2,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(img);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block_2$2.name,
+    		type: "each",
+    		source: "(43:4) {#each API_TOOLS as tool}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (53:4) {#each BACKEND_TOOLS as tool}
+    function create_each_block_1$3(ctx) {
+    	let img;
+    	let img_src_value;
+
+    	const block = {
+    		c: function create() {
+    			img = element("img");
+    			attr_dev(img, "height", "100");
+    			attr_dev(img, "width", "auto");
+    			attr_dev(img, "title", /*tool*/ ctx[0]);
+    			attr_dev(img, "key", /*tool*/ ctx[0]);
+    			attr_dev(img, "class", `img-icon w-8 mx-2 py-2`);
+    			attr_dev(img, "alt", "");
+    			if (!src_url_equal(img.src, img_src_value = returnLinkGivenIfStringContains(/*tool*/ ctx[0]))) attr_dev(img, "src", img_src_value);
+    			attr_dev(img, "loading", "lazy");
+    			add_location(img, file$k, 53, 4, 1587);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, img, anchor);
+    		},
+    		p: noop$2,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(img);
     		}
     	};
 
@@ -800,14 +865,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1$3.name,
     		type: "each",
-    		source: "(31:3) {#each DETAILS_LIST as item}",
+    		source: "(53:4) {#each BACKEND_TOOLS as tool}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (63:4) {#each PROGRAMMING_TOOLS as tool}
+    // (62:4) {#each UTILITY_TOOLS as tool}
     function create_each_block$8(ctx) {
     	let img;
     	let img_src_value;
@@ -823,7 +888,7 @@ var app = (function () {
     			attr_dev(img, "alt", "");
     			if (!src_url_equal(img.src, img_src_value = returnLinkGivenIfStringContains(/*tool*/ ctx[0]))) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "loading", "lazy");
-    			add_location(img, file$k, 63, 4, 2111);
+    			add_location(img, file$k, 62, 4, 1877);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, img, anchor);
@@ -838,7 +903,7 @@ var app = (function () {
     		block,
     		id: create_each_block$8.name,
     		type: "each",
-    		source: "(63:4) {#each PROGRAMMING_TOOLS as tool}",
+    		source: "(62:4) {#each UTILITY_TOOLS as tool}",
     		ctx
     	});
 
@@ -849,7 +914,7 @@ var app = (function () {
     	let hr0;
     	let t0;
     	let footer;
-    	let div3;
+    	let div7;
     	let div0;
     	let p0;
     	let t2;
@@ -858,29 +923,56 @@ var app = (function () {
     	let p1;
     	let t5;
     	let t6;
-    	let div2;
+    	let div6;
     	let p2;
     	let t8;
+    	let div2;
     	let t9;
-    	let hr1;
-    	let t10;
-    	let div8;
-    	let div4;
     	let p3;
+    	let t11;
+    	let div3;
     	let t12;
     	let p4;
     	let t14;
+    	let div4;
+    	let t15;
     	let p5;
-    	let t16;
-    	let div5;
     	let t17;
-    	let div7;
-    	let p6;
+    	let div5;
+    	let t18;
+    	let hr1;
     	let t19;
-    	let p7;
+    	let div11;
+    	let div8;
+    	let p6;
     	let t21;
-    	let div6;
-    	let each_value_3 = ABOUT_LIST;
+    	let p7;
+    	let t23;
+    	let p8;
+    	let t25;
+    	let div9;
+    	let t26;
+    	let div10;
+    	let p9;
+    	let t28;
+    	let p10;
+    	let each_value_5 = ABOUT_LIST;
+    	validate_each_argument(each_value_5);
+    	let each_blocks_5 = [];
+
+    	for (let i = 0; i < each_value_5.length; i += 1) {
+    		each_blocks_5[i] = create_each_block_5(get_each_context_5(ctx, each_value_5, i));
+    	}
+
+    	let each_value_4 = APPLICATION_TOOLS_LIST;
+    	validate_each_argument(each_value_4);
+    	let each_blocks_4 = [];
+
+    	for (let i = 0; i < each_value_4.length; i += 1) {
+    		each_blocks_4[i] = create_each_block_4(get_each_context_4(ctx, each_value_4, i));
+    	}
+
+    	let each_value_3 = FRONTEND_TOOLS;
     	validate_each_argument(each_value_3);
     	let each_blocks_3 = [];
 
@@ -888,7 +980,7 @@ var app = (function () {
     		each_blocks_3[i] = create_each_block_3(get_each_context_3(ctx, each_value_3, i));
     	}
 
-    	let each_value_2 = APPLICATION_TOOLS_LIST;
+    	let each_value_2 = API_TOOLS;
     	validate_each_argument(each_value_2);
     	let each_blocks_2 = [];
 
@@ -896,7 +988,7 @@ var app = (function () {
     		each_blocks_2[i] = create_each_block_2$2(get_each_context_2$2(ctx, each_value_2, i));
     	}
 
-    	let each_value_1 = DETAILS_LIST;
+    	let each_value_1 = BACKEND_TOOLS;
     	validate_each_argument(each_value_1);
     	let each_blocks_1 = [];
 
@@ -904,7 +996,7 @@ var app = (function () {
     		each_blocks_1[i] = create_each_block_1$3(get_each_context_1$3(ctx, each_value_1, i));
     	}
 
-    	let each_value = PROGRAMMING_TOOLS;
+    	let each_value = UTILITY_TOOLS;
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
@@ -917,14 +1009,14 @@ var app = (function () {
     			hr0 = element("hr");
     			t0 = space();
     			footer = element("footer");
-    			div3 = element("div");
+    			div7 = element("div");
     			div0 = element("div");
     			p0 = element("p");
     			p0.textContent = "About";
     			t2 = space();
 
-    			for (let i = 0; i < each_blocks_3.length; i += 1) {
-    				each_blocks_3[i].c();
+    			for (let i = 0; i < each_blocks_5.length; i += 1) {
+    				each_blocks_5[i].c();
     			}
 
     			t3 = space();
@@ -933,82 +1025,115 @@ var app = (function () {
     			p1.textContent = "Application Tools";
     			t5 = space();
 
+    			for (let i = 0; i < each_blocks_4.length; i += 1) {
+    				each_blocks_4[i].c();
+    			}
+
+    			t6 = space();
+    			div6 = element("div");
+    			p2 = element("p");
+    			p2.textContent = "Front End Tools";
+    			t8 = space();
+    			div2 = element("div");
+
+    			for (let i = 0; i < each_blocks_3.length; i += 1) {
+    				each_blocks_3[i].c();
+    			}
+
+    			t9 = space();
+    			p3 = element("p");
+    			p3.textContent = "API Tools";
+    			t11 = space();
+    			div3 = element("div");
+
     			for (let i = 0; i < each_blocks_2.length; i += 1) {
     				each_blocks_2[i].c();
     			}
 
-    			t6 = space();
-    			div2 = element("div");
-    			p2 = element("p");
-    			p2.textContent = "Details";
-    			t8 = space();
+    			t12 = space();
+    			p4 = element("p");
+    			p4.textContent = "Back End Tools";
+    			t14 = space();
+    			div4 = element("div");
 
     			for (let i = 0; i < each_blocks_1.length; i += 1) {
     				each_blocks_1[i].c();
     			}
 
-    			t9 = space();
-    			hr1 = element("hr");
-    			t10 = space();
-    			div8 = element("div");
-    			div4 = element("div");
-    			p3 = element("p");
-    			p3.textContent = "© Capstone. All rights reserved.";
-    			t12 = space();
-    			p4 = element("p");
-    			p4.textContent = "Website Terms and Policies";
-    			t14 = space();
+    			t15 = space();
     			p5 = element("p");
-    			p5.textContent = "The City promotes and fosters open government principles of participation, innovation, transparency and accountability. The data catalogue supports these principles and is the first step in\r\n\t\t\t\tmaking it easier to view, obtain and use the information the City has gathered.";
-    			t16 = space();
-    			div5 = element("div");
+    			p5.textContent = "Utility Tools";
     			t17 = space();
-    			div7 = element("div");
-    			p6 = element("p");
-    			p6.textContent = "License Terms";
-    			t19 = space();
-    			p7 = element("p");
-    			p7.textContent = "Application uses MAPBOX to display Geojson data. Interactive, thoroughly customizable maps in the browser, powered by vector tiles and WebGL. The application makes use of Geotab APIs, and a\r\n\t\t\t\tmultitude of 3rd party APIs.";
-    			t21 = space();
-    			div6 = element("div");
+    			div5 = element("div");
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
-    			add_location(hr0, file$k, 5, 0, 192);
-    			add_location(p0, file$k, 9, 3, 328);
+    			t18 = space();
+    			hr1 = element("hr");
+    			t19 = space();
+    			div11 = element("div");
+    			div8 = element("div");
+    			p6 = element("p");
+    			p6.textContent = "© Capstone. All rights reserved.";
+    			t21 = space();
+    			p7 = element("p");
+    			p7.textContent = "Website Terms and Policies";
+    			t23 = space();
+    			p8 = element("p");
+    			p8.textContent = "The City promotes and fosters open government principles of participation, innovation, transparency and accountability. The data catalogue supports these principles and is the first step in\r\n\t\t\t\tmaking it easier to view, obtain and use the information the City has gathered.";
+    			t25 = space();
+    			div9 = element("div");
+    			t26 = space();
+    			div10 = element("div");
+    			p9 = element("p");
+    			p9.textContent = "License Terms";
+    			t28 = space();
+    			p10 = element("p");
+    			p10.textContent = "Application uses MAPBOX to display Geojson data. Interactive, thoroughly customizable maps in the browser, powered by vector tiles and WebGL. The application makes use of Geotab APIs, and a\r\n\t\t\t\tmultitude of 3rd party APIs.";
+    			add_location(hr0, file$k, 5, 0, 216);
+    			add_location(p0, file$k, 9, 3, 352);
     			attr_dev(div0, "class", "col-span-1 ");
-    			add_location(div0, file$k, 8, 2, 298);
-    			add_location(p1, file$k, 19, 3, 593);
+    			add_location(div0, file$k, 8, 2, 322);
+    			add_location(p1, file$k, 19, 3, 617);
     			attr_dev(div1, "class", "col-span-1");
-    			add_location(div1, file$k, 18, 2, 564);
-    			add_location(p2, file$k, 28, 3, 881);
-    			attr_dev(div2, "class", "col-span-1 ");
-    			add_location(div2, file$k, 27, 2, 851);
-    			attr_dev(div3, "class", "grid grid-cols-1 md:grid-cols-3 py-2 mb-8");
-    			add_location(div3, file$k, 7, 1, 239);
-    			add_location(hr1, file$k, 38, 1, 1129);
-    			add_location(p3, file$k, 42, 3, 1223);
-    			attr_dev(p4, "class", "text-xs my-2");
-    			add_location(p4, file$k, 43, 3, 1267);
-    			attr_dev(p5, "class", "text-xs my-2");
-    			add_location(p5, file$k, 45, 3, 1328);
-    			attr_dev(div4, "class", "col-span-1");
-    			add_location(div4, file$k, 41, 2, 1194);
-    			attr_dev(div5, "class", "col-span-1 py-2 ");
-    			add_location(div5, file$k, 51, 2, 1657);
-    			add_location(p6, file$k, 54, 3, 1724);
+    			add_location(div1, file$k, 18, 2, 588);
+    			add_location(p2, file$k, 29, 3, 906);
+    			attr_dev(div2, "class", "flex flex-wrap ");
+    			add_location(div2, file$k, 30, 3, 933);
+    			add_location(p3, file$k, 39, 3, 1201);
+    			attr_dev(div3, "class", "flex flex-wrap");
+    			add_location(div3, file$k, 40, 3, 1222);
+    			add_location(p4, file$k, 49, 3, 1485);
+    			attr_dev(div4, "class", "flex flex-wrap ");
+    			add_location(div4, file$k, 50, 3, 1511);
+    			add_location(p5, file$k, 58, 3, 1777);
+    			attr_dev(div5, "class", "flex flex-wrap");
+    			add_location(div5, file$k, 59, 3, 1802);
+    			attr_dev(div6, "class", "col-span-1");
+    			add_location(div6, file$k, 27, 2, 875);
+    			attr_dev(div7, "class", "grid grid-cols-1 md:grid-cols-3 py-2 mb-8");
+    			add_location(div7, file$k, 7, 1, 263);
+    			add_location(hr1, file$k, 69, 1, 2084);
+    			add_location(p6, file$k, 73, 3, 2178);
     			attr_dev(p7, "class", "text-xs my-2");
-    			add_location(p7, file$k, 56, 3, 1751);
-    			attr_dev(div6, "class", "flex flex-wrap justify-between ");
-    			add_location(div6, file$k, 61, 3, 2020);
-    			attr_dev(div7, "class", "col-span-1");
-    			add_location(div7, file$k, 53, 2, 1695);
-    			attr_dev(div8, "class", "grid grid-cols-1 sm:grid-cols-3 mt-8");
-    			add_location(div8, file$k, 40, 1, 1140);
+    			add_location(p7, file$k, 74, 3, 2222);
+    			attr_dev(p8, "class", "text-xs my-2");
+    			add_location(p8, file$k, 76, 3, 2283);
+    			attr_dev(div8, "class", "col-span-1");
+    			add_location(div8, file$k, 72, 2, 2149);
+    			attr_dev(div9, "class", "col-span-1 py-2 ");
+    			add_location(div9, file$k, 82, 2, 2612);
+    			add_location(p9, file$k, 85, 3, 2679);
+    			attr_dev(p10, "class", "text-xs my-2");
+    			add_location(p10, file$k, 87, 3, 2706);
+    			attr_dev(div10, "class", "col-span-1");
+    			add_location(div10, file$k, 84, 2, 2650);
+    			attr_dev(div11, "class", "grid grid-cols-1 sm:grid-cols-3 mt-8");
+    			add_location(div11, file$k, 71, 1, 2095);
     			attr_dev(footer, "class", "bg-smoke py-8 px-4");
-    			add_location(footer, file$k, 6, 0, 200);
+    			add_location(footer, file$k, 6, 0, 224);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1017,60 +1142,130 @@ var app = (function () {
     			insert_dev(target, hr0, anchor);
     			insert_dev(target, t0, anchor);
     			insert_dev(target, footer, anchor);
-    			append_dev(footer, div3);
-    			append_dev(div3, div0);
+    			append_dev(footer, div7);
+    			append_dev(div7, div0);
     			append_dev(div0, p0);
     			append_dev(div0, t2);
 
-    			for (let i = 0; i < each_blocks_3.length; i += 1) {
-    				each_blocks_3[i].m(div0, null);
+    			for (let i = 0; i < each_blocks_5.length; i += 1) {
+    				each_blocks_5[i].m(div0, null);
     			}
 
-    			append_dev(div3, t3);
-    			append_dev(div3, div1);
+    			append_dev(div7, t3);
+    			append_dev(div7, div1);
     			append_dev(div1, p1);
     			append_dev(div1, t5);
 
-    			for (let i = 0; i < each_blocks_2.length; i += 1) {
-    				each_blocks_2[i].m(div1, null);
+    			for (let i = 0; i < each_blocks_4.length; i += 1) {
+    				each_blocks_4[i].m(div1, null);
     			}
 
-    			append_dev(div3, t6);
-    			append_dev(div3, div2);
-    			append_dev(div2, p2);
-    			append_dev(div2, t8);
+    			append_dev(div7, t6);
+    			append_dev(div7, div6);
+    			append_dev(div6, p2);
+    			append_dev(div6, t8);
+    			append_dev(div6, div2);
+
+    			for (let i = 0; i < each_blocks_3.length; i += 1) {
+    				each_blocks_3[i].m(div2, null);
+    			}
+
+    			append_dev(div6, t9);
+    			append_dev(div6, p3);
+    			append_dev(div6, t11);
+    			append_dev(div6, div3);
+
+    			for (let i = 0; i < each_blocks_2.length; i += 1) {
+    				each_blocks_2[i].m(div3, null);
+    			}
+
+    			append_dev(div6, t12);
+    			append_dev(div6, p4);
+    			append_dev(div6, t14);
+    			append_dev(div6, div4);
 
     			for (let i = 0; i < each_blocks_1.length; i += 1) {
-    				each_blocks_1[i].m(div2, null);
+    				each_blocks_1[i].m(div4, null);
     			}
 
-    			append_dev(footer, t9);
-    			append_dev(footer, hr1);
-    			append_dev(footer, t10);
-    			append_dev(footer, div8);
-    			append_dev(div8, div4);
-    			append_dev(div4, p3);
-    			append_dev(div4, t12);
-    			append_dev(div4, p4);
-    			append_dev(div4, t14);
-    			append_dev(div4, p5);
-    			append_dev(div8, t16);
-    			append_dev(div8, div5);
-    			append_dev(div8, t17);
-    			append_dev(div8, div7);
-    			append_dev(div7, p6);
-    			append_dev(div7, t19);
-    			append_dev(div7, p7);
-    			append_dev(div7, t21);
-    			append_dev(div7, div6);
+    			append_dev(div6, t15);
+    			append_dev(div6, p5);
+    			append_dev(div6, t17);
+    			append_dev(div6, div5);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
-    				each_blocks[i].m(div6, null);
+    				each_blocks[i].m(div5, null);
     			}
+
+    			append_dev(footer, t18);
+    			append_dev(footer, hr1);
+    			append_dev(footer, t19);
+    			append_dev(footer, div11);
+    			append_dev(div11, div8);
+    			append_dev(div8, p6);
+    			append_dev(div8, t21);
+    			append_dev(div8, p7);
+    			append_dev(div8, t23);
+    			append_dev(div8, p8);
+    			append_dev(div11, t25);
+    			append_dev(div11, div9);
+    			append_dev(div11, t26);
+    			append_dev(div11, div10);
+    			append_dev(div10, p9);
+    			append_dev(div10, t28);
+    			append_dev(div10, p10);
     		},
     		p: function update(ctx, [dirty]) {
     			if (dirty & /*ABOUT_LIST*/ 0) {
-    				each_value_3 = ABOUT_LIST;
+    				each_value_5 = ABOUT_LIST;
+    				validate_each_argument(each_value_5);
+    				let i;
+
+    				for (i = 0; i < each_value_5.length; i += 1) {
+    					const child_ctx = get_each_context_5(ctx, each_value_5, i);
+
+    					if (each_blocks_5[i]) {
+    						each_blocks_5[i].p(child_ctx, dirty);
+    					} else {
+    						each_blocks_5[i] = create_each_block_5(child_ctx);
+    						each_blocks_5[i].c();
+    						each_blocks_5[i].m(div0, null);
+    					}
+    				}
+
+    				for (; i < each_blocks_5.length; i += 1) {
+    					each_blocks_5[i].d(1);
+    				}
+
+    				each_blocks_5.length = each_value_5.length;
+    			}
+
+    			if (dirty & /*APPLICATION_TOOLS_LIST*/ 0) {
+    				each_value_4 = APPLICATION_TOOLS_LIST;
+    				validate_each_argument(each_value_4);
+    				let i;
+
+    				for (i = 0; i < each_value_4.length; i += 1) {
+    					const child_ctx = get_each_context_4(ctx, each_value_4, i);
+
+    					if (each_blocks_4[i]) {
+    						each_blocks_4[i].p(child_ctx, dirty);
+    					} else {
+    						each_blocks_4[i] = create_each_block_4(child_ctx);
+    						each_blocks_4[i].c();
+    						each_blocks_4[i].m(div1, null);
+    					}
+    				}
+
+    				for (; i < each_blocks_4.length; i += 1) {
+    					each_blocks_4[i].d(1);
+    				}
+
+    				each_blocks_4.length = each_value_4.length;
+    			}
+
+    			if (dirty & /*FRONTEND_TOOLS, returnLinkGivenIfStringContains*/ 0) {
+    				each_value_3 = FRONTEND_TOOLS;
     				validate_each_argument(each_value_3);
     				let i;
 
@@ -1082,7 +1277,7 @@ var app = (function () {
     					} else {
     						each_blocks_3[i] = create_each_block_3(child_ctx);
     						each_blocks_3[i].c();
-    						each_blocks_3[i].m(div0, null);
+    						each_blocks_3[i].m(div2, null);
     					}
     				}
 
@@ -1093,8 +1288,8 @@ var app = (function () {
     				each_blocks_3.length = each_value_3.length;
     			}
 
-    			if (dirty & /*APPLICATION_TOOLS_LIST*/ 0) {
-    				each_value_2 = APPLICATION_TOOLS_LIST;
+    			if (dirty & /*API_TOOLS, returnLinkGivenIfStringContains*/ 0) {
+    				each_value_2 = API_TOOLS;
     				validate_each_argument(each_value_2);
     				let i;
 
@@ -1106,7 +1301,7 @@ var app = (function () {
     					} else {
     						each_blocks_2[i] = create_each_block_2$2(child_ctx);
     						each_blocks_2[i].c();
-    						each_blocks_2[i].m(div1, null);
+    						each_blocks_2[i].m(div3, null);
     					}
     				}
 
@@ -1117,8 +1312,8 @@ var app = (function () {
     				each_blocks_2.length = each_value_2.length;
     			}
 
-    			if (dirty & /*DETAILS_LIST*/ 0) {
-    				each_value_1 = DETAILS_LIST;
+    			if (dirty & /*BACKEND_TOOLS, returnLinkGivenIfStringContains*/ 0) {
+    				each_value_1 = BACKEND_TOOLS;
     				validate_each_argument(each_value_1);
     				let i;
 
@@ -1130,7 +1325,7 @@ var app = (function () {
     					} else {
     						each_blocks_1[i] = create_each_block_1$3(child_ctx);
     						each_blocks_1[i].c();
-    						each_blocks_1[i].m(div2, null);
+    						each_blocks_1[i].m(div4, null);
     					}
     				}
 
@@ -1141,8 +1336,8 @@ var app = (function () {
     				each_blocks_1.length = each_value_1.length;
     			}
 
-    			if (dirty & /*PROGRAMMING_TOOLS, returnLinkGivenIfStringContains*/ 0) {
-    				each_value = PROGRAMMING_TOOLS;
+    			if (dirty & /*UTILITY_TOOLS, returnLinkGivenIfStringContains*/ 0) {
+    				each_value = UTILITY_TOOLS;
     				validate_each_argument(each_value);
     				let i;
 
@@ -1154,7 +1349,7 @@ var app = (function () {
     					} else {
     						each_blocks[i] = create_each_block$8(child_ctx);
     						each_blocks[i].c();
-    						each_blocks[i].m(div6, null);
+    						each_blocks[i].m(div5, null);
     					}
     				}
 
@@ -1171,6 +1366,8 @@ var app = (function () {
     			if (detaching) detach_dev(hr0);
     			if (detaching) detach_dev(t0);
     			if (detaching) detach_dev(footer);
+    			destroy_each(each_blocks_5, detaching);
+    			destroy_each(each_blocks_4, detaching);
     			destroy_each(each_blocks_3, detaching);
     			destroy_each(each_blocks_2, detaching);
     			destroy_each(each_blocks_1, detaching);
@@ -1201,8 +1398,10 @@ var app = (function () {
     	$$self.$capture_state = () => ({
     		ABOUT_LIST,
     		APPLICATION_TOOLS_LIST,
-    		DETAILS_LIST,
-    		PROGRAMMING_TOOLS,
+    		UTILITY_TOOLS,
+    		FRONTEND_TOOLS,
+    		API_TOOLS,
+    		BACKEND_TOOLS,
     		returnLinkGivenIfStringContains
     	});
 
