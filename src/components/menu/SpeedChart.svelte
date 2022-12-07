@@ -155,7 +155,7 @@
 		<div class="p-4">
 			<p class="font-bold my-1">Vehicle Speed Chart (Km/h):</p>
 
-			<div bind:this={chartDiv} class={`h-96 w-full rounded-lg`} />
+			<div bind:this={chartDiv} class={`h-64 w-full rounded-lg`} />
 
 			{#if selectedGPSData.length}
 				<hr class="my-2" />
@@ -168,7 +168,7 @@
 		</div>
 	</section>
 
-	<section class="card h-full scale-in-center flex-none">
+	<section class="card h-full scale-in-center w-fit">
 		<div class="p-4">
 			<p class="font-bold my-1">Vehicle Speed Legend (Km/h):</p>
 
@@ -179,9 +179,7 @@
 				<p class="list-item my-2"><i class="dot" style={`--color:${speedColors[speedColors.length - 1]}`} /> 100+</p>
 			</div>
 
-			<hr class="my-2" />
-
-			<p>Attention! Speed color is not indicative of speeding.</p>
+			
 		</div>
 	</section>
 </div>

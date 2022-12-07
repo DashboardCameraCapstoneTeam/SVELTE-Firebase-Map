@@ -45,17 +45,17 @@
 	$: selectedFirebaseGPSData && updatePaginationFiles();
 </script>
 
-<section class="card h-fit scale-in-center w-[64rem]">
+<section class="card h-fit scale-in-center ">
 	<div class="p-4">
 		<p class="font-bold my-1">GPS Table View:</p>
 		{#if selectedFirebaseGPSData.length}
-			<hr class="my-2" />
-			<div class="overflow-y-auto h-64">
+	
+		<div class="overflow-y-auto h-64">
 			<table class="table-auto overflow-auto table w-full rounded-lg h-64">
 				<thead >
 					<tr class="sticky top-0">
 						<th class="sticky">Data Name</th>
-						
+
 						<th class="sticky">Saved On</th>
 						<th class="sticky">Options</th>
 					</tr>
@@ -74,14 +74,14 @@
 							</td>
 							<td>
 								<div class="flex flex-row gap-4">
-									<button class={`card-btn btn-primary my-1`} on:click={() => setGPSDataWithSelectedData([gpsElement])}>
+									<button class={`card-btn btn-primary my-1 w-fit`} on:click={() => setGPSDataWithSelectedData([gpsElement])}>
 										<i class="fa-solid fa-eye" />
-										Add to Map
+										
 									</button>
 
 									<button
 										on:click={() => openModel("Delete Firebase Element", "Do you want to delete the Firebase GPS Data?", "Delete GPS Data", deleteFirebaseElement, gpsElement.dataId)}
-										class={`card-btn btn-error-outline my-1 `}><i class="fa-solid fa-trash " /> Delete</button
+										class={`card-btn btn-error-outline my-1 w-fit`}><i class="fa-solid fa-trash " /></button
 									>
 								</div>
 							</td>

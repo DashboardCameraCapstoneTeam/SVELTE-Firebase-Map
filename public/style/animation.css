@@ -26,3 +26,32 @@
     opacity: 1;
   }
 }
+
+
+
+/* Standard syntax */
+@keyframes backgroundColorPalette {
+	0% {
+		background: #272E72;
+	}
+	25% {
+		background: #25337C;
+	}
+	50% {
+		background: rgb(20, 45, 80);
+	}
+	75% {
+		background: #19264B;
+	}
+	100% {
+		background: #1B2146;
+	}
+}
+
+.header {
+	color: white;
+  animation-name: backgroundColorPalette;
+	animation-duration: 10s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}

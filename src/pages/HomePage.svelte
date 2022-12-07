@@ -4,7 +4,7 @@
 	import SearchDetails from "components/menu/SearchDetails.svelte";
 	import Layers from "components/map/Layers.svelte";
 	import MapStyleSelector from "components/map/MapStyleSelector.svelte";
-	import { fetchDataFromFirebase, deleteDocumentFromFirebase, uploadDocumentToFirebase  } from "service/google-firestore";
+	import { fetchDataFromFirebase, deleteDocumentFromFirebase, uploadDocumentToFirebase } from "service/google-firestore";
 	import { gpsJsonToGeojson, rawGPSDataToGeojsonData, removeFeaturesUntilLessThan1MB } from "utils/geojson-utils.js";
 	import { googleSignIn } from "service/google-sign-in";
 	import Profile from "components/menu/Profile.svelte";
@@ -47,7 +47,7 @@
 		startDateTime: "2015-06-23T00:00",
 		endDateTime: "2022-12-23T00:00",
 	};
-	let mapStyle = "satellite-streets-v11";
+	let mapStyle = "outdoors-v11";
 	let cityDetails = {
 		id: 0,
 		center: [-122.4194, 37.773972],
@@ -231,43 +231,53 @@
 	};
 
 	const fetchGPSDataForFile = async (videoFile, saveToFirebase = false) => {
-		isLoading = true;
-		isError = false;
+		try {
+			isLoading = true;
+			isError = false;
 
-		goTop();
+			goTop();
 
-		// Check permissions
-		const { coordHasPermissions, videoHasPermissions, coordFile } = await checkPermissions(accessTokenValue, videoFile, files);
+			// Check permissions
+			const { coordHasPermissions, videoHasPermissions, coordFile } = await checkPermissions(accessTokenValue, videoFile, files);
 
-		if (videoHasPermissions || coordHasPermissions) {
-			if (coordFile) {
-				let response = {};
-				if (saveToFirebase) {
-					response = await fetchAndSaveGPSDataFromGoogleDrive(user, coordFile);
+			if (videoHasPermissions || coordHasPermissions) {
+				if (coordFile) {
+					const response = await fetchGPSDataFromGoogleDrive(user, coordFile);
+
+					if (response.status === 200) {
+						gpsData = gpsJsonToGeojson([response.data]);
+						if (gpsData === null) return;
+						updateMapCenter(gpsData[0].features[0].geometry.coordinates);
+						selectedGPSData = [gpsData[0]];
+
+						if (saveToFirebase) {
+							GeoJSON = await removeFeaturesUntilLessThan1MB(gpsData[0]);
+							const response = await uploadDocumentToFirebase(user, gpsData[0].dataName, GeoJSON);
+							if (response.status === 200) {
+								console.log("Successfully added Firebase Data");
+							} else {
+								console.log(response.message);
+								isError = true;
+							}
+						}
+					} else {
+						isError = true;
+					}
 				} else {
-					response = await fetchGPSDataFromGoogleDrive(user, coordFile);
+					gpsData = [];
+					selectedGPSData = [];
 				}
 
-				if (response.status === 200) {
-					gpsData = gpsJsonToGeojson([response.data]);
-					updateMapCenter(gpsData[0].features[0].geometry.coordinates);
-					selectedGPSData = [gpsData[0]];
-				} else {
-					isError = true;
-					console.log(response);
-				}
-			} else {
-				gpsData = [];
-				selectedGPSData = [];
+				selectedVideoFile = videoFile;
+				selectedMenu = 2;
+				setSessionStorageWithExpiry("VideoFile", selectedVideoFile);
+				setLocalStorageWithExpiry("SelectedTrip", selectedGPSData);
 			}
 
-			selectedVideoFile = videoFile;
-			selectedMenu = 2;
-			setSessionStorageWithExpiry("VideoFile", selectedVideoFile);
-			setLocalStorageWithExpiry("SelectedTrip", selectedGPSData);
+			isLoading = false;
+		} catch (err) {
+			isLoading = false;
 		}
-
-		isLoading = false;
 	};
 
 	const checkPermissions = async (accessTokenValue, videoFile, files) => {
@@ -407,6 +417,7 @@
 
 	const addGeojsonData = (input, name = "Own Data", dataType = "Point", color = "Red") => {
 		gpsData = [rawGPSDataToGeojsonData(input, name, dataType, color)];
+		if (!gpsData.length) return;
 		if (dataType === "Point") {
 			updateMapCenter(gpsData[0].features[0].geometry.coordinates);
 		} else {
@@ -419,10 +430,7 @@
 	<ModalCard bind:modalPayload />
 {/if}
 <PageHeader title={"Dashboard Camera Viewer"} color="bg-dark" zHeight="z-10" />
-<AttentionBar
-	message="Dashcam Viewer shows all of your trips data. It displays your
-car's driving metrics on the screen as your video plays."
-/>
+
 <MenuBar bind:selectedMenu bind:menuComponents />
 <main class="flex-1 grid-cols-1 gap-4 lg:grid-cols-12">
 	<div class="col-span-1 md:col-span-12 row-span-6 relative">
@@ -458,7 +466,6 @@ car's driving metrics on the screen as your video plays."
 </main>
 
 <PageHeader title={"Recordings"} color="bg-dark" zHeight="z-10" />
-<AttentionBar message="Load, view, and sort all Google Drive Recordings. Use Pagination to sort between videos." />
 <RecordingsMenuBar bind:functionComponents />
 
 <section class="grid grid-cols-1 gap-4 lg:grid-cols-12 my-4 px-4">

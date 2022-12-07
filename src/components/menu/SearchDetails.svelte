@@ -55,8 +55,6 @@
 		<button class={`card-btn btn-primary my-1`} on:click={fetchFirebaseData}><i class="fa-solid fa-magnifying-glass" /> {searchMessage} </button>
 
 		<hr class="my-2" />
-		<p>
-			Firebase data is only created after the dashcam videos and its coordinates have already been processed.
-		</p>
+		
 	</div>
 </section>

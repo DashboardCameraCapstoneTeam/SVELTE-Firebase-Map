@@ -54,7 +54,7 @@
 			<table class="table w-full rounded-lg">
 				<thead>
 					<tr>
-						<th>Video</th>
+						<th class="w-64">Video</th>
 						<th>Video Name</th>
 						<th>Created Time</th>
 						<th>Owner</th>
@@ -62,7 +62,7 @@
 						<th>Size</th>
 						<th>Has GPS Data</th>
 						<th>Has Permissions</th>
-						<th>Options</th>
+						<th class="w-64">Options</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -70,14 +70,16 @@
 						<tr>
 							<td class="w-64">
 								{#if videoFile.thumbnailLink}
-									<a href={videoFile.webViewLink} target="_blank" class="text-white text-xl  borderRounded">
+									<a href={videoFile.webViewLink} target="_blank">
 										<img
 											src={videoFile.thumbnailLink}
-											onerror="https://i.picsum.photos/id/870/200/300.jpg?blur=2&grayscale&hmac=ujRymp644uYVjdKJM7kyLDSsrqNSMVRPnGU99cKl6Vs"
+											referrerpolicy="no-referrer"
+										    onerror="this.onerror=null;this.src='https://media.istockphoto.com/id/1147544806/vector/no-thumbnail-image-vector-graphic.jpg?s=170667a&w=0&k=20&c=-r15fTq303g-Do1h-F1jLdxddwkg4ZTtkdQK1XP2sFk=';"
 											alt="Dashcam"
-											class="h-32 w-32 object-cover rounded-lg"
+											class="w-full h-32  object-cover rounded-lg"
 										/>
 									</a>
+
 								{/if}
 							</td>
 							<td>{videoFile.name}</td>
@@ -94,7 +96,11 @@
 
 							<td>
 								{#if getGoogleDriveCoordFile(videoFile, files)}
-									<i class="fa-solid fa-check text-green fa-lg" />
+									
+									<button class={`card-btn btn-primary-outline w-fit  my-1`} on:click={() => fetchGPSDataForFile(videoFile, true)}>
+										<i class="fa-solid fa-save" />
+										Save GPS Data to Firebase
+									</button>
 								{:else}
 									<i class="fa-solid fa-x text-error fa-lg" />
 								{/if}
@@ -109,29 +115,24 @@
 							</td>
 
 							<td>
-								<div class="flex flex-col">
-									<a a href={videoFile.webViewLink} target="_blank" class={`card-btn btn-primary my-1`}>
+								<div class="flex flex-row gap-4 ">
+									<a a href={videoFile.webViewLink} target="_blank" class={`card-btn btn-primary w-fit my-1`}>
 										<i class="fa-solid fa-eye" />
-										Watch
+										
 									</a>
-									<button class={`card-btn btn-primary my-1`} on:click={() => fetchGPSDataForFile(videoFile, false)}>
-										<i class="fa-solid fa-share" />
-										Add to Map
+									<button class={`card-btn btn-primary w-fit  my-1`} on:click={() => fetchGPSDataForFile(videoFile, false)}>
+										<i class="fa-solid fa-map" />
+										<i class="fa-solid fa-plus" />
+									
 									</button>
-									{#if getGoogleDriveCoordFile(videoFile, files)}
-									<button class={`card-btn btn-primary-outline my-1`} on:click={() => fetchGPSDataForFile(videoFile, true)}>
-										<i class="fa-solid fa-share" />
-										Save GPS Data to Firebase
-									</button>
-
-									{/if}
+								
 
 									<button
-										class={`card-btn btn-error-outline my-1`}
+										class={`card-btn btn-error-outline my-1 w-fit `}
 										on:click={() => openModel("Delete Google Drive Recording", "Do you want to delete the Google Drive Recording?", "Delete Recording", deleteDriveFile, videoFile)}
 									>
 										<i class="fa-solid fa-trash" />
-										Delete
+										
 									</button>
 								</div>
 							</td>

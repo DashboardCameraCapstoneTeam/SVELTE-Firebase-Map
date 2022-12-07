@@ -39,6 +39,7 @@ export const fetchGPSDataFromGoogleDrive = async (user, coordFile) => {
     const config = {
       method: 'post',
       url: FETCH_GPS_DATA_URL,
+      timeout: 20000,
       headers: {
         'Content-Type': 'application/json',
       },
@@ -67,6 +68,7 @@ export const fetchAndSaveGPSDataFromGoogleDrive = async (user, coordFile) => {
     const config = {
       method: 'post',
       url: FETCH_AND_SAVE_GPS_DATA_URL,
+      timeout: 10000,
       headers: {
         'Content-Type': 'application/json',
       },

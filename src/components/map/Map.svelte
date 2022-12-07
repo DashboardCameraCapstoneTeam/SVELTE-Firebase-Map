@@ -342,7 +342,7 @@
 		}
 	};
 
-	$: map && selectedMenu !== null && resizeMap();
+	$: map && selectedMenu  && resizeMap();
 	$: map && mapStyle && isInitialDataLoaded && switchStyle();
 	$: map && gpsData && isInitialDataLoaded && addNewDynamicGPS();
 	$: map && cityDetails && isInitialDataLoaded && updateMapCenter();
@@ -358,6 +358,7 @@
 			antialias: true,
 			style: "mapbox://styles/mapbox/" + mapStyle,
 		});
+		resizeMap();
 
 		// Get the initial Data
 		await fetchInitialMapData();
@@ -382,9 +383,7 @@
 			addMapFilter();
 		});
 
-		const interval = setInterval(function () {
-			resizeMap();
-		}, 2000);
+
 	});
 
 	onDestroy(() => {

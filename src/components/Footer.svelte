@@ -36,34 +36,6 @@
 	
 			</div>
 
-
-			<p>API Tools</p>
-			<div class="flex flex-wrap">
-				
-				{#each API_TOOLS as tool}
-				<img height="100" width="auto" title={tool} key={tool} class={`img-icon w-8 mx-2 py-2`} alt="" src={returnLinkGivenIfStringContains(tool)} loading="lazy" />
-				{/each}
-	
-			</div>
-
-
-			<p>Back End Tools</p>
-			<div class="flex flex-wrap ">
-				
-				{#each BACKEND_TOOLS as tool}
-				<img height="100" width="auto" title={tool} key={tool} class={`img-icon w-8 mx-2 py-2`} alt="" src={returnLinkGivenIfStringContains(tool)} loading="lazy" />
-				{/each}
-	
-			</div>
-
-			<p>Utility Tools</p>
-			<div class="flex flex-wrap">
-				
-				{#each UTILITY_TOOLS as tool}
-				<img height="100" width="auto" title={tool} key={tool} class={`img-icon w-8 mx-2 py-2`} alt="" src={returnLinkGivenIfStringContains(tool)} loading="lazy" />
-				{/each}
-	
-			</div>
 		</div>
 	</div>
 

@@ -28,7 +28,7 @@
 <section class="card h-fit scale-in-center p-4 w-[32rem]">
 	<div class="flex flow-row justify-between my-1">
 		<div>
-			<p>Add GEOJSON Data:</p>
+			<p class="font-bold my-1">Geojson Data Name:</p>
 		</div>
 
 		<div>
@@ -46,13 +46,14 @@
 
 	{#if showTerms}
 		<div>
-			<hr class="my-2" />
+			
 			<input class="border w-full my-1 rounded-lg p-2" placeholder="GEOJSON Name" bind:value={name} />
 			<div>
-				<p>Data Color:</p>
+				<p class="font-bold my-1">Data Color:</p>
 				<input class="my-1" type="color" id="head" name="head" bind:value={color} />
 			</div>
 
+			<p class="font-bold my-1">Geojson Data:</p>
 			<textarea class="border my-1 p-2" placeholder="Add GEOJSON Data" bind:value />
 
 			<hr class="my-2" />
@@ -65,17 +66,16 @@
 				{/each}
 			</div>
 
-			{#if value !== "" && name !== "" && color !== "" && selectedGeojsonButton}
-				<button class={`card-btn btn-primary my-1`} on:click={() => addGeojsonData(value, name, selectedGeojsonButton.value, color)}><i class="fa-solid fa-plus " /> Add Geojson Data </button>
-			{:else}
-				<div class="alert alert-red my-1" role="alert">Add a name, select a color, and add GEOJSON Data</div>
-			{/if}
-
-			
-
+	
 			{#if addFirebaseElement && value !== "" && name !== "" && color !== "" && selectedGeojsonButton.value === "Point"}
 			<hr class="my-2" />
-				<button class={`card-btn btn-primary my-1`} on:click={() => addFirebaseElement(value, name, selectedGeojsonButton.value, color)}><i class="fa-solid fa-plus " /> Add to Firebase </button>
+			
+				<button class={`card-btn btn-primary-outline my-1`} on:click={() => addFirebaseElement(value, name, selectedGeojsonButton.value, color)}>
+					<i class="fa-solid fa-save" />
+					Save GPS Data to Firebase
+				</button>
+			{:else}
+				<div class="alert alert-red my-1" role="alert">Add a name, select a color, and add GEOJSON Data</div>
 			{/if}
 
 		</div>
