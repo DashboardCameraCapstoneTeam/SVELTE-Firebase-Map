@@ -383,6 +383,10 @@
 			addMapFilter();
 		});
 
+		const interval = setInterval(function () {
+			resizeMap();
+		}, 2000);
+
 
 	});
 
