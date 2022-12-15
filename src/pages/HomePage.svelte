@@ -26,6 +26,7 @@
 	import RecordingsTable from "../components/recordings/RecordingsTable.svelte";
 	import AddGeojson from "../components/menu/AddGeojson.svelte";
 	import StreetView from "../components/menu/StreetView.svelte";
+  import MachineLearning from "../components/menu/MachineLearning.svelte";
 
 	export let user;
 	export let signOut;
@@ -61,6 +62,7 @@
 		{ id: 2, title: "Video Player", icon: "fa-video" },
 		{ id: 3, title: "Street View", icon: "fa-map" },
 		{ id: 4, title: "Add Geojson", icon: "fa-map" },
+		{ id: 5, title: "Machine Learning Video", icon: "fa-robot" },
 	];
 	let selectedMenu = menuComponents[0].id;
 	let isLoading = false;
@@ -362,18 +364,14 @@
 			console.log("Cannot delete Google Drive Video File");
 		}
 	};
+
+	let machineLearningVideoData = null;
 	const startMachineLearning = async (videoFile) => {
-		const coordFile = getGoogleDriveCoordFile(videoFile, files);
-		if (coordFile) {
-			console.log("Processing Dashcam Video. This will take some time, please wait");
-			const response = await processWithMachineLearning(user, videoFile, coordFile);
-			if (response.status === 200) {
-				console.log("Succesfully Processed Video");
-			} else {
-				console.log(response.message);
-			}
+		const response = await processWithMachineLearning(user, videoFile);
+		if (response.status === 200) {
+			machineLearningVideoData = response.data;
 		} else {
-			console.log("Coordinates File does not exist");
+			console.log(response.message);
 		}
 	};
 	//* Sort the videos and reset the initial video list
@@ -451,6 +449,9 @@
 					<StreetView bind:pointOfInterest />
 				{:else if selectedMenu === 4}
 					<AddGeojson {addGeojsonData} {addFirebaseElement} />
+					
+				{:else if selectedMenu === 5}
+					<MachineLearning bind:machineLearningVideoData/>
 				{/if}
 			</div>
 			<MapStyleSelector bind:mapStyle bind:isReadyForStyleSwitching />

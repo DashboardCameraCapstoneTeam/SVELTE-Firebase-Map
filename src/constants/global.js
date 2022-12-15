@@ -18,6 +18,6 @@ export const GOOGLE_FILE_URL = 'https://www.googleapis.com/drive/v3/files';
 
 // Machine Learning
 export const MACHINE_LEARNING_BASE_URL = 'http://127.0.0.1:8000';
-export const MACHINE_LEARNING_PROCESS_URL = 'http://127.0.0.1:8000/process';
+export const MACHINE_LEARNING_PROCESS_URL = 'http://127.0.0.1:8000/google/machinelearning';
 export const FETCH_GPS_DATA_URL = 'https://geojson-utility-api.onrender.com/geojson/clean';
 export const FETCH_AND_SAVE_GPS_DATA_URL = 'http://127.0.0.1:8000/geojson/save';

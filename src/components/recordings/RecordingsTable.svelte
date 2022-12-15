@@ -62,6 +62,7 @@
 						<th>Size</th>
 						<th>Has GPS Data</th>
 						<th>Has Permissions</th>
+						<th>Machine Learning</th>
 						<th class="w-64">Options</th>
 					</tr>
 				</thead>
@@ -112,6 +113,14 @@
 								{:else}
 									<i class="fa-solid fa-x text-error fa-lg" />
 								{/if}
+							</td>
+
+							<td>
+
+								<button class={`card-btn btn-primary-outline w-fit  my-1`} on:click={() => startMachineLearning(videoFile, true)}>
+									<i class="fa-solid fa-robot" />
+									Process Machine Learning
+								</button>
 							</td>
 
 							<td>
